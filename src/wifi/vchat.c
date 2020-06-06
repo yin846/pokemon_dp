@@ -24,7 +24,7 @@
 //#define VCT_ERROR_NONE (VCT_SUCCESS)
 
 // エコーキャンセル機能を使う場合は定義して下さい。（この場合はライブラリはさしかえて下さい）
-#define USE_ECHOCANCEL
+//#define USE_ECHOCANCEL
 
 // マイクゲインを設定
 #define MY_AMPGAIN PM_AMPGAIN_160
