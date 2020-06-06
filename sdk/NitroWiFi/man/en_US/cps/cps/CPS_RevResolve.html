@@ -1,0 +1,72 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_RevResolve</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_RevResolve</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int CPS_RevResolve(CPSInAddr ip, char *name, u32 name_max);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>ip</strong></em></code></td>
+<td>IP address</td>
+  </tr>
+  <tr>
+<td><code><em><strong>name</strong></em></code></td>
+<td>Name</td>
+  </tr>
+  <tr>
+<td><code><em><strong>name_max</strong></em></code></td>
+<td>Name size</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+    <td><em>0</em></td>
+<td>Succeeded</td>
+  </tr>
+  <tr>
+    <td ><EM>1</EM></td>
+<td >Failed on query</td>
+  </tr>
+  <tr>
+    <td ><EM>-1</EM></td>
+<td >Region size insufficient to store result</td>
+  </tr>
+</table>
+
+<h2>Description</h2>
+
+<p>
+Queries the DNS server and changes the IP address to a name. Because the result is not cached, cache it in the application if necessary. Because this function uses UDP, it cannot be used if the state is already <CODE>CPS_SocUse</CODE>. <CODE>CPS_SocRegister</CODE> must be executing. Specifies a pointer to the area that stores the result and the size of that area. The size represents the length and includes the terminating &lsquo;\0.&rsquo; Returns 0 if the function succeeds, 1 if it fails on query, and -1 if  the area size is insufficient to store the result. This blocks. 
+</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SocRegister.html">CPS_SocRegister</A></CODE>, <CODE><A href="CPS_SocUse.html">CPS_SocUse</A></CODE>, <CODE><A href="CPS_Resolve.html">CPS_Resolve</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+11/09/2005 Initial version.</P>
+</body>
+</html>

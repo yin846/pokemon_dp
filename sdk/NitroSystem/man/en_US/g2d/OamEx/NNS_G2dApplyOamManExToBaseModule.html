@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dApplyOamManExToBaseModule</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dApplyOamManExToBaseModule</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_OAMEx.h&gt;</CODE></pre>
+<pre>void NNS_G2dApplyOamManExToBaseModule (
+NNSG2dOamManagerInstanceEx* pMan );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pMan</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[IN] Extended OAM manager entity</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Calls OAM registered functions in the external module to apply the extended OAM Manager's contents to the actual hardware. This function calls the registration functions set by <code>NNS_G2dSetOamManExEntryFunctions()</code> using all the elements in the registration OAM list of the Manager entity as arguments. At this time, the registration functions are called according to the display priority that was assigned during OAM registration. <BR>
+
+
+<H2>This following caution applies when the drawing orders for OAM groups have the same display priority.</H2>
+<P>
+OAM groups with the same display priority are managed in the manager with lists.
+The manager calls and processes registration functions starting from the top of the internal list and then works toward the end.
+Because the OAM adds registration functions to the the top of the list as they are registered, registration functions are called in the reverse order of the registration order.
+     
+OAMs that have undergone affine transformation are managed on a separate list in the manager,
+and they are moved to the top of the normal OAM list after the actual affine parameter numbers have been resolved when <CODE>NNS_G2dApplyOamManExToBaseModule()</CODE> is called.
+Accordingly, OAMs that have undergone affine transformaton in OAM groups with the same display priority will be called before OAMs that have not undergone affine transformaton.
+&nbsp;</p>
+
+<P>The name of this function has been changed from <code>NNS_G2dApplyToBaseModuleEx</code>. The previous function remains under a different name in order to maintain compatibility.
+</p>
+
+<h2>See Also</h2>
+<p>
+<CODE><A href="NNS_G2dApplyToBaseModuleEx.html">NNS_G2dApplyToBaseModuleEx</A><br></CODE>
+</p>
+<H2>Revision History</H2>
+
+<P>03/28/2005 Added caution regarding the drawing order for OAM groups with the same display priority.<br>08/02/2004 Renamed function.<br>06/22/2004 Initial version.</P>
+</body>
+</html>

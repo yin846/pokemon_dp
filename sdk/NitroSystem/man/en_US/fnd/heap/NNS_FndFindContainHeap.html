@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndFindContainHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_FndFindContainHeap</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+	  <pre><CODE>NNSFndHeapHandle NNS_FndFindContainHeap(const void* memBlock);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">memBlock</font></strong></em></td>
+<td width="87%">Memory block of search target</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>Returns the heap handle if the heap containing the designated memory block is found. If not found, returns <code>NNS_FND_HEAP_INVALID_HANDLE</code> (a NULL value).</p>
+<H2>Description</H2>
+<P>Finds the heap that includes the memory block.</P>
+<h2>See Also</h2>
+<p><CODE><A href="../expheap/NNS_FndAllocFromExpHeap.html">NNS_FndAllocFromExpHeap</A>, <A href="../frameheap/NNS_FndAllocFromFrmHeap.html">NNS_FndAllocFromFrmHeap</A>, <A href="../unitheap/NNS_FndAllocFromUnitHeap.html">NNS_FndAllocFromUnitHeap</A> <br></CODE></p>
+<H2>Revision History</H2>
+<P>04/01/2004 Initial version.</P>
+</body>
+</html>

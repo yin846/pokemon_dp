@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_YieldThread</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_YieldThread</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_YieldThread( void );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Conducts thread rescheduling.</P>
+<P>The current thread tries to transfer the CPU to another the thread with the same priority to give it an opportunity to execute.</P>
+<P>Normally, any executable thread with a higher priority than the current thread should already be executing. Therefore, if there are no executable threads with the same priority as the current thread, calling this function will do nothing. (However, there may be situations where an executable thread with a higher priority than the current thread is not executing, if some thread operation was performed while scheduling was prohibited. )</P>
+<P>The internal operations are as follows: Threads are managed in a list, and they are sorted in descending order from highest to lowest priority (the thread at the top of the list has the highest priority ). If there are two or more executable threads in the list, the rule is to select the thread that is highest in the list. If two or more threads have the same priority level, they are selected according to their order in the list, with the one closest to the top always chosen first. If two or more threads in the list have the same level of priority as the current thread, the <CODE>OS_YieldThread()</CODE> function places the current thread behind all the other threads of the same priority level, so they have the opportunity to execute. After the order of the threads has been changed, the <CODE><A href="OS_RescheduleThread.html">OS_RescheduleThread()</A></CODE> function executes.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitThread.html">OS_InitThread</A>, <A href="OS_EnableScheduler.html">OS_EnableScheduler</A>, <A href="OS_DisableScheduler.html">OS_DisableScheduler</A>, <A href="OS_RescheduleThread.html">OS_RescheduleThread</A></CODE></P>
+<H2>Revision History</H2>
+<P>06/20/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

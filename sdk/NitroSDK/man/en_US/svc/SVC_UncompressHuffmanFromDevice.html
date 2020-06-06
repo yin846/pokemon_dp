@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>SVC_UncompressHuffmanFromDevice</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SVC_UncompressHuffmanFromDevice</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os/common/systemCall.h&gt;</CODE><BR> <BR> <CODE>s32 SVC_UncompressHuffmanFromDevice( const void* srcp,</CODE></dd>
+<dd><CODE>                                              void* destp,</CODE></dd>
+<dd><CODE>                                              u8* tableBufp,</CODE></dd>
+<dd><CODE>const MIReadStreamCallbacks *callbackes</CODE><CODE> );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>srcp</STRONG></EM></TD>
+<TD width="87%">Source address of Huffman Compression data</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>destp</STRONG></EM></TD>
+<TD width="87%">Destination address for decompression.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>tableBufp</STRONG></EM></TD>
+<TD>Tree table storage buffer (maximum of 512 bytes). When you want to hand off a parameter to the <code>initStream</code> function of a <code>MIReadStreamCallbacks</code> socket, you can do it through this buffer. Note, however, that the <code>initStream</code> function call trace will be written over by the tree table.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>callbacks</STRONG></EM></TD>
+<TD>Address of the <code>MIReadStreamCallbacks</code> socket.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p> A value that is more than 0 denotes the decompressed size. A value that is less than 0 denotes an error.</p>
+
+<H2>Description</H2>
+<P>Decompresses Huffman compression data and writes it in 32-bit units to the specified memory. Match the source address <em><strong><code>src</code></strong></em> to the 4-byte boundary. When the size of the compressed data is not a multiple of 4, adjust by paring it back using zeros. Compressed data on devices that are not memory mapped can be decompressed directly without using a temporary buffer.</P>
+<h2>See Also</h2>
+<p><a href="../mi/uncompress/MI_UncompressHuffman.html"><code>MI_UncompressHuffman</code></a>, <a href="SVC_UncompressLZ.html"><code>SVC_UncompressLZ*</code></a>, <a href="SVC_UncompressRL.html"><code>SVC_UncompressRL*</code></a></p>
+
+<H2>Revision History</H2>
+<P>07/22/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,994 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>NITRO Composer (Snd) API Function List</title>
+<link rel="stylesheet" href="../css/apilist.css">
+</head>
+<body>
+<h1>NITRO Composer (Snd) API Function List</h1>
+<h3><a name="System">System</a></h3>
+<h4><a name="System_Basic">Basic Functions</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndInit.html" target="_self">NNS_SndInit</a></th>
+<td>Initializes Sound.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndMain.html" target="_self">NNS_SndMain</a></th>
+<td>This function performs the frame processing of sound.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="System_Setting">System Configuration</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndSetMasterVolume.html" target="_self">NNS_SndSetMasterVolume</a></th>
+<td>This function sets the master volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndSetMonoFlag.html" target="_self">NNS_SndSetMonoFlag</a></th>
+<td>Sets the mono flag.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndBeginSleep.html" target="_self"><s>NNS_SndBeginSleep</s></a></th>
+<td>Deleted.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndEndSleep.html" target="_self"><s>NNS_SndEndSleep</s></a></th>
+<td>Deleted.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStopSoundAll.html" target="_self">NNS_SndStopSoundAll</a></th>
+<td>Stops all sounds.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStopChannelAll.html" target="_self">NNS_SndStopChannelAll</a></th>
+<td>Stops output of all sound channels.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="System_DriverInfo">Driver Information</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndUpdateDriverInfo.html" target="_self">NNS_SndUpdateDriverInfo</a></th>
+<td>Updates sound driver information.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndReadDriverChannelInfo.html" target="_self">NNS_SndReadDriverChannelInfo</a></th>
+<td>Gets the channel information.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="System_Resource">Resource Management</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndLockChannel.html" target="_self">NNS_SndLockChannel</a></th>
+<td>Locks specified channel(s).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndUnlockChannel.html" target="_self">NNS_SndUnlockChannel</a></th>
+<td>Unlocks locked channels.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndLockCapture.html" target="_self">NNS_SndLockCapture</a></th>
+<td>Locks sound capture.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndUnlockCapture.html" target="_self">NNS_SndUnlockCapture</a></th>
+<td>Unlocks sound capture.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndAllocAlarm.html" target="_self">NNS_SndAllocAlarm</a></th>
+<td>Gets the sound alarm.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndFreeAlarm.html" target="_self">NNS_SndFreeAlarm</a></th>
+<td>Frees the sound alarm.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="SndArcPlayer">Sound Archive Player</a></h3>
+<h4><a name="SndArcPlayer_Init">Initialization</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcPlayerSetup.html" target="_self">NNS_SndArcPlayerSetup</a></th>
+<td>Sets up the player using a sound archive.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArcPlayer_StartSeq">Sequence Playback</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcPlayerStartSeq.html" target="_self">NNS_SndArcPlayerStartSeq</a></th>
+<td>Plays sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcPlayerStartSeqArc.html" target="_self">NNS_SndArcPlayerStartSeqArc</a></th>
+<td>This function plays back a sequence archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcPlayerStartSeq.html" target="_self">NNS_SndArcPlayerStartSeqEx</a></th>
+<td>Specifies parameters and then plays back a sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcPlayerStartSeqArc.html" target="_self">NNS_SndArcPlayerStartSeqArcEx</a></th>
+<td>Specifies parameters and then plays back a sequence archive.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Player">Player</a></h3>
+<h4><a name="Player_StopSeq">Stop Sequence</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerStopSeq.html" target="_self">NNS_SndPlayerStopSeq</a></th>
+<td>Stops sequence. (Sound Handle specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerStopSeq.html" target="_self">NNS_SndPlayerStopSeqByPlayerNo</a></th>
+<td>Stops sequence. (Player number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerStopSeq.html" target="_self">NNS_SndPlayerStopSeqBySeqNo</a></th>
+<td>Stops sequence. (Sequence number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerStopSeq.html" target="_self">NNS_SndPlayerStopSeqBySeqArcNo</a></th>
+<td>Stops sequence. (Sequence archive number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerStopSeq.html" target="_self">NNS_SndPlayerStopSeqBySeqArcIdx</a></th>
+<td>Stops sequence. (Sequence archive number and index number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerStopSeq.html" target="_self">NNS_SndPlayerStopSeqAll</a></th>
+<td>Stops all sequences.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerPause.html" target="_self">NNS_SndPlayerPause</a></th>
+<td>Pauses sequence or re-starts sequence. (Sound Handle specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerPause.html" target="_self">NNS_SndPlayerPauseByPlayerNo</a></th>
+<td>Pauses sequence or re-starts sequence. (Player number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerPause.html" target="_self">NNS_SndPlayerPauseAll</a></th>
+<td>Pauses or restarts all sequences.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Player_SeqParam">Sequence Parameters</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTempoRatio.html" target="_self">NNS_SndPlayerSetTempoRatio</a></th>
+<td>This function changes the tempo.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetVolume.html" target="_self">NNS_SndPlayerSetVolume</a></th>
+<td>This function changes the sequence volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetInitialVolume.html" target="_self">NNS_SndPlayerSetInitialVolume</a></th>
+<td>Sets the initial volume value of the sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerMoveVolume.html" target="_self">NNS_SndPlayerMoveVolume</a></th>
+<td>Gradually changes sequence volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetPlayerPriority.html" target="_self">NNS_SndPlayerSetPlayerPriority</a></th>
+<td>Changes the player priority of the sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetChannelPriority.html" target="_self">NNS_SndPlayerSetChannelPriority</a></th>
+<td>Changes the sound generation priority of the sequence.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Player_TrackParam">Track Parameters</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTrackMute.html" target="_self">NNS_SndPlayerSetTrackMute</a></th>
+<td>This function mutes and stops a sequence track.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTrackVolume.html" target="_self">NNS_SndPlayerSetTrackVolume</a></th>
+<td>This function changes the volume of the sequence track.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTrackPitch.html" target="_self">NNS_SndPlayerSetTrackPitch</a></th>
+<td>This function changes the pitch of the sequence track.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTrackPan.html" target="_self">NNS_SndPlayerSetTrackPan</a></th>
+<td>This function changes the pan for a sequence track.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTrackPanRange.html" target="_self">NNS_SndPlayerSetTrackPanRange</a></th>
+<td>Changes the pan range for a sequence track.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTrackModDepth.html" target="_self">NNS_SndPlayerSetTrackModDepth</a></th>
+<td>This function changes the modulation depth of the sequence track.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTrackModSpeed.html" target="_self">NNS_SndPlayerSetTrackModSpeed</a></th>
+<td>This function changes the modulation speed for the sequence track.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetTrackAllocatableChannel.html" target="_self">NNS_SndPlayerSetTrackAllocatableChannel</a></th>
+<td>Changes the allocatable channel for the sequence track.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Player_GetStatus">Status Retrieval</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerGetTick.html" target="_self">NNS_SndPlayerGetTick</a></th>
+<td>Gets the current number of ticks of the sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerCountPlayingSeq.html" target="_self">NNS_SndPlayerCountPlayingSeqByPlayerNo</a></th>
+<td>Counts the number of sequences currently playing (Player number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerCountPlayingSeq.html" target="_self">NNS_SndPlayerCountPlayingSeqBySeqNo</a></th>
+<td>Counts the number of sequences currently playing (Sequence number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerCountPlayingSeq.html" target="_self">NNS_SndPlayerCountPlayingSeqBySeqArcNo</a></th>
+<td>Counts the number of sequences currently playing (Sequence archive number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerCountPlayingSeq.html" target="_self">NNS_SndPlayerCountPlayingSeqBySeqArcIdx</a></th>
+<td>Counts the number of sequences currently playing (Sequence archive number and index number specified).</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerReadDriverPlayerInfo.html" target="_self">NNS_SndPlayerReadDriverPlayerInfo</a></th>
+<td>Gets the sound driver's player information.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerReadDriverTrackInfo.html" target="_self">NNS_SndPlayerReadDriverTrackInfo</a></th>
+<td>Gets the sound driver's track information.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Player_SeqNo">Sequence Numbers</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetSeqNo.html" target="_self">NNS_SndPlayerSetSeqNo</a></th>
+<td>Sets the sequence number.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetSeqArcNo.html" target="_self">NNS_SndPlayerSetSeqArcNo</a></th>
+<td>Sets the sequence archive number.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerGetSeqType.html" target="_self">NNS_SndPlayerGetSeqType</a></th>
+<td>Gets the sequence data type.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerGetSeqNo.html" target="_self">NNS_SndPlayerGetSeqNo</a></th>
+<td>Gets the sequence number.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerGetSeqArcNo.html" target="_self">NNS_SndPlayerGetSeqArcNo</a></th>
+<td>Gets the sequence archive number.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerGetSeqArcIdx.html" target="_self">NNS_SndPlayerGetSeqArcIdx</a></th>
+<td>Gets the index number of the sequence archive.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Player_SeqVariable">Sequence Variables</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerReadVariable.html" target="_self">NNS_SndPlayerReadVariable</a></th>
+<td>Reads the sequence local variables.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerWriteVariable.html" target="_self">NNS_SndPlayerWriteVariable</a></th>
+<td>Writes the sequence local variable.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerReadGlobalVariable.html" target="_self">NNS_SndPlayerReadGlobalVariable</a></th>
+<td>Reads the sequence global variables.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerWriteGlobalVariable.html" target="_self">NNS_SndPlayerWriteGlobalVariable</a></th>
+<td>Writes to the sequence global variable.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Player_PlayerSetting">Player Configuration</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetPlayableSeqCount.html" target="_self">NNS_SndPlayerSetPlayableSeqCount</a></th>
+<td>Sets the maximum number of sequences that can be played concurrently by the specified player.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetPlayerVolume.html" target="_self">NNS_SndPlayerSetPlayerVolume</a></th>
+<td>Sets the volume for the specified player.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerSetAllocatableChannel.html" target="_self">NNS_SndPlayerSetAllocatableChannel</a></th>
+<td>The designated player sets the allocatable channel.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndPlayerCreateHeap.html" target="_self">NNS_SndPlayerCreateHeap</a></th>
+<td>Creates the player heap.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Player_SoundHandle">Sound Handle</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndHandleInit.html" target="_self">NNS_SndHandleInit</a></th>
+<td>Initializes the Sound Handle.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndHandleIsValid.html" target="_self">NNS_SndHandleIsValid</a></th>
+<td>This function verifies whether the Sound Handle is valid or not.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndHandleReleaseSeq.html" target="_self">NNS_SndHandleReleaseSeq</a></th>
+<td>Releases the sequence that is bound to the sound handle.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="SndArcStrm">Sound Archive Stream</a></h3>
+<h4><a name="SndArcStrm_Init">Initialization</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmInit.html" target="_self">NNS_SndArcStrmInit</a></th>
+<td>This function initializes the sound archive stream library.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmCreatePrepareThread.html" target="_self">NNS_SndArcStrmCreatePrepareThread</a></th>
+<td>Starts a stream-prepare thread.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmSetupPlayer.html" target="_self">NNS_SndArcStrmSetupPlayer</a></th>
+<td>Sets up the stream player.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmAllocChannel.html" target="_self">NNS_SndArcStrmAllocChannel</a></th>
+<td>This function allocates the channels that are used when a stream is played.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmFreeChannel.html" target="_self">NNS_SndArcStrmFreeChannel</a></th>
+<td>This function frees channels that are used when streams are played.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArcStrm_Start">Playback and Stopping</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmStart.html" target="_self">NNS_SndArcStrmStart</a></th>
+<td>This function plays a stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmStartEx.html" target="_self">NNS_SndArcStrmStartEx</a></th>
+<td>Specifies player number, etc., and plays back the stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmStartEx2.html" target="_self">NNS_SndArcStrmStartEx2</a></th>
+<td>This function registers the callback functions and plays back the stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmStop.html" target="_self">NNS_SndArcStrmStop</a></th>
+<td>Stops the stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmStopAll.html" target="_self">NNS_SndArcStrmStopAll</a></th>
+<td>Stops all streams.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmPrepare.html" target="_self">NNS_SndArcStrmPrepare</a></th>
+<td>This function prepares the stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmPrepareEx.html" target="_self">NNS_SndArcStrmPrepareEx</a></th>
+<td>Specifies player number, etc., and prepares a stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmPrepareEx2.html" target="_self">NNS_SndArcStrmPrepareEx2</a></th>
+<td>This function registers the callback functions and carries out stream preparations.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmStartPrepared.html" target="_self">NNS_SndArcStrmStartPrepared</a></th>
+<td>This function plays the prepared stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmIsPrepared.html" target="_self">NNS_SndArcStrmIsPrepared</a></th>
+<td>This function checks whether stream preparations are complete.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmGetCurrentPlayingPos.html" target="_self">NNS_SndArcStrmGetCurrentPlayingPos</a></th>
+<td>This function obtains the current playback position of the stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmGetTimeLength.html" target="_self">NNS_SndArcStrmGetTimeLength</a></th>
+<td>Gets the time length for the entire data stream.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArcStrm_Param">Parameter</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmMoveVolume.html" target="_self">NNS_SndArcStrmMoveVolume</a></th>
+<td>This function changes the stream's volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmSetChannelVolume.html" target="_self">NNS_SndArcStrmSetChannelVolume</a></th>
+<td>This function changes the stream's channel volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcStrmSetChannelPan.html" target="_self">NNS_SndArcStrmSetChannelPan</a></th>
+<td>This function changes the stream's channel pan.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArcStrm_Handle">Stream Handle</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndStrmHandleInit.html" target="_self">NNS_SndStrmHandleInit</a></th>
+<td>This function initializes a steam handle.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmHandleIsValid.html" target="_self">NNS_SndStrmHandleIsValid</a></th>
+<td>This function checks whether a stream handle is valid.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmHandleRelease.html" target="_self">NNS_SndStrmHandleRelease</a></th>
+<td>This function releases a stream that is bound to a stream handle.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Strm_type">Types, Structures</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNSSndArcStrmCallback.html" target="_self">NNSSndArcStrmCallback</a></th>
+<td>This is the sound archive stream callback function.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Strm">Stream</a></h3>
+<h4><a name="Strm_Init">Initialization</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndStrmInit.html" target="_self">NNS_SndStrmInit</a></th>
+<td>Initializes the stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmAllocChannel.html" target="_self">NNS_SndStrmAllocChannel</a></th>
+<td>This function allocates the channels that are used when a stream is played.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmFreeChannel.html" target="_self">NNS_SndStrmFreeChannel</a></th>
+<td>This function frees channels that are used when streams are played.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmBeginSleep.html" target="_self"><s>NNS_SndStrmBeginSleep</s></a></th>
+<td>Deleted.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmEndSleep.html" target="_self"><s>NNS_SndStrmEndSleep</s></a></th>
+<td>Deleted.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Strm_Start">Playback and Stopping</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndStrmSetup.html" target="_self">NNS_SndStrmSetup</a></th>
+<td>This function sets up a stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmStart.html" target="_self">NNS_SndStrmStart</a></th>
+<td>This function starts the playing of a stream.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmStop.html" target="_self">NNS_SndStrmStop</a></th>
+<td>Stops the playback of the stream.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Strm_Param">Parameter</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndStrmSetVolume.html" target="_self">NNS_SndStrmSetVolume</a></th>
+<td>This function changes the stream's volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmSetChannelVolume.html" target="_self">NNS_SndStrmSetChannelVolume</a></th>
+<td>This function changes the stream's channel volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndStrmSetChannelPan.html" target="_self">NNS_SndStrmSetChannelPan</a></th>
+<td>This function changes the stream's channel pan.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Strm_type">Types, Structures</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNSSndStrmCallback.html" target="_self">NNSSndStrmCallback</a></th>
+<td>This is the stream callback function.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="SndArc">Sound Archive</a></h3>
+<h4><a name="SndArc_Init">Initialization</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcInit.html" target="_self">NNS_SndArcInit</a></th>
+<td>Initializes the sound archive structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcInit.html" target="_self">NNS_SndArcInitWithResult</a></th>
+<td>Initializes the sound archive structure and obtains the result.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcInitOnMemory.html" target="_self">NNS_SndArcInitOnMemory</a></th>
+<td>Initializes the sound archive structure using the sound archive data in the memory.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcSetup.html" target="_self">NNS_SndArcSetup</a></th>
+<td>Sets up the sound archive structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetCurrent.html" target="_self">NNS_SndArcGetCurrent</a></th>
+<td>Gets the current sound archive pointer.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcSetCurrent.html" target="_self">NNS_SndArcSetCurrent</a></th>
+<td>Sets the current sound archive.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArc_DataLoad">Data Loading</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcLoadGroup.html" target="_self">NNS_SndArcLoadGroup</a></th>
+<td>Loads sound data into the heap by group.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcLoadSeq.html" target="_self">NNS_SndArcLoadSeq</a></th>
+<td>Loads sequence data into the heap.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcLoadSeqArc.html" target="_self">NNS_SndArcLoadSeqArc</a></th>
+<td>Loads the sequence archive into the heap.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcLoadBank.html" target="_self">NNS_SndArcLoadBank</a></th>
+<td>Loads bank data into the heap.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcLoadWaveArc.html" target="_self">NNS_SndArcLoadWaveArc</a></th>
+<td>Loads the waveform archive into the heap.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcLoadSeq.html" target="_self">NNS_SndArcLoadSeqEx</a></th>
+<td>Loads sequence data into the heap, specifying the data type to load.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcLoadBank.html" target="_self">NNS_SndArcLoadBankEx</a></th>
+<td>Loads bank data into the heap, specifying the data type to load.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArc_GetInfo">Get Information</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSeqParam.html" target="_self">NNS_SndArcGetSeqParam</a></th>
+<td>Gets the sequence parameter structure of the sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSeqArcParam.html" target="_self">NNS_SndArcGetSeqArcParam</a></th>
+<td>Gets the sequence parameter structure of the sequence archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetCount.html" target="_self">NNS_SndArcGetSeqCount</a></th>
+<td>Gets the number of sequences in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetCount.html" target="_self">NNS_SndArcGetSeqArcCount</a></th>
+<td>Gets the number of sequence archives in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetCount.html" target="_self">NNS_SndArcGetBankCount</a></th>
+<td>Gets the number of banks in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetCount.html" target="_self">NNS_SndArcGetWaveArcCount</a></th>
+<td>Gets the number of waveform archives in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetCount.html" target="_self">NNS_SndArcGetGroupCount</a></th>
+<td>Gets the number of groups in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetCount.html" target="_self">NNS_SndArcGetStrmCount</a></th>
+<td>Gets the number of streams in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSeqArcSeqCount.html" target="_self">NNS_SndArcGetSeqArcSeqCount</a></th>
+<td>Gets the number of sequences in the specified Sequence Archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSeqInfo.html" target="_self">NNS_SndArcGetSeqInfo</a></th>
+<td>Gets the sequence information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSeqArcInfo.html" target="_self">NNS_SndArcGetSeqArcInfo</a></th>
+<td>Gets the sequence archive information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetBankInfo.html" target="_self">NNS_SndArcGetBankInfo</a></th>
+<td>Gets the bank information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetWaveArcInfo.html" target="_self">NNS_SndArcGetWaveArcInfo</a></th>
+<td>Gets the waveform archive information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetGroupInfo.html" target="_self">NNS_SndArcGetGroupInfo</a></th>
+<td>Gets the group information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetPlayerInfo.html" target="_self">NNS_SndArcGetPlayerInfo</a></th>
+<td>Gets the player information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetStrmInfo.html" target="_self">NNS_SndArcGetStrmInfo</a></th>
+<td>This function obtains the stream information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetStrmPlayerInfo.html" target="_self">NNS_SndArcGetStrmPlayerInfo</a></th>
+<td>This function obtains the stream player information structure.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArc_GetSymbol">Symbol Name Retrieval</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSymbol.html" target="_self">NNS_SndArcGetSeqSymbol</a></th>
+<td>Gets the sequence symbol name.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSymbol.html" target="_self">NNS_SndArcGetSeqArcSymbol</a></th>
+<td>Gets the sequence archive symbol name.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSymbol.html" target="_self">NNS_SndArcGetSeqArcIdxSymbol</a></th>
+<td>Gets the symbol name of the sequences in the sequence archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSymbol.html" target="_self">NNS_SndArcGetBankSymbol</a></th>
+<td>Gets the bank symbol name.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSymbol.html" target="_self">NNS_SndArcGetWaveArcSymbol</a></th>
+<td>Gets the waveform archive symbol name.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSymbol.html" target="_self">NNS_SndArcGetStrmSymbol</a></th>
+<td>Obtains the stream symbol name.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetSymbol.html" target="_self">NNS_SndArcGetGroupSymbol</a></th>
+<td>Obtains the group symbol name.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArc_FileAccess">File Access</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndArcSetFileAddress.html" target="_self">NNS_SndArcSetFileAddress</a></th>
+<td>Sets the file address of the file in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetFileAddress.html" target="_self">NNS_SndArcGetFileAddress</a></th>
+<td>Gets the address of the file in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetFileID.html" target="_self">NNS_SndArcGetFileID</a></th>
+<td>This function obtains the file ID of the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetFileSize.html" target="_self">NNS_SndArcGetFileSize</a></th>
+<td>Gets the size of the file inside the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcGetFileOffset.html" target="_self">NNS_SndArcGetFileOffset</a></th>
+<td>This function obtains the file offset of the file in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndArcReadFile.html" target="_self">NNS_SndArcReadFile</a></th>
+<td>Reads the file in the sound archive.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndArc_type">Types, Structures</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNSSndSeqParam.html" target="_self">NNSSndSeqParam</a></th>
+<td>The sequence parameter structure</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcSeqInfo.html" target="_self">NNSSndArcSeqInfo</a></th>
+<td>This is the sequence information structure in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcSeqArcInfo.html" target="_self">NNSSndArcSeqArcInfo</a></th>
+<td>The sequence archive information structure in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcBankInfo.html" target="_self">NNSSndArcBankInfo</a></th>
+<td>The structure of bank data in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcWaveArcInfo.html" target="_self">NNSSndArcWaveArcInfo</a></th>
+<td>This is the information structure of the waveform archive located in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcGroupInfo.html" target="_self">NNSSndArcGroupInfo</a></th>
+<td>The structure of group data in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcGroupItem.html" target="_self">NNSSndArcGroupItem</a></th>
+<td>The structure of group items in the group data structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcPlayerInfo.html" target="_self">NNSSndArcPlayerInfo</a></th>
+<td>The player information structure in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcStrmInfo.html" target="_self">NNSSndArcStrmInfo</a></th>
+<td>This is a stream information structure that is in the sound archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNSSndArcStrmPlayerInfo.html" target="_self">NNSSndArcStrmPlayerInfo</a></th>
+<td>This is a stream player information structure that is in the sound archive.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="SndHeap">Sound Heap</a></h3>
+<h4><a name="SndHeap_Init">Initialization</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndHeapCreate.html" target="_self">NNS_SndHeapCreate</a></th>
+<td>Creates the sound heap.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndHeapDestroy.html" target="_self">NNS_SndHeapDestroy</a></th>
+<td>This function destroys the sound heap.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndHeap_Alloc">Memory Allocation and Release</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndHeapAlloc.html" target="_self">NNS_SndHeapAlloc</a></th>
+<td>Allocates memory.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndHeapClear.html" target="_self">NNS_SndHeapClear</a></th>
+<td>Releases all memory.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndHeap_State">Hierarchy Control</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndHeapSaveState.html" target="_self">NNS_SndHeapSaveState</a></th>
+<td>Saves the memory state.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndHeapLoadState.html" target="_self">NNS_SndHeapLoadState</a></th>
+<td>Restores the memory state.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndHeapGetCurrentLevel.html" target="_self">NNS_SndHeapGetCurrentLevel</a></th>
+<td>Gets the current hierarchy level.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="SndHeap_GetInfo">Get Information</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndHeapGetSize.html" target="_self">NNS_SndHeapGetSize</a></th>
+<td>Gets the heap size.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndHeapGetFreeSize.html" target="_self">NNS_SndHeapGetFreeSize</a></th>
+<td>Gets the amount of free memory.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="WaveOut">Playing Waveforms</a></h3>
+<h4><a name="WaveOut_Channel">Channel Allocation and Release</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutAllocChannel.html" target="_self">NNS_SndWaveOutAllocChannel</a></th>
+<td>Allocates a channel for the waveform playback.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutFreeChannel.html" target="_self">NNS_SndWaveOutFreeChannel</a></th>
+<td>Releases a channel for the waveform playback.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="WaveOut_Start">Playing and Stopping Waveforms</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutStart.html" target="_self">NNS_SndWaveOutStart</a></th>
+<td>Plays back the waveform data.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutStop.html" target="_self">NNS_SndWaveOutStop</a></th>
+<td>Stops playing the waveform data.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="WaveOut_Parameter">Setting Parameters</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutSetVolume.html" target="_self">NNS_SndWaveOutSetVolume</a></th>
+<td>Changes the volume of the waveform playback.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutSetSpeed.html" target="_self">NNS_SndWaveOutSetSpeed</a></th>
+<td>Changes the playback speed of  the waveform.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutSetPan.html" target="_self">NNS_SndWaveOutSetPan</a></th>
+<td>Changes the pan (location) for playing back waveforms.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="WaveOut_Misc">Other</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutIsPlaying.html" target="_self">NNS_SndWaveOutIsPlaying</a></th>
+<td>Checks whether the waveform data is being played.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndWaveOutWaitForChannelStop.html" target="_self">NNS_SndWaveOutWaitForChannelStop</a></th>
+<td>Waits until the channel stops completely.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Capture">Capture</a></h3>
+<h4><a name="Capture_Init">Initialization</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureCreateThread.html" target="_self">NNS_SndCaptureCreateThread</a></th>
+<td>This function starts the capture thread.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Capture_Reverb">Reverb</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureStartReverb.html" target="_self">NNS_SndCaptureStartReverb</a></th>
+<td>Starts the reverb feature.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureStopReverb.html" target="_self">NNS_SndCaptureStopReverb</a></th>
+<td>This function stops reverb.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureSetReverbVolume.html" target="_self">NNS_SndCaptureSetReverbVolume</a></th>
+<td>This function changes the volume of the reverb component.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Capture_Effect">Effects</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureStartEffect.html" target="_self">NNS_SndCaptureStartEffect</a></th>
+<td>Starts the sound capture effect.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureStopEffect.html" target="_self">NNS_SndCaptureStopEffect</a></th>
+<td>Stops the effect.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Capture_Sampling">Sampling</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureStartSampling.html" target="_self">NNS_SndCaptureStartSampling</a></th>
+<td>This function begins the sampling process.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureStopSampling.html" target="_self">NNS_SndCaptureStopSampling</a></th>
+<td>Stops the sampling process.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Capture_OutputEffect">Output Effects</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureStartOutputEffect.html" target="_self">NNS_SndCaptureStartOutputEffect</a></th>
+<td>Starts the output effect process.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureStopOutputEffect.html" target="_self">NNS_SndCaptureStopOutputEffect</a></th>
+<td>Stops the output effect process.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureChangeOutputEffect.html" target="_self">NNS_SndCaptureChangeOutputEffect</a></th>
+<td>Changes the output effect processes.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureSetOutputEffectCallback.html" target="_self">NNS_SndCaptureSetOutputEffectCallback</a></th>
+<td>Registers the output effect callback.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureSetPostOutputEffectCallback.html" target="_self">NNS_SndCaptureSetPostOutputEffectCallback</a></th>
+<td>Registers the output effect postprocess callback.</td>
+</tr>
+</tbody>
+</table>
+<h4><a name="Capture_GetInfo">Get Information</a></h4>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureIsActive.html" target="_self">NNS_SndCaptureIsActive</a></th>
+<td>Obtains information as to whether the capture is currently executing or not.</td>
+</tr>
+<tr>
+<th width="25%"><a href="NNS_SndCaptureGetCaptureType.html" target="_self">NNS_SndCaptureGetCaptureType</a></th>
+<td>Obtains information about the type of capture that is currently executing.</td>
+</tr>
+</tbody>
+</table></body>
+</html>

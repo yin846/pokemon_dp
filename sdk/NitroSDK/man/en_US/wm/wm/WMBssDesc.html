@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WMBssDesc</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WMBssDesc</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wm.h&gt;</CODE><BR>
+  <PRE><CODE>
+typedef struct WMBssDesc
+{
+u16         length;
+u16         rssi;
+u8          bssid[ WM_SIZE_BSSID ];
+u16         ssidLength;
+u8          ssid[WM_SIZE_SSID];
+u16         capaInfo;
+struct
+    {
+u16     basic;
+u16     support;
+} rateSet;
+u16         beaconPeriod;
+u16         dtimPeriod;
+u16         channel;
+u16         cfpPeriod;
+u16         cfpMaxDuration;
+u16         gameInfoLength;
+u16         rsv;
+<a href="WMGameInfo.html">WMGameInfo</a>  gameInfo;
+} WMBssDesc;
+</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">length</font></strong></em></TD>
+<TD width="800">The size, in half word (<code>u16</code>) units, of available data stored in this whole structure.</TD>
+    </TR>
+
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">bssid</font></strong></em></TD>
+<TD width="800">Parent BSS ID.<br />This value is parent MAC address and is unique to each device.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">gameInfoLength</font></strong></em></TD>
+<TD width="800">The available data byte amount stored in <code>gameInfo</code>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">gameInfo</font></strong></em></TD>
+<TD width="800">The <a href="WMGameInfo.html"><code>WMGameInfo</code></a> structure storing specified parent information.</TD>
+    </TR>
+
+    <TR>
+<TD width="200"><font color="#808080">rssi <font color="#808080"><code>&lt;&ndash;|&nbsp;</code>Used internally by library</font></font></TD>
+<TD width="800" rowspan="11"><font color="#808080">Used internally in the library.</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">ssidLength</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">ssid</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">capaInfo</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">rateSet</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">beaconPeriod</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">dtimPeriod</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">channel</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">cfpPeriod</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">cfpMaxDuration</font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">rsv</font></TD>
+    </TR>
+
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>
+The structure stores information of parent discovered by result of search by <a href="WM_StartScan.html"><code>WM_StartScan</code></a> function.
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/06/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

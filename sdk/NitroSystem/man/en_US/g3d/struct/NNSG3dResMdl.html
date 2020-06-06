@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNSG3dResMdl</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG3dResMdl</H1>
+<H2>Description</H2>
+<P>The <code>NNSG3dResMdl</code> structure serves as the root for all of the data structures storing data for a single model. Access to the model data is achieved via this structure. The <code>NNSG3dResMdl</code> structure exists as data inside the <code>.nsbmd</code> file. It is created when the <code>.imd</code> file is converted by <code>g3dcvtr</code>.<BR> The following data can be accessed via the <code>NNSG3dResMdl</code> structure:</P>
+<UL>
+<LI>Material
+<LI>Shape
+<LI>SBC string (the mode's structure serialized and encoded)
+<LI>Information on each node's stationary position
+<LI>Information on the CG tool being used, the number of polygons, etc.
+</UL>
+<P>This structure and the material, shape, and other data obtained through this structure are not changed by the G3D library during rendering (except when changed from within a callback).</P>
+<H2>See Also</H2>
+<P><a href="../list_g3d.html#Kernel">Kernel</a>, <a href="../list_g3d.html#Model">Model</a>, <a href="../list_g3d.html#BinaryResource">Binary resource</a></P>
+<H2>Revision History</H2>
+<P>10/13/2004 Initial version.</P>
+</BODY>
+
+</HTML>

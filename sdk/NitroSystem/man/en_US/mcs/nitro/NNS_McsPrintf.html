@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsPrintf</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsPrintf</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre><CODE>BOOL NNS_McsPrintf(const char* format, ...);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ 
+    
+    <tr> 
+<td width="13%"><em><strong><font face="Courier New">format</font></strong></em></td>
+<td width="87%">Format specification character string</td>
+ </tr>
+    <tr>
+      <td width="13%"><em><strong><font face="Courier New">...</font></strong></em></td>
+<td width="87%">Variable number of arguments</td>
+    </tr>
+  </table>
+<h2>Return Values</h2>
+<p>Returns TRUE when the function was successful. Returns FALSE if it failed.</p>
+<H2>Description</H2>
+<p>Outputs a character string to the MCS server. According to the format specification character string, variable number of arguments can be given.</p>
+<p>The maximum length of the character string to output is the size of the buffer (bytes) specified with the function <CODE>NNS_McsInitPrint</CODE> -1.</p>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_McsInitPrint.html">NNS_McsInitPrint</A></CODE>, <CODE><A href="NNS_McsPutString.html">NNS_McsPutString</A></CODE></p>
+<H2>Revision History</H2>
+<P>12/17/2004 Initial version.</P>
+</body>
+</html>

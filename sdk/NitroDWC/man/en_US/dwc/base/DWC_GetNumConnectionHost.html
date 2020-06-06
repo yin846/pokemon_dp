@@ -1,0 +1,46 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GetNumConnectionHost</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GetNumConnectionHost</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+int DWC_GetNumConnectionHost( void );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function gets the number of connected hosts, including this one.
+		</P>
+
+		<H2>Arguments</H2>
+		<P>
+		  None.
+		</P>
+		<H2>Return Values</H2>
+		<P>
+		  Returns the number of connected hosts, including this one. The number of connections currently undergoing matchmaking are counted. If this function is called when the <A href="FriendsMatch.html">FriendsMatch Library</A> is not running, a 0 will be returned.
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+			<A href="DWC_InitFriendsMatch.html">DWC_InitFriendsMatch</A>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			03/09/2006 Errors corrected<BR>01/31/2006 Revised the description of the return values using the FriendsMatch Library<BR>12/16/2005 Indicated that the number of connections is returned even when matchmaking<BR>07/22/2005 Initial version<BR>
+		</P>
+
+	</BODY>
+</HTML>

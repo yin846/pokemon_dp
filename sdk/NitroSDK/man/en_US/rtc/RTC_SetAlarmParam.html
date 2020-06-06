@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>RTC_SetAlarmParam</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">RTC_SetAlarmParam</h1>
+
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/rtc.h&gt;</CODE><BR>
+<PRE><CODE><A href="RTCResult.html">RTCResult</A> RTC_SetAlarmParam( 
+<A href="RTCAlarmChan.html">RTCAlarmChan</A>	chan, 
+const <A href="RTCAlarmParam.html">RTCAlarmParam</A>*	param );</CODE></PRE>
+  </dd>
+
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">chan</font></strong></em></TD>
+<TD width="700">Uses <code><a href="RTCAlarmChan.html">RTCAlarmChan</a></code> to specify the alarm channel.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">param</font></strong></em></TD>
+<TD>Pointer to <code><a href="RTCAlarmParam.html">RTCAlarmParam</a></code> containing parameters to set.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the request succeeds, it returns 0.<BR>If the request fails, it returns some numeric value other than 0.</p>
+
+<H2>Description</H2>
+<P>This function writes alarm interrupt parameter values to the real time clock. It sends alarm interrupt data to ARM7 and returns the process result once it is received. This is a synchronous version of <code><a href="RTC_SetAlarmParamAsync.html">RTC_SetAlarmParamAsync</a></code>.</P>
+
+<h2>Caution</h2>
+<P><FONT color=red>Do not define parameter values of nonexistent days of the week or times.<BR> Unless the RTC alarm interrupt permission status is &quot;enable,&quot; it is not possible to write parameter values to the real time clock, causing any attempted call of this function to fail.<BR> This function requires a PXI interrupt for synchronization. Do not call this function when PXI interrupts are prohibited.</FONT></P>
+
+<h2>See Also</h2>
+<P><code><a href="RTC_SetAlarmParamAsync.html">RTC_SetAlarmParamAsync</a>, <a href="RTC_GetAlarmParam.html">RTC_GetAlarmParam</a>, <a href="RTC_GetAlarmParamAsync.html">RTC_GetAlarmParamAsync</a>, <a href="RTCResult.html">RTCResult</a>, <a href="RTCAlarmChan.html">RTCAlarmChan</a>, <a href="RTCAlarmParam.html">RTCAlarmParam</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;<br /> 05/18/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

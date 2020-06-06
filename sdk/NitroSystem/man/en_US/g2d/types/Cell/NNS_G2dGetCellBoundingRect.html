@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dGetCellBoundingRect</title>
+<LINK rel="stylesheet" href="../../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dGetCellBoundingRect</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/fmt/g2d_Cell_data.h&gt;</CODE></pre>
+  <pre><CODE>static inline const NNSG2dCellBoundingRectS16*
+NNS_G2dGetCellBoundingRect( const NNSG2dCellData* pCell );</code></CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCell</font></strong></em></td>
+<td width="87%">[IN] Cell data</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>Information on the bounding rectangle (S16 format).
+</p>
+<H2>Description</H2>
+<P>
+This function obtains the bounding rectangle of the cell. Internally, this function does not determine whether the cell actually has the bounding rectangle information. The determination must be done using user codes. The <code>NNS_G2dCellHasBR()</code> function can be used to determine if the cell has the bounding rectangle information. If this function is executed on a cell that does not have the bounding rectangle information, it returns invalid information. To create a cell data that has the bounding rectangle information, specify the -br option and perform the conversion. <BR>
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dCellHasBR.html">NNS_G2dCellHasBR</A><br></CODE></p>
+<p><CODE><A href="NNS_G2dGetCellBoundingSphereR.html">NNS_G2dGetCellBoundingSphereR</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>10/12/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,29 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# Warning: Do not edit or delete this workspace file!
+
+###############################################################################
+
+Project: "ntrcomp"=.\ntrcomp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

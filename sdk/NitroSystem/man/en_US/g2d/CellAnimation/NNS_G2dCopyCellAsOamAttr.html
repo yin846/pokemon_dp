@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dCopyCellAsOamAttr</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dCopyCellAsOamAttr</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/fmt/g2d_Cell_data.h&gt;</CODE></pre>
+<pre><CODE>static inline void NNS_G2dCopyCellAsOamAttr( 
+        const NNSG2dCellData*   pCell, 
+        u16                    idx, 
+        GXOamAttr*             pDst );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCell</font></strong></em></td>
+<td width="87%">[IN] Cell data</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">idx</font></strong></em></td>
+<td width="87%">[IN] OBJ index</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pDst</code></strong></em>&nbsp;&nbsp;</font></strong></em></td>
+<td width="87%">[OUT] Copy destination</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Copies the OAM attribute information inside the cell data to <code>GXOamAttr</code>.
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dMakeCellToOams.html">NNS_G2dMakeCellToOams</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>05/28/2004 Initial version.</P>
+</body>
+</html>

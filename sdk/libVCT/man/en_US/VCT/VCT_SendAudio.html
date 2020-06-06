@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCT_SendAudio</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCT_SendAudio</h1>
+<h2>Syntax</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><code>BOOL VCT_SendAudio( void* audio_data, u32 length );</code></PRE></dd> 
+</dl>
+
+<h2>Argument</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>audio_data</STRONG></EM></TD>
+      <TD width="87%" height="17">Audio data.</TD>
+    </TR>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>length</STRONG></EM></TD>
+      <TD width="87%" height="17">Data size (in bytes).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Value</h2>
+<TABLE border="1" id="table1">
+  <TBODY>
+    <TR>
+      <TD width="30%"><CODE>TRUE</CODE></TD>
+      <TD width="70%">The audio data was queued to a transmitting buffer.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><CODE>FALSE</CODE></TD>
+      <TD width="70%">The audio data was not queued to the transmitting buffer. VAD determined audio is muted, streaming has not started, or the Library has not been initialized.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<p>VCT_SendAudio queues audio data to a transmitting buffer. Audio data encoding and the packet transmission process are performed in the <code><a href="VCT_Main.html">VCT_Main</a></code> function.</p>
+
+<p><em><strong>audio_data</strong></em> should be sampled using the 16-bit / 8KHz format and aligned at a 4-byte boundary. The audio data <em><strong>length</strong></em> must be 1088 (data for 68ms in 16-bit / 8KHz format). No other value is accepted.</p>
+
+<p>This function can be called regardless of whether or not audio streaming has started. If audio streaming has not started, this function has nothing to execute.</p>
+
+<p>VCT_SendAudio should be called at precise intervals of 68ms as often as possible. Interval variations cause transmission packet timestamp variations and increase errors in receiving machines. This function should be called from the callback interruption to the audio streaming playback.</p>
+   
+<p>VCT_SendAudio's return value shows if the audio data is queued. If VAD is enabled, the return value also shows if VAD detects the audio data. Utilizing this function enables various processes (such as BGM mute and volume control) to work while a player is talking.  If VAD is disabled, VCT_SendAudio always returns TRUE regardless of VAD's decision unless any error occurs.</p>
+
+<h2>See Also</h2>
+<p><code>
+<a href="VCT_Init.html">VCT_Init</a>,
+<a href="VCT_StartStreaming.html">VCT_StartStreaming</a>,
+<a href="VCT_ReceiveAudio.html">VCT_ReceiveAudio</a>
+</code></p>
+<H2>Revision History</H2>
+<P>2006/04/13 The transmitting interval was changed from 64ms to 68ms. The description of the return value is changed from "Transmission succeeded." to "The data was queued in the transmitting buffer."<BR>
+2006/04/06 A description regarding the adjustment of the transmitting interval was modified.<BR>
+2006/03/24 VAD description was added.<BR>
+2006/01/25 First release
+</P>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNSSndArcGroupInfo</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNSSndArcGroupInfo</h1>
+<h2>Definition</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef struct NNSSndArcGroupInfo
+{
+u32     count;
+struct  <a href="NNSSndArcGroupItem.html">NNSSndArcGroupItem</a> item[ 0 ];
+} NNSSndArcGroupInfo;
+</code></pre></dd>
+<dd><pre class="funcprototype"></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAULWT"></a>
+<h2>Elements</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code><EM><STRONG><code>count</code></strong></em></code></strong></em></td>
+<td>The number of items in the group.</td>
+</tr>
+<tr>
+<td><em><strong><code>item</code></strong></em></td>
+<td>The array of items in the group.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAKMWT"></a>
+<h2>Description</h2>
+      <p>
+The structure of group data in the sound archive. 
+</p>
+      <p>
+This structure can be obtained from the sound archive by using of the <code><a href="NNS_SndArcGetGroupInfo.html">NNS_SndArcGetGroupInfo</a></code> function.
+</p>
+      <p>
+Load the sound data based on this information with the <code><a href="NNS_SndArcLoadGroup.html">NNS_SndArcLoadGroup</a></code> function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNSSndArcGroupItem.html">NNSSndArcGroupItem</a>, <a href="NNS_SndArcGetGroupInfo.html">NNS_SndArcGetGroupInfo</a>, <a href="NNS_SndArcLoadGroup.html">NNS_SndArcLoadGroup</a></code></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

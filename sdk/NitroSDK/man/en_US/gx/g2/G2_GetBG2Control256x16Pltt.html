@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G2*_GetBG2Control256x16Pltt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G2*_GetBG2Control256x16Pltt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_bgcnt.h&gt;</CODE><BR>
+<PRE><CODE>static inline GXBg23Control256x16Pltt G2_GetBG2Control256x16Pltt( void );</CODE>
+<CODE>static inline GXBg23Control256x16Pltt G2S_GetBG2Control256x16Pltt( void );</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The settings for BG2.</p>
+<H2>Description</H2>
+<P>When BG2 has been set to 256-color x 16 palette Character BG for Affine Extended BG, this gets the settings for BG2 as the <code>GXBg23Control256x16Pltt</code> structure. To read about the various members, see <a  href="G2_SetBG2Control256x16Pltt.html"><code>G2_SetBG2Control256x16Pltt</code></a>.<BR> To use this function, BG2 must be set to 256-color x 16 palette Character BG.<BR> <BR> The <code>G2_GetBG2Control256x16Pltt</code> function gets the settings for the main 2D engine. Use the <code>G2S_GetBG2Control256x16Pltt</code> function to get the settings for the sub 2D engine.<BR> The following is the definition for <code>GXBg23Control256x16Pltt</code>:</P>
+<PRE>typedef union
+{
+u16 raw;
+struct
+    {
+u16 priority    :2;
+u16 _reserve1   :1;
+u16 charBase    :3;
+u16 mosaic      :1;
+u16 _reserve2   :1;
+u16 screenBase  :5;
+u16 areaOver    :1;
+u16 screenSize  :2;
+    };
+}
+GXBg23Control256x16Pltt;
+</PRE>
+
+<h2>See Also</h2>
+<P><code><a href="G2_SetBG2Control256x16Pltt.html">G2_SetBG2Control256x16Pltt</a>, <a href="G2S_SetBG2Control256x16Pltt.html">G2S_SetBG2Control256x16Pltt</a></code></P>
+<H2>Revision History</H2>
+<P>12/24/2004 Initial version.</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

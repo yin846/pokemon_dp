@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_IsRunOnEmulator</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_IsRunOnEmulator</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>BOOL OS_IsRunOnEmulator( void );</CODE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>If the program is running on the &quot;ensata NITRO Software Emulator&quot;, <code>TRUE</code> is returned. Otherwise <code>FALSE</code> is returned.</P>
+<H2>Description</H2>
+<P>Checks whether or not the program is running on the &quot;ensata NITRO Software Emulator&quot; (ensata) This function is used to dynamically switch processing depending on whether the program is running on ensata or some other hardware environment (the TEG board, etc). Use this function to create programs that will operate on ensata and other environments.</P>
+<P>The <a href="OS_Printf.html"><code>OS_Printf()</code></a>  function uses this function to control the output destination.</P>
+<P>Because this is a debugging function, it will always return <code>FALSE</code> in the final ROM version (<code>FINALROM</code>) library.</P>
+<H2>See Also</H2>
+<P><a href="OS_Printf.html"><code>OS_Printf</code></a>, <a href="OS_GetConsoleType.html"><code>OS_GetConsoleType</code></a></P>
+<H2>Revision History</H2>
+<P>02/19/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCT_HandleData </title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCT_HandleData</h1>
+<h2>Syntax</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>BOOL VCT_HandleData ( u8 aid, u8 *buffer, int size );  </CODE></PRE></dd> 
+</dl>
+
+<h2>Argument</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>aid</STRONG></EM></TD>
+      <TD width="87%" height="17">AID of transmitting client.</TD>
+    </TR>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>buffer</STRONG></EM></TD>
+      <TD width="87%" height="17">Received data.</TD>
+    </TR>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>size</STRONG></EM></TD>
+      <TD width="87%" height="17">Size of received data.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Value</h2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD width="30%"><CODE>TRUE</CODE></TD>
+      <TD width="70%">Received data is for VoiceChat Library.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><CODE>FALSE</CODE></TD>
+      <TD width="70%">Received data is not for VoiceChat Library or VoiceChat Library is not initialized.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>VCT_HandleData processes the VoiceChat Library data and is called in the callback specified by DWC_SetUserRecvCallback.</P>
+
+<p>For a <em><strong>buffer</strong></em> argument, the data delivered from DWC_SetUserRecvCallback must be specified. For <em><strong>size</strong></em>, the number of bytes must be specified.</p>
+
+<p>If the return value is TRUE (received data is for VoiceChat Library), no additional processing is required because this function specifically calls a callback function. If the return value is FALSE, the data is used for something other than VoiceChat Library, such as game data. In the case of a FALSE return value, the function required to process the specific data should be implemented.</p>
+<h2>See Also</h2>
+<p><CODE><A href="VCT_Cleanup.html">VCT_Cleanup</A></CODE>, <CODE><A href="VCTConfig.html">VCTConfig</A></CODE></p>
+<H2>Revision History</H2>
+<P>2006/01/25 First release</P>
+</body>
+</html>

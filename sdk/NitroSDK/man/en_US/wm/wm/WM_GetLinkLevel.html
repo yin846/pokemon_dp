@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_GetLinkLevel</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_GetLinkLevel</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMLinkLevel.html">WMLinkLevel</A> WM_GetLinkLevel( void );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>None.</p>
+
+<h2>Return Values</h2>
+<p>
+Returns the signal strength of the <a href="WMLinkLevel.html">WMLinkLevel list type</a>.
+</p>
+
+<H2>Description</H2>
+<P>
+This function gets the signal strength between the connected sides during wireless communications. If there is no other side to connect to, this function will show the weakest signal strength. The signal strength of the parent device will take on the lowest strength of all the connected child devices.
+</P>
+
+<h2>Note</h2>
+<p>
+When this function is called in the wired communication environment created by using the IS-NITRO-EMULATOR hardware, it always returns the weakest signal strength. This phenomenon is specific to the wired communication environment that is performed with the very weak radio field intensity, and due to the specifications of the devices used for development. It requires special attention to evaluate the return values of this function in such instances.
+</p>
+
+<H2>Revision History</H2>
+<P>
+10/01/2004 Added description regarding the operation difference of development environment<br /> 08/25/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

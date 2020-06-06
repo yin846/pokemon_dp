@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcStrmIsPrepared</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcStrmIsPrepared</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndArcStrmIsPrepared( NNSSndStrmHandle* handle );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAWLWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>Pointer to a stream handle.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFMWT"></a>
+<h2>Return Values</h2>
+
+      <p>
+Returns a value of TRUE if the stream preparations are complete. Returns a value of FALSE if the stream preparations are incomplete or if the stream handle is invalid.
+</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Description</h2>
+      <p>
+This function checks whether stream preparations are complete. A value of FALSE is returned if the stream handle <em><strong><code>handle</code></strong></em> is invalid.
+</p>
+      <p>
+This function checks whether a stream that is prepared with the <code><A  href="NNS_SndArcStrmPrepare.html">NNS_SndArcStrmPrepare</A></code> function can be played immediately.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndArcStrmPrepare.html">NNS_SndArcStrmPrepare</a></p>
+<h2>Revision History</h2>
+<p>08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

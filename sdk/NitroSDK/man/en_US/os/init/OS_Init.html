@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_Init</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_Init</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_Init( void );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>
+None.
+</P>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>Initializes the system and performs the following actions:</P>
+<BLOCKQUOTE>In the case of the ARM9 processor, this function: ( Initializes the arena (<CODE><A href="../arena/OS_InitArena.html">OS_InitArena()</A></CODE>)( Initializes the communication system between preprocessors (<CODE>PXI_Init()</CODE>) (Initializes the lock system for the expanded main memory arena (<CODE><A href="../spinLock/OS_InitLock.html"> OS_InitLock()</A></CODE>)( Sets initial values for the arenas (<CODE>OS_InitArenaEx()</CODE>)( Embeds the IRQ stack check data. <CODE><A href="../irq/OS_InitIrqTable.html">OS_InitIrqTable()</A></CODE> )<BR>( Initializes the IRQ interrupt tables (<CODE><A href="../stack/OS_SetIrqStackChecker.html">OS_SetIrqStackChecker()</A></CODE>)( Initializes the exception display system (<CODE><A href="../exception/OS_InitException.html">OS_InitException()</A></CODE>)( Does MI-related initialization (<CODE><A href="../../mi/init/MI_Init.html">MI_Init()</A></CODE>)( Initializes the V-count alarm system (<CODE><A href="../valarm/OS_InitVAlarm.html">OS_InitVAlarm()</A></CODE>)( Initializes the thread system (<CODE><A href="../thread/OS_InitThread.html">OS_InitThread()</A></CODE>)(Initializes the reset system (<CODE><A href="../reset/OS_InitReset.html">OS_InitReset()</A></CODE>)( Initializes the Game Pak library (<CODE><A href="../../ctrdg/CTRDG_Init.html">CTRDG_Init()</A></CODE>)( Initializes the Card library (<CODE><A href="../../card/common/CARD_Init.html">CARD_Init()</A></CODE>)( Initializes the power control system (<CODE><A href="../../spi/pm/PM_Init.html">PM_Init()</A></CODE>)
+</BLOCKQUOTE>
+<BLOCKQUOTE>In the case of the ARM7 processor, this function: (<CODE> Initializes the arena (<A href="../arena/OS_InitArena.html">OS_InitArena()</A></CODE>)( Initializes the communication system between preprocessors (<CODE>PXI_Init()</CODE>) ( Initializes the lock system (<CODE><A href="../spinLock/OS_InitLock.html">OS_InitLock()</A></CODE>)( Initializes the IRQ interrupt tables (<CODE><A href="../irq/OS_InitIrqTable.html">OS_InitIrqTable()</A></CODE>)( Initializes the exception display system (<CODE><A href="../exception/OS_InitException.html">OS_InitException()</A></CODE>)( Initializes the tick system (<CODE><A href="../time/OS_InitTick.html">OS_InitTick()</A></CODE>)( Initializes the alarm system (<CODE><A href="../alarm/OS_InitAlarm.html">OS_InitAlarm()</A></CODE>)( Initializes the thread system (<CODE><A href="../thread/OS_InitThread.html">OS_InitThread()</A></CODE>)( Initializes the reset system (<CODE><A href="../reset/OS_InitReset.html">OS_InitReset()</A></CODE>)( Initializes the Game Pak library (<CODE><A href="../../ctrdg/CTRDG_Init.html">CTRDG_Init()</A></CODE>)</BLOCKQUOTE>
+<P>This <CODE>OS_Init()</CODE> function is normally called at the beginning of an application when control is transferred to the user's <CODE>NitroMain()</CODE> function. Unless there is a special reason not to do so, call it first.</P>
+<P>Tick system initialization and alarm system initialization are not performed on the ARM9's <code>OS_Init()</code>. If necessary, call <a href="../time/OS_InitTick.html"><code>OS_InitTick()</code></a> and <a href="../alarm/OS_InitAlarm.html"><code>OS_InitAlarm()</code></a> (in that order) after <code>OS_Init()</code>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../thread/OS_InitThread.html">OS_InitThread</A>, <A href="../arena/OS_InitArena.html">OS_InitArena</A>, <A href="../irq/OS_InitIrqTable.html">OS_InitIrqTable</A>, <A href="../time/OS_InitTick.html">OS_InitTick</A>, <BR> <A href="../valarm/OS_InitVAlarm.html">OS_InitVAlarm</A>, <A href="../exception/OS_InitException.html">OS_InitException</A>, <A href="../spinLock/OS_InitLock.html">OS_InitLock</A>, <A href="../../mi/init/MI_Init.html">MI_Init</A>,<BR> <A href="../../spi/pm/PM_Init.html">PM_Init</A>, <A href="../reset/OS_InitReset.html">OS_InitReset</A>, <A href="../../ctrdg/CTRDG_Init.html">CTRDG_Init</A>, <A href="../../card/common/CARD_Init.html">CARD_Init</A>,<BR> <A href="../time/OS_InitTick.html">OS_InitTick</A>, <A href="../alarm/OS_InitAlarm.html">OS_InitAlarm</A>, <A href="../stack/OS_SetIrqStackChecker.html">OS_SetIrqStackChecker</A></CODE></P>
+<H2>Revision History</H2>
+<P>2005/07/19 Added <CODE>OS_SetIrqStackChecker()</CODE>.<BR> 03/14/2005 Corrected mistake in link target.<BR> 02/09/2005 Added <CODE>MI_Init()</CODE> and added link to <CODE>OS_InitLock()</CODE>.<BR> 12/08/2004 Explained that <CODE>OS_Init()</CODE> is the first function that should be called.<BR> 09/27/2004 Added <CODE>CARD_Init()</CODE>.<BR> 09/15/2004 Made revisions.<BR>08/09/2004 Made revisions. <BR>02/19/2004 Made revisions.<BR> 12/24/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

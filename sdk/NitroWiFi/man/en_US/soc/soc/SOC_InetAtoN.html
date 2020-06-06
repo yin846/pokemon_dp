@@ -1,0 +1,53 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_InetAtoN</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_InetAtoN</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_InetAtoN ( const char* <em><strong>cp</strong></em>, <code><a href="SOCInAddr.html">SOCInAddr</a></code>* <strong><em>inp</em></strong> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>cp</strong></em></code></td>
+<td>IPv4 address in dot-decimal notation. </td>
+  </tr>
+  <tr>
+<td><code><em><strong>inp</strong></em></code></td>
+<td>Binary IPv4 address in network byte order.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<p>If <code><em><strong>cp</strong></em></code> is in valid IPv4 address notation, (even if <code><strong><em>inp</em></strong> </code> is <code>NULL</code>) the function will return <code>TRUE</code>. If <code><em><strong>cp</strong></em></code> is not in valid IPv4 address notation, the function will return <code>FALSE</code>. </p>
+
+<h2>Description</h2>
+
+<p>This function converts IP addresses from dot-decimal notations to binary addresses.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_InetNtoA.html">SOC_InetNtoA</a></code>, <code><a href="SOC_InetPtoN.html">SOC_InetPtoN</a></code>, <code><a href="SOC_InetNtoP.html">SOC_InetNtoP</a></code>, <code><a href="SOCInAddr.html">SOCInAddr</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

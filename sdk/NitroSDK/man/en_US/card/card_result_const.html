@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARDResult</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARDResult</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>typedef	enum<br> {<br> CARD_RESULT_SUCCESS = 0,<br> CARD_RESULT_FAILURE,<br> CARD_RESULT_INVALID_PARAM,<br> CARD_RESULT_UNSUPPORTED,<br> CARD_RESULT_TIMEOUT,<br> CARD_RESULT_ERROR,<br> CARD_RESULT_NO_RESPONSE,<br> CARD_RESULT_CANCELED<br> } CARDResult;<br></CODE><br> <br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>The enumerator constant showing the results of the function process that accesses the CARD ROM device and the backup device. The meaning of each enumerator constant is shown in the following table:
+<TABLE border="0">
+  <TBODY>
+    <TR>
+<TD>Constant</TD>
+<TD>Description</TD>
+    </TR>
+    <TR>
+<TD><CODE>CARD_RESULT_SUCCESS</CODE></TD>
+<TD>Indicates the function process completed successfully.<BR>As with the <code>CARD_VerifyBackup</code> function, this returns <code>TRUE</code> when the process results are obtainable with a truth value.
+	  </TD>
+    </TR>
+    <TR>
+<TD><CODE>CARD_RESULT_FAILURE</CODE></TD>
+<TD>Indicates the function process was inside the expected range and failed.<BR>As with the <code>CARD_VerifyBackup</code> function, this returns <code>FALSE</code> when the process results are obtainable with a truth value.
+	  </TD>
+    </TR>
+    <TR>
+<TD><CODE>CARD_RESULT_INVALID_PARAM</CODE></TD>
+<TD>Indicates that the process failed due to a problem wih the argument passed to the function.
+	  </TD>
+    </TR>
+    <TR>
+<TD><CODE>CARD_RESULT_UNSUPPORTED</CODE></TD>
+<TD>Indicates the process failed because a function used a feature not loaded in the device specified in the current <code>CARD_IdentifyBackup</code> function. This occurs when the device type is not specified or when <code>CARD_BACKUP_TYPE_NOT_USE</code> is indicated.
+      </TD>
+    <TR>
+<TD><CODE>CARD_RESULT_TIMEOUT</CODE></TD>
+<TD>Indicates that a function with a wait time exceeded the prescribed time and was stopped.<BR>This may occur because the loaded device has reached the end of its lifespan or failed.<br><b>Note</b>: The functions that require a wait time generate their own retries. Therefore, the game application does not need to generate additional retries after receiving the return value.
+	  </TD>
+    </TR>
+    <TR>
+<TD>CARD_RESULT_NO_RESPONSE</TD>
+<TD>Process failed because the loaded device did not even reply about its status. <BR>This may occur because of poor contact between the NITRO-CARD and the DS system or because the loaded device failed.<BR>
+	  </TD>
+    </TR>
+    <TR>
+<TD>CARD_RESULT_CANCELED</TD>
+<TD>Indicates that a function process with a wait time was stopped by the <a href="backup/CARD_CancelBackupAsync.html">CARD_CancelBackupAsync</a> function. 
+	  </TD>
+    </TR>
+    <TR>
+<TD><CODE>CARD_RESULT_ERROR</CODE></TD>
+<TD>Indicates the process failed because of a problem other than those listed above.
+	  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="common/CARD_IdentifyBackup.html">CARD_IdentifyBackup</A> <A href="common/CARD_GetResultCode.html">CARD_GetResultCode</A> <A href="rom/CARD_ReadRom.html">CARD_ReadRom</A> <A href="eeprom/CARD_ReadEeprom.html">CARD_ReadEeprom</A> <A href="eeprom/CARD_WriteEeprom.html">CARD_WriteEeprom</A> <A href="eeprom/CARD_VerifyEeprom.html">CARD_VerifyEeprom</A> <A href="eeprom/CARD_WriteAndVerifyEeprom.html">CARD_WriteAndVerifyEeprom</A> <a href="backup/CARD_CancelBackupAsync.html">CARD_CancelBackupAsync</a></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+09/02/2005 Added CARD_RESULT_NO_RESPONSE and CARD_RESULT_CANCELED.<BR> 04/05/2005 Added text about card contact problem to description of CARD_RESULT_TIMEOUT.<BR> 08/23/2004 Added description of retry in library.<BR> 07/28/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

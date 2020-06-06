@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_End</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_End</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>void FS_End( void );</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>None.</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function ends the FS library. The function performs these processes: <BR>
+<ul>
+<li>Calls the <A href="../archive/FS_UnloadArchive.html"><CODE>FS_UnloadArchive</CODE></A> and <A href="../archive/FS_ReleaseArchiveName.html"><CODE>FS_ReleaseArchiveName</CODE></A> functions to release all loaded archives.
+<li>Restores the FS library to the state it was in before the <A href="FS_Init.html"><CODE>FS_Init</CODE></A> function was called.
+</ul>
+<H2>Caution</H2>
+The internal processes of this function do not take into consideration any details other than the ending of the FS library. Thus, if there is an archive that requires special ending processing (such as the need to release memory allocated by <A href="FS_LoadTable.html"><CODE>FS_LoadTable</CODE></A> and <A href="../archive/FS_LoadArchiveTables.html"><CODE>FS_LoadArchiveTables</CODE></A>), then you will need to do these independently before calling this function.
+
+<h2>See Also</h2>
+<p><CODE><A href="FS_Init.html">FS_Init</A> <A href="FS_IsAvailable.html">FS_IsAvailable</A> <A href="../archive/FS_ReleaseArchiveName.html">FS_ReleaseArchiveName</A> <A href="../archive/FS_UnloadArchive.html">FS_UnloadArchive</A> <BR></P>
+<H2>Revision History</H2>
+<P>
+05/30/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

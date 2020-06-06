@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_NOIP_REASON_*</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_NOIP_REASON_*</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>enum {
+	CPS_NOIP_REASON_NONE = 0,
+	CPS_NOIP_REASON_LINKOFF,
+	CPS_NOIP_REASON_DHCPDISCOVERY,
+	CPS_NOIP_REASON_LEASETIMEOUT,
+	CPS_NOIP_REASON_COLLISION
+};</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>Constants set in <CODE>CPSNoIpReason</CODE>. When <CODE>CPSMyIp</CODE> is 0, the IP address has not yet been set; the following elements indicate the reasons.</p>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>CPS_NOIP_REASON_NONE</CODE></STRONG></EM></TD>
+			<TD width="75%">Indicates that there is no specific reason (e.g., the CPS library has not been initialized).</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_NOIP_REASON_LINKOFF</CODE></STRONG></EM></TD>
+			<TD>Indicates that the link is off (e.g., disconnected from the access point).</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_NOIP_REASON_DHCPDISCOVERY</CODE></STRONG></EM></TD>
+			<TD>Indicates that the first DHCP discovery is in progress.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_NOIP_REASON_LEASETIMEOUT</CODE></STRONG></EM></TD>
+			<TD>Indicates that the DHCP lease has expired.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_NOIP_REASON_COLLISION</CODE></STRONG></EM></TD>
+			<TD>Indicates that duplicates of manually set IPs were found.</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<p>Even if <CODE>CPSMyIp</CODE> is reset and becomes a non-zero value, <CODE>CPSNoIpReason</CODE> is not cleared.</p>
+
+<h2>See Also</h2>
+
+<p>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

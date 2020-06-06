@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>Description of Compile Targets</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>Description of Compile Targets</H1>
+
+<H3><A name="Sinit">[NITRO_FINALROM]</A></H3>
+<P>This is the option used to create the release version for the master submission.</P>
+<P>Ebrvbar;<font color="#ff0000">When the ROM is submitted, it is necessary to use this option for the build.</font></P>
+<ul>
+<li>SDK_ASSERT(), SDK_WARNING() are invalid
+<li>OS_Panic() and OS_TPanic() do not display a message with the FINALROM library. (They do nothing and act the same as the OS_Terminate function.))
+<li>Optimization ON
+<li>Many debug functions return set values or don't do anything, regardless of the operating environment.</P>
+</ul>
+
+<H3><A name="System">[NITRO_DEBUG]</A></H3>
+<P>This option is used for more careful debugging than NITRO_FINALROM or NITRO_RELEASE.</P>
+<ul>
+<li>OS debug string display functions such as OS_PutString() are valid.
+<li>OS_GetArgc(), OS_GetArgv(), etc. are valid.
+<li>OS_Panic() and OS_TPanic() are valid.
+<li>The debug stack check functions OS_CheckStack() and OS_CheckIrqStack() are valid.
+</ul>
+<P>For details about which functions are valid or invalid, see the debug functions in the <A href="../os/list_os.html#Debug-Environment" target="main">OS Debug Function Reference</A>.</P>
+
+<H3><A name="Arch">[NITRO_RELEASE]</A></H3>
+<P>This option is used to debug under conditions more similar to those in the final product than when NITRO_DEBUG is used.</P>
+<P>It's basically a combination of the features in NITRO_DEBUG and NITRO_ROM. The details of what was combined are outlined below.</P>
+
+
+<style type="text/css">
+<!--
+.enable { background :#ffcccc; text-align : center }
+.disable { text-align : center }
+-->
+</style>
+<TABLE border="1" cellspacing="10" cellpadding="10">
+  <TBODY>
+    <TR>
+<TH>Features</TH>
+<TH style="background :#ccffcc">NITRO_DEBUG</TH>
+<TH style="background :#ccccff">NITRO_RELEASE</TH>
+      <TH style="background :#cccccc">NITRO_FINALROM</TH>
+    </TR>
+    <TR>
+<TD>OS debug output functions such as <br><CODE>OS_PutString()</CODE></TD>
+<TD colspan="2" class="enable">valid</TD>
+<TD class="disable">invalid</TD>
+    </TR>
+    <TR>
+<TD>Compiler Optimization</TD>
+<TD class="disable">OFF</TD>
+<TD colspan="2" class="enable">ON</TD>
+    </TR>
+    <TR>
+<TD>SDK internal debug codes</TD>
+<TD colspan="2" class="enable">valid</TD>
+<TD class="disable">invalid</TD>
+    </TR>
+    <TR>
+<TD>Assert functions such as SDK_ASSERT()</TD>
+<TD class="disable">valid</TD>
+<TD colspan="2" class="enable">invalid</TD>
+    </TR>
+    <TR>
+<TD>Functions such as OS_Panic()</TD>
+<TD colspan="2" class="enable">valid</TD>
+<TD class="disable">Equivalent to OS_Terminate()</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

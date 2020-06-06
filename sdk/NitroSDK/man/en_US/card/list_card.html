@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>CARD Module (CARD)</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>CARD Module (CARD)</H1>
+<H3><A name="Init">Initialization</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="common/CARD_Init.html" target="_self">CARD_Init</A></TH>
+<TD>Initializes a module.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_IsAvailable.html" target="_self">CARD_IsAvailable</A></TH>
+<TD>Determines whether or not a module is initialized.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Common">Common</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="common/CARD_IsEnabled.html" target="_self">CARD_IsEnabled</A></TH>
+<TD>Checks the state to see whether access to NITRO-CARD is permitted.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_Enable.html" target="_self">CARD_Enable</A></TH>
+<TD>Changes the state, enabling or disabling access to NITRO-CARD.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_GetResultCode.html" target="_self">CARD_GetResultCode</A></TH>
+<TD>Obtains the result of the last processed function.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_GetThreadPriority.html" target="_self">CARD_GetThreadPriority</A></TH>
+<TD>Obtains the priority level of the CARD asynchronous process thread.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_SetThreadPriority.html" target="_self">CARD_SetThreadPriority</A></TH>
+<TD>Sets the priority level of the CARD asynchronous process thread.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_GetRomHeader.html" target="_self">CARD_GetRomHeader</A></TH>
+<TD>Obtains the ROM header information  on the DS CARD that is actually inserted.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Backup">General Backup</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="backup/CARD_LockBackup.html" target="_self">CARD_LockBackup</A></TH>
+<TD>Locks the access bus of the backup device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="backup/CARD_UnlockBackup.html" target="_self">CARD_UnlockBackup</A></TH>
+<TD>Unlocks the access bus of the backup device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_IdentifyBackup.html" target="_self">CARD_IdentifyBackup</A></TH>
+<TD>Specifies a backup device.</TD>
+    </TR>
+
+    <TR>
+<TH width="25%"><A href="common/CARD_GetCurrentBackupType.html" target="_self">CARD_GetCurrentBackupType</A></TH>
+<TD>Obtains the type of the specified backup device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_GetBackupTotalSize.html" target="_self">CARD_GetBackupTotalSize</A></TH>
+<TD>Obtains the total size of the specified backup device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_GetBackupSectorSize.html" target="_self">CARD_GetBackupSectorSize</A></TH>
+<TD>Obtains the sector size of the specified backup device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/CARD_GetBackupPageSize.html" target="_self">CARD_GetBackupPageSize</A></TH>
+<TD>Obtains the page size of the specified backup device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="backup/CARD_TryWaitBackupAsync.html" target="_self">CARD_TryWaitBackupAsync</A></TH>
+<TD>Determines whether the asynchronous process on the backup device has completed.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="backup/CARD_WaitBackupAsync.html" target="_self">CARD_WaitBackupAsync</A></TH>
+<TD>Waits until the asynchronous process on the backup device completes.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="backup/CARD_CancelBackupAsync.html" target="_self">CARD_CancelBackupAsync</A></TH>
+<TD>Requests cancellation of asynchronous processing for the backup device.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Eeprom"><a name="Eeprom">Backup: EEPROM device</a></A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_IsBackupEeprom.html" target="_self">CARD_IsBackupEeprom</A></TH>
+<TD>Determines whether or not the specified backup device is EEPROM.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_ReadEeprom.html" target="_self">CARD_ReadEeprom</A></TH>
+<TD>Reads data from an EEPROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_ReadEepromAsync.html" target="_self">CARD_ReadEepromAsync<br /></A></TH>
+<TD>Reads data asynchronously from an EEPROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_WriteEeprom.html" target="_self">CARD_WriteEeprom</A></TH>
+<TD>Writes data to an EEPROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_WriteEepromAsync.html" target="_self">CARD_WriteEepromAsync</A></TH>
+<TD>Writes data asynchronously to an EEPROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_VerifyEeprom.html" target="_self">CARD_VerifyEeprom</A></TH>
+<TD>Compares and verifies data in an EEPROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_VerifyEepromAsync.html" target="_self">CARD_VerifyEepromAsync</A></TH>
+<TD>Compares and verifies data asynchronously in an EEPROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_WriteAndVerifyEeprom.html" target="_self">CARD_WriteAndVerifyEeprom</A></TH>
+<TD>Writes to and verifies data in an EEPROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="eeprom/CARD_WriteAndVerifyEepromAsync.html" target="_self">CARD_WriteAndVerifyEepromAsync</A></TH>
+<TD>Writes to and verifies data asynchronously in an EEPROM device.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="FLASH"><a name="Flash">Backup: FLASH Device</a></A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="flash/CARD_IsBackupFlash.html" target="_self">CARD_IsBackupFlash</A></TH>
+<TD>Determines whether the specified backup device is FLASH.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="flash/CARD_ReadFlash.html" target="_self">CARD_ReadFlash</A></TH>
+<TD>Reads data from a FLASH device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="flash/CARD_ReadFlashAsync.html" target="_self">CARD_ReadFlashAsync</A></TH>
+<TD>Reads data asynchronously from a FLASH device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="flash/CARD_WriteFlash.html" target="_self">CARD_WriteFlash</A></TH>
+<TD>Writes data to a FLASH device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="flash/CARD_WriteFlashAsync.html" target="_self">CARD_WriteFlashAsync</A></TH>
+<TD>Writes data asynchronously to a FLASH device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="flash/CARD_VerifyFlash.html" target="_self">CARD_VerifyFlash</A></TH>
+<TD>Compares and verifies data in a FLASH device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="flash/CARD_VerifyFlashAsync.html" target="_self">CARD_VerifyFlashAsync</A></TH>
+<TD>Compares and verifies data asynchronously in a FLASH device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="flash/CARD_WriteAndVerifyFlash.html" target="_self">CARD_WriteAndVerifyFlash</A></TH>
+<TD>Writes data to a FLASH device and then compares and verifies the data.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="flash/CARD_WriteAndVerifyFlashAsync.html" target="_self">CARD_WriteAndVerifyFlashAsync</A></TH>
+<TD>Writes data to a FLASH device and then compares and verifies the data asynchronously.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="FRAM">Backup FRAM Device</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="fram/CARD_IsBackupFram.html" target="_self">CARD_IsBackupFram</A></TH>
+<TD>Determines whether the specified backup device is FRAM.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="fram/CARD_ReadFram.html" target="_self">CARD_ReadFram</A></TH>
+<TD>Reads data from an FRAM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="fram/CARD_ReadFramAsync.html" target="_self">CARD_ReadFramAsync</A></TH>
+<TD>Asynchronously reads data from the FRAM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="fram/CARD_WriteFram.html" target="_self">CARD_WriteFram</A></TH>
+<TD>Writes data to the FRAM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="fram/CARD_WriteFramAsync.html" target="_self">CARD_WriteFramAsync</A></TH>
+<TD>Writes data asynchronously to an FRAM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="fram/CARD_VerifyFram.html" target="_self">CARD_VerifyFram</A></TH>
+<TD>Compares and verifies data in an FRAM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="fram/CARD_VerifyFramAsync.html" target="_self">CARD_VerifyFramAsync</A></TH>
+<TD>Asynchronously compares and verifies data in an FRAM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="fram/CARD_WriteAndVerifyFram.html" target="_self">CARD_WriteAndVerifyFram</A></TH>
+<TD>Writes to, compares, and verifies data in an FRAM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="fram/CARD_WriteAndVerifyFramAsync.html" target="_self">CARD_WriteAndVerifyFramAsync</A></TH>
+<TD>Writes data to an FRAM device and then compares and verifies the data asynchronously.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Rom">ROM Access</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+  
+    <TR>
+<TH width="25%"><A href="rom/CARD_GetRomRegionFAT.html" target="_self">CARD_GetRomRegionFAT</A></TH>
+<TD>Obtains FAT region information from the ROM header.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="rom/CARD_GetRomRegionFNT.html" target="_self">CARD_GetRomRegionFNT</A></TH>
+<TD>Obtains FNT region information from the ROM header</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="rom/CARD_LockRom.html" target="_self">CARD_LockRom</A></TH>
+<TD>Locks the access bus of a device that has ROM.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="rom/CARD_UnlockRom.html" target="_self">CARD_UnlockRom</A></TH>
+<TD>Unlocks the access bus of a device that has ROM.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="rom/CARD_ReadRom.html" target="_self">CARD_ReadRom</A></TH>
+<TD>Synchronously reads data from a ROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="rom/CARD_ReadRomAsync.html" target="_self">CARD_ReadRomAsync</A></TH>
+<TD>Asynchronously reads data from a ROM device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="rom/CARD_TryWaitRomAsync.html" target="_self">CARD_TryWaitRomAsync</A></TH>
+<TD>Determines whether or not an asynchronous process to a ROM device has completed.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="rom/CARD_WaitRomAsync.html" target="_self">CARD_WaitRomAsync</A></TH>
+<TD>Waits until an asynchronous process to a ROM device has completed.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="pulledOut">Removal Detection</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="pulledOut/CARD_IsPulledOut.html" target="_self">CARD_IsPulledOut</A></TH>
+<TD>Detects the removal of the card.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="pulledOut/CARD_SetPulledOutCallback.html" target="_self">CARD_SetPulledOutCallback</A></TH>
+<TD>Sets the card removal callback.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="pulledOut/CARD_TerminateForPulledOut.html" target="_self">CARD_TerminateForPulledOut</A></TH>
+<TD>Stops with ARM7 when the card removal is detected.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="pulledOut/CARD_CheckPulledOut.html" target="_self">CARD_CheckPulledOut</A></TH>
+<TD>Immediately carries out Game Card removal detection from ARM9.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+
+<H3><A name="const">Constants</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="card_rom_page_size_const.html" target="_self">CARD_ROM_PAGE_SIZE</A></TH>
+<TD>The number of bytes of a DS CARD ROM device page.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="card_backup_type_const.html" target="_self">CARDBackupType</A></TH>
+<TD>The type of backup device mounted in a DS CARD.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="card_result_const.html" target="_self">CARDResult</A></TH>
+<TD>The result of the last access process the CARD function performed.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="card_thread_priority_default_const.html" target="_self">CARD_THREAD_PRIORITY_DEFAULT</A></TH>
+<TD>The initial value for the priority level of the CARD asynchronous process thread.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="struct">Structure</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="card_rom_region_type.html" target="_self">CARDRomRegion</A></TH>
+<TD>Shows FNT, FAT, and OVT information based on the NitroROM format.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="card_rom_header_type.html" target="_self">CARDRomHeader</A></TH>
+<TD>Holds information about the ROM header.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<table border="0" height="100%"><tr><td style="background-color : white;"></td></tr></table>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

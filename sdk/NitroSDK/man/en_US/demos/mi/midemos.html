@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>MI Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Memory Interface Sample Demos</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/mi</CODE></P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/mi</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/mi/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/mi/dmaCallback-1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Move to the <code>$NitroSDK/build/demos/mi/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and perform one of the following:</P>
+<UL>
+<LI>Execute <code>*.nef</code>, <code>*.srl</code> with ensata.
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER.
+</UL>
+
+<H2>Description</H2>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>dmaCallback-1</CODE></STRONG></EM></TD>
+<TD width="525">Uses DMA callback during V-Blank.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>dmaCallback-2</CODE></STRONG></EM></TD>
+<TD width="525">Uses V-Blank interrupt DMA callback.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>UnComp_Stream_BmpBG</CODE></STRONG></EM></TD>
+<TD width="525">Divides the compressed data, reads it and performs streaming-expansion.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Emulator</H2>
+<P><CODE>Works in all execution environments.</CODE></P>
+<H2>See Also</H2>
+<P><A href="../../mi/list_mi.html"><CODE>MI Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+05/10/2005 Added description of <code>UnComp_Stream_BmpBG</code> demo.<br /> 03/08/2005 Standardized the Japanese word for &quot;interrupt.&quot;<br /> 03/02/2005 Revised descriptions to reflect current support environment conditions.<br />03/08/2005 Standardized the Japanese term for &quot;interrupt.&quot;<br /> 03/02/2005 Revised descriptions to reflect current support environment conditions.<br />08/17/2004 Standardized the notation of the IS-NITRO-EMULATOR.<br /> 07/10/2004 Changed from <code>.bin</code> to <code>.srl.</code><br />01/18/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

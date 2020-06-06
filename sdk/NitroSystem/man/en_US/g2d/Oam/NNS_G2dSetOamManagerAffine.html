@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetOamManagerAffine</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetOamManagerAffine</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Oam.h&gt;</CODE></pre>
+<pre>void NNS_G2dSetOamManagerAffine(
+        NNSG2dOamManagerInstance*       pMan, 
+        const MtxFx22*                mtx, 
+        u16                           idx );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pMan</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] OAM manager entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>mtx</CODE></font></strong></em></td>
+<td width="87%">[IN] Affine transformation matrix</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>idx</CODE></font></strong></em></td>
+<td width="87%">[IN] Affine parameter index</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>Sets affine parameters in the OAM Manager with the specified index. It is valid for the affine parameter that is not managed by the OAM manager entity. Use the <code>NNS_G2dEntryOamManagerAffine</code> function for the affine parameters-management state. It gives a warning if the setting was done to the affine parameter area that is managed by the OAM manager entity. <code>NNS_G2dEntryOamAffine</code> has undergone a name change. This function will remain to preserve compatibility.
+</p>
+The definition of <code>NNSG2dOamType</code> is shown below.
+<pre><CODE>
+typedef enum NNSG2dOamType
+{
+NNS_G2D_OAMTYPE_INVALID = 0,            // Invalid type
+NNS_G2D_OAMTYPE_MAIN,                   // OAM in Main 2D Graphics Engine.
+NNS_G2D_OAMTYPE_SUB,                    // OAM in Sub  2D Graphics Engine.
+NNS_G2D_OAMTYPE_SOFTWAREEMULATION,      // Emulation that uses the 3D Graphics Engine
+NNS_G2D_OAMTYPE_MAX
+    
+}NNSG2dOamType;
+</pre></CODE>
+
+<h2>See Also</h2>
+<p>
+<a href="NNS_G2dEntryOamAffine.html"><code>NNS_G2dEntryOamAffine</code></a>, <a href="NNS_G2dEntryOamManagerAffine.html"><code>NNS_G2dEntryOamManagerAffine</code></a></p>
+<H2>Revision History</H2>
+<P>10/12/2004 Corrected typo. Added to description.<BR>08/02/2004 Renamed function.<BR>05/28/2004 Initial version.</P>
+</body>
+</html>

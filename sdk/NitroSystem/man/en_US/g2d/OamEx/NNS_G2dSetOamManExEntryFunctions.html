@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetOamManExEntryFunctions</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetOamManExEntryFunctions</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_OAMEx.h&gt;</CODE></pre>
+<pre>void NNS_G2dSetOamManExEntryFunctions(
+NNSG2dOamManagerInstanceEx*        pMan, 
+const NNSG2dOamExEntryFunctions*   pSrc );</code></CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pMan</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] Extended OAM manager entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pSrc</font></strong></em></td>
+<td width="87%">[IN] Registration function group</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Sets the entry functions group in the extended OAM Manager. Since the extended OAM manager does not have the default registration functions, it is necessary to execute this function and set the registration function before use. (With the previous version, the default registration function was provided, but this has been changed.)<BR> If the manager is initialized to not use affine parameters, NULL can be set in <CODE>NNSG2dOamExEntryFunctions.getAffineCapacity</CODE> and <CODE>NNSG2dOamExEntryFunctions.funcs.entryNewAffine</CODE>. (Versions before the 05/09/01 version have a problem that causes an invalid assert warning to display. This problem has been fixed.<BR>
+
+<BR> <BR> The name of this function has been changed from <code>NNS_G2dSetOamEntryFunctionsEx</code>. The previous function remains under a different name in order to maintain compatibility.
+</p>
+
+<h2>See Also</h2>
+<p>
+<CODE><A href="NNS_G2dSetOamEntryFunctionsEx.html">NNS_G2dSetOamEntryFunctionsEx</A></CODE>, <CODE><A href="NNS_G2dInitAffineManagerEx.html">NNS_G2dInitAffineManagerEx</A></CODE>, <CODE><A href="NNSG2dOamExEntryFunctions.html">NNSG2dOamExEntryFunctions</A></CODE>
+</p>
+<H2>Revision History</H2>
+<P>09/01/2005 Added a description about a fixed problem.</P>
+<P>06/06/2005 Added link to <CODE>NNSG2dOamExEntryFunctions</CODE><br></P>
+<P>11/10/2004 Corrected an error in the document<br></P>
+<P>08/02/2004 Renamed function.<BR>06/22/2004 Initial version.</P>
+</body>
+</html>

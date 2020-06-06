@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_Cleanup</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_Cleanup</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_Cleanup(void);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+<P>None.</P>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>Ends use of the CPS library. If the IP address is set manually (the mode's <CODE>CPS_DONOTUSE_DHCP</CODE> bit is enabled or the DHCP cannot be found), this blocks to release the DHCP server.</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_Startup.html">CPS_Startup</A></CODE>, 
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

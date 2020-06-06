@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCTAudioInfo</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCTAudioInfo</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>
+typedef struct VCTAudioInfo
+{
+	u32         internalLatency;    
+	u32         bufferLatency;      
+	u32         bufferCount;        
+	int         clockSkew;          
+	u32         sequence;           
+	u32         dropCount;          
+	u32         jitter;             
+	u32         jamCount;           
+	u32         recoverCount;       
+	<a href="VCTCodec.html">VCTCodec</a>    codec;              
+} VCTAudioInfo;
+</CODE></PRE>
+  </dd>
+</dl>
+<H2>Definition</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD width="30%"><B><I><CODE>internalLatency</CODE></I></B></TD>
+      <TD width="70%">The internal latency in receiving (ticks value).</TD>
+    </TR>
+    <TR>
+      <TD><B><I><CODE>bufferLatency</CODE></I></B></TD>
+      <TD>The latency in the current jitter buffer (ticks value).</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>bufferCount</I></B></TD>
+      <TD width="70%">The number of samples currently stored in the audio buffer.</TD>
+    </TR>
+    <TR>
+      <TD><B><I>clockSkew</I></B></TD>
+      <TD>Monitoring value of clock-skew (ticks value).</TD>
+    </TR>
+    <TR>
+      <TD><B><I>sequence</I></B></TD>
+      <TD>Present audio sequences. </TD>
+    </TR>
+    <TR>
+      <TD><B><I>dropCount</I></B></TD>
+      <TD>The number of packets dropped.</TD>
+    </TR>
+    <TR>
+      <TD><B><I>jitter</I></B></TD>
+      <TD>Maximum jitter values (ticks value).</TD>
+    </TR>
+    <TR>
+      <TD><B><I>jamCount</I></B></TD>
+      <TD>The number of times that a packet did not arrive in order.</TD>
+    </TR>
+    <TR>
+      <TD><B><I>recoverCount</I></B></TD>
+      <TD>The number of times the Library used the obscuring process for dropped packets.</TD>
+    </TR>
+    <TR>
+      <TD><B><I>codec</I></B></TD>
+      <TD>The audio format used by the transmitting machine.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Description</H2>
+<P>VCTAudioInfo is a structure used to store the audio streaming information to be retrieved by <code><a href="VCT_GetAudioInfo.html">VCT_GetAudioInfo</a></code>.</P>
+
+<h2>See Also</h2>
+<P><code><A href="VCT_GetAudioInfo.html">VCT_GetAudioInfo</A></code></P>
+<H2>Revision History</H2>
+<P>2006/01/25 First release</P>
+</body>
+</html>

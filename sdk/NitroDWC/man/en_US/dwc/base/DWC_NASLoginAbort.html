@@ -1,0 +1,53 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_NASLoginAbort</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_NASLoginAbort</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+void DWC_NASLoginAbort(void);</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function interrupts an authentication process for Nintendo Authentication Server which is being executed.
+		</P>
+		<P>
+		  After this function is called, call the <a href="DWC_NASLoginProcess.html"><code>DWC_NASLoginProcess</code></a> function to continue the process, then use the return value to check that the authentication process has ended (or has been interrupted).
+		</P>
+
+		<H2>Arguments</H2>
+		<p>
+		None.
+		</p>
+
+		<H2>Return Values</H2>
+		<p>
+		None.
+		</p>
+
+		<H2>See Also</H2>
+		<p>
+		<code><a href="DWC_NASLoginProcess.html">DWC_NASLoginProcess</a> function
+		</p>
+		</code>
+		
+		<H2>Revision History</H2>
+		<P>
+		  07/24/2006 Re-examined the description<BR>03/27/2006 Revised the function name<BR>03/22/2006 Initial version<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_UnloadArchive</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_UnloadArchive</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>BOOL	FS_UnloadArchive(FSArchive *p_arc);</CODE><br> <br>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p_arc</STRONG></EM></TD>
+<TD width="87%">Address of the <a href="../fs_archive_type.html"><code>FSArchive</code></a> structure</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p><code>TRUE</code> if the archive has been correctly unloaded from the file system. <code>FALSE</code> otherwise.</p>
+
+<H2>Description</H2>
+<P>Unloads an archive that has been loaded in the file system. If the archive is currently processing a command, the function waits until the command ends. If there is a process-wait command running in the archive, the function is completely canceled. <BR>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a></code>, <code><a href="FS_ReleaseArchiveName.html">FS_ReleaseArchiveName</a></code>, <code><a href="FS_LoadArchive.html">FS_LoadArchive</a></code></P>
+<H2>Revision History</H2>
+<P>06/30/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

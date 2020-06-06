@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SNDPlayerInfo</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SNDPlayerInfo</h1>
+<h2>Definition</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef struct SNDPlayerInfo
+{
+BOOL activeFlag : 1;
+BOOL pauseFlag : 1;
+    
+u16 trackBitMask;
+u16 tempo;
+u8 volume;
+u8 pad_;
+u16 pad2_;
+} SNDPlayerInfo;
+</code></pre></dd>
+<dd><pre class="funcprototype"></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAPLWT"></a>
+<h2>Elements</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>activeFlag</code></strong></em></td>
+<td>The active flag. Indicates whether the player is currently operating.</td>
+</tr>
+</tbody>
+</table>
+</div>
+      
+<p>The following members are valid only when <em><strong><code>activeFlag</code></strong></em> is <code>TRUE</code>.</p>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>pauseFlag</code></strong></em></td>
+<td>The pause flag. Indicates whether the player is currently paused.</td>
+</tr>
+<tr>
+<td><em><strong><code>trackBitMask</code></strong></em></td>
+<td>The bit mask of valid tracks. Tracks are represented in order, starting from the lowest bit, as Track 0,  Track 1, ... Track 15.</td>
+</tr>
+<tr>
+<td><em><strong><code>tempo</code></strong></em></td>
+<td>The tempo value.</td>
+</tr>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>The player volume. Takes values in the range of 0 to 127.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA5MWT"></a>
+<h2>Description</h2>
+      <p>
+This is the player information structure. It stores the information for a single player.
+</p>
+      <p>
+The contents of the structure can be obtained with <code><a href="../snd/NNS_SndPlayerReadDriverPlayerInfo.html">NNS_SndPlayerReadDriverPlayerInfo</a></code>.
+</p>
+      
+<div class="note">
+<h3 class="title">Note</h3>
+<p>
+The structure size and the member arrangement may be changed in the future.
+        </p>
+</div>
+
+    </div>
+<h2>See Also</h2>
+<p><a href="../snd/NNS_SndPlayerReadDriverPlayerInfo.html">NNS_SndPlayerReadDriverPlayerInfo</a></p>
+<h2>Revision History</h2>
+<p>02/17/2005 Initial version.</p>
+</div>
+</body>
+</html>

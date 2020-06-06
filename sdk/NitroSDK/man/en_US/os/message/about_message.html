@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Message (Overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Message (Overview)</H1>
+<H2>Introduction</H2>
+<P>This page contains a description of the messaging system. This system allows you to safely synchronize between threads at the same time operations such as sending and receiving values in the message queue are being carried out.</P>
+<HR>
+<P><B>Message Queue Initialization</B></P>
+<P>The message queue is initialized with <code><a href="OS_InitMessageQueue.html">OS_InitMessageQueue</a></code>.</P>
+<P>The message is an <code>OSMessage</code> type, which is defined as a  <nobr><code>void*</code></nobr> type. Even though it considered to be 32-bit data in the Nitro SDK, doing so will have no negative effect. In <nobr><code><a href="OS_InitMessageQueue.html">OS_InitMessageQueue</a></code></nobr>, there is an <code>OSMessage</code> array region that actually stores the message.</P>
+<P> The message queue is laid out internally according to the following structure:</P>
+<P><IMG src="image_messageStruct.gif" border="0"></P>
+<P>The &quot;message array&quot; in the figure is the <code>OSMessage</code> array and is the message region. The user specifies this size during initialization. This region is used as the FIFO queue. Internally, it is actually the ring buffer, and there are variables that exist to control it. However, the explanation on this page has been left out.</P>
+<P>The &quot;number of messages&quot; in the figure is the number of valid messages inside the message region. Immediately after initialization, this number is <code>0</code>.</P>
+<P>The &quot;thread queue to send messages&quot; and &quot;thread queue to receive messages&quot; are the thread queues used to send and receive messages. These queues are explained later.</P>
+<HR>
+<P><B>Sending Messages</B></P>
+<P><nobr><code><a href="OS_SendMessage.html">OS_SendMessage</a></code></nobr> is a function for sending messages.</P>
+<P>The figure below shows <code>thread1</code> sending a message twice.</P>
+<BLOCKQUOTE><IMG src="image_messageSend1.gif" border="0"><BR> <BR>
+</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_messageSend2.gif" border="0"></BLOCKQUOTE>
+<P>When sending, designate either BLOCK mode or NOBLOCK mode. They work the same as long as the message queue is not full. As shown in the figure above, the message is only registered in the queue. However, their behavior is different when trying to send the message to a message queue that is already full.</P>
+<P>BLOCK  Mode</P>
+<BLOCKQUOTE>Until the message can be sent&mdash;until other threads receive the message for this message queue with <nobr><code><a href="OS_ReceiveMessage.html">OS_ReceiveMessage</a></code></nobr> and the message queue is emptied, the thread pauses and waits. At that time, a thread rescheduling must take place, and another thread must enter the executable state.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_messageSend_block.gif" border="0"></BLOCKQUOTE>
+<P>NOBLOCK  Mode</P>
+<BLOCKQUOTE>Returns immediately even if the message could not be sent. This mode can determine whether or not the message was able to be sent with the return value from the function.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_messageSend_noblock.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Receiving Messages</B></P>
+<P><code><a href="OS_ReceiveMessage.html">OS_ReceiveMessage</a></code> is a function for receiving messages.</P>
+<P>The figure below shows <code>thread2</code> receiving a message twice. The message reception order is same as the order sent in this message queue. </font> In other words, whatever was sent first and still remains in the message queue is what is received.</P>
+<BLOCKQUOTE><IMG src="image_messageRecv1.gif" border="0"><BR> <BR> <BR>
+</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_messageRecv2.gif" border="0"></BLOCKQUOTE>
+<P>When receiving, designate either BLOCK mode or NOBLOCK mode. They work the same as long as the message queue is not full. As shown in the figure above, the message is only loaded from the queue. However, their behavior is different when trying to receive the message from a message queue that is empty.</P>
+<P>BLOCK  Mode</P>
+<BLOCKQUOTE>Until the message can be sent&mdash;until other threads receive the message for this message queue with <nobr><code><a href="OS_SendMessage.html">OS_SendMessage</a></code></nobr> and the message queue is emptied, the thread thread pauses and waits. At that time, a thread rescheduling must take place, and another thread must enter the executable state.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_messageRecv_block.gif" border="0"></BLOCKQUOTE>
+<P>NOBLOCK  Mode</P>
+<BLOCKQUOTE>Returns immediately even if the message could not be received. This mode can determine whether or not the message was able to be received based on the return value from the function.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_messageRecv_noblock.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>The Rescheduling Mechanism when Sending and Receiving</B></P>
+<P>In the figure below, <code>thread1</code> has attempted to send a message to the message queue in BLOCK mode, but since the message queue is full, <code>thread1</code> goes into a sleep state. Be aware that <code>thread1</code> has been registered in the send thread queue.</P>
+<BLOCKQUOTE><IMG src="image_messageSwitchThread1.gif" border="0"></BLOCKQUOTE>
+<P>In this next figure, <code>thread2</code> receives the message.</P>
+<BLOCKQUOTE><IMG src="image_messageSwitchThread2.gif" border="0"></BLOCKQUOTE>
+<P>When using <nobr><code><a href="OS_ReceiveMessage.html">OS_ReceiveMessage</a></code></nobr>, the message queue checks to see if the thread has been registered in the send thread queue. If there are registered threads, they are all put into an executable state. Since <code>thread1</code> is currently registered, it is put into an executable state.</P>
+<BLOCKQUOTE><IMG src="image_messageSwitchThread.gif" border="0"></BLOCKQUOTE>
+<P>Thread rescheduling is carried out in this state. The thread with the highest priority, between the current thread (the thread attempting to receive the message) and the thread that is executable, is put into an executable state. In the next figure, if the priority of <code>thread1</code> is higher than that of <code>thread2</code>, the message is sent and <code>thread1</code> goes into an executable state. </P>
+<P>Conversely, when using <nobr><code><a href="OS_SendMessage.html">OS_SendMessage</a></code></nobr>, the threads registered in the receive thread queue are all put in an executable state and re-scheduled.</P>
+<P>There are times when multiple threads have been registered in the message queue. In this case as well, use the thread queue mechanism to put the registered threads into an executable state and to re-schedule them all at once.</P>
+<BLOCKQUOTE><IMG src="image_messageThreadslocked.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Send Message Interrupts</B></P>
+<P>When sending a message to the message queue with <nobr><a href="OS_SendMessage.html"><code>OS_SendMessage</code></a></nobr>, it will be received in the order that it was sent when using <nobr><code><a href="OS_ReceiveMessage.html">OS_ReceiveMessage</a></code></nobr>. However, when sending <nobr><code><a href="OS_JamMessage.html">OS_JamMessage</a></code></nobr> interrupts the process at the top of the message queue. The mode for when the queue is full can also be designated with this function.</P>
+<P>If <nobr><code><a href="OS_JamMessage.html">OS_JamMessage</a></code></nobr> is successful, that message is received next in this message queue.</P>
+<BLOCKQUOTE><IMG src="image_messageJam.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Message Queue Reference</B></P>
+<P>To simply reference the top of the message queue (the next message to be received), <nobr><code><a href="OS_ReadMessage.html">OS_ReadMessage</a></code></nobr> allows the message to remain in the queue. There is no thread switching caused by this function, and the internal state of the message queue does not change.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Message">An Overview of OS Functions ( Message )</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>12/15/2004 Corrected typos<br /> 11/10/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

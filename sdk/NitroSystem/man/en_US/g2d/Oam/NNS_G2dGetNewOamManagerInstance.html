@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dGetNewOamManagerInstance</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dGetNewOamManagerInstance</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Oam.h&gt;</CODE></pre>
+  <pre><CODE>BOOL NNS_G2dGetNewOamManagerInstance(
+( 
+NNSG2dOamManagerInstance* pMan,
+u16                         fromOBJ,
+u16                         numOBJ,
+u16                         fromAffine,
+u16                         numAffine,
+NNSG2dOamType               type 
+);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pMan</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] OAM manager entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>fromOBJ</CODE></font></strong></em></td>
+<td width="87%">[IN] OAM management region-start index</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>numOBJ</CODE></font></strong></em></td>
+<td width="87%">[IN] Number of OAM attributes to use (Must be a non-zero value)</td>
+  </tr>
+  
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>fromAffine</CODE></font></strong></em></td>
+<td width="87%">[IN] Affine parameter management region-start index</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>numAffine</CODE></font></strong></em></td>
+<td width="87%">[IN] Number of affine parameters to use (zero is also valid)</td>
+  </tr>
+  
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE><code><EM><STRONG>type</STRONG></EM></code></CODE></font></strong></em></td>
+<td width="87%">[IN] OAM type</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>Success or failure.
+</p>
+<H2>Description</H2>
+<P>Initializes the OAM Manager entity. This function must be called before making use of the OAM Manager itself.<BR> The <code>NNS_G2dGetNewOamManagerInstanceAsFastTransferMode</code> function is also available. It initializes an OAM Manager capable of fast buffer transfers.<BR> The definition of the enumerator <code>NNSG2dOamType</code> that shows the OAM type to manage is shown below.<BR>
+
+<BR> <CODE><pre>
+typedef enum NNSG2dOamType
+{
+NNS_G2D_OAMTYPE_MAIN = 0,               // OAM of the main 2D graphics engine
+NNS_G2D_OAMTYPE_SUB,                    // OAM of the sub 2D graphics engine
+NNS_G2D_OAMTYPE_SOFTWAREEMULATION,      // Emulation that uses the 3D Graphics Engine
+NNS_G2D_OAMTYPE_INVALID,                // Invalid type
+NNS_G2D_OAMTYPE_MAX
+    
+}NNSG2dOamType;
+</pre></CODE> <BR> <BR> When <code>NNS_G2D_OAMTYPE_SOFTWAREEMULATION</code> was specified, the drawing process is performed with software sprites by using the 3D graphics engine.<BR> The <code>NNS_G2dGetNewOamManagerInstanceAsFastTransferMode</code> function combines the processes that used to be executed by calling the two prior functions <code>NNS_G2dGetNewManagerInstance</code> and <code>NNS_G2dInitManagerInstanceAffine</code>. To maintain compatibility these two other functions still exist, but you should make use of this new function for new applications.
+
+
+<BR>
+
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dGetNewOamManagerInstanceAsFastTransferMode.html">NNS_G2dGetNewOamManagerInstanceAsFastTransferMode</A><br></CODE></p>
+<p><CODE><A href="NNS_G2dGetNewManagerInstance.html">NNS_G2dGetNewManagerInstance</A><br></CODE></p>
+<p><CODE><A href="NNS_G2dInitManagerInstanceAffine.html">NNS_G2dInitManagerInstanceAffine</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPSSslConnection</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPSSslConnection</h1>
+
+
+<h2>Definitions</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>typedef struct _CPSSslConnection {
+CPSSslSession *session;			// the session this connection belongs to
+u8 reuse_session;				// non 0 if session should be reused
+u8 padding;
+u16 method;					// cipher suite
+u8 client_random[32];
+u8 server_random[32];
+u8 key_block[2*(20+16+0)];
+u8 *send_mac;				// points to somewhere in key_block[]
+u8 *send_key;				//  ditto
+u8 *send_iv;				//  ditto
+CPSCipherCtx send_cipher;			// cipher context for send
+u8 send_seq[8];				// 64 bit sequence
+u8 *rcv_mac;				// points to somewhere in key_block[]
+u8 *rcv_key;				//  ditto
+u8 *rcv_iv;					//  ditto
+CPSCipherCtx rcv_cipher;			// cipher context for receive
+u8 rcv_seq[8];				// 64 bit sequence
+CPSSha1Ctx sha1_hash;			// hash of handshake messages in SHA1
+CPSSha1Ctx sha1_hash_tmp;
+CPSMd5Ctx md5_hash;				// hash of handshake messages in MD5
+CPSMd5Ctx md5_hash_tmp;
+u8 server;					// non 0 if server type connection
+u8 state;
+u16 padding2;
+    //
+//	certificate
+    //
+int sig_algorithm;				// signature algorithm
+int pub_algorithm;				// public key algorithm
+u8 *hash_start;				// start address of hash area
+u8 *hash_end;				// end address of hash area + 1
+u8 hash_val[20];				// hash value of hash_start..hash_end
+int hash_len;				// valid length of hash_val[]
+CPSCaInfo midca_info;			// middle ca info
+u8 modulus[CPS_MAX_RSA_LEN];		// modulus
+u32 modulus_len;				// length of modulus in bytes
+u8 exponent[CPS_MAX_RSA_PUBLICEXPONENT_LEN];
+									// public exponent
+int exponent_len;				// length of exponent in bytes
+u8 *signature;
+int signature_len;
+u8 seen_validity;				// next string is 'subject', not 'issuer'
+u8 seen_pub_algorithm;			// next BIT STRING is public key information
+u8 seen_attr;
+u8 date_ok;
+char issuer[CPS_MAX_DN_LEN + 1];
+char subject[CPS_MAX_DN_LEN + 1];
+char cn[CPS_MAX_CN_LEN + 1];
+char *server_name;				// server name to match
+u8 *cert;					// for auth_callback
+int certlen;
+u32 cur_date;				// 65536*year + 256*month + day
+int (*auth_callback)(int, struct _CPSSslConnection *, int);
+CPSCaInfo **ca_info;
+int ca_builtins;
+CPSPrivateKey *my_key;
+CPSCertificate *my_certificate;
+    //
+//	ssl_read()
+    //
+u8 *inbuf;					// pointer to input buffer (NULL if none)
+long inbuf_len;				// length of inbuf
+long inbuf_pnt;				// index of current position (0..inbuf_len-1)
+} CPSSslConnection;</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>This structure defines the SSL connection. The fields inside <CODE><A href="CPSSoc.html">CPSSoc</A></CODE> point to this structure.<BR>The system configures most of the fields. The fields that the application must configure follows: </p>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>server_name</CODE></STRONG></EM></TD>
+			<TD width="75%">When the value is not NULL, the value is compared with the certificate's server name (Common Name), and the result of the comparison is passed to the callback function. Wildcards are supported for the certificate's server name. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>auth_callback</CODE></STRONG></EM></TD>
+			<TD>Called each time certificate authentication ends. An error code is passed as the first parameter, the pointer to <CODE>CPSSslConnection</CODE> is passed as the second parameter, and the number of steps in the authentication chain (initial value = 0) is passed as the third parameter. Errors can be ignored by changing a passed error code and returning it. Authentication fails if a non-zero value is returned. </TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P>The following fields can be referenced from <CODE>CPSSslConnection *</CODE> passed to <STRONG><EM><CODE>auth_callback</CODE></EM></STRONG>. </P>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>cert<BR> certlen</CODE></STRONG></EM></TD>
+			<TD width="75%">This pointer points to the certificate that is currently being authenticated and its certificate length. <CODE><A href="CPSCaInfo.html">CPSCaInfo</A></CODE> can be created based on this certificate and added to the root certificate. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>subject</CODE></STRONG></EM></TD>
+			<TD>The certificate subject.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>issuer</CODE></STRONG></EM></TD>
+			<TD>The certificate issuer.</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPSSoc.html">CPSSoc</A></CODE>, <CODE><A href="CPSCaInfo.html">CPSCaInfo</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+10/24/2005 Initial version.</P>
+</body>
+</html>

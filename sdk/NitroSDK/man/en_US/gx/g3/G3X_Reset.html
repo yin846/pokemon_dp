@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3X_Reset</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3X_Reset</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3x.h&gt;
+
+void G3X_Reset();<BR></CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<UL>
+<LI>Cancels matrix stacks, polygon list RAM, and line buffer overflow conditions
+<LI>Calls <a href="G3X_ResetMtxStack.html"><code>G3X_ResetMtxStack</code></a>
+</UL>
+<P>This function performs the following: Does not clear when a parameter wait command remains when issuing to the command FIFO. Therefore, if it is possible to call in this state, call the separate <a href="G3X_ClearFifo.html"><code>G3X_ClearFifo</code></a>. Normally executes at the beginning of each frame.</P>
+<h2>See Also</h2>
+<P><a href="G3X_Init.html"><code>G3X_Init</code></a>, <a href="G3X_InitTable.html"><code>G3X_InitTable</code></a>, <a href="G3X_InitMtxStack.html"><code>G3X_InitMtxStack</code></a>, <a href="G3X_ResetMtxStack.html"><code>G3X_ResetMtxStack</code></a>, <a href="G3X_ClearFifo.html"><code>G3X_ClearFifo</code></a></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

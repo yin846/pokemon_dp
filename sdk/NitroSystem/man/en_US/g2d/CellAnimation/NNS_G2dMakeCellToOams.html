@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dMakeCellToOams</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dMakeCellToOams</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_CellAnimation.h&gt;</CODE></pre>
+  <pre><CODE>u16 NNS_G2dMakeCellToOams
+( 
+        GXOamAttr*              pDstOams,
+        u16                     numDstOam, 
+        const NNSG2dCellData*   pCell, 
+        const MtxFx22*          pMtxSR, 
+        const NNSG2dFVec2*      pBaseTrans,
+        u16                     affineIndex,
+        BOOL                    bDoubleAffine 
+);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pDstOams</font></strong></em></td>
+<td width="87%">[OUT] Points to the start of the buffer that stores the conversion result</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">numDstOam</font></strong></em></td>
+<td width="87%">[IN] Length of the buffer that stores the conversion result</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCell</font></strong></em></td>
+<td width="87%">[IN] Cell data</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pMtxSR</font></strong></em></td>
+<td width="87%">[IN] Affine transformation (optional)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pBaseTrans</font></strong></em></td>
+<td width="87%">[IN] Translation value (optional)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">affineIdx</font></strong></em></td>
+<td width="87%">[IN] Affine index (optional)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">bDoubleAffine</font></strong></em></td>
+<td width="87%">[IN] Whether or not to use the double-size affine mode</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>The number of OBJ used.
+</p>
+<H2>Description</H2>
+<P>
+Writes out a string of OBJ that draws the cell. Sufficient space must be secured in the buffer. It also passes a NULL value to <CODE>pMtxSR</CODE> and <CODE>pBaseTrans</CODE> when there are no affine conversions and translation values. Designate an affine index when performing an affine conversion.<BR> The affine conversion matrix that is taken in by this function must be a standard-format matrix.<BR> Be aware that matrices with reciprocals for the scale values that are used as the affine parameters of the 2D graphics engine are not allowed.<BR> <BR> <BR> When double-size affine mode is specified, the function will internally perform position correction of the OBJ.<BR> Starting with the 06/06/2005 Version, position correction processing is performed only when the OBJ's affine transformation mode is actually changed. (In other words, data created as a double-size affine OBJ will not be corrected.)<BR>        
+
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dCopyCellAsOamAttr.html">NNS_G2dCopyCellAsOamAttr</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>06/06/2005 Added warning about position correction processing.<BR>05/28/2004 Initial version.</P>
+</body>
+</html>

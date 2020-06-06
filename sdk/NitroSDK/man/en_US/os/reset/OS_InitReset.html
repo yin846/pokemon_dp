@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_InitReset</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_InitReset</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <code>void OS_InitReset( void );</CODE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function initializes the reset system.</P>
+<P>You must call <CODE>OS_InitReset</CODE> once before calling a reset system function. However, in the case that an application calls the <A href="../init/OS_Init.html"><code>OS_Init</code></A>function, this function will be called from within the <CODE>OS_Init()</CODE> function. Therefore, you do not need to call this function separately.</P>
+<P>As an exception, the <A href="OS_GetResetParameter.html"><code>OS_GetResetParameter</code></A> function may be called before the <CODE>OS_InitReset</CODE> function.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_ResetSystem.html">OS_ResetSystem</A>, <A href="OS_GetResetParameter.html">OS_GetResetParameter</A></CODE></P>
+<H2>Revision History</H2>
+<P>09/01/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

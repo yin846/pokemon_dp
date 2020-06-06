@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_StopTimer</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_StopTimer*</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_StopTimer( OS_TimerId id );<BR> void OS_StopTimer32( OS_Timer32Id id );<BR> void OS_StopTimer48( OS_Timer48Id id );<BR> void OS_StopTimer64( void );</CODE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>id</STRONG></EM></TD>
+<TD width="87%">ID of the timer to be stopped (varies according to the number of timers to be stopped)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Stops the internal timer</P>
+<P><code>OS_StopTimer()</code> stops one 16-bit count timer.</P>
+<P><code>OS_StopTimer32()</code> stops two consecutive timers. This is convenient when using 32-bit count timers.</P>
+<P><code>OS_StopTimer48()</code> stops three consecutive timers. This is convenient when using 48-bit count timers.</P>
+<P><code>OS_StopTimer64()</code> stops four consecutive timers. This is convenient when using 64-bit count timers.</P>
+<P><em><strong><code>id</code></strong></em> is the timer ID and has the same meaning as the argument in <a href="OS_StartTimer.html"><code>OS_StartTimer()</code></a>.((See <A href="OS_StartTimer.html"><CODE>OS_StartTimer()</CODE></A>.)</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_StartTimer.html">OS_StartTimer</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>01/08/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

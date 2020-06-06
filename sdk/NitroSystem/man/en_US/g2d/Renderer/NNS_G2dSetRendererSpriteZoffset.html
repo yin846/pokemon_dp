@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRendererSpriteZoffset</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRendererSpriteZoffset</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Renderer.h&gt;</CODE></pre>
+  <pre><CODE>NNS_G2D_INLINE void NNS_G2dSetRendererSpriteZoffset
+( 
+       NNSG2dRendererInstance* pRend, 
+        fx32                    spriteZoffset 
+);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pRend</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] Renderer entity</td>
+    
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>spriteZoffset</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[IN] Value Z is incremented each time a software sprite is rendered (must be 0 or a negative number).</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Specifies the Z value added each time a software sprite is rendered. The <code>spriteZoffset</code> value must be less than or equal to zero.<BR> In the NITRO 3D Graphics Engine, if polygons have the same Z value, the overwrite determination is based on a comparison of screen Y values. Therefore, to overwrite in the rendering order, as with <code>OBJ</code> rendering, in the case of software sprites you must avoid rendering polygons that have the same Z value by slightly offsetting the polygon Z values. The Z value added to a sprite is reset each time a rendering function call (such as <code>NNS_G2dDrawCell()</code> or <code>NNS_G2dDrawMultiCell()</code>) completes. Therefore, when rendering a cell that consists of <code>N OBJ</code>, the Z axis depth is <code>N * spriteZoffset</code>. <BR> <BR>
+</p>
+
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>09/01/2004 Initial version.</P>
+</body>
+</html>

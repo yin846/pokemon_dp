@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>TP_CalcCalibrateParam</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">TP_CalcCalibrateParam</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/spi.h&gt;</CODE><BR>
+<PRE><CODE>u32 TP_CalcCalibrateParam( TPCalibrateParam * calibrate,
+u16 raw_x1, u16 raw_y1,
+u16 dx1,   u16 dy1,
+u16 raw_x2, u16 raw_y2,
+u16 dx2,   u16 dy2 );</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">calibrate</font></strong></em></TD>
+<TD width="700">Pointer used for storing the results of the calibration parameters</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">raw_x1,  raw_y1</font></strong></em></TD>
+<TD>Raw touch panel values acquired at coordinate 1 (0 &ndash; 4095)</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">dx1,  dy1</font></strong></em></TD>
+<TD>Screen coordinates for coordinate 1 </TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">raw_x2, raw_y2</font></strong></em></TD>
+<TD>Raw touch panel values acquired at coordinate 2 (0 &ndash; 4095)</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">dx2, dy2</font></strong></em></TD>
+<TD>Screen coordinates for coordinate 2</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>If the arguments are valid parameters, returns 0. If they are not valid parameters, it returns a non-zero value.</p>
+<H2>Description</H2>
+<P>This function calculates calibration parameters that are based on coordinates of two points.</P>
+<P>Do not use the same x or y values as parameters for coordinates 1 and 2.</P>
+<h2>See Also</h2>
+<P><code><A href="TP_GetCalibratedPoint.html">TP_GetCalibratedPoint</A>, <A href="TP_SetCalibrateParam.html">TP_SetCalibrateParam</A></code></P>
+<H2>Revision History</H2>
+<P>04/16/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

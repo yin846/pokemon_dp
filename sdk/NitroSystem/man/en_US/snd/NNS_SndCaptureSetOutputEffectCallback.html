@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndCaptureSetOutputEffectCallback</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndCaptureSetOutputEffectCallback</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef void ( *NNSSndCaptureCallback )(
+void* bufferL,
+void* bufferR,
+u32 len,
+NNSSndCaptureFormat format,
+void* arg
+);</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndCaptureSetOutputEffectCallback(
+NNSSndCaptureCallback func,
+void* arg );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAHMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>func</code></strong></em></td>
+<td>This is the callback function pointer</td>
+</tr>
+<tr>
+<td><em><strong><code><code><EM><STRONG>arg</STRONG></EM></code></code></strong></em></td>
+<td>This is the parameter that becomes the callback function argument</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDA3MWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAENWT"></a>
+<h2>Description</h2>
+      <p>
+Registers the output effect preprocess callback.
+</p>
+      <p>
+While the <a href="NNS_SndCaptureStartOutputEffect.html"><code>NNS_SndCaptureStartOutputEffect</code></a> function is running, the registered callback function indicated by <em><strong><code>func</code></strong></em> is called immediately before running the output effect process. To process immediately afterwards, register the callback function with <code><a href="NNS_SndCaptureSetPostOutputEffectCallback.html">NNS_SndCaptureSetPostOutputEffectCallback</a></code>.
+</p>
+      <p>
+The arguments for the <em><strong><code>func</code></strong></em> callback function uses the pointer to the starting address for the L component <em><strong><code>bufferL</code></strong></em>, the pointer to the starting address for the R component <em><strong><code>bufferR</code></strong></em>, and the buffer size <em><strong><code>len</code></strong></em>. <em><strong><code>format</code></strong></em> always takes <code>NNS_SND_CAPTURE_FORMAT_PCM16</code>, which indicates 16-bit PCM. The same arguments for <code>NNS_SndCaptureSetOutputEffectCallback</code> are passed to the user argument <em><strong><code>arg</code></strong></em>.
+</p>
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+Unlike the callback functions of the <a href="NNS_SndCaptureStartEffect.html"><code>NNS_SndCaptureStartEffect</code></a> function, the buffer that is passed can be accessed only from inside the callback function.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndCaptureStartOutputEffect.html">NNS_SndCaptureStartOutputEffect</a>, <a href="NNS_SndCaptureSetPostOutputEffectCallback.html">NNS_SndCaptureSetPostOutputEffectCallback</a>, <a href="NNS_SndCaptureStartEffect.html">NNS_SndCaptureStartEffect</a></code></p>
+<h2>Revision History</h2>
+<p>10/04/2004 Initial version.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_COMMAND_WRITEFILE</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_COMMAND_WRITEFILE</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<BR> <CODE>FSResult FS_ARCHIVE_PROC_FUNC(FSFile *p_file, FSCommandType command /* = FS_COMMAND_WRITEFILE */);<br></CODE><br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Operating specifications for the archive command <code>FS_COMMAND_WRITEFILE</code> are shown below: <BR> <BR>
+
+<HR>
+<B>Arguments passed to this command</B>
+<BLOCKQUOTE>
+<PRE>This command takes as a command argument the variable <code>arg.readfile</code> that is stored in <code>p_file</code>.<br /> 
+This variable is defined in <code>nitro/fs/file.h</code> as shown below:
+
+typedef struct
+{
+const void  *src;
+u32     len_org;
+u32     len;
+} FSWriteFileInfo;</code> </PRE>
+</BLOCKQUOTE>
+<BLOCKQUOTE>Argument content is listed below:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1" width="50%">
+  <TBODY>
+    <TR>
+<TD style="text-align : center;" width="95">Arguments</TD>
+<TD style="text-align : center;" width="522">Content</TD>
+    </TR>
+    <TR>
+<TD width="95" style="text-align : center;">src</TD>
+<TD width="522">The memory address for the source data to be written to a file.</TD>
+    </TR>
+    <TR>
+<TD style="text-align : center;">len_org</TD>
+<TD>Indicates the size of data to write (bytes), using the specified value as-is.</TD>
+    </TR>
+    <TR>
+<TD style="text-align : center;">len</TD>
+<TD>Specifies the size of data to be written (bytes), using a value that is adjusted by the file size at the time that the command is called.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<HR>
+<B>Actions required of this command</B>
+<BLOCKQUOTE>
+<PRE><code>p_file</code> is a handle that always holds file information in <code>prop.file</code>.<br />
+Based on <code>p_file</code>'s <code>prog.file</code> variable, the command makes the following settings:
+
+Transfers <code>len</code> bytes of data from memory indicated by <code>src</code> to an archive offset position that is indicated by <code>prop.file.pos</code>.
+Adds value of <code>len</code> to <code>prop.file.pos</code>.<br />
+
+The value len is adjusted from the specified value, taking <code>prop.file.bottom</code> into consideration.
+If you want to run a special process when a write exceeds the file size,
+you can use the original value that is stored in <code>len_org</code>.</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Default Implementation</B>
+<BLOCKQUOTE>Uses the archive write callback function to transfer <code>len</code> bytes from <code>src</code> to the base offset position indicated by <code>prop.file.pos</code>. Adds value of <code>len</code> to <code>prop.file.pos</code>.<br /></BLOCKQUOTE>
+<HR>
+<B>Command Results</B><BR>
+
+<BLOCKQUOTE>
+<PRE>If <code>FS_RESULT_SUCCESS</code> is returned by the command, it will be determined that the transfer process for <code>len</code> bytes completed properly.
+When anything else is returned by the command, it will be determined that transfer failed due to some error.</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Functions that use this command</B><BR>
+<BLOCKQUOTE>FS_WriteFile FS_WriteFileAsync</BLOCKQUOTE>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a></code>, <code><a href="../fs_archive_proc_func_type.html">FS_ARCHIVE_PROC_FUNC</a></code>, <code><a href="../fs_command_type_const.html">FS_COMMAND_*</a></code>, <code><a href="../archive/FS_SetArchiveProc.html">FS_SetArchiveProc</a></code></p>
+
+<H2>Revision History</H2>
+<P>07/12/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

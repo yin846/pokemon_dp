@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>FS_ReadFileAsync</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">FS_ReadFileAsync</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>s32 FS_ReadFileAsync( FSFile *p_file, void *dst, s32 len );</CODE><BR>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p_file</STRONG></EM></TD>
+<TD width="87%">Address of the <code><a href="../fs_file_type.html">FSFile</a></code> structure</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>dst</STRONG></EM></TD>
+<TD width="87%">Address of the storage destination buffer</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>len</STRONG></EM></TD>
+<TD width="87%">Byte length of data being read</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>  If the data is read correctly, it returns the number of bytes. Otherwise it returns a value of <code>-1</code>.</P>
+<H2>Description</H2>
+<P>
+This function asynchronously reads a specified amount of data from the file pointer's current position. If the specified size exceeds the file size, it will read to the end of the file and return that size.<br><br> This function is not the same as the <code><A href="FS_ReadFile.html">FS_ReadFile</A></code> function. It immediately returns the control and is executed asynchronously.<br>To confirm the completion of the process, periodically check the return value using the <A href="FS_IsBusy.html"><code>FS_IsBusy</code></A> function or set the thread to wait status using the <A href="FS_WaitAsync.html"><code>FS_WaitAsync</code></A> function. When using the <A href="../archive_rom_spec.html"><code>ROM Archive</code></A> to read Game Card data, also refer to the description for the <a href="../../card/rom/CARD_ReadRomAsync.html"><code>CARD_ReadRomAsync</code></a> function. <br>
+</P>
+<H2>Caution</H2>
+<P>If the archive cannot execute the process asynchronously, this function becomes a synchronous process, just like <a href="FS_ReadFile.html"><code>FS_ReadFile</code></a>. This function cannot be called from the interrupt handler (IRQ mode). Note that the process may not be completed if interrupts are prohibited.</P>
+<H2>See Also</H2>
+<P><code><a href="../fs_file_type.html">FSFile</a>, <a href="FS_WaitAsync.html">FS_WaitAsync</a>, <a href="FS_GetLength.html">FS_GetLength</a>, <a href="FS_GetPosition.html">FS_GetPosition</a>, <a href="FS_SeekFile.html">FS_SeekFile</a>, <a href="FS_SeekFileToBegin.html">FS_SeekFileToBegin</a>, <a href="FS_SeekFileToEnd.html">FS_SeekFileToEnd</a></code></P>
+<H2>Revision History</H2>
+<P>
+08/28/2005 Added link to <CODE>CARD_ReadRomAsync</CODE> function in description.<br> 09/24/2004 Added the description in the Caution section regarding the conditions for calling this function.<br> 07/13/2004 Revised description to that of the general archive.<br /> 05/14/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

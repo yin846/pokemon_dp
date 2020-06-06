@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GXS_SetGraphicsMode</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GXS_SetGraphicsMode</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx.h&gt;</CODE><BR> <BR> <CODE>void GXS_SetGraphicsMode(GXBGMode bgMode);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">bgMode</font></strong></em></td>
+<td width="87%">Selects BG mode.</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the sub 2D Engine display mode. The <em><strong><code>bgMode</code></strong></em> argument selects the BG mode. Be aware that <code>GX_BGMODE_6</code> can be specified on the main 2D Engine, but it is prohibited on the sub 2D Engine.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_BGMODE_0</CODE></TD>
+<TD>BG0=Text, BG1=Text, BG2=Text, BG3=Text</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGMODE_1</CODE></TD>
+<TD>BG0=Text, BG1=Text, BG2=Text, BG3=Affine</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGMODE_2</CODE></TD>
+<TD>BG0=Text, BG1=Text, BG2=Affine, BG3=Affine</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGMODE_3</CODE></TD>
+<TD>BG0=Text, BG1=Text, BG2=Text, BG3=Affine Extended BG</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGMODE_4</CODE></TD>
+<TD>BG0=Text, BG1=Text, BG2=Affine, BG3=Affine Extended BG</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGMODE_5</CODE></TD>
+<TD>BG0=Text, BG1=Text, BG2=Affine Extended BG, BG3=Affine Extended BG</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following is the type definition for the <code>GXBGMode</code> type.</P>
+<PRE>typedef enum
+{
+GX_BGMODE_0 = 0,
+GX_BGMODE_1 = 1,
+GX_BGMODE_2 = 2,
+GX_BGMODE_3 = 3,
+GX_BGMODE_4 = 4,
+GX_BGMODE_5 = 5,
+GX_BGMODE_6 = 6
+}
+GXBGMode;</PRE>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>02/09/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_SetupChannelPcm</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAFLWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_SetupChannelPcm</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">void SND_SetupChannelPcm(
+int <var>chNo</var>,
+SNDWaveFormat <var>format</var>,
+const void* <var>dataAddr</var>,
+SNDChannelLoop <var>loop</var>,
+int <var>loopStart</var>,
+int <var>dataLen</var>,
+int <var>volume</var>,
+SNDChannelDataShift <var>shift</var>,
+int <var>timer</var>,
+int <var>pan</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAHOWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>chNo</code></strong></em></td>
+<td>The channel number. Takes a value between 0 and 15.</td>
+</tr>
+<tr>
+<td><em><strong><code>format</code></strong></em></td>
+<td>The format of the waveform data.</td>
+</tr>
+<tr>
+<td><em><strong><code>dataAddr</code></strong></em></td>
+<td>The starting address of the waveform data. Must have 4-byte alignment.</td>
+</tr>
+<tr>
+<td><em><strong><code>loop</code></strong></em></td>
+<td>The loop playback setting.</td>
+</tr>
+<tr>
+<td><em><strong><code>loopStart</code></strong></em></td>
+<td>The loop-start position. Expressed in units of words. Takes a value of 0 to 0xffff.</td>
+</tr>
+<tr>
+<td><em><strong><code>dataLen</code></strong></em></td>
+<td>The data length. Expressed in units of words. Takes a value of 0 to 0x3fffff.</td>
+</tr>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>The volume. Takes a value between 0 and 127.</td>
+</tr>
+<tr>
+<td><em><strong><code>shift</code></strong></em></td>
+<td>The data shift setting.</td>
+</tr>
+<tr>
+<td><em><strong><code>timer</code></strong></em></td>
+<td>The timer. Takes a value between 0x10 and 0xffff.</td>
+</tr>
+<tr>
+<td><em><strong><code>pan</code></strong></em></td>
+<td>The pan. Takes values in the range of 0 (left) to 64 (center) to 127 (right).</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAYQWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA5QWT"></a>
+<h2>Description</h2>
+      <p>
+This function sets up channels for PCM playback.
+</p>
+      <p>
+The function sets the parameters for the channel specified by <em><strong><code>chNo</code></strong></em>. The channel must be locked by the <code><a href="SND_LockChannel.html">SND_LockChannel</a></code> function before the parameters can be set. Once the parameters have been set, call the <code><a href="SND_StartTimer.html">SND_StartTimer</a></code> function to begin actual playback.
+</p>
+      <p>
+Choose from among these values for the waveform data format <em><strong><code>format</code></strong></em>:
+</p>
+<div class="table"><a name="IDAZRWT"></a><p class="title"><b><b>Table. SNDWaveFormat</b></b></p>
+<table summary="SNDWaveFormat" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SND_WAVE_FORMAT_PCM8</td>
+<td>8-bit PCM</td>
+</tr>
+<tr>
+<td>SND_WAVE_FORMAT_PCM16</td>
+<td>16-bit PCM</td>
+</tr>
+<tr>
+<td>SND_WAVE_FORMAT_ADPCM</td>
+<td>IMA-ADPCM</td>
+</tr>
+</tbody>
+</table>
+</div>
+      
+      <p>
+The waveform data's starting address <code>dataAddr</code> must have 4-byte alignment.
+</p>
+      <p>
+Choose from among these values for the loop playback setting <code>loop</code>:
+</p>
+<div class="table"><a name="IDAOTWT"></a><p class="title"><b><b>Table. SNDChannelLoop</b></b></p>
+<table summary="SNDChannelLoop" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SND_CHANNEL_LOOP_MANUAL</td>
+<td>Continue to play tone, regardless of the setting for data length <code>dataLen</code>.</td>
+</tr>
+<tr>
+<td>SND_CHANNEL_LOOP_REPEAT</td>
+<td>Play to end of data length <code>dataLen</code> and then return to loop-start position <code>loopStart</code> and continue to play.</td>
+</tr>
+<tr>
+<td>SND_CHANNEL_LOOP_1SHOT</td>
+<td>Play to end of data length <code>dataLen</code> and then stop playback automatically.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <p>
+The loop-start position <code>loopStart</code> is specified in units of words. It is only meaningful when the loop playback setting <code>loop</code> is set to <code>SND_CHANNEL_LOOP_REPEAT</code>.
+</p>
+      <p>
+The data length <code>dataLen</code> specifies the size of the waveform data in units of words. The value is ignored when the loop playback setting <code>loop</code> is set to <code>SND_CHANNEL_LOOP_MANUAL</code>.
+</p>
+      <p>
+Choose from among these values for the data shift setting <code>shift</code>:
+</p>
+<div class="table"><a name="IDA1VWT"></a><p class="title"><b><b>Table. SNDChannelDataShift</b></b></p>
+<table summary="SNDChannelDataShift" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SND_CHANNEL_DATASHIFT_NONE</td>
+<td>Do not perform a data shift.</td>
+</tr>
+<tr>
+<td>SND_CHANNEL_DATASHIFT_1BIT</td>
+<td>Shift data 1 bit right.</td>
+</tr>
+<tr>
+<td>SND_CHANNEL_DATASHIFT_2BIT</td>
+<td>Shift data 2 bit right.</td>
+</tr>
+<tr>
+<td>SND_CHANNEL_DATASHIFT_4BIT</td>
+<td>Shift data 4 bit right.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <p>
+<code>timer</code> specifies the number of clock ticks for outputting one sample. The number of ticks per second is approximately 16.757 MHz with <code>SND_TIMER_CLOCK</code>. Thus, if you want to play the waveform data without changing the pitch and the sampling rate is <em><strong><code>rate</code></strong></em> Hz, then you calculate <em><strong><code>timer</code></strong></em> as follows:  
+</p>
+<pre class="programlisting"><em><strong><code>timer</code></strong></em> = <span  class="symbol">SND_TIMER_CLOCK</span> / <em><strong><code>rate</code></strong></em></pre>
+      <p>
+ 
+</p>
+
+      <div class="note">
+<h3 class="title">Caution</h3>
+<p>
+This function is an ARM7 reserved function. After this function is called, processing occurs only after the command is issued with the <a href="SND_FlushCommand.html"><code>SND_FlushCommand</code></a> function.
+</p>
+<p>
+When it is necessary to synchronize something with the completion of the process, first use <a href="SND_GetCurrentCommandTag.html"><code>SND_GetCurrentCommandTag</code></a> to obtain the command tag immediately after calling this function. After the command is issued, use the command tag and call either the <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a> or <a href="SND_WaitForCommandProc.html"><code>SND_WaitForCommandProc</code></a> function to confirm that the process has finished or to wait for it to complete.
+</p>
+</div>
+
+    </div>
+<h2>See Also</h2>
+<p><code><a href="SND_LockChannel.html">SND_LockChannel</a>, <a href="SND_StartTimer.html">SND_StartTimer</a>, <a href="SND_FlushCommand.html">SND_FlushCommand</a>, <a href="SND_GetCurrentCommandTag.html">SND_GetCurrentCommandTag</a>, <a href="SND_IsFinishedCommandTag.html">SND_IsFinishedCommandTag</a>, <a href="SND_WaitForCommandProc.html">SND_WaitForCommandProc</a></code></p>
+<h2>Revision History</h2>
+<p>02/17/2005 Added a note about ARM7 command processing<br /> 10/07/2004 Corrected spelling: REPAET to REPEAT.<br /> 07/20/2004 Initial version.</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

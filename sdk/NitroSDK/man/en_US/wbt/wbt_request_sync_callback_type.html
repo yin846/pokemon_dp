@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBTRequestSyncCallback</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBTRequestSyncCallback</h1>
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR>
+<pre>
+typedef	struct
+{
+	WBTBlockNumEntry num_of_list;
+	s16 peer_packet_size;
+	s16 my_packet_size;
+	u16 pad1;
+	u32 padd2[2];
+} WBTRequestSyncCallback;
+</pre>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>The structure passed by the completion callback of the <A href="command/WBT_RequestSync.html" target="_self"><code>WBT_RequestSync</code></A> function.<br> The details of each member are as follows.<BR>
+<TABLE border="0">
+  <TBODY>
+    <TR>
+<TD>num_of_list</TD>
+<TD>The total number of data blocks registered on the other side.</TD>
+    </TR>
+    <TR>
+<TD>peer_packet_size</TD>
+<TD>The MP communication packet size sent from the other side.</TD>
+    </TR>
+    <TR>
+<TD>my_packet_size</TD>
+<TD>The MP communication packet size sent to another).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</P>
+<h2>See Also</h2>
+<p><CODE></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+09/21/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

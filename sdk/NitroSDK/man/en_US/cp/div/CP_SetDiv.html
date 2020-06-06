@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CP_SetDiv*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CP_SetDiv*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/cp.h&gt;</CODE><BR> <BR> <CODE>void CP_SetDiv32_32( u32 numer, u32 denom );<br> void CP_SetDiv64_32( u64 numer, u32 denom );<br> void CP_SetDiv64_64( u64 numer, u64 denom ); </CODE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>numer</STRONG></EM></TD>
+<TD width="87%">Numerator of fraction. Represents dividend of division here.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>denom</STRONG></EM></TD>
+<TD width="87%">Denominator of fraction. Represents divisor of division here.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>Sets parameters for division. Sets division mode first, and then stores dividend and divisor in each register. <a href="CP_SetDivImm.html"><code>CP_SetDivImm*</code></a> is used to store dividend and divisor.</P>
+<P>There are three division modes as follows:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH>Division Mode</TH>
+<TH>Calculation</TH>
+<TH>Results</TH>
+    </TR>
+    <TR>
+<TD>CP_DIV_32_32BIT_MODE</TD>
+<TD>32-bit divided by 32-bit</TD>
+<TD>Quotient 32-bit, remainder 32-bit</TD>
+    </TR>
+    <TR>
+<TD>CP_DIV_64_32BIT_MODE</TD>
+<TD>64-bit divided by 32-bit</TD>
+<TD>Quotient 64-bit, remainder 32-bit</TD>
+    </TR>
+    <TR>
+<TD>CP_DIV_64_64BIT_MODE</TD>
+<TD>64-bit divided by 64-bit</TD>
+<TD>Quotient 64-bit, remainder 64-bit</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> <CODE>Set mode to <code>CP_DIV_32_32BIT_MODE</code> with <code>CP_SetDiv32_32()</code>.<BR><BR> Set mode to <code>CP_DIV_64_32BIT_MODE</code> with <code>CP_SetDiv64_32()</code>.<BR><br> Set mode to <code>CP_DIV_64_64BIT_MODE</code> with <code>CP_SetDiv64_64()</code>.</CODE></P>
+<P><B>Caution:</B> With the Divider, sometimes the value is overwritten in the interrupt. If the division parameters are set up, an interrupt occurs during division, and the Divider is used, the original calculated result is irregular. Therefore, if you are using the Divider in an interrupt, the status of the Divider needs to be temporarily stored/restored using <code><A href="../CP_SaveContext.html">CP_SaveContext()</A></code> and <code><A href="../CP_RestoreContext.html">CP_RestoreContext()</A></code>.<B><FONT color="#ff3300">During a thread switch, the contents of the Divider are also automatically saved/restored.</FONT></B></P>
+<BLOCKQUOTE><BR>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD style="background-color : #eeeeee;"><B>Example:</B> Restore the Divider status <BR> <BR> <CODE>intr_func( void ) <BR> {<BR> CPContext context;<BR> <BR> CP_SaveContext( &amp;context );<BR> CP_SetDiv32_32( 1000, 5 );<BR> CP_WaitDiv();<BR> result = CP_GetDivResult();<BR> CP_RestoreContext( &amp;context );<BR> }</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BLOCKQUOTE>
+<BLOCKQUOTE><B><BR></B></BLOCKQUOTE>
+<h2>Internal Operation</h2>
+<p><CODE>Stores values in <code>DIVCNT(0x4000280)</code>, <code>DIV_NUMER(0x4000290)</code>, and <code>DIV_DENOM(0x4000298)</code> of the IO register.<br></CODE></p>
+
+<h2>See Also</h2>
+<p><code><A href="CP_SetDivImm.html">CP_SetDivImm*</A>, <A href="CP_IsDivBusy.html">CP_IsDivBusy</A>, <A href="CP_WaitDiv.html">CP_WaitDiv</A>, <A href="CP_GetDivResult.html">CP_GetDivResult*</A>, <A href="CP_GetDivRemainder.html">CP_GetDivRemainder*</A>, <A href="../CP_SaveContext.html">CP_SaveContext</A>, <A href="../CP_RestoreContext.html">CP_RestoreContext</A></code></p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Unified Japanese term for &quot;interrupt.&quot;<BR> 11/02/2004 Corrected IO register address in Internal Operation.<BR> 05/06/2004 Changes to description as a result of making process thread-safe.<BR> 03/31/2004 Indicated that process is not thread-safe.<BR> 01/09/2004 Added content.<BR> 12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

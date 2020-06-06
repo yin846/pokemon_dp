@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CARD_SetPulledOutCallback</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CARD_SetPulledOutCallback</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/card.h&gt;</CODE></PRE>
+<PRE><CODE>void CARD_SetPulledOutCallback( CARDPulledOutCallback callback );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD width="87%">The callback function called when Game Card removal has been detected. It is called from within the interrupt handler or the <A href="CARD_CheckPulledOut.html"><CODE>CARD_CheckPulledOut</CODE></A> function.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None</P>
+<H2>Description</H2>
+<P>This function sets the callback function that is called when a Game Card removal is detected.</P>
+<P>To use this function, you must first call the <a href="../common/CARD_Init.html"><code>CARD_Init</code></a> function.</P>
+<P><CODE>CARDPulledOutCallback</CODE> is the type of callback function <B><I>callback</I></B>, and is defined as</P>
+<BLOCKQUOTE><CODE>typedef BOOL ( *CARDPulledOutCallback )( void );</CODE></BLOCKQUOTE>
+<P> </P>
+<P>This function does not call the callback if a NULL value is specified in the <em><strong><code>callback</code></strong></em> argument.</P>
+<H3><BR> <BR> <BR> <B>About Callbacks</B></H3>
+<P>Specify TRUE in the callback return value if the program will stop after it exits from the callback (or when the power is turned off when the cover is closed). If a value of FALSE is specified in the callback return value, the function will not stop after it exits from the callback. When you stop the function after necessary processing, call <A href="CARD_TerminateForPulledOut.html"><code>CARD_TerminateForPulledOut</code></A> afterward. However, the stop process notifies the ARM7 processor using PXI. You cannot call this function from inside the callback while interrupts are disabled.</P>
+<P>For example, use the following statements to display the &quot;DON'T PULL OUT CARD&quot; message and to stop the program when a Game Card removal is detected.</P>
+<BLOCKQUOTE><B>Example:</B><BR> <CODE><BR> void NitroMain( void )<BR> {<BR> initializeRoutine();<BR> <FONT color="#ff0000">CARD_SetPulledOutCallback( myCallback );</FONT> <FONT color="#0066ff">// set callback</FONT><BR> <BR> while(1)<BR> {<BR> usualGameProcedure();<BR> if ( <FONT color="#ff0033">CARD_IsPulledOut()</FONT> ) <FONT color="#0066ff">// check whether card is pulled out</FONT><BR> {<BR> drawMessageRoutine( &quot;DON'T PULL OUT CARD&quot; );<BR> <FONT color="#ff0000">CARD_TerminateForPulledOut();</FONT> <FONT color="#0066ff">// terminate</FONT><BR> <FONT color="#0066ff">// program halted.</FONT><BR> }<BR> }<BR> }<BR> <BR> <FONT color="#0066ff">//---- callback for pulled-out card</FONT><BR> BOOL myCallback( void )<BR> {<BR> return FALSE; <FONT color="#0066ff">// does not terminate</FONT><BR> }<BR> <BR></CODE></BLOCKQUOTE>
+<H2>See Also</H2>
+<P><CODE><A href="../common/CARD_Init.html">CARD_Init</A>, <A href="CARD_TerminateForPulledOut.html">CARD_TerminateForPulledOut</A>, <A href="CARD_IsPulledOut.html">CARD_IsPulledOut</A>, <A href="CARD_CheckPulledOut.html">CARD_CheckPulledOut</A></CODE></P>
+<H2>Revision History</H2>
+<P>
+06/01/2005 Added information stating the callback is called from the interrupt handler.<br>12/16/2004 Fixed so the sample code uses <CODE>CARD_IsPulledOut()</CODE> .<BR>11/10/2004 Added statement about ending processing after returning from the callback.<BR> 09/16/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

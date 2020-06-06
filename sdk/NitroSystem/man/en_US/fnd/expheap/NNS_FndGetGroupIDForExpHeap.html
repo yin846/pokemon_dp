@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndGetGroupIDForExpHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_FndGetGroupIDForExpHeap</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+<pre><CODE>u16 NNS_FndGetGroupIDForExpHeap(NNSFndHeapHandle heap);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+	<tr> 
+		<td width="13%"><em><strong><font face="Courier New">heap</font></strong></em></td>
+		<td width="87%">Extended heap handle</td>
+	</tr>
+</table>
+<h2>Return Values</h2>
+<p> Returns the current group ID value.</p>
+<H2>Description</H2>
+<P>Gets the group ID of the extended heap.</P>
+<P>The memory blocks allocated from the extended heap each have their own group ID, and this value carries over to the group ID value set in the heap when the memory block is allocated.</P>
+<p>Immediately after creation of the heap, the group ID becomes 0.</p>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_FndSetAllocModeForExpHeap.html">NNS_FndSetAllocModeForExpHeap</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>04/28/2004 The value of the group ID after creation of the heap was incorrect. Revised. 04/01/2004 Initial Version</P>
+</body>
+</html>

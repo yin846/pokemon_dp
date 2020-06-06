@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_SeekFileToEnd</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_SeekFileToEnd</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>inline BOOL FS_SeekFileToEnd( FSFile *p_file );</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p_file</STRONG></EM></TD>
+<TD width="87%">Address of the <code><a href="../fs_file_type.html">FSFile</a></code> structure</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the file pointer is correctly moved, it returns TRUE. Otherwise it returns FALSE.</p>
+
+<H2>Description</H2>
+<P>
+This function moves the file pointer to the end of the file. It is equivalent to <CODE>FS_SeekFile</CODE>(<CODE>p_file</CODE>, <CODE>0</CODE>, <CODE>FS_SEEK_END</CODE>). <BR>
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="../fs_file_type.html">FSFile</A>, <A href="../fs_seek_file_mode_type.html">FSSeekFileMode</A>, <A href="FS_SeekFile.html">FS_SeekFile</A>, <A href="FS_SeekFileToBegin.html">FS_SeekFileToBegin</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>04/01/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

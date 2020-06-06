@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATH_CRC*Update</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATH_CRC*Update</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/crc.h&gt;
+
+void MATH_CRC8Update( const <A href="MATHCRCTable.html">MATHCRC8Table</A> *table, <A href="MATHCRCContext.html">MATHCRC8Context</A> *context, const void* input, u32 length );
+void MATH_CRC16Update( const <A href="MATHCRCTable.html">MATHCRC16Table</A> *table, <A href="MATHCRCContext.html">MATHCRC16Context</A> *context, const void* input, u32 length );
+void MATH_CRC16CCITTUpdate( const <A href="MATHCRCTable.html">MATHCRC16Table</A> *table, <A href="MATHCRCContext.html">MATHCRC16Context</A> *context, const void* input, u32 length );
+void MATH_CRC32Update( const <A href="MATHCRCTable.html">MATHCRC32Table</A> *table, <A href="MATHCRCContext.html">MATHCRC32Context</A> *context, const void* input, u32 length );
+void MATH_CRC32POSIXUpdate( const <A href="MATHCRCTable.html">MATHCRC32Table</A> *table, <A href="MATHCRCContext.html">MATHCRC32Context</A> *context, const void* input, u32 length );
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">table</font></strong></em></TD>
+<TD width="670">Pointer to the tables used to compute CRCs</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New"><em><strong><code>context</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD width="670">Pointer to the context structure used for various CRC calculations.</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">input</font></strong></em></TD>
+<TD width="670">Pointer to the input data</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">length</font></strong></em></TD>
+<TD width="670">Size of the input data</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>Updates the various CRC hash values based on the input data. You must first initialize the 'table' argument using the <a href="MATH_CRCInitTable.html"><code>MATH_CRC*InitTable</code></a> function and the 'context' argument using the <a href="MATH_CRCInit.html"><code>MATH_CRC*Init</code></a> function. Call this function as many times as needed, and then use <a href="MATH_CRCGetHash.html"><code>MATH_CRC*GetHash</code></a> to obtain the hash value. Any size and alignment position can be used for the input data.<BR> CRC-8 is an algorithm that finds an 8-bit hash value.<BR> CRC-16 and CRC-16/CCITT are algorithms that find 16-bit hash values.<BR> CRC-32 and CRC-32/POSIX are algorithms that find 32-bit hash values. CRC-16 is the algorithm used in the ARC and LHA compression programs. One restriction is that the hash value does not change when a <code>0</code> byte is appended to the top. CRC-16/CCITT is an algorithm that is used in many data link layer standards as a FCS (Frame Check Sequence). It is defined in the x.25 standard of the CCITT (Comite Consultatif International Telegraphique et Telephonique). CRC-32 is an algorithm used in compression programs, such as PKZIP, and image formats, such as PNG. For details, see ISO 3309 and RFC 2083. CRC-32/POSIX is an algorithm used in the cksum command, which is included in POSIX-compliant Unix. It is defined in POSIX 1003.2. With the <code>cksum</code> command, CRC is taken after the file length is appended to the end of the input file.
+</P>
+<h2>See Also</h2>
+<P><a href="MATH_CRCInitTable.html"><code>MATH_CRC*InitTable</code></a>, <a href="MATH_CRCInit.html"><code>MATH_CRC*Init</code></a>, <a href="MATH_CRCGetHash.html"><code>MATH_CRC*GetHash</code></a></P>
+<H2>Revision History</H2>
+<P>
+04/12/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

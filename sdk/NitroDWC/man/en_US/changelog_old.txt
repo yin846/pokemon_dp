@@ -1,0 +1,183 @@
+###############################################################################
+   changelog_old.txt
+
+$Date: 2006/03/17 01:07:54 $
+###############################################################################
+
+* This document is the revision history prior to the official release. For a revision history documenting later changes,see the Function Reference Manual.
+
+The following is a list of changes that should be noted during development.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-12-27
+- One of the arguments to DWC_LoginAsync() represents the screen name 
+within the game. The argument type was changed from const u8 * to const u16 *.
+Make absolutely sure to set a wide character string (excluding NULL) here.
+FALSE is returned and login processing is not carried out if NULL is specified as the string.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-10-11
+- For the following errors that are game specific and don't require initialization:
+DWC_ERROR_FRIENDS_SHORTAGE
+DWC_ERROR_NOT_FRIEND_SERVER
+DWC_ERROR_MO_SC_CONNECT_BLOCK
+These errors were changed so 0 is set as the incident code when an error occurs.
+Although the value was 0 for DWC_ERROR_FRIENDS_SHORTAGE, it is now -80000 for the remaining two.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-10-05
+- When DWCi_ConnectToFriendsAsync() is called, if the minimum needed number of
+people registered as buddies on GameSpy are not present, the error
+DWC_ERROR_FRIENDS_SHORTAGE will be returned. But, because buddies 
+can be created as friends log-in once matching begins, in that case, an error won't be returned.
+If all buddies were made during matching, and there is not enough people,
+the DWC_ERROR_FRIENDS_SHORTAGE error will be returned by this function.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-10-03
+- Previously, the data needed for another host to find you during matching
+(hereafter called the host data) was registered during login on the GameSpy server
+and remained there until DWC_ShutdownFriendsMatch() was called.
+To reduce the server load for matching types other than server-client,
+a change was made so that host data is deleted from the GameSpy server after matching is complete.
+If DWCi_ConnectToAnybodyAsync() or DWCi_ConnectToFriendAsync() are called,
+the host data is automatically registered on the GameSpy server.
+
+For other hosts to see that data,
+it could take as long as fifteen seconds; to allow for better timing in the game,
+a function that can register your host data,
+BOOL DWC_RegisterMatchingStatus(void), was prepared.
+
+  The specification where host data is registered on the GameSpy server at login, and then
+deleted when DWC_ShutdownFriendsMatch() is called remains unchanged.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-26
+- The addFilter argument for DWCi_ConnectToFriendAsync() had worked to save only
+a pointer within the library, taking a pointer to a string, but it was
+changed to save a copy of the string within the library.
+
+- The argument keyString, for the functions DWC_AddMatchKeyInt() and DWC_AddMatchKeyString(),
+also took pointers to strings and saved the pointer only within the
+library, but they were changed to save a copy of the string within the library.
+For the valueSrc argument, the library stores only the pointer, as before.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-21
+- The function DWC_CloseAllConnectionsHard() performs a hard close of all connections.
+This function differs from DWC_CloseConnectionAsync(), and when the close process completes within it,
+a callback is returned before the function is left.
+Although you can continue to use DWC_CloseConnectionAsync(), it will be
+unsupported; use DWC_CloseAllConnectionsHard() instead.
+
+- The function DWC_CancelMatching() was prepared to cancel matching.
+This function differs from DWC_CancelMatchingAsync(), and when the cancel process completes within it,
+a callback is returned before the function is left.
+The DWC_CancelMatchingAsync() function is still available, but it has the same process as
+DWC_CancelMatching().
+
+- Matching cannot be performed with previous versions.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-15
+- Changed DWC_CloseConnectionsAsync() so that it returns an int return value.
+For details, see the function description comments in NitroDWC/include/base/dwc_main.h
+
+- Added functions to forcibly end the connection
+int DWC_CloseConnectionHard(u8 aid)
+int DWC_CloseConnectionHardBitmap(u32* bitmap)
+were added.
+It is used when closing a host connection as a result of lost communications,
+as from a loss of power, etc.
+For details, see the function description comments in NitroDWC/include/base/dwc_main.h
+Be aware that the closed callback always returns before these functions are left!
+
+- Until now, bitmap send functions have passed bitmaps that raise their
+own AID bits as an argument and get a bitmap where only their own bits are zeroed
+as a return value, but this was changed such that its own bits are not modified.
+From the beginning, a DS does not send to itself.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-12
+- The friend list deletion callback, DWCDeleteFriendListCallback, would
+only return the index of the deleted friend list, but the indices of
+lists that were determined to be identical to that of the deleted friend list
+are now also passed.
+void (*DWCDeleteFriendListCallback)(int deletedIndex, int srcIndex, void* param);
+If there are two or more sets of identical friend data in the friend roster,
+the data found later in the friend roster is usually deleted.
+However, if it is the same friend, and buddies were formed on the GameSpy server,
+but one of the parties is not yet a buddy, friend data in this state will be deleted.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-09
+- The maximum length of the string that can be used in the addFilter argument for the
+DWC_ConnectToAnybodyAsync() function was reduced from 144 to 127 characters.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-07
+- When using Metrowerks CodeWarrior 1.2 SP2, the THUMB_ROM build for the
+  DWCi_ProcessRecvMatchCommand() function fails (there is an error in table reference
+  calculations for table jumps). Be aware of this.&nbsp;
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-06
+- The issue where a leak occurred in the delay simulation buffer for Transport
+  during debug/release builds was addressed.
+
+- The issue was resolved where, after calling DWC_LoginAsync, a DWC_ShutdownFriendsMatch() call 
+  would cause ARM9 to crash under certain conditions.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-03
+- The arguments for DWC_GetFriendStatus() and DWC_GetFriendStatusSC() was changed
+  from a pointer to the friend list and the friend list length to a pointer to friend data. This change
+  was made due to the removal of friend list-related functions.
+
+- For the following callback that included the GameSpy profile ID as an argument, changes
+  were made to return not the profile ID but the friend list index instead.
+- DWCMatchedSCCallback: The callback for when sever/client type matching is completed
+·DWCNewClientCallback: The callback that notifies start of new sever/client type matching connection
+- DWCConnectionClosedCallback: The callback for when connection is closed
+  For the target player (a newly connecting player, or a player closing a connection),
+  the friend list index is returned if the party is a friend; ifnot, a value of -1
+  is returned.
+Note: Both are type int, and a compile error is not output.
+
+- The following friendList-related external functions were deleted: DWC_SetFriendDataToList(),
+  DWC_SetGsProfileIDToList(), and DWC_DeleteFriendFromList(). A function
+  accessing friend data on a unit basis was prepared: NitroDWC/include/base/dwc_account.h
+  (source is NitroDWC/libraries/account/dwc_account.c).
+
+- Functions that directly handle GameSpy profile IDs, DWC_GetProfileIDFromList(), and
+  DWC_GetFriendListIndex() were made internal. Applications should not
+  normally need to directly handle GameSpy profile IDs.
+
+- Prepared a new function, DWC_IsValidFriendData(), to check whether
+  friend data is valid. To maintain compatibility with previous versions, the internal function
+  DWCi_Acc_IsValidFriendData() is unchanged.
+
+- Corrected an issue that occurred if friends had not yet logged in when getting a friend's
+  GameSpy profile ID from the MP exchange friend data.
+
+- Made changes so that the entries in the list are not moved up to fill the gap
+  even when friend data is erased during the friend list synchronous update. In step with this change, revised the processes that were performed on the condition that the list entries be moved up. When deleting friend data with the library,
+  deletions will not occur unless friend registry via MP friend data exchange and 
+  registries via friend exchange keys occur between the same people.
+
+- Adjusted the approval process for receiving a friend request to match the final specification. Until now, buddy requests
+  from friends who were only registered with MP exchange friend data were ignored, but
+  buddy relationships will be formed if the person is a friend.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2005-09-02
+- DWC_StartUtilityEx() will no longer function unless its third argument is
+  specified appropriately.
+
+- Supported the changes to the WCM specification of NitroWiFi. The version must be NitroWiFi-20050902 or later.
+&nbsp;
+
+- PR2 release.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

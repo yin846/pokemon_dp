@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPSSoc</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPSSoc</h1>
+
+
+<h2>Definitions</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>typedef struct _CPSSoc {
+OSThread *thread;			// Owner of this socket
+u32 block_type;
+u8 state;				// socket state
+u8 ssl;				// TCP if 0, SSL otherwise
+u16 local_port;			// my port number
+void *con;				// SSL connection information
+u32 when;				// when this was created (SYN sent/recvd)
+u32 local_ip_real;			// real IP that the packet is sent to
+u16 remote_port;			// his port number
+u16 remote_port_bound;		// port number specified by CPS_SocBind()
+CPSInAddr remote_ip;		// his IP address
+CPSInAddr remote_ip_bound;		// IP address specified by CPS_SocBind()
+u32 ackno;				// my ACK number (i.e., received so far)
+u32 seqno;				// my SEQ number (i.e., sent so far)
+u16 remote_win;			// his window size
+u16 remote_mss;			// his MSS
+u32 remote_ackno;			// his ACK number (i.e., acked so far)
+u32 ackrcvd;			// # of ACKs received so far (for slow start)
+int (*udpread_callback) (u8 *, u32, struct _CPSSoc *);
+CPSSocBuf rcvbuf;			// Low level receive buffer (filled by TCP state machine or UDP)
+
+u32 rcvbufp;			// index to rcvbuf.data[] (0 based)
+CPSSocBuf sndbuf;			// Low level send buffer (used by packet sender)
+CPSSocBuf linbuf;			// High level line input buffer
+CPSSocBuf outbuf;			// High level output buffer for buffered-output
+u32 outbufp;			// index to outbuf.data[]
+} CPSSoc;</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>Structure that defines the socket. The fields inside <CODE>OSThread</CODE> point to this socket. The system configures most of the fields, but the application must set the buffer region and some other fields. </p>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>rcvbuf</CODE></STRONG></EM></TD>
+			<TD width="75%">Required. The receive buffer area returned by <CODE><A href="CPS_SocRead.html">CPS_SocRead()</A></CODE>. The TCP window size depends on the size of this area. UDP packets and ICMP echo reply packets larger than rcvbuf are shortened. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>sndbuf</CODE></STRONG></EM></TD>
+			<TD>Required. Send packet buffer to be passed to ARM7. Must prepare the maximum packet length of packets output by the application for each thread (including IP header, etc.) plus 14 bytes. Normally, set this to 1514 bytes. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>linbuf</CODE></STRONG></EM></TD>
+			<TD>Optional. Must provide the maximum length of the line that will be handled plus 1 byte only if using <CODE><A href="CPS_SocGets.html">CPS_SocGets()</A></CODE>. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>outbuf</CODE></STRONG></EM></TD>
+			<TD>Optional. Secure appropriate size only if using <CODE><A href="CPS_SocPutChar.html">CPS_SocPutChar()</A></CODE>, <CODE><A href="CPS_SocPuts.html">CPS_SocPuts()</A></CODE>, and <CODE><A href="CPS_SocPrintf.html">CPS_SocPrintf()</A></CODE>. Making this twice the size of mymss will improve efficiency. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>con</CODE></STRONG></EM></TD>
+			<TD>Set the pointer to the <CODE><A href="CPSSslConnection.html">CPSSslConnection</A></CODE> structure when using SSL. </TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<p>During the UDP communications, the following fields can be used inside <CODE>udpread_callback()</CODE> to control the bind states of ports and IP addresses. For further details, see the descriptions for <CODE><A href="CPS_SetUdpCallback.html">CPS_SetUdpCallback()</A></CODE> and <CODE><A href="CPS_SocBind.html">CPS_SocBind()</A></CODE>. </p>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD><EM><STRONG><CODE>remote_port</CODE></STRONG></EM></TD>
+			<TD>The actual port number of the partner. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>remote_ip</CODE></STRONG></EM></TD>
+			<TD>The actual IPv4 address of the partner. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>remote_port_bound</CODE></STRONG></EM></TD>
+			<TD>The port number of the partner as specified by <CODE>CPS_SocBind()</CODE>. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>remote_ip_bound</CODE></STRONG></EM></TD>
+			<TD>The IPv4 address of the partner as specified by <CODE>CPS_SocBind()</CODE>. </TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SocRegister.html">CPS_SocRegister</A></CODE>, <CODE><A href="CPS_SocUse.html">CPS_SocUse</A></CODE>, <CODE><A href="CPS_SocRelease.html">CPS_SocRelease</A></CODE>, <CODE><A href="CPS_SetUdpCallback.html">CPS_SetUdpCallback</A></CODE>, <CODE><A href="CPS_SocBind.html">CPS_SocBind</A></CODE>, <CODE><A href="CPS_SocWrite.html">CPS_SocWrite</A></CODE>, <CODE><A href="CPSSocBuf.html">CPSSocBuf</A></CODE>, <CODE><A href="CPSSslConnection.html">CPSSslConnection</A></CODE>, <CODE><A href="CPS_CONSTANT_TYPE.html">CPS Library Types</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+10/24/2005 Initial version.</P>
+</body>
+</html>

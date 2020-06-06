@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>TCM (Overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">TCM (Overview)</H1>
+<H2>Description</H2>
+<P>TCM is an abbreviation for &quot;Tightly Coupled Memory.&quot; It is high-speed memory attached directly to the ARM9 core. Since this memory is not connected to the ARM9 bus, it is possible for the ARM9 to perform process using TCM, even in DMA.</P>
+<P>There are two types of TCM: Instruction TCM (ITCM) and Data TCM (DTCM). ITCM has 32 kilobytes of space, while DTCM has 16 kilobytes. ITCM can store instructions and data. DTCM can store data, but cannot store instructions.</P>
+<HR>
+<P><B>Mapping</B></P>
+<P>ITCM can be mapped to an address that is a multiple of 32 KB, while DTCM can be mapped to an address that is 16 KB. In the NitroSDK, ITCM is mapped at <code>0x01FF8000&nbsp;-&nbsp;0x01FFFFFF</code>, while DTCM is mapped at <code>0x027E0000&nbsp;-&nbsp;0x027E3FFF</code>. These positions can be altered under specific conditions, but if it is not necessary to do so, it is recommended that development be performed with the configuration as-is.</P>
+
+<HR>
+<P><B>Enabling and Disabling</B></P>
+<P>ITCM and DTCM can be enabled and disabled with the following functions:</P>
+<P><code><a href="OS_EnableITCM.html">OS_EnableITCM()</a></code><br /> <code><a href="OS_DisableITCM.html">OS_DisableITCM()</a></code><br /> <code><a href="OS_EnableDTCM.html">OS_EnableDTCM()</a></code><br /> <code><a href="OS_DisableDTCM.html">OS_DisableDTCM()</a></code></P>
+<HR>
+<P><B>Obtaining and Configuring the DTCM Addresses</B></P>
+<P>For DTCM, <code><a href="OS_GetDTCMAddress.html">OS_GetDTCMAddress()</a></code> can be used to get the mapped address. <code><a href="OS_SetDTCMAddress.html">OS_SetDTCMAddress()</a></code> sets the address. However, if DTCM changes the mapping location during program operation after stack region and each hook vector has been mapped, it is possible that the program will become unstable. It is therefore recommended that you avoid making frequent changes with one program.</P>
+<P>ITCM has no Set or Get functions. The constant <code>HW_ITCM</code> is normally defined at the ITCM starting address <code>0x01FF8000</code>.</P>
+<HR>
+<P><B>TCM&ndash;Related CP15 Settings</B></P>
+<P>The ITCM and DTCM configurations depend on the configuration of the internal register of co-processor 15 (<code>CP15</code>). The NitroSDK provides an API that directly accesses this register. Set and Get functions are included for the parameters to be provided to the register (or loaded into the register) separately for ITCM and DTCM. However, in order to use them (particularly the Set functions), their operating principles must be understood.</P>
+<P><code><a href="OS_SetITCMParam.html">OS_SetITCMParam()</a></code><br /> <code><a href="OS_GetITCMParam.html">OS_GetITCMParam()</a></code><br /> <code><a href="OS_SetDTCMParam.html">OS_SetDTCMParam()</a></code><br /> <code><a href="OS_GetDTCMParam.html">OS_GetDTCMParam()</a></code></P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Tcm">An Overview of OS Functions (TCM)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>04/13/2005 Changed DTCM default addresses<BR>12/14/2004 Revised wording<BR>11/09/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

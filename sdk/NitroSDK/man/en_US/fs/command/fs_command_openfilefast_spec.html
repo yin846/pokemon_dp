@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_COMMAND_OPENFILEFAST</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_COMMAND_OPENFILEFAST</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<BR> <CODE>FSResult FS_ARCHIVE_PROC_FUNC(FSFile *p_file, FSCommandType command /* = FS_COMMAND_OPENFILEFAST */);<br></CODE><br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Operating specifications for the archive command <code>FS_COMMAND_OPENFILEFAST</code> are shown below: <BR> <BR>
+
+<HR>
+<B>Arguments passed to this command</B>
+<BLOCKQUOTE>
+<PRE>This command takes (as a command argument) the variable <code>arg.openfilefast</code> that is stored at <code>p_file</code>.<br /> 
+This variable is defined in <code>nitro/fs/file.h</code> as shown below:
+
+typedef struct
+{
+<a href="../fs_file_id_type.html">FSFileID</a> id;
+} FSOpenFileFastInfo;</code>
+</PRE>
+</BLOCKQUOTE>
+<BLOCKQUOTE>Argument content is listed below:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1" width="50%">
+  <TBODY>
+    <TR>
+<TD style="text-align : center;" width="95">Arguments</TD>
+<TD style="text-align : center;" width="522">Content</TD>
+    </TR>
+    <TR>
+<TD width="95" style="text-align : center;">id</TD>
+<TD width="522">The ID of the file to be opened.<br />The <code><a href="fs_command_readdir_spec.html">FS_COMMAND_READDIR</a></code> command generates this value.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<HR>
+<B>Actions required of this command</B>
+<BLOCKQUOTE>
+<PRE>It sets the <code>p_file</code> variable prop.file as shown below:
+
+Appropriately sets each of the <code>prop.file</code> variables, based on the file ID that is defined in the <code>id</code> argument.
+The set values are used by subsequent <code><a href="fs_command_readfile_spec.html">FS_COMMAND_READFILE</a></code> and <code><a href="fs_command_writefile_spec.html">FS_COMMAND_WRITEFILE</a></code> commands.
+You may determine your own meanings for the <code>prop.file</code> variables as long as they are appropriate arguments for these commands.
+However, <code>prop.file.pos</code> must be within the range <code>prop.file.top</code> - <code>prop.file.bottom</code>.
+</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Default Implementation</B>
+<BLOCKQUOTE>The command sets values based on the following determinants:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="185">prop.file.top</TD>
+<TD width="432">The area top position that is acquired from the FAT information that the specified file index indicates.<br /> (Conforms to NitroROM format.)</TD>
+    </TR>
+    <TR>
+<TD width="185">prop.file.bottom</TD>
+<TD width="432">The area bottom position that is acquired from the FAT information that the specified file index indicates.<br /> (Conforms to NitroROM format.)</TD>
+    </TR>
+    <TR>
+<TD width="185">prop.file.pos</TD>
+<TD width="432">Sets the same value as <code>prop.file.top</code></TD>
+    </TR>
+    <TR>
+<TD width="185">prop.file.own_id</TD>
+<TD width="432">Sets the argument <code>id</code> as-is.</code></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BLOCKQUOTE>As long as the archive's FAT conforms to the NitroROM format (determined by using the archive read callback function), this information is acquired from the FAT index that is indicated by <code>id.file_id</code>. The <code><a href="fs_command_openfiledirect_spec.html">FS_COMMAND_OPENFILEDIRECT</a></code> command is used to make the setting.
+</BLOCKQUOTE>
+<HR>
+<B>Command Results</B><BR>
+
+<BLOCKQUOTE>
+<PRE>If this command returns <code>FS_RESULT_SUCCESS</code>, <code>p_file</code> becomes a handle that contains directory position information.
+Subsequently the <code>FS_IsDir</code> function returns TRUE.
+It can also be used in arguments in functions that operate on files.</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Functions that use this command</B><BR>
+<BLOCKQUOTE>FS_OpenFile<BR>FS_OpenFileFast
+</BLOCKQUOTE>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a></code>, <code><a href="../fs_archive_proc_func_type.html">FS_ARCHIVE_PROC_FUNC</a></code>, <code><a href="../fs_command_type_const.html">FS_COMMAND_*</a></code>, <code><a href="../archive/FS_SetArchiveProc.html">FS_SetArchiveProc</a></code></p>
+
+<H2>Revision History</H2>
+<P>07/12/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

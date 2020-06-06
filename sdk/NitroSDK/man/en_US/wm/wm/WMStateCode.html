@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WMStateCode</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WMStateCode</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wm.h&gt;</CODE><BR>
+<PRE><CODE>typedef enum WMStateCode
+{
+WM_STATECODE_PARENT_START     = 0 ,
+WM_STATECODE_BEACON_SENT      = 2 ,
+
+WM_STATECODE_SCAN_START       = 3 ,
+WM_STATECODE_PARENT_NOT_FOUND = 4 ,
+WM_STATECODE_PARENT_FOUND     = 5 ,
+
+WM_STATECODE_CONNECT_START    = 6 ,
+WM_STATECODE_BEACON_LOST      = 8 ,
+
+WM_STATECODE_CONNECTED        = 7 ,
+WM_STATECODE_CHILD_CONNECTED  = 7 ,
+WM_STATECODE_DISCONNECTED     = 9 ,
+WM_STATECODE_DISCONNECTED_FROM_MYSELF = 26 ,
+
+WM_STATECODE_MP_START         = 10 ,
+WM_STATECODE_MPEND_IND        = 11 ,
+WM_STATECODE_MP_IND           = 12 ,
+WM_STATECODE_MPACK_IND        = 13 ,
+
+WM_STATECODE_DCF_START        = 14 ,
+WM_STATECODE_DCF_IND          = 15 ,
+
+WM_STATECODE_BEACON_RECV      = 16 ,
+WM_STATECODE_DISASSOCIATE     = 17 ,
+WM_STATECODE_REASSOCIATE      = 18 ,
+WM_STATECODE_AUTHENTICATE     = 19 ,
+
+WM_STATECODE_PORT_INIT                = 25 ,
+WM_STATECODE_PORT_SEND        = 20 ,
+WM_STATECODE_PORT_RECV        = 21 ,
+
+WM_STATECODE_FIFO_ERROR       = 22 ,
+WM_STATECODE_INFORMATION              = 23 ,
+WM_STATECODE_UNKNOWN                  = 24 ,
+
+} WMStateCode;</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_PARENT_START</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartParent.html"><CODE>WM_StartParent</CODE></A>.<br />Generated when a system begins communications processing as a parent.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_BEACON_SENT</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartParent.html"><CODE>WM_StartParent</CODE></A>.<br />Generated each time beacon transmission to a child completes.
+      </TD>
+    </TR>
+
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_SCAN_START</font></strong></em></TD>
+<TD width="800">The specification of <a href="WM_StartScan.html"><code>WM_StartScan</code></a> has changed; this state code will no longer be generated.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_PARENT_NOT_FOUND</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartScan.html"><CODE>WM_StartScan</CODE></A>.<br />Indicates the result of a scan for a parent: no parent was found in the specified time.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_PARENT_FOUND</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartScan.html"><CODE>WM_StartScan</CODE></A>.<br />Indicates the result of a scan for a parent: one parent was found.
+      </TD>
+    </TR>
+
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_CONNECT_START</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartConnect.html"><CODE>WM_StartConnect</CODE></A>.<br />Generated when a system begins connection processing as a child.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_BEACON_LOST</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartConnect.html"><CODE>WM_StartConnect</CODE></A>.<br />Generated when the beacon, transmitted periodically by the parent in order to synchronize communication, could not be received in a fixed period of time.
+      </TD>
+    </TR>
+
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_CONNECTED</font></strong></em></TD>
+<TD width="800">Generated as a callback for <a href="WM_StartParent.html"><code>WM_StartParent</code></a> or <a href="WM_StartConnect.html"><code>WM_StartConnect</code></a>.<br />Generated when the connection with the target is established. For a parent, it is generated every time children send connection requests.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_CHILD_CONNECTED</font></strong></em></TD>
+<TD width="800">Integrated into <code>WM_STATECODE_CONNECTED</code>.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_DISCONNECTED</font></strong></em></TD>
+<TD width="800">Generated as a callback for <a href="WM_StartParent.html"><code>WM_StartParent</code></a> or <a href="WM_StartConnect.html"><code>WM_StartConnect</code></a>.<br />Generated when a communications party disconnects.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_DISCONNECTED_FROM_MYSELF</font></strong></em></TD>
+<TD width="800">Generated as a callback for <a href="WM_StartParent.html"><code>WM_StartParent</code></a> or <a href="WM_StartConnect.html"><code>WM_StartConnect</code></a>.<br />Generated when you disconnect your connection with a communication partner.
+      </TD>
+    </TR>
+
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_MP_START</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartMP.html"><CODE>WM_StartMP</CODE></A>.<br />Generated when MP communications begins.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_MPEND_IND</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartMP.html"><CODE>WM_StartMP</CODE></A>.<br />Generated each time MP communications completes transmission of one MP packet.<br />Only generated when communicating as a parent.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_MP_IND</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartMP.html"><CODE>WM_StartMP</CODE></A>.<br />Generated each time MP communications receives data from a parent.<br />Only generated when communicating as a child.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_MPACK_IND</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartMP.html"><CODE>WM_StartMP</CODE></A>.<br />Generated each time the MP communication is completed.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_DCF_START</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartDCF.html"><CODE>WM_StartDCF</CODE></A>.<br />Generated when DCF communications begins.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_DCF_IND</font></strong></em></TD>
+<TD width="800">Generated as a callback for <A href="WM_StartDCF.html"><CODE>WM_StartDCF</CODE></A>.<br />Generated each time DCF communications receives data.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_BEACON_RECV</font></strong></em></TD>
+<TD width="800">Generated as the callback specified by <A href="WM_SetIndCallback.html"><CODE>WM_SetIndCallback</CODE></A>.<br />Generated each time a system receives a beacon as a child.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_DISASSOCIATE</font></strong></em></TD>
+<TD width="800">Generated as the callback specified by <A href="WM_SetIndCallback.html"><CODE>WM_SetIndCallback</CODE></A>.<br />Generated as a mid-term report on a disconnect process.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_REASSOCIATE</font></strong></em></TD>
+<TD width="800">Generated as the callback specified by <A href="WM_SetIndCallback.html"><CODE>WM_SetIndCallback</CODE></A>.<br />Generated when a child that has once been disconnected is reconnected.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_AUTHENTICATE</font></strong></em></TD>
+<TD width="800">Generated as the callback specified by <A href="WM_SetIndCallback.html"><CODE>WM_SetIndCallback</CODE></A>.<br />Generated as a mid-term report on a disconnect process.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_PORT_INIT</font></strong></em></TD>
+<TD width="800">Generated when port initialization has completed.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_PORT_SEND</font></strong></em></TD>
+<TD width="800">Generated as a callback when the data transmission to the port has completed.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_PORT_RECV</font></strong></em></TD>
+<TD width="800">Generated as a callback specified with <a href="WM_SetPortCallback.html"><code>WM_SetPortCallback</code></a>. Generated when receiving the data to be sent to the port, and when detecting the connection or disconnection of a child.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_FIFO_ERROR</font></strong></em></TD>
+<TD width="800">Generated when automatic processing generated by the ARM7 could not be recorded in the queue.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_INFORMATION</font></strong></em></TD>
+<TD width="800">Generated to provide information for events that occur internally.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_STATECODE_UNKNOWN</font></strong></em></TD>
+<TD width="800">Generated when some unspecified event occurs internally.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>
+This enumerated type indicates the callback type that is used jointly as the <CODE>state</CODE> member of each structure that is passed to a WM asynchronous function's callback function.
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/31/2005 Added WM_STATECODE_DISCONNECTED_FROM_MYSELF and WM_STATECODE_PORT_INIT, WM_STATECODE_UNKNOWN<BR> 07/29/2005 Added WM_STATECODE_INFORMATION<BR>	11/02/2004 Fixed omissions relating to the integration of past revisions<BR> 09/13/2004 Changed WM_STATECODE_CHILD_CONNECTED to WM_STATECODE_CONNECTED<BR> 08/20/2004 Revised because of specification changes of the scan functions<BR> 08/11/2004 Added description on the addition of WM specifications<BR> 07/29/2004 Initial version<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

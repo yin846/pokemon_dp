@@ -1,0 +1,100 @@
+loadrun is a command that loads and executes NITRO srl files associated with IS-NITRO-EMULATOR.
+It can be run from the command line without starting the debugger, and can be forcibly terminated with settings conditions.
+
+----------------------------------------------------------------
+How to use:
+Specify the srl filename after loadrun.
+At that time, options can be specified between loadrun and the srl filename. See the following for options.
+
+----------------------------------------------------------------
+Explanation of options.
+
+--version
+	Displays the version.
+
+-h, --help
+	Displays help.
+
+-q, --quiet
+	Runs in Quiet mode.
+	OS_Printf() from the DS is not displayed.
+
+-v, --verbose
+	Runs in Verbose mode.
+	Displays various information.
+
+-L, --list
+	Displays a list of connected devices.
+	For example, a list such as the following is displayed.
+
+	---- Connected devices:
+	  0: [NITROUSB]  IS-NITRO-EMULATOR serial:04070680
+	  1: [NITROUSB]  IS-NITRO-EMULATOR serial:04070682
+	  2: [NITROUSB]  IS-NITRO-EMULATOR serial:04070683
+	3 device(s) found.
+
+	The [NITROUSB] portion is whatever device type specified with the &ndash;d option. serial is the serial number specified by using the -s option.
+
+Devices that are already connected when IS-NITRO-DEBUGGER is started are not displayed in this list.
+
+-l, --lap
+	Displays the elapsed time since startup on each row when OS_Printf() data is displayed. Operations are executed in units of seconds internally, so there may be slight variations of a few tenths of a second.
+	The below is an example of what is displayed. The {x:xx} portion is the portion added by this option.
+
+	{0:01}Program started
+	{0:01}--- heap init
+	{0:02}x=14 y=50
+	{0:04}x=15 y=20
+	{0:04}
+
+-d, --type=DEVICE
+	Specifies device types. CGBUSB, CGBSCSI, NITROUSB, or NITROUIC can be specified.
+The first machine found with the device specified here becomes the target for that action.
+
+
+-s, --serial=SERIAL
+	Specifies device serial numbers. The specified value is a 10 digit number and is the same as the serial number displayed with the -L option.
+	(In the list, when displaying 04070680, the first 0 can be eliminated as in 4010680.
+The first machine found with the serial number specified here becomes the target for that action.
+
+	It is okay to specify only one of either &ndash;d or &ndash;s.
+It is also okay to specify both, or neither.
+If absolutely nothing is specified, the first machine found period becomes the target.
+
+-t, --timeout=SECOND
+	Specifies a display timeout.
+	After receiving the last OS_Printf() data, if the next display doesn&rsquo;t come by the specified time, the operation is forcibly terminated.
+
+
+-T, --exec-timeout=SECOND
+	Specifies an execution timeout.
+	Forcibly terminates after the specified period of time passes from when debugger loads an executes an srl file.	 
+
+-a, --abort-string=STRING
+	Specifies a termination character string.
+	-a=ABORT  -a=&quot;ABORT&quot;   -a ABORT -a &quot;ABORT&quot;
+These can be specified using forms such as --abort-string=ABORT  and  --abort-string &quot;ABORT.&quot;
+
+	Matching checks the beginning of the displayed character string. It will not make a determination until a line feed is found.	  Gaps between displays are fine.
+
+	For example, if the termination character string is &ldquo;ABORT,&quot; any of the following
+	OS_Printf(&quot;   ABORT\n&quot;)
+	OS_Printf(&quot;ABORTING\n&quot;)
+	OS_Printf(&quot;ABOR&quot;); OS_Sleep(1000); OS_Printf(&quot;T\n&quot;) will result in termination.
+
+	OS_Printf(&quot;   ABORT\n&quot;)
+	OS_Printf(&quot;ABO\nRT\n&quot;)
+	OS_Printf(&quot;A B O R T\n&quot;): These will not result in termination, however. In addition,
+
+	OS_Printf(&quot;ABORT&quot;)
+
+	will not immediately terminate because a line break has not been added.
+	Termination will occur after OS_Printf(&quot;\n&quot;), OS_Printf(&quot; SOON\n&quot;), or other line feed code is encountered later.
+
+-c, --card-slot=SWITCH
+	Specify the lock setting of the card slot to ON or OFF when executing.
+	OFF is used if unspecified.
+
+-C, --cartridge-slot=SWITCH
+	Specify the lock setting of the cartridge to ON or OFF when executing.
+	OFF is used if unspecified.

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>pdic2c.pl</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">pdic2c.pl</H1>
+<H2>Description</H2>
+<P><code>pdic2c.pl</code> is a sample tool that converts text format pattern data obtained by running the character recognition demo <a href="../demos/prc/prcdemos.html"><code>characterRecognition-2</code></a> into C source files that can be used directly by the program.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% perl pdic2c.pl [-ch] [-C OUTPUT_SOURCE] [-H OUTPUT_HEADER] [-i INCLUDE_FILE] [-p PREFIX] NORMALIZE_SIZE [PATTERN_FILES]...</CODE></P>
+<P>The text data contained in the files specified in <code>PATTERN_FILES</code> is interpreted as sample character dictionary data. The C source file and the header are consecutively output as standard output. The normalized size of the output data is specified in <code>NORMALIZE_SIZE</code>. <code>PATTERN_FILES</code> can be omitted. When it is, the data is read from standard input.</P>
+<P>When either <CODE>-c, -h</CODE> is specified as an option, either the source file or the header file is output. When it's unspecified, both are output. Also, if each of the <CODE>-C, -H</CODE> options are specified, instead of regular output, it is possible to specify the source file name and header file name of the output destination.</P>
+<P>There is a code in the source file that #includes the header file. The path name is specified with the <CODE>-i</CODE> option. When there is no <CODE>-i</CODE> option, only the file name part of the path name that is specified by the <CODE>-H</CODE> option is used. When nothing is specified, <CODE>patternDict.h</CODE> is used.</P>
+<P>The <CODE>-p<CODE> option can be used to specify the prefix attached to the identifier in the generated source file.</P>
+
+<H3>Character Dictionary Text Data Fonts</H3>
+<P><CODE>pdic2c.pl</CODE> interprets text data as one item per line on the basis of the following forms:</P>
+<PRE>line   ::= &quot;PatternName&quot; Kind Correction NormalizeSize '|' stroke+
+stroke ::= point+ '|'
+point  ::= '(' X ',' Y ')'
+</PRE>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH>Format</TH>
+<TH>Description</TH>
+<TH>Details</TH>
+    </TR>
+    <TR>
+<TD><CODE>&quot;Pattern Name&quot;</CODE></TD>
+<TD>Item Name</TD>
+<TD>This is the name of the characters shown in this item. Code values are assigned starting at 0 in the order that the names appear and the correspondence between the code and the name are output as a <code>PatternName</code> matrix.</TD>
+    </TR>
+    <TR>
+<TD><CODE>Kind</CODE></TD>
+<TD>Type of Character</TD>
+<TD>This is the value that is output to the <a href="../prc/recognize/PRCPrototypeEntry.html"><code>PRCPrototypeEntry</code></a> kind.</TD>
+    </TR>
+    <TR>
+<TD><CODE>Correction</CODE></TD>
+<TD>Corrected Value</TD>
+<TD>This is the value that is output to the   <a href="../prc/recognize/PRCPrototypeEntry.html"><code>PRCPrototypeEntry</code></a> correction.</TD>
+    </TR>
+    <TR>
+<TD><CODE>NormalizeSize</CODE></TD>
+<TD>Normalize Size</TD>
+<TD>For this item, the values assume a bounding box so that the upper left is (0, 0) and lower right is (NormalizeSize-1, NormalizeSize-1). When these differ from the arguments of <code>pdic2c.pl</code>, output will take place after the coordinate values  that follow this item have been enlarged or reduced to match the size of the argument.</TD>
+    </TR>
+    <TR>
+      <TD><CODE>'|'</CODE></TD>
+<TD>Break</TD>
+<TD>The vertical line indicates that the pen left the paper once and the line stopped.</TD>
+    </TR>
+    <TR>
+<TD><CODE>(X, Y)</CODE></TD>
+<TD>Coordinates</TD>
+<TD>This indicates the pattern coordinates. Please be careful to note that, in order to align with the screen coordinates,  that the upper left is (0, 0).</TD>
+    </TR>
+    <TR>
+      <TD># ...</TD>
+<TD>Comment</TD>
+<TD>This is interpreted as an explicit comment row and it reads it and discards it without doing anything.
+    </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>Scenarios for the use of this tool include the character recognition sample demo <a href="../demos/prc/prcdemos.html"><code>characterRecognition-2</code></a> in which the pattern data output as debug output when the Y button is pressed is cut and pasted and text format character sample data are created. By passing that test file to <code>pdic2c.pl</code>, it is possible to generate source code for the list of character samples used with character recognition API.
+</P>
+<P>When all are sent to standard output, the first half is a header file for other source codes using a figure list, and the second half is a source file containing concrete data. Divide and rewrite them accordingly when you use them.</P>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/pdic2c.pl</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="../demos/prc/prcdemos.html">Character Recognition Sample Demo characterRecognition-2</A></CODE></P>
+<H2>Revision History</H2>
+<P>
+10/04/2005 Noted addition of arguments.<BR> 10/28/2004 Changed regularize to normalize.<BR> 2004/06/30 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

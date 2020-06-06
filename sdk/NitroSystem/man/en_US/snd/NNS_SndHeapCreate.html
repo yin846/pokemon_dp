@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndHeapCreate</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndHeapCreate</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">NNSSndHeapHandle NNS_SndHeapCreate( void*  startAddress, u32 size );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDADMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>startAddress</code></strong></em></td>
+<td>The starting address of the memory region to use as the heap.</td>
+</tr>
+<tr>
+<td><em><strong><code>size</code></strong></em></td>
+<td>The size of the memory region to use as the heap.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAZMWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns the handle of the heap that was created. Returns <code>NNS_SND_HEAP_INVALID_HANDLE</code> if the creation fails.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDADNWT"></a>
+<h2>Description</h2>
+      <p>
+Creates the sound heap.
+</p>
+      <p>
+The function fails if the size <em><code><strong>size</strong></code></em> of the memory region is insufficient. Also, because a heap management region is necessary, the size of the heap that is created is smaller than <em><code><strong>size</strong></code></em>.
+</p>
+      <p>
+To reuse the memory area passed to this function, use the <code>NNS_SndHeapDestroy</code> function to destroy the heap.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndHeapDestroy.html">NNS_SndHeapDestroy</a></p>
+<h2>Revision History</h2>
+<p>10/04/2004 Added a description about reusing the memory area.</P><P>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

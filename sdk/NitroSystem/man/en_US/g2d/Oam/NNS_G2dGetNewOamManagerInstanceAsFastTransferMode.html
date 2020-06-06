@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dGetNewOamManagerInstanceAsFastTransferMode</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dGetNewOamManagerInstanceAsFastTransferMode</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Oam.h&gt;</CODE></pre>
+  <pre><CODE>BOOL NNS_G2dGetNewOamManagerInstanceAsFastTransferMode(
+( 
+NNSG2dOamManagerInstance* pMan,
+u16                         fromOBJ,
+u16                         numOBJ,
+NNSG2dOamType               type 
+);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pMan</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] OAM manager entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>fromOBJ</CODE></font></strong></em></td>
+<td width="87%">[IN] OAM management region-start index (must be a multiple of 4)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>numOBJ</CODE></font></strong></em></td>
+<td width="87%">[IN] Number of OAM attributes to use (must be non-zero and a multiple of 4)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE><code><EM><STRONG>type</STRONG></EM></code></CODE></font></strong></em></td>
+<td width="87%">[IN] OAM type</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>Success or failure.
+</p>
+<H2>Description</H2>
+<P>Initializes the OAM Manager entity. This function must be called before making use of the OAM Manager itself. After OAM Manager is initialized by this function, it can use DMA for fast data transfers to the graphics engine. There are restrictions on the region secured with this function. (such as that the OAM management region starting index must be a multiple of 4) <BR>In addition, the management affine parameter region is allocated for as many as the number of parameters and is included in the management OAM attribute region. (For example, OAM no. 0-32 =&gt; affine parameter no. 0-8 )<BR> <BR>  NNS_G2dGetNewOamManagerInstance(), which initializes an OAM manager entity that has a higher degree of freedom, is also provided. However, fast buffer transfer is not possible. <BR><BR> <BR> The <code>NNS_G2dGetNewOamManagerInstanceAsFastTransferMode</code> function combines the processes that used to be executed by calling the two prior functions <code>NNS_G2dGetNewManagerInstance</code> and <code>NNS_G2dInitManagerInstanceAffine</code>. To maintain compatibility these two other functions still exist, but you should make use of this new function for new applications.
+
+
+<BR>
+
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dGetNewOamManagerInstance.html">NNS_G2dGetNewOamManagerInstance</A><br></CODE></p>
+<p><CODE><A href="NNS_G2dGetNewManagerInstance.html">NNS_G2dGetNewManagerInstance</A><br></CODE></p>
+<p><CODE><A href="NNS_G2dInitManagerInstanceAffine.html">NNS_G2dInitManagerInstanceAffine</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</body>
+</html>

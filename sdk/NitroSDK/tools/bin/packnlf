@@ -1,0 +1,101 @@
+#! gawk -f
+
+BEGIN {
+	isError = 0;
+	
+	if (ARGC != 2){
+		print "packnlf [sample.nlf]" > "/dev/stderr";
+		isError = 1;
+		exit isError;
+	}
+	
+	arcdir = "./package";
+	FS  = ",";
+	OFS = ",";
+	fcount = 0;
+
+	system("rm -rf "arcdir);
+	system("mkdir -p "arcdir);
+
+	oldnlf = ARGV[1];
+	gsub(/^.*\//,"",oldnlf);
+	newnlf = arcdir"/"oldnlf;
+}
+
+/^T,/{
+	root = dequote($2);
+	$2 = enquote(".");
+}
+
+/^H,/{
+	$2 = enquote(get_new_entry(dequote($2)));
+	$3 = enquote(get_new_entry(dequote($3)));
+}
+
+/^[97],/{
+	$2 = enquote(get_new_entry(dequote($2)));
+	$3 = enquote(get_new_entry(dequote($3)));
+	$4 = enquote(get_new_entry(dequote($4)));
+	$5 = enquote(get_new_entry(dequote($5)));
+	$6 = enquote(get_new_entry(dequote($6)));
+}
+
+/^F,/{
+	$7 = enquote(get_new_entry(dequote($7)));
+}
+
+{
+	print $0 >> newnlf;
+}
+
+
+END {
+	if (!isError){
+		arcname = arcdir strftime("-%y%m%d-%H%M.zip");
+		system("zip -r "arcname" "arcdir);
+	}
+	exit isError;
+}
+
+function get_new_entry(t)
+{
+	entry = t;
+	
+	# * Entries that start with * are false files; Do not convert.
+	if (entry ~/^[*]/){
+		return entry;
+	}
+	
+	new_entry = "./"entry;
+	gsub(/:/,"_",   new_entry);
+	gsub(/\/\//,"/",new_entry);
+	
+	# If path includes ":", it is an absolute path.
+	# Converts to relative path changing ":" to "_"
+	if (entry !~/:/){
+		entry = root"/"entry;
+		gsub(/\/\//,"/",entry);
+	}
+	
+	# Copy file. 
+	cmd = "install -D "enquote(entry)" "enquote(arcdir"/"new_entry);
+	system(cmd);
+	
+	return new_entry;
+}
+
+function dequote(t)
+{
+	# Remove ""
+	entry = t;
+	sub(/^\"/, "", entry);
+	sub(/\"$/, "", entry);
+	return entry;
+}
+
+function enquote(t)
+{
+	# Enclose with "" 
+	entry = "\""t"\"";
+	return entry;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dPlttLoad</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dPlttLoad</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/kernel.h&gt;</CODE></PRE>
+<PRE><CODE>void
+NNS_G3dPlttLoad(
+NNSG3dResTex*   pTex,
+BOOL exec_begin_end
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pTex</STRONG></EM></TD>
+<TD width="87%">Pointer to the texture resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>exec_begin_end</STRONG></EM></TD>
+<TD width="87%">When TRUE, calls the <code>GX_BeginLoadTexPltt</code> and <code>GX_EndLoadTexPltt</code> functions of NITRO-SDK automatically</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>The palette data stored in the texture resource is loaded to the VRAM region indicated by the palette key. Also, sets the flag indicating the palette is loaded. The palette key must be configured with the <code><a href="NNS_G3dPlttSetPlttKey.html">NNS_G3dPlttSetPlttKey</a></code> function before calling this function.</P>
+<P>When <code>exec_begin_end</code> = <code>TRUE</code>, both of the NITRO-SDK API commands, the <code>GX_BeginLoadTexPltt</code> and <code>GX_EndLoadTexPltt</code> functions, are called automatically before and after loading texture data to the VRAM. When <code>exec_begin_end</code> = <code>FALSE</code>, the <code>GX_BeginLoadTexPltt</code> and <code>GX_EndLoadTexPltt</code> functions must be called on the user side. When continuously loading palette data, it is more efficient to designate <code>FALSE</code> in <code>exec_begin_end</code> and call the <code>GX_BeginLoadTexPltt</code> and <code>GX_EndLoadTexPltt</code> functions on the user side.</P>
+
+
+<H2>See Also</H2>
+<P><code><a href="NNS_G3dPlttSetPlttKey.html">NNS_G3dPlttSetPlttKey</a></code>, <code><a href="NNS_G3dPlttReleasePlttKey.html">NNS_G3dPlttReleasePlttKey</a></code></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndCheckForMBlockExpHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_FndCheckForMBlockExpHeap</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+	  
+<pre>BOOL NNS_FndCheckForMBlockExpHeap(
+const   void*               memBlock ,
+NNSFndHeapHandle    heap,
+u32                 optFlag );</pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">memBlock</font></strong></em></td>
+<td width="87%">A pointer to the memory block to be checked.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">heap</font></strong></em></td>
+<td width="87%">Extended Heap Handle. &nbsp;If NULL is specified, it does a rough check of the memory block address range and size.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">optFlag</font></strong></em></td>
+<td width="87%">The check option (see the Description section).</td>
+ </tr>
+</table>
+<h2>Return Values</h2>
+<p>Returns TRUE if no errors are found in the extended heap memory block. Returns FALSE if an error is found.</p>
+<H2>Description</H2>
+<P>Checks whether a memory block in the extended heap is corrupted. Specifically, it checks whether the management region for a memory block in the extended heap is normal.</p>
+<p>The <code>optFlag</code> specifies the check options.</P>
+<table>
+ <tr> 
+<td><em><strong><font face="Courier New">NNS_FND_HEAP_ERROR_PRINT</font></strong></em></td>
+<td>If a memory block error is found, this outputs the error content using the <code>OS_Printf()</code> function.</td>
+ </tr>
+</table>
+<p>This function is used for debugging. The final ROM version (<code>FINALROM</code>) does not do anything and always returns <code>TRUE</code>.</p>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_FndCheckExpHeap.html">NNS_FndCheckExpHeap</A></CODE></p>
+<H2>Revision History</H2>
+<P>10/28/2004 Added description of the final ROM limitations<br />08/20/2004 Initial version.</P>
+</body>
+</html>

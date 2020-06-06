@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dTexLoad</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dTexLoad</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/kernel.h&gt;</CODE></PRE>
+<PRE>void
+NNS_G3dTexLoad(
+NNSG3dResTex* pTex,
+BOOL exec_begin_end
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pTex</STRONG></EM></TD>
+<TD width="87%">Pointer to the texture resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>exec_begin_end</STRONG></EM></TD>
+<TD width="87%">When TRUE, calls the <code>GX_BeginLoadTex()</code> and <code>GX_EndLoadTex()</code> functions of NITRO-SDK</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>The texture data from the texture resource is loaded in VRAM area where the texture key indicates. Also, sets the flag indicating that the texture is loaded. The texture key must be configured with <code><a href="NNS_G3dTexSetTexKey.html">NNS_G3dTexSetTexKey</a>()</code> before calling this function.</P>
+<P>When <code>exec_begin_end</code> = <code>TRUE</code>, the NITRO-SDK API functions <code>GX_BeginLoadTex()</code> and <code>GX_EndLoadTex()</code> are called automatically before and after loading texture data to the VRAM. When <code>exec_begin_end</code> = <code>FALSE</code>, the <code>GX_BeginLoadTex()</code> and <code>GX_EndLoadTex()</code> functions must be called on the user side. When continuously loading texture data, it is more efficient to designate <code>FALSE</code> in <code>exec_begin_end</code> and call the <code>GX_BeginLoadTex()</code> and <code>GX_EndLoadTex()</code> functions on the user side.</P>
+
+
+<H2>See Also</H2>
+<P><code><a href="NNS_G3dTexSetTexKey.html">NNS_G3dTexSetTexKey</a></code>, <code><a href="NNS_G3dTexReleaseTexKey.html">NNS_G3dTexReleaseTexKey</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+08/19/2004 Corrected errors in the explanatory text. <BR>08/02/2004 Initial version.
+</P>
+</BODY>
+
+</HTML>

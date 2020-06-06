@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsFindFirstFile</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsFindFirstFile</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre>u32 NNS_McsFindFirstFile(
+NNSMcsFile* pFile,
+NNSMcsFileFindData* pFindData,
+const char*         pattern);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">pFile</font></strong></em></td>
+<td width="87%">Pointer to the file information structure</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">pFindData</font></strong></em></td>
+<td width="87%">Pointer to the structure storing the information relating to the found file</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">pattern</font></strong></em></td>
+<td width="87%">Filename pattern for the search</td>
+ </tr>
+</table>
+<h2>Return Values</h2>
+<p>0 if the file search succeeded. A non-zero value otherwise. The return value is one of the following:</p>
+<H2>Description</H2>
+<p>Searches inside the directory for a file that matches the specified filename pattern. If a matching file is found, the information relating to the first-found match is stored in the  <code>NNSMcsFileFindData</code> structure variable specified by <code>pFindData</code>. To search among remaining files, call the <code>NNS_McsFindNextFile</code> function. To end the search, call the <code>NNS_McsCloseFind</code> function.</p>
+<p>You may include the wildcards &quot;<code>*</code>&quot; and &quot;<code>?</code>&quot; in the file name pattern. You may also include a PC environment variable enclosed in &quot;<code>%</code>&quot; characters, such as <code>%NITROSYSTEM_ROOT%\include\*.h</code>.</p>
+<p>The <code>NNSMcsFileFindData</code> structure is defined as shown below.</p>
+<dl>
+  <dd>
+<pre><code>#define NNS_MCS_FILEIO_PATH_MAX 260
+  
+typedef struct NNSMcsFileFindData NNSMcsFileFindData;
+struct NNSMcsFileFindData
+{
+u32         attribute;
+u32                 size;
+char        name[NNS_MCS_FILEIO_PATH_MAX
+};</code></pre>
+</dd></dl>
+<p>The contents of each member is shown below: </p>
+<table>
+ <tr> 
+<td><em><strong><font face="Courier New">attribute</font></strong></em></td>
+<td>The file's attribute For details, see the following:</td>
+ </tr>
+ <tr> 
+<td><em><strong><font face="Courier New">size</font></strong></em></td>
+<td>The file's size (in bytes)</td>
+ </tr>
+ <tr> 
+<td><em><strong><font face="Courier New"><code><EM><STRONG>name</STRONG></EM></code></font></strong></em></td>
+<td>The filename</td>
+ </tr>
+</table>
+<p>The file attributes are the combinations of the following values:</p>
+<table>
+  <tbody>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ATTRIBUTE_DIRECTORY</font></strong></em></td>
+<td>Directory</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ATTRIBUTE_ARCHIVE</font></strong></em></td>
+<td>Archive</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ATTRIBUTE_READONLY</font></strong></em></td>
+<td>Read only</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ATTRIBUTE_HIDDEN</font></strong></em></td>
+<td>Hidden file</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ATTRIBUTE_SYSTEM</font></strong></em></td>
+<td>System file</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ATTRIBUTE_NORMAL</font></strong></em></td>
+<td>File without attribute</td>
+    </tr>
+  </tbody>
+</table>
+<p>The return value takes one of the following values:</p>
+<table>
+  <tbody>
+    <tr>
+<td><em><strong><code>NNS_MCS_FILEIO_ERROR_SUCCESS</code></strong></em> (0)</td>
+<td>The function was successful.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_COMERROR</font></strong></em></td>
+<td>A communications error occurred.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_NOTCONNECT</font></strong></em></td>
+<td>Not connected to the mcs server.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_SERVERERROR</font></strong></em></td>
+<td>A error has occurred due to a file operation on the mcs server side. The error code is a Win32 system error code that can be obtained using the <code>NNS_McsGetServerErrorCode</code> function.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_NOMOREFILES</font></strong></em></td>
+<td>File that matches the pattern cannot be found.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>See Also</h2>
+<p><code><a href="NNS_McsFindNextFile.html">NNS_McsFindNextFile</a>,  <a  href="NNS_McsCloseFind.html">NNS_McsCloseFind</a> </code></p>
+<H2>Revision History</H2>
+<P>01/24/2005 Added the description regarding file attribute and error code.<br>10/28/2004 Added a description concerning file name patterns.<br>10/19/2004 Corrected the link to <code><a href="NNS_McsCloseFind.html">NNS_McsCloseFind</a></code><br>07/01/2004 Initial version.</P>
+</body>
+</html>

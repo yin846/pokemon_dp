@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Interrupt (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Interrupt (Overview)</H1>
+<H2>Introduction</H2>
+<P>Interrupts provide a mechanism for temporarily interrupting one executing program so a more urgent program can execute, and then resume execution of the first program.</P>
+<P>If some special process needs to be conducted because of the state of the system or hardware, the only way to implement that process&mdash;if interrupts are not employed&mdash;is to check the status periodically (polling) to look for an opportunity. But if interrupts are used, a program that has been prepared for a set of conditions can be executed immediately when those conditions arise. The interrupt mechanism provides more immediacy than polling, and it lets the main program devote itself to its own processes.</P>
+<P>This page explains the functions that handle interrupts.</P>
+<HR>
+<P><B>Interrupt Causes</B></P>
+<P>A variety of events can cause interrupts, and the causes differ for the ARM9 and the ARM7. Below is a list of of interrupt names and their causes on the ARM9.
+</P>
+<TABLE>
+<TBODY>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_V_BLANK</TD>
+<TD bgColor=#eeeeee>V-blank interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_H_BLANK</TD>
+<TD bgColor=#eeeeee>H-blank interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_V_COUNT</TD>
+<TD bgColor=#eeeeee>V counter interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_TIMER0</TD>
+<TD bgColor=#eeeeee>Timer0 interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_TIMER1</TD>
+<TD bgColor=#eeeeee>Timer1 interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_TIMER2</TD>
+<TD bgColor=#eeeeee>Timer2 interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_TIMER3</TD>
+<TD bgColor=#eeeeee>Timer3 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgColor=#eeeeee>OS_IE_DMA0</TD>
+<TD bgColor=#eeeeee>DMA0 interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_DMA1</TD>
+<TD bgColor=#eeeeee>DMA1 interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_DMA2</TD>
+<TD bgColor=#eeeeee>DMA2 interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_DMA3</TD>
+<TD bgColor=#eeeeee>DMA3 interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_KEY</TD>
+<TD bgColor=#eeeeee>Key interrupt <sup><strong><font color="red">*1</font></strong></sup></TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_CARTRIDGE</TD>
+<TD bgColor=#eeeeee>Game Pak IREQ/DREQ interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_SUBP</TD>
+<TD bgColor=#eeeeee>ARM7 interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_SPFIFO_SEND</TD>
+<TD bgColor=#eeeeee>ARM9-ARM7 send FIFO empty interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_SPFIFO_RECV</TD>
+<TD bgColor=#eeeeee>ARM9-ARM7 receive FIFO not-empty interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_CARD_DATA</TD>
+<TD bgColor=#eeeeee>Card data transfer end interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_CARD_IREQ</TD>
+<TD bgColor=#eeeeee>Card IREQ interrupt</TD>
+    </TR>
+<TR>
+<TD bgColor=#eeeeee>OS_IE_GXFIFO</TD>
+<TD bgColor=#eeeeee>Geometry command FIFO interrupt</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><B><FONT color="#ff0033"><BR> <font size="-2" color="red"><strong>*1</strong></font> <font size="-2">The hardware specification does not allow the use of the key interrupt. However, it can be used for awakening from sleep.</font>
+</P>
+<HR>
+<P><B>Registers and Work Regions Associated With Interrupts</B></P>
+<P>The <code>reg_IME&nbsp;(0x04000208)</code> register functions as the master enable/disable flag&mdash;setting all interrupts. When the bit is <code>1</code>, all interrupts are enabled. When the bit is <code>0</code>, all interrupts are disabled. The functions that operate this flag are <code><a href="OS_EnableIrq.html">OS_EnableIrq()</a></code>, <code><a href="OS_DisableIrq.html">OS_DisableIrq()</a></code>, and <code><a href="OS_RestoreIrq.html">OS_RestoreIrq()</a></code>.</P>
+<BLOCKQUOTE><IMG src="image_reg_IME.gif" border="0"></BLOCKQUOTE>
+<P><BR> Interrupt generation can be specified for each interrupt cause by using the I/O register, <code>reg_IE&nbsp;(0x04000210)</code>. When the bit for a cause is set to <code>1</code>, it is permitted to generate an interrupt. The functions that set and obtain this bit are <code><a href="OS_SetIrqMask.html">OS_SetIrqMask()</a></code>, <code><a href="OS_GetIrqMask.html">OS_GetIrqMask()</a></code>, <code><a href="OS_EnableIrqMask.html">OS_EnableIrqMask()</a></code>, and <code><a href="OS_DisableIrqMask.html">OS_DisableIrqMask()</a></code>. (Note that there are differences between Set functions and Enable functions.)</P>
+<BLOCKQUOTE><IMG src="image_reg_IE.gif" border="0"></BLOCKQUOTE>
+<P><BR> Each bit in the Interrupt Request register <code>reg_IF&nbsp;(0x03000214)</code> takes the value <code>1</code> when the corresponding interrupt gets generated. The relation between interrupts and bits is the same as that for the <code>reg_IE</code> register. The functions that set and obtain this flag are <code><a href="OS_ResetRequestIrqMask.html">OS_ResetRequestIrqMask()</a></code> and <code><a href="OS_GetRequestIrqMask.html">OS_GetRequestIrqMask()</a></code>.</P>
+<BLOCKQUOTE><IMG src="image_reg_IF.gif" border="0"></BLOCKQUOTE>
+<P><BR> The ARM9 processor's Current Program Status Register (CPSR) has a bit that defines whether IRQs are enabled.<br />( (See <a href="../system/about_System.html">System (overview)</a>for details.) IRQs are disabled when the <code>I</code> flag of this register is <code>1</code> and are enabled when the bit is <code>0</code>. Not in this &quot;interrupt&quot; category but in the &quot;system status&quot; category, the functions that change this status are <code><a href="../system/OS_EnableInterrupts.html">OS_EnableInterrupts()</a></code>, <code><a href="../system/OS_DisableInterrupts.html">OS_DisableInterrupts()</a></code>, and <code><a href="../system/OS_RestoreInterrupts.html">OS_RestoreInterrupts()</a></code></P>
+<BLOCKQUOTE><IMG src="../system/image_cpsr.gif" width="536" height="127" border="0"></BLOCKQUOTE>
+<P><BR> Check-flag regions are set up so the interrupt handlers can check things out when interrupts are generated. These regions are located in DTCM. The relation between interrupt causes and bits is the same as that for the <code>reg_IE</code> register. The functions that set and obtain the check flag are <code><a href="OS_SetIrqCheckFlag.html">OS_SetIrqCheckFlag()</a></code>, <code><a href="OS_ClearIrqCheckFlag.html">OS_ClearIrqCheckFlag()</a></code>, and <code><a href="OS_GetIrqCheckFlag.html">OS_GetIrqCheckFlag()</a></code>.</P>
+<BLOCKQUOTE><IMG src="image_checkFlag.gif" border="0"></BLOCKQUOTE>
+<P><BR> Interrupts are a kind of processor exception. When an interrupt occurs, the system jumps to the address stored in the interrupt vector <code>HW_INTR_VECTOR_BUF</code> on DTCM. Normally the address of IRQ handler for OS is stored, but this will be rewritten if a user uses an unique interrupt routine.</P>
+<BLOCKQUOTE><IMG src="image_intrVector.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Process Flow Up to Interrupt Generation</B></P>
+<P>The interrupt notification from a device or elsewhere reaches the processor through the flow depicted below:</P>
+<BLOCKQUOTE><IMG src="image_irq1.gif" border="0"></BLOCKQUOTE>
+<P>If the interrupt is set to be generated for a specified device, the corresponding <code>IF</code> bit becomes <code>1</code> when the interrupt conditions for that device are met.</P>
+<P>An interrupt will not be generated if the interrupt cause for the <code>IF</code> bit that became <code>1</code> is not permitted with IE. Also, the interrupt is not sent to the CPU if IME is disabled. If the conditions up to this point are met, the interrupt notification reaches AMR9 processor. If the IRQ flag of CPRS is set to <code>0</code> (enabled), the IRQ interrupt will be generated immediately. If set to <code>1</code> (disabled), IRQ interrupt will be delayed.</P>
+<P>IRQ interrupts are a kind of ARM processor exception (called an IRQ exception). For details, see <a href="../exception/about_exception.html">Exceptions (overview)</a>.</P>
+<P>When an IRQ interrupt is generated, the ARM9 processor interrupts the program and jumps to <code>0xFFFF0018</code>. Take a look at the flow shown below.</P>
+<BLOCKQUOTE><IMG src="image_irq2.gif" border="0"></BLOCKQUOTE>
+<P>After the process jumps to <code>0xFFFF0018</code>, control is transferred to the address stored in <code>HW_INTR_VECTOR_BUF</code> in some region of DTCM. Normally, this is the address for the OS IRQ handler. Overwrite <code>HW_INTR_VECTOR_BUF</code> if you want to create your own IRQ handler. The user's preregistered interrupt handler is called from inside the IRQ handler. After returning from the IRQ handler, the program starts again from the the address which follows the address where the interrupt occurred. (Actually, you can also switch threads. See <a href="../thread/about_Thread.html">Threads (overview)</a>.)</P>
+<P>Following is a more detailed description of the processes inside the OS IRQ handler.</P>
+<BLOCKQUOTE><IMG src="image_irq3.gif" border="0"></BLOCKQUOTE>
+<P>At the beginning of inside the handler, the process first checks whether the IME is enabled and returns without doing anything if the IME is not enabled. The next step is to perform a logical AND on the IE and IF bits. If the result is <code>0</code>, the process returns without doing anything. If the result is not <code>0</code>, the process continues by processing the interrupt corresponding to the bit that is <code>1</code>. The IME, IE, and IF bits are checked because it is possible for an interrupt signal to make it to the processor while some process is accessing the I/O register and making changes to prohibited interrupts and the causes of interrupts. These checks thus ensure that things correctly comply with the settings in the I/O register.</P>
+<P>The workflow after that is described here. As a result of the logical product of IE and IF that was calculated before, the interrupt handler that corresponds to the bit that is set to <code>1</code> is called. This handler is registered in the IRQ table in advance by the user. IRQ handler references this table, and obtains the user's interrupt handler address.</P>
+<P>After the process comes back from the user's interrupt handler it returns to the user program. However, if a thread-switch event occurs inside the interrupt handler, thread rescheduling occurs( (see <a href="../thread/about_Thread.html">Threads (overview)</a>).</P>
+<P>Set a check flag for the interrupt inside the user's interrupt handler. This check flag is used by other OS functions. If these functions will not be using the check flag, it does not need to be set. However, we recommend that you set it anyway so it is there just in case later changes require its presence.( (See <nobr><code><a href="OS_SetIrqCheckFlag.html">OS_SetIrqCheckFlag()</a></code></nobr>.)</P>
+<HR>
+<P><B>Enabling/Disabling Interrupts</B></P>
+<P>These functions can be used to control the master enable flag for all interrupts:</P>
+<P><code><a href="OS_EnableIrq.html">OS_EnableIrq()</a></code>, <code><a href="OS_DisableIrq.html">OS_DisableIrq()</a></code>, <code><a href="OS_RestoreIrq.html">OS_RestoreIrq()</a></code></P>
+<HR>
+<P><B>Enabling/Disabling System State Interrupts</B></P>
+<P>For details, see <a href="../system/about_System.html">System (overview)</a>. These functions are &quot;system&quot; category functions, not &quot;interrupt&quot; category functions. They can be used to change the CPSR status.</P>
+<P><code><a href="../system/OS_EnableInterrupts.html">OS_EnableInterrupts()</a></code>, <code><a href="../system/OS_DisableInterrupts.html">OS_DisableInterrupts()</a></code>, <code><a href="../system/OS_RestoreInterrupts.html">OS_RestoreInterrupts()</a></code></P>
+
+<HR>
+<P><B>Configuring Interrupt Causes</B></P><P>The following functions can be used to set and obtain the causes of interrupts:</P>
+
+<P>
+<code><a href="OS_SetIrqMask.html">OS_SetIrqMask()</a></code>, <code><a href="OS_GetIrqMask.html">OS_GetIrqMask()</a></code>, <code><a href="OS_EnableIrqMask.html">OS_EnableIrqMask()</a></code>, <code><a href="OS_DisableIrqMask.html">OS_DisableIrqMask()</a></code> 
+</P>
+<HR>
+<P><B>Controlling Interrupt Request Flags</B></P>
+<P>The following functions can be used to control interrupt request flags:</P>
+<P><code><a href="OS_ResetRequestIrqMask.html">OS_ResetRequestIrqMask()</a></code>, <code><a href="OS_GetRequestIrqMask.html">OS_GetRequestIrqMask()</a></code></P>
+<HR>
+<P><B>Configuring Interrupt Handlers</B></P>
+<P>The following functions can be used to set and obtain interrupt handlers:</P>
+
+<P>
+<code><a href="OS_InitIrqTable.html">OS_InitIrqTable()</a></code>, <code><a href="OS_SetIrqFunction.html">OS_SetIrqFunction()</a></code>, <code><a href="OS_GetIrqFunction.html">OS_GetIrqFunction()</a></code> 
+</P>
+<HR>
+<P><B>Controlling the Interrupt Check Flag</B></P>
+<P>The following functions can be used to control the interrupt check flag:</P>
+<P><code><a href="OS_SetIrqCheckFlag.html">OS_SetIrqCheckFlag()</a></code>, <code><a href="OS_ClearIrqCheckFlag.html">OS_ClearIrqCheckFlag()</a></code>, <code><a href="OS_GetIrqCheckFlag.html">OS_GetIrqCheckFlag()</a></code></P>
+<HR>
+<P><B>Waiting for Interrupts</B></P>
+<P>The following functions are designed to pause the process until an interrupt to occurs:</P>
+<P><code><a href="OS_WaitIrq.html">OS_WaitIrq()</a></code>, <code><a href="OS_WaitAnyIrq.html">OS_WaitAnyIrq()</a></code>, <code><a href="../system/OS_WaitInterrupt.html">OS_WaitInterrupt()</a></code></P>
+<P>The arguments in <code><a href="OS_WaitIrq.html">OS_WaitIrq()</a></code> and <code><a href="../system/OS_WaitInterrupt.html">OS_WaitInterrupt()</a></code> specify which interrupt to wait for. In contrast, <code><a href="OS_WaitAnyIrq.html">OS_WaitAnyIrq()</a></code> is designed to wait for <em>any</em> interrupt to occur.</P>
+<P><code><a href="OS_WaitIrq.html">OS_WaitIrq()</a></code> and <code><a href="../system/OS_WaitInterrupt.html">OS_WaitInterrupt()</a></code> differ in the way they operate while waiting for an interrupt. <code><a href="OS_WaitIrq.html">OS_WaitIrq()</a></code> switches the context and transfers the process to another thread, while <code><a href="../system/OS_WaitInterrupt.html">OS_WaitInterrupt()</a></code> stops when <code><a href="../system/OS_Halt.html">OS_Halt()</a></code> is called, so no thread switching occurs. If you are not using the thread system, both functions behave the same way.</P>
+<P>The <code><a href="../../svc/SVC_WaitVBlankIntr.html">SVC_WaitVBlankIntr()</a></code> function is available to wait for a V-blank in a system call. This function does not switch threads.</P>
+<P>Inside these interrupt wait functions, <code><a href="../system/OS_Halt.html">OS_Halt()</a></code> temporarily stops the current process and transfers control to other threads. However, when interrupts are generated and enter a state of execution, the interrupt check flag is referenced to determine whether or not the interrupt that was generated was the specified interrupt. For this reason, the interrupt check flag must be set in the interrupt handler.</P>
+<HR>
+<P><B>The V-Blank Counter</B></P>
+<P>The following function is available to get the V-blank counter value used for V-blank interrupts:</P>
+<P><CODE><A href="OS_GetVBlankCount.html">OS_GetVBlankCount()</A></CODE></P>
+<P>V-blank interrupts are always enabled in the ARM7, so this function internally writes the number of interrupts in the shared region of main memory. The ARM9 command reflects the value written in the shared region.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Irq">List of OS Functions (Interrupts)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Unified Japanese term for &quot;interrupt.&quot;<br>12/14/2004 Corrected terms and word endings.<BR>12/08/2004 Added warning about <CODE>OS_IE_KEY</CODE>.<BR>11/17 /2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

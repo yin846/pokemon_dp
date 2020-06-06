@@ -1,0 +1,98 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_LoginAsync</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_LoginAsync</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_LoginAsync( const u16 * ingamesn,
+const char* reserved,
+<A href="DWCLoginCallback.html">DWCLoginCallback</A> callback,
+void* param);</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  The application checks if the GameSpy server can be used, performs remote authentication, and connects to Nintendo Wi-Fi Connection.
+		</P>
+		<P>
+		  To call this function, the <A href="DWC_InitFriendsMatch.html">DWC_InitFriendsMatch</A> function must complete through <A href="FriendsMatch.html">FriendsMatch Library</A> initialization after connecting to the internet. Continue to call the <a href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</a> function after this function is called and the login process will proceed. When the process is complete, the login completion callback will be called.
+		</P>
+		<P>
+		  The authentication server checks to see if the in-game screen name (the name the player is using during the game) is inappropriate on the Wi-Fi connection. Get the results of that check with the <A href="DWC_GetIngamesnCheckResult.html">DWC_GetIngamesnCheckResult</A> function after successfully connecting to the Wi-Fi connection. <!-- 		  ingamesn‚ÉƒQ[ƒ€’†‚ÅƒvƒŒƒCƒ„[‚ªŽg—p‚·‚éƒQ[ƒ€“àƒXƒNƒŠ[ƒ“ƒl[ƒ€‚ðŽw’è‚·‚ê‚ÎA”C“V“°‚Ì”FØƒT[ƒo‚É‚±‚ÌƒXƒNƒŠ[ƒ“ƒl[ƒ€‚ð‘—M‚µ‚Ü‚·B 		  ƒvƒŒƒCƒ„[–¼‚ð”FØƒT[ƒo‚ð’Ê‚µ‚Äƒlƒbƒgƒ[ƒNã‚ÅˆêˆÓ‚ÉŠÇ—‚µ‚½‚¢ê‡‚È‚Ç‚É—˜—p‚Å‚«‚Ü‚·B 		  ‚»‚Ì‚æ‚¤‚È•K—v‚ª‚È‚¯‚ê‚ÎNULL‚ðŽw’è‚µ‚Ä‚­‚¾‚³‚¢B 		  -->
+		</P>
+		<P>
+		  Be aware that an error communicating with the Authentication server (error code 20109) will be generated if the maker code is undefined in the data registered in ROM.
+		</P>
+		<P>
+		 Also be sure to call the <a href="DWC_NASLoginAsync.html">DWC_NASLoginAsync</a> function in place of this one when not using the <a href="FriendsMatch.html">FriendsMatch Library</a>.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>ingamesn</CODE></STRONG></EM></TD>
+					<TD width="75%">Screen name sent to the authentication server.
+						<UL class="sub">
+						<LI>Use Unicode (little endian UTF16) for the character code.<BR>Be sure to convert to Unicode when using another type of character code.</LI>
+						<LI>If original characters not included in Unicode or in the IPL font are used in the screen name, be sure to replace all such characters with spaces. </LI>
+						<LI>The terminal character should be &quot;\0\0&quot; (0x0000 in u16).</LI>
+						<LI>If a character string of 26 or more characters, excluding termination, has been specified, only the first 25 characters are sent to the authentication server. </LI>
+						</UL>
+						<!-- ”FØƒT[ƒo‚É“n‚·•K—v‚ª‚È‚¯‚ê‚ÎNULL‚ðŽw’è‚µ‚Ä‚­‚¾‚³‚¢B -->
+					</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>reserved</CODE></STRONG></EM></TD>
+					<TD>Normally, specify NULL. Retained for compatibility with past versions.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>callback</CODE></STRONG></EM></TD>
+					<TD>The pointer to the login completion callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>param</CODE></STRONG></EM></TD>
+					<TD>Parameter for the login completion callback.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">The login process starts. The results are indicated via the callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD>This is not a good time to call this function, or a NULL has been designated in the <CODE>ingamesn</CODE> argument. The callback function will not be called.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+		  <code><A href="DWC_InitFriendsMatch.html">DWC_InitFriendsMatch</A>, <A href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</A>, <A href="DWC_ShutdownFriendsMatch.html">DWC_ShutdownFriendsMatch</A>, <A href="DWCLoginCallback.html">DWCLoginCallback</A>, <A href="DWC_GetIngamesnCheckResult.html">DWC_GetIngamesnCheckResult</A>, <a href="DWC_NASLoginAsync.html">DWC_NASLoginAsync</a></code>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			07/24/2006 Corrected errors<BR>07/03/2006 Inserted an explanation in the function description about when the FriendsMatch Library is not in use<BR>05/30/2006 Added cautionary notes about the maker codes for the ROM registration data<BR>04/26/2006 Changed the length of the character string that can be designated for ingamesn and added a description<BR>01/31/2006 Inserted the term &quot;FriendsMatch Library&quot; into the function description<BR>12/16/2005 Added support for the addition of the screen name argument inside the game Corrected errors in Return Values.<BR>07/22/2005 Initial version.<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

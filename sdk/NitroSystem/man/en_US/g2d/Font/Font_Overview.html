@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>Font Overview</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">Font Overview</H1>
+
+<H2>Terms</H2>
+<P>
+	The term definitions shown here are used in documents relating to the G2D font/character (string) display library. These meanings may differ from the general meaning of these terms.
+</P>
+	
+	<TABLE border="1" width="100%">
+	  <TBODY>
+	    <TR>
+	      <TD width="30%"><STRONG>NITRO font</STRONG></TD>
+	      <TD width="70%"> A font used for character display by G2D. </TD>
+	    </TR>
+	    <TR>
+	      <TD width="30%"><STRONG>Font resource</STRONG></TD>
+	      <TD width="70%"> The state of a NITRO font before it has been converted to a form that can be used by G2D. Also, a file that stores such a font. </TD>
+	    </TR>
+	    <TR>
+	      <TD width="30%"><STRONG>Glyph</STRONG></TD>
+	      <TD width="70%"> The shape of a character. </TD>
+	    </TR>
+	    <TR>
+	      <TD width="30%"><STRONG>Glyph image</STRONG></TD>
+	      <TD width="70%"> A word that refers to a glyph with special emphasis on image aspects. </TD>
+	    </TR>
+	    <TR>
+	      <TD width="30%"><STRONG>Glyph index</STRONG></TD>
+	      <TD width="70%"> An ID number that is assigned to every glyph in a NITRO font. </TD>
+	    </TR>
+	    <TR>
+	      <TD width="30%"><STRONG>Character codes</STRONG></TD>
+	      <TD width="70%"> A number that is assigned to every character. </TD>
+	    </TR>
+	    <TR>
+	      <TD width="30%"><STRONG>Character encoding</STRONG></TD>
+	      <TD width="70%"> A method of converting between a character code and a byte sequence. It is used when expressing a character code as a byte sequence. </TD>
+	    </TR>
+	  </TBODY>
+	</TABLE>
+
+<H2>NITRO font</H2>
+<P>
+	The following information is stored in a NITRO font:
+</P>
+	
+	<ul>
+	<li>Information about the font as a whole
+		<ul>
+		<li>Glyph format
+		<li>Baseline position
+		<li>Cell size
+		<li>Linefeed size
+		<li>Alternate characters
+		<li>Corresponding encoding
+		</ul>
+	<li>Information about each character
+		<ul>
+		<li>Glyph image
+		<li>Character width
+		</ul>
+	<li>Conversion table for converting from character code to glyph index
+	</ul>
+
+<H2>Text Characters</H2>
+<P>
+	Each character in a NITRO font consists of a glyph image (<code><a href="NNS_G2dFontGetGlyphImage.html">NNS_G2dFontGetGlyphImage</a></code>) and three types of width data that combine to form the character width: left space width, glyph width, and right space width (<code><a href="NNS_G2dFontGetCharWidths.html">NNS_G2dFontGetCharWidths</a></code>). (See figure below.) The glyph width is the width of the smallest rectangle that contains the glyph. The right space width and left space width are the widths of the areas to the left and right of the rectangle that require no drawing. The character width is the sum of the left space width, the glyph width, and the right space width. In G2D character drawing (<code><a href="../CharCanvas/NNS_G2dCharCanvasDrawChar.html">NNS_G2dCharCanvasDrawChar</a></code>), a glyph image is drawn using the glyph width after shifting the distance of the left space width. You can draw text strings by shifting the drawing position to the right by the character width. The left space width and right space width can be negative values and the character width can be smaller than the glyph width. In this case, the character will be drawn overlapping the characters before and after it.
+
+	<br> <br> <img src="char.png" alt="Characte Structure Element for NITRO font"><br clear="left"><br>Glyph heights for NITRO fonts are not stored for each text character. Instead, the font height (<code><a href="NNS_G2dFontGetHeight.html">NNS_G2dFontGetHeight</a></code>)&mdash;the height sufficient to display all characters in the font&mdash;is stored.
+
+</P>
+
+<H2>Cells</H2>
+<P>
+	In a NITRO font, glyphs are stored as BMP images. Each glyph is stored in a BMP image measuring <code><a href="NNS_G2dFontGetCellWidth.html">NNS_G2dFontGetCellWidth</a></code> by <code><a href="NNS_G2dFontGetCellHeight.html">NNS_G2dFontGetCellHeight</a></code> pixels; this BMP image is called a cell.<br> The glyph image is stored aligned against the left side of the cell, and its width can be obtained by using <code><a href="NNS_G2dFontGetCharWidths.html">NNS_G2dFontGetCharWidths</a></code>.
+</P>
+
+<H2>Alternate characters</H2>
+<P>
+	In some functions, when a character not inlcuded in the NITRO font is specified, a replacement character is used. This replacement character is called an alternate character and is registered in the NITRO font. <code><a href="NNS_G2dFontGetAlternateGlyphIndex.html">NNS_G2dFontGetAlternateGlyphIndex</a></code>).
+</P>
+
+<H2>Character codes</H2>
+<P>
+	Font manipulation functions that take characters as arguments use 16-bit character codes to specify characters. Functions do not use these character codes as meaningful values. Character codes are immediately converted to glyph indices within functions using the conversion table in the NITRO font, and all actual processing is done with glyph indices. Therefore, once a character code conversion table is properly created in the NITRO font, any character set can be used. Conversely, a NITRO font must be prepared for each character set, and if the character set used in a program does not match the NITRO font character set, you will not get the result you want.
+</P>
+
+<H2>Font functions</H2>
+<P>
+	The font functions can be divided into the following six large groups.
+</p>
+	<TABLE border="1" width="100%">
+	  <TBODY>
+	    <TR>
+	      <TD width="40%">
+			<strong>Font creation</strong><br> These functions are used to create fonts.
+	      </TD>
+	      <TD width="60%">
+			<code><a href="NNS_G2dFontInitAuto.html">NNS_G2dFontInitAuto()</a></code><br> <code><a href="NNS_G2dFontInitXXX.html">NNS_G2dFontInitUTF8()</a></code><br> <code><a href="NNS_G2dFontInitXXX.html">NNS_G2dFontInitUTF16()</a></code><br> <code><a href="NNS_G2dFontInitXXX.html">NNS_G2dFontInitShiftJIS()</a></code><br> <code><a href="NNS_G2dFontInitXXX.html">NNS_G2dFontInitCP1252()</a></code><br>
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="40%">
+			<strong>Font accessors</strong><br> These functions are used to get and set information about the overall font.
+	      </TD>
+	      <TD width="60%">
+			<code><a href="NNS_G2dFontGetType.html">NNS_G2dFontGetType()</a></code><br> <code><a href="NNS_G2dFontGetHeight.html">NNS_G2dFontGetHeight()</a></code><br> <code><a href="NNS_G2dFontGetCellHeight.html">NNS_G2dFontGetCellHeight()</a></code><br> <code><a href="NNS_G2dFontGetCellWidth.html">NNS_G2dFontGetCellWidth()</a></code><br> <code><a href="NNS_G2dFontGetBpp.html">NNS_G2dFontGetBpp()</a></code><br> <code><a href="NNS_G2dFontGetBaselinePos.html">NNS_G2dFontGetBaselinePos()</a></code><br> <code><a href="NNS_G2dFontGetMaxCharWidth.html">NNS_G2dFontGetMaxCharWidth()</a></code><br> <code><a href="NNS_G2dFontGetLineFeed.html">NNS_G2dFontGetLineFeed()</a></code><br> <code><a href="NNS_G2dFontSetLineFeed.html">NNS_G2dFontSetLineFeed()</a></code><br> <code><a href="NNS_G2dFontGetDefaultCharWidths.html">NNS_G2dFontGetDefaultCharWidths()</a></code><br> <code><a href="NNS_G2dFontSetDefaultCharWidths.html">NNS_G2dFontSetDefaultCharWidths()</a></code><br> <code><a href="NNS_G2dFontGetAlternateGlyphIndex.html">NNS_G2dFontGetAlternateGlyphIndex()</a></code><br> <code><a href="NNS_G2dFontSetAlternateGlyphIndex.html">NNS_G2dFontSetAlternateGlyphIndex()</a></code><br> <code><a href="NNS_G2dFontSetAlternateChar.html">NNS_G2dFontSetAlternateChar()</a></code><br>
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="40%">
+			<strong>Obtaining glyph information from the character code </strong><br> These functions are used to obtain glyph information for a character using the character code as an argument.
+	      </TD>
+	      <TD width="60%">
+			<code><a href="NNS_G2dFontGetGlyph.html">NNS_G2dFontGetGlyph()</a></code><br> <code><a href="NNS_G2dFontGetGlyphImage.html">NNS_G2dFontGetGlyphImage()</a></code><br> <code><a href="NNS_G2dFontGetCharWidth.html">NNS_G2dFontGetCharWidth()</a></code><br> <code><a href="NNS_G2dFontGetCharWidths.html">NNS_G2dFontGetCharWidths()</a></code><br>
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="40%">
+			<strong>Obtaining the glyph index</strong><br> These functions are used to obtain the glyph index from the character code.
+	      </TD>
+	      <TD width="60%">
+			<code><a href="NNS_G2dFontFindGlyphIndex.html">NNS_G2dFontFindGlyphIndex()</a></code><br> <code><a href="NNS_G2dFontGetGlyphIndex.html">NNS_G2dFontGetGlyphIndex()</a></code><br>
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="40%">
+			<strong>Obtaining glyph information from the glyph index</strong><br> These functions are used to obtain glyph information for a character using the glyph index as an argument.
+	      </TD>
+	      <TD width="60%">
+			<code><A href="NNS_G2dFontGetGlyphImageFromIndex.html">NNS_G2dFontGetGlyphImageFromIndex()</A></code><br> <code><A href="NNS_G2dFontGetGlyphFromIndex.html">NNS_G2dFontGetGlyphFromIndex()</A></code><br> <code><A href="NNS_G2dFontGetCharWidthFromIndex.html">NNS_G2dFontGetCharWidthFromIndex()</A></code><br> <code><A href="NNS_G2dFontGetCharWidthsFromIndex.html">NNS_G2dFontGetCharWidthsFromIndex()</A></code><br>
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="40%">
+			<strong>Calculating the drawing size of a text string</strong><br> These functions are used to calculate the drawing size of a text string.
+	      </TD>
+	      <TD width="60%">
+			<code><a href="NNS_G2dFontGetStringWidth.html">NNS_G2dFontGetStringWidth()</a></code><br> <code><a href="NNS_G2dFontGetTextWidth.html">NNS_G2dFontGetTextWidth()</a></code><br> <code><a href="NNS_G2dFontGetTextHeight.html">NNS_G2dFontGetTextHeight()</a></code><br> <code><a href="NNS_G2dFontGetTextRect.html">NNS_G2dFontGetTextRect()</a></code><br>
+	      </TD>
+	    </TR>
+	  </TBODY>
+	</TABLE>
+
+
+<H2>See Also</H2>
+<P><CODE></CODE></P>
+
+<H2>Revision History</H2>
+<P>05/25/2005 Initial version.</P>
+</BODY>
+
+</HTML>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dEntryOamManagerAffine</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dEntryOamManagerAffine</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Oam.h&gt;</CODE></pre>
+<pre><CODE>u16 NNS_G2dEntryOamManagerAffine( 
+        NNSG2dOamManagerInstance*       pMan, 
+        const MtxFx22*              mtx );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pMan</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] OAM manager entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>mtx</CODE></font></strong></em></td>
+<td width="87%">[IN] Affine parameter matrix</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>The registered affine parameters matrix. If registration fails, the function returns <code>NNS_G2D_OAM_AFFINE_IDX_NONE</code>.</p>
+<H2>Description</H2>
+<P>Sets the affine parameters in the OAM manager. The affine index is returned as the return value. The affine management section of the OAM manager must be initialized. If registration fails because there is not enough free space or for some other reason, the function returns <code>NNS_G2D_OAM_AFFINE_IDX_NONE</code>. Use <code>NNS_G2dSetOamManagerAffine</code> when the affine-management part is not used. <code>NNS_G2dEntryNewOamAffine</code> has undergone a name change. This function will remain to preserve compatibility.</p>
+
+<h2>See Also</h2>
+<p>
+<a href="NNS_G2dEntryNewOamAffine.html"><code>NNS_G2dEntryNewOamAffine</code></a>, <a href="NNS_G2dSetOamManagerAffine.html"><code>NNS_G2dSetOamManagerAffine</code></a></p>
+<H2>Revision History</H2>
+<P>08/02/2004 Renamed function.<BR>05/28/2004 Initial version.</P>
+</body>
+</html>

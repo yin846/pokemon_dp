@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_LoadArchive</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_LoadArchive</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>BOOL	FS_LoadArchive(FSArchive *p_arc,<BR> u32 base, u32 fat, u32 fat_size, u32 fnt, u32 fnt_size,<BR> FS_ARCHIVE_READ_FUNC read_func,<BR> FS_ARCHIVE_WRITE_FUNC write_func);</CODE><br> <br>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>p_arc</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Address of the <a href="../fs_archive_type.html"><code>FSArchive</code></a> structure.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>base</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">The base offset value to the archive-inherent address space. This value is obtained by the <code><a href="FS_GetArchiveBase.html">FS_GetArchiveBase</a></code> function to make archive implementation easier.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>fat</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">FAT starting-position offset to the archive-inherent address space.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>fat_size</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">The archive's FAT size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>fnt</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">FNT starting-position offset to the archive-inherent address space.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>fnt_size</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">The archive's FNT size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>read_func</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Callback function for read-accessing the archive specific address space. This callback is called from within the FS function, which uses the archive command internally.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>write_func</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Callback function for write-accessing the archive specific address space. This callback is called from within the FS function, which uses the archive command internally.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p><code>TRUE</code> if the archive is correctly loaded in the file system. <code>FALSE</code> otherwise.</p>
+
+<H2>Description</H2>
+<P>Loads the archive to the file system based on the specified implementation. The archive name must have already been registered by the <code><a href="FS_RegisterArchiveName.html">FS_RegisterArchiveName</a></code> function.<BR> Based on the given combination of arguments, the file system assumes the archive will behave as follows:<BR> The archive has a unique data structure with linear memory that can only be accessed by <code>read_func</code> and <code>write_func</code>. The archive has a region of <code>fat_size</code> bytes starting from the position of <code>fat</code> where FAT information conforming to the NitroROM format is stored, and the data in this region can be accessed by <code>read_func</code>. The archive has a region of <code>fnt_size</code> bytes starting from the position of <code>fnt</code> where FNT information conforming to the NitroROM format is stored, and the data in this region can be accessed by <code>read_func</code>. The archive has file data in the entire region domain specified by the FAT information, and this can be accessed by <code>read_func</code>. Once this function ends successfully, a callback in the file system accesses the archive. A loaded archive can be unloaded with the <code><a href="FS_UnloadArchive.html">FS_UnloadArchive</a></code> function. The archive takes the valid state in the file system when this function ends successfully as long as it has not explicitly suspended by <a href="FS_SuspendArchive.html"><code>FS_SuspendArchive</code></a> before <code>FS_LoadArchive</code> runs. <BR>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a>, <a href="../fs_archive_name_len_max_const.html">FS_ARCHIVE_NAME_LEN_MAX</a>, <a href="FS_ReleaseArchiveName.html">FS_ReleaseArchiveName</a>, <a href="FS_UnloadArchive.html">FS_UnloadArchive</a></code></P>
+<H2>Revision History</H2>
+<P>
+06/01/2005 Added statement about callback being called from within the FS function.<br>11/02/2004 Corrected links.<br>06/30/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<HTML lang="ja">
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GetFriendDataType</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GetFriendDataType</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+int DWC_GetFriendDataType( const <A href="DWCFriendData.html">DWCFriendData</A>* frienddata );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Obtains the type of the data that is stored in the friend data specified by <CODE>frienddata</CODE>.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>frienddata</CODE></STRONG></EM></TD>
+					<TD width="75%">Pointer to the buffer for the <CODE>DWCFriendData</CODE> structure that stores the friend data. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>DWC_FRIENDDATA_NODATA</CODE></STRONG></EM></TD>
+					<TD width="75%">No friend data has been stored<BR>This is the initial state.</TD>
+				</TR>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>DWC_FRIENDDATA_LOGIN_ID</CODE></STRONG></EM></TD>
+					<TD width="75%">ID for the state when the DS system has never connected to Nintendo Wi-Fi Connection.</TD>
+				</TR>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>DWC_FRIENDDATA_FRIEND_KEY</CODE></STRONG></EM></TD>
+					<TD width="75%">Friend registration key.<BR>Although it can be considered that a connection has been made once to WiFi Connection, no confirmation has been sent to the WiFi Connection server as to if this is authentic friend data.</TD>
+				</TR>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>DWC_FRIENDDATA_GS_PROFILE_ID</CODE></STRONG></EM></TD>
+					<TD width="75%">GS profile ID obtained by connecting to Nintendo Wi-Fi Connection.<BR>When the Wi-Fi Connection server confirms that this is authentic friend data, status moves from <CODE>LOGIN_ID</CODE>, <CODE>FRIEND_KEY</CODE> to this status. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			12/16/2005 Revised mistaken argument notation Added description of the return value.<BR>10/20/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

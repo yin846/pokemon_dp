@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>VAlarm (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">V Count Alarm (Overview)</H1>
+<H2>Description</H2>
+<P>The V count alarm allows you to set calls to specified handlers at arbitrary V counts, done using the value of the V count register (which holds the LCD's scanning status) and V counter match interrupt. Its mechanism is completely different from the alarm that uses ticks (which uses an internal hardware timer).</P>
+<HR>
+<P><B>Initialization</B></P>
+<P>To use the V count alarm system, begin by calling <nobr><A href="OS_InitVAlarm.html"><CODE>OS_InitVAlarm()</CODE></A></nobr>.</P>
+<P>You can use <CODE><A href="OS_IsVAlarmAvailable.html">OS_IsVAlarmAvailable()</A></CODE> to check whether or not the V count alarm system is available.</P>
+<P>Call <CODE><A href="OS_EndVAlarm.html">OS_EndVAlarm()</A></CODE> to terminate the V count alarm system.</P>
+<HR>
+<P><B>Setting Up a V Count Alarm</B></P>
+<P>To set up a V count alarm, prepare an <CODE>OSVAlarm</CODE> structure object. You can set up one V count alarm for each of these objects. Initialize the object using <nobr><CODE><A href="OS_CreateVAlarm.html">OS_CreateVAlarm()</A></CODE></nobr>.</P>
+<P>The V count alarm is configured using  <CODE><A href="OS_SetVAlarm.html">OS_SetVAlarm()</A></CODE>. To set a periodic V count alarm to be called by the V count alarm handler, use <CODE><A href="OS_SetPeriodicVAlarm.html">OS_SetPeriodicVAlarm()</A></CODE>.</P>
+<HR>
+<P><B>Canceling a V Count Alarm</B></P>
+<P>To cancel a V count alarm, call <CODE><A href="OS_CancelVAlarm.html">OS_CancelVAlarm()</A></CODE>. This function cancels the specified V count alarm.</P>
+<P><CODE><A href="OS_CancelAllVAlarms.html">OS_CancelAllVAlarm()</A></CODE> cancels all V count alarms.</P>
+<P>Another method (described below) uses tag values to cancel groups of alarms. &nbsp;</P>
+<HR>
+<P><B>V Count Alarm Tags</B></P>
+<P>You can give V count alarms a tag value in the range of 1-255. This is used to cancel all V count alarms that have the specified tag value.</P>
+<P><CODE><A href="OS_SetVAlarmTag.html">OS_SetVAlarmTag()</A></CODE> sets tag values for V count alarms that have already been set.</P>
+<P>To cancel all alarms with a given tag value, use <nobr><code><a href="../alarm/OS_CancelAlarms.html">OS_CancelAlarms()</a></code></nobr>. (Note that the function name is plural.)</P>
+<HR>
+<P><B>Internal Data Structure</B></P>
+<P>The V count alarm structure OSVAlarm is linked in a list in the order that V count alarms are generated.</P>
+<P>If a given alarm structure is still connected to the list, that means its alarm has not yet gone off. Do not use this structure to set another alarm, because that will corrupt the link structure. If a structural corruption is detected, <a href="../debug/OS_Panic.html"><code>OS_Panic</code></a> stops the library, regardless of the build.</P>
+<P><IMG src="image_valarmLink.gif" border="0"></P>
+<P>Using <CODE><A href="OS_CreateVAlarm.html">OS_CreateAlarm()</A></CODE> to initialize an alarm structure that is still connected to the list is also prohibited, since this can corrupt the link structure and cause unstable behavior. &nbsp;</P>
+<HR>
+<P><B>V Count Alarm Delays</B></P>
+<P>The V count alarm is configured using  <CODE><A href="OS_SetVAlarm.html">OS_SetVAlarm()</A></CODE>. These settings specify the V count timing with which you want to call the specified handler and the V count difference, which defines the tolerated delay range. This specifies how much time can pass before calling the V count alarm handler when the handler cannot be called at the specified timing because of some other interrupt process or a system stall.</P>
+<P>If you want to call the handler with the specifically specified timing, this delay tolerance value should be set to 0. Setting the value to <CODE>OS_VALARM_DELAY_MAX</CODE> means the V count alarm can be generated at any time at or after the specified time. Set the delay somewhere between these two values.</P>
+<P>In the command shown below, the alarm is set with V count = 100 and delay = 30. The system will try to call the handler at V count = 100, but if it cannot do it at that time, it will make the call whenever possible up to V count = 130.</P>
+<BLOCKQUOTE><IMG src="image_valarm1.gif" border="0"></BLOCKQUOTE>
+<P>The V count alarm is also available as a periodic alarm. In such cases, a V count alarm is generated at the specified V count in every frame. The settings are configured using <A href="OS_SetPeriodicVAlarm.html"><CODE>OS_SetPeriodicVAlarm()</CODE></A>.</P>
+<BLOCKQUOTE><IMG src="image_valarm2.gif" border="0"></BLOCKQUOTE>
+<P>It is all right to configure a number of V count alarms with the same V count timing, and it is all right for the timing and delay ranges to overlap.</P>
+<HR>
+<P><B>Example</B></P>
+<P>The example below shows three V count alarms.</P>
+<BLOCKQUOTE><IMG src="image_valarm_ex1.gif" border="0"></BLOCKQUOTE>
+<P>As long as the processing burden does not interfere with the alarms, the individual alarm handlers get called with the specified timing (V count = 50, = 60, = 130). In the figure below, the V count alarms are generated at the places indicated by the red downward arrows.</P>
+<BLOCKQUOTE><IMG src="image_valarm_ex2.gif" border="0"></BLOCKQUOTE>
+<P>If an interrupt is inserted after the first V count alarm and the process must deal with a slight prolongation past the timing of the second V count alarm, that second V count alarm will be generated within the delay range if possible, as shown below.</P>
+<BLOCKQUOTE><IMG src="image_valarm_ex3.gif" border="0"></BLOCKQUOTE>
+<P>If the process is further drawn out and the V count alarm cannot be generated within the delay range, that V count alarm comes up in the next frame. (If this V count alarm is a periodic alarm, the process in that frame is not carried out.)</P>
+<BLOCKQUOTE><IMG src="image_valarm_ex4.gif" border="0"></BLOCKQUOTE>
+<P>This situation, where the V count alarm is postponed until the next frame, can arise from factors other than load caused by non-V count interrupts, such as when the handler process itself is too much of a load. In the figure below, the orange arrows pointing to the right ( &mdash;&gt; ) show the course of the alarm handler process. In this example, each handler process ends in a short time and does not affect another V count alarm.</P>
+<BLOCKQUOTE><IMG src="image_valarm_ex5.gif" border="0"></BLOCKQUOTE>
+<P>In the next example, in contrast, the processing for the first V count alarm is extremely heavy and extends beyond the delay range for the second V count alarm. As a result, this second V count alarm shows up in the next frame.</P>
+<BLOCKQUOTE><IMG src="image_valarm_ex6.gif" border="0"></BLOCKQUOTE>
+<P>We recommend that your processes generally end the interrupt handler quickly.</P>
+<HR>
+<P><B>Changing V Counter Register Value After Wireless Synchronization</B></P>
+<P>When performing wireless communications, as the result of synching parent and child, it is possible that the V counter register value is changed in the range of 202 and 210 (e.g. changing from 208 to 205). Change always involves the value being set to something smaller than its original value. (For example, the value 208 is changed to a smaller value 205.) Take note of this if you are going to set a V count alarm in this region.</P>
+<H2>See Also</H2>
+<P><A href="../list_os.html#VAlarm">OS Function List (V count alarm)</A></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Unified the Japanese term for &quot;interrupt.&quot;<br> 12/13/2004 Corrected terms and word endings. <BR> 11/24/2004 Added the section on V-Count changes due to wireless synchronization. <BR> 10/25/2004 Initial version (Separated from <CODE>OS_InitVAlarm()</CODE>).</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

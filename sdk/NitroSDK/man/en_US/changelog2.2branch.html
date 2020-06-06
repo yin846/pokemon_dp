@@ -1,0 +1,195 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>NITRO-SDK CHANGELOG</TITLE>
+</HEAD>
+<BODY>
+<HR>
+<H1>NITRO-SDK 2.2 Series Revision History </H1>
+<HR>
+
+<DL>
+<DT><A href="#sdk_2_02">NITRO-SDK 2.2 Release version</A> (08/23/2005)
+<DD><A href="#note29-01">Note 29-01: (CARD) Corrections to internal processing of FRAM device operations</A>
+<DD><A href="#note29-02">Note 29-02: (FS) Corrections to the FS_EndOverlay function.</A>
+<DD><A href="#note29-03">Note 29-03: (FS) Corrections to document</A>
+<DD><A href="#note29-04">Note 29-04: (FX) Corrected problem with FX_InvSqrt function</A>
+<DD><A href="#note29-05">Note 29-05: (MB) Added the MB_GetMultiBootDownloadParameter function</A>
+<DD><A href="#note29-06">Note 29-06: (OS) Added reference for debug output functions on ARM7 side.</A>
+<DD><A href="#note29-07">Note 29-07: (OS) Added reference for NitroStaticInit function.</A>
+<DD><A href="#note29-08">Note 29-08: (SND) Optimized the cache disabling process.</A>
+<DD><A href="#note29-09">Note 29-09: (WM) Corrected problem in process that detects disconnection during MP communications.</A>
+<DD><A href="#note29-10">Note 29-10: (WM) Fixed internal process related to connecting to child.</A>
+<DD><A href="#note29-11">Note 29-11: (WM) Changed internal operations during disconnection process.</A>
+<DD><A href="#KnownIssues_2_02">Known issues in SDK 2.2 release version</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_2_02_rc">NITRO-SDK 2.2 RC</A> (08/08/2005)
+<DD><A href="#note28-01">Note 28-01: (CARD) Corrected reference to CARD_CheckPulledOut function.</A>
+<DD><A href="#note28-02">Note 28-02: (CARD)  Argument restriction for CARD_IdentifyBackup function.</A>
+<DD><A href="#note28-03">Note 28-03: (DevEnv) Corrected path for ISD_NITRO_DEBUGGER.</A>
+<DD><A href="#note28-04">Note28-04: (FS) Changed the operations of the overlay functions.</A>
+<DD><A href="#note28-05">Note 28-05: (GX) Further corrections to Sub_Double3D sample demo.</A>
+<DD><A href="#note28-06">Note 28-06: (GX) Added the qualifier 'const' to the arguments of the functions that get the status of the display list.</A>
+<DD><A href="#note28-07">Note 28-07: (MATH) Accelerated the MD5 functions</A>
+<DD><A href="#note28-08">Note 28-08: (MB) Made corrections to the sample demo.</A>
+<DD><A href="#note28-09">Note 28-09: (PM) Corrected the return process after LCD has transitioned from OFF state to sleep mode.</A>
+<DD><A href="#note28-10">Note 28-10: (WM) Corrected problems with return process when ignoreFatalError has been set.</A>
+<DD><A href="#note28-11">Note 28-11: (WVR) Corrected problem with the thumb build version of the ichneumon component</A>
+<DD><A href="#KnownIssues_2_02_rc">Known issues in SDK 2.2 RC</A>
+</DL>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_2_02" id="sdk_2_02">NITRO-SDK Version 2.2 Release</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/08/23)</P>
+</DIV>
+
+<HR>
+<H3><A name="note29-01" id="note29-01">Note 29-01: (CARD) Corrections to internal processing of FRAM device operations</A></H3>
+<P>When a FRAM device is being used for backup, there was an occasional problem with inconsistency of the hardware internal status. A process was added to deal with this issue.
+</P>
+
+<HR>
+<H3><A name="note29-02" id="note29-02">Note 29-02: (FS) Corrections to the FS_EndOverlay function.</A></H3>
+<P>Due to the operation changes noted in <a href="changelog.html#note28-03">Note 28-03<a>, there was a problem that the destructor for the global object array in the overlay would not start correctly when unloading the overlay. This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note29-03" id="note29-03">Note 29-03: (FS) Corrections to document</A></H3>
+<P>Made numerous corrections to the following document explaining the FS library:
+<ul>
+<li>$NitroSDK/docs/TechnicalNotes/AboutFileSystem.pdf
+</ul>
+</P>
+
+<HR>
+<H3><A name="note29-04" id="note29-04">Note 29-04: (FX) Corrected problem with FX_InvSqrt function</A></H3>
+<P>When the argument passed to the <code>FX_InvSqrt</code> function was above a fixed value the calculation would be incorrect. This problem has been fixed.
+</P>
+
+<HR>
+<H3><A name="note29-05" id="note29-05">Note 29-05: (MB) Added the MB_GetMultiBootDownloadParameter function</A></H3>
+<P>In conjunction with the features added in <a href="changelog.html#note27-22">Note 27-22</a>, a <code>MB_GetMultiBootDownloadParameter</code> function was added to reference the user definition expanded parameters when downloading.
+</P>
+
+<HR>
+<H3><A name="note29-06" id="note29-06">Note 29-06: (OS) Added reference for debug output functions on ARM7 side.</A></H3>
+<P>Added references for the <code>OS_InitPrintServer</code> and  <code>OS_PrintServer</code> functions, which are used for ARM 7 debug output. Also added that it is not necessary to use these functions in the application.
+</P>
+
+<HR>
+<H3><A name="note29-07" id="note29-07">Note 29-07: (OS) Added reference for NitroStaticInit function.</A></H3>
+<P>Added an explanation of the <code>NitroStaticInit</code> function to the Function Reference, in line with the addition made in <a href="changelog.html#note27-31">Note 27-31</a>.
+</P>
+
+<HR>
+<H3><A name="note29-08" id="note29-08">Note 29-08: (SND) Optimized the cache disabling process.</A></H3>
+<P>At the place where the <code>DC_InvalidateRange</code> function is called from the Sound library, the specified range was larger than necessary, so corrected this to be an appropriate size. This correction reduces the load of the sound process.
+</P>
+
+<HR>
+<H3><A name="note29-09" id="note29-09">Note 29-09: (WM) Corrected problem in process that detects disconnection during MP communications.</A></H3>
+<P>During MP communications, if the communications partner disappears (e.g., the power gets cut), there is a timeout and notification is made of the disconnection. However, due to a bug in the timeout process, sometimes notification of the disconnection was not made. This bug was fixed.
+</P>
+
+<HR>
+<H3><A name="note29-10" id="note29-10">Note 29-10: (WM) Fixed internal process related to connecting to child.</A></H3>
+<P>In environments where communications status is extremely bad and the child repeatedly tries to connect to the parent, there was a bug that put parent into an abnormal internal state. That bug has been fixed.
+</P>
+
+<HR>
+<H3><A name="note29-11" id="note29-11">Note 29-11: (WM) Changed internal operations during disconnection process.</A></H3>
+<P>As mentioned in <a href="changelog-oldver.html#note25-22">Note 25-22</a>, internal operation was changed to wait for the signal strength that can send the disconnection notification when disconnecting. But this has been changed to timeout after a set period of time. This corrects those cases where the process did not end when <code>WMTestTool.srl</code> was used to set the Noise rate to 100%.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_2_02" id="KnownIssues_2_02">Known issues in SDK 2.2 release version</A></H3>
+<P>None.</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_2_02_rc" id="sdk_2_02_rc">NITRO-SDK Version 2.2 RC</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/08/08)</P>
+</DIV>
+
+<HR>
+<H3><A name="note28-01" id="note28-01">Note 28-01: (CARD) Corrected reference to CARD_CheckPulledOut function.</A></H3>
+<P>Added a statement to the <code>CARD_CheckPulledOut</code> function reference indicating that the <code>CARD_LockRom</code> function must be called and CARD-ROM bus needs to be locked before calling this function .
+</P>
+
+<HR>
+<H3><A name="note28-02" id="note28-02">Note 28-02: (CARD)  Argument restriction for CARD_IdentifyBackup function.</A></H3>
+<P>Added a restriction so that <code>CARD_BACKUP_TYPE_NOT_USE</code> cannot be specified as the device type passed to the <code>CARD_IdentifyBackup</code> function. This change was added in 2.2 PR, but it was left out of the changelog.
+</P>
+
+<HR>
+<H3><A name="note28-03" id="note28-03">Note 28-03: (DevEnv) Corrected path for ISD_NITRO_DEBUGGER.</A></H3>
+<P>Corrected the path location that <code>ISD_NITRO_DEBUGGER</code> indicates, which is defined in <code>$NitroSDK/build/buildtools/commondefs.emtype.ISD</code>.
+</P>
+
+<HR>
+<H3><A name="note28-04" id="note28-04">Note28-04: (FS) Changed the operations of the overlay functions.</A></H3>
+<P>When there was a global object in an overlay to be unloaded that required a destructor, the destructor was called automatically. The operation has been changed so that the destructor is not called.
+</P>
+
+<HR>
+<H3><A name="note28-05" id="note28-05">Note 28-05: (GX) Further corrections to Sub_Double3D sample demo.</A></H3>
+<P>The following correction was made to the <code>$NitroSDK/build/demos/gx/UnitTours/Sub_Double3D</code> sample demo:<br> The correction described in <a href="changelog.html#note27-15">Note27-15</a> was not complete and the same symptoms still appeared occasionally. The problem was corrected again.
+</P>
+
+<HR>
+<H3><A name="note28-06" id="note28-06">Note 28-06: (GX) Added the qualifier 'const' to the arguments of the functions that get the status of the display list.</A></H3>
+<P>The contents of the pointer passed to the arguments of the following functions have not been rewritten; however, the <code>const</code> qualifier had not been added to the arguments, so <code>const</code> has been added to them.
+<ul>
+<li><code>G3_GetDLStart</code> function
+<li><code>G3_GetDLLength</code> function
+<li><code>G3_GetDLSize</code> function
+</ul>
+</P>
+
+<HR>
+<H3><A name="note28-07" id="note28-07">Note 28-07: (MATH) Accelerated the MD5 functions</A></H3>
+<P>Replaced the implementations of the MD5 functions. The code sizes are about half of what they were before, and the functions operate approximately 20% faster compared to the previous implementation. The interface has not been changed. This change was added in 2.2 PR, but it was left out of the changelog.
+</P>
+
+<HR>
+<H3><A name="note28-08" id="note28-08">Note 28-08: (MB) Made corrections to the sample demo.</A></H3>
+<P>
+The following correction was made to the <code>$NitroSDK/build/demos/mb/cloneboot</code> sample:<br> <br>
+<ul>
+<li>When the <code>ConnectMain</code> function on the parent failed, a reattempt was made without ending the WH module. This bug has been fixed.
+</ul>
+</P>
+
+<HR>
+<H3><A name="note28-09" id="note28-09">Note 28-09: (PM) Corrected the return process after LCD has transitioned from OFF state to sleep mode.</A></H3>
+<P>When moved from the LCD OFF state to sleep mode and then recovered a discrepancy would arise between the actual state and the internal state of the GX library. This has been fixed. (See <a href="changelog-oldver.html#note22-23">Note22-23</a>)
+</P>
+
+<HR>
+<H3><A name="note28-10" id="note28-10">Note 28-10: (WM) Corrected problems with return process when ignoreFatalError has been set.</A></H3>
+<P>When the  <code>ignoreFatalError</code> argument of the <code>WM_StartMPEx</code> function is set to TRUE, there should be no auto-disconnect even when a fatal error occurs with the child. However, due to a problem in this process, communications become unavailable after this point. This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note28-11" id="note28-11">Note 28-11: (WVR) Corrected problem with the thumb build version of the ichneumon component</A></H3>
+<P>It was confirmed that programs do not operate when the thumb build version of the ichneumon component is used. This has been corrected.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_2_02_rc" id="KnownIssues_2_02_rc">Known issues in SDK 2.2 RC</A></H3>
+<P>None.</P>
+
+<P style="text-align: right">NINTENDO Technical Support Center</P>
+
+
+<BR> <BR> <BR>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

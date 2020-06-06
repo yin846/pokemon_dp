@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_GetConnectedAIDs</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_GetConnectedAIDs</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+u16 WM_GetConnectedAIDs(void);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>None.</p>
+
+<h2>Return Values</h2>
+<p>Returns the AID Bitmap of the connected partner.</p>
+
+<H2>Description</H2>
+<P>Gets the current connection partner in a bitmap format. The correspondance between the acquired value and the AID is AID 0, 1, 2,... sequentially from the low bit. Returns a valid value only when in the <CODE>PARENT</CODE>, <CODE>MP_PARENT</CODE>, <CODE>CHILD</CODE>, or <CODE>MP_CHILD</CODE> state. For children, it returns 0x0001 when connected to the parent.</P>
+<h2>See Also</h2>
+<p><CODE><A href="WM_GetAID.html">WM_GetAID</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+10/28/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

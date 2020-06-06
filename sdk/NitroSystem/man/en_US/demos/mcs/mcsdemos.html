@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>MCS Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Multiple Channel Stream Library Demos</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSystem/build/demos/mcs</CODE></P>
+<H2>Compilation</H2>
+<h3>For the Nintendo DS Program</h3>
+<P>Move to the <CODE>$NitroSystem/build/demos/mcs</CODE> and enter:</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSystem/build/demos/mcs/(sample name)/nitro/bin/(platform)/(target)/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSystem/build/demos/mcs/basic/nitro/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;<font color="#ff0000">The MCS library is used for debugging, so the (platform) directory does not normally operate the &quot;Rom&quot; executable file.</font></P>
+<h3>For the Windows Program</h3>
+<P><font color="#ff0000">In order to compile a Windows program, you must have &quot;Visual C++ .NET 2003&quot; or higher installed.</font></P>
+<p>Go to the <CODE>$NitroSystem/build/demos/mcs/(sample name)/win</CODE> directory and open the (sample).sln file. &nbsp;&nbsp;</p>
+<BLOCKQUOTE><CODE>$NitroSystem/build/demos/mcs/(sample name)/win/(target)/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSystem/build/demos/mcs/basic/win/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+<H2>Execution</H2>
+<ol>
+<li><p>Start up the mcs server and connect it with the Nintendo DS hardware.</p></li>
+<li><p>Open the <CODE>.srl</CODE> file in the <CODE>$NitroSystem/build/demos/mcs/(sample name)/bin/(platform)/(target)</CODE> directory. After a moment, the program will start up on the Nintendo DS hardware.</p>
+</li>
+  <li>
+<p>For a &quot;basic&quot; sample, you must also execute the Windows program in the <CODE>$NitroSystem/build/demos/mcs/basic/win/(target)</CODE> directory.</p>
+</li>
+</ol>
+
+<H2>Description</H2>
+<BR>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>basic</CODE></STRONG></EM><BR> (<A href="../../../../build/demos/mcs/basic/nitro/src/main.c">DS source </A>)<BR> (<A href="../../../../build/demos/mcs/basic/win/main.cpp">Windows source</A>)</TD>
+<TD width="525">Moves the picture displayed on the Nintendo DS BG screen in accordance with the coordinate data sent from the Windows program side. If one Windows program has been started, the picture will scroll from side to side. If two Windows programs have been started, the picture will scroll diagonally.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>file_io</CODE></STRONG></EM><BR> (<A href="../../../../build/demos/mcs/file_io/nitro/src/main.c">DS source</A>)</TD>
+<TD width="525">Loads the file from the PC, then after its contents have been inverted, writes a new file back to the PC.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Operating Environment</H2>
+<P>Normal operation for all of the samples using the IS-NITRO-EMULATOR and ensata have been confirmed.</P>
+<H2>See Also</H2>
+<P><A href="../../mcs/list_mcs.html"><CODE>An Overview of the MCS Functions</CODE></A></P>
+<H2>Revision History</H2>
+<P>04/04/2005 Corrected error in directory path<br>01/28/2005 Initial version.</P>
+</BODY>
+</HTML>

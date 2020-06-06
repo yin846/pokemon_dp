@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_GetChannelStatus</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_GetChannelStatus</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">u32 SND_GetChannelStatus( <code>void )</code>;</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAULWT"></a>
+<h2>Arguments</h2>
+      
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1LWT"></a>
+<h2>Return Values</h2>
+
+<p>Bit flags indicating whether each channel is active or not. The channels are represented in order, with the lowest bit representing channel 0. A channel is active if its representative bit is standing.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDACMWT"></a>
+<h2>Description</h2>
+      <p>
+Gets the status of the channels, showing whether they are active or not.
+</p>
+      <div class="note">
+<h3 class="title">Caution</h3>
+<p>
+This function is carried out asynchronously with respect to ARM7 command functions. To acquire synchronization, you must use a function such as the <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a> function to confirm that the processing of ARM7 commands has completed.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="SND_IsFinishedCommandTag.html">SND_IsFinishedCommandTag</a></p>
+<h2>Revision History</h2>
+<p>07/20/2004 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

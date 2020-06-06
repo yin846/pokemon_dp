@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>TP_GetLatestRawPointInAuto</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">TP_GetLatestRawPointInAuto</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/spi.h&gt;</CODE><BR>
+<PRE><CODE>void TP_GetLatestRawPointInAuto( <A href="TPData.html">TPData</A> * result );</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">result</font></strong></em></TD>
+<TD width="700">A pointer used for acquiring results</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>Selects and gets the most recent valid touch panel values from the autosampling result of the past frame.<br /><BR> If there was no valid sampling value in the past frame, this obtains the coordinates with the validity flag set to ON.<BR> For x, y coordinate values, it takes values in the uncalibrated range (0 &ndash; 4095).</P>
+<h2>See Also</h2>
+<P><a href="TPData.html"><code>TPData</code></a>, <a href="TP_GetLatestCalibratedPointInAuto.html"><code>TP_GetLatestCalibratedPointInAuto</code></a>, <a href="TP_RequestAutoSamplingStart.html"><code>TP_RequestAutoSamplingStart</code></a></P>
+<H2>Revision History</H2>
+<P>04/16/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

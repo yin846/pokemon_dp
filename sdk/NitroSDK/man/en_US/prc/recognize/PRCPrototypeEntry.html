@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRCPrototypeEntry</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRCPrototypeEntry</h1>
+<h2>Definitions</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+typedef struct PRCPrototypeEntry
+{
+BOOL                enabled;
+u32                 kind;
+u16                 code;
+<A href="../../fx/fx16.html">fx16</A>                correction;
+void*               data;
+int                 pointIndex;
+u16                 pointCount;
+u16                 strokeCount;
+} PRCPrototypeEntry;
+</CODE></PRE></dd>
+</dl>
+
+<h2>Elements</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">enabled</FONT></STRONG></EM></TD>
+<TD width="87%">Whether this entry is enabled.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">kind</FONT></STRONG></EM></TD>
+<TD width="87%">The bit field representation of this entry's kind.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">code</FONT></STRONG></EM></TD>
+<TD width="87%">Code value.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">correction</FONT></STRONG></EM></TD>
+<TD width="87%">Correction for a score.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">data</FONT></STRONG></EM></TD>
+<TD width="87%">The user data that is associated with this entry.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">pointIndex</FONT></STRONG></EM></TD>
+<TD width="87%">The ordinal position of the entry's  coordinate data in <CODE><A href="PRCPrototypeList.html">PRCPrototypeList</A>.pointArray</CODE>.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">pointCount</FONT></STRONG></EM></TD>
+<TD width="87%">The number of points that constitute the entry.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">strokeCount</FONT></STRONG></EM></TD>
+<TD width="87%">The number of strokes that constitute the entry.</TD>
+    </TR>
+  </tbody>
+</table>
+<H2>Description</H2>
+<P>This structure is included in the <CODE><A href="PRCPrototypeList.html">PRCPrototypeList</A></CODE> structure as the attribute information for each entry in the sample DB. It is returned as the recognition results of <CODE><A href="PRC_GetRecognizedEntry.html">PRC_GetRecognizedEntry*</A></CODE>.</P>
+<P><CODE>correction</CODE> is a numerical correction value for the entry score in the recognition algorithm. If the preadjusted score is placed in <CODE>score</CODE>, the corrected value will become <CODE>FX_Mul(score, FX32_ONE - correction) + correction</CODE>. That is, if <CODE>correction</CODE> is 0, there will be no correction. The score will increase as a value increases in the positive direction and decrease as the number decreases in the negative direction.</P>
+<P>The <CODE>kind</CODE> attribute is for use with the <CODE>kindMask</CODE> option in functions such as <CODE><A href="PRC_GetRecognizedEntry.html">PRC_GetRecognizedEntry*</A></CODE> to restrict the kind of pattern that is targeted for matching. Use it so that a bit is set for each pattern kind.</P>
+<h2>See Also</h2>
+<p><CODE><A href="PRC_GetRecognizedEntry.html">PRC_GetRecognizedEntry*</A>, <A href="PRC_GetEntryCode.html">PRC_GetEntryCode</A>, <A href="PRC_GetEntryData.html">PRC_GetEntryData</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>06/23/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

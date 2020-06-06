@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dUnPack*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dUnPack*</h1>
+<h2>C Specification</h2>
+
+<dl>
+<dd><CODE>#include &lt;nnsys/g2d/fmt/g2d_NAN_load.h&gt;</CODE></dd>
+<dd><CODE>#include &lt;nnsys/g2d/fmt/g2d_NCE_load.h&gt;</CODE></dd>
+<dd><CODE>#include &lt;nnsys/g2d/fmt/g2d_NEN_load.h&gt;</CODE></dd>
+<dd><CODE>#include &lt;nnsys/g2d/fmt/g2d_NMC_load.h&gt;</CODE></dd>
+</dl>
+
+<dl>
+<dd><CODE>void NNS_G2dUnpackNAN( NNSG2dAnimBankData* pData );</CODE></dd>
+<dd><CODE>void NNS_G2dUnpackNCE( NNSG2dCellDataBank* pCellData );</CODE></dd>
+<dd><CODE>void NNS_G2dUnpackNEN( NNSG2dEntityDataBank* pDataBank );</CODE></dd>
+<dd><CODE>void NNS_G2dUnpackNMC( NNSG2dMultiCellDataBank* pMCellData );</CODE></dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pData</font></strong></em></td>
+<td width="87%">[IN, OUT] Animation bank data</td>
+  </tr>
+<tr>
+<td width="13%"><em><strong><font face="Courier New">pCellData</font></strong></em></td>
+<td width="87%">[IN, OUT] Cell bank data</td>
+  </tr>
+<tr>
+<td width="13%"><em><strong><font face="Courier New">pDataBank</font></strong></em></td>
+<td width="87%">[IN, OUT] Entity bank data</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>pMCellData</CODE></font></strong></em></td>
+<td width="87%">[IN, OUT] Multicell sequence data</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>Unpacks binary data loaded from a file to a usable state. This function must be executed before any binary data is used. Execute this function only once for the data.<BR> Internally, extraction occurs to the memory offset pointer value.<BR> <BR>
+<h2>See Also</h2>
+<p>
+<CODE><A href="NNS_G2dPrintXXX.html">NNS_G2dPrint*</A></CODE><br>
+</p>
+
+<H2>Revision History</H2>
+<P>05/28/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Cell Animation Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">Cell Animation Overview</h1>
+<H2>Conceptual Diagram</H2>
+<P><IMG src="image.gif" border="0" width="675" height="275"></P>
+<H2>Description</H2>
+Cell animations created with NITRO-CHARACTER uses Cell Animation for play back. Cell Animation uses an internal Animation Controller to animate cells. By using the animation data and its animation result (index value), the referenced cell data association is executed by this Cell Animation.
+
+
+<h2>Internal Data of the Cell Animation</h2>
+
+
+<h3>Pointer to the Cell Data Bank</h3>
+
+The pointer to the cell data bank read to the main memory is stored. The cell data bank is static data and cannot be rewritten. The cells used by the Cell Animation must be included in the cell data bank designated by this pointer.
+
+<h3>Pointer to the Cell Data Being Displayed</h3>
+The pointer to the cell currently displayed on the screen in animation playback is stored. The cell designated by this pointer exists in the cell data bank that is designated by the pointer to the cell data bank.
+
+<h3>SRT Animation Result</h3>
+The cell position, rotation, and scale changed by animation playback are stored.
+
+<h3>Handle for Cell VRAM Transfer State Object (<code>cellTransferStateHandle</code>)</h3>
+Used when supporting VRAM transfer animations. The handle for the cell VRAM transfer state object holds the status and information that the cell which carries out the VRAM transfer should manage and save. If it is not used, <code>NNS_G2D_INVALID_CELL_TRANSFER_STATE_HANDLE</code> takes its place.
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

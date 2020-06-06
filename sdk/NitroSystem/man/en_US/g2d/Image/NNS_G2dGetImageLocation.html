@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dGetImageLocation</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dGetImageLocation</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Image.h&gt;</CODE></pre>
+<pre><CODE>u32  NNS_G2dGetImageLocation(
+const NNSG2dImageProxy* pImg,
+NNS_G2D_VRAM_TYPE  type );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pImg</font></strong></em></td>
+<td width="87%">[IN] Image proxy</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><code><EM><STRONG>type</STRONG></EM></code></font></strong></em></td>
+<td width="87%">[IN] VRAM type to use (3D, 2D-Main, or 2D-Sub)</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>The address for the assigned VRAM image.
+</p>
+<H2>Description</H2>
+<P>
+Gets the VRAM address from an image proxy. The <CODE>type</CODE> (VRAM use type) specifies the graphics engine for which you want to obtain the image proxy's VRAM address. You can specify any of the following types of VRAM usage:
+</p>
+<PRE>
+NNS_G2D_VRAM_TYPE_3DMAIN    This type is used for the 3D graphics engine
+NNS_G2D_VRAM_TYPE_2DMAIN    This type is used for the 2D graphics engine A
+NNS_G2D_VRAM_TYPE_2DSUB     This type is used for the 2D graphics engine B
+</PRE>
+<BR>
+
+
+<h2>See Also</h2>
+<p>None.</p>
+<H2>Revision History</H2>
+<P>
+06/10/2004 Added a description related to the type of VRAM to use.<BR>05/28/2004 Initial version.</P>
+</body>
+</html>

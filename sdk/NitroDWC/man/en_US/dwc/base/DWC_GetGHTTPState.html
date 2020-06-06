@@ -1,0 +1,98 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GetGHTTPState</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GetGHTTPState</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+DWCGHTTPState DWC_GetGHTTPState( int req );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Gets the communication status when a GHTTP library function is used.
+		</P>
+		<P>
+		  Specify the return values for the <A href="DWC_PostGHTTPData.html"><CODE>DWC_PostGHTTPData</CODE></A>,  <A href="DWC_PostGHTTPData.html"><CODE>DWC_GetGHTTPData</CODE></A>, and <A href="DWC_PostGHTTPData.html"><CODE>DWC_GetGHTTPDataEx</CODE></A> functions in <STRONG><EM><CODE>req</CODE></EM></STRONG>.</TD>
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>req</CODE></STRONG></EM></TD>
+					<TD width="75%">Request identifier.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>DWC_GHTTP_FALSE</CODE></STRONG></EM></TD>
+					<TD width="75%">Communication failed.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_HOST_LOOKUP</CODE></STRONG></EM></TD>
+					<TD>Converting the host name to an IP address.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_CONNECTING</CODE></STRONG></EM></TD>
+					<TD>Waiting for socket connection to complete.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_SECURING_SESSION</CODE></STRONG></EM></TD>
+					<TD>Establishing a safe channel.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_SENDING_REQUEST</CODE></STRONG></EM></TD>
+					<TD>Sending a request.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_POSTING</CODE></STRONG></EM></TD>
+					<TD>Sending data (skip if not sent)</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_WAITING</CODE></STRONG></EM></TD>
+					<TD>Wait for response.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_RECEIVING_STATUS</CODE></STRONG></EM></TD>
+					<TD>Receiving response status.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_RECEIVING_HEADERS</CODE></STRONG></EM></TD>
+					<TD>Receiving headers.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_RECEIVING_FILE</CODE></STRONG></EM></TD>
+					<TD>Receiving file.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_PostGHTTPData.html">DWC_PostGHTTPData</A>, <A href="DWC_GetGHTTPData.html">DWC_GetGHTTPData</A>, <A href="DWC_GetGHTTPDataEx.html">DWC_GetGHTTPDataEx</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			10/27/2005 Initial version.<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

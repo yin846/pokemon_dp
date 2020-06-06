@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>Text String Drawing Overview</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">Text String Drawing Overview</H1>
+
+<H2>The Text String Drawing Library</H2>
+<P>
+	The Text String Drawing library uses the <a href="../CharCanvas/CharCanvas_Overview.html">Text Character Drawing Library</a> to draw text strings. It analyzes and arranges the text string according to the text encoding, and then draws the text string using the Text Character Drawing Library.
+</P>
+
+<H2>TextCanvas</H2>
+<P>
+	The Text String Drawing library draws the text strings to a virtual drawing screen called the TextCanvas. This TextCanvas holds an internal CharCanvas, and the text strings drawn in TextCanvas correspond to the text characters rendered in CharCanvas.
+	
+	TextCanvas has additional parameters for text spacing and line spacing, which are required for the drawing of text strings.
+
+	<br> <img src="TextCanvas.png" alt="Text string drawing -&gt;TextCanvas-&gt;Text Character drawing-&gt;CharCanvas">
+</P>
+
+<H2>Text String Drawing Functions</H2>
+<P>
+	The functions of the Text String Drawing library can be divided into four broad groups:
+</p>
+
+	<TABLE border="1" width="100%">
+	  <TBODY>
+	    <TR>
+	      <TD width="40%">
+			<strong>Building TextCanvas</strong><br> Functions for initializing and building TextCanvas.
+	      </TD>
+	      <TD width="60%">
+			<code><a href="NNS_G2dTextCanvasInit.html">NNS_G2dTextCanvasInit</a></code><br>
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="40%">
+			<strong>TextCanvas accessors</strong><br> Functions for getting and setting the TextCanvas parameters.
+	      </TD>
+	      <TD width="60%">
+			<code><a href="NNS_G2dTextCanvasGetCharCanvas.html">NNS_G2dTextCanvasGetCharCanvas</a></code><br> <code><a href="NNS_G2dTextCanvasSetCharCanvas.html">NNS_G2dTextCanvasSetCharCanvas</a></code><br> <code><a href="NNS_G2dTextCanvasGetFont.html">NNS_G2dTextCanvasGetFont</a></code><br> <code><a href="NNS_G2dTextCanvasSetFont.html">NNS_G2dTextCanvasSetFont</a></code><br> <code><a href="NNS_G2dTextCanvasGetHSpace.html">NNS_G2dTextCanvasGetHSpace</a></code><br> <code><a href="NNS_G2dTextCanvasSetHSpace.html">NNS_G2dTextCanvasSetHSpace</a></code><br> <code><a href="NNS_G2dTextCanvasGetVSpace.html">NNS_G2dTextCanvasGetVSpace</a></code><br> <code><a href="NNS_G2dTextCanvasSetVSpace.html">NNS_G2dTextCanvasSetVSpace</a></code><br>
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="40%">
+			<strong>Calculating the drawing size of a text string</strong><br> These functions are used to calculate the drawing size of a text string.
+	      </TD>
+	      <TD width="60%">
+			<code><a  href="NNS_G2dTextCanvasGetStringWidth.html">NNS_G2dTextCanvasGetStringWidth</a></code><br> <code><a href="NNS_G2dTextCanvasGetTextWidth.html">NNS_G2dTextCanvasGetTextWidth</a></code><br> <code><a href="NNS_G2dTextCanvasGetTextHeight.html">NNS_G2dTextCanvasGetTextHeight</a></code><br> <code><a href="NNS_G2dTextCanvasGetTextRect.html">NNS_G2dTextCanvasGetTextRect</a></code><br>
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="40%">
+			<strong>Text string drawing</strong><br> Functions for drawing text strings to TextCanvas.
+	      </TD>
+	      <TD width="60%">
+			<code><a  href="NNS_G2dTextCanvasDrawString.html">NNS_G2dTextCanvasDrawString</a></code><br> <code><a href="NNS_G2dTextCanvasDrawText.html">NNS_G2dTextCanvasDrawText</a></code><br> <code><a href="NNS_G2dTextCanvasDrawTextRect.html">NNS_G2dTextCanvasDrawTextRect</a></code><br> <code><a href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a></code><br>
+	      </TD>
+	    </TR>
+	  </TBODY>
+	</TABLE>
+
+<p>
+	Based on these classifications and the classifications of the <a href="../CharCanvas/CharCanvas_Overview.html">Character Drawing library</a> functions, the flow for drawing of a text string looks like this:
+</p>
+	<pre>(1) Build CharCanvas using the build functions.
+Configure the screen and OAM settings using the configuration functions.
+<br><br>As an alternative, construct a cell using the cell-building functions.
+        
+(2) Build TextCanvas using the TextCanvas building functions.
+        
+(3) Clear CharCanvas using the fill functions.
+        
+(4) Draw text string using the test-string drawing functions.
+        
+From this point, only repeat steps (3) and (4) when required.
+
+(5) If a cell was built in (1), draw the cell using the renderer.</pre>
+<p>
+
+
+<H2>Character encoding</H2>
+<P>
+	The text encoding that TextCanvas can handle depends on the font that is being used. The functions take a text string as the argument, but this can be changed to a wide string by defining the <a href="NNS_G2D_UNICODE.html"><code>NNS_G2D_UNICODE</code></a> macro. However, in order to display wide strings, you also need to use a font that uses UTF-16 encoding. Conversely, if you want to display Shift_JIS and UTF-8 text you need to use fonts that use those types of encoding, even if <a href="NNS_G2D_UNICODE.html"><code>NNS_G2D_UNICODE</code></a> is not defined.
+
+	<br> <br> <img src="encoding.png" alt="Byte string - [TextCanvas]-&gt;Character code - [Font]-&gt;Text string">
+</P>
+
+
+<H2>See Also</H2>
+<P><CODE></CODE></P>
+
+<H2>Revision History</H2>
+<P>
+07/12/2005 Added a case for when using cells.</P><P>
+ 05/25/2005 Initial version.</P>
+</BODY>
+
+</HTML>

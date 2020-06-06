@@ -1,0 +1,95 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--==========================================================================   Project:  NitroWiFi - man   File:     main.html    Copyright 2005,2006 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Log: main.html,v $   Revision 1.17  2006/06/16 07:11:01  okubata_ryoma   CWの対応バージョンなど変更    Revision 1.16  2006/06/14 08:46:29  okubata_ryoma   NitroWiFi 1.1 正式版リリースのための作業    Revision 1.15  2006/06/06 07:45:14  okubata_ryoma   NitroWiFi1.1RC リリースのための変更    Revision 1.14  2006/05/24 08:31:43  okubata_ryoma   NitroWiFi 1.1 PR リリースのための作業    Revision 1.13  2006/03/15 10:02:46  okubata_ryoma   NitroWiFi 1.0 正式版リリースのための作業    Revision 1.12  2006/03/01 01:42:46  seiki_masashi   CRYPT ライブラリに関する記述を削除    Revision 1.11  2006/02/02 00:01:57  okubata_ryoma   small fix    Revision 1.10  2006/02/01 07:54:26  okubata_ryoma   NitroWiFi 1.0 RC4 リリースのための変更    Revision 1.9  2006/01/25 08:37:16  okubata_ryoma   NitroWiFi 1.0 正式版リリースのための作業    Revision 1.8  2006/01/17 11:36:40  okubata_ryoma   NitroWiFi 1.0 RC3 リリースのための作業    Revision 1.7  2006/01/13 11:15:58  okubata_ryoma   NitroWiFi 1.0 正式版 リリースのための作業    Revision 1.6  2005/12/21 07:42:54  seiki_masashi   CRYPT ライブラリの電子署名ライブラリを新規追加    Revision 1.5  2005/11/30 05:52:38  yosizaki   update number of supported version.    Revision 1.4  2005/11/09 08:28:18  okubata_ryoma   NITRO-WiFi 1.0 RC リリースに向けた作業    Revision 1.3  2005/09/21 09:44:46  terui   "NITRO-WIFI" -> "NITRO-SDK Wi-Fi ライブラリ"へ用語統一    Revision 1.2  2005/07/25 10:07:04  terui   サンプルで使用する固定 AP の情報設定方法を追記    Revision 1.1  2005/07/25 05:10:35  terui   Initial upload    $NoKeywords: $  ==========================================================================-->
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>NITRO-SDK Wi-Fi Library Function Reference Manual</TITLE>
+		<LINK rel="stylesheet" href="css/titles.css">
+	</HEAD>
+	<BODY>
+		<H1 class="title">
+			NITRO-SDK Wi-Fi Library <BR>Function Reference Manual<BR>(English Edition)
+		</H1>
+
+		<P align="right">
+			<span class="version">Supports NITRO-SDK Wi-Fi Library 1.1 Release Version</span>
+		</P>
+		<P class="confidential">
+			Confidential
+		</P>
+		<P class="caution">
+			This document contains proprietary information. Please take strict measures to keep this information secret.
+		</P>
+		<P class="copyright">
+			&copy;2006 Nintendo Co.,Ltd. All rights reserved.
+		</P>
+		<P class="recommend">
+			Microsoft Internet Explorer 5.0/Netscape 6.0 or later versions are recommended.
+		</P>
+<HR>
+<A href="changelog.html">Revision History through NITRO-SDK Wi-Fi Library 1.1 Release Version</A>
+		<H3>Introduction</H3>
+		<P>
+			Use of the NITRO-SDK Wi-Fi Library allows Internet access by using Nintendo DS wireless communication (infrastructure mode).<BR><BR> <STRONG>The following limitations apply to the NITRO-SDK Wi-Fi Library.</STRONG>
+			<UL>
+				<LI>Supports NITRO-SDK 3.0 and later versions.
+				<LI>Supports CodeWarrior for Nintendo DS version 1.2 and later.
+				<LI>Set the path to Nintendo WFC in the <CODE>NITROWIFI_ROOT</CODE> environment variable.
+				<LI>The NITRO-SDK Wi-Fi Library also contains libraries that have unreleased source code. Acknowledgement
+			</UL>
+		</P>
+
+		<H3>Library Structure</H3>
+		<P>
+			Internally, the NITRO-SDK Wi-Fi Library is made up of the hierarchical structure shown below.
+			<UL>
+				<LI>WCM: Wireless connection management library. Manages connections with wireless access points and acts as a bridge between the CPS library and the wireless driver.
+				<LI>CPS: TCP/IP protocol stack. This includes ARP, IP, UDP, TCP, ICMP, DHCP client, DNS client, and SSL client.
+				<LI>SOCL: Socket library that runs on the CPS library.
+				<LI>SOC: A wrapper library that makes SOCL match a typical socket interface.
+			</UL>
+		</P>
+		<P align="center">
+			<IMG src="lib_composition.jpg" width="346" height="206" border="0">
+		</P>
+		<P>
+			Currently, the following prefixes are reserved for the NITRO-SDK Wi-Fi Library. Therefore, in applications, do not use functions and variables that start with the following names:
+		</P>
+		<P>
+			<TABLE border="1" align="center">
+				<TBODY>
+					<TR>
+						<TD width="25%" align="center"><STRONG>WCM</STRONG></TD>
+						<TD width="75%">Wireless connection library prefix</TD>
+					</TR>
+					<TR>
+						<TD align="center"><STRONG>CPS</STRONG></TD>
+						<TD>TCP/IP protocol stack prefix</TD>
+					</TR>
+					<TR>
+						<TD align="center"><STRONG>SOC<BR>SOCL</STRONG></TD>
+						<TD>Socket library prefix</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</P>
+
+		<H3>Using the API</H3>
+		<P>
+			Place the following header file in an include statement in the program's source code.
+			<PRE><CODE>
+	#include &lt;nitroWiFi.h&gt;
+			</CODE></PRE>
+			When this header file is placed in an include statement, both <CODE>so2soc.h</CODE> and <CODE>iw2wcm.h</CODE> are placed in the include statement by default. These headers are wrappers that redefine the API definition of the library on NITRO-INET to be used with the NITRO-SDK Wi-Fi Library. Even if you have developed applications using NITRO-INET, these wrappers allow you to easily replace just the libraries.<BR><BR>Place the following common build tools in the include statement in the makefile that creates the application libraries.
+			<PRE><CODE>
+	include $(NITROWIFI_ROOT)/build/buildtools/commondefs
+	include $(NITROWIFI_ROOT)/build/buildtools/modulerules
+			</CODE></PRE>
+			To run the samples correctly, you need to edit the following file for your wireless access point and rebuild the file.
+			<PRE><CODE>
+	$(NITROWIFI_ROOT)/build/demos/shared/ap_info.c
+			</CODE></PRE>
+		</P>
+	</BODY>
+</HTML>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>Tips Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Other Sample Demos - Tips</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/tips</CODE></P>
+
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/tips</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (.<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>Executable (<code>.nef</code>, <code>.srl</code>) files are generated in <code>$NitroSDK/build/demos/tips/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code>.</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/tips/MultiLink/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Move to the <code>$NitroSDK/build/demos/tips/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and perform one of the following:</P>
+<UL>
+<LI>Execute <code>*.nef</code>, <code>*.srl</code> with ensata.
+<LI>Load a <code>*.nlf</code> file with IS-NITRO-DEBUGGER and execute it
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER
+</UL>
+<H2>Description</H2>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>BuildFinalRom</CODE></STRONG></EM></TD>
+<TD width="525">This demo shows an example of the process that incorporates files that need to be included in the final ROM. For building from the upper directory, this directory is built only when NITRO_FINALROM is defined.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>MultiLink</CODE></STRONG></EM></TD>
+<TD width="525">This sample process compiles source files in their respective multiple sub-directories and links them in the parent directory.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>MyBuildMessages</CODE></STRONG></EM></TD>
+<TD width="525">This demo changes messages for individual build-time commands such as CC and LD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>SwapCrossOver</CODE></STRONG></EM></TD>
+<TD width="525">Use this procedure to check for process omissions in 3D screen drawing processes. It sends dummy polygons to the graphics engine and checks by counting polygons.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Emulator</H2>
+<P>The <code>MultiLink</code> demo is related to the linking process. <code>SwapCrossOver</code> does not function.</P>
+<H2>See Also</H2>
+<H2>Revision History</H2>
+<P>
+03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 08/17/2004 Standardized the notation of the IS-NITRO-EMULATOR.<br /> 07/10/2004 Initial version.</P>
+<BR>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

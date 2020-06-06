@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_IsFile</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_IsFile</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>static inline BOOL	FS_IsFile(volatile const FSFile *p_file);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>p_file</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Address of the <code><a href="../fs_file_type.html">FSFile</a></code> structure</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the file information is stored in the file stores it returns TRUE. Otherwise it returns FALSE.</p>
+
+<H2>Description</H2>
+<P>This determines whether file information is currently stored in the the specified file. File information is stored by the <code><A href="FS_OpenFile.html">FS_OpenFile</A></code> function and the <code><A href="FS_OpenFileFast.html">FS_OpenFileFast</A></code> function. It is released by the <code><A href="FS_CloseFile.html">FS_CloseFile</A></code> function.
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="../fs_file_type.html">FSFile</A>, <A href="FS_OpenFile.html">FS_OpenFile</A>, <A href="FS_OpenFileFast.html">FS_OpenFileFast</A>, <A href="FS_CloseFile.html">FS_CloseFile</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+05/14/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

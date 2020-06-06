@@ -1,0 +1,93 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_SendReliable</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_SendReliable</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_SendReliable ( u8 aid, const void* buffer, int size );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  After matchmaking completes, this function performs a Reliable send via UDP to the AID specified in <CODE>aid</CODE>.
+		</P>
+        <P>
+With Reliable send, data is delivered to the communications partner in the order it was sent, with no duplication or packet loss. However, it will take longer for the send to complete, since each packet is checked when it arrives.
+        </P>
+		<P>
+		  If data sending is impeded on a layer lower than the DWC, the data is stored in the send buffer with the size specified by the <A href="DWC_InitFriendsMatch.html">DWC_InitFriendsMatch</A> function. If there is not enough space in the send buffer and a Reliable sending is attempted, the data that could not be sent is stored as is and is sent from the <A href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</A> function as soon as space opens up in the send buffer.
+		</P>
+		<P>
+		  Also, the maximum data size that can be sent at one time is determined (the default is 1465 bytes). If data larger than this is sent, the send data is divided up, and the send is suspended. The maximum data size can be changed with the <A href="DWC_SetSendSplitMax.html"><CODE>DWC_SetSendSplitMax</CODE></A> function. To maintain compatibility with differently configured communications devices, try not to set the size above the default.
+		</P>
+		<P>
+		  While the send data is suspended in this manner, do not delete the send buffer. Also, no further data can be sent during the suspension.
+		</P>
+		<P>
+		  It is possible to check whether or not a Reliable send is possible, including whether there is empty send buffer space and if the send destination AID is valid, by using the <A href="DWC_IsSendableReliable.html">DWC_IsSendableReliable</A> function.
+		</P>
+		<P>
+		  When the send completion callback is configured with the <A href="DWC_SetUserSendCallback.html">DWC_SetUserSendCallback</A> function, the callback is called when the data send is complete. However, the send completion does not guarantee delivery to the communication partner and only means that data was passed to a low-layer send function.
+		</P>
+		<P>
+		  You can get the AID of connected DS devices using the <CODE><A href="DWC_GetAIDList.html">DWC_GetAIDList</A></CODE> function.
+		</P>
+		<P>
+		  By using the <a href="DWC_SendReliableBitmap.html">DWC_SendReliableBitmap</a> function, a Reliable sending can be made to multiple AIDs at one time.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>aid</CODE></STRONG></EM></TD>
+					<TD width="75%">AID for the send destination.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>buffer</CODE></STRONG></EM></TD>
+					<TD>Pointer to the send buffer.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>size</CODE></STRONG></EM></TD>
+					<TD>Size of the send buffer.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">The data set is completed for the send buffer.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD>The data set failed for the send buffer.<BR>Either an error has occurred, the previous send process has not ended, an invalid AID was specified, or there is not enough space in the send buffer.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><a href="DWC_SendReliableBitmap.html">DWC_SendReliableBitmap</a> <A href="DWC_SendUnreliable.html">DWC_SendUnreliable</A>, <a href="DWC_SendUnreliableBitmap.html">DWC_SendUnreliableBitmap</a>, <A href="DWC_InitFriendsMatch.html">DWC_InitFriendsMatch</A>, <A href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</A>, <A href="DWC_SetSendSplitMax.html">DWC_SetSendSplitMax</A>, <A href="DWC_IsSendableReliable.html">DWC_IsSendableReliable</A>, <A href="DWC_SetUserSendCallback.html">DWC_SetUserSendCallback</A>, <A href="DWC_GetAIDList.html">DWC_GetAIDList</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+		  05/22/2006 Corrected the explanation regarding errors <BR>02/22/2006 Changed description of the return values to give more detail<BR>12/16/2005 Added a detailed function description<BR>11/14/2005 Added more on Reliable sends<BR>07/22/2005 Initial version<BR>
+		</P>
+
+	</BODY>
+</HTML>

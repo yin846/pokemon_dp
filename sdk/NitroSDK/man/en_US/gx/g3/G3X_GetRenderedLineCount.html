@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3X_GetRenderedLineCount</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3X_GetRenderedLineCount</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3x.h&gt;
+
+s32 G3X_GetRenderedLineCount(void);<BR></CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The minimum value of the color buffer for the previously rendered frame.</p>
+<H2>Description</H2>
+<P>The function is called when confirming the minimum number of lines in the color buffer during the previous rendered frame. The return value takes a value between 0 and 46. The lower the value, the higher the risk that lines over will occur. In this case, reduce the number of polygons sent to the geometry engine in order to decrease the load on the rendering engine.</P>
+
+
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

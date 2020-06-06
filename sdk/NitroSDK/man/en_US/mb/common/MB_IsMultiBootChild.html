@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MB_IsMultiBootChild</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MB_IsMultiBootChild</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR> <CODE>static inline BOOL	MB_IsMultiBootChild(void);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+None.
+</p>
+
+<h2>Return Values</h2>
+<p>If the program was launched as a multi-boot child, this function returns <code>TRUE</code>. Otherwise, it returns <code>FALSE</code>.</p>
+
+<H2>Description</H2>
+<P>If the program was launched as a multi-boot child, this function returns TRUE. If TRUE, the <code>MB_GetMultiBootParentBssDesc</code> function stores the available parent information.<BR><BR> Note that some environment changes, made directly after boot up and until this function is called, may render the parent information returned by this function invalid. <BR>
+<h2>See Also</h2>
+<p><code><A href="MB_Init.html">MB_Init</A>, <A href="MB_GetMultiBootParentBssDesc.html">MB_GetMultiBootParentBssDesc</A></code></P>
+<H2>Revision History</H2>
+<P>
+08/09/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

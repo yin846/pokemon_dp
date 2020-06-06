@@ -1,0 +1,52 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GetMyAID</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GetMyAID</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+u8   DWC_GetMyAID( void );
+
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Obtains own AID.
+		</P>
+		<P>
+		  AID is a device ID between 0 and the number of devices making up the network minus 1, that identifies each DS in the mesh type network. For example, if four people have completed matchmaking, there are four devices: 0, 1, 2, and 3. If the person whose device uses AID 1 leaves the network, the remaining devices will be 0, 2, and 3.<BR>For server-client matchmaking, the AID for the server DS will always be 0.
+		</P>
+
+		<H2>Arguments</H2>
+		<P>
+		  None.
+		</P>
+		<H2>Return Values</H2>
+		<P>
+		  Own AID. If this function is called when the <A href="FriendsMatch.html">FriendsMatch Library</A> is not running, a 0 will be returned.
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+			<A href="DWC_GetAIDList.html">DWC_GetAIDList</A>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			02/22/2006 Added description of AID during server-client matchmaking.<BR>01/31/2006 Devised the Return Values section with information on the FriendsMatch Library.<BR>12/16/2005 Added AID and return value descriptions.<BR>07/22/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

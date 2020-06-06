@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>RTC_SetTime</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">RTC_SetTime</h1>
+
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/rtc.h&gt;</CODE><BR>
+<PRE><CODE><A href="RTCResult.html">RTCResult</A> RTC_SetTime( const <A href="RTCTime.html">RTCTime</A>* time );</CODE></PRE>
+  </dd>
+
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">time</font></strong></em></TD>
+<TD width="700">Pointer to <code>RTCTime</code> containing time information to set.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the request succeeds, it returns 0. If the request fails, it returns some numeric value other than 0. </p>
+
+<H2>Description</H2>
+<P>This function writes time data to the real time clock. It sends time data to ARM7 and returns the process result once it is received. This is a synchronous version of <a href="RTC_SetTimeAsync.html"><code>RTC_SetTimeAsync</code></a>.</P>
+
+<h2>Caution</h2>
+<P><FONT color=red>Do not define parameter values of nonexistent times.<BR> This function requires a PXI interrupt for synchronization. Do not call this function when PXI interrupts are prohibited.</FONT><BR> <FONT color=red>Because applications cannot change the date, use this API only for debugging during development.</FONT></P>
+
+<h2>See Also</h2>
+<P><code><a href="RTC_SetTimeAsync.html">RTC_SetTimeAsync</a>, <a href="RTC_GetTime.html">RTC_GetTime</a>, <a href="RTC_GetTimeAsync.html">RTC_GetTimeAsync</a>, <a href="RTCResult.html">RTCResult</a>, <a href="RTCTime.html">RTCTime</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;.<br /> 07/01/2004 Changed the description to standardize the time notation.<br /> 05/18/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+	<TITLE>
+		MIC_AdjustAutoSamplingAsync
+	</TITLE>
+</HEAD>
+
+<BODY>
+
+	<H1 align="left">MIC_AdjustAutoSamplingAsync</H1>
+
+	<H2>C Specification</H2>
+	<DL>
+		<DD>
+			<CODE>#include &lt;nitro/spi.h&gt;</CODE>
+
+<PRE><CODE><A href="MICResult.html">MICResult</A> MIC_AdjustAutoSamplingAsync(
+u32             rate,
+<A href="MICCallback.html">MICCallback</A>     callback,
+void*           arg );
+</CODE></PRE>
+
+		</DD>
+	</DL>
+
+	<H2>Arguments</H2>
+	<TABLE border="1" width="100%">
+		<TBODY>
+			<TR>
+				<TD width="300"><EM><STRONG><FONT face="Courier New">rate</FONT></STRONG></EM></TD>
+				<TD width="700">The sampling rate. Directly specifies the CPU timer rate of the ARM7.<br>Can also be selected from enumerated-type <code><a href="MICSamplingRate.html">MICSamplingRate</a></code>.</TD>
+			</TR>
+			<TR>
+				<TD><EM><STRONG><FONT face="Courier New">callback</FONT></STRONG></EM></TD>
+				<TD>Specifies the pointer to the callback function. This callback is called from within the interrupt handler.
+</TD>
+			</TR>
+			<TR>
+				<TD><EM><STRONG><FONT face="Courier New">arg</FONT></STRONG></EM></TD>
+				<TD>Specifies the argument passed to the callback function.</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+
+	<H2>Return Values</H2>
+	<P>
+		Returns the enumerated-type <code><a href="MICResult.html">MICResult</a></code> process result. If the asynchronous process started normally, returns <code>MIC_RESULT_SUCCESS</code>. If the process fails for some reason, returns some other value.
+	</P>
+
+	<H2>Description</H2>
+	<P>
+		Asynchronously adjusts the sampling rate of the microphone's auto-sampling.<br />This is only valid when auto-sampling has already begun. When ARM7 receives the request, the CPU timer cycle gets updated.<BR> This function issues an auto-sampling adjustment request to ARM7, waits for a response from ARM7, and returns the process result.<br />You need to get the process result from the ARM7 via the <em><strong><code>result</code></strong></em> argument passed to the user callback function. If this function fails, asynchronous operations are not performed and the user callback function cannot be called.
+	</P>
+
+	<H2>See Also</H2>
+	<P>
+		<code><a href="MIC_AdjustAutoSampling.html">MIC_AdjustAutoSampling</a></code>, <code><a href="MIC_StartAutoSamplingAsync.html">MIC_StartAutoSamplingAsync</a></code>, <code><a href="MIC_StopAutoSamplingAsync.html">MIC_StopAutoSamplingAsync</a></code>
+	</P>
+
+	<H2>Revision History</H2>
+	<P>
+		06/27/2005 Added additional text indicating that the callback is called from the interrupt handler. <br> 01/11/2005 Initial version<BR>
+	</P>
+
+</BODY>
+
+</HTML>

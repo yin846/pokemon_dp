@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCT_AddConferenceClient</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCT_AddConferenceClient</h1>
+<h2>Syntax</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><code>int VCT_AddConferenceClient( u8 aid );</code></PRE></dd> 
+</dl>
+
+<h2>Argument</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>aid</STRONG></EM></TD>
+      <TD width="87%" height="17">AID of a client to be added.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Value</h2>
+<p>0 if successful; otherwise, <a href="VCTErrorCode.html"> the error code returns as a negative number.</a></p>
+
+<H2>Description</H2>
+<P>VCT_AddConferenceClient adds a client to a conference. Specifying your own AID is not necessary and is ignored in the function. To start a conference, all clients must call this function. For example, three clients named AID 1, AID 2, and AID 3 enter into a conference. A client of AID 1 must specify AID 2 and AID 3, a client of AID 2 must specify AID 1 and AID 3, and a client of AID 3 must specify AID 1 and AID 2.</P>
+<P>A conference's maximum number of clients is four players. Therefore, the maximum number of clients that can be added is three (this number excludes the user). In addition, the <code><a href="VCT_Init.html">VCT_Init</a></code> function must be used to define the <code><a href="VCTSession.html">VCTSession</a></code> structure as the number of participating players minus one (X - 1 where X is the number of participating players).  If the number of VCTSession structures specified by VCT_Init is less than the number of clients to be added, VCT_AddConferenceClient returns an error.</P>
+<P>
+This function also returns an error if it is called in any mode other than Conference Mode.</P>
+<h2>See Also</h2>
+<p>
+<code>
+<a href="VCT_SetTransceiverClients.html">VCT_RemoveConferenceClient</a>,
+<a href="VCTSession.html">VCTSession</a>
+</code>
+</p>
+<H2>Revision History</H2>
+<P>
+2006/04/17 Error codes and a link of the VCTSession structure were added.<BR>
+2006/03/28 A note regarding addition of client was added.<BR>
+2006/01/25 First release
+</P>
+</body>
+</html>

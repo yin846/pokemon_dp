@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsOpenFile</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsOpenFile</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre><code>u32 NNS_McsOpenFile(
+NNSMcsFile* pFile,
+const char* fileName,
+u32         openFlag);</pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">pFile</font></strong></em></td>
+<td width="87%">Pointer to the file information structure.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">fileName</font></strong></em></td>
+<td width="87%">Specifies the pointer to the character string that ends  with NULL and indicates  an open file or a newly-created file. If NULL is  specified, a dialog window displays on the PC for selecting a file.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">openFlag</font></strong></em></td>
+<td width="87%">How to open file or create file, and type of read or write (details  explained above).</td>
+ </tr>
+</table>
+<h2>Return Values</h2>
+<p>0 if the file opened successfully. A non-zero value otherwise. The return value is one of the following:</p>
+<H2>Description</H2>
+<p>Opens an existing file on the PC, or creates a new file and opens it.</p>
+<p><i>openFlag</i> specifies the method to use to open the file.</p>
+<table>
+ <tr> 
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_FLAG_READ</font></strong></em></td>
+<td>Open an existing file for reading.</td>
+ </tr>
+ <tr> 
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_FLAG_WRITE</font></strong></em></td>
+<td>Create a new file for writing and open the file. If the file already exists, it is first deleted.</td>
+ </tr>
+ <tr> 
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_FLAG_FORCE</font></strong></em></td>
+<td>If <code>NNS_MCS_FILEIO_FLAG_WRITE</code> is specified and a file already exists, the user is not prompted about overwriting the file. If this flag is not specified and a file already exists, a dialog opens on the PC prompting  the user to confirm that the file is to be overwritten.</td>
+ </tr>
+ <tr> 
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_FLAG_INCENVVAR</font></strong></em></td>
+<td>Specify this flag if a PC environment variable is included in the file name character string specified by <code>fileName</code>. The environment variable is enclosed by &quot;<code>%</code>&quot; characters, for example <code>%NITROSYSTEM_ROOT%\SourceTreeMap.txt</code>.</td>
+ </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_FLAG_CREATEDIR</font></strong></em></td>
+<td>When you specify <code>NNS_MCS_FILEIO_FLAG_WRITE</code> and create a file specified by <code>fileName</code>, if the directory in which the file is supposed to reside does not exist, this will create the directory. However, if <code>NNS_MCS_FILEIO_FLAG_INCENVVAR</code> has been specified and the PC environment variable contained in the file name character string specified by <code>fileName</code> does not exist, the function will fail without creating a directory.</td>
+    </tr>
+  </table>
+<p>The return value takes one of the following values.</p>
+<table>
+  <tbody>
+    <tr>
+<td><em><strong><code>NNS_MCS_FILEIO_ERROR_SUCCESS</code></strong></em> (0)</td>
+<td>The function was successful.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_COMERROR</font></strong></em></td>
+<td>A communications error occurred.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_NOTCONNECT</font></strong></em></td>
+<td>Not connected to the mcs server.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_SERVERERROR</font></strong></em></td>
+<td>A error has occurred due to a file operation on the mcs server side. The error code is a Win32 system error code that can be obtained using the <code>NNS_McsGetServerErrorCode</code> function.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>See Also</h2>
+<p><code><a href="NNS_McsReadFile.html">NNS_McsReadFile</a>,  <a  href="NNS_McsWriteFile.html">NNS_McsWriteFile</a>,  <a  href="NNS_McsCloseFile.html">NNS_McsCloseFile</a> </code></p>
+<H2>Revision History</H2>
+<P>01/24/2005 Added the description regarding the error code.<br>10/18/2004 Added a description of the flag <code>NNS_MCS_FILEIO_FLAG_INCENVVAR</code>.<br>07/01/2004 Initial version.</P>
+</body>
+</html>

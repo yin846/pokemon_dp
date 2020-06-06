@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OAM Manager Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">OAM Manager Overview</h1>
+<H2>Conceptual Diagram</H2>
+<P><span lang=EN-US style='font-size:9.0pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r ‚o–¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"  coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"  filled="f" stroked="f">  <v:stroke joinstyle="miter"/>  <v:formulas>   <v:f eqn="if lineDrawn pixelLineWidth 0"/>   <v:f eqn="sum @0 1 0"/>   <v:f eqn="sum 0 0 @1"/>   <v:f eqn="prod @2 1 2"/>   <v:f eqn="prod @3 21600 pixelWidth"/>   <v:f eqn="prod @3 21600 pixelHeight"/>   <v:f eqn="sum @0 0 1"/>   <v:f eqn="prod @6 1 2"/>   <v:f eqn="prod @7 21600 pixelWidth"/>   <v:f eqn="sum @8 21600 0"/>   <v:f eqn="prod @7 21600 pixelHeight"/>   <v:f eqn="sum @10 21600 0"/>  </v:formulas>  <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>  <o:lock v:ext="edit" aspectratio="t"/> </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:408pt;  height:178.2pt'>  <v:imagedata src="file:///C:\DOCUME~1\KITANI~1\LOCALS~1\Temp\msohtml1\01\clip_image001.emz"   o:title="}6"/> </v:shape><![endif]--><IMG width="544" height="238" src="clip_image002.gif" v:shapes="_x0000_i1025"></span><BR>
+<H2>Description</H2>
+The OAM Manager wraps around the OAM of the 2D graphics engine and provides an easy-to-use interface. By using the OAM Manager, it is possible to limit the position where the OAM is used and the number when using the OAM. It can also render registered OBJs with software sprite rendering. Rendering method is specified when the OAM Manager is created.<BR> The OAM Manager uses the OAM software sprite rendering module as a substitute module to make the software sprite rendering feature possible.<BR> <BR>
+
+<h2>OAM Management Feature</h2>
+The OAM Manager can specify the areas it manages from among 2D graphics engine's 128 OAMs. Using this feature, the user can combine the individual OBJ they want to display in the OAM and the OBJ displayed using the OAM Manager.
+<h2>Extended OAM Manager</h2>
+By switching the OBJs set in the OAM in order with the Extended OAM Manager, it is possible to virtually display more OBJs than the upper OAM limit of 128. The Extended OAM Manager has internal data organization buffers named <code>NNSG2DOamProxy</code> and <code>NNSG2DAffineParamProxy</code>, which take the place of OAM attributes and Affine parameters (respectively). The OAM data registered in the Manager becomes proxy data and are stored in the previously described buffers. The buffer contents are then applied to the hardware and the render processing is carried out. By copying the buffer contents to the hardware in time segments, it becomes possible to apparently display a number of OBJs greater than the 2D graphics engine's maximum limit. Although the OBJ will flicker, this function can be used to display unimportant game objects. The part of the buffer content to be processed by hardware is passed by a function pointer to an external module. Therefore, it is also possible for it to function as a high-level module that a user creates in the OAM Manager. <BR>
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

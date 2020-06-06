@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3D_SBC_NODEMIX</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css"   type="text/css">
+</HEAD>
+
+<BODY>
+
+<h1 align="left">NNS_G3D_SBC_NODEMIX</h1>
+<H2>Command Format</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="157">Offset (bytes)</TH>
+<TH width="801">Description</TH>
+    </TR>
+    <TR>
+      <TD width="157">0</TD>
+<TD width="801"><CODE>NNS_G3D_SBC_NODEMIX</CODE></TD>
+    </TR>
+    <TR>
+      <TD width="157">1</TD>
+<TD width="801">The matrix stack ID where the calculation results are stored.</TD>
+    </TR>
+    <TR>
+      <TD width="157">2</TD>
+<TD width="801">The number (<em><strong><code>n</code></strong></em>) of matrices to blend. An integer of <code>2</code> or higher.</TD>
+    </TR>
+    <TR>
+<TD width="157">3+3<code>5+3<em><strong>m</strong></em>(0&lt;=<em><strong>m</strong></em>&lt;<em><strong>n</strong></em>)</code></TD>
+<TD width="801">The ID on the matrix stack where the matrix to be blended is stored</TD>
+    </TR>
+    <TR>
+<TD>4+3<code>5+3<em><strong>m</strong></em>(0&lt;=<em><strong>m</strong></em>&lt;<em><strong>n</strong></em>)</code></TD>
+<TD>The ID of the matrix to be blended</TD>
+    </TR>
+    <TR>
+<TD>5+3<code>5+3<em><strong>m</strong></em>(0&lt;=<em><strong>m</strong></em>&lt;<em><strong>n</strong></em>)</code></TD>
+<TD>The blend ratio of the matrix to be blended. The actual blend ration can be obtained by dividing the value by <code>256</code>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Description</h2>
+<P>The <code>NNS_G3D_SBC_NODEMIX</code> command is used to blend the modeling matrix and calculate the matrix used in the weighted envelope. By default, this command calls the <code>NNSi_G3dFuncSbc_NODEMIX</code> function. Internal to the function, the matrix is blended according to the blend ratio once the matrix is taken from the matrix stack. The blended matrix is then written to a designated position in the matrix stack. This command can not be put in a callback when it is executed.</P>
+<P><BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="256">Timing for Calling a Callback Function</TH>
+<TH width="588">Usage</TH>
+    </TR>
+    <TR>
+<TD width="256"><S><CODE>NNS_G3D_SBC_CALLBACK_TIMING_A</CODE></S></TD>
+<TD width="588">You cannot use this timing.</TD>
+    </TR>
+    <TR>
+<TD width="256"><S><CODE>NNS_G3D_SBC_CALLBACK_TIMING_B</CODE></S></TD>
+<TD width="588">You cannot use this timing.</TD>
+    </TR>
+    <TR>
+<TD width="256"><S><CODE>NNS_G3D_SBC_CALLBACK_TIMING_C</CODE></S></TD>
+<TD width="588">You cannot use this timing.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+
+
+<H2>Revision History</H2>
+<P>10/14/2004 Revised description.</P><P>10/13/2004 Initial version.</P>
+</BODY>
+
+</HTML>

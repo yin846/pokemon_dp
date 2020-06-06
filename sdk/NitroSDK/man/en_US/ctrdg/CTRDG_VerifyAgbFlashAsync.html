@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_Read</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_VerifyAgbFlashAsync</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+  <PRE><CODE>void CTRDG_VerifyAgbFlashAsync(u16 sec_num, u8* src, u32 size, CTRDG_TASK_FUNC callback);
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD><B><I>sec_num</I></B></TD>
+      <TD>Represents the target flash sector number</TD>
+    </TR>
+    <TR>
+      <TD><B><I>src</I></B></TD>
+      <TD>Represents the source write address</TD>
+    </TR>
+    <TR>
+      <TD><B><I>size</I></B></TD>
+      <TD>Represents the verify size in bytes</TD>
+    </TR>
+    <TR>
+      <TD><B><I>callback</I></B></TD>
+      <TD>Represents the callback function called after verify processing ends</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function asynchronously verifies data of the size in <B><I>size</I></B> beginning from the address given by <B><I>src</I></B> against the data in  <B><I>sec_num</I></B>.<br> You can find out whether the verify process succeeded by accessing the result member of the CTRDGTaskInfo structure used as an argument to the callback function that returns after this routine is called. <br> This function returns 0 if the verify process succeeded, non-zero if the process failed, and the error address on the device side if the verify process resulted in an error.</P>
+<P>The access cycle setting is created in the function and does not need to be set beforehand.</P>
+<P>Note: The cartridge bus is locked for a set period by this function.</P>
+<P>In addition, the AGB backup device cannot be accessed normally by the IS-NITRO-DEBUGGER.<br> However, be sure to check operations using an actual DS handheld unit since normal access is possible with actual DS units. <br> (This will be fixed in a future version of IS-NITRO-DEBUGGER.)</P>
+<PRE>/*  callback  function  */
+typedef u32 (*CTRDG_TASK_FUNC) (struct CTRDGiTaskInfo_tag *);
+</PRE>
+<H2>See Also</H2>
+<P><CODE><A href="CTRDG_VerifyAgbFlash.html">CTRDG_VerifyAgbFlash</A>, <A href="CTRDG_WriteAndVerifyAgbFlash.html">CTRDG_WriteAndVerifyAgbFlash</A>, <A href="CTRDG_WriteAndVerifyAgbFlashAsync.html">CTRDG_WriteAndVerifyAgbFlashAsync</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>04/07/2006 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

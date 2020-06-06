@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_SetOutputSelector</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAFLWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_SetOutputSelector</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">void SND_SetOutputSelector(
+SNDOutput <var>left</var>,
+SNDOutput <var>right</var>,
+SNDChannelOut <var>channel1</var>,
+SNDChannelOut <var>channel3</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAPNWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>left</code></strong></em></td>
+<td>The left output selector.</td>
+</tr>
+<tr>
+<td><em><strong><code>right</code></strong></em></td>
+<td>The right output selector.</td>
+</tr>
+<tr>
+<td><em><strong><code>channel1</code></strong></em></td>
+<td>The channel 1 output selector.</td>
+</tr>
+<tr>
+<td><em><strong><code>channel3</code></strong></em></td>
+<td>The channel 3 output selector.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDATOWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA0OWT"></a>
+<h2>Description</h2>
+      <p>
+Changes the output selector.
+</p>
+      <p>
+Choose from among the following values for the left output selector <code>left</code> and the right output selector <code>right</code>.
+</p>
+      
+<div class="table"><a name="IDAHPWT"></a><p class="title"><b><b>Table. SNDOutput</b></b></p>
+<table summary="SNDOutput" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SND_OUTPUT_MIXER</td>
+<td>Output LR mixer output at final stage.</td>
+</tr>
+<tr>
+<td>SND_OUTPUT_CHANNEL1</td>
+<td>Output the channel 1 output at final stage.</td>
+</tr>
+<tr>
+<td>SND_OUTPUT_CHANNEL3</td>
+<td>Output the channel 3 output at final stage.</td>
+</tr>
+<tr>
+<td>SND_OUTPUT_CHANNEL1_3</td>
+<td>Output channel 1 + channel 3 output at final stage.</td>
+</tr>
+</tbody>
+</table>
+</div>
+      
+      <p>
+Choose from among the following values for the channel 1 selector <code>channel1</code> and the channel 3 selector <code>channel3</code>.
+</p>
+      
+<div class="table"><a name="IDADRWT"></a><p class="title"><b><b>Table. SNDChannelOut</b></b></p>
+<table summary="SNDChannelOut" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SND_CHANNEL_OUT_MIXER</td>
+<td>Send channel 1 output or channel 3 output to the mixer. (It is also sent to the bypass.)j</td>
+</tr>
+<tr>
+<td>SND_CHANNEL_OUT_BYPASS</td>
+<td>Have the channel 1 output or channel 3 output bypass the mixer. (It is not sent to the mixer.j</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <p>
+In the initial settings, <code>left</code> and <code>right</code> are set to <code>SND_OUTPUT_MIXER</code>, and <code>channel1</code> and <code>channel3</code> are set to <code>SND_CHANNEL_OUT_MIXER</code>.
+</p>
+  
+      <div class="note">
+<h3 class="title">Caution</h3>
+<p>
+This function is an ARM7 reserved function. After this function is called, processing occurs only after the command is issued with the <a href="SND_FlushCommand.html"><code>SND_FlushCommand</code></a> function.
+</p>
+<p>
+When it is necessary to synchronize something with the completion of the process, first use <a href="SND_GetCurrentCommandTag.html"><code>SND_GetCurrentCommandTag</code></a> to obtain the command tag immediately after calling this function. After the command is issued, use the command tag and call either the <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a> or <a href="SND_WaitForCommandProc.html"><code>SND_WaitForCommandProc</code></a> function to confirm that the process has finished or to wait for it to complete.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="SND_FlushCommand.html">SND_FlushCommand</a>, <a href="SND_GetCurrentCommandTag.html">SND_GetCurrentCommandTag</a>, <a href="SND_IsFinishedCommandTag.html">SND_IsFinishedCommandTag</a>, <a href="SND_WaitForCommandProc.html">SND_WaitForCommandProc</a></code></p>
+<h2>Revision History</h2>
+<p>06/13/2005 Revisions reflecting changes in the NITRO Programming Manual <br>02/17/2005 Added warning about ARM7 command processing <br>07/20/2005 Initial version<br></p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

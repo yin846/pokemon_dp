@@ -1,0 +1,125 @@
+------------------------------------------------------------------------------
+$Id: SourceTreeMap.txt,v 1.14 2005/01/05 08:01:54 nishida Exp $
+------------------------------------------------------------------------------
+
+* Source Tree Directory Map
+
+Below is the complete source tree map for the NITRO-System.
+
+
+$NitroSystem            NITRO-System ROOT directory
+ |
+ |---docs                   Documents
+ |   |  
+ |   |---Readme                 -  NITRO-System release related document (Read this first
+ |   |---Foundation             -  NITRO-Foundation Library Document
+ |   |---GraphicsFoundation     -  NITRO-GraphicsFoundation Library Document
+ |   |---G2D                    -  NITRO-2DGraphics Library Document
+ |   |---G3D                    -  NITRO-3DGraphics Library Document
+ |   |---NitroComposer          -  NITRO-Composer Document
+ |   |---mcs                    -  Multiple Channel Stream Library Document
+ |   |---NitroPlayer            -  NITRO-Player Document
+ |
+ |---build                  Build Directory
+ |   |
+ |   |---buildtools             -  Files necessary for build
+ |   |
+ |   |---demos                  -  Demo application
+ |   |   |
+ |   |   |---fnd                -  -  Foundation Library Demo
+ |   |   |---gfd                -  -  NITRO-GraphicsFoundation Library Demo
+ |   |   |---g2d                -  -  NITRO-2DGraphics Library Demo
+ |   |   |---g3d                -  -  NITRO-3DGraphics Library Demo
+ |   |   |---snd                -  -  NITRO-Composer Library Demo
+ |
+ |   |---libraries              -  Library source
+ |       |
+ |       |---fnd                -  -  NITRO-Foundation Library Source
+ |       |---gfd                -  -  NITRO-GraphincsFoundation Library Source
+ |       |---g2d                -  -  NITRO-2DGraphics Library Source
+ |       |---g3d                -  -  NITRO-3DGraphics Library Source
+ |       |---snd                -  -  NITRO-Composer Library Source
+ |       |---mcs                -  -  Muitiple Channel Stream Library Source
+ |
+ |---include                Include File
+ |   |
+ |   |---nnsys                  - Header file for NITRO-System
+ |       |
+ |       |---fnd                -  -  NITRO-Foundation header file
+ |       |---gfd                -  -  NITRO-GraphincsFoundation header file
+ |       |---g2d                -  -  NITRO-2DGraphics header file
+ |       |---g3d                -  -  NITRO-3DGraphics header file
+ |       |---snd                -  -  NITRO-Composer header file
+ |       |---mcs                -  -  Muitiple Channel Stream header file
+ |
+ |---man                    Reference Manual (HTML)
+ |   |
+ |   |---ja_JP                  -  Japanese 
+ |
+ |---lib                    Library creation target
+ |   |  
+ |   |---ARM9-TS                -  Library for Main Processor TS board
+ |       |
+ |       |---Debug              -  -  Debug version
+ |       |---Release            -  -  Release version
+ |       |---Rom                -  -  Final ROM version
+ |
+ |---tools                  NITRO-System tool
+     |
+     |---nitro                  -  Tools for NITRO 
+     |   |
+     |   |---SoundPlayer        -  -  Sound Player files
+     |
+     |---win                    -  Tools for Windows
+         |
+         |---bin                -  -  Execution files for converter, etc.
+         |---mcsserver          -  -  mcs Server
+         |---NitroPlayer        -  -  NITRO-Player
+
+
+------------------------------------------------------------------------------
+$Log: SourceTreeMap.txt,v $
+Revision 1.14  2005/01/05 08:01:54  nishida
+Removed TEG Library directory
+
+Revision 1.13  2004/12/02 02:26:29  nishida
+Added the Gfd demo directory
+
+Revision 1.12  2004/11/10 07:53:17  nishida
+Added NITRO-Player directories
+
+Revision 1.11  2004/07/28 07:16:07  nishida
+Removed mcs Demo Directory
+
+Revision 1.10  2004/07/24 00:32:00  nishida
+Reflected NITRO-System-Library-040802 version directory
+
+Revision 1.9  2004/06/02 09:33:27  nishida
+Added G2D Library Document Directory
+
+Revision 1.8  2004/06/02 06:56:51  nishida
+Corrected description for docs/Readme
+
+Revision 1.7  2004/04/14 06:17:43  nishida
+Explained that directories we plan to create in the future are included.
+
+Revision 1.6  2004/04/07 09:09:05  nishida
+Deleted private directories.
+
+Revision 1.5  2004/03/24 08:30:51  nishida
+Added tool-related directories.
+
+Revision 1.4  2004/03/18 01:27:16  nishida
+Corrected written errors and changed content of $NitroSystem/Tools.
+
+Revision 1.3  2004/02/20 08:14:57  nishida
+Made corrections to match the current directory structure.
+
+Revision 1.2  2004/01/30 03:46:54  nishida
+Changed some library and directory names.
+
+Revision 1.1  2004/01/27 09:00:23  nishida
+Registered the initial version.
+
+
+------------------------------------------------------------------------------

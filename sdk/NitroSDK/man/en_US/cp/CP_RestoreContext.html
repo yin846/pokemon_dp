@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CP_RestoreContext</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CP_RestoreContext</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/cp.h&gt;</CODE><BR>
+<dd><CODE>void CP_RestoreContext( CPContext* context );</CODE></dd>
+</dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>Pointer to the context structure for the divider or square root calculator that you want to restore.</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function restores divider and square root calculator status (context) that was saved with <CODE><A href="CP_SaveContext.html">CP_SaveContext</A></CODE>.</P>
+<P>
+When you use a divider or square root calculator inside an interrupt, save the divider and square root calculator contexts prior to their use by these functions.</P>
+<P>Twenty cycles are required after this function ends to complete the restore process. In order to wait for the restore process to complete, you will either have to run other processes that take at least 20 cycles, or call <CODE><A href="div/CP_WaitDiv.html">CP_WaitDiv</A></CODE>. With a standard SDK interrupt process, it takes at least 20 cycles to return to the original routine after the interrupt handler finishes, and therefore there is no need for a wait process. However, if you are using your own interrupt process, implement it so that the context restore process finishes before you return to the original routine.</P>
+<P>During thread switch, the context are also automatically switched. Therefore, there is no need for this function to explicitly run a save process.</P>
+<h2>See Also</h2>
+<p><CODE><A href="CP_SaveContext.html">CP_SaveContext</A>, <A href="div/CP_SetDiv.html">CP_SetDiv*</A>, <A href="sqrt/CP_SetSqrt.html">CP_SetSqrt*</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>05/06/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

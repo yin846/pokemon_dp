@@ -1,0 +1,45 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_MK_IPv4</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_MK_IPv4</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define CPS_MK_IPv4(a,b,c,d) (((u32)(a)&lt;&lt;24)+((u32)(b)&lt;&lt;16)+((u32)(c)&lt;&lt;8)+(u32)(d))</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>a,b,c,d</strong></em></code></td>
+<td>IPv4 address</td>
+  </tr>
+</table>
+
+<h2>Description</h2>
+
+<p>Creates a u32 IPv4 address.</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_CV_IPv4.html">CPS_CV_IPv4</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

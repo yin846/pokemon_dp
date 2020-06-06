@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dFuncSbcTable</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dFuncSbcTable</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE>#include &lt;nnsys/g3d/sbc.h&gt;
+
+typedef void (*NNSG3dFuncSbc) (NNSG3dRS* rs, u32 opt);
+
+NNSG3dFuncSbc  NNS_G3dFuncSbcTable[NNS_G3D_SBC_COMMAND_NUM];</PRE>
+</DL>
+<H2>Description</H2>
+<P>When the <a href="../sbc/NNS_G3dDraw.html"><code>NNS_G3dDraw</code></a> function is executed, it interprets a type of byte code known as SBC, but the pointers to the functions corresponding to individual SBC commands are stored in the <code>NNS_G3dFuncSbcTable</code> array. By changing the elements of this array, the processes that are executed on the corresponding SBC commands can be switched. The <code>NNSG3dFuncSbc</code>&ndash;type functions take the pointer to the <code>NNSG3dRS</code> structure and the (3&ndash;bit) options of the loaded SBC commands as arguments.</P>
+<H2>See Also</H2>
+<P><a href="../sbc/SBCCallback.html">SBC and callback</a>, <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code></P>
+<H2>Revision History</H2>
+<P>10/19/2004 Initial version.</P>
+</BODY>
+
+</HTML>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_VBlankDmaCopy*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_VBlankDmaCopy*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>void MI_VBlankDmaCopy32( u32 dmaNo, const void* src, void* dest, u32 size );</CODE><br> <CODE>void MI_VBlankDmaCopy16( u32 dmaNo, const void* src, void* dest, u32 size );</CODE><BR> <BR> <CODE>void MI_VBlankDmaCopy32Async( u32 dmaNo, const void* src, void* dest, u32 size,</CODE><BR> <CODE> MIDmaCallback callback, void* arg );</CODE><BR> <CODE>void MI_VBlankDmaCopy16Async( u32 dmaNo, const void* src, void* dest, u32 size,</CODE><BR> <CODE> MIDmaCallback callback, void* arg );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>dmaNo</STRONG></EM></TD>
+<TD width="87%">DMA channel used</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>src</STRONG></EM></TD>
+<TD width="87%">The transfer source address.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>dest</STRONG></EM></TD>
+<TD width="87%">The transfer destination address.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>size</STRONG></EM></TD>
+<TD>Transfer size
+      </TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>callback</STRONG></EM></TD>
+<TD>Callback when DMA ends.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>arg</STRONG></EM></TD>
+<TD>Callback argument when DMA ends.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function uses DMA to perform a V-Blank copy. When a V-Blank starts, DMA starts.</P>
+<P><CODE>MI_VBlankDmaCopy16()</CODE> and <CODE>MI_VBlankDmaCopy16Async()</CODE> copy in units of 16 bits. Both the transfer source address and the transfer destination address must be 2-byte aligned. <CODE>MI_VBlankDmaCopy32()</CODE> and <CODE>MI_VBlankDmaCopy32Async()</CODE> copy in units of 32 bits. Both the transfer source address and the transfer destination address must be 4-byte aligned.</P>
+<P><CODE>MI_VBlankDmaCopy16()</CODE> and <CODE>MI_VBlankDmaCopy32()</CODE> start a DMA when a V-Blank is generated, and then wait for it to end. <CODE>MI_VBlankDmaCopy16Async()</CODE> and <CODE>MI_VBlankDmaCopy32Async()</CODE> start DMA when a V blank is generated and call a callback, <em><strong><code>callback</code></strong></em>, when ending DMA. The callback, <em><strong><code>callback</code></strong></em>, is a <code>MIDmaCallback</code> type (a <code>void</code> type function which takes one <code>void*</code> argument). callback</code></strong></em> is called from the system DMA interrupt handler and therefore is called while interrupts are prohibited.</P>
+<P>It is necessary to understand how to use Async-type APIs in order to obtain maximum functionality.</P>
+<h2>Internal Operation</h2>
+<P>Uses the following IO registers: DMA<i>n</i> source register (0x40000B0 + 12<i>n</i>), DMA<i>n</i> destination register (0x40000B4 + 12<i>n</i>), and DMA<i>n</i> control register (0x40000B8 + 12<i>n</i>). <i>n</i> is the DMA channel used.))</P>
+<h2>See Also</h2>
+<p><CODE><A href="MI_DmaCopy.html">MI_DmaCopy*</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt.&quot;<br> 12/22/2004 Added a description regarding <em><strong><code>callback</code></strong></em>. <BR> 12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

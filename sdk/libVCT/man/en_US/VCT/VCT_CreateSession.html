@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCT_CreateSession</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCT_CreateSession</h1>
+<h2>Syntax</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><code><a href="VCTSession.html">VCTSession</a>* VCT_CreateSession( u8 aid );</code></PRE></dd> 
+</dl>
+
+<h2>Argument</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>aid</STRONG></EM></TD>
+      <TD width="87%" height="17">AID of a remote client.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Value</h2>
+<p>If successful, the <a href="VCTSession.html">VCTSession</a> structure is created; otherwise, NULL.
+<H2>Description</H2>
+<P>VCT_CreateSession creates a new session and is only used in Telephone Mode.</P>
+<P>If multiple sessions are reserved in VCT_Init, multiple sessions can be created.</p>
+<h2>See Also</h2>
+<p><CODE><a href="VCT_DeleteSession.html">VCT_DeleteSession</a>, <a href="VCT_Request.html">VCT_Request</a>, <a href="VCT_Response.html">VCT_Response</a></CODE></p>
+<H2>Revision History</H2>
+<P>
+2006/04/17 The returned value contents have been modified.<BR>
+2006/01/25 First release
+</P>
+</body>
+</html>

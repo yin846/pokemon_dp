@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndPlayerCountPlayingSeq*</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndPlayerCountPlayingSeq*</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">int NNS_SndPlayerCountPlayingSeqByPlayerNo( int <var>playerNo</var> );</code><br><code class="funcprototype">int NNS_SndPlayerCountPlayingSeqBySeqNo( int <var>seqNo</var> );</code><br><code class="funcprototype">int NNS_SndPlayerCountPlayingSeqBySeqArcNo( int <var>seqArcNo</var> );</code><br><code class="funcprototype">int NNS_SndPlayerCountPlayingSeqBySeqArcIdx(
+int <var>seqArcNo</var>,
+int <var>index</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA1MWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The Player number.</td>
+</tr>
+<tr>
+<td><em><strong><code>seqNo</code></strong></em></td>
+<td>Sequence number.</td>
+</tr>
+<tr>
+<td><em><strong><code>seqArcNo</code></strong></em></td>
+<td>Sequence archive number.</td>
+</tr>
+<tr>
+<td><em><strong><code>index</code></strong></em></td>
+<td>Index number in the sequence archive.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA5NWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns the number of sequences currently playing.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAGOWT"></a>
+<h2>Description</h2>
+      <p>
+The <code>NNS_SndPlayerCountPlayingSeqByPlayerNo</CODE> function counts the number of sequences that are currently playing on the player that is assigned with the player number <CODE><i><b>playerNo</b></i></CODE>.
+</p>
+      <p>
+The <code>NNS_SndPlayerCountPlayingSeqBySeqNo</CODE> function counts the number of sequences that are currently playing that were assigned by the sequence number <CODE><i><b>seqNo</b></i></CODE>. This function counts the number of sequences for which the sequence number that is set by the <CODE><a href="NNS_SndPlayerSetSeqNo.html">NNS_SndPlayerSetSeqNo</a></CODE> function and <CODE>&gt;<i><b>seqNo</b></i></CODE> are the same.
+</p>
+      <p>
+The <code>NNS_SndPlayerCountPlayingSeqBySeqArcNo</CODE> function counts the number of sequences playing that were assigned by the sequence archive number <CODE><i><b>seqArcNo</b></i></CODE>. This function counts the number of sequences for which the sequence archive number set that is set by the <CODE><a href="NNS_SndPlayerSetSeqArcNo.html">NNS_SndPlayerSetSeqArcNo</a></CODE> function and<CODE> <i><b>seqArcNo</b></i></CODE> are the same. The <code>NNS_SndPlayerCountPlayingSeqBySeqArcIdx</CODE> function counts the number of sequences for which the sequence archive number <CODE><i><b>seqArcNo</b></i></CODE> and the index number <CODE><i><b>index</b></i></CODE> are both equal.
+</p>
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+The value that these functions return is not updated unless the function that stops a sequence immediately, and a <a href="NNS_SndMain.html"><code>NNS_SndMain</code></a> function is called. 
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndPlayerSetSeqNo.html">NNS_SndPlayerSetSeqNo</a>, <a href="NNS_SndPlayerSetSeqArcNo.html">NNS_SndPlayerSetSeqArcNo</a>, <a href="NNS_SndMain.html">NNS_SndMain</a></code></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

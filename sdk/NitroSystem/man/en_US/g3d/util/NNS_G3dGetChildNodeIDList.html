@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGetChildNodeIDList</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGetChildNodeIDList</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/util.h&gt;</CODE></PRE>
+<PRE>int
+NNS_G3dGetChildNodeIDList(
+u8* idList,
+const u8* sbc,
+u32 nodeID
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>idList</STRONG></EM></TD>
+<TD width="87%">Pointer to the child node ID list that stores the results</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>sbc</STRONG></EM></TD>
+<TD width="87%">Pointer to the SBC code string</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>nodeID</STRONG></EM></TD>
+<TD width="87%">The node ID</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>Returns the number of child nodes.</P>
+
+<H2>Description</H2>
+<P>Creates a list (<code>idList</code>) of the node IDs that will be the children of <code>nodeID</code>. A sufficient region must be allocated for <code>idList</code>. The return value is the number of child nodes. If none are found, <code>0</code> is returned and nothing is written to <code>idList</code>.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="NNS_G3dGetParentNodeID.html">NNS_G3dGetParentNodeID</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

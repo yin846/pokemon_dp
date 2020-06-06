@@ -1,0 +1,255 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--==========================================================================   Project:  NitroWiFi - WCM - man   File:     WCM_CONSTANT_NUMBER.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Log: WCM_CONSTANT_NUMBER.html,v $   Revision 1.2  2005/07/22 13:00:24  terui   "フェーズ"を"状態"に用語統一   履歴の初版日を統一    Revision 1.1  2005/07/20 13:11:10  terui   Initial upload    $NoKeywords: $  ==========================================================================-->
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>WCM Library Constants</TITLE>
+		<LINK rel="stylesheet" href="../../css/nitro.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>WCM Library Constants</H1>
+
+		<H2>Definitions</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;nitroWiFi/wcm.h&gt;
+
+#define   WCM_RESULT_SUCCESS         0
+#define   WCM_RESULT_FAILURE         1
+#define   WCM_RESULT_PROGRESS        2
+#define   WCM_RESULT_ACCEPT          3
+#define   WCM_RESULT_REJECT          4
+#define   WCM_RESULT_WMDISABLE       5
+#define   WCM_RESULT_NOT_ENOUGH_MEM  6
+#define   WCM_RESULT_FATAL_ERROR     7
+
+#define   WCM_PHASE_NULL             0
+#define   WCM_PHASE_WAIT             1
+#define   WCM_PHASE_WAIT_TO_IDLE     2
+#define   WCM_PHASE_IDLE             3
+#define   WCM_PHASE_IDLE_TO_WAIT     4
+#define   WCM_PHASE_IDLE_TO_SEARCH   5
+#define   WCM_PHASE_SEARCH           6
+#define   WCM_PHASE_SEARCH_TO_IDLE   7
+#define   WCM_PHASE_IDLE_TO_DCF      8
+#define   WCM_PHASE_DCF              9
+#define   WCM_PHASE_DCF_TO_IDLE      10
+#define   WCM_PHASE_FATAL_ERROR      11
+#define   WCM_PHASE_IRREGULAR        12
+#define   WCM_PHASE_TERMINATING      13
+
+#define   WCM_NOTIFY_COMMON          0
+#define   WCM_NOTIFY_STARTUP         1
+#define   WCM_NOTIFY_CLEANUP         2
+#define   WCM_NOTIFY_BEGIN_SEARCH    3
+#define   WCM_NOTIFY_END_SEARCH      4
+#define   WCM_NOTIFY_CONNECT         5
+#define   WCM_NOTIFY_DISCONNECT      6
+#define   WCM_NOTIFY_FOUND_AP        7
+#define   WCM_NOTIFY_SEARCH_AROUND   8
+#define   WCM_NOTIFY_TERMINAME       9
+
+#define   WCM_WEPMODE_NONE           0
+#define   WCM_WEPMODE_40             1
+#define   WCM_WEPMODE_104            2
+#define   WCM_WEPMODE_128            3
+
+#define   WCM_BSSID_ANY              ( (void*)WCM_Bssid_Any )
+#define   WCM_ESSID_ANY              ( (void*)WCM_Essid_Any )
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2><A name="result">Process Result Constants</A></H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_RESULT_SUCCESS</CODE></STRONG></EM></TD>
+					<TD width="75%">This result can be returned as a synchronous or asynchronous process result. It indicates that the process was successful. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_FAILURE</CODE></STRONG></EM></TD>
+					<TD>This result can be returned as a synchronous or asynchronous process result. Indicates that the process failed for some reason. <BR>This result is returned when an argument passed at invocation was invalid, an asynchronous function was called in an invalid internal state, or when an asynchronous process that changes the internal state has failed and retry is not possible. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_PROGRESS</CODE></STRONG></EM></TD>
+					<TD>This result can be returned only as a synchronous process result. Indicates that a request identical to the requested process is accepted and the process is executing. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_ACCEPT</CODE></STRONG></EM></TD>
+					<TD>This result can be returned only as an asynchronous process result. It indicates that the request to start the asynchronous process was accepted normally. <BR>When the asynchronous process is complete, a corresponding asynchronous process notification will always be sent once. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_REJECT</CODE></STRONG></EM></TD>
+					<TD>This result can be returned only as an asynchronous process result. It indicates that the request to start the asynchronous process was rejected. <BR>It was rejected because it was unsuccessful in issuing a PXI process request to the ARM7. Accordingly, a retry is possible after waiting briefly. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_WMDISABLE</CODE></STRONG></EM></TD>
+					<TD>This result can be returned only as a synchronous process result of the <A href="WCM_StartupAsync.html"><CODE>WCM_StartupAsync</CODE> function</A>. It indicates that the wireless driver is not operating on the ARM7 side. <BR>If the ARM7 component is ichneumon, the wireless driver may have been forcibly stopped by the WVR library. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_NOT_ENOUGH_MEM</CODE></STRONG></EM></TD>
+					<TD>This result can be returned only to the <A href="WCM_Init.html"><CODE>WCM_Init</CODE>function. </A> Indicates that the work buffer size was insufficient. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_FATAL_ERROR</CODE></STRONG></EM></TD>
+					<TD>This result can be returned as a synchronous or asynchronous process result. Indicates that an unrecoverable error occurred in the library. <BR>This error indicates that an unexpected event has occurred inside the library. For example, the internal work memory was corrupted or the WCM library's internal state management was corrupted by directly using the WM or WVR libraries from an external location.  <BR>This error should not occur under normal circumstances. But if it does occur, recovery is not possible. Display a screen to prompt the end user to turn off the power or prevent wireless communication from occuring while the power is on. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2><A name="phase">Internal State Constants</A></H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_PHASE_NULL</CODE></STRONG></EM></TD>
+					<TD width="75%">State before the WCM library is initialized using <A href="WCM_Init.html"><CODE>WCM_Init</CODE></A> function or after the WCM library is terminated using <A href="WCM_Finish.html"><CODE>WCM_Finish</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_WAIT</CODE></STRONG></EM></TD>
+					<TD>The state after the WCM is initialized using <A href="WCM_Init.html"><CODE>WCM_Init</CODE></A> function or after the wireless functionality has been stopped using <A href="WCM_CleanupAsync.html"><CODE>WCM_CleanupAsync</CODE></A> function or <A href="WCM_TerminateAsync.html"><CODE>WCM_TerminateAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_WAIT_TO_IDLE</CODE></STRONG></EM></TD>
+					<TD>The state during startup of the wireless functionality using <A href="WCM_StartupAsync.html"><CODE>WCM_StartupAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_IDLE</CODE></STRONG></EM></TD>
+					<TD>The wireless functionality has been started up and it is waiting for the process that searches for or connects to a wireless access point. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_IDLE_TO_WAIT</CODE></STRONG></EM></TD>
+					<TD>The state while the wireless functionality is stopped using <A href="WCM_CleanupAsync.html"><CODE>WCM_CleanupAsync</CODE></A> function. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_IDLE_TO_SEARCH</CODE></STRONG></EM></TD>
+					<TD>The state while the WCM is starting a wireless access point auto-search using <A href="WCM_BeginSearchAsync.html"><CODE>WCM_BeginSearchAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_SEARCH</CODE></STRONG></EM></TD>
+					<TD>The state while executing a wireless access point auto-search. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_SEARCH_TO_IDLE</CODE></STRONG></EM></TD>
+					<TD>The state while the wireless access point auto-search is stopped using <A href="WCM_EndSearchAsync.html"><CODE>WCM_EndSearchAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_IDLE_TO_DCF</CODE></STRONG></EM></TD>
+					<TD>State while performing processing to connect to a wireless access point using <A href="WCM_ConnectAsync.html"><CODE>WCM_ConnectAsync</CODE></A> function. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_DCF</CODE></STRONG></EM></TD>
+					<TD>State while connected to a wireless access point and in which DCF communication is possible. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_DCF_TO_IDLE</CODE></STRONG></EM></TD>
+					<TD>The state while the WCM is disconnecting form a wireless access point using <A href="WCM_DisconnectAsync.html"><CODE>WCM_DisconnectAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_FATAL_ERROR</CODE></STRONG></EM></TD>
+					<TD>State that indicates an unexpected event has occurred inside the WCM library. Once the WCM enters this state, it cannot be changed. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_IRREGULAR</CODE></STRONG></EM></TD>
+					<TD>An error occurred during an asynchronous process performed in the WCM library, and the asynchronous process can no longer be continued. <BR>From this state, a recovery can be attempted only by using <A href="WCM_TerminateAsync.html"><CODE>WCM_TerminateAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_PHASE_TERMINATING</CODE></STRONG></EM></TD>
+					<TD>The state while the WCM library has been forcibly stopped using <A href="WCM_TerminateAsync.html"><CODE>WCM_TerminateAsync</CODE></A> function. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2><A name="notify">Notification Type Constants</A></H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_NOTIFY_COMMON</CODE></STRONG></EM></TD>
+					<TD width="75%">The default notification type. Provided for debugging. When a notification of this type occurs, it means that an unexpected event has occurred, such as memory corruption. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_STARTUP</CODE></STRONG></EM></TD>
+					<TD>Notification type used in result notifications for asynchronous processes initiated with <A href="WCM_StartupAsync.html"><CODE>WCM_StartupAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_CLEANUP</CODE></STRONG></EM></TD>
+					<TD>Notification type used in result notifications for asynchronous processes initiated with <A href="WCM_CleanupAsync.html"><CODE>WCM_CleanupAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_BEGIN_SEARCH</CODE></STRONG></EM></TD>
+					<TD>Notification type used in result notifications for asynchronous processes initiated with <A href="WCM_BeginSearchAsync.html"><CODE>WCM_BeginSearchAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_END_SEARCH</CODE></STRONG></EM></TD>
+					<TD>Notification type used in result notifications for asynchronous processes initiated with <A href="WCM_EndSearchAsync.html"><CODE>WCM_EndSearchAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_CONNECT</CODE></STRONG></EM></TD>
+					<TD>Notification type used in result notifications for asynchronous processes initiated with <A href="WCM_ConnectAsync.html"><CODE>WCM_ConnectAsync</CODE></A> function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_DISCONNECT</CODE></STRONG></EM></TD>
+					<TD>Notification type used in result notifications for asynchronous processes initiated with <A href="WCM_DisconnectAsync.html"><CODE>WCM_DisconnectAsync</CODE></A> function. Also used as a notification type for progress notification (received disconnection notification) while connected to a wireless access point. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_FOUND_AP</CODE></STRONG></EM></TD>
+					<TD>Notification type for progress notification during wireless access point auto-search. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_SEARCH_AROUND</CODE></STRONG></EM></TD>
+					<TD>Notification type used when indicating that a wireless access point auto-search search cycle has completed.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_NOTIFY_TERMINAME</CODE></STRONG></EM></TD>
+					<TD>Notification type used in result notifications for asynchronous processes initiated with <A href="WCM_TerminateAsync.html"><CODE>WCM_TerminateAsync</CODE></A> function.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2><A name="wep">WEP Encryption Type Constants</A></H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_WEPMODE_NONE</CODE></STRONG></EM></TD>
+					<TD width="75%">Encryption type when not using WEP encryption.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_WEPMODE_40</CODE></STRONG></EM></TD>
+					<TD>Encryption type when using 40 bit (5 byte) WEP encryption.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_WEPMODE_104</CODE></STRONG></EM></TD>
+					<TD>Encryption type when using 104 bit (13 byte) WEP encryption.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_WEPMODE_128</CODE></STRONG></EM></TD>
+					<TD>Encryption type when using 128 bit (16 byte) WEP encryption.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2><A name="any">Optional Filter Constants for Searching</A></H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_BSSID_ANY</CODE></STRONG></EM></TD>
+					<TD width="75%">Constant that indicates search is for any BSS-ID. Entity is a pointer to a 6-byte data string filled with <CODE>0xff</CODE>.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_ESSID_ANY</CODE></STRONG></EM></TD>
+					<TD>Constant that indicates search is for any ESS-ID. Entity is a pointer to a 32-byte data string filled with <CODE>0xff</CODE>.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Revision History</H2>
+		<P>
+			07/22/2005 Initial version.
+		</P>
+
+		<TABLE border="0" height="100%"><TR><TD style="background-color : white;"></TD></TR></TABLE>
+	</BODY>
+</HTML>

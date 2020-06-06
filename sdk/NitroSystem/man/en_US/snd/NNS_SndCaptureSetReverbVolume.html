@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndCaptureSetReverbVolume</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndCaptureSetReverbVolume</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndCaptureSetReverbVolume (  int volume, int frames );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA0LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>Target volume for the reverb component. Takes a value between 0 and 63.</td>
+</tr>
+<tr>
+<td><em><strong><code>frames</code></strong></em></td>
+<td>Frame count for volume change--period of time over which the volume change takes place.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAQMWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAXMWT"></a>
+<h2>Description</h2>
+      <p>
+This function changes the volume of the reverb component. If reverb is not enabled, this function does nothing. 
+</p>
+      <p>
+The current volume value changes gradually over the number of <code><i><b>frames</b></i></code> to the volume value set with <code><i><b>volume</b></i></code>. When <code><i><b>volume</b></i></code> is set to the maximum of <code>63</code>, about half of the mixer output volume is fed back as reverberation. 
+</p>
+      <p>
+When <CODE><i><b>frames</b></i></CODE> is set to 0, the current volume value changes immediately. For example, when changing the volume from a certain value unrelated to the current volume value to a targeted value, call this function with <code><i><b>frames</b></i></code> set to <code>0</code>. After changing the current volume value, specify the target volume value with a second call to this function. 
+</p>
+    </div>
+<h2>See Also</h2>
+<p>None.</p>
+<h2>Revision History</h2>
+<p>04/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

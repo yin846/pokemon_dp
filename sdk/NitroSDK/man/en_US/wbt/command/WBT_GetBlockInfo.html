@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBT_GetBlockInfo</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBT_GetBlockInfo</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR> <CODE>BOOL WBT_GetBlockInfo(u16 target, int index, WBTBlockInfoTable *block_info_table, WBTCallback callback);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>target</STRONG></EM></TD>
+<TD width="87%">Target aid bitmap that receives block information<br /> When child, only parent <code>1</code> can be specified.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>index</STRONG></EM></TD>
+<TD width="87%">The index from the top of the list of blocks that receive information in the registered block list. The block list is added to the end when newly registering with the <A href="../common/WBT_RegisterBlock.html"><code>WBT_RegisterBlock</code></A> function, and the index is out of alignment with the list after the block is released with the <A href="../common/WBT_UnregisterBlock.html"><code>WBT_UnregisterBlock</code></A> function.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>block_info_table</STRONG></EM></TD>
+<TD width="87%">A pointer to the <A href="../wbt_block_info_table_type.html"><code>WBTBlockInfoTable</code></A> table containing the destination address of the block information to receive. You must set a valid storage address for all AIDs specified with the target in this table.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD width="87%"><A href="../wbt_callback_type.html"><CODE>WBTCallback</A> format function that receives notifications when commands are completed. <br>This callback is called from within the <a href="../parent/WBT_MpParentRecvHook.html"><CODE>WBT_MpParentRecvHook</CODE></a> or <a href="../child/WBT_MpChildRecvHook.html">WBT_MpChildRecvHook</CODE></a> functions.
+	  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>If no command is currently processing, the function issues the command and returns TRUE. Otherwise, the function does nothing and returns FALSE.</p>
+
+<H2>Description</H2>
+<p>Receives the block data from the specified target device. You can get the block ID and data size from the received <A href="../wbt_block_info_type.html"><code>WBTBlockInfo</code></A> structure data.<br> <font color="#800000">The call fails if a command is still processing.</font><br> <br>
+</p>
+<H2>See Also</H2>
+<code><A href="WBT_RequestSync.html">WBT_RequestSync</A>, <A href="WBT_GetBlock.html">WBT_GetBlock</A>, <A href="WBT_PutUserData.html">WBT_PutUserData</A></code>
+<H2>Revision History</H2>
+<P>
+03/13/2006 Revised description of target argument<br>06/01/2005 Added text indicating that the callback is called from the WBT_MpParentRecvHook or WBT_MpChildRecvHook functions<br> 09/21/2004 Initial version<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

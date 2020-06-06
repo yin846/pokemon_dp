@@ -1,0 +1,50 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SetSslHandshakePriority</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SetSslHandshakePriority</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_SetSslHandshakePriority(u32 new_prio);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>new_prio</strong></em></code></td>
+<td>Priority level</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>
+Sets the execution priority to use during SSL handshaking for portions that take a long time to calculate (several hundred milliseconds). If an invalid value outside the range of 0 through 31 is set, the priority level during handshakes does not changed.<BR>This function can be executed with or without initializing the CPS library.<BR>Does not block.
+</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_GetSslHandshakePriority.html">CPS_GetSslHandshakePriority</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+11/09/2005 Initial version.</P>
+</body>
+</html>

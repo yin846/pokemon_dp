@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>ROM Access (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">ROM Access (Overview)</H1>
+<H2>Description</H2>
+<P>By issuing a command through the data bus, the ROM device can transfer data to open memory space.<br> The command format for data transfer and device operation after the command is issued through the ROM device is as follows.<br>
+<ol>
+<li>The transfer size for a single command is usually 512 Bytes. Also, the starting address of the ROM device region to specify as the transfer source must be aligned in integral multiples of 512 bytes.
+<li>Immediately after issuing the command, the ROM device enters a busy state for a fixed interval and is can then read the first word (4 bytes).  This change in states can be checked with the IO register flag, and the timing can be set in the DMA execution cause.
+<li>When one word is read from the IO register, the ROM device enters a busy state again and after a fixed interval, it transitions to a state in which it can read the next word. After repeating this read from the IO register a total of 128 times to complete a transfer of 512 bytes of data, the interrupt request flag <a href="../../os/irq/OS_SetIrqMask.html">OS_IE_CARD_DATA</a> is issued, indicating the transmission is complete.
+<li>The length of each busy period depends on the type of ROM device.
+</ol>
+Because these series of processes are executed in CARD Library functions, the application never directly performs this operation.<br> Also, because the restrictions on transfer size are determined within the library, there is usually no need to take it into consideration.<br>
+
+</P>
+<HR>
+<P><B>Data transfer by the CPU</B></P>
+<P>This section describes the normal data transfer processes.</P>
+<BLOCKQUOTE><IMG src="image_RomAccess_CPU.gif" border="0"></BLOCKQUOTE>
+After the data transfer command is issued, the IO register flag is repeatedly checked until the busy state of the ROM device is released. Once the ROM device is no longer in a busy state, 4 bytes are read from the IO register and written to the destination memory.<br> This pattern of waiting for the busy state to be released and then reading 4 bytes is repeatedly executed until the total reaches 512 bytes.<br> <br> Usual data transfers are realized in this way through CPU processes.
+<P>
+</P>
+<HR>
+<P><B>Data transfer by DMA</B></P>
+<P>This section describes the data transfer processes using DMA transfer.</P>
+<BLOCKQUOTE><IMG src="image_RomAccess_DMA.gif" border="0"></BLOCKQUOTE>
+<P>
+Before the data transfer command executes, the CARD library runs the DMA channel using the following settings.
+<ul>
+<li>DMA run mode: Card transfer
+<li>Transfer source address: IO register
+<li>Transfer destination address: Data storage destination memory
+<li>Transfer bit width: 32 bit
+<li>Word count: 1 word
+</ul>
+Afterward, when the data transfer command is issued, a single DMA transfer is periodically generated each time the ROM device is released from the busy state.<br> After 512 Bytes of data is transferred, an interrupt is issued and the CARD library stops DMA within the interrupt handler. <br> <br> When DMA is used in this way, CPU processes can be performed in parallel during data transfer. The only time the completion of DMA transfer will be delayed is the short instant when the timing of CPU memory access and DMA transfer conflict. But, this is less frequent where function of the CPU memory cache is valid.<br> However, if you look at the necessary time for data transfer, compared to normal transfers by CPU operation, only the interrupt handler portion is longer.<br> <br>
+</P>
+<HR>
+<P><B>Selection of CPU operation or DMA transfer.</B></P>
+The CARD library executes data transfer with the <A href="../rom/CARD_ReadRom.html">CARD_ReadRom</a> function or the <A href="../rom/CARD_ReadRomAsync.html">CARD_ReadRomAsync</a> function. If the DMA channel given to these functions as an argument is valid, DMA transfer is selected. If not, CPU operation is selected. The following are advantages and disadvantages of using DMA transfer instead of CPU operation.<br> <br>
+<table>
+<tr><td>Features</td><td>CPU Operation</td><td>DMA Transfer</td><tr>
+<tr><td>Time needed from transfer start to finish.</td><td>|</td><td>Longer than CPU operation only by the interrupt handler portion.</td><tr>
+<tr><td>CPU parallel processing during transfer.</td><td>Impossible.</td><td>Possible (except when there is conflicting memory access).</td><tr>
+</table>
+<br> Based on these points, we can see that DMA transfer is the better choice, except when data transfer must run in parallel.  An example of normal data transfer use is a data pre-fetch operation during a game. An example of parallel data transfer use is reading a large amount of data when initializing a game.<br> <br> However, even if a DMA transfer is specified, CPU operation will be selected if all the conditions (transfer source, transfer destination, transfer size) for using a DMA transfer are not satisfied. This is determined automatically within the CARD library. When using the file system in the high-level library, there are more cases when the conditions to make DMA transfer possible will not be satisfied. In order to make valid use of DMA transfer, you must carefully design data organization and the program on the application side. For specific cautions, refer to documentation on the <A href="../rom/CARD_ReadRomAsync.html">CARD_ReadRomAsync</a> function.
+</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_card.html">CARD Function List</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+01/06/2006 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

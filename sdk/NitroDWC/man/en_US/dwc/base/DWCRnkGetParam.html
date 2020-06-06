@@ -1,0 +1,93 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWCRnkGetParam</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWCRnkGetParam</H1>
+
+		<H2>Definition</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+typedef struct{
+u32             size;
+union{
+u32         data;
+struct{
+u32 sort;
+u32 since;
+}           order;
+struct{
+u32 sort;
+u32 limit;
+u32 since;
+}           toplist;
+struct{
+u32 sort;
+u32 limit;
+u32 since;
+}           near;
+struct{
+u32 sort;
+u32 limit;
+u32 since;
+s32 friends[64];
+}           friends;
+    };
+} DWCRnkGetParam;
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This structure stores the parameter specified by the <a href="DWC_RnkGetScoreAsync.html">DWC_RnkGetScoreAsync</a> function.
+		</P>
+		<P>
+		  It sets values in the corresponding parameters based on the acquisition mode. <BR>When the get mode is DWC_RNK_GET_MODE_ORDER, the value is set below DWCRnkGetParam.order. <BR>When the get mode is DWC_RNK_GET_MODE_TOPLIST, the value is set below DWCRnkGetParam.toplist. <BR>When the get mode is DWC_RNK_GET_MODE_NEAR, the value is set below DWCRnkGetParam.near. <BR>When the get mode is DWC_RNK_GET_MODE_FRIENDS, the value is set below DWCRnkGetParam.friends.
+		</P>
+		<TABLE border="1">
+		<TBODY>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>size</CODE></STRONG></EM></TD>
+			<TD>The subsequent data size (shared). <BR>When the get mode is DWC_RNK_GET_MODE_ORDER, the size is:<BR> sizeof(DWCRnkGetParam.order) <BR>When the get mode is DWC_RNK_GET_MODE_TOPLIST, the size is:<BR> sizeof(DWCRnkGetParam.toplist) <BR>When the get mode is DWC_RNK_GET_MODE_NEAR, the size is:<BR> sizeof(DWCRnkGetParam.near) <BR>When the get mode is DWC_RNK_GET_MODE_FRIENDS, the size is:<BR> sizeof(DWCRnkGetParam.friends) <BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>limit</CODE></STRONG></EM></TD>
+			<TD>Specifies the maximum to obtain. This value must be DWC_RNK_GET_MAX(10) or lower. The lower limit differs based on the acquisition mode. It is 1 for DWC_RNK_GET_MODE_TOPLIST, and 2 for DWC_RNK_GET_MODE_NEAR and DWC_RNK_GET_MODE_FRIENDS.<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>sort</CODE></STRONG></EM></TD>
+			<TD>The sort order:<BR>DWC_RNK_ORDER_ASC = ascending <BR>DWC_RNK_ORDER_DES = descending.</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>since</CODE></STRONG></EM></TD>
+			<TD>Gets the rankings from data that have been updated in the past number of minutes specified If 0 is specified, gets rankings from all the data.<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>friends[64]</CODE></STRONG></EM></TD>
+			<TD>The list of GS profile IDs of friends.<BR>If the list has fewer than 64 entries, store entries from the start of the list and zero-fill the remaining region.</TD>
+          </TR>
+ 		</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<a href="DWC_RnkGetScoreAsync.html">DWC_RnkGetScoreAsync</a>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			07/24/2006 Added description of the maximum limit value<BR> 04/14/2006 Initial version<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

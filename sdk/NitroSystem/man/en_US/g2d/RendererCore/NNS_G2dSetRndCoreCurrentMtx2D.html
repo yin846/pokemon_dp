@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRndCoreCurrentMtx2D</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRndCoreCurrentMtx2D</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_RendererCore.h&gt;</CODE></pre>
+<pre><CODE>void NNS_G2dSetRndCoreCurrentMtx2D
+    (
+        const MtxFx32*                 pMtx,
+        NNSG2dRndCore2DMtxCache*       pCurrentMtxCacheFor2D
+    );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pMtx</font></strong></em></td>
+<td width="87%">[IN] Current transformation matrix</td>    
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCurrentMtxCacheFor2D</font></strong></em></td>
+<td width="87%">[OUT] Matrix cache that stores affine parameters</td>    
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<p>
+Sets the affine transformation parameters that will be applied when rendering with the 2D Graphics Engine. When drawing with the 2D Graphics Engine, the affine transformation matrix is used in the CPU for coordinate transformation of the OBJ position. The affine parameters are set using the matrix cache.</P>
+
+<p>If NULL is specified for the pointer to the matrix cache, it is understood that affine transformation will not take place. A warning message will be displayed if NULL has been specified for the pointer to the matrix cache but an affine transformation has nevertheless been applied to the <em><strong><code>pMtx</code></strong></em> matrix.</P>
+
+<p>Use the <a href="NNS_G2dSetRndCore2DMtxCacheMtxParams.html"><code>NNS_G2dSetRndCore2DMtxCacheMtxParams()</code></a> function to set the matrix cache.<BR> The configured affine parameters are valid inside the <code>BeginRendering</code> &mdash; <code>EndRendering</code> block.<BR> The settings are reset when <a href="NNS_G2dRndCoreEndRendering.html"><code>NNS_G2dRndCoreEndRendering()</code></a> is called, so you will need to use this function to configure the settings again.<BR> <BR> This function can only be used when drawing with the 2D Graphics Engine.<BR> A warning message will be output if it is called when the 3D Graphics Engine is drawing.<BR> <BR> The configured transformation matrix is valid inside the <code>BeginRendering</code> &mdash; <code>EndRendering</code> block.</P>
+
+<h2>See Also</h2>
+<p><code><a href="NNS_G2dSetRndCoreCurrentMtx3D.html">NNS_G2dSetRndCoreCurrentMtx3D</a></code>, <code><a href="NNS_G2dSetRndCore2DMtxCacheMtxParams.html">NNS_G2dSetRndCore2DMtxCacheMtxParams</a></code></p>
+
+<H2>Revision History</H2>
+<P>11/10/2004 Initial version.</P>
+</body>
+</html>

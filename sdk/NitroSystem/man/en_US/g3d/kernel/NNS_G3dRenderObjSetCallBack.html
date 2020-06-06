@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dRenderObjSetCallBack</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dRenderObjSetCallBack</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/kernel.h&gt;</CODE></PRE>
+<PRE><CODE>void
+NNS_G3dRenderObjSetCallBack(
+NNSG3dRenderObj* pRenderObj,
+NNSG3dSbcCallBackFunc func,
+u8* <S>pCmd</S>,
+u8 cmd,
+NNSG3dSbcCallBacktiming timing
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pRenderObj</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>NNSG3dRenderObj</code> structure</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>func</STRONG></EM></TD>
+<TD width="87%">Pointer to the callback function to register</TD>
+    </TR>
+    <TR>
+<TD width="13%"><S><EM><STRONG>pCmd</STRONG></EM></S></TD>
+<TD width="87%"><S>Pointer to the SBC command that calls the callback function. </s><BR> Currently, this command is not valid. However, it is included for compatibility with the arguments of previous versions.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>cmd</STRONG></EM></TD>
+<TD width="87%">SBC command that calls the callback function</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>timing</STRONG></EM></TD>
+<TD width="87%">Timing of calling the callback function</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>Registers the callback function that can cut in while the <code>NNS_G3dDraw</code> function is running. For the callback process, the callback function is executed at the timing in the command designated by <em><strong><code>timing</code></strong></em> when the SBC command designated by <em><strong><code>cmd</code></strong></em> is executed. <em><strong><code>timing</code></strong></em> can be chosen from the three types shown below, and is set for each SBC command. The timing can be selected from one of the following three types, and is configured for each SBC command: For details, see the reference materials for SBC and callbacks.</P>
+<PRE>typedef enum
+{
+NNS_G3D_SBC_CALLBACK_timing _A = 0x00,
+NNS_G3D_SBC_CALLBACK_timing _B = 0x01,
+NNS_G3D_SBC_CALLBACK_timing _C = 0x02
+}
+NNSG3dSbcCallBacktiming ;</code></PRE>
+<P>
+The registered callback process can be deleted by using the <code><a href="NNS_G3dRenderObjResetCallBack.html">NNS_G3dRenderObjResetCallBack</a></code> function. When you want to register multiple callback functions, set the callback function using the <code>NNS_G3dRSSetCallBack</code> function in the function registered with the <code><a href="NNS_G3dRenderObjSetInitFunc.html">NNS_G3dRenderObjSetInitFunc</a></code> function.</P>
+
+<H2>See Also</H2>
+<P><code><a href="NNS_G3dRenderObjResetCallBack.html">NNS_G3dRenderObjResetCallBack</a></code>, <code><a href="NNS_G3dRenderObjSetUserPtr.html">NNS_G3dRenderObjSetUserPtr</a></code>, <code><a href="../funcptr/NNSG3dSbcCallBackFunc.html">NNSG3dSbcCallBackFunc</a></code></P>
+
+<H2>Revision History</H2>
+<P>10/15/2004 Revised description in accordance with changes to the method.<br /> 08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

@@ -1,0 +1,43 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPSSslSession</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPSSslSession</h1>
+
+
+<h2>Definitions</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>typedef struct {
+u8 sessionID [32];
+u8 master_secret [48];
+u32 when;
+CPSInAddr ip;				// 0 when entry is for server
+u16 port;					// 0 when entry is for server
+u8 valid;					// non 0 if this entry is valid
+u8 padding;
+} CPSSslSession;</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>This structure defines the SSL connection. <CODE><A href="CPSSslConnection.html">CPSSslConnection.session</A></CODE> points to this structure. </p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPSSslConnection.html">CPSSslConnection</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+10/24/2005 Initial version.</P>
+</body>
+</html>

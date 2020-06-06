@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_EnableInterrupts</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_EnableInterrupts</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>OSIntrMode OS_EnableInterrupts( void );</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The state before the function is called. Returns the <code>OSIntrMode_Irq</code> enum value:</p>
+<TABLE cellspacing="2">
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee">OS_INTRMODE_IRQ_DISABLE</TD>
+<TD bgcolor="#eeeeee">IRQ Disable (prohibited)</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_INTRMODE_IRQ_ENABLE</TD>
+<TD bgcolor="#eeeeee">IRQ Enable (permitted)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P> </P>
+<H2>Description</H2>
+<P>This function enables IRQ interrupts. This is the master enable for all interrupts. Even if the IRQ interrupt factor enable is set separately, interrupts will not be generated if IRQ is prohibited with this function.</P>
+<P>The return values will be in the status prior to calling this function.</P>
+<h2>Internal Operation</h2>
+<P>Resets (reset is enabled) the CPSR (current program status register) the IRQ interrupt control bit.  </P>
+
+<h2>See Also</h2>
+<p><CODE><A href="OS_DisableInterrupts.html">OS_DisableInterrupts</A>, <A href="OS_RestoreInterrupts.html">OS_RestoreInterrupts</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;.<BR>03/04/2004 Changed so FIQ is not included in processing.<BR>01/14/2004 Changed so FIQ is included in processing.<BR>12/01/2003 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

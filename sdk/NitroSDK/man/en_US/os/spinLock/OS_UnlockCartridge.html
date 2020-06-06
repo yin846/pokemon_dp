@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_UnlockCartridge</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_UnlockCartridge</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>s32 OS_UnlockCartridge( u16 lockID );
+ </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>lockID</STRONG></EM></TD>
+<TD width="87%">ID used to lock a cartridge.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P><code>OS_UNLOCK_SUCCESS</code> indicates that the lock was successfully released. (Defined as <code>0</code>.) <code>OS_UNLOCK_ERROR</code> indicates that there was a lock release error. (Defined as a negative number.)</P>
+<H2>Description</H2>
+<P>Releases a lock and passes shared resource access rights to the ARM7 processor</P>
+<P>When the unlock succeeds, it accesses the <code>EXMEMCNT</code> register and obtains access rights to the card bus.</P>
+<P>When executed on an unlocked module (when trying to release with an ID different from the one that is currently locked), the lock will not be released. It will return an <code>OS_UNLOCK_ERROR</code>.</P>
+<H2>Internal Operation</H2>
+<P>Accesses the <code>EXMEMCNT</code> I/O register <code>(0x4000204)</code>.</P>
+<H2>See Also</H2>
+<P><code><a href="OS_LockCartridge.html">OS_LockCartridge</a>, <a href="OS_TryLockCartridge.html">OS_TryLockCartridge</a>, <a href="OS_UnlockCard.html">OS_UnlockCard</a>, <a href="OS_GetLockID.html">OS_GetLockID</a></code></P>
+<H2>Revision History</H2>
+<P>11/04/2004 Added Internal Operation description. <BR>07/23/2004 <code>OS_UnLockCard</code> changed to <code>OS_UnlockCard</code> <BR>07/22/2004 Argument format changed from u32 to u16. <BR>06/21/2004 Initial version </P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_GetMtu</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_GetMtu</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void SOC_GetMtu ( SOCInterface* <em><strong>interface</strong></em>, s32* <em><strong>mtu</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><font size="-1"color="#808080"><code><em><strong>interface</strong></em></code></td>
+<td>The pointer to the SOCInterface that obtains the MTU. This argument is included for compatibility issues, but it is ignored in actual use of the function.</td>
+  </tr>
+  <tr>
+<td><code><em><strong>mtu</strong></em></code></td>
+<td>The pointer to the s32 used for receiving the link status of the interface.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<p>None.</p>
+
+<h2>Description</h2>
+
+<p>Gets the maximum transmission unit (MTU) of the specified interface.</p>
+<p><strong>Note</strong>: The default maximum transmission unit is 576 bytes.</p>
+
+<h2>See Also</h2>
+<p>
+<code><a href="SOC_GetHostID.html">SOC_GetHostID</a></code>, <code><a href="SOCConfig.html">SOCConfig</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description.<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

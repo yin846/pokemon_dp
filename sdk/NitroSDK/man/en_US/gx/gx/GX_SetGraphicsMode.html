@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_SetGraphicsMode</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_SetGraphicsMode</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx.h&gt;</CODE><BR> <BR> <CODE>void GX_SetGraphicsMode(GXDispMode dispMode, GXBGMode bgMode, GXBG0As bg0_2d3d);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">dispMode</font></strong></em></td>
+<td width="87%">Display Mode. Selects from Graphics display mode VRAM display mode, Main Memory display mode.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">bgMode</font></strong></em></td>
+<td width="87%">Selects BG mode.</td>
+  </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">bg0_2d3d</font></strong></em></TD>
+<TD>Selects whether to allocate BG0 to 3D.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the display mode for the main graphics engine. If something other than graphics display mode is selected with <em><strong><code>dispMode</code></strong></em>, the values of <em><strong><code>bgMode</code></strong></em> and <em><strong><code>bg0_2d3d</code></strong></em> are used only for capturing the graphics display screen. The <em><strong><code>bgMode</code></strong></em> argument selects the BG mode. The <em><strong><code>bg0_2d3d</code></strong></em> argument specifies whether to use BG0 as a 2D or 3D screen. The values of <B><I>bgMode</I></B> and <B><I>bg0_2d3d</I></B> are only used for screen captures if <B><I>dispMode</I></B> is set to a mode other than graphics display mode.<BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_DISPMODE_GRAPHICS</CODE></TD>
+<TD width="70%">Show 2D/3D graphics</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_DISPMODE_VRAM_A</CODE></TD>
+<TD width="70%">VRAM display mode (show VRAM-A)</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_DISPMODE_VRAM_B</CODE></TD>
+<TD width="70%">VRAM display mode (show VRAM-B)</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_DISPMODE_VRAM_C</CODE></TD>
+<TD width="70%">VRAM display mode (show VRAM-C)</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_DISPMODE_VRAM_D</CODE></TD>
+<TD width="70%">VRAM display mode (show VRAM-D)</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_DISPMODE_MMEM</CODE></TD>
+<TD width="70%">Main memory display mode (transfer with <code><A href="../../mi/dma/MI_DispMemDmaCopy.html">MI_DispMemDmaCopy</A></code>)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_BGMODE_0</CODE></TD>
+<TD width="70%">BG0=Text/3D, BG1=Text, BG2=Text, BG3=Text</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BGMODE_1</CODE></TD>
+<TD>BG0=Text/3D, BG1=Text, BG2=Text, BG3=Affine</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BGMODE_2</CODE></TD>
+<TD>BG0=Text/3D, BG1=Text, BG2=Affine, BG3=Affine</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BGMODE_3</CODE></TD>
+<TD>BG0=Text/3D, BG1=Text, BG2=Text, BG3=Affine Extended BG</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BGMODE_4</CODE></TD>
+<TD>BG0=Text/3D, BG1=Text, BG2=Affine, BG3=Affine Extended BG</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BGMODE_5</CODE></TD>
+<TD>BG0=Text/3D, BG1=Text, BG2=Affine Extended BG, BG3=Affine Extended BG</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BGMODE_6</CODE></TD>
+<TD>BG0=3D, BG1=None, BG2=Big Screen 256-color bitmap, BG3=None</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_BG0_AS_2D</CODE></TD>
+<TD width="70%">BG0 displayed as text. Ignored when <CODE>GX_BGMODE_6</CODE> is selected.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BG0_AS_3D</CODE></TD>
+<TD>BG0 displayed as 3D. Ignored when <CODE>GX_BGMODE_6</CODE> is selected.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following is the type definition for <code>GXDispMode</code>, <code>GXBGMode</code>, and <code>GXBG0As</code> types.</P>
+<PRE>typedef enum
+{
+GX_DISPMODE_GRAPHICS = 0x01,
+GX_DISPMODE_VRAM_A = 0x02,
+GX_DISPMODE_VRAM_B = 0x06,
+GX_DISPMODE_VRAM_C = 0x0a,
+GX_DISPMODE_VRAM_D = 0x0e,
+GX_DISPMODE_MMEM = 0x03
+}
+GXDispMode;
+
+typedef enum
+{
+GX_BGMODE_0 = 0,
+GX_BGMODE_1 = 1,
+GX_BGMODE_2 = 2,
+GX_BGMODE_3 = 3,
+GX_BGMODE_4 = 4,
+GX_BGMODE_5 = 5,
+GX_BGMODE_6 = 6
+}
+GXBGMode;
+
+typedef enum
+{
+GX_BG0_AS_2D = 0,
+GX_BG0_AS_3D = 1
+}
+GXBG0As;</PRE>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>08/03/2004</P>
+<UL>
+<LI>The values of bgMode and bg0_2d3d are reflected to the register when functions other than GX_DISPMODE_GRAPHIC is used.
+</UL>
+<P>02/09/2004</P>
+<UL>
+<LI>Deleted <CODE>GX_DISPMODE_OFF</CODE>. Use <A href="GX_DispOff.html"><CODE>GX_DispOff</CODE></A> instead.<BR>
+</UL>
+<P>01/19/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

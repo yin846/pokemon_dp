@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_Halt</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_Halt</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_Halt( void );</CODE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function sets the CPU to the <CODE>HALT</CODE> state. If there is an interrupt to return from the <CODE>HALT</CODE> state, a return from the function occurs.</P>
+<H2>Internal Operation</H2>
+<P><CODE>HALT</CODE> status comes about due to access to the CP15 register 7 of the system control coprocessor 15 with ARM9, and to a call of the system call with ARM7.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../debug/OS_Panic.html">OS_Panic</A></CODE>, <CODE><A href="OS_Terminate.html">OS_Terminate</A></CODE></P>
+<H2>Revision History</H2>
+<P>04/22/2004 Added Internal Operation<BR>04/05/2004 Added description of returning from HALT state due to an interrupt<BR>02/17/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

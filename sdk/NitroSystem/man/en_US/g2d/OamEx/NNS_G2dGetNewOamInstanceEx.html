@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dGetNewOamInstanceEx</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dGetNewOamInstanceEx</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_OAMEx.h&gt;</CODE></pre>
+<pre>BOOL NNS_G2dGetOamManExInstance(
+NNSG2dOamManagerInstanceEx* pOam,
+NNSG2dOamChunkList*             pOamOrderingTbl,
+u8                              lengthOfOrderingTbl,
+u16                             numPooledOam,
+NNSG2dOamChunk*                 pPooledOam,
+u16                             lengthAffineBuffer,
+NNSG2dAffineParamProxy*         pAffineBuffer );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pOam</font></strong></em></td>
+<td width="87%">[OUT] Extended OAM manager entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pOamOrderingTbl</font></strong></em></td>
+<td width="87%">[IN] Starting address of the ordering table</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">lengthOfOrderingTbl</font></strong></em></td>
+<td width="87%">[IN] Length of the ordering table</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">numPooledOam</font></strong></em></td>
+<td width="87%">[IN] Number of OBJChunk</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pPooledOam</font></strong></em></td>
+<td width="87%">[IN] Pointer to the OBJChunk array</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">lengthAffineBuffer</font></strong></em></td>
+<td width="87%">[IN] Length of the affine parameter buffer array</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pAffineBuffer</font></strong></em></td>
+<td width="87%">[IN] Pointer to the affine parameter buffer array</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>TRUE if initialization succeeds.
+</p>
+<H2>Description</H2>
+<P>
+This function initializes the extended OAM Manager. The Ordering table length becomes the maximum depth that can be specified when OBJs are registered. The longer the Ordering table is, the greater the amount of overhead that is generated during drawing. The name of this function has changed to <code>NNS_G2dGetOamManExInstance</code>. In order to maintain compatibility, the previous function was kept under a different name.
+</p>
+
+<h2>See Also</h2>
+<p>
+<a href="NNS_G2dGetOamManExInstance.html"><code>NNS_G2dGetOamManExInstance</code></a>, <a href="NNS_G2dInitAffineManagerEx.html"><code>NNS_G2dInitAffineManagerEx</code></a>, <a href="NNS_G2dSetOamManExEntryFunctions.html"><code>NNS_G2dSetOamManExEntryFunctions</code></a>
+</P>
+<H2>Revision History</H2>
+<P>06/22/2004 Initial version.</P>
+</body>
+</html>

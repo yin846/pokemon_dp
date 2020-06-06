@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCT_Contact</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCT_Contact</h1>
+<h2>Syntax</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>int VCT_Contact ( <a href="VCTSession.html">VCTSession</a> **outSession );</CODE></PRE></dd> 
+</dl>
+
+<h2>Argument</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>outSession </STRONG></EM></TD>
+      <TD width="87%" height="17">VCTSession Structure</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Value</h2>
+<p>0 if successful; otherwise, <a href="VCTErrorCode.html">the error code returns as a negative number</a></p>
+
+<H2>Description</H2>
+<P>VCT_Contact issues a request to start a conversation in Transceiver Mode. Machines acting as the server in Transceiver Mode experience the same events that a client issues upon processing in VoiceChat Library. The <code><a href="VCTRequestCode.html">VCT_REQUEST_CONTACT</a> method is issued inside VoiceChat Library. </P>
+<P>Advance session participation in Transceiver Mode is possible using the <A href="VCT_SetTransceiverServer.html">VCT_SetTransceiverServer</A></CODE> function or the <CODE><A href="VCT_SetTransceiverClients.html">VCT_SetTransceiverClients</A></CODE> function.</P>
+<p>Once the function call succeeds, a pointer to the session's structure is stored in <strong>outSession</strong>.</p>
+
+<P>In Transceiver Mode, <code><a href="VCTRequestCode.html">VCT_REQUEST_CONTACT</a></code> should not be sent for CONTACT requests using the <code><a href="VCT_Request.html">VCT_Request</a></code> function ; VCT_Contact should always be used.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="VCT_Release.html">VCT_Release</A>, <A href="VCT_SetTransceiverServer.html">VCT_SetTransceiverServer</A>, <A href="VCT_SetTransceiverClients.html">VCT_SetTransceiverClients</A></CODE></p>
+<H2>Revision History</H2>
+<P>
+2006/04/17 Link of error codes is added.<BR>
+2006/04/14 A note regarding VCT_Request was added.<BR>
+2006/01/25 First release
+</P>
+</body>
+</html>

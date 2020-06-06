@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBT_CancelCurrentCommand</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBT_CancelCurrentCommand</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR> <CODE>BOOL WBT_CancelCurrentCommand(u16 target);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>target</STRONG></EM></TD>
+<TD width="87%">Target aid bitmap that cancels command<br /> When child, only parent <code>1</code> can be specified.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>Returns FALSE if there is no command that is currently processing. If there is, returns TRUE after interrupting and calling that command callback. </p>
+
+<H2>Description</H2>
+<p>Cancels any currently running command. Mainly used to cancel mid-stream after issuing <a href="../command/WBT_GetBlock.html"><code>WBT_GetBlock</code></a> function.<br> Cannot be used on the side that requested the command.<br></font> <br>
+</p>
+<H2>See Also</H2>
+<a href="WBT_RequestSync.html"><code>WBT_RequestSync</a></code>, <code><a href="WBT_GetBlockInfo.html">WBT_GetBlockInfo</a></code>, <code><a href="WBT_GetBlock.html">WBT_GetBlock</a></code>, <code><a href="WBT_PutUserData.html">WBT_PutUserData</a></code>
+<H2>Revision History</H2>
+<P>
+10/05/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

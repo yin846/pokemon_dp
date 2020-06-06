@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_GetFirstInstDataPos</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_GetFirstInstDataPos</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">SNDInstPos SND_GetFirstInstDataPos( const SNDBankData* <var>bank</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAWLWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>bank</code></strong></em></td>
+<td>This is the bank data pointer.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFMWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns the positional information for the instrument data scan.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Description</h2>
+      <p>
+Gets the positional information for the instrument data scan in the bank data.
+</p>
+      <p>
+By passing the obtained positional information to the <code><a href="SND_GetNextInstData.html">SND_GetNextInstData</a></code> function, the <code><a href="SNDInstData.html">SNDInstData</a></code> format instrument data can be obtained in order.
+</p>
+
+      
+      <pre class="programlisting">
+SNDInstPos pos = SND_GetFirstInstDataPos( bank );
+SNDInstData inst;
+    
+while( SND_GetNextInstData( bank, &amp;inst, &amp;pos ) ) {
+// Process to perform for the instrument
+    }
+</pre>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="SND_GetNextInstData.html">SND_GetNextInstData</a></code>, <code><a href="SNDInstData.html">SNDInstData</a></code></p>
+<h2>Revision History</h2>
+<p>01/20/2005 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

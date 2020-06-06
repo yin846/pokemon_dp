@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRC_CopyStrokes</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRC_CopyStrokes</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+BOOL PRC_CopyStrokes(
+const <A href="PRCStrokes.html">PRCStrokes</A>*   srcStrokes,
+<A href="PRCStrokes.html">PRCStrokes</A>*         dstStrokes );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">srcStrokes</FONT></STRONG></EM></TD>
+<TD width="87%">Pointer to the copy source for the <CODE><A href="PRCStrokes.html">PRCStrokes</A></CODE> structure.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">dstStrokes</FONT></STRONG></EM></TD>
+<TD width="87%">Pointer to the copy destination for the <CODE><A href="PRCStrokes.html">PRCStrokes</A></CODE> structure.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns TRUE if the copy succeeds.</p>
+
+<H2>Description</H2>
+<P>Deep copies the <CODE><A href="PRCStrokes.html">PRCStrokes</A></CODE> structure Copy will fail if the copy destination capacity is smaller than the copy source size.</P>
+<h2>See Also</h2>
+<p><CODE><A href="PRC_InitStrokes.html">PRC_InitStrokes</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+11/04/2004 Corrected return value types<br /> 07/19/2004 Specification change<br /> 06/25/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

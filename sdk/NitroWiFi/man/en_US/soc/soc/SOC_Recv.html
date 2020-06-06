@@ -1,0 +1,104 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Read, SOC_Recv, SOC_RecvFrom</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Read<br>SOC_Recv<br>SOC_RecvFrom</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Read     ( int <em><strong>s</strong></em>, void* <em><strong>buf</strong></em>, int <em><strong>len</strong></em> );
+int SOC_Recv     ( int <em><strong>s</strong></em>, void* <em><strong>buf</strong></em>, int <em><strong>len</strong></em>, int <em><strong>flags</strong></em> );
+int SOC_RecvFrom ( int <em><strong>s</strong></em>, void* <em><strong>buf</strong></em>, int <em><strong>len</strong></em>, int <em><strong>flags</strong></em>, void* <em><strong>sockFrom</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+<table width="100%">
+  <tr>
+<td valign="top"><code><em><strong>s</strong></em></code></td>
+<td>Socket descriptor. </td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong>buf</strong></em></code></td>
+<td>Pointer to the receive buffer.</td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong>len</strong></em></code></td>
+<td>Length of the receive buffer (bytes). </td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong>flags</strong></em></code></td>
+<td>Specifies the receive status of the message. <code><em><strong>flags</strong></em></code> is 0 or the logical sum of the following values. <table width="100%">
+      <tr>
+<td><code>SOC_MSG_PEEK</code> </td>
+<td>Peeks at the arrived message. The data is treated as unread, and the next call of <code>SOC_Recv()</code> or a similar function will return this data.  </td>
+      </tr>
+      <tr>
+<td><code>SOC_MSG_DONTWAIT</code></td>
+<td>Performs non-blocking processing. If there is no data, returns <code>SOC_EWOULDBLOCK</code>.</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong>sockFrom</strong></em></code></td>
+<td>The pointer to the socket address structures (<code><a href="SOCSockAddr.html">SOCSockAddr</a> and <a href="SOCSockAddrIn.html">SOCSockAddrIn</a></code>) used to obtain the name (the address) of the network communications partner.<br>It is important to properly initialize the <code><em><strong>len</strong></em></code> field of the socket address. (Example: <code>sizeof(SOCSockAddrIn)</code>)</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>0 or higher</td>
+<td>Number of bytes in received message.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINVAL</code></td>
+<td>Invalid processing. (SSL only supports blocking calls. Blocking calls cannot be used from inside an interrupt handler, etc.)</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket library is not initialized.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENOTCONN</code></td>
+<td>Not connected.</td>
+  </tr>
+  <tr>
+<td> <code>SOC_EWOULDBLOCK</code></td>
+<td>Cannot execute until the requested operation is blocked. (There is no data or out-of-band data waiting to be received, even when <code>SOC_O_NONBLOCK</code> is set in the socket descriptor (or when the <code>SOC_MSG_DONTWAIT</code> flag is set).</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p><code>SOC_Read(), SOC_Recv() and SOC_RecvFrom() </code> try to read <code><em><strong>len</strong></em></code> bytes from the socket's communication partner.  </p>
+
+<p><code>SOC_Read()</code> is the same as <code>SOC_Recv()</code>, except that <code><em><strong>flags</strong></em></code> is not set.  </p>
+<p>If no message is in the socket's receive buffer, <code>SOC_Read()</code>, <code>SOC_Recv()</code> and <code>SOC_RecvFrom()</code> will block until a message is received, unless non-blocking mode has been set in the socket descriptor with <code><a href="SOC_Fcntl.html">SOC_Fcntl()</a></code> (or the <code>SOC_MSG_DONTWAIT</code> flag has not been enabled).</p>
+<p> With <code>SOC_SOCK_DGRAM</code> sockets, the entire message is read in a single processs. If the message does not fit in the given buffer, the excess bytes are truncated. With <code>SOC_SOCK_STREAM</code> sockets, the message boundary is ignored.  In this case data is returned to the user as it becomes usable.</p>
+
+<p><strong>Note: </strong> The return value becomes 0 even after the TCP connection is closed. This complies with POSIX specifications.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOCSockAddr.html">SOCSockAddr</a></code>, <code><a href="SOC_Fcntl.html">SOC_Fcntl</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description.<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

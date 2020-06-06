@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Geometry Command Cycle</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<H1 align="left">Geometry Command Cycle</H1>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD>Command Name</TD>
+<TD align="center">Corresponding API</TD>
+<TD align="center">Number of Execution Cycles<BR> (33 MHz conversion)</TD>
+<TD align="center">Comments</TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_MODE</TD>
+<TD><A href="g3/G3_MtxMode.html" target="_self">G3*_MtxMode</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_PUSH</TD>
+<TD><A href="g3/G3_PushMtx.html" target="_self">G3*_PushMtx</A></TD>
+      <TD align="center">17</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_POP</TD>
+<TD><A href="g3/G3_PopMtx.html" target="_self">G3*_PopMtx</A></TD>
+      <TD align="center">36</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_STORE</TD>
+<TD><A href="g3/G3_StoreMtx.html" target="_self">G3*_StoreMtx</A></TD>
+      <TD align="center">17</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_RESTORE</TD>
+<TD><A href="g3/G3_RestoreMtx.html" target="_self">G3*_RestoreMtx</A></TD>
+      <TD align="center">36</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_IDENTITY</TD>
+<TD><A href="g3/G3_Identity.html" target="_self">G3*_Identity</A></TD>
+      <TD align="center">19</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_LOAD_4x4</TD>
+<TD><A href="g3/G3_LoadMtx44.html" target="_self">G3*_LoadMtx44</A></TD>
+      <TD align="center">34</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_LOAD_4x3</TD>
+<TD><A href="g3/G3_LoadMtx43.html" target="_self">G3*_LoadMtx43</A></TD>
+      <TD align="center">30</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_MULT_4x4</TD>
+<TD><A href="g3/G3_MultMtx44.html" target="_self">G3*_MultMtx44</A></TD>
+      <TD align="center">35</TD>
+<TD>65 in Position&amp;Vector mode</TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_MULT_4x3</TD>
+<TD><A href="g3/G3_MultMtx43.html" target="_self">G3*_MultMtx43</A></TD>
+      <TD align="center">31</TD>
+<TD>61 in Position&amp;Vector mode</TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_MULT_3x3</TD>
+<TD><A href="g3/G3_MultMtx33.html" target="_self">G3*_MultMtx33</A></TD>
+      <TD align="center">28</TD>
+<TD>58 in Position&amp;Vector mode</TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_SCALE</TD>
+<TD><A href="g3/G3_Scale.html" target="_self">G3*_Scale</A></TD>
+      <TD align="center">22</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_MTX_TRANS</TD>
+<TD><A href="g3/G3_Translate.html" target="_self">G3*_Translate</A></TD>
+      <TD align="center">22</TD>
+<TD>52 in Position&amp;Vector mode</TD>
+    </TR>
+    <TR>
+<TD>G3OP_COLOR</TD>
+<TD><A href="g3/G3_Color.html" target="_self">G3*_Color</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_NORMAL</TD>
+<TD><A href="g3/G3_Normal.html" target="_self">G3*_Normal</A></TD>
+      <TD align="center">9-12(+2)<A href="#attention_1"><SUP><FONT color="red">Ebrvbar;1</FONT></SUP></TD>
+<TD>Increases according to the number of lights.</TD>
+    </TR>
+    <TR>
+<TD>G3OP_TEXCOORD</TD>
+<TD><A href="g3/G3_TexCoord.html" target="_self">G3*_TexCoord</A></TD>
+      <TD align="center">1(+1)<A href="#attention_1"><SUP><FONT color="red">Ebrvbar;1</FONT></SUP></TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_VTX_16</TD>
+<TD><A href="g3/G3_Vtx.html" target="_self">G3*_Vtx</A></TD>
+      <TD align="center">9(+2)<A href="#attention_1"><SUP><FONT color="red">Ebrvbar;1</FONT></SUP></A></TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_VTX_10</TD>
+<TD><A href="g3/G3_Vtx10.html" target="_self">G3*_Vtx10</A></TD>
+      <TD align="center">8</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_VTX_XY</TD>
+<TD><A href="g3/G3_VtxXY.html" target="_self">G3*_VtxXY</A></TD>
+      <TD align="center">8</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_VTX_XZ</TD>
+<TD><A href="g3/G3_VtxXZ.html" target="_self">G3*_VtxXZ</A></TD>
+      <TD align="center">8</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_VTX_YZ</TD>
+<TD><A href="g3/G3_VtxYZ.html" target="_self">G3*_VtxYZ</A></TD>
+      <TD align="center">8</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_VTX_DIFF</TD>
+<TD><A href="g3/G3_VtxDiff.html" target="_self">G3*_VtxDiff</A></TD>
+      <TD align="center">8</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_POLYGON_ATTR</TD>
+<TD><A href="g3/G3_PolygonAttr.html" target="_self">G3*_PolygonAttr</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_TEXIMAGE_PARAM</TD>
+<TD><A href="g3/G3_TexImageParam.html" target="_self">G3*_TexImageParam</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_TEXPLTT_BASE</TD>
+<TD><A href="g3/G3_TexPlttBase.html" target="_self">G3*_TexPlttBase</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_DIF_AMB</TD>
+<TD><A href="g3/G3_MaterialColorDiffAmb.html" target="_self">G3*_MaterialColorDiffAmb</A></TD>
+      <TD align="center">4</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_SPE_EMI</TD>
+<TD><A href="g3/G3_MaterialColorSpecEmi.html" target="_self">G3*_MaterialColorSpecEmi</A></TD>
+      <TD align="center">4</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_LIGHT_VECTOR</TD>
+<TD><A href="g3/G3_LightVector.html" target="_self">G3*_LightVector</A></TD>
+      <TD align="center">6</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_LIGHT_COLOR</TD>
+<TD><A href="g3/G3_LightColor.html" target="_self">G3*_LightColor</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_SHININESS</TD>
+<TD><A href="g3/G3_Shininess.html" target="_self">G3*_Shininess</A></TD>
+      <TD align="center">32</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_BEGIN</TD>
+<TD><A href="g3/G3_Begin.html" target="_self">G3*_Begin</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_END</TD>
+<TD><A href="g3/G3_End.html" target="_self">G3*_End</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_SWAP_BUFFERS</TD>
+<TD><A href="g3/G3_SwapBuffers.html" target="_self">G3*_SwapBuffers</A></TD>
+      <TD align="center">392</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_VIEWPORT</TD>
+<TD><A href="g3/G3_ViewPort.html" target="_self">G3*_ViewPort</A></TD>
+      <TD align="center">1</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_BOX_TEST</TD>
+<TD><A href="g3/G3_BoxTest.html">G3*_BoxTest</A></TD>
+      <TD align="center">103</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_POS_TEST</TD>
+<TD><A href="g3/G3_PositionTest.html">G3*_PositionTest</A></TD>
+      <TD align="center">9</TD>
+      <TD></TD>
+    </TR>
+    <TR>
+<TD>G3OP_VEC_TEST</TD>
+<TD><A href="g3/G3_VectorTest.html">G3*_VectorTest</A></TD>
+      <TD align="center">5</TD>
+      <TD></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<A name="attention_1">Note 1: The number of command cycles corresponding to each source increases when an environment map is used.<BR> Example: The number of cycles for the G3OP_TEXCOORD command increases by 1 when GX_TEXGEN_TEXCOORD is specified to the G3OP_TEXIMAGE_PARAM command.</A>
+
+<H2>Revision History</H2>
+<P>04/10/2006 Initial version.</P>
+<UL>
+<LI>Added a note that the number of command cycles increases when using an environment map
+</UL>
+<P>01/19/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

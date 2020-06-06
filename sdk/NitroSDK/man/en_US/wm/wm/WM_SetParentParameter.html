@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_SetParentParameter</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_SetParentParameter</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_SetParentParameter( <A href="WMCallbackFunc.html">WMCallbackFunc</A> callback , const <A href="WMParentParam.html">WMParentParam</A>* pparaBuf );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">pparaBuf</FONT></STRONG></EM></TD>
+<TD width="800">Pointer to the structure that shows parent information. Notice that the <CODE><em><strong>pparaBuf</strong></em></CODE> and<br /> <CODE>pparaBuf&ndash;&gt;userGameInfo</CODE> entities will be forcibly cached.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>Sets the parameters that are required for a parent This API must be executed once before the <A href="WM_StartParent.html"><CODE>WM_StartParent</CODE></A> is called. This function is only executable when the WM is in the <code>IDLE</code> state. If the return value is <CODE>WM_ERRCODE_OPERATING</CODE>, a callback is generated after the parameter setting process is complete.</P>
+
+<h2>See Also</h2>
+<p><A href="WM_StartParent.html"><code>WM_StartParent</code></A>, <A href="WM_EndParent.html"><code>WM_EndParent</code></A>, <A href="WM_SetGameInfo.html"><code>WM_SetGameInfo</code></A></p>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callbacks being called from the interrupt handler.<br>10/22/2004 Changed return value type.<BR>08/02/2004 Standardized structure names.<BR> 07/29/2004 Added to Description<br>07/23/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

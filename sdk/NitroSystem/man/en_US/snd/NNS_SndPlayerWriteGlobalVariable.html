@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndPlayerWriteGlobalVariable</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndPlayerWriteGlobalVariable</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndPlayerWriteGlobalVariable( int varNo,  s16 var );</code></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA0LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>varNo</code></strong></em></td>
+<td>The variable number. Takes a value between 0 and 15.</td>
+</tr>
+<tr>
+<td><em><strong><code>var</code></strong></em></td>
+<td>The value to be written to the variable</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAQMWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns whether or not writing was successful.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAXMWT"></a>
+<h2>Description</h2>
+      <p>
+Writes to the sequence global variable.
+</p>
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+Immediately after calling this function, even if the same variable value is read with the <code><a href="NNS_SndPlayerReadGlobalVariable.html">NNS_SndPlayerReadGlobalVariable</a></code> function, there is no guarantee that the written value will be readable. </p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndPlayerReadGlobalVariable.html">NNS_SndPlayerReadGlobalVariable</a></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Exclusion Control (Mutex) (Overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Exclusion Control (Mutex) (Overview)</H1>
+<H2>Introduction</H2>
+<P>Mutex (mutual exclusion (service)) is a mechanism for exclusion control among threads. For particular program locations, this mechanism curbs simultaneous execution from multiple threads and sees that resources such as data and registers are not accessed simultaneously from multiple threads.</P>
+<HR>
+<P><B>Initializing Mutex</B></P>
+<P>Mutex is initialized with <nobr><code><a href="OS_InitMutex.html">OS_InitMutex()</a></code></nobr>. One mutex can be configured for each OSMutex structure object.</P>
+<HR>
+<P><B>The Mutex Structure</B></P>
+<P>The OSMutex structure is as follows:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD>
+<pre>
+struct OSMutex
+{
+OSThreadQueue   queue;
+OSThread*       thread; // the current owner
+s32             count;  // lock count
+
+OSMutex*        prev;   // link for OSThread.queueMutex
+OSMutex*        next;   // link for OSThread.queueMutex
+};
+</pre>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> Of these, <code><em><strong>prev</strong></em></code> and <code><em><strong>next</strong></em></code> are arguments for management of the mutex list structure. The <code><em><strong>queue</strong></em></code>, <code><em><strong>thread</strong></em></code>, and <code><em><strong>count</strong></em></code> arguments perform the actual mutex functions.</P>
+<P><code><em><strong>queue</strong></em></code> is the thread queue where the thread that is being made to wait by mutex is registered.</P>
+<P><code><em><strong>thread</strong></em></code> is the argument which registers the current thread that is locking other threads with this mutex.</P>
+<P><code><em><strong>count</strong></em></code> is the argument that manages the lock nest for this mutex.</P>
+<P>Each argument takes the value indicated below when initializing mutex.</P>
+<BLOCKQUOTE><IMG src="image_initial_member.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Locking Mutex</B></P>
+<P>The lock function preformed by mutex is <nobr><code><a href="OS_LockMutex.html">OS_LockMutex()</a></code></nobr>.</P>
+<P>If <code><a href="OS_LockMutex.html">OS_LockMutex()</a></code> is called in a program and the designated mutex is not being used in a lock at that point in time, <code>OS_LockMutex</code> records and locks the current thread.</P>
+<P>If a <nobr><code><a href="OS_LockMutex.html">OS_LockMutex()</a></code></nobr> call occurs for an already locked mutex, the mutex count is incremented and the mutex is bypassed if it is being locked by the same thread as the current thread. If the thread is not the same, it will go into a pause state until the lock is released. Thread re-scheduling occurs at this time.</P>
+<P>For example, consider the figure below when there is a <code>Mutex1</code> and a program which uses it for locking.</P>
+<BLOCKQUOTE><IMG src="image_mutex_l1.gif" border="0"></BLOCKQUOTE>
+<P><code>thread1</code> attempts to execute this program. <CODE>thread1</CODE> executes the mutex lock function <CODE>OS_LockMutex( &amp;Mutex1 )</CODE>, but since <CODE>Mutex1</CODE> has not yet been used, <CODE>thread 1</CODE> is recorded as the <CODE>Mutex1</CODE> owner thread, the count is set to <CODE>1</CODE>, and the program returns from the lock function. (The determination of whether <CODE>Mutex1</CODE> has been used is based on whether the <CODE>Mutex1</CODE> owner thread is <CODE>NULL</CODE>.) &nbsp;&nbsp;</P>
+<BLOCKQUOTE><IMG src="image_mutex_l2.gif" border="0"></BLOCKQUOTE>
+<P>Next, consider what happens when a separate thread, <code>thread2</code>, attempts to execute the same program. <code>thread2</code> runs <nobr><code>OS_LockMutex&nbsp;(&nbsp;&amp;Mutex1&nbsp;)</code></nobr>, but <code>mutex1</code> is already being used in a lock. Since <code>thread2</code> is not the <code>mutex1</code> owner thread, <code>thread2</code> cannot proceed any further. As a result, <code>thread2</code> goes into a pause state. At this point, <code>thread2</code> is registered inside the <code>mutex1</code> thread queue as waiting for this lock to be released.<BLOCKQUOTE><IMG src="image_mutex_l3.gif" border="0"></BLOCKQUOTE>
+<P>Now consider a case where <code>thread1</code> once again runs <nobr><code>OS_LockMutex&nbsp;(&nbsp;&amp;Mutex1&nbsp;)</code></nobr> (whether it is on the same line or a different line). <code>mutex1</code> is already being used in a lock, but the <code>mutex1</code> owner thread is the same as the current thread (<code>thread1</code>), so it can be bypassed. When this happens, the <code>mutex1</code> count increments.<BLOCKQUOTE><IMG src="image_mutex_l4.gif" border="0"></BLOCKQUOTE>
+<P>There are also times when multiple threads are registered in a single mutex thread queue. These threads are all locked by that mutex. However, it is not necessarily the case that all threads are in a pause state on the same line. If the mutex is unlocked, all registered threads will go into an executable state.<BLOCKQUOTE><IMG src="image_mutex_l5.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Unlocking Mutex</B></P>
+<P>The function used for unlocking with mutex is <nobr><code><a href="OS_UnlockMutex.html">OS_UnlockMutex()</a></code>.</P>
+<P>However, unlocking does not always occur. The unlocking only takes place when the decremented count value inside the mutex is zero. When the count value is not zero, that value is simply decremented, and control is returned from the function.<P>For example, consider the case in the figure below where <code>thread1</code> runs <nobr><code>OS_LockMutex&nbsp;(&nbsp;&amp;Mutex1&nbsp;)</code></nobr> while <code>thread1</code> is in a state where it is using <code>mutex1</code> to lock <code>thread2</code>.<BLOCKQUOTE><IMG src="image_mutex_u1.gif" border="0"></BLOCKQUOTE>
+<P>At this time, the count has been decremented to zero, so the thread registered in the thread queue is put into an executable state and is re-scheduled. In this case, <code>thread2</code> goes into an executable state.</P>
+<BLOCKQUOTE><IMG src="image_mutex_u2.gif" border="0"></BLOCKQUOTE>
+<P>If the priority of <code>thread2</code> is higher than that of <code>thread1</code>, <code>thread1</code> enters a pause state and <code>thread2</code> goes into an executable state. Therefore, <code>thread2</code> attempts to execute <nobr><code><a href="OS_LockMutex.html">OS_LockMutex(&nbsp;&amp;Mutex1&nbsp;)</a></code></nobr> and is locked to <code>thread1</code>. However, <code>Mutex1</code> is initialized so this time <code>thread2</code> will use <code>Mutex1</code> to lock other threads.<BLOCKQUOTE><IMG src="image_mutex_u3.gif" border="0"><BR>
+</BLOCKQUOTE>
+<P>When <code>thread1</code> runs <nobr><code><a href="OS_UnlockMutex.html">OS_UnlockMutex()</a></code></nobr> and the count value is not zero after being decremented, it can be considered that there are other locks that have not been unlocked, and this can be bypassed. If this is the case, no thread re-scheduling occurs. In this way, it does not matter if the lock and unlock are nested.<BLOCKQUOTE><IMG src="image_mutex_u4.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Attempting to Lock Mutex</B></P>
+<P>Until there is a lock, <nobr><code><a href="OS_LockMutex.html">OS_LockMutex()</a></code></nobr> does not return from the function, but on the other hand <nobr><code><a href="OS_TryLockMutex.html">OS_TryLockMutex()</a></code></nobr> is a function which locks if it can, but which returns immediately if it can't lock.
+
+<P>With <nobr><code><a href="OS_TryLockMutex.html">OS_TryLockMutex()</a></code></nobr>, you can learn whether or not the lock was a success from its return value.
+
+<HR>
+<P><B>When the Thread Ends...</B></P>
+<P>When the thread ends, every mutex locking that thread is unlocked.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Mutex">Overview of OS Functions (Exclusion Control)<BR></A></CODE></P>
+<H2>Revision History</H2>
+<P>12/14/2004 Corrected typos<br /> 11/11/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

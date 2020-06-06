@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3X_SetFog</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3X_SetFog</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/gx/g3x.h&gt;</CODE><BR>
+<CODE>void G3X_SetFog(
+BOOL enable,<BR>    GXFogBlend fogMode,<BR>    GXFogSlope fogSlope,<BR>    int fogOffset<BR>);</CODE></PRE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    <tr>
+<TD width="109"><em><strong><font face="Courier New">enable</font></strong></em></TD>
+<TD width="593">Sets whether fog is enabled</TD>
+    </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">fogMode</font></strong></em></TD>
+<TD>Sets whether fog will be applied to color in addition to the a-value</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">fogSlope</font></strong></em></TD>
+<TD>Sets the gradient for applying fog</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">fogOffset</font></strong></em></TD>
+<TD>Sets the depth value where fog calculations start</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets Fog to enable/disable and how fog is applied. The larger the last number in the <code>GXFogSlope</code> format symbol indicates more flexibility in how the fog is applied. That is to say, if this value is <code>x</code>, the depth value is applied from <em><strong><code>fogOffset</code></strong></em> to <em><strong><code>fogOffset</code></strong></em> + <code>x</code> and the fog gradually becomes denser (the index in the referenced fog table grows larger).
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_FOGBLEND_COLOR_ALPHA</CODE></TD>
+<TD><CODE>Fog blending applied to the pixel's color value and &alpha;-value</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGBLEND_ALPHA</CODE></TD>
+<TD><CODE>Fog blending applied only to the pixel's &alpha;-value</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_FOGSLOPE_0x8000</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x8000</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x4000</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x4000</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x2000</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x2000</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x1000</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x1000</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x0800</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x0800</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x0400</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x0400</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x0200</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x0200</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x0100</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x0100</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x0080</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x0080</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x0040</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x0040</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FOGSLOPE_0x0020</CODE></TD>
+<TD>Fog becomes denser according to the depth value with a width of 0x0020</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>Below are the matrix format type definitions used in the argument.</P>
+<PRE><CODE>typedef enum
+{
+GX_FOGBLEND_COLOR_ALPHA = 0,
+GX_FOGBLEND_ALPHA = 1
+}
+GXFogBlend;
+
+<CODE>typedef enum
+{
+GX_FOGSLOPE_0x8000 = 0,
+GX_FOGSLOPE_0x4000 = 1,
+GX_FOGSLOPE_0x2000 = 2,
+GX_FOGSLOPE_0x1000 = 3,
+GX_FOGSLOPE_0x0800 = 4,
+GX_FOGSLOPE_0x0400 = 5,
+GX_FOGSLOPE_0x0200 = 6,
+GX_FOGSLOPE_0x0100 = 7,
+GX_FOGSLOPE_0x0080 = 8,
+GX_FOGSLOPE_0x0040 = 9,
+GX_FOGSLOPE_0x0020 = 10
+}
+GXFogSlope;</CODE></PRE>
+<h2>See Also</h2>
+<P><A href="G3X_SetFogColor.html"><code>G3X_SetFogColor</code></A>, <A href="G3X_SetFogTable.html"><code>G3X_SetFogTable</code></A></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

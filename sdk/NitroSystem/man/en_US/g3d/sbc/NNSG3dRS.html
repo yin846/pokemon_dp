@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNSG3dRS Structure and Access</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css"   type="text/css">
+	<LINK rel="stylesheet" href="../../css/apilist.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<h1 align="left">NNSG3dRS Structure and Accessor</h1>
+<H2>Description</H2>
+<P>The <code>NNSG3dRS</code> structure holds data corresponding to the state (machine state) during rendering. <code>NNSG3dRS</code> is referenced and changed when calculating the rendering and animation. This structure is normally allocated to the stack region (DTCM) inside the <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code> function. When executing things such as SBC commands or callback functions, a pointer is passed to <code>NNSG3dRS</code> as the command/function/etc.'s first argument. While the <code>NNS_G3dDraw</code> function is being executed, a pointer is also stored in the <code>NNSG3dRS</code> of the global variable. Normally, lack of knowledge about this structure will not cause any problems, but if you want to customize the drawing operations in detail using a callback, the data kept in this structure will need to be referenced and changed. The table below contains descriptions of the accessor to the data members in the <code>NNS_G3dRS</code> structure.</P>
+<H2>Accessor Functions</H2>
+<P><A name="NNS_G3dRSSetCallBack"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>void NNS_G3dRSSetCallBack(NNSG3dRS* rs, NNSG3dSbcCallBackFunc func, u8 cmd, NNSG3dSbcCallBackTiming timing);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Sets the callback to the SBC instruction command. For an argument, reference the <code>NNS_G3dRenderObjSetCallBack</code> function. The callback is enabled for one command. If the execution is performed on the same command, the setting will be overwritten. To set multiple callbacks, use this function rather than calling the <code>NNS_G3dRenderObjSetCallBack</code> function multiple times.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="NNS_G3dRSResetCallBack"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>void NNS_G3dRSResetCallBack(NNSG3dRS* rs, u8 cmd);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Disables the callback that is set to the SBC instruction command.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="NNS_G3dRSGetRenderObj"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>NNSG3dRenderObj* NNS_G3dRSGetRenderObj(NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Obtains a pointer to the <code>NNSG3dRenderObj</code> structure.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="NNS_G3dRSGetMatAnmResult"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>NNSG3dMatAnmResult* NNS_G3dRSGetMatAnmResult(NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Obtains a pointer to the <code>NNSG3dMatAnmResult</code> structure. It can be referenced or changed with the timing A and timing B callbacks of the <code>NNS_G3D_SBC_MAT</code> command. For other cases, it is NULL.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="NNS_G3dRSGetJntAnmResult"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>NNSG3dJntAnmResult* NNS_G3dRSGetJntAnmResult(NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Obtains a pointer to the <code>NNSG3dJntAnmResult</code> structure. It can be referenced or changed with the timing A and timing B callbacks of the <code>NNS_G3D_SBC_NODEDESC</code> command. For other cases, it is NULL.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="NNS_G3dRSGetVisAnmResult"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>NNSG3dVisAnmResult* NNS_G3dRSGetVisAnmResult(NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Obtains a pointer to the <code>NNSG3dVisAnmResult</code> structure. It can be referenced or changed with the timing A and timing B callbacks of the <code>NNS_G3D_SBC_NODE</code> command. For other cases, it is NULL.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="NNS_G3dRSGetSbcPtr"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>u8* NNS_G3dRSGetSbcPtr(NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Obtains a pointer to the SBC instruction that is being executed.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="NNS_G3dRSSetFlag"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>u8* NNS_G3dRSSetFlag(NNSG3dRS* rs, NNSG3dRSFlag flag);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Specifies the <code>NNSG3dRSFlag</code> type flag that is defined in <code>sbc.h</code> to be turned ON.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="NNS_G3dRSResetFlag"></A></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>u8* NNS_G3dRSResetFlag(NNSG3dRS* rs, NNSG3dRSFlag flag);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Specifies the <code>NNSG3dRSFlag</code> type flag that is defined in <code>sbc.h</code> to be turned OFF.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>int NNS_G3dRSGetCurrentMatID(const NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Returns the ID of the material set by the currently calculating <code>NNS_G3D_SBC_MAT</code> command, or that was set by the previously executed <code>NNS_G3D_SBC_MAT</code> command. The material ID is set by the SSBC <code>NNS_G3D_SBC_MAT</code> command. It will be maintained until the next <code>NNS_G3D_SBC_MAT</code> command overwrites it, or it is modified by a callback function. This function will return -1 if no <code>NNS_G3D_SBC_MAT</code> command has been run, or if the previous <code>NNS_G3D_SBC_MAT</code> command's results are nullified.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>int NNS_G3dRSGetCurrentNodeID(const NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Returns the ID of the node set by the currently calculating <code>NNS_G3D_SBC_NODE</code> command, or that was set by the previously executed <code>NNS_G3D_SBC_NODE</code> command. The node ID is set by the SBC <code>NNS_G3D_SBC_NODE</code> command. It will be maintained until the next <code>NNS_G3D_SBC_NODE</code> command overwrites it, or it is modified by a callback function. This function will return -1 if no <code>NNS_G3D_SBC_NODE</code> command has been run, or if the previous <code>NNS_G3D_SBC_NODE</code> command's results are nullified.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>int NNS_G3dRSGetCurrentNodeDescID(const NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Returns the ID of the node set by the currently calculating <code>NNS_G3D_SBC_NODEDESC</code> command, or that was set by the previously executed <code>NNS_G3D_SBC_NODEDESC</code> command. The node ID is set by the SBC <code>NNS_G3D_SBC_NODEDESC</code> command. It will be maintained until the next <code>NNS_G3D_SBC_NODEDESC</code> command overwrites it, or it is modified by a callback function. This function will return -1 if no <code>NNS_G3D_SBC_NODEDESC</code> command has been run, or if the previous <code>NNS_G3D_SBC_NODEDESC</code> command's results are nullified.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>fx32 NNS_G3dRSGetPosScale(const NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Acquires a scale value for vertex coordinates that are cached in the <code>NNSG3dRS</code> structure.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><em><strong><code>#include <nnsys/g3d/sbc.h>fx32 NNS_G3dRSGetInvPosScale(const NNSG3dRS* rs);</code></strong></em></TD>
+    </TR>
+    <TR>
+<TD>Acquires the inverse of a scale value for vertex coordinates that are cached in the <code>NNSG3dRS</code> structure.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>Below is a description of the <code>NNSG3dRSFlag</code> type flags.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="196"><PRE><CODE>NNS_G3D_RSFLAG_NODE_VISIBLE</CODE></PRE></TD>
+<TD width="625">This flag is set when the polygon belonging to the node is visible on the <code>NNS_G3D_SBC_NODE</code> command.</TD>
+    </TR>
+    <TR>
+      <TD width="196">
+<PRE><CODE>NNS_G3D_RSFLAG_MAT_TRANSPARENT</CODE></PRE></TD>
+<TD width="625">This flag is set when the material is transparent on the <code>NNS_G3D_SBC_MAT</code> command.</TD>
+    </TR>
+    <TR>
+      <TD width="196">
+<PRE><CODE>NNS_G3D_RSFLAG_CURRENT_NODE_VALID</CODE></PRE></TD>
+<TD width="625">This flag is set when a valid value is in <code>currentNode</code>.</TD>
+    </TR>
+    <TR>
+      <TD width="196">
+<PRE><CODE>NNS_G3D_RSFLAG_CURRENT_MAT_VALID</CODE></PRE></TD>
+<TD width="625">This flag is set when a valid value is in <code>currentMat</code>.</TD>
+    </TR>
+    <TR>
+<TD><PRE><CODE>NNS_G3D_RSFLAG_RETURN</CODE></PRE></TD>
+<TD>If this flag is set, execution of the <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code> function will finish after the end of the current SBC command.</TD>
+    </TR>
+    <TR>
+<TD><PRE><CODE>NNS_G3D_RSFLAG_SKIP</CODE></PRE></TD>
+<TD>If this flag is set, then the processing will be skipped until the next callback point or the current command ends.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+
+
+<H2>Revision History</H2>
+<P>10/11/2004 Revised version.</P><P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>Snd Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Snd Sample Demo</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSystem/build/demos/snd</CODE></P>
+<H2>Compilation</H2>
+<P>Move to <CODE>$NitroSystem/build/demos/snd</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSystem/build/demos/snd/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/snd/simple/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Navigate to the <code>$NitroSystem/build/demos/snd/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and perform one of the following:</P>
+<UL>
+<!--  <LI>ensata ‚Å <CODE>*.nef</CODE>, <CODE>*.srl</CODE> ‚ðŽÀs‚·‚éB-->
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER.
+</UL>
+
+<H2>Description</H2>
+<H4>Sample</H4>
+<TABLE width="800">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/simple/src/main.c">simple</A></CODE></STRONG></EM></TD>
+<TD width="576">This is a simple sample that replays BGM sequences and SE sequences.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/stream/src/main.c">stream</A></CODE></STRONG></EM></TD>
+<TD width="576">This simple sample plays the stream.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/stream-2/src/main.c">stream-2</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample combines multiple stream data in real time and plays back.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/stream-3/src/main.c">stream-3</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample applies effects and plays back the stream.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/moveVolume/src/main.c">moveVolume</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample fades in and handles the time changes for sequence volume.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/reverb/src/main.c">reverb</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample adds general reverb to the audio output using sound capture.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/effect/src/main.c">effect</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample adds a low pass filter to the audio output using sound capture.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/outputEffect/src/main.c">outputEffect</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample switches among surround mode, headphone mode, and mono mode using the output effect feature.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/sampling/src/main.c">sampling</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample samples the audio output using sound capture and calculates the output volume.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/waveout/src/main.c">waveout</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample plays back recorded waveform data that was recorded with a microphone.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/micThrough/src/main.c">micThrough</A></CODE></STRONG></EM></TD>
+<TD width="576">A sample that plays the microphone input in real time.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/driverInfo/src/main.c">driverInfo</A></CODE></STRONG></EM></TD>
+<TD width="576">A sample that displays sound driver information.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/snd/onMemory/src/main.c">onMemory</A></CODE></STRONG></EM></TD>
+<TD width="576">This sample demonstrates how to place the entire sound archive in memory.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Operating Environment</H2>
+<P>We have confirmed normal operation for all of the samples using the IS-NITRO-EMULATOR.</P>
+<p>The current version of ensata is not supported.</p>
+<H2>See Also</H2>
+<P><A href="../../snd/list_snd.html"><CODE>Snd Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+02/17/2005 Added <code>driverInfo</code> demo.</P><P>01/24/2005 Deleted the description of IS-NITRO-EMULATOR in the Execution section, deleted the description of TEG in the Operating Environment section, and changed TS to IS-NITRO-EMULATOR.</P><P>12/21/2004 Added <code>micThrough</code> demo.</P><P>11/26/2004 Added <CODE>stream-2</CODE> and <CODE>stream-3</CODE> demos.</P><P>10/04/2004 Added <CODE>outputEffect</CODE> demo.</P><P> 09/13/2004 Added <code>sampling</code> demo.</P><P>08/02/2004 Initial version.</P>
+</BODY>
+</HTML>
+

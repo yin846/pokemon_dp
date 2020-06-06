@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_UncompressLZ*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_UncompressLZ*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>void MI_UncompressLZ8( const void* srcp, void* destp );</CODE><br> <CODE>void MI_UncompressLZ16( const void* srcp, void* destp );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>srcp</STRONG></EM></TD>
+<TD width="87%">Source address where the LZ77 compressed data is stored.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>destp</STRONG></EM></TD>
+<TD width="87%">Destination address for decompression.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function decompresses LZ77 compressed data and writes the data to the specified region of memory. The source address must be aligned to a 4-byte boundary.</P>
+<P><code>MI_UncompressLZ8()</code> writes in 8-bit units. You cannot decompress directly to VRAM().<BR> <code>MI_UncompressLZ16()</code> writes in 16-bit units. Although you can expand directly in VRAM, this function is slower than <code>MI_UncompressLZ8</code>. For compressed data,  allow for a 2-byte lead when searching for matching strings.</P>
+<h2>Internal Operation</h2>
+<P>Processing only takes place on the CPU, without the use of a system call or DMA.</P>
+<h2>See Also</h2>
+<p><CODE><A href="MI_UncompressHuffman.html">MI_UncompressHuffman</A>, <A href="MI_UncompressRL.html">MI_UncompressRL*</A>, <A href="MI_UnfilterDiff.html">MI_UnfilterDiff*</A>,<A href="../../svc/SVC_UncompressLZ.html">SVC_UncompressLZ*</A>, <A href="MI_ReadUncompLZ.html">MI_ReadUncompLZ</A>, <A href="MI_CompressLZ.html">MI_CompressLZ</A>, <A href="MI_CompressLZFast.html">MI_CompressLZFast</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>03/02/2005 Deleted recommendation to align data size to a multiple of 4 bytes.<br /> 05/28/2004 Added description for Internal Operation.<br> 02/10/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

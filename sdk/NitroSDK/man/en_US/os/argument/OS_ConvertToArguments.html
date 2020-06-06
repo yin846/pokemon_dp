@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_ConvertToArguments</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_ConvertToArguments</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_ConvertToArguments( const char* str,
+char cs,
+char* buffer,
+u32 bufferSize );
+ </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><EM><B>str</B></EM></TD>
+<TD>The character string used for the argument data.</TD>
+    </TR>
+    <TR>
+<TD><EM><B>cs</B></EM></TD>
+<TD>Separates characters in arguments.</TD>
+    </TR>
+    <TR>
+<TD><EM><B>buffer</B></EM></TD>
+<TD>Argument buffer for storing argument data.</TD>
+    </TR>
+    <TR>
+<TD><EM><B>bufferSize</B></EM></TD>
+<TD>Size of argument buffer.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>The character string is converted into argument data and stored in the specified buffer.</P>
+<P>This converted argument data can be retrieved by <A href="OS_GetArgc.html"><CODE>OS_GetArgc</CODE></A>, <CODE><A href="OS_GetArgv.html">OS_GetArgv</A></CODE> or <CODE><A href="OS_GetOpt.html">OS_GetOpt</A></CODE>. Although the argument buffer area in the system is used by default (argument data can be embedded using the <CODE><A href="../../tools/buryarg.html">buryarg</A></CODE> tool), you can switch to another argument buffer using <CODE><A href="OS_SetArgumentBuffer.html">OS_SetArgumentBuffer()</A></CODE>.</P>
+<P>Specify the character string used for argument data in <EM><B>str</B></EM> and the separator character for arguments in <EM><B>cs</B></EM>. </P>
+<BLOCKQUOTE><B>(Example)<BR></B> If  &quot; &quot; (space) is used as the separator and the three arguments &quot;-a&quot;, &quot;123&quot; and &quot;test string&quot; are to be passed, specify as follows:</BLOCKQUOTE>
+<BLOCKQUOTE> <CODE><FONT color="#ff0033">OS_ConvertToArguments( &quot;dummy -a 123 \&quot;test string\&quot;&quot;,<BR> ' ', buffer, size );</FONT></CODE></BLOCKQUOTE>
+<BLOCKQUOTE>  </BLOCKQUOTE>
+<BLOCKQUOTE>Because <CODE>OS_GetArgv(0)</CODE> is the program name by default and<CODE> OS_GetOpt()</CODE> begins anaylsis from the item corresponding to <CODE>OS_GetArgv(1)</CODE>, the dummy program name &quot;<CODE>dummy</CODE>&quot; is assigned to the character string.</BLOCKQUOTE>
+<BLOCKQUOTE>&quot;	<CODE>test string</CODE>&quot; includes a space (delimiter) in the middle, but is handled as a single argument by enclosing with &quot; &quot;.</BLOCKQUOTE>
+<P><EM><B>buffer</B></EM> specifies the buffer area in which argument data is to be stored.<EM><B>bufferSize</B></EM> specifies the buffer size. Data is not written to the buffer beyond this region.</P>
+<P>This function does nothing in the FINALROM build.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_GetArgv.html">OS_GetArgv</A>, <A href="OS_GetArgc.html">OS_GetArgc</A>, <A href="OS_GetOpt.html">OS_GetOpt</A>, <A href="../../tools/buryarg.html">buryarg tool</A>,</CODE><BR> <CODE><A href="OS_GetArgumentBuffer.html">OS_GetArgumentBuffer</A>, <A href="OS_ConvertToArguments.html">OS_ConvertToArguments</A></CODE></P>
+<H2>Revision History</H2>
+<P>09/09/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

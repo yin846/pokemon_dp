@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_Read</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_IdentifyAgbBackup</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+  <PRE><CODE>u16 CTRDG_IdentifyAgbBackup(CTRDGBackupType type);
+  </CODE></PRE>
+  <PRE>Corresponding AGB function: <A href="coordinate.html"><CODE>u16 IdentifyFlash_512K()</CODE></A>
+Corresponding AGB function: <A href="coordinate.html"><CODE>u16 IdentifyFlash_1M()</CODE></A></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD><B><I>type</I></B></TD>
+      <TD>Represents the type of backup device mounted in the NITRO cartridge.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>Returns 0 if successful. Returns a non-zero value if it fails.</P>
+<H2>Description</H2>
+<P>This function specifies the backup device that is mounted in the NITRO cartridge.<br> If the backup device is a flash memory, the flash ID is read, the type of flash mounted in the cartridge is identified, the flash capacity and sector size is obtained, the access speed is set, and each access function for the corresponding flash is set.<br> The flash data obtained can be accessed using the global variable CTRDGFlashType *AgbFlash.<br> This function must be called once before accessing the backup device (including read access).<br> This function returns an error if the device could not be identified and disables all access functions.</P>
+<P>The access cycle setting does not need to be set beforehand because it is created inside the function.<br> The <CODE><A href="../os/time/OS_InitTick.html">OS_InitTick</A></CODE> function must be called before this function because clock ticks are used by this function to measure timeouts. </P>
+<P>Note: All interrupts are disabled inside this function and the catridge bus is locked for a set period. <br> In particular, do not use DMA for automatic startup during direct sound and V/H blank synchronization, display synchronization, or cartridge request.<br> <br><FONT color="#ff0033">In addition, if CTRDG_BACKUP_TYPE_FLASH_512K or CTRDG_BACKUP_TYPE_FLASH_1M is specified as the argument, a write operation to the device will be executed. Note that backup data may be damaged if a different type of device from the given argument is installed in the NITRO cartridge.</FONT></P>
+<P>The AGB backup device cannot be accessed normally by the IS-NITRO-DEBUGGER.<br> However, be sure to check operations using an actual DS handheld unit since normal access is possible with actual DS units. <br> (This will be fixed in a future version of IS-NITRO-DEBUGGER.)</P>
+<H2>See Also</H2>
+
+<H2>Revision History</H2>
+<P>04/07/2006 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

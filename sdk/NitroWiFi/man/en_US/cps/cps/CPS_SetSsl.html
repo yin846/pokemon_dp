@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SetSsl</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SetSsl</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_SetSsl(int mode);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>mode</strong></em></code></td>
+<td>Parameter</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>Passes a non-zero parameter to set to SSL mode. All subsequent TCP-related APIs are performed using SSL.<BR>After this is set, if a different value is set before using  <CODE>CPS_SocRelease()</CODE>, the operation is not guaranteed.<BR>This blocks.</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SocRelease.html">CPS_SocRelease</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

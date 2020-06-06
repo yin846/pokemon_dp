@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>RTC_SetAlarmStatusAsync</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">RTC_SetAlarmStatusAsync</h1>
+
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/rtc.h&gt;</CODE><BR>
+<PRE><CODE><A href="RTCResult.html">RTCResult</A> RTC_SetAlarmStatusAsync( 
+<A href="RTCAlarmChan.html">RTCAlarmChan</A>	        chan,
+const <A href="RTCAlarmStatus.html">RTCAlarmStatus</A>*	status,
+<A href="RTCCallback.html">RTCCallback</A>		callback,
+void*			arg );</CODE></PRE>
+  </dd>
+
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New"><code><EM><STRONG>chan</STRONG></EM></code></font></strong></em></TD>
+<TD width="700">Uses <code><a href="RTCAlarmChan.html">RTCAlarmChan</a></code> to specify the alarm channel.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New"><code><EM><STRONG>status</STRONG></EM></code></font></strong></em></TD>
+<TD>Pointer to <code><a href="RTCAlarmStatus.html">RTCAlarmStatus</a></code> containing status to set.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New"><code><EM><STRONG>callback</STRONG></EM></code></font></strong></em></TD>
+<TD>Pointer to the callback function. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New"><code><EM><STRONG>arg</STRONG></EM></code></font></strong></em></TD>
+<TD>Argument to pass to the callback function.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the request succeeds, it returns 0. If the request fails, it returns some numeric value other than 0.</p>
+
+<H2>Description</H2>
+<P>This function asynchronously writes alarm permission status for the real time clock. It sends a request to ARM7 to allow alarm permissions and returns the process result without waiting for a response from the processor. To get the result from the processor, you must use the <em><strong><code>result</code></strong></em> argument. If this function fails, no operation is performed and no user callback function is called.</P>
+
+<h2>Caution</h2>
+<P><FONT color=red>In write alarm state, do not set to any state other than <strong>enable</strong> or <strong>prohibit</strong>. Values are written to the variable specified by the <code><em><strong>status</strong></em></code> argument asynchronously. Do not use this variable for anything else until a user callback function confirms the completion of this  operation.</P>
+
+<h2>See Also</h2>
+<P><code><a href="RTC_SetAlarmStatus.html">RTC_SetAlarmStatus</a>, <a href="RTC_GetAlarmStatus.html">RTC_GetAlarmStatus</a>, <a href="RTC_GetAlarmStatusAsync.html">RTC_GetAlarmStatusAsync</a>, <a href="RTCResult.html">RTCResult</a>, <a href="RTCAlarmChan.html">RTCAlarmChan</a>, <a href="RTCAlarmStatus.html">RTCAlarmStatus</a>, <a href="RTCCallback.html">RTCCallback</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+06/27/2005 Added statement about callback being called from the interrupt handler.<br>03/08/2005 Standardized the use of the term 'interrupt' in Japanese.<br>05/18/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

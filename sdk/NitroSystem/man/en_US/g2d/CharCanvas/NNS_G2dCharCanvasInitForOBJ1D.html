@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNS_G2dCharCanvasInitForOBJ1D</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G2dCharCanvasInitForOBJ1D</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nnsys/g2d/g2d_CharCanvas.h&gt;
+
+void NNS_G2dCharCanvasInitForOBJ1D(
+NNSG2dCharCanvas* pCC,
+void* charBase,
+int areaWidth,
+int areaHeight,
+NNSG2dCharaColorMode colorMode
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pCC</STRONG></EM></TD>
+<TD width="87%"> [IN] Pointer to CharCanvas </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>charBase</STRONG></EM></TD>
+<TD width="87%"> [IN] Pointer to starting point of characters assigned to CharCanvas. Must have 4-byte alignment.  </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>areaWidth</STRONG></EM></TD>
+<TD width="87%"> [IN] Number of characters in horizontal direction of CharCanvas </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>areaHeight</STRONG></EM></TD>
+<TD width="87%"> [IN] Number of characters in vertical direction of CharCanvas </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>colorMode</STRONG></EM></TD>
+<TD width="87%"> [IN] Color mode of target OBJ  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>
+	None.
+</P>
+
+<H2>Description</H2>
+<P>
+	Initializes the <CODE>NNSG2dCharCanvas</CODE> structure for displaying a text string using one-dimensional mapping OBJ. With this function, the CharCanvas gets built with <i>n</i> number of characters, assigned starting from <em><strong>charBase</strong></em>, where  <i>n</i>  = <em><strong>areaWidth</strong></em> * <em><strong>areaHeight</strong></em>.
+</P>
+
+<P>
+	<em><strong>colorMode</strong></em> takes either of these values:
+</P>
+	<TABLE border="1" width="100%">
+	  <TBODY>
+	    <TR>
+	      <TD width="13%">NNS_G2D_CHARA_COLORMODE_16</TD>
+	      <TD width="87%"> Use 16-color characters </TD>
+	    </TR>
+	    <TR>
+	      <TD width="13%">NNS_G2D_CHARA_COLORMODE_256</TD>
+	      <TD width="87%"> Use 256-color characters </TD>
+	    </TR>
+	  </TBODY>
+	</TABLE>
+<P>
+	There are certain restrictions on the values that can be set to <em><strong>areaWidth</strong></em> and <em><strong>areaHeight</strong></em>,  depending on the color mode <em><strong>color</strong></em> and the OBJ VRAM capacity. The table explains these restrictions:
+</P>
+<TABLE border="1" width="100%">
+  <THEAD>
+    <TR>
+<TH rowspan="2">Color mode</TH>
+<TH colspan="4">OBJ VRAM Capacity</TH>
+    </TR>
+    <TR>
+<TH>32K</TH>
+<TH>64K</TH>
+<TH>128K</TH>
+<TH>256K</TH>
+    </TR>
+  </THEAD>
+  <TBODY>
+    <TR>
+<TH>16 colors</TH>
+<TD>(No restrictions)<br></TD>
+<TD>(No restrictions)<br></TD>
+<TD>Cannot be an odd number that has a remainder of 3 when divided by 4.<br></TD>
+<TD>Cannot be an odd number.<br></TD>
+    </TR>
+    <TR>
+<TH>256 colors</TH>
+<TD>(No restrictions)<br></TD>
+<TD>(No restrictions)<br></TD>
+<TD>(No restrictions)<br></TD>
+<TD>Cannot be an odd number that has a remainder of 3 when divided by 4.<br></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>
+	If the combination of <em><strong>areaWidth</strong></em> and <em><strong>areaHeight</strong></em> is not the size of OBJ, then CharCanvas can display using multiple OBJ. To place these OBJ appropriately, use <code><a  href="NNS_G2dArrangeOBJXXX.html">NNS_G2dArrangeOBJ1D</a></code>. To find out the required number of OBJ for display, use <code><a  href="NNS_G2dCalcRequiredOBJXXX.html">NNS_G2dCalcRequiredOBJ1D</a></code>.
+</P>
+
+<H2>See Also</H2>
+<P><CODE><a href="NNS_G2dArrangeOBJXXX.html">NNS_G2dArrangeOBJ1D</a>, <a href="NNS_G2dCalcRequiredOBJXXX.html">NNS_G2dCalcRequiredOBJ1D</a></CODE></P>
+
+<H2>Revision History</H2>
+<P>05/25/2005 Initial version.</P>
+</BODY>
+
+</HTML>

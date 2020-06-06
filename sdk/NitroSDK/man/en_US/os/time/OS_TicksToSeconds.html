@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_TicksTo*Seconds*</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_TicksTo*Seconds*</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>OS_TicksToMicroSeconds( tick );
+OS_TicksToMicroSeconds32( tick );
+
+OS_TicksToMilliSeconds( tick );
+OS_TicksToMilliSeconds32( tick );
+
+OS_TicksToSeconds( tick );
+OS_TicksToSeconds32( tick );
+</CODE>
+(These are all macros.)</PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>tick</STRONG></EM></TD>
+<TD width="87%">Tick Value</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>The actual time that corresponds to the tick value that is specified in the argument.</P>
+<H2>Description</H2>
+<P>This function obtains the actual time that corresponds to the tick value that is specified in the argument. One tick unit is 1/64 of the system clock.</P>
+<P><CODE>OS_TicksToMicroSeconds*()</CODE> converts the tick value to microseconds.<BR><CODE>OS_TicksToMilliSeconds*()</CODE> converts the tick value to milliseconds.<BR><CODE>OS_TicksToSeconds*()</CODE> converts the tick value to seconds.<BR>These functions are all defined as macros.</P>
+<P>Functions with <CODE>32</CODE> in their names conduct 32-bit internal calculations. Those without <CODE>32</CODE> conduct 64-bit calculations. 32-bit versions handle smaller values than 64-bit versions, so they cannot always return correct results because of overflow. However, when there is no overflow, they have the advantage of keeping the code smaller, making operating speed faster. However, since the degree of difference is not that great, and to prevent bugs, we recommend you use functions that do not include <CODE>32</CODE> in the name. Furthermore, when a constant is made into an argument, it is calculated just before compiling and the resulting value is also a constant.</P>
+<P>When operating in 32-bit mode, be careful of overflow. Values that will cause overflow are in the following diagram.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH>Function Name</TH>
+<TH>This value or less is OK.</TH>
+<TH>Beyond this value is not allowed.</TH>
+    </TR>
+    <TR>
+<TD><CODE>OS_TicksToSeconds32()</CODE></TD>
+<TD>67108863 (tick units)<BR> This value is suitable for about 2 seconds.</TD>
+<TD>67108864 (tick units)<BR>
+      </TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_TicksToMilliSeconds32()</CODE></TD>
+<TD>67108863 (tick units)<BR> This value is suitable for about 2002 milliseconds=2 seconds.</TD>
+<TD>67108864 (tick units)<BR>
+      </TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_TicksToMicroSeconds32()</CODE></TD>
+<TD>67108 (tick units)<BR> This value is suitable for about 2002 microseconds=0.000002 seconds.</TD>
+<TD>67109 (tick units)<BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>Further, values that overflow in 64-bit operation are: about 2.8 x 10 to the 14th tick units (about 99 days) for <CODE>OS_TicksToMicroSeconds*()</CODE>, and 2.8 x 10 to the 17th tick units (about 272 years) for <CODE>OS_TicksToMilliSeconds*()</CODE> and <CODE>OS_TicksToSeconds*()</CODE>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitTick.html">OS_InitTick</A>, <A href="OS_GetTick.html">OS_GetTick</A><BR> <A href="../alarm/OS_SetAlarm.html">OS_SetAlarm</A>, <A href="../alarm/OS_SetPeriodicAlarm.html">OS_SetPeriodicAlarm</A><BR> <A href="OS_SecondsToTicks.html">OS_*SecondsToTicks</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>10/07/2005 Changed differences between 32-bit and 64-bit operation.<BR>10/06/2005 Considered and changed overflow for 32-bit and 64-bit operation.<BR> 02/25/2004 Changed Count to Tick.<BR> 02/24/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_RestoreIrq</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_RestoreIrq</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>BOOL OS_RestoreIrq( BOOL enable );</CODE></dd>
+</dl><h2>Arguments</h2>
+<P> </P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="72"><B><I>enable</I></B></TD>
+<TD>IRQ interrupt enable state to be set.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>The IRQ interrupt enable state before calling this function.</p>
+<H2>Description</H2>
+<P>This function sets the IRQ interrupt enable state. In most cases, this is used to return to previous states when the enable state is changed using <code>OS_EnableIrq()</code> or <code>OS_DisableIrq()</code>.</P>
+<P>If the  <em><strong><code>enable</code></strong></em> argument is set to <CODE>TRUE,</CODE> it is set to enabled, and if it is set to <CODE>FALSE</CODE>, it is set to disabled.</P>
+<P>The returned value is the IRQ interrupt enable state before calling this function.</P>
+<BLOCKQUOTE>(Example)<BR> <code>BOOL preIRQ = OS_DisableIrq();<BR> :<BR>(void)RestoreIrq( preIRQ );</code></BLOCKQUOTE>
+
+<h2>Internal Operation</h2>
+<P>Operates the IO Register's IME (Interrupt Master Enable).</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="OS_EnableIrq.html">OS_EnableIrq</A>, <A href="OS_DisableIrq.html">OS_DisableIrq</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;<br> 12/01/2003 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

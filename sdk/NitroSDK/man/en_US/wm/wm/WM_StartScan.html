@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_StartScan</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_StartScan</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_StartScan( <A href="WMCallbackFunc.html">WMCallbackFunc</A> callback , const <A href="WMScanParam.html">WMScanParam</A>* param );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">param</FONT></STRONG></EM></TD>
+<TD width="800">Pointer to the structure that shows scan information. The ARM7 processor writes the scan result information directly to <code>param-&gt;scanBuf</code>.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>Starts the scan for a parent This function is only executable when the WM is in either the <A href="wm_state_diagram.html"><code>IDLE</code></A> or <A href="wm_state_diagram.html"><code>SCAN</code></A> state. If the WM is in the <A href="wm_state_diagram.html"><code>IDLE</code></A> state, this function changes the state to <A href="wm_state_diagram.html"><code>SCAN</code></A>. If the return value is <code>WM_ERRCODE_OPERATING</code>, a callback is generated after the scanning process has started properly. The callback is also generated when the scan process has completed. One callback can obtain information for no more than one parent machine. To obtain information from several parent machines, this function must be called several times. However, by doing so, there may be a possibility of getting the information from the same parent machine. If a parent could not be found after completing the scan, a callback is generated to indicate that no parent was found. You may continuously call <code>WM_StartScan</code> without calling <A href="WM_EndScan.html"><CODE>WM_EndScan</CODE></A>. Basically, this function searches only the wireless channel specified by <em><strong><code>param</code></strong></em>. However, there is a possibility of picking up the parent information on neighboring channels. When searching for the parent on all channels, use <CODE><A href="WM_GetAllowedChannel.html">WM_GetAllowedChannel</A></CODE> to make a guess at the channels that the parent may be using, and then make the application search for it.</P>
+
+<h2>See Also</h2>
+<p><A href="WM_EndScan.html"><code>WM_EndScan</code></A>, <A href="WM_StartConnect.html"><code>WM_StartConnect</code></A>, <A href="WM_Disconnect.html"><code>WM_Disconnect</code></A>, <a href="WM_GetAllowedChannel.html"><code>WM_GetAllowedChannel</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callbacks being called from the interrupt handler.<br>10/22/2004 Changed return value type.<BR>09/21/2004 Added to Description.<BR>08/10/2004 Revised Description.<BR> 08/02/2004 Standardized structure names.<BR> 07/29/2004 Added to Description<br>07/23/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBT_CalcPacketbitmapSize</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBT_CalcPacketbitmapSize</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+#include &lt;nitro/wbt.h&gt; int WBT_CalcPacketbitmapSize(int block_size);
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>block_size</STRONG></EM></TD>
+<TD width="87%">The size of the data to be received.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>Returns the receive archive record bitmap buffer size required to receive the corresponding amount of data.</p>
+
+<H2>Description</H2>
+<p>This calculates and acquires the receive archive record bitmap buffer size that is required when receiving a specified size of data with the <A href="../command/WBT_GetBlock.html"> <CODE>WBT_GetBlock</CODE></A> function. This function can only be used: In the case of a parent, after the <A href="../init/WBT_InitParent.html"><CODE>WBT_InitParent</CODE></A> function; In the case of a child, after the <A href="../command/WBT_RequestSync.html"><CODE>WBT_RequestSync</CODE></A> function. If the transmission packet size and the receive block data size are already known, the <A href="../wbt_packet_bitmap_size.html"> <CODE>WBT_PACKET_BITMAP_SIZE</CODE></A> macro obtains the same results. <br>
+</p>
+<br>
+<H2>See Also</H2>
+<CODE>WBT_GetBlock</CODE></A>, WBT_PACKET_BITMAP_SIZE
+<H2>Revision History</H2>
+<P>
+02/18/2005 Changed description of packet bitmap to &quot;receive archive record bitmap buffer&quot;<br /> 09/21/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

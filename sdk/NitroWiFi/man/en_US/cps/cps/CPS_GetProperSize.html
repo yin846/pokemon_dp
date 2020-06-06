@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_GetProperSize</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_GetProperSize</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>s32 CPS_GetProperSize (void);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+<P>None.</P>
+
+<h2>Return Values</h2>
+<P>Used to find the TCP send packet size.</P>
+
+<h2>Description</h2>
+
+<p>Returns the value used to obtain the optimal TCP transmission packet size at that time. Transmission is likely to be more efficient if the packet size is an integer multiple of this value. If 0 is returned, the partner's window size is 0. If a TCP connection has not been established, the function returns -1. </p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SocWrite.html">CPS_SocWrite</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

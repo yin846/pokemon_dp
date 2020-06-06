@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNS_GfdGetTexKey4x4Flag</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_GfdGetTexKey4x4Flag</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/gfd.h&gt;</CODE></PRE>
+<PRE><CODE>BOOL NNS_GfdGetTexKey4x4Flag(NNSGfdTexKey memKey);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>memKey</STRONG></EM></TD>
+<TD width="87%">Key data for the texture-use memory allocated from VRAM</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>TRUE if the allocated texture-use memory is for 4x4 texel compressed textures.</P>
+
+<H2>Description</H2>
+<P>
+Returns TRUE if the allocated texture-use memory indicated by the key data specified by <code>memKey</code>  is for 4x4 texel compressed textures.
+</P>
+
+<H2>See Also</H2>
+<P><a href="NNS_GfdGetTexKeyAddr.html">NNS_GfdGetTexKeyAddr</a> <a  href="NNS_GfdGetTexKeySize.html">NNS_GfdGetTexKeySize</a> </code></P>
+
+<H2>Revision History</H2>
+<P>07/16/2004 Initial version.</P>
+</BODY>
+
+</HTML>

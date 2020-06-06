@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_SelectThread</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_SelectThread</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>OSThread* OS_SelectThread( void );</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<P>None.</P>
+
+<H2>Return Values</H2>
+The selected thread.
+
+<H2>Description</H2>
+<P>This function returns the pointer to the thread structure of the highest priority thread that can be currently active. When there is no operable thread, this returns NULL. </P>
+
+<H2>See Also</H2>
+<P><CODE><A href="OS_RescheduleThread.html">OS_RescheduleThread</A>, <A href="OS_SleepThread.html">OS_SleepThread</A>, <A href="OS_WakeupThread.html">OS_WakeupThread</A>, <A href="OS_WakeupThreadDirect.html">OS_WakeupThreadDirect</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>12/01/2003 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

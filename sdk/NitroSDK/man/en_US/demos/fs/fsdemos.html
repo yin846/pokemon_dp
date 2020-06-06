@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>FS Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Sample Demo of the ROM File System (FS)</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/fs</CODE></P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/fs</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (.<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/fs/<B><I>sample_name</I></B>/bin/<B><I>platform</I></B>/<B><I>target</I></B>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/fs/overlay/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+<P>Notice that FS differs from many other demos in that the <CODE>makerom</CODE> option is required, so that it is not possible to build with <CODE>elftobin</CODE> (<CODE>make NITRO_ELFTOBIN=TRUE</CODE>).</P>
+
+<H2>Execution</H2>
+<P>Move to the <code>$NitroSDK/build/demos/fs/<strong><em>sample_name</em></strong>/bin/<strong><em>platform</em></strong>/<strong><em>target</em></strong>/</code> directory and do one of the following.</P>
+<UL>
+<LI>Execute <code>*.nef</code>, <code>*.srl</code> with ensata.
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER
+</UL>
+
+<H2>Description</H2>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>file-1</CODE></STRONG></EM></TD>
+<TD width="525">This is a very simple model of the program configuration that is required to use FS.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>file-2</CODE></STRONG></EM></TD>
+<TD width="525">This embeds directories and files and reads them inside the program.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>file-3</CODE></STRONG></EM></TD>
+<TD width="525">This tests the operation of the functions <A href="../../fs/file/FS_CreateFileFromMemory.html"><CODE>FS_CreateFileFromMemory</CODE></a> and <A href="../../fs/file/FS_CreateFileFromRom.html"><CODE>FS_CreateFileFromRom</CODE></a>.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>async</CODE></STRONG></EM></TD>
+<TD width="525">This sample repeats synchronous read inside each thread. In the case that the run environment supports asynchronous operation, the thread will be put to sleep and switched only when it is blocked. Otherwise, it will continue to repeat reading a single thread. For details, refer to the description of the <a href="../../fs/file/FS_ReadFileAsync.html"><code>FS_ReadFileAsync</code></a> function.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>overlay</CODE></STRONG></EM></TD>
+<TD width="525">This is a simple overlay sample.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>overlay-compressed</CODE></STRONG></EM></TD>
+<TD width="525">Tests the operation of compressed overlay using the <code>NITRO_COMPRESS</code> build switch. The program itself is the same as that in the &quot;overlay&quot; demo.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Overlay-staticinit</CODE></STRONG></EM></TD>
+<TD width="525">This sample defines the <code>sinit.h</code> header and the <code>NitroStaticInit</code> function, and uses a static initializer from an overlay written in C.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>arc-1</CODE></STRONG></EM></TD>
+<TD width="525">This is a sample that loads these two archives independently. <br><br>· Archive that operates the same way as the default ROM archive. <br>· Archive that accesses the internal file system in the program binary stored as a file.
+	  </TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>arc-2</CODE></STRONG></EM></TD>
+<TD width="525">This is a sample that loads an unique directory that does not comply with the NitroROM format as an archive. Unlike the <code>arc-1</code> sample, this sample shows some examples that replace some of the basic access commands from the default processes by user procedure.
+	  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Emulator</H2>
+<P><CODE>Works in all execution environments.</CODE></P>
+<H2>See Also</H2>
+<P><A href="../../fs/list_fs.html"><CODE>FS Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+06/28/2005 Added description of file-3 demo.<br>05/10/2005 Added description of the overlay-compressed demo.<br /> 03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 01/19/2005 Added description of overlay-staticinit demo.<br /> 10/06/2004 Revised and added a part of the description regarding samples.<br /> 08/17/2004 Standardized the notation of the IS-NITRO-EMULATOR.<br /> 07/10/2004 Changed from <code>.bin</code> to <code>.srl</code>. 06/18/2004 Revised the description of the execution method<br /> 05/20/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

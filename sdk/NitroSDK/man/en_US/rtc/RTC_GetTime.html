@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>RTC_GetTime</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">RTC_GetTime</h1>
+
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/rtc.h&gt;</CODE><BR>
+<PRE><CODE><A href="RTCResult.html">RTCResult</A> RTC_GetTime( <A href="RTCTime.html">RTCTime</A>* time );</CODE></PRE>
+  </dd>
+
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">time</font></strong></em></TD>
+<TD width="700">Pointer to <code>RTCTime</code>, where time information will be stored.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the request succeeds, it returns 0.<BR>If the request fails, it returns some numeric value other than 0.</p>
+
+<H2>Description</H2>
+<P>This function reads time data from the real time clock. It queries ARM7 for time data and returns the information once it is received. This is a synchronous version of <code><a href="RTC_GetTimeAsync.html">RTC_GetTimeAsync</a></code>.</P>
+
+<h2>Caution</h2>
+<P><FONT color=red>This function requires a PXI interrupt for synchronization. Do not call this function when PXI interrupts are prohibited.</FONT></P>
+
+<h2>See Also</h2>
+<P><code><a href="RTC_GetTimeAsync.html">RTC_GetTimeAsync</a>, <a href="RTC_SetTime.html">RTC_SetTime</a>, <a href="RTC_SetTimeAsync.html">RTC_SetTimeAsync</a>, <a href="RTCResult.html">RTCResult</a>, <a href="RTCTime.html">RTCTime</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;<br /> 05/18/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

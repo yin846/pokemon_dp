@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_GetAgbMakerCode</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_GetAgbMakerCode</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+<PRE><CODE>u16 CTRDG_GetAgbMakerCode( void );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>Returns maker code when there is an AGB Game Pak and its maker code matches that obtained when <code><a href="CTRDG_Init.html">CTRDG_Init</a></code> was called. Otherwise returns <code>FALSE</code>. Also, always returns <code>FALSE</code> after the Game Pak has been removed once.</P>
+<H2>Description</H2>
+<P>Returns the AGB Game Pak's maker code.</P>
+<P>However, if there is no AGB Game Pak or the game code (initial code) does not match that obtained when <code><a href="CTRDG_Init.html">CTRDG_Init</a></code> was called, it returns FALSE. This function can be called when the cartridge bus is locked with the <code><a href="../os/spinLock/OS_LockCartridge.html">OS_LockCartridge</a></code> function. However, when the bus is locked, the ARM7 will not perform automatic release detection processing, and thus you should periodically call <code><A href="CTRDG_IsExisting.html">CTRDG_IsExisting</A></code> each game frame or other interval when the player cannot reinsert. (This function internally calls <code><A href="CTRDG_IsExisting.html">CTRDG_IsExisting</A></code>.)
+</P>
+<H2>Caution</H2>
+<P>If the maker code obtained when <code><a href="CTRDG_Init.html">CTRDG_Init</a></code> was called matches the maker code re-obtained in this function, that maker code value is returned. Accordingly, note that Game Paks enabled after the <code><a href="CTRDG_Init.html">CTRDG_Init</a></code> function was called are not recognized.</font>(For details, see the description of the <code><a href="CTRDG_Init.html">CTRDG_Init</a></code> function.)
+</P>
+<H2>See Also</H2>
+<P><code><a href="CTRDG_Init.html">CTRDG_Init</a></code>, <code><a href="CTRDG_GetAgbGameCode.html">CTRDG_GetAgbGameCode</a></code>, <code><a href="CTRDG_IsAgbCartridge.html">CTRDG_IsAgbCartridge</a></code></P>
+<H2>Revision History</H2>
+<P>
+04/12/2005 Added description of cartridge bus lock and revised explanation about game code being re-obtained each time.<br /> 03/03/2005 Added explanation that the presence of a Game Pak is determined only at initialization.<br /> 10/04/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

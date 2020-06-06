@@ -1,0 +1,63 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_UpdateConnection</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_UpdateConnection</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_UpdateConnection( void );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function checks to see if the connection to an access point is being maintained normally.<BR>After the connection to the Internet has been established, be sure to call this function approximately every game frame. However, there is no need to call this function when using the <a href="FriendsMatch.html">FriendsMatch Library</a>, since the same sort of processing is performed by the <a href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</a> function.<BR>
+		</P>
+		<P>
+		  If the connection to the access point is lost, <CODE>TRUE</CODE> is returned. Be sure to get the error state with <a href="DWC_GetLastError.html"><code>DWC_GetLastErrorEx</code></a>. Display the error code along with the error message, as necessary. To see about creating error messages, refer to the Nintendo Wi-Fi Connection Programming Guidelines.
+		</P>
+
+		<H2>Arguments</H2>
+		<P>
+		  None.
+		</P>
+
+		<H2>Return Values</H2>
+		<P>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">Disconnected from the access point.</TD>
+				</TR>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD width="75%">The connection to the access point continues to exist..</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_GetLastError.html">DWC_GetLastErrorEx</A>, <a href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</a></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+		  07/24/2006 Added a description about the relationship to the FriendsMatch Library<BR>06/27/2006 Initial version<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

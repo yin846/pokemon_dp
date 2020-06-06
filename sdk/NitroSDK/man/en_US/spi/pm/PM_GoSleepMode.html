@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>PM_GoSleepMode</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">PM_GoSleepMode</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/spi.h&gt;</CODE></PRE>
+<PRE><CODE>void PM_GoSleepMode( PMWakeUpTrigger trigger, PMLogic logic, u16 keyPattern );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>trigger</STRONG></EM></TD>
+<TD width="87%">The trigger to recover from sleep state.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>logic</STRONG></EM></TD>
+<TD width="87%">The key combination logic when recovering with a  key interrupt.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>keyPattern</STRONG></EM></TD>
+<TD width="87%">The key when recovering with a key interrupt.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function changes both ARM9 and ARM7 to sleep state. The function sends a sleep command to ARM7. The ARM9 itself also enters halt state with <A href="../../os/system/OS_Halt.html"><CODE>OS_Halt()</CODE></A>. <B><I>trigger</I></B> is a <CODE>PMWakeUpTrigger</CODE> enum type, and specifies a trigger to recover from the sleep state. The trigger can specify multiple items by obtaining a logical sum. The following items can be specified.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD>PM_TRIGGER_KEY</TD>
+<TD>A key interrupt</TD>
+    </TR>
+    <TR>
+<TD>PM_TRIGGER_RTC_ALARM</TD>
+<TD>An RTC alarm interrupt                                       </TD>
+    </TR>
+    <TR>
+<TD>PM_TRIGGER_COVER_OPEN</TD>
+<TD>Opening the cover</TD>
+    </TR>
+    <TR>
+<TD>PM_TRIGGER_CARD</TD>
+<TD>A card interrupt or Game Card removal</TD>
+    </TR>
+    <TR>
+<TD>PM_TRIGGER_CARTRIDGE</TD>
+<TD>Generate a catridge interrupt or remove the cartridge</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BLOCKQUOTE><STRONG>Example:</STRONG> When recovering from sleep mode by opening the cover, removing the Game Pak, or removing the Game Card, use <CODE>PM_GoSleepMode( PM_TRIGGER_COVER_OPEN | PM_TRIGGER_CARD | PM_TRIGGER_CARTRIDGE );</CODE></BLOCKQUOTE>
+<P>In terms of the hardware specification, these recovery triggers are level triggers, not edge triggers. For example, strictly speaking, <CODE>PM_TRIGGER_CARTRIDGE</CODE> does not detect when a Game Pak is removed, but rather that no Game Pak is inserted, and then returns. (More specifically, it detects the status of the <CODE>OS_IE_CARTRIDGE_IREQ</CODE> interrupt in operation.) Therefore, if you try to enter sleep mode with <CODE>PM_TRIGGER_CARTRIDGE</CODE> as the recovery trigger while no Game Pak is inserted (already removed), it recovers immediately. However, Game Card and Game Pak interrupts check (within the function) whether a Game Card or Game Pak is actually inserted. As a result, when you try to insert a recovery trigger while no Game Card or Game Pak is inserted, that trigger is discarded.</P>
+<P>When you include key interrupt in recovery trigger, specify the keys to trigger recovery and their combination logic with <B><I><CODE>keyPattern</CODE></I></B> and <B><I><CODE>logic</CODE></I></B>. The combination logic is either <CODE>PM_PAD_LOGIC_AND</CODE> (when input is from <strong>all</strong> keys), or <CODE>PM_PAD_LOGIC_OR</CODE> (when input is from <strong>any</strong> key). For example, to make recovery possible only by pressing the A button and START at the same time:</P>
+<P><CODE>PM_GoSleepMode( PM_TRIGGER_KEY, <FONT color="#ff3300">PM_PAD_LOGIC_AND</FONT>, PAD_BUTTON_A | PAD_BUTTON_START );</CODE></P>
+<P>To make recovery possible by pushing either the A button or START:</P>
+<P><CODE>PM_GoSleepMode( PM_TRIGGER_KEY, <FONT color="#ff3300">PM_PAD_LOGIC_OR</FONT>, PAD_BUTTON_A | PAD_BUTTON_START );</CODE></P>
+<P>&nbsp; </P>
+<P>When you do not include a key interrupt in the recovery trigger, specifications for <B><I><CODE>keyPattern</CODE></I></B> and <B><I><CODE>logic</CODE></I></B> are meaningless. Also, when there is only one key assignment, combination logic may be either <CODE>PM_PAD_LOGIC_AND</code> or <code>PM_PAD_LOGIC_OR</CODE>.</P>
+<P>Before you use this function, initialize the PM library by using the <code>PM_Init()</code> function. The <code>PM_Init()</code> function has to be called only once. Also, when you call <a href="../../os/init/OS_Init.html"><code>OS_Init()</code></a>, there is no need to call <a href="PM_Init.html"><code>PM_Init()</code></a> separately since it is called from within <code>OS_Init()</code>.)</P>
+
+<P><BR> <B>Callback Function</B></P>
+<P>It is possible to set callback functions to be called before entering sleep mode and after awakening from sleep mode. The callback function that is called when entering sleep mode is called at the beginning of <code>PM_GoSleepMode()</code>, and the function that is called after awakening from sleep mode is called at the end of <code>PM_GoSleepMode()</code>. This is equivalent to calling these functions before and after <code>PM_GoSleepMode()</code>.</P>
+<P>The callback function is a <code>PMSleepCallback</code> type (a function type that retains one <code>void*</code> argument and no return values), and multiple functions can be registered. The registered functions are called in order, so pay special attention when registering functions that must be performed in a specific order.</P>
+<P>When registering a callback, specify with the callback function and the callback information including the arguments. For more information, see <code><a href="PM_AppendPreSleepCallback.html">PM_AppendPreSleepCallback()</a></code>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="PM_Init.html">PM_Init</A>,<BR> <A href="PM_AppendPreSleepCallback.html">PM_AppendPreSleepCallback</A>, <A href="PM_PrependPreSleepCallback.html">PM_PrependPreSleepCallback</A>, <BR> <A href="PM_AppendPostSleepCallback.html">PM_AppendPostSleepCallback</A>, <A href="PM_PrependPostSleepCallback.html">PM_PrependPostSleepCallback</A>, <BR> <A href="PM_DeletePreSleepCallback.html">PM_DeletePreSleepCallback</A>, <A href="PM_DeletePreSleepCallback.html">PM_DeletePostSleepCallback</A>,</CODE><BR> <CODE><A href="PM_SetSleepCallbackInfo.html">PM_SetSleepCallbackInfo</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>2005/09/14 03/08/2005 Standardized the Japanese word for &quot;interrupt.&quot;<br /> 10/06/2004 Corrected callbacks to allow registration of multiple callbacks.<br /> 10/05/2004 Added description regarding callbacks.<br /> 08/07/2004 Separated combination logic in Arguments.<br /> 08/02/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

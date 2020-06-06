@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>TP_RequestAutoSamplingStartAsync</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">TP_RequestAutoSamplingStartAsync</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/spi.h&gt;</CODE><BR>
+<PRE><CODE>void TP_RequestAutoSamplingStartAsync(
+u16 vcount,
+u16 frequence,
+<A href="TPData.html">TPData</A> samplingBufs[],
+u16 bufSize );</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">vcount</font></strong></em></TD>
+<TD width="700">Base Vcount value for auto sampling</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">frequence</font></strong></em></TD>
+<TD>The number of samples taken during one frame. (MAX 4)</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">samplingBufs</font></strong></em></TD>
+<TD>The pointer that sets the buffer in which auto sampling values are stored. At minimum you must secure a region large enough to contain <b><i><code>frequence</code></i></b> * <code><a href="TPData.html">TPData</a></code>.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">bufSize</font></strong></em></TD>
+<TD>The size of the buffer that was passed by samplingBufs</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function asynchronously issues a request to ARM7 to begin auto sampling touch panel values. Once this request is accepted, sampling occurs periodically and values are stored in the array specified by <b><i><code>samplingBufs</code></i></b>. The autosampling interval is the uniform interval that data (as set in the <code>frequence</code> argument)&nbsp;is sampled by VAlarm in one frame based on the value set in <code>vcount</code>. If a user callback is set with <a href="TP_SetCallback.html"><code>TP_SetCallback</code></a>, notice is given by a callback each time a value is saved. After this function clears <b><i><code>samplingBufs</code></i></b>, the buffer will be used as a loop buffer. To acquire the index of the last stored data, use <a href="TP_GetLatestIndexInAuto.html"><code>TP_GetLatestIndexInAuto</code></a>. When auto-sampling, it is possible that&nbsp; the sampling value for (newest index + 1) will be unexpectedly overwritten by an interrupt. If you are using the sampling values from one frame all together, you can avoid this by securing an area that is at least <b><i><code>frequence</code></i></b> + 1.<BR> In this function, you must confirm whether the request to ARM7 was properly processed. To obtain the success or failure of the request, you must either first use <code><a href="TP_WaitBusy.html">TP_WaitBusy</a></code> to wait for completion and then use <a href="TP_CheckError.html"><code>TP_CheckError</code></a>, or use an argument in a user callback.</P>
+<h2>See Also</h2>
+<P><code><a href="TP_RequestAutoSamplingStop.html">TP_RequestAutoSamplingStop</a>, <a href="TP_GetLatestRawPointInAuto.html">TP_GetLatestRawPointInAuto</a>, <a href="TP_GetLatestCalibratedPointInAuto.html">TP_GetLatestCalibratedPointInAuto</a>, <a href="TP_GetLatestIndexInAuto.html">TP_GetLatestIndexInAuto</a>, <a href="TP_WaitBusy.html">TP_WaitBusy</a>, <a href="TP_CheckError.html">TP_CheckError</a>, <a href="TP_RequestAutoSamplingStart.html">TP_RequestAutoSamplingStart</a></code>, <a href="TPData.html"><code>TPData</code></a></P>
+<H2>Revision History</H2>
+<P>04/21/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

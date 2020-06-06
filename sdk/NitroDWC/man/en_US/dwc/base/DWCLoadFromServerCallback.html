@@ -1,0 +1,79 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWCLoadFromServerCallback</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWCLoadFromServerCallback</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+typedef void (*DWCLoadFromServerCallback)(
+                             BOOL  success,
+                             int   index,
+                             char* data,
+                             int   len,
+                             void* param );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+This function is called when loading from the data storage server finishes.
+		</P>
+		<P>
+		  <CODE>success</CODE> is set to FALSE if an attempt is made to load only non-existent keys or keys saved by a friend using the <CODE><A href="DWC_SavePrivateDataAsync.html">DWC_SavePrivateDataAsync</A></CODE> function. However, if only some of the specified keys fall into this category, they will not be included in the data, and the argument will be set to TRUE.
+		</P>
+		<P>
+		  This callback function can be set using <CODE><a href="DWC_SetStorageServerCallback.html">DWC_SetStorageServerCallback</a></CODE>.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+<TD width="25%"><EM><STRONG><CODE>success</CODE></STRONG></EM></TD>
+<td>TRUE: Load succeeded, FALSE: Load failed.</td>
+                </TR>
+                <TR>
+<TD width="25%"><EM><STRONG><CODE>index</CODE></STRONG></EM></TD>
+<td>Friend roster index of the player maintaining the load source data. -1 results if self or no longer a friend before load completes.</td>
+                </TR>
+                <TR>
+<TD width="25%"><EM><STRONG><CODE>data</CODE></STRONG></EM></TD>
+<td>Loaded data (key/value character string pair).</td>
+                </TR>
+                <TR>
+<TD width="25%"><EM><STRONG><CODE>len</CODE></STRONG></EM></TD>
+<td>Load data length.</td>
+                </TR>
+                <TR>
+<TD width="25%"><EM><STRONG><CODE>param</CODE></STRONG></EM></TD>
+<td>Parameter for the callback specified by <A href="DWC_LoadOwnDataAsync.html">DWC_LoadOwnDataAsync</A> or <A href="DWC_LoadOthersDataAsync.html">DWC_LoadOthersDataAsync</A>.</td>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<P>
+None.
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+<code><a href="DWC_SetStorageServerCallback.html">DWC_SetStorageServerCallback</a>, <A href="DWC_LoadOwnDataAsync.html">DWC_LoadOwnDataAsync</A>, <A href="DWC_LoadOthersDataAsync.html">DWC_LoadOthersDataAsync</A></code>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			12/16/2005 Added a description of the value of the &quot;success&quot; argument and the callback set function. <BR> 11/01/2005 Initial version<BR>
+		</P>
+
+	</BODY>
+</HTML>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBTBlockInfoTable</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBTBlockInfoTable</h1>
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR>
+<pre>
+typedef struct {
+WBTBlockInfo *block_info[WBT_NUM_OF_AID];
+} WBTBlockInfoTable;
+</pre>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>A table that manages the storage destination pointer of the registration block information requested for each channel. When receiving data from a parent with the <a href="command/WBT_GetBlockInfo.html"><CODE>WBT_GetBlockInfo</CODE></a> function, this must specify the pointer to the data storage destination in the corresponding AID's index element. <br> <BR>
+</P>
+<h2>See Also</h2>
+<p><CODE></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+09/21/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

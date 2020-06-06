@@ -1,0 +1,79 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Poll</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Poll</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define SOC_POLLRDNORM       0x0001  // Normal data read
+#define SOC_POLLWRNORM       0x0008  // Normal data write
+#define SOC_POLLERR          0x0020  // Error (revents only)
+#define SOC_POLLHUP          0x0040  // Disconnected (revents only)
+#define SOC_POLLNVAL         0x0080  // Invalid fd (revents only)
+
+typedef struct SOCPollFD
+{
+int         fd;
+short       events;         // input event flags
+short       revents;        // output event flags
+} SOCPollFD;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Poll( SOCPollFD <em><strong>fds</strong></em>[], unsigned <em><strong>nfds</strong></em>, OSTick <em><strong>timeout</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td valign="top"><code><strong><em>fds</em></strong></code></td>
+<td>The <code>SOCPollFD</code> array.</td>
+  </tr>
+  <tr>
+<td valign="top"><code><strong><em>nfds</em></strong></code></td>
+<td>The number of <code>SOCPollFD</code> in the <em><code><strong>fds</strong></code></em> array.</td>
+  </tr>
+  <tr>
+<td valign="top"><code><strong><em>timeout</em></strong></code></td>
+<td>Timeout. When negative, no timeout. </td>
+  </tr>
+  </table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>Positive value</td>
+<td>Number of socket descriptors that can read or write. </td>
+  </tr>
+  <tr>
+    <td>0</td>
+<td>The call has timed out. </td>
+  </tr>
+  </table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Please treat all negative return values as general errors. </p>
+
+<h2>Description</h2>
+
+<p>This function checks the specified socket descriptors and determines if any can read or write.</p>
+
+<p><strong>Note: </strong>:<code>SOC_Poll()</code> indicates that read or write process is possible. Therefore, with <code><a href="SOC_Recv.html">SOC_Read()</a></code>, <code><a href="SOC_Send.html">SOC_Write()</a></code> or <code><a href="SOC_Accept.html">SOC_Accept()</a></code> functions that follow <code>SOC_Poll()</code>, there may be cases where the called thread sleeps or an error is returned.</p>
+
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

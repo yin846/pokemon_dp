@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATH_CalcMD5</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATH_CalcMD5</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/dgt.h&gt;
+
+static inline void MATH_CalcMD5( void* digest, const void* data, u32 dataLength );
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">digest</font></strong></em></TD>
+<TD width="670">Pointer to the memory location that holds the calculated MD5 value.</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">data</font></strong></em></TD>
+<TD width="670">Pointer to the input data</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">dataLength</font></strong></em></TD>
+<TD width="670">Size of the input data</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function calculates MD5. The length of the generated MD5 value is 128 bits, or <nobr><code>MATH_MD5_DIGEST_SIZE (= 16)</code></nobr> bytes. Use the &quot;digest&quot; argument to pass an area that can store a value of this size. Any size and alignment position can be used for the input data.<BR> This is a utility function that successively calls <a href="MATH_MD5Init.html"><nobr><code>MATH_MD5Init</code></nobr></a>, <a href="MATH_MD5Update.html"><nobr><code>MATH_MD5Update</code></nobr></a>, and <a href="MATH_MD5GetHash.html"><nobr><code>MATH_MD5GetHash</code></nobr></a>. Internally, the <a href="MATHMD5Context.html"><code>MATHMD5Context</code></a> structure is allocated to the stack, so make sure that you have sufficient stack when calling the function. MD5 is an algorithm to find the message digest value. For details, see RFC (Request For Comments) 1321, which is published by IETF (The Internet Engineering Task Force).
+</P>
+<h2>See Also</h2>
+<P><A href="MATH_CalcSHA1.html">MATH_CalcSHA1</A></P>
+<H2>Revision History</H2>
+<P>
+04/12/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

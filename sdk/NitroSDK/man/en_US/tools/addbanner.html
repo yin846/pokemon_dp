@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>addbanner</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">addbanner</H1>
+<H2>Description</H2>
+<P><CODE>addbanner</CODE> is a tool for confirming whether and how banner file created with the <A href="makebanner.html"><CODE>makebanner</CODE></A> tool is actually displayed.</P>
+<P>As the name indicates, <CODE>addbanner</CODE> was originally a tool for inserting banner files in ROM files. But since the banner file insertion process is usually done with the <A href="makerom.html"><CODE>makerom</CODE></A> tool, it is now unnecessary to use this tool for insertion.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% addbanner [-t VIEWER_TEMPLATE] BANNERFILE [VIEWER]</CODE></P>
+<P>Outputs an execution ROM file called <CODE>VIEWER</CODE>. This file is for displaying on the NITRO screen banner files created using <CODE>BANNERFILE</CODE>. <CODE>VIEWER</CODE> can be omitted. When <code>VIEWER</code> is omitted, this uses a filename with <CODE>.srl</CODE> as the extension part of the filename specified by <CODE>BANNERFILE</CODE>.</P>
+<P><CODE>addbanner</CODE> uses the <CODE>BannerViewerTemplate.srl</CODE> in the same directory as <CODE>addbanner.exe</CODE> for the template ROM file that becomes the <CODE>VIEWER</CODE> creation source file. <CODE>addbanner</CODE> replaces the banner file of the template ROM file with the file specified by <CODE>BANNERFILE</CODE>, and is only output with the name specified by <CODE>VIEWER</CODE>.</P>
+<P>The <CODE>-t</CODE> option changes the template ROM file responsible for VIEWER creation. This is usually unnecessary.</P>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/addbanner.exe</CODE><BR> <CODE>$NitroSDK/tools/bin/BannerViewerTemplate.srl</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="makebanner.html">makebanner</A></CODE></P>
+<H2>Revision History</H2>
+<P>09/21/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

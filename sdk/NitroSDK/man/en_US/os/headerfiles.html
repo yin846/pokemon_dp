@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>Description of Header Files (NITRO-SDK)</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>Description of Header Files (NITRO-SDK)</H1>
+<H3><A name="System">NITRO-SDK System Header</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><code>nitro.h</code></TH>
+<TD>This is the definition file for the NITRO-SDK standard library.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><code>nitro_win32.h</code></TH>
+<TD>This file contains the definitions that are needed when creating tools on a Windows PC, such as the variable types defined for the NITRO-SDK.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>Include these header files in modules that use NITRO-SDK using the <code>#include</code> directive.</P>
+<H3><A name="Sinit">Module Initialization Function</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><code>nitro/sinit.h</code></TH>
+<TD>This header file enables use of the module initialization function <CODE><A href="init/NitroStaticInit.html">NitroStaticInit</A></CODE>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>This header file enables use of the C language static initializer <CODE><A href="init/NitroStaticInit.html">NitroStaticInit()</A></CODE>.</P>
+<P>Place this header file in an include statement only in the module that defines <CODE><A href="init/NitroStaticInit.html">NitroStaticInit()</A></CODE>. The static initializer of the overlay module is started when the overlay is linked. By using this mechanism, you can prepare an entry for a pointer to a function so the corresponding function gets registered in <CODE><A href="init/NitroStaticInit.html">NitroStaticInit()</A></CODE> when the overlay module is linked.</P>
+<H3><A name="Arch">Switching Between ARM &amp; THUMB Instruction Sets</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><CODE>nitro/code32.h</CODE></TH>
+<TD>All subsequent code is output as ARM instructions (32-bit code).</TD>
+    </TR>
+    <TR>
+<TH width="25%"><CODE>nitro/code16.h</CODE></TH>
+<TD>All subsequent code is output as THUMB instructions (16-bit code).</TD>
+    </TR>
+    <TR>
+<TH width="25%"><CODE>nitro/codereset.h</CODE></TH>
+<TD>At compile time, all subsequent code is outputted as an instruction set, according to the specified options.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The ARM9 and ARM7 CPUs of the NINTENDO DS can use two kinds of instruction sets: ARM and THUMB instructions. You can switch between these two instruction sets using jump instructions. In C, switching with jump instructions is performed as function calls; therfore, the instruction set is selected for each function normally.</P>
+<P>Use <CODE>code32.h</CODE> and <CODE>code16.h</CODE> by combining it with <CODE>codereset.h</CODE>. Include the function to fix the set of instructions to the ARM with <CODE>code32.h</CODE> and <CODE>codereset.h</CODE>. Enclose the function to fix to the THUMB with <CODE>code16.h</CODE> and <CODE>codereset.h</CODE>. When you are using assembly, always include the function with <CODE>code32.h</CODE> or <CODE>code16.h</CODE>, depending on the instruction set.</P>
+<BLOCKQUOTE>
+<PRE>#include &lt;nitro/code32.h&gt;     // This outputs the following arm_inst() using an ARM instruction set
+int arm_inst(int n)<BR>{<BR>    // 32-bit code area
+return n * n;
+}#include &lt;nitro/codereset.h&gt;  // The instruction set is restored (as per the compiler options)</PRE>
+</BLOCKQUOTE>
+<H3><A name="TCM_Section">Using TCM</A> (TCM section specification)</H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><CODE>nitro/dtcm_begin.h<BR> nitro/dtcm_end.h</CODE></TH>
+<TD>The code in between is output to the <CODE>*.dtcm</CODE> section. According to the SDK standard setting, the <CODE>*.dtcm</CODE> section is placed in ARM9 DTCM (data use TCM).</TD>
+    </TR>
+    <TR>
+<TH width="25%"><CODE>nitro/itcm_begin.h<BR> nitro/itcm_end.h</CODE></TH>
+<TD>The code in between is output to the <CODE>*.itcm</CODE> section. According to the SDK standard setting, the  <CODE>*.itcm</CODE> section is placed in ARM9 ITCM (instruction-use TCM).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The NINTENDO DS ARM9 processor has a scratchpad region in CPU (a high-speed buffer region that is fixed in the memory map) called TCM. The region can be accessed as fast as cache in the CPU; so by making better use of this region you can limit the slow-down in processing speed that might otherwise occur because of a cache miss.</P>
+<P>When defining the functions you want to place in the TCM region, include them with <CODE>nitro/itcm_begin.h</CODE> and <CODE>nitro/itcm_end.h</CODE> as shown below. Function regions that are included the following way are transferred to the instruction TCM (ITCM) region at startup.</P>
+<BLOCKQUOTE>
+<PRE>#include &lt;nitro/itcm_begin.h&gt;  //  Place the following tcm_inst() in ITCM
+int tcm_inst(int n)
+{
+// 32-bit code area
+return n * n;
+}
+#include &lt;nitro/item_end.h&gt;    // Return the placement destination to normal</PRE>
+</BLOCKQUOTE>
+<P>When you want to place a data block in the data TCM (DTCM) region, include it with <CODE>nitro/dtcm_begin.h</CODE> and <CODE>nitro/dtcm_end.h</CODE>, as shown below.</P>
+<BLOCKQUOTE>
+<PRE>#include &lt;nitro/dtcm_begin.h&gt;  // Place the following tcm_data() in DTCM
+u32  tcm_data[] =
+{
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+}
+#include &lt;nitro/dtem_end.h&gt;    // Returns placement destination to normal</PRE>
+</BLOCKQUOTE>
+<H3><A name="OtherSection">Specifying Special Sections</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><CODE>nitro/parent_begin.h<BR> nitro/parent_end.h</CODE></TH>
+<TD>The code in between gets output to the <CODE>*.parent</CODE> section. This is used during a clone boot operation.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><CODE>nitro/version_begin.h<BR> nitro/version_end.h</CODE></TH>
+<TD>The code in between gets output to the <CODE>*.version</CODE> section. Do not use this section; it is reserved in the NITRO-SDK library.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><CODE>nitro/wram_begin.h<BR> nitro/wram_end.h</CODE></TH>
+<TD>The code in between is output to the <CODE>*.wram</CODE> section. This is enabled only in the ARM7.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>There are also other special sections besides the TCM sections.</P>
+<P>The <CODE>*.parent</CODE> section is essential for clone boot--one form of DS Download Play. For further detail, read the section about clone booting in the document that explains DS Download Play (<CODE>$NitroSDK/docs/TechnicalNotes/AboutMultiBoot.pdf</CODE>).</P>
+<P>The <CODE>*.version</CODE> section and the <CODE>*.wram</CODE> section are used in the NITRO SDK implementation internally, so there is no need to be careful when using them.</P>
+<H3><A name="Version">NITRO-SDK Version Information</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><code>nitro/version.h</code></TH>
+<TD>This is version information about the NITRO-SDK.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>This defines the NITRO-SDK version information.</P>
+<TABLE border="0" height="100%">
+  <TBODY>
+    <TR>
+      <TD style="background-color : white;"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

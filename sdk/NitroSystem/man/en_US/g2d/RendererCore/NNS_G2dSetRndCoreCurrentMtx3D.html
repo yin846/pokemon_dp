@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRndCoreCurrentMtx3D</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRndCoreCurrentMtx3D</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_RendererCore.h&gt;</CODE></pre>
+<pre><CODE>void NNS_G2dSetRndCoreCurrentMtx3D
+    ( 
+        const MtxFx32*              pCurrentMxt
+    );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCurrentMxt</font></strong></em></td>
+<td width="87%">[IN] Current transformation matrix</td>    
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<p>
+Sets the affine transformation matrix in the Renderer core.
+<pre>
+ When drawing with the 3D Graphics Engine, the affine transformation matrix is used for the current matrix set to the Geometry Engine.
+
+</pre>
+<BR> The configured transformation matrix is valid inside the <code>BeginRendering</code> &mdash; <code>EndRendering</code> block.<BR> The settings are reset when <a href="NNS_G2dRndCoreEndRendering.html"><code>NNS_G2dRndCoreEndRendering()</code></a>is called, so you will need to use this function to configure the settings again when it is time for a new drawing process.<BR> <BR> Internally, a <code>4x3</code> matrix is calculated for setting as the current matrix in the Geometry Engine. This function can only be used when drawing with the 3D Graphics Engine. A warning message will be generated if it is called when the 2D Graphics Engine is drawing.<BR> The configured transformation matrix is valid inside the <code>BeginRendering</code> &mdash; <code>EndRendering</code> block.<BR>            
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dSetRndCoreCurrentMtx2D.html">NNS_G2dSetRndCoreCurrentMtx2D</A><br></CODE>
+
+</p>
+
+<H2>Revision History</H2>
+<P>11/10/2004 Initial version.</P>
+</body>
+</html>

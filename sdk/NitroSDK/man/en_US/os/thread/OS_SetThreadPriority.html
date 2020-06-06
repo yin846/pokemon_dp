@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_SetThreadPriority</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_SetThreadPriority</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>BOOL OS_SetThreadPriority( OSThread* thread, u32 prio );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>thread</STRONG></EM></TD>
+<TD width="87%">A pointer to the thread you want to prioritize.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>prio</STRONG></EM></TD>
+<TD width="87%">The priority level you want to set (0-31).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>Returns TRUE if priority setting succeeded. Returns TRUE even if you set to the same priority as the original. Returns FALSE if there is no thread.</P>
+<H2>Description</H2>
+<P>This function sets thread priority. Thread priorities range from 0 to 31. Threads that have a priority level of 0 have the highest priority. If thread priorities change, scheduling might also change.</P>
+<P>The thread system creates an idle thread (priority 32) during <code><a href="OS_InitThread.html">OS_InitThread()</a></code>, but its priority cannot be changed.</P>
+<H2>See Also</H2>
+<P><code><a href="OS_InitThread.html">OS_InitThread</a>, <a href="OS_GetThreadPriority.html">OS_GetThreadPriority</a></code></P>
+<H2>Revision History</H2>
+<P>04/27/2004 Added note about idle thread. <BR>02/26/2004 Initial version </P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

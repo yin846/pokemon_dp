@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_GetCompressionType</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_GetCompressionType</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>MICompressionType MI_GetCompressionType( const void* srcp );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>srcp</STRONG></EM></TD>
+<TD width="87%">Source address where the compressed data is stored.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>The compression format.</p>
+
+<H2>Description</H2>
+<P>This function obtains the compression format by checking the data header information of the compressed data. This function does not check the contents of the compressed data but only reads the compression format included in the beginning of the data.</P>
+<P>This function is compatible with all compression formats supported by the NITRO-SDK.</P>
+<P>The return values have the following definitions in the <code>MICompressType</code> enumerated type.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>MI_COMPRESSION_LZ</CODE></TD>
+<TD>Data compressed using the LZ77 format.</TD>
+    </TR>
+    <TR>
+<TD><CODE>MI_COMPRESSION_HUFFMAN</CODE></TD>
+<TD>Data compressed using the Huffman format.</TD>
+    </TR>
+    <TR>
+<TD><CODE>MI_COMPRESSION_RL</CODE></TD>
+<TD>Data compressed using the Run Length format.</TD>
+    </TR>
+    <TR>
+<TD><CODE>MI_COMPRESSION_DIFF</CODE></TD>
+<TD>Data compressed with the difference filter applied.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Internal Operation</h2>
+<P>Determines the compression type by reading the first four bytes of the data header.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="MI_UncompressLZ.html">MI_UncompressLZ*</A>, <A href="MI_UncompressHuffman.html">MI_UncompressHuffman</A>, <A href="MI_UncompressRL.html">MI_UncompressRL*</A>, <A href="MI_UnfilterDiff.html">MI_UnfilterDiff*</A>, <A href="MI_GetUncompressedSize.html">MI_GetUncompressedSize</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>06/18/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

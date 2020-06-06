@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_ReadRomAsync</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_ReadRomAsync</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>void	CARD_ReadRomAsync(u32 dma, const void *src, void *dst, u32 len, MIDmaCallback callback, void *arg);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>dma</STRONG></EM></TD>
+<TD width="87%">The DMA channel to be used for transfer.<br /> If the specified value is out of range, the process will execute by CPU transfer.<FONT color="#800000">If a valid DMA channel is specified, that DMA channel will not be available for any other task until transfer is complete.</FONT><br> <font color="#800000">The card access transfer source is an IO register, so DMA Channel 0 cannot be specified.</font>
+	  </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>src</STRONG></EM></TD>
+<TD width="87%">The transfer source CARD ROM address.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>dst</STRONG></EM></TD>
+<TD width="87%">Transfer destination memory address</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>len</STRONG></EM></TD>
+<TD width="87%">Byte length of data being read</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD width="87%">The callback function for when process has completed. If not necessary, specify NULL. If a valid DMA channel has been specified, this callback is called from inside the DMA interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>arg</STRONG></EM></TD>
+<TD width="87%">Argument passed to the callback function when the process completes. If NULL has been specified for the callback, this value is simply ignored.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function asynchronously loads data from a device that has ROM. The access bus must be locked before using this function.<BR> If a valid DMA channel is specified, this function uses that channel after explicitly stopping it with the <code><a href="../../mi/dma/MI_StopDma.html">MI_StopDma</a></code> function.<BR> If the previous access has not completed, this function waits until the previous access completes.<BR> <BR> If this function explicitly specifies CPU transfer, it behaves the same as the synchronous version, the <code><a href="CARD_ReadRom.html">CARD_ReadRom</a></code> function.<BR> In the old version of this function, the transfer source, transfer destination, and transfer size were restricted by hardware. These restrictions no longer exist. <BR>
+</P>
+<H2>Note</H2>
+<p>
+<FONT color="#800000">If a valid DMA channel is specified by this function, that DMA channel will not be available until transfer is complete.<BR> Note that because this function uses interrupts internally, the process will not complete if it attempts to run while interrupts are prohibited.<BR></FONT></p>
+<h2>Internal Operation</h2>
+<p><CODE>This function operates asynchronously using DMA transfers and the IRQ handler only if the following conditions are satisfied: <BR>In that case, transfers of card data can be done in parallel with CPU processing.
+</p>
+<ul>
+<li>The transfer destination range can be accessed by DMA and is 32-byte aligned.<br>
+<li>The  transfer source range is aligned to <A href="../card_rom_page_size_const.html">CARD_ROM_PAGE_SIZE</A> bytes.
+<li>The  transfer size is aligned to <A href="../card_rom_page_size_const.html">CARD_ROM_PAGE_SIZE</A> bytes. <br>
+</ul>
+<p>If these conditions are not all met, the process will be executed asynchronously by a CPU process using a CARD library internal thread regardless of whether DMA transfer has been specified or not.<br>For more information on this thread, see the description for the <code><A href="../common/CARD_GetThreadPriority.html">CARD_GetThreadPriority </A></code> function. <br><br> Here are some main points you need to be aware of with the application in order to ensure that the conditions for DMA transfer are satisfied:
+</p>
+<ul>
+<li>Do not specify an automatic variable as transfer destination. (By default, the stack is allocated from DTCM, so DMA access is impossible.)
+<li>Specify Align or AlignAll in the RomSpec section of the RSF file, and place the file so it has 512 byte alignment.
+<li>If the size of the file is not an integral multiple of 512 bytes, divide up the file so it is read in segments that are integral multiples of 512 bytes.
+</ul>
+<BR></CODE></p>
+<BR>
+<h2>See Also</h2>
+<p><code><a href="../card_rom_page_size_const.html">CARD_ROM_PAGE_SIZE</a>, <a href="CARD_LockRom.html">CARD_LockRom</a>, <a href="CARD_ReadRom.html">CARD_ReadRom</a>, <a href="CARD_TryWaitRomAsync.html">CARD_TryWaitRomAsync</a>, <a href="CARD_WaitRomAsync.html">CARD_WaitRomAsync</a>, <a href="../common/CARD_GetThreadPriority.html">CARD_GetThreadPriority</a>, <a href="../../mi/dma/MI_StopDma.html">MI_StopDma</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+05/10/2006 Changed specifications so that DMA transfer is not performed unless the transfer destination range is aligned at 32-byte boundaries.<br> 08/22/2005 Made substantial corrections to the Internal Operation section.<br> 06/01/2005 Added explanation that callback is called from interrupt handler.<br> 04/28/2005 Added section noting that DMA channel 0 cannot be specified. <br> 12/09/2004 Made correction, changing &quot;IO processor&quot; to &quot;ARM7 processor.&quot; <br> 11/02/2004 Corrected argument names to be same as in header file. <br> 07/28/2004 Corrected the callback type. <BR>07/19/2004 Changed the explanation of internal operations. <BR>07/09/2004 Corrected description due to function format changes and added an explanation of internal operations.<BR>07/05/2004 Initial version.<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

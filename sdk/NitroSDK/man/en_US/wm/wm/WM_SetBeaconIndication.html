@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_SetBeaconIndication</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_SetBeaconIndication</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_SetBeaconIndication( <A href="WMCallbackFunc.html">WMCallbackFunc</A> callback, u16 flag );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">flag</FONT></STRONG></EM></TD>
+<TD width="800">Flag that indicates valid or invalid. Set to 0 or 1. When set to 1, it indicates valid.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>Switches the beacon transmission indication between the enabled and the disabled state. This function is only executable when the WM is in the <code>IDLE</code> state. If the return value is <CODE>WM_ERRCODE_OPERATING</CODE>, a callback is generated after the enable or disable switching process is complete.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="WM_StartParent.html"><code>WM_StartParent</code></A>, <A href="WM_StartConnect.html"><code>WM_StartConnect</code></A>, <A href="WM_SetIndCallback.html"><code>WM_SetIndCallback</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callback being called from the interrupt handler.<br>03/02/2005 Added statement about range that can be specified with the flag argument.<br>10/22/2004 Changed type of return value.<br>08/02/2004 Standardized structure names.<br>07/29/2004 Added to Description<br>07/23/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

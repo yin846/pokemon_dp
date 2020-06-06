@@ -1,0 +1,47 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SetThreadPriority</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SetThreadPriority</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_SetThreadPriority(u32 new_prio);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>new_prio</strong></em></code></td>
+<td>Thread priority</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>Sets the thread priority generated internally in the CPS library. Use if a priority besides the default value of 16 is needed. Must give the same or higher priority than applications that use CPS. Does not block. This function can be called even when the CPS library cannot be used. </p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_GetThreadPriority.html">CPS_GetThreadPriority</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

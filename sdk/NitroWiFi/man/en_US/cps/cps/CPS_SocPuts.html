@@ -1,0 +1,49 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SocPuts</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SocPuts</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_SocPuts(char *s);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>s</strong></em></code></td>
+<td>Output character string</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>Outputs a character string. The buffer address must be set to <CODE>outbuf</CODE> of <CODE>CPSSoc</CODE>. Buffering continues until <CODE>outbuf</CODE> is full. This blocks.
+</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SocPutChar.html">CPS_SocPutChar</A></CODE>, <CODE><A href="CPS_SocPrintf.html">CPS_SocPrintf</A></CODE>, <CODE><A href="CPS_SocFlush.html">CPS_SocFlush</A></CODE>, <CODE><A href="CPSSoc.html">CPSSoc</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

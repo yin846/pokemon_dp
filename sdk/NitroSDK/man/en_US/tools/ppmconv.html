@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>ppmconv*</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">ppmconv*</H1>
+<H2>Description</H2>
+<P>The <CODE>ppmconv/ppmconv8/ppmconvbg</CODE> tools are used to change the full-color ppm format image to a C source format.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<H4>ppmconv*</H4>
+<P><CODE>% ppmconv PPM_FILE</CODE></P>
+<P>Loads the image file in the full-color <CODE>ppm</CODE> format that is designated by <CODE>PPM_FILE</CODE>, converts it to a 16-bit color bitmap, then outputs the C language source file that can be directly used by the program.</P>
+<H4>ppmconv8</H4>
+<P><CODE>% ppmconv8 PPM_FILE LABEL_NAME</CODE></P>
+<P>Loads the image file in the full-color <CODE>ppm</CODE> format that is designated by <CODE>PPM_FILE</CODE>, converts it to an 8-bit INDEX color bitmap, then outputs the C language source file that can be directly used by the program. The ppm format image file to be loaded must be reduced to 256 colors or less in advance  using another image editing tool. The name of the array of the palette and the pixel data string are generated using <code>LABEL_NAME</code>.</P>
+<H4>ppmconvbg</H4>
+<P><CODE>% ppmconvbg [-a LABEL_NAME] [-b] [-c 4|-c 8] [-p] [-i] PPM_FILE OUTPUT_FILE</CODE></P>
+<P>Loads the image file in the full-color <CODE>ppm</CODE> format that is designated by <CODE>PPM_FILE</CODE>, then outputs the data to <CODE>OUTPUT_FILE</CODE> according to the conditions designated by the following options:</P>
+<BLOCKQUOTE>
+<DL>
+<DT><CODE>-a LABEL_NAME</CODE>
+<DD>Outputs in a C source format<BR> Outputs in a format that can be compiled. The name of the array of the palette and the pixel data string is generated using <code>LABEL_NAME</code>.<BR>
+<DT><CODE>-b</CODE>
+<DD>Outputs in a binary format <BR> This is convenient when performing processes such as further compression, etc. on the output data. The output data is in a binary format by default.<BR>
+<DT><CODE>-c 4 or -c 8</CODE>
+<DD>The number of bits of the color palette<BR> Designates -c 4 when 16-color, and -c 8 when 256-color. The default is 256-color.<BR>The ppm format file that will be input must be reduced to the number of colors designated here or less.<BR>
+<DT><CODE>-p</CODE>
+<DD>Outputs only palette data.<BR>
+<DT><CODE>-i</CODE>
+<DD>Outputs only the pixel data (the color index value).<BR>
+</DL>
+</BLOCKQUOTE>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/ppmconv.exe</CODE><BR> <CODE>$NitroSDK/tools/bin/ppmconv8.exe<BR> $NitroSDK/tools/bin/ppmconvbg.exe</CODE></P>
+<H2>See Also</H2>
+<P><A href="../demos/gx/gxdemos.html"><code>gx/UnitTours/2D_BmpBg_MainRam</code></A>, <A href="../demos/gx/gxdemos.html"><code>gx/UnitTours/2D_CharBg_256BMP</code></A></P>
+<H2>Revision History</H2>
+<P>08/26/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

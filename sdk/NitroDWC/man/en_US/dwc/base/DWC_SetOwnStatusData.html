@@ -1,0 +1,81 @@
+<HTML>
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>DWC_SetOwnStatusData</TITLE>
+    <LINK rel="stylesheet" href="../../css/function.css">
+    <BASE target="main">
+  </HEAD>
+  <BODY>
+<H1>DWC_SetOwnStatusData</H1>
+
+<H2>C Specification</H2>
+    <DL>
+      <DD>
+<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_SetOwnStatusData( const char* statusData, u32 size );</CODE></PRE>
+      </DD>
+    </DL>
+
+<H2>Description</H2>
+	<P>
+Sets status data (binary data) from the DS's own communications status.
+	</P>
+	<P>
+	  The player's communication status is a product of the status flag, which displays whether the player is online or offline and the status character string. This is configured by the application and managed on the GameSpy server. In this function, the binary data specified with &quot;statusData&quot; (called status data) is encoded in Base64 and sent to the GameSpy server as a status string. Refer to the return value column of the <a href="DWC_GetFriendStatus.html">DWC_GetFriendStatus</a> function for different types of status flags.
+	</P>
+	<P>
+	  In order to use this function, you must allow the <A href="DWC_LoginAsync.html">DWC_LoginAsync</A> function to complete through login.
+	</P>
+	<P>
+The set data can be obtained from other hosts with the <a href="DWC_GetFriendStatusData.html"><CODE>DWC_GetFriendStatusData</CODE></a> function.
+    </P>
+	<P>
+	  Use the <a href="DWC_SetOwnStatusString.html">DWC_SetOwnStatusString</a> function when you want to set a string instead of binary data.
+	</P>
+    <P>
+The set character string is cleared when the <a href="DWC_ShutdownFriendsMatch.html">DWC_ShutdownFriendsMatch</a> function is called.
+    </P>
+
+<H2>Arguments</H2>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="25%"><EM><STRONG><CODE>statusData</CODE></STRONG></EM></TD>
+<TD>Pointer to binary data that will be set to status data.</TD>
+        </TR>
+        <TR>
+<TD width="25%"><EM><STRONG><CODE>size</CODE></STRONG></EM></TD>
+<TD>Binary data size. Maximum capacity is 189 Bytes.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+
+<H2>Return Values</H2>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+<TD>Set successful</TD>
+        </TR>
+        <TR>
+<TD width="25%"><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+<TD>Failed to set data because not yet logged in or exceeded capacity.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+<H2>See Also</H2>
+    <P>
+<code><a href="DWC_GetFriendStatusData.html">DWC_GetFriendStatusData</a>, <a href="DWC_GetFriendStatusDataSC.html">DWC_GetFriendStatusDataSC</a>, <a href="DWC_SetOwnStatusString.html">DWC_SetOwnStatusString</a>, <a href="DWC_GetOwnStatusData.html">DWC_GetOwnStatusData</a></code>
+    </P>
+
+<H2>Revision History</H2>
+    <P>
+	  12/16/2005 Added an explanation of communications status, introduction of other analogous functions, and an explanation of the status data size limit.<BR>11/07/2005 Initial version.<BR>
+    </P>
+
+  </BODY>
+</HTML>

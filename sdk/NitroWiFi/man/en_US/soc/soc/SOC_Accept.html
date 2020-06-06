@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Accept</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Accept</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Accept ( int <em><strong>s</strong></em>, void* <em><strong>sockAddr</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>s</strong></em></code></td>
+<td> A socket that was created with <code><a href="SOC_Socket.html">SOC_Socket()</a></code>, bound to an address with <code><a href="SOC_Bind.html">SOC_Bind()</a></code>, and used to call <code><a href="SOC_Listen.html">SOC_Listen()</a></code> successfully.</td>
+  </tr>
+  <tr>
+<td><code><em><strong>sockAddr</strong></em></code></td>
+<td>Specifies either a null pointer or a pointer to the socket address structures <code><a href="SOCSockAddr.html">SOCSockAddr</a> and <a href="SOCSockAddrIn.html">SOCSockAddrIn</a></code> used to record the socket address of the accepted connection partner.<br>If a non-null pointer is specified, please correctly initialize the <code>len</code> field in the socket address. (Example: <code>sizeof(SOCSockAddrIn)</code>)</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>0 or higher</td>
+<td>Socket descriptor of the accepted connection.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EALREADY</code></td>
+<td>Starting the connection process.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINVAL</code></td>
+<td>Invalid processing. (Starting connection processing, Not a TCP socket, Listening socket is not valid, etc.)</td>
+  </tr>
+  <tr>
+<td><code>SOC_EMFILE</code></td>
+<td>Cannot create any more socket descriptors.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket is not initialized.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENOBUFS</code></td>
+<td>Insufficient resources.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENOMEN</code></td>
+<td>Insufficient memory.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ETIMEDOUT</code></td>
+<td>TCP connection timeout.</td>
+  </tr>
+  <tr>
+<td> <code>SOC_EWOULDBLOCK</code></td>
+<td>The function can only be executed in blocked mode. If the socket used for listening is unblocked, this error code is returned and execution terminates.</td>
+  </tr>
+
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Please treat all negative return values as general errors. </p>
+
+<h2>Description</h2>
+
+<p>This function removes a connection request from the front of the connection queue, creates a new socket having same socket type, protocol and address family as the specified socket, and returns the descriptor of the new socket. The original socket remains unchanged so that it can accept more connection requests. </p>
+
+<p>Currently, this function creates and binds sockets according to CPS specifications, and because listen and accept are performed simultaneously, the socket for listening only runs when it is in block mode.<br>Also, there is no concept of a connection queue. </p>
+
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_Socket.html">SOC_Socket</a></code>, <code><a href="SOC_Bind.html">SOC_Bind</a></code>, <code><a href="SOC_Connect.html">SOC_Connect</a></code>, <code><a href="SOC_Listen.html">SOC_Listen</a></code>, <code><a href="SOC_Fcntl.html">SOC_Fcntl</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.<BR> 01/13/2006 Edited return values.</P>
+</body>
+</html>

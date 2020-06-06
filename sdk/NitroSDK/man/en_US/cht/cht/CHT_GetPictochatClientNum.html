@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CHT_GetPictochatClientNum</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CHT_GetPictochatClientNum</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/cht.h&gt;
+
+int CHT_GetPictochatClientNum( const <A href="../../wm/wm/WMBssDesc.html">WMBssDesc</A>* pWmBssDesc );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">pWmBssDesc</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the pointer to the beacon information being checked.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>
+Returns the number of members (<code>1</code> to <code>16</code>) participating in the room opened by the PictoChat parent. If the beacon information specified by the argument is invalid, -1 is returned.
+</p>
+
+<H2>Description</H2>
+<P>
+Checks the PictoChat parent's beacon information to determine the number of members (<code>1</code> to <code>16</code>) participating in the room opened by the PictoChat parent. Before using this function to get the number of participants, be sure to use <code><a href="CHT_IsPictochatParent.html">CHT_IsPictochatParent</a></code> to make sure that the beacon information being checked is that of a PictoChat parent. If it is not the beacon information of a PictoChat parent, an undefined value will be returned to the argument.
+</P>
+
+<h2>See Also</h2>
+<p><a href="CHT_IsPictochatParent.html"><code>CHT_IsPictochatParent</code></a>, <a href="../../wm/wm/WMBssDesc.html"><code>WMBssDesc</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+03/02/2005 Added explanation of return value. <br /> 12/24/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

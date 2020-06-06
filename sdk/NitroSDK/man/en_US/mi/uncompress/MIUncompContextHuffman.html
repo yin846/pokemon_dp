@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MIUncompContextHuffman</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MIUncompContextHuffman</h1>
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/mi/uncomp_stream.h&gt;</CODE><BR>
+typedef struct
+{
+u8* destp;        // 4B
+s32 destCount;    // 4B
+u8* treep;        // 4B
+u32 srcTmp;       // 4B
+u32 destTmp;      // 4B
+s16 treeSize;     // 2B
+u8  srcTmpCnt;    // 1B
+u8  destTmpCnt;   // 1B
+u8  bitSize;      // 1B
+u8  _padding2[3]; // 3B
+u8  tree[0x200];  // 512B
+// Total 540B
+} MIUncompContextHuffman;</PRE>
+  </dd>
+</dl>
+<h2>Description</h2>
+<P>This is the context structure for saving the state of data uncompression when Huffman-compressed data is being read from the Card and undergoing streaming uncompression. The context is initialized by the <a href="MI_InitUncompContextHuffman.html"><code>MI_InitUncompContextHuffman</code></a> function and used by the <code><a href="MI_ReadUncompHuffman.html">MI_ReadUncompHuffman</a></code> function to save the uncompression state.<BR> If the compressed data is 4-bit encoded data, there will not be any problems if the tree member's array size is 32 bytes, so it is OK to provide a region that is 480 bytes smaller than <nobr><code>sizeof( MIUncompContextHufffman )</code></nobr>.<BR> If the compressed data is 8-bit encoded data you need 512 bytes, so you cannot trim the size of the structure.<BR> <BR>
+</P>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>destp</STRONG></EM></TD>
+<TD width="87%">Pointer to region where uncompressed data will be written</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>destCount</STRONG></EM></TD>
+<TD>Remaining write size </TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>treep</STRONG></EM></TD>
+<TD>For storing Huffman encoding table, current pointer</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>srcTmp</STRONG></EM></TD>
+<TD>For storing data while reading</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>destTmp</STRONG></EM></TD>
+<TD>For storing data while writing</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>treeSize</STRONG></EM></TD>
+<TD>For storing the size of the Huffman encoding table</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>srcTmpCnt</STRONG></EM></TD>
+<TD>For storing data size while reading</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>destTmpCnt</STRONG></EM></TD>
+<TD>For storing data size while writing</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>bitSize</STRONG></EM></TD>
+<TD>Encoded bit size                     </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>tree</STRONG></EM></TD>
+<TD width="87%">Buffer for reading Huffman encoding table</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>See Also</h2>
+<p><code><a href="MI_InitUncompContextHuffman.html">MI_InitUncompContextHuffman</a></code>, <code><a href="MI_ReadUncompHuffman.html">MI_ReadUncompHuffman</a></code>, <code><a href="MIUncompContextLZ.html">MIUncompContextLZ</a></code>, <code><a href="MIUncompContextRL.html">MIUncompContextRL</a></code></p>
+
+<H2>Revision History</H2>
+<P>11/30/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

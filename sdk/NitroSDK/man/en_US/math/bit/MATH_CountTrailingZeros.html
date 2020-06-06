@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>MATH_CountTrailingZeros</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">MATH_CountTrailingZeros</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/math.h&gt;</CODE></PRE>
+  <PRE><CODE>u32 MATH_CountTrailingZeros( u32 x );
+u32 MATH_CTZ( u32 x );
+ 
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>x</I></B></TD>
+<TD>Numeric value to perform calculation.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>Returns the number of consecutive bits set to 0, starting from the lowest-order bit.</P>
+<H2>Description</H2>
+<P>This function finds the number of bits set to 0 starting from the lowest-order bit when x is expressed as a binary 32-bit value. 0x80000000 is 31, and 0 is 32. This is an inline function that uses the <CODE><a href="MATH_CountLeadingZeros.html">MATH_CountLeadingZeros</a></CODE> function.</P>
+<P><code>MATH_CTZ</code> is another name for the <code>MATH_CountTrailingZeros</code> function.</P>
+<P>To count the number of consecutive <code>0</code> from the start, the <CODE><a href="MATH_CountLeadingZeros.html">MATH_CountLeadingZeros</a></CODE> function can be used.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../bit/MATH_CountLeadingZeros.html">MATH_CountLeadingZeros</A> <A href="../int/MATH_ILog2.html">MATH_ILog2</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+12/22/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

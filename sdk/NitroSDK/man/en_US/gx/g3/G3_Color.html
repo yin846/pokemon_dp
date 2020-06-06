@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_Color</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_Color</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_Color(GXRgb color);
+
+// Below are APIs for creating the display list (command list):
+void G3B_Color(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXRgb rgb);
+void G3C_Color(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXRgb rgb);
+void G3BS_Color(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXRgb rgb);
+void G3CS_Color(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXRgb rgb);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>rgb</code></strong></em>&nbsp;&nbsp;</font></strong></em></td>
+<td width="87%">Vertex color</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets vertex color directly. The vertex color is valid until the current vertex color is updated by <code><A href="G3_Color.html" target="_self">G3*_Color</A></code>, <code><A href="G3_Normal.html" target="_self">G3*_Normal</A></code>, or <code><A href="G3_MaterialColorDiffAmb.html" target="_self">G3*_MaterialColorDiffAmb</A></code> (vertex color set flag) command. Therefore, vertex color can be shared by multiple vertices.</P>
+<h2>See Also</h2>
+<P><CODE><A href="G3_Normal.html" target="_self">G3*_Normal</A>, <A href="G3_MaterialColorDiffAmb.html" target="_self">G3*_MaterialColorDiffAmb</A></CODE></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_ARCHIVE_READ_FUNC, FS_ARCHIVE_WRITE_FUNC</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_ARCHIVE_READ_FUNC, FS_ARCHIVE_WRITE_FUNC</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>typedef	FSResult	(*FS_ARCHIVE_READ_FUNC)(struct FSArchive *p, void *dst, u32 pos, u32 size);<BR> typedef	FSResult	(*FS_ARCHIVE_WRITE_FUNC)(struct FSArchive *p, const void *src, u32 pos, u32 size);<BR></CODE><BR> <br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Defines the function format of the basic access callback specified in the archive. The file system uses these two callbacks and either FAT or FNT information to assume the existence of linear memory space based on NitroROM format. The default packages of all of the commands of the file systems are constructed with this callback. <a href="fs_archive_rw_func_type.html"><code>FS_ARCHIVE_READ_FUNC</code></a> specifies the function that processes for reading only <code>size BYTE</code> from the archive offset <code>pos</code> location to the memory buffer <code>dst</code>. <a href="fs_archive_rw_func_type.html"><code>FS_ARCHIVE_WRITE_FUNC</code></a> specifies the function that processes for writing only <code>size BYTE</code> from the archive offset <code>pos</code> location to the memory buffer <code>src</code>. If processing is completed synchronously during call, <code>FS_RESULT_SUCCESS</code> is returned, regardless of the callback. When completed asynchronously outside the function, <code>FS_RESULT_PROC_ASYNC</code> must be returned. Also, when <code>FS_RESULT_PROC_ASYNC</code> is returned, you must call the <code><a href="archive/FS_NotifyArchiveAsyncEnd.html">FS_NotifyArchiveAsyncEnd</a></code> function upon completion.
+</P>
+<BR>
+</P>
+<h2>See Also</h2>
+<p><code><a href="fs_result_const.html">FSResult</a></code>, <code><a href="fs_archive_type.html">FSArchive</a></code>, <code><a href="archive/FS_LoadArchive.html">FS_LoadArchive</a></code>, <code><a href="archive/FS_NotifyArchiveAsyncEnd.html">FS_NotifyArchiveAsyncEnd</a></code>, <code><a href="fs_archive_rw_func_type.html"><code>FS_ARCHIVE_READ_FUNC</code>, <code><a href="fs_archive_rw_func_type.html"><code>FS_ARCHIVE_WRITE_FUNC</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+07/12/2004 Changed the return value type<br /> 06/30/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

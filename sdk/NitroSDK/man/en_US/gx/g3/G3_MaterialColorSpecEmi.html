@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_MaterialColorSpecEmi</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_MaterialColorSpecEmi</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_MaterialColorSpecEmi(GXRgb specular, GXRgb emission, BOOL IsShininess);
+
+// Below are APIs for creating the display list (command list):
+void G3B_MaterialColorSpecEmi(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+GXRgb specular,
+GXRgb emission,
+BOOL IsShininess);
+
+void G3C_MaterialColorSpecEmi(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+GXRgb specular,
+GXRgb emission,
+BOOL IsShininess);
+
+void G3BS_MaterialColorSpecEmi(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+GXRgb specular,
+GXRgb emission,
+BOOL IsShininess);
+
+void G3CS_MaterialColorSpecEmi(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+GXRgb specular,
+GXRgb emission,
+BOOL IsShininess);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">specular</font></strong></em></td>
+<td width="87%">Specular reflection color</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">emission</font></strong></em></td>
+<td width="87%">Emitted light color  xyxyxy</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">IsShininess</font></strong></em></td>
+<td width="87%">Enable/Disable flag for the specular reflection shininess table</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the specular reflection color and emission light color for materials. The specular reflection shininess table flag specifies whether to use the specular reflection table (<code>TRUE</code>) or not to use the specular reflection table (<code>FALSE</code>). See <code><A href="G3_Shininess.html" target="_self">G3*_Shininess</A></code> for details on the specular reflection table.<BR> <b>Note</b>:&nbsp; When conversion does not occur using the specular reflection table, specular (the greater value of 0 and the dot product of the normal vector, N, and the reverse directional half-angle vector, H) is used without modification. Normally, intended specular reflection results can be obtained by setting the specular reflection table to specular raised to the power of <code>n</code>.</P>
+<h2>See Also</h2>
+<P><CODE><A href="G3_MaterialColorDiffAmb.html">G3_MaterialColorDiffAmb</A>, <A href="G3_Shininess.html" target="_self">G3*_Shininess</A></CODE></P>
+<H2>Revision History</H2>
+<P>02/09/2004</P>
+<UL>
+<LI>Added explanation for the specular reflection shininess table flag
+</UL>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

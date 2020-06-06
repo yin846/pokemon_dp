@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SNDChannelInfo</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SNDChannelInfo</h1>
+<h2>Definitions</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo"><code>typedef struct SNDChannelInfo
+{
+BOOL activeFlag : 1;
+BOOL lockFlag : 1;
+    
+u16 volume;
+u8 pan;
+u8 pad_;
+    
+SNDEnvStatus envStatus;
+} SNDChannelInfo;
+</code></pre></dd>
+<dd><pre class="funcprototype"></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAPLWT"></a>
+<h2>Elements</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>activeFlag</code></strong></em></td>
+<td>The active flag. Indicates whether the channel is currently operating.</td>
+</tr>
+<tr>
+<td><em><strong><code>lockFlag</code></strong></em></td>
+<td>The lock flag. Indicates whether the channel is currently locked.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>The following members are valid only when <em><strong><code>activeFlag</code></strong></em> is <code>TRUE</code>.</p>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>The volume. Takes a value between 0 and 2032.</td>
+</tr>
+<tr>
+<td><em><strong><code>pan</code></strong></em></td>
+<td>The pan. Takes values in the range of 0 (left) to 64 (center) to 127 (right).</td>
+</tr>
+</tbody>
+</table>
+</div>
+      
+<p>The following member is valid only when <em><strong><code>activeFlag</code></strong></em> is <code>TRUE</code> and <em><strong><code>lockFlag</code></strong></em> is <code>FALSE</code>.</p>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>envStatus</code></strong></em></td>
+<td>The envelope status.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAENWT"></a>
+<h2>Description</h2>
+      <p>
+This is the channel information structure. It stores the information for a single channel.
+</p>
+      <p>
+The contents of the structure can be obtained with <code><a href="SND_ReadChannelInfo.html">SND_ReadChannelInfo</a></code>.
+</p>
+      <p>
+The envelope status <em><strong><code>envStatus</code></strong></em> takes one of the following values.
+</p>
+<div class="table"><a name="IDAXNWT"></a><p class="title"><b><b>Table. SNDEnvStatus</b></b></p>
+<table summary="SNDEnvStatus" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SND_ENV_ATTACK</td>
+<td>Attack</td>
+</tr>
+<tr>
+<td>SND_ENV_DECAY</td>
+<td>Decay</td>
+</tr>
+<tr>
+<td>SND_ENV_SUSTAIN</td>
+<td>Sustain</td>
+</tr>
+<tr>
+<td>SND_ENV_RELEASE</td>
+<td>Release</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="note">
+<h3 class="title">Caution</h3>
+<p>
+The structure size and the member arrangement may be changed in the future.
+        </p>
+</div>
+        
+      
+    </div>
+<h2>See Also</h2>
+<p><a href="SND_ReadChannelInfo.html">SND_ReadChannelInfo</a></p>
+<h2>Revision History</h2>
+<p>02/17/2005 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

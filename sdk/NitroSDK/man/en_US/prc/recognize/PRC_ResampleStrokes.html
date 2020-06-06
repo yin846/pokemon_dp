@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>PRC_ResampleStrokes*</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">PRC_ResampleStrokes*</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+BOOL PRC_ResampleStrokes_Distance(
+u16*                    selectedPoints,
+int*                    pSelectedPointNum,
+int                         maxPointCount,
+int                         maxStrokeCount,
+const <A href="../stroke/PRCStrokes.html">PRCStrokes</A>*           strokes,
+int                     threshold,
+void*                   buffer );
+
+BOOL PRC_ResampleStrokes_Angle(
+u16*                    selectedPoints,
+int*                    pSelectedPointNum,
+int                         maxPointCount,
+int                         maxStrokeCount,
+const <A href="../stroke/PRCStrokes.html">PRCStrokes</A>*           strokes,
+int                     threshold,
+void*                   buffer );
+
+BOOL PRC_ResampleStrokes_Recursive(
+u16*                    selectedPoints,
+int*                    pSelectedPointNum,
+int                         maxPointCount,
+int                         maxStrokeCount,
+const <A href="../stroke/PRCStrokes.html">PRCStrokes</A>*           strokes,
+int                     threshold,
+void*                   buffer );
+</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">selectedPoints</FONT></STRONG></EM></TD>
+<TD width="87%">Pointer to an array in which the position numbers of the points selected are returned in ascending order.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">pSelectedPointNum</FONT></STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>int</code> variable that accepts how many points were returned in <code><em><strong>selectedPoints</strong></em></code>.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">maxPointCount</FONT></STRONG></EM></TD>
+<TD width="87%">Maximum number of points after resampling.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">maxStrokeCount</FONT></STRONG></EM></TD>
+<TD width="87%">Maximum number of strokes after resampling.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">strokes</FONT></STRONG></EM></TD>
+<TD width="87%">Raw input stroke data.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">threshold</FONT></STRONG></EM></TD>
+<TD width="87%">Resampling threshold.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">buffer</FONT></STRONG></EM></TD>
+<TD width="87%">Pointer to the memory region that will be used during processing.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>Returns TRUE if resampling is successful and set of points with a valid length is obtained.</P>
+<H2>Description</H2>
+<P>Uses the resampling algorithms to resample stroke data. The result of this function returns in a <code>u16</code> array, <code><em><strong>selectedPoints</strong></em></code>, which is the position number of the points in <code>strokes-&gt;points</code> that remain after resampling. The results also return in <code><em><strong>pSelectedPointNum</strong></em></code>, which is the number of points. In the array, the numbers are stored in ascending order. You must allocate a size of at least <code><em><strong>maxPointCount</strong></em></code> for <code><em><strong>selectedPoints</strong></em></code>.</P>
+<P><code><em><strong>buffer</strong></em></code> provides a pointer to the work area used for the resampling process. The work area requires <code>sizeof(int)*maxPointCount</code>. Allocate this beforehand.</P>
+<P>For details on the resampling algorithms and thresholds, see <code><A href="PRCResampleMethod.html">PRCResampleMethod</A></code>.</P>
+<P>This function is not required for normal pattern recognition procedures. They are called automatically from <code><A href="PRC_InitInputPattern.html">PRC_InitInputPattern*</A></code>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="PRCResampleMethod.html">PRCResampleMethod</A>, <A href="PRC_InitInputPattern.html">PRC_InitInputPattern*</A></CODE></P>
+<H2>Revision History</H2>
+<P>03/04/2005 Changed return value to BOOL</P>
+<P>07/06/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

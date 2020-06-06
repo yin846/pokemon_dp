@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGetDataBlockHeaderByIdx</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGetDataBlockHeaderByIdx</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE><code>#include &lt;nnsys/g3d/binres/res_struct_accessor.h&gt;</CODE></PRE>
+<PRE>NNSG3dResDataBlockHeader*
+NNS_G3dGetDataBlockHeaderByIdx(
+const NNSG3dResFileHeader*  header,
+u32             idx</CODE>
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><code>header</code> </strong></em></STRONG></EM></TD>
+<TD width="87%">The pointer to the resource file header</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>idx</STRONG></EM></TD>
+<TD width="87%">The block header index</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>Returns the pointer to the block header.</P>
+
+<H2>Description</H2>
+<P>This function gets the block header in the <code>idx</code> position from the resource file data.</P>
+
+
+<H2>See Also</H2>
+<P><code><a href="NNS_G3dGetMdlSet.html">NNS_G3dGetMdlSet</a></code>, <code><a href="NNS_G3dGetTex.html">NNS_G3dGetTex</a></code></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

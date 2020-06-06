@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNS_GfdInitLnkTexVramManager</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_GfdInitLnkTexVramManager</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/gfd.h&gt;</CODE></PRE>
+  <PRE><CODE>void NNS_GfdInitLnkTexVramManager(
+u32 szByte,
+u32 szByteFor4x4,
+void* pManagementWork,
+u32 szByteManagementWork,
+BOOL    useAsDefault );</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>szByte</STRONG></EM></TD>
+<TD width="87%">The size of the VRAM region to manage (in bytes) (Calculate as 1 Slot = 0x20000, with a maximum of 4 slots)</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>szByteFor4x4</STRONG></EM></TD>
+<TD width="87%">The size of the region (in bytes) used for the 4x4 compressed texture in the management region (Calculate as 1 Slot = 0x20000, with a maximum of 2 slots)</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>pManagementWork</STRONG></EM></TD>
+<TD width="87%">A pointer to the memory region used for management information</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>szByteManagementWork</STRONG></EM></TD>
+<TD width="87%">The size of the management information region (in bytes)</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>useAsDefault</STRONG></EM></TD>
+<TD width="87%">Whether to use the linked list texture VRAM manager as the current VRAM manager</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>
+Initializes the VRAM manager to manage the region that begins with the texture RAM and is the size specified by <em><strong> <code>szByte</code></strong></em>. For the initialization parameters, you must specify the size of the VRAM region (in bytes) managed by the manager and the size of the region used for the 4x4 compressed texture that is in the managed region. If <em><strong> <code>szByteFor4x4</code></strong></em> is not zero, the following conditions must be met.<BR><BR>szByteFor4x4 &lt;= 0x20000, szByte &gt;= 0x20000 + szByteFor4x4 / 2 <BR> szByteFor4x4 &gt; 0x20000, szByte &gt;= 0x20000 + szByteFor4x4
+
+The linked list VRAM manager requires the management information of the empty region. Therefore, you must pass the memory region for management information when initializing. Use <code>NNS_GfdGetLnkTexVramManagerWorkSize()</code> to get the size of the required management information memory. If <em><strong> <code>useAsDefault</code></strong></em> is TRUE, the linked list texture VRAM manager is set as the current VRAM manager of NITRO-System.
+</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="NNS_GfdGetLnkTexVramManagerWorkSize.html">NNS_GfdGetLnkTexVramManagerWorkSize</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>10/12/2004 Initial version.</P>
+</BODY>
+
+</HTML>

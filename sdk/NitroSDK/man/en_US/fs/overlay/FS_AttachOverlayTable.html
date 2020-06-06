@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_AttachOverlayTable</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_AttachOverlayTable</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>void*	FS_AttachOverlayTable(MIProcessor target, const void *ptr, u32 len);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>target</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Load target (ARM9/ARM7)</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>ptr</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Pointer to the memory that holds the overlay table. From the time that the function is called, until another pointer is set by calling the function again, this memory will be referenced by the library. If you specify NULL, the default table in the CARD ROM will be used.
+	  </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>len</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Memory size in bytes</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>Returns the previously set pointer.</p>
+
+<H2>Description</H2>
+<P>This function sets the access table that is internally used by the file system for overlay operations. After this function is called, all APIs that use the overlay table will access the specified memory.<br> If the pointer to the table is specified as NULL, the original table in the CARD ROM is used.<br> This is the default.<br> This function is used so that an application started by wireless download can run an overlay process.<br> The size and content of the overlay table specified in this function must precisely match the original overlay table included in the application started by wireless download. If it does not match, the <code>OS_Terminate</code> function forcibly halts the program.<br> Programs that call this function must be built with the <code>NITRO_DIGEST</code> option set.</font> <br>
+</P>
+<h2>See Also</h2>
+<p><A href="FS_LoadOverlayInfo.html"><code>FS_LoadOverlayInfo</code></A>, <A href="FS_LoadOverlay.html"><code>FS_LoadOverlay</code></A>, <A href="FS_UnloadOverlay.html"><code>FS_UnloadOverlay</code></A></p>
+
+<H2>Revision History</H2>
+<P>
+11/08/2004 Added a description of the overlay requirements.<br> 09/24/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_GetDispersionBeaconPeriod</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_GetDispersionBeaconPeriod</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+u16 WM_GetDispersionBeaconPeriod( void );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>None.</p>
+
+<h2>Return Values</h2>
+<p>
+Returns the beacon period that should be set by the parent for wireless communications.
+</p>
+
+<H2>Description</H2>
+<P>
+Gets the beacon period (in ms) that should be set for wireless communications when NITRO begins communications as the parent. If multiple parents communicate using the exact same beacon period, it may take the child a long time to detect a number of parents with the <a href="WM_StartScan.html"><code>WM_StartScan</code></a> function. To prevent conflicts, this function passes appropriately dispersed beacon periods.
+</P>
+
+<H2>See Also</H2>
+<P><a href="WM_SetParentParameter.html"><code>WM_SetParentParameter</a></code>, <code><a href="WM_GetDispersionScanPeriod.html">WM_GetDispersionScanPeriod</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+10/18/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

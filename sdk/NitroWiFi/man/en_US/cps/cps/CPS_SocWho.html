@@ -1,0 +1,53 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SocWho</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SocWho</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>CPSInAddr CPS_SocWho (u16 *remote_port, CPSInAddr *local_ip);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>remote_port</strong></em></code></td>
+<td>Partner's port</td>
+  </tr>
+  <tr>
+<td><code><em><strong>local_ip</strong></em></code></td>
+<td>Own IPv4 address that is the actual send target the partner uses</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>The partner's IPv4 address.</P>
+
+<h2>Description</h2>
+
+<p>Gets information about the communication partner. Returns the partner's IPv4 address as the return value. If <CODE><EM><STRONG>remote_port</STRONG></EM></CODE> is not NULL, the partner&rsquo;s port is set. If <CODE><EM><STRONG>local_ip</STRONG></EM></CODE> is not NULL, the function sets its own IPv4 address, which is the actual send target the partner uses.    This provides a method to differentiate between unicast and multicast. Does not block.
+</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SocBind.html">CPS_SocBind</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndPlayerSetSeqArcNo</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndPlayerSetSeqArcNo</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndPlayerSetSeqArcNo(
+NNSSndHandle*   handle,
+int seqArcNo,
+int index );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA4LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>The sound handle pointer.</td>
+</tr>
+<tr>
+<td><em><strong><code>seqArcNo</code></strong></em></td>
+<td>Sequence archive number.</td>
+</tr>
+<tr>
+<td><em><strong><code>index</code></strong></em></td>
+<td>The index number of the sequence archive.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1MWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDACNWT"></a>
+<h2>Description</h2>
+      
+      <p>
+Sets the sequence archive number. 
+</p>
+      <p>
+This function sets the sequence archive of the sequence that is bound to the sound handle <code><i><b>handle</b></i></code>. This function does not perform any action if the stream handle is invalid. 
+</p>
+      <p>
+The setting the sequence archive number will allow for the stopping of the sequence by using the assignment of the set sequence archive number. For details, refer to functions such as the <code><a href="NNS_SndPlayerStopSeq.html">NNS_SndPlayerStopSeqBySeqArcNo</a></code> function or the <code><a href="NNS_SndPlayerCountPlayingSeq.html">NNS_SndPlayerCountPlayingSeqBySeqArcNo</a></code> function. 
+</p>
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+This function is called inside the <code><a href="NNS_SndArcPlayerStartSeqArc.html">NNS_SndArcPlayerStartSeqArc*</a></code> function. If this function is called again, the set values will be overwritten.
+</p>
+<p>
+Only call either this function or the <code><a href="NNS_SndPlayerSetSeqNo.html">NNS_SndPlayerSetSeqNo</a></code> function. If both functions are called, the last function that is set will be the function that is valid.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndPlayerStopSeq.html">NNS_SndPlayerStopSeqBySeqArcNo</a>, <a href="NNS_SndPlayerCountPlayingSeq.html">NNS_SndPlayerCountPlayingSeqBySeqArcNo</a>, <a href="NNS_SndArcPlayerStartSeqArc.html">NNS_SndArcPlayerStartSeqArc*</a>, <a href="NNS_SndPlayerSetSeqNo.html">NNS_SndPlayerSetSeqNo</a></code></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

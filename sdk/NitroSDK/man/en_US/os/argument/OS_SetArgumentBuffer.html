@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_SetArgumentsBuffer</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_SetArgumentBuffer</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_SetArgumentBuffer( const char* buffer );
+ </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><EM><B>buffer</B></EM></TD>
+<TD>Pointer to the argument buffer to be set</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function sets the argument buffer used by functions such as <A href="OS_GetArgc.html"><CODE>OS_GetArgc</CODE></A>, <CODE><A href="OS_GetArgv.html">OS_GetArgv</A></CODE>, and <CODE><A href="OS_GetOpt.html">OS_GetOpt</A></CODE>.</P>
+<P>Although the argument buffer region in the system is used by default (argument data is embedded by the <CODE><A href="../../tools/buryarg.html">buryarg</A></CODE> tool), the region can be changed using this function.</P>
+<P>Argument data can easily be converted from a character string by using <CODE><A href="OS_ConvertToArguments.html">OS_ConvertToArguments()</A></CODE>.</P>
+<P>Does nothing when the FINALROM builds.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_GetArgv.html">OS_GetArgv</A>, <A href="OS_GetArgc.html">OS_GetArgc</A>, <A href="OS_GetOpt.html">OS_GetOpt</A>, <A href="../../tools/buryarg.html">buryarg tool</A>,</CODE><BR> <CODE><A href="OS_GetArgumentBuffer.html">OS_GetArgumentBuffer</A>, <A href="OS_ConvertToArguments.html">OS_ConvertToArguments</A></CODE></P>
+<H2>Revision History</H2>
+<P>09/09/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

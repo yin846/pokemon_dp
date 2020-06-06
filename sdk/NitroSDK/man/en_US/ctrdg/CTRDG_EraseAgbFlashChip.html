@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_Read</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_EraseAgbFlashChip</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+  <PRE><CODE>u16 CTRDG_EraseAgbFlashChip(void);
+  </CODE></PRE>
+  <PRE>Corresponding AGB function: <A href="coordinate.html"><CODE>u16 (*EraseFlashChip)()</CODE></A></PRE>
+</DL>
+<H2>Arguments</H2>
+<p>None.</p>
+<H2>Return Values</H2>
+<P>Returns 0 if the erasure succeeds. Returns a non-zero value if it fails.</P>
+<H2>Description</H2>
+<P>Completely erases all data on the AGB backup device chip. </P>
+<P>The access cycle setting does not need to be set beforehand because it is created inside the function.<br> In addition, the <CODE><A href="../os/time/OS_InitTick.html">OS_InitTick</A></CODE> function must be called before this function because clock ticks are used by this function to measure timeouts. </P>
+<P>Note: All interrupts are disabled inside this function and the catridge bus is locked for a set period. <br> In particular, do not use DMA for automatic startup during direct sound and V/H blank synchronization, display synchronization, or cartridge request.</P>
+<P>In addition, the AGB backup device cannot be accessed normally by the IS-NITRO-DEBUGGER.<br> However, be sure to check operations using an actual DS handheld unit since normal access is possible with actual DS units. <br> (This will be fixed in a future version of IS-NITRO-DEBUGGER.)</P>
+<H2>See Also</H2>
+<P><CODE><A href="CTRDG_EraseAgbFlashSector.html">CTRDG_EraseAgbFlashSector</A>, <A href="CTRDG_EraseAgbFlashChipAsync.html">CTRDG_EraseAgbFlashChipAsync</A>, <A href="CTRDG_EraseAgbFlashSectorAsync.html">CTRDG_EraseAgbFlashSectorAsync</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>04/07/2006 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

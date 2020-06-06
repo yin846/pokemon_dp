@@ -1,0 +1,43 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_GetHostID</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_GetHostID</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>long SOC_GetHostID( void );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+
+<p>None.</p>
+
+<h2>Return Values</h2>
+
+<p>Host's primary IPv4 address (Network byte order)</p>
+
+<h2>Description</h2>
+
+<p>This function returns the host's primary IPv4 address.</p>
+
+<p><strong><em>Note</em></strong>:<strong><em>SOC_GetHostID()</em></strong> returns <strong><em>SOC_INADDR_ANY</em></strong> while DHCP host configuration is taking place.</p>
+
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description.<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

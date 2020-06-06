@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>RTC_GetDateTimeAsync</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">RTC_GetDateTimeAsync</h1>
+
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/rtc.h&gt;</CODE><BR>
+<PRE><CODE><A href="RTCResult.html">RTCResult</A> RTC_GetDateTimeAsync( 
+<A href="RTCDate.html">RTCDate</A>*    date, 
+<A href="RTCTime.html">RTCTime</A>*    time, 
+<A href="RTCCallback.html">RTCCallback</A> callback, 
+void*       arg );</CODE></PRE>
+  </dd>
+
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New"><code><EM><STRONG>date</STRONG></EM></code></font></strong></em></TD>
+<TD width="700">Pointer to <code>RTCDate</code>, where date information will be stored.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New"><code><EM><STRONG>time</STRONG></EM></code></font></strong></em></TD>
+<TD>Pointer to <code>RTCTime</code>, where time information will be stored.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New"><code><EM><STRONG>callback</STRONG></EM></code></font></strong></em></TD>
+<TD>Pointer to the callback function. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New"><code><EM><STRONG>arg</STRONG></EM></code></font></strong></em></TD>
+<TD>Argument to pass to the callback function.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the request succeeds, it returns 0. If the request fails, it returns some numeric value other than 0.</p>
+
+<H2>Description</H2>
+<P>This function asynchronously reads date and time data from the real time clock. It queries ARM7 for date and time data and returns those values without waiting for a response from the processor. To get the result from the processor, you must use the <em><strong><code>result</code></strong></em> argument. If this function fails, no operation is performed and no user callback function is called.</P>
+
+<h2>Caution</h2>
+<P>Values are written to the variables specified by the <code><em><strong>date</strong></em></code> and <code><em><strong>time</strong></em></code> arguments asynchronously with respect to the function. Do not use these variables for anything else until a user callback function confirms the completion of this asynchronous operation.</P>
+
+<h2>See Also</h2>
+<P><code><a href="RTC_GetDateTime.html">RTC_GetDateTime</a>, <a href="RTC_SetDateTime.html">RTC_SetDateTime</a>, <a href="RTC_SetDateTimeAsync.html">RTC_SetDateTimeAsync</a>, <a href="RTCResult.html">RTCResult</a>, <a href="RTCDate.html">RTCDate</a>, <a href="RTCTime.html">RTCTime</a>, <a href="RTCCallback.html">RTCCallback</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+06/27/2005 Added additional text indicating that the callback is called from the interrupt handler. <br> 05/18/2004 Initial version<BR></P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

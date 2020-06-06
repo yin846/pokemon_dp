@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_SetBankForLCDC</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_SetBankForLCDC</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>void GX_SetBankForLCDC(int lcdc);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>lcdc</code></strong></em>&nbsp;&nbsp;</font></strong></em></td>
+<td width="87%">Specifies a VRAM bank to allocate to LCDC</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function allocates the specified VRAM bank to LCDC. If the specified VRAM bank is disabled, this allocates the VRAM bank to LCDC. The logical OR of <code>GXVRamLCDC</code> values is used as the argument.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_NONE</CODE></TD>
+<TD>The VRAM bank is not allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_A</CODE></TD>
+<TD>VRAM-A is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_B</CODE></TD>
+<TD>VRAM-B is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_C</CODE></TD>
+<TD>VRAM-C is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_D</CODE></TD>
+<TD>VRAM-D is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_E</CODE></TD>
+<TD>VRAM-E is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_F</CODE></TD>
+<TD>VRAM-F is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_G</CODE></TD>
+<TD>VRAM-G is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_H</CODE></TD>
+<TD>VRAM-H is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_I</CODE></TD>
+<TD>VRAM-I is allocated to LCDC.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_LCDC_ALL</CODE></TD>
+<TD>All VRAM are allocated to LCDC.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following indicates the type definition for <CODE>GXVRamLCDC</CODE> types.</P>
+<PRE>typedef enum
+{
+GX_VRAM_LCDC_NONE = 0x0000,
+GX_VRAM_LCDC_A = GX_VRAM_A,                    // ARM9: HW_LCDC_VRAM_A  --&gt;  HW_LCDC_VRAM_B
+GX_VRAM_LCDC_B = GX_VRAM_B,                    // ARM9: HW_LCDC_VRAM_B  --&gt;  HW_LCDC_VRAM_C
+GX_VRAM_LCDC_C = GX_VRAM_C,                    // ARM9: HW_LCDC_VRAM_C  --&gt;  HW_LCDC_VRAM_D
+GX_VRAM_LCDC_D = GX_VRAM_D,                    // ARM9: HW_LCDC_VRAM_D  --&gt;  HW_LCDC_VRAM_E
+GX_VRAM_LCDC_E = GX_VRAM_E,                    // ARM9: HW_LCDC_VRAM_E  --&gt;  HW_LCDC_VRAM_F
+GX_VRAM_LCDC_F = GX_VRAM_F,                    // ARM9: HW_LCDC_VRAM_F  --&gt;  HW_LCDC_VRAM_G
+GX_VRAM_LCDC_G = GX_VRAM_G,                    // ARM9: HW_LCDC_VRAM_G  --&gt;  HW_LCDC_VRAM_H
+GX_VRAM_LCDC_H = GX_VRAM_H,                    // ARM9: HW_LCDC_VRAM_H  --&gt;  HW_LCDC_VRAM_I
+GX_VRAM_LCDC_I = GX_VRAM_I,                    // ARM9: HW_LCDC_VRAM_I  --&gt;  HW_LCDC_VRAM_END
+GX_VRAM_LCDC_ALL = 0x01ff                      // ARM9: HW_LCDC_VRAM_A  --&gt;  HW_LCDC_VRAM_END
+}
+GXVRamLCDC;</CODE></PRE>
+<h2>See Also</h2>
+<P><a href="GX_GetBankForLCDC.html"><code>GX_GetBankForLCDC</code></a>, <a href="GX_DisableBankForLCDC.html"><code>GX_DisableBankForLCDC</code></a></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

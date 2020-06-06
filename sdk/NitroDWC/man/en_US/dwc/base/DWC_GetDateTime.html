@@ -1,0 +1,80 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GetDateTime</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GetDateTime</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_GetDateTime(RTCDate *date, RTCTime *time);
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Gets the current date and time in GMT, based on the time data obtained from the authentication server during authentication.
+		</P>
+		<P>
+		  To get the date and time using this function, the Wi-Fi connection must be completed beforehand, using the <A><CODE>DWC_LoginAsync</CODE></A> function or the <A href="DWC_NASLoginAsync.html"><CODE>DWC_NASLoginAsync</CODE></A> function.
+		</P>
+		<P>
+		  The date and time obtained with this function is generated using the difference between the time data from the authentication server and the real-time clock data at authentication.
+		</P>
+		<P>
+		  Be aware that this is not as accurate as NTP server data. Consider possible discrepancies in minute/second units.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="30%"><EM><STRONG><CODE>date</CODE></STRONG></EM></TD>
+					<TD>A pointer to the region storing the current date (GMT).</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>time</CODE></STRONG></EM></TD>
+					<TD>A pointer to the region storing the current time (GMT).</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="30%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD>The date and time were obtained successfully.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD>The date and time were not obtained successfully.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+		  <code>
+				<A href="DWC_LoginAsync.html">DWC_LoginAsync</A>,
+				<A href="DWC_NASLoginAsync.html">DWC_NASLoginAsync</A>
+			  </code>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			07/03/2006 Inserted an explanation into the function description about when the FriendsMatch Library is not used<BR>
+			03/07/2006 Initial version<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

@@ -1,0 +1,58 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GHTTPNewPost</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GHTTPNewPost</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+void DWC_GHTTPNewPost( DWCGHTTPPost* post );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function creates DWCGHTTPPost type objects as units of information used to upload data to the HTTP server.
+		</P>
+		<P>
+		  After the <CODE>DWCGHTTPPost</CODE> type object is created, data to be uploaded to the HTTP server is set to this object using the <CODE><A href="DWC_GHTTPPostAddString.html">DWC_GHTTPPostAddString</A></CODE> function.
+		</P>
+		<P>
+		  The memory used for the <CODE>DWCGHTTPPost</CODE> type object is allocated when this function is called and released immediately after data is uploaded and the upload complete callback exits. 
+        </P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>post</CODE></STRONG></EM></TD>
+					<TD width="75%">Pointer to the <CODE>DWCGHTTPPost</CODE> type object created in order to upload data. Returns NULL if the memory allocation fails.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<P>
+		  None.
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_GHTTPPostAddString.html">DWC_GHTTPPostAddString</A>, <A href="DWC_PostGHTTPData.html">DWC_PostGHTTPData</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			12/16/2005 Revised the function description.<BR> 10/27/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

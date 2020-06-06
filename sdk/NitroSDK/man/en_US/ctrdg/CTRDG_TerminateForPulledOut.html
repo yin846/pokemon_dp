@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_TerminateForPulledOut</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_TerminateForPulledOut</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+<PRE><CODE>void CTRDG_TerminateForPulledOut( void );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function stops the ARM7 processor and the program. This function is called after a card removal is detected.</P>
+<P>Use the callback that is set by the <A href="CTRDG_SetPulledOutCallback.html"><code>CTRDG_SetPulledOutCallback</code></A> and <A href="CTRDG_IsPulledOut.html"><code>CTRDG_IsPulledOut</code></A> functions to detect a Game Pak removal.</P>
+<P>The stop notification that is sent to ARM7 is sent internally by a PXI signal. Do not call this function when PXI interrupts are prohibited.</P>
+<H2>See Also</H2>
+<P><A href="CTRDG_Init.html"><code>CTRDG_Init</code></A>, <A href="CTRDG_SetPulledOutCallback.html"><code>CTRDG_SetPulledOutCallback</code></A>, <A href="CTRDG_IsPulledOut.html"><code>CTRDG_IsPulledOut</code></A>, <A href="CTRDG_IsExisting.html"><code>CTRDG_IsExisting</code></A></P>
+<H2>Revision History</H2>
+<P>09/15/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

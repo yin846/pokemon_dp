@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_SetIrqFunction</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_SetIrqFunction</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_SetIrqFunction( OSIrqMask intrBit, OSIrqFunction function );</CODE></dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>intrBit</I></B></TD>
+<TD>The IRQ interrupt cause to be enabled (expressed as a bitmask)</TD>
+    </TR>
+    <TR>
+<TD><B><I>function</I></B></TD>
+<TD>The interrupt handler</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the interrupt handler.</P>
+<P>The function sets the functions (interrupt handler) that jump when the designated IRQ interrupt occurs. In <B><I>intrBit</I></B>, the IRQ interrupt cause that sets the handler gets designated. In function, the handler gets designated.</P>
+<P>Refer to <A href="OS_SetIrqMask.html"><code>OS_SetIrqMask</code></A> for details about setting the IRQ interrupt cause.</P>
+<P>The interrupt handler is of the <code>OSIrqFunction</code> type . It is a void function without arguments.</P>
+<BLOCKQUOTE>Example: <BR> <CODE>main()<BR> {<BR> :<BR>OS_InitIrqTable();<BR> OS_SetIrqFunction( OS_IE_V_BLANK, vhandler );<BR> :<BR>}<BR> <BR> void vhandler( void )<BR> {<BR> // V-Blank interrupt process<BR> }</CODE></BLOCKQUOTE>
+<P><BR> Note: You need to be cautious about timer interrupts. With the hardware timer specifications, the set timer interrupts are generated repeatedly. With the OS, the settings for the registered handler are released when the first interrupt is generated, so only that first timer interrupt is generated. In order to generate repeated timer interrupts, processing to carry out settings needs to be done again in the interrupt handler.</P>
+<h2>See Also</h2>
+<p><a href="OS_SetIrqMask.html"><code>OS_SetIrqMask</code></a>, <a href="OS_InitIrqTable.html"><code>OS_InitIrqTable</code></a>, <a href="OS_GetIrqFunction.html"><code>OS_GetIrqFunction</code></a></p>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;<br /> 06/03/2004 Added note about timer interrupts.<BR>12/01/2003 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

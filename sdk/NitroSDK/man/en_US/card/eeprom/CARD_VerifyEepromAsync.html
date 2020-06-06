@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_VerifyEepromAsync</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_VerifyEepromAsync</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>static inline void	CARD_VerifyEepromAsync( u32 dst, const void *src, u32 len, MIDmaCallback callback, void *arg);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>dst</STRONG></EM></TD>
+<TD width="87%">Comparison destination EEPROM address.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>src</STRONG></EM></TD>
+<TD width="87%">Memory address of comparison source.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>len</STRONG></EM></TD>
+<TD width="87%">Byte length of data to be compared.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD width="87%">Callback function for when the process completes. If the callback is not necessary, specify NULL. This callback is called from inside the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>arg</STRONG></EM></TD>
+<TD width="87%">Argument passed to the callback function when the process completes. If NULL has been specified for the callback, this value is simply ignored.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function compares the EEPROM device data asynchronously to the specified memory. This function immediately returns control. In order to use this function, you must first lock the access bus with the <A href="../backup/CARD_LockBackup.html"><CODE>CARD_LockBackup</CODE></A> function. To wait for the process to end, use the <A href="../backup/CARD_WaitBackupAsync.html"><CODE>CARD_WaitBackupAsync</CODE></A> function. To determine the result of the process, call the <A href="../common/CARD_GetResultCode.html"><CODE>CARD_GetResultCode</CODE></A> function after the process has ended. <BR> <font color="#800000">This function communicates with the ARM7 processor internally via PXI.<br> The process will not end if PXI interrupts are not enabled.<br></font> <br>
+</P>
+<h2>Internal Operation</h2>
+<p>
+This function executes an asynchronous process using an internal thread. To learn more about this internal thread, see the explanation for the <A href="../common/CARD_GetThreadPriority.html"><CODE>CARD_GetThreadPriority</CODE></A> function. 
+</p>
+<h2>See Also</h2>
+<p><A href="CARD_IsBackupEeprom.html"><code>CARD_IsBackupEeprom</code></A>, <A href="../backup/CARD_WaitBackupAsync.html"><code>CARD_WaitBackupAsync</code></A>, <A href="../common/CARD_GetResultCode.html"><code>CARD_GetResultCode</code></A>, <A href="CARD_ReadEeprom.html"><code>CARD_ReadEeprom</code></A>, <A href="CARD_WriteEeprom.html"><code>CARD_WriteEeprom</code></A>, <A href="CARD_VerifyEeprom.html"><code>CARD_VerifyEeprom</code></A>, <A href="CARD_WriteAndVerifyEeprom.html"><code>CARD_WriteAndVerifyEeprom</code></A>, <A href="../common/CARD_GetThreadPriority.html"><code>CARD_GetThreadPriority</code></A></p>
+
+<H2>Revision History</H2>
+<P>
+06/01/2005 Added a statement indicating that callback is called from interrupt handler. <br> 12/09/2004 Changed &quot;IO processor&quot; to &quot;ARM7 processor&quot;. <br> 11/02/2004  Revised links. <br> 08/18/2004  Added description of PXI interrupts. <br> 07/28/2004  Initial version. 
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

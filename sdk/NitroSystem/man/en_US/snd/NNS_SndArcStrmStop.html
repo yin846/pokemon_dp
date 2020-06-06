@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcStrmStop</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcStrmStop</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code>void NNS_SndArcStrmStop( NNSSndStrmHandle* <var>handle</var>, int <var>fadeFrame</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA0LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>Pointer to a stream handle</td>
+</tr>
+<tr>
+<td><em><strong><code>fadeFrame</code></strong></em></td>
+<td>Fade out frames Takes a value between 0 and 65535</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAQMWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAXMWT"></a>
+<h2>Description</h2>
+      <p>
+This function stops the stream that is associated with the stream handle <em><strong><code>handle</code></strong></em>. It does not do anything if the stream handle <em><strong><code>handle</code></strong></em> is invalid. 
+</p>
+      <p>
+The sound fades out gradually over the time for the number of frames that are specified in <em><strong><code>fadeFrame</code></strong></em> and then the stream stops completely. When <em><strong><code>fadeFrame</code></strong></em> is 0, the stream stops immediately. The priority during a fade-out is 0 (the lowest priority).
+</p>
+    </div>
+<h2>See Also</h2>
+<p>None.</p>
+<h2>Revision History</h2>
+<p>08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

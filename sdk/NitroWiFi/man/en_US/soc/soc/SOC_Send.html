@@ -1,0 +1,109 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Write, SOC_Send, SOC_SendTo</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Write<br>SOC_Send<br>SOC_SendTo</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Write  ( int <em><strong>s</strong></em>, const void* <em><strong>buf</strong></em>, int <em><strong>len</strong></em> );
+int SOC_Send   ( int <em><strong>s</strong></em>, const void* <em><strong>buf</strong></em>, int <em><strong>len</strong></em>, int <em><strong>flags</strong></em> );
+int SOC_SendTo ( int <em><strong>s</strong></em>, const void* <em><strong>buf</strong></em>, int <em><strong>len</strong></em>, int <em><strong>flags</strong></em>, const void* <em><strong>sockTo</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td valign="top"><code><em><strong><B>s</B></strong></em></code></td>
+<td>Socket descriptor. </td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong><B>buf</B></strong></em></code></td>
+<td>Pointer to the buffer that stores the message to send. </td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong>len</strong></em></code></td>
+<td>Length of message to send (bytes). If the message is too long and cannot be sent with the protocol in use, <code>SOC_Send()</code> fails and no data is sent. </td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong><B>flags</B></strong></em></code></td>
+<td>Message transmission type. <code><em><strong>flags</strong></em></code> is 0 or the logical OR of the following values. (Only with <code>SOC_SOCK_STREAM</code> stream sockets.)<table width="100%">
+      <tr>
+<td valign="top"><code>SOC_MSG_DONTWAIT</code></td>
+<td>Performs non-blocking processing. If there is no free space, <code>SOC_EWOULDBLOCK</code> is returned.</td>
+      </tr>
+    </table>
+<p><strong>Note: </strong> Only <code>SOC_MSG_DONTWAIT</code> is supported. </p>
+    </td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong>sockTo</strong></em></code></td>
+<td>The pointer to the socket address structures (<code><a href="SOCSockAddr.html">SOCSockAddr</a> and<a href="SOCSockAddrIn.html">SOCSockAddrIn</a></code>) that store the endpoint addresses.<br>If the socket is in connectionless mode, <code>SOC_SendTo()</code> sends the message to the address specified by <code><em><strong>sockTo</strong></em></code>. If the socket is in connection mode, <code><em><strong><B>sockTo</B></strong></em></code> is ignored. </td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>1 or higher</td>
+<td>Number of bytes in sent message. If <code>SOC_O_NONBLOCK</code> is set in the socket descriptor, the return value may be smaller than <em><strong>len</strong></em></code> (Short count).</td>
+  </tr>
+  <tr>
+    <td>0</td>
+<td>Failed.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINVAL</code></td>
+<td>Invalid processing.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EMSGSIZE</code></td>
+<td>The size is too large to be sent.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket library is not initialized. </td>
+  </tr>
+  <tr>
+<td><code>SOC_ENOTCONN</code></td>
+<td>Not connected.</td>
+  </tr>
+  <tr>
+<td> <code>SOC_EWOULDBLOCK</code></td>
+<td>Cannot execute until the requested operation is blocked. (<code>SOC_O_NONBLOCK</code> has been set to the socket descriptor (or the <code>SOC_MSG_DONTWAIT</code> flag has been designated), and there is no free space in the send buffer to copy the message.)</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Treat all negative return values as general errors. </p>
+
+<h2>Description</h2>
+
+<p><code>SOC_Write()</code>, <code>SOC_Send()</code> and <code>SOC_SendTo()</code> send messages through the specified socket. </p>
+
+<p><code>SOC_Write()</code> is the same as <code>SOC_Send()</code>, except that <code><em><strong>flags</strong></em></code> is not set.  </p>
+
+<p><code>SOC_Write()</code>, <code>SOC_Send()</code> and <code>SOC_SendTo()</code> will block if there is no space in the socket's send buffer, unless the socket descriptor has been set to non-blocking mode using the <code><a href="SOC_Fcntl.html">SOC_Fcntl()</a></code> function. </p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOCSockAddr.html">SOCSockAddr</a></code>, <code><a href="SOC_Fcntl.html">SOC_Fcntl</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description and Return Values.<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

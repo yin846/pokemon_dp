@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_StartConnect</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_StartConnect</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_StartConnect( <A href="WMCallbackFunc.html">WMCallbackFunc</A> callback , const WMBssDesc* pInfo , const u8* ssid );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Specifies the callback function to be called when the notification of the status for the asynchronous process is sent or when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">pInfo</FONT></STRONG></EM></TD>
+<TD width="800">Specifies Information on the parent to be connected. Specifies the structure that is obtained with <A href="WM_StartScan.html"><code>WM_StartScan</code></A>.<br />Note that this structure entity will be forcibly cached.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">ssid</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the child information (fixed at 24 bytes (<code>WM_SIZE_CHILD_SSID</code>)) to be sent to the parent.<br />The specified data will be sent to the parent by the callback of <code>WM_StartParent</code>. If NULL, the 24 bytes of data will be set to all zeros.</TD>
+    </TR>
+   </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>This function initiates a connection process to a parent. This function is executable only when the WM is in the <code>IDLE</code> state. If the return value for API is <code>WM_ERRCODE_OPERATING</code>, a callback is triggered when the connection process starts, when the request is approved by the parent, and AID was allocated. The callback is also generated when the normal connection state could not be achieved after starting the connection process. When the connection is complete, the WM changes to the <code>CHILD</code> state. After the connection is established, the callback specified by this function is generated when the device is disconnected from the parent. The callback that was specified with this function is also generated if the beacon that was transmitted by the parent on a periodic basis was not received after a set period of time. Call <a href="WM_Reset.html"><code>WM_Reset</code></a> before re-calling <code>WM_StartConnect</code>.</P>
+
+<h2>Note</h2>
+<P>
+After calling this function, a callback will be generated when the connection as a child device completes as expected, but sometimes before the callback is generated a notification will be generated  that shows that  there was a beacon receive notification or a disconnect from the parent device. When performing an initialization process, etc., as the child device, perform it before this function is called rather than when the callback has been generated.
+</P>
+
+<h2>See Also</h2>
+<P><code><a href="WM_StartScan.html">WM_StartScan</a></code>, <code><a href="WM_EndScan.html">WM_EndScan</a></code>, <code><a href="WM_Disconnect.html">WM_Disconnect</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callback being called from the interrupt handler.<br>02/07/2005 Added caution about callbacks.<br>10/27/2004 Added to and revised Description.<BR>10/22/2004 Changed type of return value.<br>08/23/2004 Added ssid argument.<BR>08/02/2004 Standardized structure names.<br>07/29/2004 Added to Description.<br>07/23/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

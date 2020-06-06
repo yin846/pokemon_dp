@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VEC_Normalize</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VEC_Normalize</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/fx/fx_vec.h&gt;
+
+void VEC_Normalize(const VecFx32 * pSrc, VecFx32 * pDst);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    
+    
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">pSrc</font></strong></em></TD>
+<TD width="670">The pointer to a vector.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New"><em><strong><code>pDst</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD>The pointer to the normalized vector.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function normalizes <CODE><A href="VecFx32.html">VecFx32</A></CODE> type vectors. The result is stored in *<em><strong><code>pDst</code></strong></em>. It uses the Divider and Square Root Calculator. <em><strong><code>pSrc</code></strong></em> and <em><strong><code>pDst</code></strong></em> can be pointers to the same vector.</P>
+<P><FONT color="red">Note:</FONT> Correct calculation results cannot be obtaned using (pSrc.x&times;pSrc.x)+(pSrc.y&times;pSrc.y)+(pSrc.z&times;pSrc.z) &gt; 0x100000000000000.</P>
+
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>94/27/2006 Added a note<BR>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

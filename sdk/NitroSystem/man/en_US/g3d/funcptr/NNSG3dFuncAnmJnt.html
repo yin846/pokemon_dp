@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNSG3dFuncAnmJnt</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG3dFuncAnmJnt</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/anm.h&gt;
+
+typedef void (*NNSG3dFuncAnmJnt)( <BR>NNSG3dVisAnmResult*     pAnmResult,
+const   NNSG3dAnmObj*           pAnmObj,
+u32                             dataIdx);</PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="166"><I><B>pAnmResult</B></I></TD>
+<TD width="771">The pointer to the joint animation results.</TD>
+    </TR>
+    <TR>
+<TD width="166"><B><I>pAnmObj</I></B></TD>
+<TD width="771">The pointer to the animation object.</TD>
+    </TR>
+    <TR>
+<TD width="166"><B><I>dataIdx</I></B></TD>
+<TD width="771">The index in the resource.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Performs material joint calculations. Make sure that <em><strong><code>dataIdx</code></strong></em> is not the node ID, but the index in the animation resource.</P>
+<H2>See Also</H2>
+<P><code><a href="NNSG3dFuncAnmMat.html">NNSG3dFuncAnmMat</a></code>, <code><a href="NNSG3dFuncAnmVis.html">NNSG3dFuncAnmVis</a></code>, <code><a href="../struct/NNSG3dVisAnmResult.html">NNSG3dVisAnmResult</a></code></P>
+<H2>Revision History</H2>
+<P>10/19/2004 Initial version.</P>
+</BODY>
+
+</HTML>

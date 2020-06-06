@@ -1,0 +1,991 @@
+<HTML>
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>[DWC] DS Wi-Fi Connection Library Function List</TITLE>
+    <LINK rel="stylesheet" href="../css/apilist.css">
+    <BASE target="main">
+  </HEAD>
+  <BODY>
+<H1>[DWC] DS Wi-Fi Connection Library Function List</H1>
+<h2><a name="h2_account">Account Processes</a></h2>
+<h3><a name="h3_init">Initialization</a></h3>
+    <table border="1">
+      <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_Init.html" target="_self">DWC_Init</a></td>
+<td widht="70%">Initializes the DWC library.</td>
+      </tr>
+	  <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_SetMemFunc.html" target="_self">DWC_SetMemFunc</A></TD>
+<TD width="70%">This function allocates/deallocates memory for communication.</TD>
+	  </TR>
+      <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_SetReportLevel.html" target="_self">DWC_SetReportLevel</a></td>
+<td width="70%">Specifies the debug display level. (for debugging)</td>
+      </tr>
+	  <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_Debug_DWCInitError.html" target="_self">DWC_Debug_DWCInitError</a></td>
+<td widht="70%">This function is for <CODE>DWC_Init</CODE> function error checking. (for debugging)</td>
+	  </tr>
+    </table>	
+<h3><a name="h3_userdata">User Data</a></h3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_CreateUserData.html" target="_self">DWC_CreateUserData</A></TD>
+<TD width="70%">Creates user data.</TD>
+        </TR>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_ReportUserData.html" target="_self">DWC_ReportUserData</a></td>
+<td width="70%">Displays the user data. (for debugging)</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CheckUserData.html" target="_self">DWC_CheckUserData</a></td>
+<td width="70%">Checks the validity of the user data.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CheckValidConsole.html" target="_self">DWC_CheckValidConsole</a></td>
+<td width="70%">Checks if the DS system is handled with the user data as a set.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CheckHasProfile.html" target="_self">DWC_CheckHasProfile</a></td>
+<td width="70%">Checks if the user data already has a valid profile (login ID).</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CheckDirtyFlag.html" target="_self">DWC_CheckDirtyFlag</a></td>
+<td width="70%">Checks to see if the dirty flag indicates that the user data has been updated.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_ClearDirtyFlag.html" target="_self">DWC_ClearDirtyFlag</a></td>
+<td width="70%">Clears the dirty flag that indicates the user data has been updated.</td>
+        </tr>
+      </TBODY>
+    </TABLE>
+<h3><a name="h3_frienddata">Friend Data</a></h3>
+    <TABLE border="1">
+      <TBODY>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CreateFriendKey.html" target="_self">DWC_CreateFriendKey</a></td>
+<td>Generates a friend registration key from the user data that will be exchanged with friends.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CreateExchangeToken.html" target="_self">DWC_CreateExchangeToken</a></td>
+<td>Uses the user data to creates friend data to be exchanged through DS wireless communication.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CreateFriendKeyToken.html" target="_self">DWC_CreateFriendKeyToken</a></td>
+<td>Uses the friend registration key to create the friend data to be stored in the friend roster. </td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetFriendKey.html" target="_self">DWC_GetFriendKey</a></td>
+<td>Uses the friend data to obtain the friend registration key.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CheckFriendKey.html" target="_self">DWC_CheckFriendKey</a></td>
+<td>Checks the validity of the friend registration key.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_IsEqualFriendData.html" target="_self">DWC_IsEqualFriendData</a></td>
+<td>Checks if two sets of friend data are identical.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_IsValidFriendData.html" target="_self">DWC_IsValidFriendData</a></td>
+<td>Checks if valid data has been set in the friend data.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_IsBuddyFriendData.html" target="_self">DWC_IsBuddyFriendData</a></td>
+<td>Checks if the friend data already exists in the GameSpy server as a friend relationship.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetFriendDataType.html" target="_self">DWC_GetFriendDataType</a></td>
+<td>Obtains the data type in which the friend data was saved.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetGsProfileId.html">DWC_GetGsProfileId</a></td>
+<td>Gets the profile ID from the friend information.<!-- (?????) --></td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_ClearBuddyFlagFriendData.html">DWC_ClearBuddyFlagFriendData</a></td>
+<td>Clears the friend established flag for the friend data.</td>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_ReportFriendData.html" target="_self">DWC_ReportFriendData</a></td>
+<td>Displays friend data. (for debugging)</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetGsProfileId.html">DWC_SetGsProfileId</a></td>
+<td>Stores the GS profile ID in the friend data. (for debugging)</td>
+        </tr>
+      </TBODY>
+    </TABLE>
+    <p></p>
+
+<h2><a name="h2_inet">Internet Connection Processes</a></h2>
+<h3><a name="h3_inet">Internet Connections</a></h3>
+    <table border="1">
+      <tbody>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_InitInet.html" target="_self">DWC_InitInet</a></td>
+<td width="70%">Initializes the automatic connection control object.</td>
+        </tr>
+		<tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_InitInet.html" target="_self">DWC_InitInetEx</a></td>
+<td width="70%">Initializes the automatic connection control object.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_SetAuthServer.html" target="_self">DWC_SetAuthServer</a></td>
+<td width="70%">Sets the authentication server.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_SetConnectApType.html" target="_self">DWC_SetConnectApType</a></td>
+<td width="70%">This function sets the type of AP for connections in the auto-connect process. (for debugging)</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_ConnectInetAsync.html" target="_self">DWC_ConnectInetAsync</a></td>
+<td width="70%">Initializes the automatic connection process.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_DebugConnectInetAsync.html" target="_self">DWC_DebugConnectInetAsync</a></td>
+<td width="70%">Initializes the automatic connection process. Connects using the AP specified in the argument. (for debugging)</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_CheckInet.html" target="_self">DWC_CheckInet</a></td>
+<td width="70%">Checks the connection status.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_UpdateConnection.html" target="_self">DWC_UpdateConnection</a></td>
+<td width="70%">Checks the connection to an access point.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_ProcessInet.html" target="_self">DWC_ProcessInet</a></td>
+<td width="70%">Updates the status.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_GetInetStatus.html" target="_self">DWC_GetInetStatus</a></td>
+<td width="70%">Checks the connection status.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_CleanupInet.html" target="_self">DWC_CleanupInet</a></td>
+<td width="70%">This function ends automatic connection control (synchronous version).</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_CleanupInetAsync.html" target="_self">DWC_CleanupInetAsync</a></td>
+<td width="70%">This function ends automatic connection control (asynchronous version).</td>
+        </tr>
+		<tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_GetLinkLevel.html" target="_self">DWC_GetLinkLevel</a></td>
+<td width="70%">This function gets the wireless signal strength between the local DS and the access point.</td>
+        </tr>
+		<tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_GetApInfo.html" target="_self">DWC_GetApInfo</a></td>
+<td width="70%">This function gets information specific to the connected access point.</td>
+        </tr>
+      </tbody>
+    </table>
+<h3><a name="h3_util">Nintendo Wi-Fi Connection Setup</a></h3>
+    <table border="1">
+      <tbody>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_StartUtility.html" target="_self">DWC_StartUtility</a></td>
+<td width="70%">Starts the Nintendo Wi-Fi Connection setup.</td>
+        </tr>
+        <tr>
+<td width="30%"><font color="#ffcc99">&#x25CB;</font><a href="base/DWC_StartUtilityEx.html" target="_self">DWC_StartUtilityEx</a></td>
+<td width="70%">Starts the Nintendo Wi-Fi Connection setup.</td>
+        </tr>
+      </tbody>
+    </table>
+<H3><a name="h3_inetstructure">Structures and Constants</a></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWCApInfo.html" target="_self">DWCApInfo</A></TD>
+<TD>This structure stores information specific to the connected access point.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+    <p></p>
+
+	<h2><a name="h2_naslogin">Nintendo Wi-Fi Connection Connect Process</a></h2>
+	<h3><a name="h3_naslogingeneral">General</a></h3>
+    <TABLE border="1">
+      <TBODY>
+		<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font> <A href="base/DWC_NASLoginAsync.html" target="_self">DWC_NASLoginAsync</A></TD>
+<TD width="70%">Performs authentication with the Nintendo Authentication Server and connects to Wi-Fi connection.</TD>
+        </TR>
+		<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font> <A href="base/DWC_NASLoginProcess.html" target="_self">DWC_NASLoginProcess</A></TD>
+<TD width="70%">Proceeds with the authentication process and gets its state.</TD>
+        </TR>
+		<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font> <A href="base/DWC_NASLoginAbort.html" target="_self">DWC_NASLoginAbort</A></TD>
+<TD width="70%">Aborts the authentication process.</TD>
+        </TR>
+	  </TBODY>
+	</TABLE>
+<H3><a name="h3_nasloginstruct">Structures and Constants</a></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWCNasLoginState.html" target="_self">DWCNasLoginState</A></TD>
+<TD>This enumerated type indicates the state of the authentication process.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+<h2><a name="h2_matching">Friend Management and Matchmaking Processes</a></h2>
+<h3><A name="h3_initfm">General</A></h3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_InitFriendsMatch.html" target="_self">DWC_InitFriendsMatch</A></TD>
+<TD>Initializes the DWC FriendsMatch library.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_ShutdownFriendsMatch.html" target="_self">DWC_ShutdownFriendsMatch</A></TD>
+<TD>Terminates the DWC FriendsMatch library and frees the heap region allocated inside the library.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_ProcessFriendsMatch.html" target="_self">DWC_ProcessFriendsMatch</A></TD>
+<TD width="70%">Updates the communications process.</TD>
+        </TR>
+        <tr>
+<td width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_LoginAsync.html" target="_self">DWC_LoginAsync</a></td>
+<td width="70%">Connects to Nintendo Wi-Fi Connection.</td>
+        </tr>
+		<TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetState.html" target="_self">DWC_GetState</A></TD>
+<TD width="70%">Gets the internal status of the DWC FriendsMatch library. (for debugging)</TD>
+        </TR>
+		<TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetIngamesnCheckResult.html" target="_self">DWC_GetIngamesnCheckResult</A></TD>
+<TD width="70%">Gets the check result for the in-game screen name from the authentication server.</TD>
+        </TR>
+		<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_GetDateTime.html" target="_self">DWC_GetDateTime</A></TD>
+<TD width="70%">Gets the current and date in GMT.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+<H3><A name="h3_friendlist">Friend Roster</A></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_UpdateServersAsync.html" target="_self">DWC_UpdateServersAsync</A></TD>
+<TD width="70%">Synchronizes the local friend roster with the friend roster on the GameSpy server.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_DeleteBuddyFriendData.html" target="_self">DWC_DeleteBuddyFriendData</A></TD>
+<TD width="70%">Deletes a friend from the friend roster and also deletes the friend relationship from the GameSpy server.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetNumFriend.html" target="_self">DWC_GetNumFriend</A></TD>
+<TD>Obtains the number of registered friends in the friend roster.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_CanChangeFriendList.html" target="_self">DWC_CanChangeFriendList</A></TD>
+<TD>Checks whether or not the friend roster can be changed.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetFriendStatusCallback.html" target="_self">DWC_SetFriendStatusCallback</a></TD>
+<TD>This function configures the callback called when a friend's networking state changes.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetBuddyFriendCallback.html" target="_self">DWC_SetBuddyFriendCallback</a></TD>
+<TD>Sets the callback to be called when a friend relationship has been established.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetFriendStatus.html" target="_self">DWC_GetFriendStatus</A></TD>
+<TD>Obtains a friend's status. (character string version)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetFriendStatusSC.html" target="_self">DWC_GetFriendStatusSC</a></TD>
+<TD>Obtains a friend's status. (This version gets a character string and the number of connections during server-client matchmaking.)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetFriendStatusData.html" target="_self">DWC_GetFriendStatusData</a></TD>
+<TD>Obtains a friend's status. (binary version)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetFriendStatusDataSC.html" target="_self">DWC_GetFriendStatusDataSC</a></TD>
+<TD>Obtains a friend's status. (This version gets a binary and the number of connections during server-client matchmaking.)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetOwnStatusString.html" target="_self">DWC_SetOwnStatusString</a></TD>
+<TD>Registers own status with the GameSpy server. (character string version)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetOwnStatusString.html" target="_self">DWC_GetOwnStatusString</a></TD>
+<TD>Obtains own status. (character string version)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetOwnStatusData.html" target="_self">DWC_SetOwnStatusData</a></TD>
+<TD>Registers own status with the GameSpy server. (binary version)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetOwnStatusData.html" target="_self">DWC_GetOwnStatusData</a></TD>
+<TD>Obtains own status. (binary version)</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+
+<H3><A name="h3_matching">Matchmaking</A></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_ConnectToAnybodyAsync.html" target="_self">DWC_ConnectToAnybodyAsync</A></TD>
+<TD>This function starts pair matchmaking without specifying a friend.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_ConnectToFriendsAsync.html" target="_self">DWC_ConnectToFriendsAsync</A></TD>
+<TD>This function starts pair matchmaking by specifying a friend.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetupGameServer.html" target="_self">DWC_SetupGameServer</A></TD>
+<TD width="70%">This function starts the server DS for server-client matchmaking.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetupGameServerAsync.html" target="_self">DWC_SetupGameServerAsync</A></TD>
+<TD width="70%">This function starts the server DS for server-client matchmaking.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_ConnectToGameServerAsync.html" target="_self">DWC_ConnectToGameServerAsync</A></TD>
+<TD>This function starts client DS connections made during server-client matchmaking.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetNumConnectionHost.html" target="_self">DWC_GetNumConnectionHost</A></TD>
+<TD width="70%"> Gets the number of connection hosts.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetMyAID.html" target="_self">DWC_GetMyAID</A></TD>
+<TD> Gets the DS's own AID.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetAIDList.html">DWC_GetAIDList</a></TD>
+<TD>This function gets the AID list from a connected host.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetAIDBitmap.html" target="_self">DWC_GetAIDBitmap</a></TD>
+<TD>This function gets the AID bitmap from a connected host.</TD>
+        </TR>
+		<TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_IsValidAID.html" target="_self">DWC_IsValidAID</a></TD>
+<TD>This function checks whether the specified AID is currently connected.</TD>
+        </TR>
+          <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CloseAllConnectionsHard.html" target="_self">DWC_CloseAllConnectionsHard</a></TD>
+<TD>This function disconnects connections.</TD>
+          </TR>
+          <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CloseConnectionHard.html" target="_self">DWC_CloseConnectionHard</a></TD>
+<TD>This function terminates the connection with the host having the specified AID.</TD>
+          </TR>
+          <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CloseConnectionHardBitmap.html" target="_self">DWC_CloseConnectionHardBitmap</a></TD>
+<TD>This function terminates the connection with the host having the specified AID bitmap.</TD>
+          </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_CloseConnectionsAsync.html" target="_self">DWC_CloseConnectionsAsync</A></TD>
+<TD>This function disconnects connections.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetConnectionClosedCallback.html" target="_self">DWC_SetConnectionClosedCallback</a></TD>
+<TD>Sets the callback function to be called each time a connection is disconnected.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_RegisterMatchingStatus.html" target="_self">DWC_RegisterMatchingStatus</A></TD>
+<TD width="70%">This function registers self-host information used for matchmaking, in advance.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_CancelMatching.html" target="_self">DWC_CancelMatching</A></TD>
+<TD width="70%">This function cancels the matchmaking process.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_CancelMatchingAsync.html" target="_self">DWC_CancelMatchingAsync</A></TD>
+<TD width="70%">This function cancels the matchmaking process.</TD>
+        </TR>
+		<TR>
+		  <TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_IsValidCancelMatching.html" target="_self">DWC_IsValidCancelMatching</A></TD>
+		  <TD width="70%">This function checks whether the matchmaking process can be cancelled.</TD>
+		</TR>
+		<TR>
+		  <TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_StopSCMatchingAsync.html" target="_self">DWC_StopSCMatchingAsync</A></TD>
+		  <TD width="70%">This function cancels server-client matchmaking currently in process.</TD>
+		</TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_AddMatchKey.html" target="_self">DWC_AddMatchKey*</A></TD>
+<TD>Function for adding a matchmaking index key</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetMatch_Value.html" target="_self">DWC_GetMatch*Value</A></TD>
+<TD>Function for getting the matchmaking index key</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetLastMatchingType.html" target="_self">DWC_GetLastMatchingType</A></TD>
+<TD>This function gets the last type of matchmaking performed.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetMatchingState.html" target="_self">DWC_GetMatchingState</A></TD>
+<TD>This function gets the internal state during matchmaking. (for debugging)</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+	<H3><A name="h3_matching_option">Matchmaking Options</A></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetMatchingOption.html" target="_self">DWC_SetMatchingOption</A></TD>
+<TD>Sets matchmaking options.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetMatchingOption.html" target="_self">DWC_GetMatchingOption</A></TD>
+<TD>Gets matchmaking option settings.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetMOMinCompState.html" target="_self">DWC_GetMOMinCompState</A></TD>
+<TD>This function gets the status of the option to complete matchmaking with fewer than the specified number of players. </TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetMOSCConnectBlockState.html" target="_self">DWC_GetMOSCConnectBlockState</A></TD>
+<TD>Gets the status of the matchmaking block option.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_ClearMOSCConnectBlock.html" target="_self">DWC_ClearMOSCConnectBlock</A></TD>
+<TD>Releases the block status caused by the matchmaking block option.</TD>
+        </TR>
+	  </TBODY>
+    </TABLE>
+
+<H3><A name="h3_error">Errors</A></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_GetLastError.html" target="_self">DWC_GetLastError</A></TD>
+<TD width="70%">Gets the type of the last communication error.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_GetLastError.html" target="_self">DWC_GetLastErrorEx</A></TD>
+<TD width="70%">Gets the type of the last communication error. The extended version that can obtain the recovery type for the library.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_ClearError.html" target="_self">DWC_ClearError</A></TD>
+<TD>Clears the record of communication errors.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+<H3><A name="h3_server">Data Storage Server-Related</A></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_LoginToStorageServerAsync.html" target="_self">DWC_LoginToStorageServerAsync</a></TD>
+<TD>This function logs in to the data storage server.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_LogoutFromStorageServer.html" target="_self">DWC_LogoutFromStorageServer</a></TD>
+<TD>This function logs out from the data storage server.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SavePublicDataAsync.html" target="_self">DWC_SavePublicDataAsync</A></TD>
+<TD>Saves Public data to the data storage server.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SavePrivateDataAsync.html" target="_self">DWC_SavePrivateDataAsync</A></TD>
+<TD>Saves Private data to the data storage server.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_LoadOwnDataAsync.html" target="_self">DWC_LoadOwnDataAsync</A></TD>
+<TD>Loads one's own data from the data storage server.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_LoadOwnPublicDataAsync.html" target="_self">DWC_LoadOwnPublicDataAsync</A></TD>
+<TD>Loads one's own Public data from the data storage server.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_LoadOwnPrivateDataAsync.html" target="_self">DWC_LoadOwnPrivateDataAsync</A></TD>
+<TD>Loads one's own Private data from the data storage server.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_LoadOthersDataAsync.html" target="_self">DWC_LoadOthersDataAsync</A></TD>
+<TD> Loads another player's data from data storage server.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetStorageServerCallback.html" target="_self">DWC_SetStorageServerCallback</A></TD>
+<TD> Registers the callbacks to call when the data has been saved to/loaded from the data storage server.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+<H3><A name="h3_transport">Sending &amp; Receiving</A></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetRecvBuffer.html" taget="_self">DWC_SetRecvBuffer</a></TD>
+<TD>This function configures the Receive buffer.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SendReliable.html" target="_self">DWC_SendReliable</A></TD>
+<TD width="70%"> This function performs reliable transmissions using UDP to the specified AIDs after connection is established.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SendReliableBitmap.html" target="_self">DWC_SendReliableBitmap</A></TD>
+<TD width="70%"> This function performs reliable transmissions to a specified bitmap using UDP after a connection is established.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SendUnreliable.html" target="_self">DWC_SendUnreliable</A></TD>
+<TD> This function performs unreliable transmissions to the specified AIDs using UDP after connection is established.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SendUnreliableBitmap.html" target="_self">DWC_SendUnreliableBitmap</A></TD>
+<TD> This function performs unreliable transmissions to a specified bitmap using UDP after a connection is established.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetUserSendCallback.html" target="_self">DWC_SetUserSendCallback</A></TD>
+<TD> Configures the Send callback.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetUserRecvCallback.html" target="_self">DWC_SetUserRecvCallback</A></TD>
+<TD> Configures the Receive callback.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetSendDrop.html" target="_self">DWC_SetSendDrop</A></TD>
+<TD> Sets the packet loss rate when sending. (for debugging)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetRecvDrop.html" target="_self">DWC_SetRecvDrop</A></TD>
+<TD> Sets the packet loss rate when receiving. (for debugging)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetSendDelay.html" target="_self">DWC_SetSendDelay</A></TD>
+<TD>  Sets the time delay (in ms) when sending. (for debugging)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetRecvDelay.html" target="_self">DWC_SetRecvDelay</A></TD>
+<TD>  Sets the time delay (in ms) when receiving. (for debugging)</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><A href="base/DWC_Ping.html" target="_self">DWC_Ping</A></TD>
+<TD>This function measures the communication latency of the specified AID during connection.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetUserPingCallback.html" target="_self">DWC_SetUserPingCallback</a></TD>
+<TD>This function sets the callback function for getting the result of the latency measurement.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_IsSendableReliable.html" target="_self">DWC_IsSendableReliable</a></TD>
+<TD>This function checks whether or not reliable transmission to the specified AID is possible.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetSendSplitMax.html" target="_self">DWC_SetSendSplitMax</a></TD>
+<TD>This function sets the split send size to use with reliable transmissions.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetUserRecvTimeoutCallback.html" target="_self">DWC_SetUserRecvTimeoutCallback</a></TD>
+<TD>This function sets the callback function for notifying receive timeouts when data has not been received for a set period of time.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_SetRecvTimeoutTime.html" target="_self">DWC_SetRecvTimeoutTime</a></TD>
+<TD>This function sets the timeout for the receive timeout.</TD>
+        </TR>
+		<TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetUdpPacketDropNum.html" target="_self">DWC_GetUdpPacketDropNum</a></TD>
+<TD>Gets the number of UDP packets that could not be received due to overflow of the receive buffer. </TD>
+        </TR>
+
+      </TBODY>
+    </TABLE>
+<h3><a name="h3_callback">Callback Functions</a></h3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWCBuddyFriendCallback.html" target="_self">DWCBuddyFriendCallback</a></TD>
+<TD>This callback function is called when a friend relationship has been established.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCConnectionClosedCallback.html" target="_self">DWCConnectionClosedCallback</a></TD>
+<TD>This callback function is called each time a connection is disconnected.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCDeleteFriendListCallback.html" target="_self">DWCDeleteFriendListCallback</a></TD>
+<TD>This callback function is called when friend data has been automatically deleted from the friend roster after DWC_UpdateServersAsync has been called.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCEvalPlayerCallback.html" target="_self">DWCEvalPlayerCallback</a></TD>
+<TD>This callback function is called to select a connection partner during matchmaking.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCFriendStatusCallback.html" target="_self">DWCFriendStatusCallback</a></TD>
+<TD>This callback function is called each time friend status is updated.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCLoadFromServerCallback.html" target="_self">DWCLoadFromServerCallback</a></TD>
+<TD>This callback function is called when reading from the data storage server completes.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCLoginCallback.html" target="_self">DWCLoginCallback</a></TD>
+<TD>This callback function is called when login is completed.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCMatchedCallback.html" target="_self">DWCMatchedCallback</a></TD>
+<TD>This callback function is called when matchmaking is complete.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCMatchedSCCallback.html" target="_self">DWCMatchedSCCallback</a></TD>
+<TD>This callback function is called when server-client matchmaking is complete.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCNewClientCallback.html" target="_self">DWCNewClientCallback</a></TD>
+<TD>This callback function is called when a client DS starts a connection under server-client matchmaking.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCSaveToServerCallback.html" target="_self">DWCSaveToServerCallback</a></TD>
+<TD>This callback function is called when writing to the data storage server is complete.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCStorageLoginCallback.html" target="_self">DWCStorageLoginCallback</a></TD>
+<TD>This callback function is called when there is a login to the data storage server.</TD>
+        </TR>
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCStopSCCallback.html" target="_self">DWCStopSCCallback</a></TD>
+<TD>This callback function is called when the client-server matchmaking in process is canceled.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCUpdateServersCallback.html" target="_self">DWCUpdateServersCallback</a></TD>
+<TD>This callback function is called when updating of the friend roster is complete.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCUserPingCallback.html" target="_self">DWCUserPingCallback</a></TD>
+<TD>This callback function is called when notifying the time required to measure the communication latency of the partner.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCUserRecvCallback.html" target="_self">DWCUserRecvCallback</a></TD>
+<TD>This callback function is called when data has been received.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCUserRecvTimeoutCallback.html" target="_self">DWCUserRecvTimeoutCallback</a></TD>
+<TD>This callback function is called when data has not been received within a set period of time.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCUserSendCallback.html" target="_self">DWCUserSendCallback</a></TD>
+<TD>This callback function is called when sending of data is completed.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+<H3><a name="h3_structure">Structures and Constants</a></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWCUserData.html" target="_self">DWCUserData</A></TD>
+<TD>The structure for storing one's own data.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWCFriendData.html" target="_self">DWCFriendData</A></TD>
+<TD>This union stores friend data. </TD>
+        </TR>
+		<TR>
+		  <TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWCMatchOptMinComplete.html" target="_self">DWCMatchOptMinComplete</A></TD>
+		  <TD>This structure is used to set the option to complete matchmaking with less than the specified number of players.</TD>
+		</TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_Constant_Number.html" target="_self">DWC Library Constants</A></TD>
+<TD width="70%">An explanation of the constants in the DWC library.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+	<h2><a name="h2_http">HTTP Communications</a></h2>
+<h3><a name="h3_httpgeneral">General</a></h3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_InitGHTTP.html" target="_self">DWC_InitGHTTP</a></TD>
+<TD>This function initializes the GHTTP library.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_ProcessGHTTP.html" target="_self">DWC_ProcessGHTTP</a></TD>
+<TD>This function updates HTTP communication processing.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_ShutdownGHTTP.html" target="_self">DWC_ShutdownGHTTP</a></TD>
+<TD>This function shuts down the GHTTP library.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GHTTPNewPost.html" target="_self">DWC_GHTTPNewPost</a></TD>
+<TD>This function creates an object to be uploaded. </TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GHTTPPostAddString.html" target="_self">DWC_GHTTPPostAddString</a></TD>
+<TD>This function adds data to an object to be uploaded. </TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetGHTTPData.html" target="_self">DWC_GetGHTTPData</a></TD>
+<TD>This function downloads data.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetGHTTPDataEx.html" target="_self">DWC_GetGHTTPDataEx</a></TD>
+<TD>This function downloads data. </TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GetGHTTPState.html" target="_self">DWC_GetGHTTPState</a></TD>
+<TD>This function checks the HTTP connection status.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_CancelGHTTPRequest.html" target="_self">DWC_CancelGHTTPRequest</a></TD>
+<TD>This function cancels HTTP communication.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_PostGHTTPData.html" target="_self">DWC_PostGHTTPData</a></TD>
+<TD>This function uploads data. </TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+<H3><a name="h3_httpcallback">Callback Functions</a></H3>
+    <TABLE border="1">
+	<TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCGHTTPProgressCallback.html" target="_self">DWCGHTTPProgressCallback</a></TD>
+<TD>This callback function is called during HTTP processing.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWCGHTTPCompletedCallback.html" target="_self">DWCGHTTPCompletedCallback</a></TD>
+<TD>This callback function is called when HTTP processing is completed.</TD>
+        </TR>
+    </TABLE>
+<H3><a name="h3_httpstruct">Structures and Constants</a></H3>
+    <TABLE border="1">
+	    <TR>
+	      <TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_GHTTP_Constant_Number.html" target="_self">HTTP Communication Constants</a></TD>
+	      <TD>This is a description of the constants used under DWC_GHTTP.</TD>
+	    </TR>
+    </TABLE>
+
+	<h2><a name="h2_ranking">General-Purpose Ranking</a></h2>
+<H3><A name="h3_rankinggeneral">General</A></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkInitialize.html" target="_self">DWC_RnkInitialize</a></TD>
+<TD>Initializes the Ranking library.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkShutdown.html" target="_self">DWC_RnkShutdown</a></TD>
+<TD>Performs the Ranking library end process.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkPutScoreAsync.html" target="_self">DWC_RnkPutScoreAsync</a></TD>
+<TD>Starts the asynchronous process for recording the score.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkGetScoreAsync.html" target="_self">DWC_RnkGetScoreAsync</a></TD>
+<TD>Starts the asynchronous process for getting the ranking data.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkCancelProcess.html" target="_self">DWC_RnkCancelProcess</a></TD>
+<TD>Cancels asynchronous processing.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkProcess.html" target="_self">DWC_RnkProcess</a></TD>
+<TD>Updates the asynchronous process.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkGetState.html" target="_self">DWC_RnkGetState</a></TD>
+<TD>Gets the current processing state.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkResGetRowCount.html" target="_self">DWC_RnkResGetRowCount</a></TD>
+<TD>Gets the number of rows in the ranking list from the communications result.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkResGetRow.html" target="_self">DWC_RnkResGetRow</a></TD>
+<TD>Gets the specified index row in the ranking list from the communications result.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkResGetOrder.html" target="_self">DWC_RnkResGetOrder</a></TD>
+<TD>Gets the rank order from the communications result.</TD>
+        </TR>
+        <TR>
+<TD><font color="#ff6600">&#x25CF;</font><a href="base/DWC_RnkResGetTotal.html" target="_self">DWC_RnkResGetTotal</a></TD>
+<TD>Gets the communications result rank-order parameter total.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+<H3><a name="h3_rankingstruct">Structures and Constants</a></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_Rnk_Constant_Number.html" target="_self">General-purpose ranking constant</A></TD>
+<TD>Description of constants used with general-purpose ranking.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/DWCRnkError.html">DWCRnkError</A></TD>
+<TD>The enumeration type expressing the error codes for the general-purpose ranking process.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWCRnkState.html" target="_self">DWCRnkState</A></TD>
+<TD>The enumeration type expressing the state of the general-purpose ranking process.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWCRnkRegion.html" target="_self">DWCRnkRegion</A></TD>
+<TD>The enumeration type expressing the region code.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWCRnkGetMode.html" target="_self">DWCRnkGetMode</A></TD>
+<TD>The enumeration type expressing the modes specified by the DWC_RnkGetScoreAsync function.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWCRnkData.html" target="_self">DWCRnkData</A></TD>
+<TD>The structure that stores ranking information.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWCRnkGetParam.html" target="_self">DWCRnkGetParam</A></TD>
+<TD>The structure that gets specified as the parameter of the DWC_RnkGetScoreAsync function.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+    </TABLE>
+
+	<!-- 	<h2><a name="h2_svl">ƒT[ƒrƒXƒƒP[ƒ^ˆ—</a></h2> 	<h3><a name="h3_svlgeneral">‘S”Ê</a></h3>     <TABLE border="1">       <TBODY> 		<TR>           <TD width="30%"><font color="#ff6600">œ</font> <A href="base/DWC_SVLGetTokenAsync.html" target="_self">DWC_SVLGetTokenAsync</A></TD>           <TD width="70%">ƒT[ƒrƒXƒƒP[ƒ^î•ñ‚ðŽæ“¾‚·‚éˆ—‚ðŠJŽn‚µ‚Ü‚·B</TD>         </TR> 		<TR>           <TD width="30%"><font color="#ff6600">œ</font> <A href="base/DWC_SVLProcess.html" target="_self">DWC_SVLProcess</A></TD>           <TD width="70%">ƒT[ƒrƒXƒƒP[ƒ^ˆ—‚ðis‚³‚¹‚Ü‚·B</TD>         </TR> 		<TR>           <TD width="30%"><font color="#ff6600">œ</font> <A href="base/DWC_SVLAbort.html" target="_self">DWC_SVLAbort</A></TD>           <TD width="70%">ƒT[ƒrƒXƒƒP[ƒ^ˆ—‚ð’†’f‚µ‚Ü‚·B</TD>         </TR> 	  </TBODY> 	</TABLE>     <H3><a name="h3_svlstruct">\‘¢‘ÌE’è”</a></H3>     <TABLE border="1">       <TBODY>         <TR>           <TD width="30%"><font color="#ff6600">œ</font><A href="base/DWCSvlState.html" target="_self">DWCSvlState</A></TD>           <TD>ƒT[ƒrƒXƒƒP[ƒ^ˆ—‚Ìó‹µ‚ðŽ¦‚·—ñ‹“Œ^‚Å‚·B</TD>         </TR>         <TR>           <TD><A href="base/DWCSvlResult.html" target="_self">DWCSvlResult</A></TD>           <TD>ƒT[ƒrƒXƒƒP[ƒ^î•ñ‚ðŠi”[‚·‚é\‘¢‘Ì‚Å‚·B</TD>         </TR>       </TBODY>     -->
+
+	<h2><a name="h2_nd">Download</a></h2>
+	<h3><a name="h3_ndgeneral">General</a></h3>
+    <TABLE border="1">
+      <TBODY>
+	<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_NdInitAsync.html" target="_self">DWC_NdInitAsync</A></TD>
+<TD width="70%">Starts the process that initializes the Download library.</TD>
+        </TR>
+	<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_NdCleanupAsync.html" target="_self">DWC_NdCleanupAsync</A></TD>
+<TD width="70%">Starts the process that ends the Download library.</TD>
+        </TR>
+	<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_NdSetAttr.html" target="_self">DWC_NdSetAttr</A></TD>
+<TD width="70%">Configures the attribute information necessary for communications with the Download server.</TD>
+        </TR>
+	<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_NdGetFileListNumAsync.html" target="_self">DWC_NdGetFileListNumAsync</A></TD>
+<TD width="70%">Gets the number of downloadable files that comply with the currently configured attribute.</TD>
+        </TR>
+	<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_NdGetFileListAsync.html" target="_self">DWC_NdGetFileListAsync</A></TD>
+<TD width="70%">Gets the list of files that comply with the currently configured attribute.</TD>
+        </TR>
+	<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_NdGetFileAsync.html" target="_self">DWC_NdGetFileAsync</A></TD>
+<TD width="70%"> Specifies the file information obtained by the <A href="base/DWC_NdGetFileListAsync.html" target="_self">DWC_NdGetFileListAsync</A> function and starts downloading.</TD>
+        </TR>
+	<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_NdCancelAsync.html" target="_self">DWC_NdCancelAsync</A></TD>
+<TD width="70%">Cancels the currently executing asynchronous process.</TD>
+        </TR>
+	<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_NdGetProgress.html" target="_self">DWC_NdGetProgress</A></TD>
+<TD width="70%">Gets the state of progress of the download that is currently executing.</TD>
+        </TR>
+	  </TBODY>
+	</TABLE>
+<H3><a name="h3_ndcallback">Callback Functions</a></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWCNdCallback.html" target="_self">DWCNdCallback</A></TD>
+<TD>This callback function is called after the various asynchronous processes of the Download Library have completed. </TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWCNdCleanupCallback.html" target="_self">DWCNdCleanpupCallback</A></TD>
+<TD>This callback function is called after the asynchronous end process of the Download Library has completed. </TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+<H3><a name="h3_ndstruct">Structures and Constants</a></H3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWCNdError.html" target="_self">DWCNdError</A></TD>
+<TD>Enumeration type representing the type of error generated by the Download library.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWCNdCallbackReason.html" target="_self">DWCNdCallbackReason</A></TD>
+<TD>Enumeration type representing the reasons why the callback function is called by the Download library.</TD>
+        </TR>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWCNdFileInfo.html" target="_self">DWCNdFileInfo</A></TD>
+<TD>The structure that stores individual file information.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+    
+	<h2><a name="h2_utility">Utilities</a></h2>
+	<h3><a name="h3_memory">Memory Allocation</a></h3>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_Alloc.html" target="_self">DWC_Alloc</A></TD>
+<TD width="70%">This utility allocates memory using the function set by the application.</TD>
+        </TR>
+		<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_Alloc.html" target="_self">DWC_AllocEx</A></TD>
+<TD width="70%">This utility allocates memory using the function set by the application.</TD>
+        </TR>
+		<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_Realloc.html" target="_self">DWC_Realloc</A></TD>
+<TD width="70%">This utility reallocates memory using the function set by the application.</TD>
+        </TR>
+		<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_Realloc.html" target="_self">DWC_ReallocEx</A></TD>
+<TD width="70%">This utility reallocates memory using the function set by the application.</TD>
+        </TR>
+		<TR>
+<TD width="30%"><font color="#ffcc99">&#x25CB;</font><A href="base/DWC_Free.html" target="_self">DWC_Free</A></TD>
+<TD width="70%">This utility frees memory using the function set by the application.</TD>
+        </TR>
+	  </TBODY>
+	</TABLE>
+<h3><a name="h3_string">Character String Operations</a></h3>
+	<TABLE border="1">
+      <TBODY>
+	<TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_SetCommonKeyValueString.html" target="_self">DWC_SetCommonKeyValueString</A></TD>
+<TD width="70%">This function creates key/value character strings.</TD>
+	</TR>
+	<TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_AddCommonKeyValueString.html" target="_self">DWC_AddCommonKeyValueString</A></TD>
+<TD width="70%">This function adds key/value character strings.</TD>
+	</TR>
+	<TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_GetCommonValueString.html" target="_self">DWC_GetCommonValueString</A></TD>
+<TD width="70%">Uses the key/value string to get the value string corresponding to the key string.</TD>
+	</TR>
+	  </TBODY>
+	</TABLE>
+	<h3><a name="h3_base64">Base 64 Conversion</a></h3>
+	<TABLE border="1">
+      <TBODY>
+	<TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_Base64Encode.html" target="_self">DWC_Base64Encode</A></TD>
+<TD width="70%">Encodes the designated data to <CODE>char</CODE>-type character string with Base64.</TD>
+	</TR>
+	<TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><A href="base/DWC_Base64Decode.html" target="_self">DWC_Base64Decode</A></TD>
+<TD width="70%">Decodes the designated Base64 data.</TD>
+	</TR>
+	  </TBODY>
+	</TABLE>
+
+	<h2><a name="h2_term">Terms</a></h2>
+	<h3><a name="h3_friendsmatchlibrary">FriendsMatch Library</a></h3>
+    <TABLE border="1">
+      <TBODY>
+		<TR>
+<TD width="30%"><font color="#ff6600">&#x25CF;</font><a href="base/FriendsMatch.html">FriendsMatch Library</A></TD>
+<TD width="70%">The definitions of terms used in the FriendsMatch Library.</TD>
+		</TR>
+	  </TBODY>
+	</TABLE>
+
+			<HR>
+	<P>NTR-06-0404-001-C2<br>CONFIDENTIAL</P>
+</BODY>
+</HTML>

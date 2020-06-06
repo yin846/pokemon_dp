@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNSG3dAnmObj</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG3dAnmObj</H1>
+<H2>Description</H2>
+<P>The <code>NNSG3dAnmObj</code> structure collects the data needed to fetch animation data from the animation resource. The structure stores the following data:</P>
+<UL>
+<LI>The pointer to a single animation resource.
+<LI>The pointer to a function that computes animations
+<LI>The count of frames played.
+<LI>The animation blend ratio (used for motion blending).
+<LI>The table that shows the correspondence between: the model resource material IDs and joint IDs, and the animation resource index.
+</UL>
+<P>The <code>NNSG3dAnmObj</code> structure can be used for the playback of animation by registering it in the <a href="NNSG3dRenderObj.html"><code>NNSG3dRenderObj</code></a> structure with the <a href="../kernel/NNS_G3dRenderObjAddAnmObj.html"><code>NNS_G3dRenderObjAddAnmObj</code></a> function. The following processes are necessary to use <code>NNSG3dAnmObj</code> for animation playback:</P>
+<OL>
+<LI>Secure a region for the structure using the <a href="../mem/NNS_G3dAllocAnmObj.html" target="_self"><code>NNS_G3dAllocAnmObj</code></a> function. Note that the size of the structure will differ, depending on the number of material IDs and joint IDs for the model.
+<LI>Initialize the <code>NNSG3dAnmObj</code> structure using the <a href="../kernel/NNS_G3dAnmObjInit.html"><code>NNS_G3dAnmObjInit</code></a> function.
+<LI>Register animation object in <a href="NNSG3dRenderObj.html"><code>NNSG3dRenderObj</code></a> using the <a href="../kernel/NNS_G3dRenderObjAddAnmObj.html"><code>NNS_G3dRenderObjAddAnmObj</code></a> function.
+<LI>Use the <a href="../kernel/NNS_G3dAnmObjSetBlendRatio.html" target="_self"><code>NNS_G3dAnmObjSetBlendRatio</code></a> function to set the blend ratio for the number of frames that will be played by the <a href="../kernel/NNS_G3dAnmObjSetFrame.html" target="_self"><code>NNS_G3dAnmObjSetFrame</code></a> function. (This is usually only done when multiple joint animations have been registered).
+<LI>Draw the animation-attached model using the <a href="../sbc/NNS_G3dDraw.html"><code>NNS_G3dDraw</code></a> function.
+<LI>To stop animation playback, use the <a href="../kernel/NNS_G3dRenderObjRemoveAnmObj.html" target="_self"><code>NNS_G3dRenderObjRemoveAnmObj</code></a> function to remove the animation object from <a href="NNSG3dRenderObj.html"><code>NNSG3dRenderObj</code></a>.
+<LI>If <code>NNSG3dAnmObj</code> is no longer being used, release the structure's region using the <a href="../mem/NNS_G3dFreeAnmObj.html" target="_self"><code>NNS_G3dFreeAnmObj</code></a> function.
+</OL>
+<P><code>NNSG3dAnmObj</code> cannot be used for animation playback if drawing is performed with the <a href="../sbc/NNS_G3dDraw1Mat1Shp.html"><code>NNS_G3dDraw1Mat1Shp</code></a> function.</P>
+<H2>See Also</H2>
+<P><A href="../list_g3d.html#Kernel">Kernel</A></P>
+<H2>Revision History</H2>
+<P>10/12/2004 Initial version.</P>
+</BODY>
+
+</HTML>

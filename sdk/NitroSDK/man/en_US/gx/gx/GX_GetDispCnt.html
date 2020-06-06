@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_GetDispCnt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_GetDispCnt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx.h&gt;</CODE><BR> <BR> <CODE>GXDispCnt GX_GetDispCnt( void );</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The value of <code>GXDispCnt</code> type that indicates the display control register value of the main graphic engine.</p>
+<H2>Description</H2>
+<P>Obtains the value of the display control register of the main graphics engine. <code>GXDispCnt</code> type contains the following information.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><B><I><CODE>bgMode</CODE></I></B></TD>
+<TD width="70%">BG mode information. See the <code>GXBGMode</code> type of <code><A href="GX_SetGraphicsMode.html">GX_SetGraphicsMode</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><B><I><CODE>bg0_2d3d</CODE></I></B></TD>
+<TD width="70%">Information that shows whether to allocate BG0 to 3D. See the <code>GX_BG0_AS_*</code> type of <code><A href="GX_SetGraphicsMode.html">GX_SetGraphicsMode</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><I><B><CODE>objMapChar</CODE></B></I></TD>
+<TD width="70%">Character OBJ 1D/2D mapping selection flag.<BR>See <code><A href="GX_SetOBJVRamModeChar.html">GX_SetOBJVRamModeChar</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><B><I><CODE>objMapBmp</CODE></I></B></TD>
+<TD width="70%">Bitmap OBJ mapping selection flag.<BR>See <code><A href="GX_SetOBJVRamModeBmp.html">GX_SetOBJVRamModeBmp</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><I><B><CODE>blankScr</CODE></B></I></TD>
+<TD width="70%">2D display forced blank setting. This parameter stops only the 2D display, and normally this is not used. For ON/OFF control of display, use <code><A href="GX_DispOn.html">GX_DispOff</A></code> and <code><A href="GX_DispOn.html">GX_DispOn</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><I><B><CODE>visiblePlane</CODE></B></I></TD>
+<TD width="70%">2D display plane setting. For more information, see the <code>GXPlaneMask</code> type of <code><A href="GX_SetVisiblePlane.html">GX_SetVisiblePlane</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>visibleWnd</CODE></I></B></TD>
+<TD>Window display setting. For more information, see the <code>GXWndMask</code> type of <code><A href="GX_SetVisibleWnd.html">GX_SetVisibleWnd</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>dispMode</CODE></I></B></TD>
+<TD>Display mode setting. For more information., see the <code>GXDispMode</code> type of <code><A href="GX_SetGraphicsMode.html">GX_SetGraphicsMode</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>extObjMapChar</CODE></I></B></TD>
+<TD>Character OBJ's VRAM capacity setting.<BR>See <code><A href="GX_SetOBJVRamModeChar.html">GX_SetOBJVRamModeChar</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><I><B><CODE>extObjMapBmp</CODE></B></I></TD>
+<TD>Bitmap OBJ's VRAM capacity setting.<BR>See <code><A href="GX_SetOBJVRamModeBmp.html">GX_SetOBJVRamModeBmp</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>hBlankObjProc</CODE></I></B></TD>
+<TD>Sets the OBJ process during the H-Blank. For more information, see <code><A href="GX_HBlankOBJProc.html">GX_HBlankOBJProc</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>bgCharOffset</CODE></I></B></TD>
+<TD>BG character data offset value setting. See the <code>GXBGCharOffset</code> type of <code><A href="GX_SetBGCharOffset.html">GX_SetBGCharOffset</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>bgScrOffset</CODE></I></B></TD>
+<TD>BG screen data offset value setting. <BR> See the <code>GXBGScrOffset</code> type of <code><A href="GX_SetBGScrOffset.html">GX_SetBGScrOffset</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>bgExtPltt</CODE></I></B></TD>
+<TD>BG extended palette enable flag. It is set in the VRAM bank setting function such as <code><A href="GX_SetBankForBGExtPltt.html">GX_SetBankForBGExtPltt</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>objExtPltt</CODE></I></B></TD>
+<TD>OBJ extended palette enable flag. It is set in the VRAM bank setting function such as <code><A href="GX_SetBankForOBJExtPltt.html">GX_SetBankForOBJExtPltt</A></code>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The type definition of <code>GXDispCnt</code> type is shown below.</P>
+<PRE><CODE>typedef union
+{
+u32 raw;
+struct {
+u32             bgMode          :3;
+u32             bg0_2d3d        :1;
+u32             objMapChar      :1;
+u32             objMapBmp       :2;
+u32             blankScr        :1;
+u32             visiblePlane    :5;
+u32             visibleWnd      :3;
+u32             dispMode        :4;
+u32             extObjMapChar   :2;
+u32             extObjMapBmp    :1;
+u32             hBlankObjProc   :1;
+u32             bgCharOffset    :3;
+u32             bgScrOffset     :3;
+u32             bgExtPltt       :1;
+u32             objExtPltt      :1;
+        };
+}
+GXDispCnt;</CODE>
+</CODE></PRE>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>12/24/2004 Initial version</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

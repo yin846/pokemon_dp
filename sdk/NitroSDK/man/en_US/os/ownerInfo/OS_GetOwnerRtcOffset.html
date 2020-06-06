@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_GetOwnerRtcOffset</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_GetOwnerRtcOffset</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>s64 OS_GetOwnerRtcOffset( void );
+  </CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<P>None.</P>
+
+<H2>Return Values</H2>
+<P>
+Returns an <em><strong><code>s64</code></strong></em> type offset value.
+</P>
+
+<H2>Description</H2>
+<P>
+This function acquires the RTC offset value that is stored in a Nintendo DS. The RTC offset value is an accumulation of the changes to RTC date/time made by the end user&mdash;how far it was set forward or back. It is stored in units of seconds. By confirming the offset value each time it starts, an application can know changes that the end user made to the RTC.
+</P>
+
+<H2>Caution</H2>
+<P><font color="red">Date/time changes that are made by debugging functions such as <A href="../../rtc/RTC_SetTime.html"><CODE>RTC_SetTime</CODE></A> will not change the RTC offset value</font>.</P>
+
+<H2>See Also</H2>
+<P><A href="OS_GetOwnerInfo.html"><code>OS_GetOwnerInfo</code></A>, <A href="OS_GetMacAddress.html"><code>OS_GetMacAddress</code></A></P>
+
+<H2>Revision History</H2>
+<P>
+09/03/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

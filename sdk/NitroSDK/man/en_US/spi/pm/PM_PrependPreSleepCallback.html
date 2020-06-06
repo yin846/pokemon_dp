@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>PM_PrependPreSleepCallback</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">PM_PrependPreSleepCallback</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/spi.h&gt;</CODE></PRE>
+<PRE><CODE>void PM_PrependPreSleepCallback( PMSleepCallbackInfo* info );
+</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>info</STRONG></EM></TD>
+<TD width="87%">Pointer to the structure that includes the information of the added callback.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Registers callback when switching to sleep mode. Registered at end of callback list.</P>
+<P>This function allows you to register multiple callbacks. The callback is defined by the void type function that gets one <CODE>void*</CODE> type argument, as: </P>
+<BLOCKQUOTE><CODE>typedef void (*PMSleepCallback)( void* );</CODE></BLOCKQUOTE>
+<P> This callback is called from inside <CODE><A href="PM_GoSleepMode.html">PM_GoSleepMode()</A></CODE>.</P>
+<P>For more information, please refer to <a href="PM_AppendPreSleepCallback.html"><code>PM_AppendPreSleepCallback()</code></a>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="PM_Init.html">PM_Init</A>, <A href="PM_GetLEDPattern.html">PM_GoSleepMode</A>,<BR> <A href="PM_AppendPreSleepCallback.html">PM_AppendPreSleepCallback</A>, <A href="PM_PrependPreSleepCallback.html">PM_PrependPreSleepCallback</A>,<BR> <A href="PM_AppendPostSleepCallback.html">PM_AppendPostSleepCallback</A>, <A href="PM_PrependPostSleepCallback.html">PM_PrependPostSleepCallback</A>,<BR> <A href="PM_DeletePreSleepCallback.html"></A><A href="PM_DeletePreSleepCallback.html">PM_DeletePreSleepCallback</A>, <A href="PM_DeletePreSleepCallback.html">PM_DeletePostSleepCallback</A>,</CODE><BR> <CODE><A href="PM_SetSleepCallbackInfo.html">PM_SetSleepCallbackInfo</A></CODE></P>
+<H2>Revision History</H2>
+<P>2005/09/14 <CODE>PM_SetSleepCallback</CODE> was changed to <CODE>PM_SetSleepCallbackInfo</CODE>.<BR>06/02/2005 Clarified the Callback call origin.<BR> 10/06/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

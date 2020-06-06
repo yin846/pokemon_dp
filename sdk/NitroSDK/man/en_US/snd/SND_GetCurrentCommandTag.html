@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_GetCurrentCommandTag</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_GetCurrentCommandTag</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">u32 SND_GetCurrentCommandTag( <code>void )</code>;</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAULWT"></a>
+<h2>Arguments</h2>
+      
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1LWT"></a>
+<h2>Return Values</h2>
+
+<p>Command tag.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDACMWT"></a>
+<h2>Description</h2>
+      <p>
+Gets the current command tag.
+</p>
+      <p>
+Once this command tag is obtained, you can check whether command processes prior to the tag have ended by using the <code><a href="SND_IsFinishedCommandTag.html">SND_IsFinishedCommandTag</a></code> function, and you can use the <code><a href="SND_WaitForCommandProc.html">SND_WaitForCommandProc</a></code> function to wait until the immediately prior command process ends.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="SND_IsFinishedCommandTag.html">SND_IsFinishedCommandTag</a>, <a  href="SND_WaitForCommandProc.html">SND_WaitForCommandProc</a></code></p>
+<h2>Revision History</h2>
+<p>07/20/2004 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

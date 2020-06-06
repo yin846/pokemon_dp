@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>fx64 Type Macros</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">fx64 Type Macros</h1>
+<h2>Description</h2>
+<TABLE border="0" width="100%">
+  <TBODY>
+    <TR>
+<TD width="154">FX64_SHIFT</TD>
+<TD width="438">Defines the shift number (12) for <CODE>fx64</CODE> types.</TD>
+    </TR>
+    <TR>
+<TD width="154">FX64_INT_SIZE</TD>
+<TD width="438">Defines the bit width of the integer portion (51) for <CODE>fx64</CODE> types.</TD>
+    </TR>
+    <TR>
+<TD width="154">FX64_DEC_SIZE</TD>
+<TD width="438">Defines the bit width for the decimal portion (12) for <CODE>fx64</CODE> types.</TD>
+    </TR>
+    <TR>
+<TD width="154">FX64_INT_MASK</TD>
+<TD width="438">Defines the mask for the integer portion of <CODE>fx64</CODE> types.</TD>
+    </TR>
+    <TR>
+<TD width="154">FX64_DEC_MASK</TD>
+<TD width="438">Defines the mask (<CODE>0x0fff</CODE>) for the decimal portion of <CODE>fx64</CODE> types.</TD>
+    </TR>
+    <TR>
+<TD width="154">FX64_SIGN_MASK</TD>
+<TD width="438">Defines the mask for the sign portion of <CODE>fx64</CODE> types.</TD>
+    </TR>
+    <TR>
+<TD width="154">FX64_MAX</TD>
+<TD width="438">Defines the maximum value that can be obtained with <CODE>fx64</CODE> types.</TD>
+    </TR>
+    <TR>
+<TD width="154">FX64_MIN</TD>
+<TD width="438">Defines the minimum value that can be obtained with <CODE>fx64</CODE> types.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Macro Definitions</H2>
+<PRE>#define FX64_SHIFT          12
+#define FX64_INT_SIZE       51
+#define FX64_DEC_SIZE       12
+
+#define FX64_INT_MASK       ((fx64)0x7ffffffffffff000)
+#define FX64_DEC_MASK       ((fx64)0x0000000000000fff)
+#define FX64_SIGN_MASK      ((fx64)0x8000000000000000)
+
+#define FX64_MAX            ((fx64)0x7fffffffffffffff)
+#define FX64_MIN            ((fx64)0x8000000000000000)
+#define FX_FX64_TO_F32(x)   ((f32)((x) / (f32)(1 &lt;&lt; FX64_SHIFT)))
+#define FX_F32_TO_FX64(x)   ((fx64)(((x) &gt; 0) ? \
+((x) * (1 &lt;&lt; FX32_SHIFT) + 0.5f ) : \
+((x) * (1 &lt;&lt; FX32_SHIFT) - 0.5f )))
+
+#define FX64_CONST(x)       FX_F32_TO_FX64(x)
+</CODE></PRE>
+<H2>Revision History</H2>
+<P>02/25/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

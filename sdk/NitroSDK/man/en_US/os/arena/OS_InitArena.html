@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_InitArena</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_InitArena</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_InitArena( void );
+</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function sets the upper and lower boundaries.</P>
+<P>Call this function once before the <code>Alloc</code> functions or other Arena functions. But because this function is also called from within <CODE><A href="../init/OS_Init.html">OS_Init()</A></CODE>, calling this function has no meaning when <CODE><A href="../init/OS_Init.html">OS_Init()</A></CODE> is called. Second and subsequent calls of this function will be ignored.</P>
+<P>It is possible to change the arena boundaries with <code>OS_SetArenaLo()</code> and <code>OS_SetArenaHi()</code> after calling <code>OS_InitArena()</code>.</P>
+<P>NitroSDK allows you to define nine different Arena regions: main memory (one for ARM9 &amp; one for ARM7), expanded main memory, ITCM, DTCM, shared memory users, shared work RAM (one for ARM9 &amp; one for ARM7), and dedicated work RAM for ARM7. Each region gets an ID and is defined as an <code>OSArenaId</code> enumerated type, as shown  below.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH>Arena ID</TH>
+<TH>Arena</TH>
+<TH>Initialization</TH>
+    </TR>
+    <TR>
+<TD>OS_ARENA_MAIN</TD>
+<TD>Main Memory Arena (ARM9 dedicated)</TD>
+<TD>From ARM9</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_MAIN_SUBPRIV</TD>
+<TD>Main Memory Arena (ARM7 dedicated)</TD>
+<TD>From ARM7</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_MAINEX</TD>
+<TD>Main Memory Expanded Arena</TD>
+<TD>From ARM9</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_ITCM</TD>
+<TD>ITCM Arena</TD>
+<TD>From ARM9</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_DTCM</TD>
+<TD>DTCM Arena</TD>
+<TD>From ARM9</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_SHARED</TD>
+<TD>Shared Memory Arena</TD>
+<TD>From ARM9</TD>
+    </TR>
+    <TR>
+
+<TD>OS_ARENA_WRAM_MAIN</TD>
+<TD>Shared work RAM arena (for ARM9)</TD>
+<TD>From ARM9</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_WRAM_SUB</TD>
+<TD>Shared work RAM arena (for ARM7)</TD>
+<TD>From ARM7</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_WRAM_SUBPRIV</TD>
+<TD>Work RAM arena (ARM7 dedicated)</TD>
+<TD>From ARM7</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<P><CODE>OS_InitArena()</CODE> for ARM7 sets up six of the nine arenas of <CODE>OS_InitArena()</CODE> for ARM9. The three exceptions are the arena on the ARM7-dedicated main memory, the arena on the ARM7 shared work RAM, and ARM7 dedicated work RAM arena. </P>
+<P>Calling <CODE>OS_InitArena()</CODE> from both processors sets each arena's upper and lower boundary as shown below: 
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH bgcolor="#cccccc">Arena</TH>
+<TH bgcolor="#cccccc">Bottom</TH>
+<TH bgcolor="#cccccc">Top</TH>
+    </TR>
+    <TR>
+<TD>Main Memory Arena (ARM9 dedicated)</TD>
+<TD><CODE>SDK_MAIN_ARENA_LO</CODE> (acquired from <CODE>lcf</CODE>)</TD>
+<TD><CODE>HW_MAIN_MEM_MAIN_END( 0x023e0000 )</CODE></TD>
+    </TR>
+    <TR>
+<TD>Main Memory Arena (ARM7 dedicated)</TD>
+<TD><CODE>SDK_SUBPRIV_ARENA_LO</CODE> (acquired from <CODE>lcf</CODE>)</TD>
+<TD>Beginning of ARM7 dedicated main memory</TD>
+    </TR>
+    <TR>
+<TD>Main Memory Expanded Arena</TD>
+<TD>0 or<BR> SDK_SECTION_ARENA_EX_START<BR> (obtained from lcf )<B><FONT color="#ff0000">*1 </FONT></B></TD>
+<TD>0 or<BR> Before the debugger region<BR> <B><FONT color="#ff0000">*1</FONT></B></TD>
+    </TR>
+    <TR>
+<TD>ITCM Arena</TD>
+<TD>SDK_SECTION_ARENA_ITCM_START<BR> (obtained from lcf)</TD>
+<TD>Highest order ITCM (0x02000000)</TD>
+    </TR>
+    <TR>
+<TD>DTCM Arena</TD>
+<TD>SDK_SECTION_ARENA_DTCM_START<BR> (obtained from lcf)</TD>
+<TD>Before system mode stack <B><FONT color="#ff0000">*2</FONT></B></TD>
+    </TR>
+    <TR>
+<TD>Shared Memory Arena (user region)</TD>
+<TD>Bottom of shared memory</TD>
+<TD>Before shared memory system region</TD>
+    </TR>
+    <TR>
+<TD>Shared work RAM arena (for ARM9)</TD>
+<TD>Bottom of Shared work RAM </TD>
+<TD>Bottom of Shared work RAM <B><FONT color="#ff0000">*3</FONT></B></TD>
+    </TR>
+    <TR>
+<TD>Shared work RAM arena (for ARM7)</TD>
+      <TD><B><FONT color="#ff0033">*4</FONT></B></TD>
+<TD>Top of Shared work RAM</TD>
+    </TR>
+    <TR>
+<TD>Work RAM arena (ARM7 dedicated)</TD>
+      <TD><B><FONT color="#ff0033">*5</FONT></B></TD>
+<TD>Before system mode stack</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> <B><FONT color="#ff0000">*1</FONT></B> Use <CODE><A href="OS_EnableMainExArena.html">OS_EnableMainEx()</A></CODE> to declare the main memory expanded arena; it cannot be used without declaring it. The upper and lower addresses of the main memory expanded arena are 0 when it cannot be used. Furthermore, there is no extended main memory in the the production version of the Nintendo DS system, so there will be no expanded arena in the main memory. Also in this case, the upper and lower addresses are 0.</P>
+<P><B><FONT color="#ff0000">*2</FONT></B> The region cannot be allocated for the DTCM arena when using the entire stack. When this happens, the upper and lower addresses of the DTCM arena have the same value.</P>
+<P><B><FONT color="#ff0000">*3</FONT></B> The top and bottom of the shared work RAM arena (for ARM9) have the same address. By default the size is 0. </P>
+<P><FONT color="#ff0033"><B>*4</B></FONT> This is the lower address of the final address of the ARM7 static module and the highest address of the shared work region. In other words, if the ARM7 static module fits in the shared work the empty region becomes the arena on the ARM7 shared work RAM. If it does not fit, both the start address and end address become the top address of the shared work and the size of the arena is 0.</P>
+<P><FONT color="#ff0033"><B>*5</B></FONT>  This is the higher end of the address of the ARM7 static module and the restart address of the ARM7 dedicated work RAM region. In other words, if the ARM7 static module will amount to the ARM7 dedicated work RAM, the empty region excluding this is the ARM7 dedicated work RAM arena. If the module is not that big and will not amount to the ARM7 dedicated work RAM, the arena is from the top of the ARM7 dedicated work RAM.</P>
+<P>For more details, see the <a href="about_arena.html">Arena Overview</a>.</P>
+<H2>See Also</H2>
+<P><A href="OS_SetArenaHi.html"><code>OS_SetArenaHi</code></A>, <A href="OS_SetArenaLo.html"><code>OS_SetArenaLo</code></A>, <A href="OS_GetArenaHi.html"><code>OS_GetArenaHi</code></A>, <A href="OS_GetArenaLo.html"><code>OS_GetArenaLo</code></A></P>
+<H2>Revision History</H2>
+<P>08/27/2005 Changed the initial addresses of DTCM, ITCM and the main memory expanded arena.<BR>11/02/2004 Corrected error in number of initialized arenas.<BR>10/26/2004 Separated the graphical explanation of arenas. <BR>10/01/2004 Described by associating overlay.<BR>09/29/2004 Described the arena regions with charts.<BR>05/28/2004 Changed description of ARM7 arenas.<BR>02/19/2004 Changed the number of arenas from 6 to 9. Added support for both processors.<BR>01/16/2004 Added<CODE>MainEx</CODE>.<BR>01/06/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

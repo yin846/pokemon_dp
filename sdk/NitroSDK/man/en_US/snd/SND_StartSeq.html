@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_StartSeq</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAFLWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_StartSeq</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">void SND_StartSeq(
+int <var>playerNo</var>,
+const void* <var>base</var>,
+u32 <var>offset</var>,
+const SNDBankData* <var>bank</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAYNWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The Player number. Takes a value between 0 and 15.</td>
+</tr>
+<tr>
+<td><em><strong><code>base</code></strong></em></td>
+<td>The base address of the sequence data.</td>
+</tr>
+<tr>
+<td><em><strong><code>offset</code></strong></em></td>
+<td>The start position offset for the sequence data.</td>
+</tr>
+<tr>
+<td><em><strong><code>bank</code></strong></em></td>
+<td>This is the bank data pointer.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA2OWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDADPWT"></a>
+<h2>Description</h2>
+      <p>
+Plays sequence.
+</p>
+      <p>
+Plays the sequence with the player of the player number <em><strong><code>playerNo</code></strong></em>. Any sequence that is already being played on that player will be forcibly stopped.
+</p>
+      <p>
+Sequence data is processed from the offset position (<code><strong><em>offset</em></strong></code>) from the base address (<code><strong><em>base</em></strong></code>).
+</p>
+      <p>
+For bank, <em><strong><code>bank</code></strong></em>, specify the bank which the sequence uses for sound generation. Furthermore, the waveform archive needs to be connected with <a href="SND_AssignWaveArc.html"><code>SND_AssignWaveArc</code></a> function beforehand.
+</p>
+      <p>
+If you need to change volume or other parameters at the same time that you start sequence playback, use <a href="SND_PrepareSeq.html"><code>SND_PrepareSeq</code></a> instead of <code>SND_StartSeq</code>. If you call <code>SND_StartPreparedSeq</code> after changing the parameters, the parameter changes made up to that point are guaranteed to be reflected at the time the sequence begins playing.
+</p>
+      <div class="note">
+<h3 class="title">Caution</h3>
+<p>
+This function is an ARM7 reserved function. After this function is called, processing occurs only after the command is issued with the <a href="SND_FlushCommand.html"><code>SND_FlushCommand</code></a> function.
+</p>
+<p>
+When it is necessary to synchronize something with the completion of the process, first use <a href="SND_GetCurrentCommandTag.html"><code>SND_GetCurrentCommandTag</code></a> to obtain the command tag immediately after calling this function. After the command is issued, use the command tag and call either the <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a> or <a href="SND_WaitForCommandProc.html"><code>SND_WaitForCommandProc</code></a> function to confirm that the process has finished or to wait for it to complete.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="SND_AssignWaveArc.html"><code>SND_AssignWaveArc</code></a>, <a href="SND_PrepareSeq.html"><code>SND_PrepareSeq</code></a>, <a href="SND_FlushCommand.html"><code>SND_FlushCommand</code></a>, <a href="SND_GetCurrentCommandTag.html"><code>SND_GetCurrentCommandTag</code></a>, <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a>, <a href="SND_WaitForCommandProc.html"><code>SND_WaitForCommandProc</code></a></p>
+<h2>Revision History</h2>
+<p>04/14/2005 Added description of <code>SND_PrepareSeq</code><br /> 02/17/2005 Added note about ARM7 command execution<br /> 07/20/2004 Added the description regarding the combination of bank and waveform archive<br /> 07/01/2004 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

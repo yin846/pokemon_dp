@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_ChangeDir</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_ChangeDir</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>BOOL FS_ChangeDir( const char *dir );</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>dir</STRONG></EM></TD>
+<TD width="87%">The path of the specified current directory.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If it correctly sets the current directory, it returns TRUE. Otherwise it returns FALSE.</p>
+
+<H2>Description</H2>
+<P>This sets the current directory to the specified path name. For details on path name formatting, see the description of the <CODE>FS_OpenFile</CODE> function.<BR> You can only set an existing directory to be the current directory.<BR> <BR>
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="FS_OpenFile.html">FS_OpenFile</A>, <A href="FS_FindDir.html">FS_FindDir</A>, <A href="../fs_file_name_max_const.html">FS_FILE_NAME_MAX</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+04/02/2004 Revised description due to the elimination of the path name length restriction.<BR> 04/01/2004 Initial Version<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

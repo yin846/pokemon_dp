@@ -1,0 +1,50 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_GetLinkState</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_GetLinkState</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void SOC_GetLinkState ( SOCInterface* <em><strong>interface</strong></em>, BOOL* <em><strong>status</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><font size="-1"color="#808080"><code><em><strong>interface</strong></em></code></td>
+<td>The pointer to the SOCInterface that checks whether or not there is a link with an AP. This argument is included for compatibility issues, but it is ignored in actual use of the function.</td>
+  </tr>
+  <tr>
+<td><code><em><strong>status</strong></em></code></td>
+<td>The pointer to the BOOL used for receiving the link status of the interface. If the interface is connected, TRUE is recorded. If there is no connection, FALSE is recorded.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<p>None.</p>
+
+<h2>Description</h2>
+
+<p>Checks whether or not the specified network interface is linked to the AP.</p>
+
+<h2>See Also</h2>
+
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description.<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

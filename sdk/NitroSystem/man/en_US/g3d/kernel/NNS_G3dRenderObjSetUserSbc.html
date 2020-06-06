@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dRenderObjSetUserSbc</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dRenderObjSetUserSbc</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/kernel.h&gt;</CODE></PRE>
+<PRE>u8*
+NNS_G3dRenderObjSetUserSbc(
+NNSG3dRenderObj* pRenderObj,
+u8* sbc
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pRenderObj</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>NNSG3dRenderObj</code> structure</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>sbc</STRONG></EM></TD>
+<TD width="87%">Pointer to the SBC (Structure Byte Code)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>The previously set pointer.</P>
+
+<H2>Description</H2>
+<P>The SBC (Structure Byte Code) that is specified by <CODE>sbc</CODE> is registered in the rendering object specified by <I><B>pRenderObj</B></I>. SBC is byte code interpreted by one kind of interpreter during execution of the <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code> function. SBC determines the joint structure of the model, as well as which shape to set to/for/in which material. Normally, drawing is done using the SBC stored in the model resource created with <code>g3dcvtr</code>. However you can also use an SBC created by the user.</P>
+<H2>See Also</H2>
+
+<H2>Revision History</H2>
+<P>10/15/2004 Revised description.<BR>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

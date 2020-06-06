@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndPlayerGetSeqArcNo</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndPlayerGetSeqArcNo</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">int NNS_SndPlayerGetSeqArcNo( NNSSndHandle* handle );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAWLWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>The sound handle pointer.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFMWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns the sequence archive number.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Description</h2>
+      <p>
+Gets the sequence archive number. 
+</p>
+      <p>
+This function gets the sequence archive number of the sequence that is bound to the sound handle <CODE><i><b>handle</b></i></CODE>. If the sound handle is invalid, a value of -1 will be returned. 
+</p>
+      <p>
+The information that can be obtained is based on the value set by the <CODE><a href="NNS_SndPlayerSetSeqArcNo.html">NNS_SndPlayerSetSeqArcNo</a></CODE> function. When nothing is set, a -1 will be returned.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndPlayerSetSeqArcNo.html">NNS_SndPlayerSetSeqArcNo</a></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

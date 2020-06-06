@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_SetMasterPan</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAFLWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_SetMasterPan</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">void SND_SetMasterPan( int <var>pan</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA0MWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>pan</code></strong></em></td>
+<td>The value of the master pan. Takes values in the range of 0 (left) to 64 (center) to 127 (right).</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAJNWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAQNWT"></a>
+<h2>Description</h2>
+      <p>
+Sets the master pan.
+</p>
+      <p>
+By setting the master pan, the pan setting for each channel is ignored. All sounds are set to the stereo position of <em><strong><code>pan</code></strong></em>.
+</p>
+      <p>
+To disable the master pan, call the <a href="SND_ResetMasterPan.html"><code>SND_ResetMasterPan</code></a> function.
+</p>
+      <div class="note">
+<h3 class="title">Caution</h3>
+<p>
+If this function is called while sound is being played, noise may be generated when the master pan is switched.
+</p>
+<p>
+This function is an ARM7 reserved function. After this function is called, processing occurs only after the command is issued with the <a href="SND_FlushCommand.html"><code>SND_FlushCommand</code></a> function.
+</p>
+<p>
+When it is necessary to synchronize something with the completion of the process, first use <a href="SND_GetCurrentCommandTag.html"><code>SND_GetCurrentCommandTag</code></a> to obtain the command tag immediately after calling this function. After the command is issued, use the command tag and call either the <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a> or <a href="SND_WaitForCommandProc.html"><code>SND_WaitForCommandProc</code></a> function to confirm that the process has finished or to wait for it to complete.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="SND_ResetMasterPan.html">SND_ResetMasterPan</a>, <a href="SND_FlushCommand.html">SND_FlushCommand</a>, <a href="SND_GetCurrentCommandTag.html">SND_GetCurrentCommandTag</a>, <a href="SND_IsFinishedCommandTag.html">SND_IsFinishedCommandTag</a>, <a href="SND_WaitForCommandProc.html">SND_WaitForCommandProc</a></code></p>
+<h2>Revision History</h2>
+<p>02/17/2005 Added a note about ARM7 command processing<br /> 10/05/2004 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

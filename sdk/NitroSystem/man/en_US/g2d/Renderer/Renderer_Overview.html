@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Renderer Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">Renderer Overview</h1>
+<H2>Conceptual Diagram</H2>
+<P><span lang=EN-US style='font-size:9.0pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r ‚o–¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'></span><span lang=EN-US style='font-size:10.5pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r –¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><IMG width="431" height="254" src="clip_image0021.gif" v:shapes="_x0000_i1025"></span></P>
+<H2>Description</H2>
+The renderer provides an API for rendering the character on the screen. The renderer module can be roughly divided into the renderer core module and renderer module. The renderer core module takes care of the render processing for the renderer module and operates as the module for the renderer module. It is also possible for the user to directly use the renderer core module. The renderer module has an internal matrix stack and manages the affine conversion operations for the rendered object. It also performs the affine parameter setting processing for the two 2D graphics engines. The renderer has a number of render surfaces. These render surfaces contain the rectangular areas to be displayed on screen and the API data that draw those regions. By configuring the render surface appropriately, rendering can be done with the same API regardless of whether the character uses the main screen OAM, sub-screen OAM, or software sprite. <BR>
+
+
+<h2>Render Surface and Virtual Screen</h2>
+<P><span lang=EN-US style='font-size:9.0pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r ‚o–¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"  coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"  filled="f" stroked="f">  <v:stroke joinstyle="miter"/>  <v:formulas>   <v:f eqn="if lineDrawn pixelLineWidth 0"/>   <v:f eqn="sum @0 1 0"/>   <v:f eqn="sum 0 0 @1"/>   <v:f eqn="prod @2 1 2"/>   <v:f eqn="prod @3 21600 pixelWidth"/>   <v:f eqn="prod @3 21600 pixelHeight"/>   <v:f eqn="sum @0 0 1"/>   <v:f eqn="prod @6 1 2"/>   <v:f eqn="prod @7 21600 pixelWidth"/>   <v:f eqn="sum @8 21600 0"/>   <v:f eqn="prod @7 21600 pixelHeight"/>   <v:f eqn="sum @10 21600 0"/>  </v:formulas>  <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>  <o:lock v:ext="edit" aspectratio="t"/> </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:6in;  height:203.4pt' o:ole="">  <v:imagedata src="file:///C:\DOCUME~1\KITANI~1\LOCALS~1\Temp\msohtml1\01\clip_image001.wmz"   o:title=""/> </v:shape><![endif]--><IMG src="image3.gif" border="0" width="591" height="274"><!--[if gte mso 9]><xml>  <o:OLEObject Type="Embed" ProgID="MSDraw.Drawing.8.2" ShapeID="_x0000_i1025"   DrawAspect="Content" ObjectID="_1162376003">  </o:OLEObject> </xml><![endif]--></span><BR>
+</P>
+The renderer treats the game character as an object placed on one large, virtual screen. The appropriate rectangular areas on this virtual screen are set up in the various render surfaces of the renderer. If the game character is in this rectangular area, it is displayed on the screen.
+<h2>Render Surface and Rendering API </h2>
+If the game character is in one of the rectangular areas set up in one of the render surfaces, it is rendered on the screen. The render surface gets the information about how the game character will be rendered. The game character is rendered on the main screen OAM, sub-screen OAM, or software sprite based on this information.
+
+<h2>Renderer Matrix Stack</h2>
+The renderer has an internal matrix stack. For a general description of the matrix stack, refer to the Matrix Stack documentation. The renderer carries out processing to keep the affine parameter consumption of the 2D graphics engine at a minimum.
+<pre>
+The basic rules are listed below.
+
+There is a maximum of 32 types of single affine parameters that can be used inside the <code>BeginRendering()</code> &mdash; <code>EndRendering()</code> block. If there are more, they need to be divided between multiple renderings. If the types of affine parameters exceeds 32, a proper rendering result will not be obtained.
+Translation operations do not use up new affine parameters.
+When scale or rotation operations are carried out, the current matrix change flag is turned ON.
+If rendering registration occurs when the current matrix change flag is turned ON, the current matrix is read to the affine parameters. At this time, one new affine parameter is used up.
+If a reverse rotation is added to rotation, the current matrix change flag is not reset even if the rotation conversion component goes to zero.
+    
+(See Also: <a href="Renderer_MtxState.html">Renderer Matrix State</a>)
+</pre>
+
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

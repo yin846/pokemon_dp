@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MB_CommGetChildrenNumber</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MB_CommGetChildrenNumber</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR> <CODE>u8 MB_CommGetChildrenNumber(void);<br></CODE> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>None.
+</p>
+
+<h2>Return Values</h2>
+<p>This function returns the number of children connected to the current parent.</p>
+
+<H2>Description</H2>
+<P>This function returns the number of children connected to the current parent. What is calculated as &quot;the number of connected children&quot; equals all the children changed to the state <code>MB_COMM_PSTATE_REQ_ACCEPTED</code> until they change to the state <code>MB_COMM_PSTATE_DISCONNECTED</code>.<br> Note the approximately four second delay before the parent detects an unexpected end of communication with a child and changes the state to <code>MB_COMM_PSTATE_DISCONNECTED</code>. <br>
+<h2>See Also</h2>
+<p><code><A href="../mb_comm_pstate_const.html">MBCommPState</A>, <A href="MB_CommGetParentState.html">MB_CommGetParentState</A>, <A href="MB_CommGetChildUser.html">MB_CommGetChildUser</A>, <A href="MB_StartParent.html">MB_StartParent</A>, <A href="../common/MB_End.html">MB_End</A></code></P>
+<H2>Revision History</H2>
+<P>
+10/21/2004 Corrected the description, which was not updated since  NITRO-SDK 2.0 PR5.<br /> 09/10/2004 Revised description.<br /> 08/09/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

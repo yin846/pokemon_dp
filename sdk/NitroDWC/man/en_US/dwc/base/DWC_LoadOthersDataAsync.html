@@ -1,0 +1,80 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_LoadOthersDataAsync</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_LoadOthersDataAsync</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+BOOL DWC_LoadOthersDataAsync( char* keys, int index, void* param );
+
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Loads the data that was saved by someone else with the <CODE><A href="DWC_SavePublicDataAsync.html">DWC_SavePublicDataAsync</A></CODE> function from the data storage server. Be aware that it is possible to load data even if a friend relationship has not been established (the friend information data type is a friend registry key).
+		</P>
+		<P>
+		  The data for loading is specified in <CODE>keys</CODE> and must be a NULL-terminated character string.<BR><CODE>keys</CODE> is written using <CODE>\\</CODE> as a delimiter, as in <CODE>\\name\\stage</CODE>. This allows multiple keys to be loaded at once, as in this example. Once data loading is complete, the load completion notification callback specified by <CODE><A href="DWC_SetStorageServerCallback.html">DWC_SetStorageServerCallback</A></CODE> is called.
+		</P>
+		<P>
+		  When trying to load only non-existent keys or keys saved by a friend with the <CODE><A href="DWC_SavePrivateDataAsync.html">DWC_SavePrivateDataAsync</A></CODE> function, the callback argument <CODE>success</CODE> becomes FALSE. However, if only some of the specified keys fall into this category, they will not be included in the load data, and the <CODE>success</CODE> argument will be TRUE.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>keys</CODE></STRONG></EM></TD>
+					<TD width="75%">Pointer to the key string for the data to be loaded.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>index</CODE></STRONG></EM></TD>
+					<TD>The user's friend roster index that you want to load.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>param</CODE></STRONG></EM></TD>
+					<TD>Callback parameter</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">Starting load.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD>Cannot load because this DS is offline, the partner is not a friend, or an error is being generated.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_SavePublicDataAsync.html">DWC_SavePublicDataAsync</A>, <A href="DWC_SavePrivateDataAsync.html">DWC_SavePrivateDataAsync</A>, <A href="DWC_LoadOwnDataAsync.html">DWC_LoadOwnDataAsync</A>, <A href="DWC_SetStorageServerCallback.html">DWC_SetStorageServerCallback</A>, <A href="DWCLoadFromServerCallback.html">DWCLoadFromServerCallback</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			07/24/2006 Added a cautionary note<BR> 02/21/2006 Revised errors<BR> 12/16/2005 Revisions<BR> 07/22/2005 Initial version<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

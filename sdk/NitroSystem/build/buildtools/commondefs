@@ -1,0 +1,128 @@
+#! make -f
+#----------------------------------------------------------------------------
+# Project:  NITRO-System - commondefs - common definitions for build system
+# File:     commondefs
+#
+#  Copyright 2004 Nintendo.  All rights reserved.
+#
+# These coded instructions, statements, and computer programs contain
+# proprietary information of Nintendo of America Inc. and/or Nintendo
+# Company Ltd., and are protected by Federal copyright law.  They may
+# not be disclosed to third parties or copied or duplicated in any form,
+# in whole or in part, without the prior written consent of Nintendo.
+#
+# $Log: commondefs,v $
+# Revision 1.18  10/05/2004 10:14:29  nishida
+# Deleted library setting. (moved to nnslibdefs)
+#
+# Revision 1.17  09/06/2004 06:01:24  nishida
+# Added Compiler settings.
+#
+# Revision 1.16  07/21/2004 03:10:32  nishida
+# Added g3d Library
+#
+# Revision 1.15  07/10/2004 07:29:01  nishida
+# Added gfd and mcs
+#
+# Revision 1.14  06/17/2004 10:37:57  nishida
+# Set up NITROSYSTEM_LIB_ROOT
+#
+# Revision 1.13  06/10/2004 00:25:04  kitani_toshikazu
+# Removed old Gfd to match release of sound library
+#
+# Revision 1.12  06/09/2004 09:36:38  kitani_toshikazu
+# Added gfd
+#
+# Revision 1.11  04/21/2004 12:26:49 PM  kitani_toshikazu
+# Added G2D
+#
+# Revision 1.10  04/02/2004 07:55:33  nishida
+# Avoided variable ROOT name conflict, and added include card.
+#
+# Revision 1.9  03/31/2004 08:17:59  nishida
+# Defined NITROSYSTEM_PRIVATE and NITROSYSTEM_WITH_ARM7.
+#
+# Revision 1.8  03/26/2004 06:54:52  ida
+# Removed libnnssnd_sp.a
+#
+# Revision 1.7  02/19/2004 08:56:45  ida
+# Removed components
+#
+# Revision 1.6  02/17/2004 05:45:43  ida
+# Added "components"
+#
+# Revision 1.5  02/12/2004 01:05:44  nishida
+# Fixed so that NitroSDK is supported in thumb mode
+#
+# Revision 1.4  02/09/2004 00:18:51  ida
+# IRIS -> NITRO
+#
+# Revision 1.3  02/02/2004 04:51:11  ida
+# Added snd library
+#
+# Revision 1.2  01/30/2004 03:38:46  nishida
+# Added fnd library.
+#
+# Revision 1.1  01/27/2004 09:00:23  nishida
+# Registered the initial version.
+#
+# $NoKeywords: $
+#----------------------------------------------------------------------------
+
+ifndef NITROSYSTEM_COMMONDEFS_
+NITROSYSTEM_COMMONDEFS_ := TRUE
+
+include	$(NITROSDK_ROOT)/build/buildtools/commondefs
+
+
+#----------------------------------------------------------------------------
+#
+# NITRO-System Root directory
+#
+
+NITROSYSTEM_ROOT ?= C:/NitroSystem
+
+
+#----------------------------------------------------------------------------
+#
+# NITRO-System Path settings
+#
+
+NNS_ROOT					:= $(subst $(SPACE),\ ,$(subst \,/,$(NITROSYSTEM_ROOT)))
+
+NITROSYSTEM_BUILDTOOLSDIR	:= $(NNS_ROOT)/build/buildtools
+NITROSYSTEM_TOOLSDIR		:= $(NNS_ROOT)/tools
+
+
+#----------------------------------------------------------------------------
+#
+# NIIROSYSTEM_INSTALL_ROOT
+#
+
+NITROSYSTEM_INSTALL_ROOT 		?= $(NITROSYSTEM_ROOT)
+NITROSYSTEM_INSTALL_ROOT		:= $(subst $(SPACE),\ ,$(subst \,/,$(NITROSYSTEM_INSTALL_ROOT)))
+
+NITROSYSTEM_INSTALL_INCDIR		:= $(NITROSYSTEM_INSTALL_ROOT)/include
+NITROSYSTEM_INSTALL_TOOLSDIR	:= $(NITROSYSTEM_INSTALL_ROOT)/tools
+NITROSYSTEM_INSTALL_LIBDIR		:= $(NITROSYSTEM_INSTALL_ROOT)/lib/$(NITRO_LIBTYPE)
+
+
+#----------------------------------------------------------------------------
+#  PRIVATE FLAGS
+#
+-include $(NITROSYSTEM_BUILDTOOLSDIR)/_privatedefs
+-include $(NITROSYSTEM_BUILDTOOLSDIR)/@privatedefs
+
+
+# NITROSYSTEM_COMMONDEFS_
+endif
+
+
+#----------------------------------------------------------------------------
+### Compiler settings
+
+-include $(NITROSYSTEM_BUILDTOOLSDIR)/commondefs.cctype.$(NITRO_CCTYPE)
+
+
+#----- End of commondefs -----
+

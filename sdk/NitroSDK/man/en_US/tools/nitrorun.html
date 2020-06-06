@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>nitrorun</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">nitrorun</H1>
+<H2>Description</H2>
+<P><CODE>nitrorun</CODE> is a script for executing the following series of operations: starting <CODE>buryarg</CODE> and <CODE>loadrun</CODE>, passing arguments from the command line, rewriting the argument region of the srl file, downloading the data to the IS-NITRO-EMULATOR and such, and executing the code.</P>
+<P>Specifically, </P>
+<BLOCKQUOTE><CODE>buryarg --stdout ... | loadrun --stdin</CODE></BLOCKQUOTE>
+<P><CODE><A href="buryarg.html">buryarg</A></CODE> and <CODE><A href="loadrun.html">loadrun</A></CODE> are connected by a pipe, and <CODE>buryarg</CODE> writes to the standard output while <CODE>loadrun</CODE> reads from the standard input.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% nitrorun [OPTION]... [[NITROSRLFILE] [ARGUMENT]...]</CODE></P>
+<P><CODE>NITROSRLFILE</CODE> is the ROM file to execute. srl files can be specified.</P>
+<P>The <CODE><B>-h</B></CODE> or  <CODE><B>--help</B></CODE> options display simple instructions. </P>
+<P>The <B><CODE>--bopt</CODE></B> option specifies options to be passed to the <CODE>buryarg</CODE> command. However, the <CODE>--stdin</CODE> option does not need to be described because it will be attached in advance.</P>
+<P>The <B><CODE>--lopt</CODE></B> option specifies options to be passed to the <CODE>loadrun</CODE> command. However, the <CODE>--stdin</CODE> option does not need to be described because it will be attached in advance.</P>
+<P>If the <CODE><B>-v</B></CODE> or <CODE><B>--verbose</B></CODE> option is specified, detailed descriptions of operations are displayed. </P>
+<P>Specifying the <CODE><B>-n</B></CODE> or <CODE><B>--noexec</B></CODE> option does not execute the command. When used in conjunction with the <CODE>-v</CODE> option, you can check which type of command will be executed.</P>
+<P>The <CODE><B>--version</B></CODE> option displays the command version. </P>
+<P><B><BR> <BR> <BR> (Example 1)</B></P>
+<BLOCKQUOTE><CODE>nitrorun  <FONT color="#ff6600">main.srl</FONT> <FONT color="#cc0099">100 300</FONT></CODE></BLOCKQUOTE>
+<BLOCKQUOTE>will cause the following command to execute.</BLOCKQUOTE>
+<BLOCKQUOTE><CODE>buryarg --stdout <FONT color="#ff6600">main.srl</FONT> <FONT color="#cc0099">100 300</FONT> | loadrun --stdin</CODE></BLOCKQUOTE>
+<BLOCKQUOTE>  </BLOCKQUOTE>
+<P><B>(Example 2)</B></P>
+<BLOCKQUOTE><CODE>nitrorun --bopt&#x3000;&quot;<FONT color="#0066ff">-f rep.dat</FONT>&quot; --lopt &quot;<FONT color="#ff0033">-t 300 -a \&quot;ABORT\&quot;</FONT> &quot; <FONT color="#ff6600">main.srl</FONT> <FONT color="#cc0099">100 300</FONT></CODE></BLOCKQUOTE>
+<BLOCKQUOTE>will cause the following command to execute.</BLOCKQUOTE>
+<BLOCKQUOTE><CODE>buryarg --stdout <FONT color="#0066ff">-f rep.dat</FONT> <FONT color="#ff6600">main.srl</FONT> <FONT color="#cc0099">100 300</FONT> | loadrun --stdin <FONT color="#ff0033">-t 300 -a &quot;ABORT&quot;</FONT></CODE></BLOCKQUOTE>
+<BLOCKQUOTE><CODE>  </CODE></BLOCKQUOTE>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/nitrorun</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="buryarg.html">buryarg</A>, <A href="loadrun.html">loadrun</A></CODE></P>
+<H2>Revision History</H2>
+<P>08/31/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

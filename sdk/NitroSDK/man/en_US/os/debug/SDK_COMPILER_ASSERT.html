@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>SDK_COMPILER_ASSERT</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">SDK_COMPILER_ASSERT</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/misc.h&gt;</CODE><BR> <BR> <CODE>SDK_COMPILER_ASSERT(expr);</CODE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="0">
+  <TBODY>
+    <TR>
+<TD width="166"><B><I><CODE>expr</CODE></I></B></TD>
+<TD width="481">The condition parameter.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Conditions are inspected when compiling. If conditions are not met, the macro makes a compile error.</P>
+<P>This macro makes compile errors in the following situation.<UL><LI><CODE>SDK_COMPILER_ASSERT( expr )</CODE> is when the evaluation expression <B><I>expr</I></B> is false (when <B><I>expr</I></B> is not established).</UL></LI>
+<P>
+<P><font color="#800000">Caution: This argument can only handle evaluation expressions constructed from information known when compiling, such as structure size or constants.</font>
+
+<H2>See Also</H2>
+<P></P>
+<H2>Revision History</H2>
+<P>11/07/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

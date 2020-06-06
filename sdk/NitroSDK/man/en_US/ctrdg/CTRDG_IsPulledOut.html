@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_IsPulledOut</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_IsPulledOut</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+<PRE><CODE>BOOL CTRDG_IsPulledOut( void );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>Returns a value of TRUE when a Game Pak is removed. Otherwise it returns a value of FALSE. This function will always return a value of FALSE after the initial removal of an Game Pak.</P>
+<H2>Description</H2>
+<P>This function detects the removal of a Game Pak. This function can be called when the cartridge bus is locked with the <code><a href="../os/spinLock/OS_LockCartridge.html">OS_LockCartridge</a></code> function. However, when the bus is locked, the ARM7 will not perform automatic release detection processing, and thus you should periodically call <code><A href="CTRDG_IsExisting.html">CTRDG_IsExisting</A></code> each game frame or other interval when the player cannot reinsert. (This function internally calls <code><A href="CTRDG_IsExisting.html">CTRDG_IsExisting</A></code>.)
+</P>
+
+
+<H2>See Also</H2>
+<P><A href="CTRDG_Init.html"><code>CTRDG_Init</code></A>, <A href="CTRDG_IsExisting.html"><code>CTRDG_IsExisting</code></A></P>
+<H2>Revision History</H2>
+<P>
+04/12/2005 Added description of cartridge bus lock<br /> 09/15/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

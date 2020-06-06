@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Exclusion Control (SpinLock) (Overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Exclusion Control (SpinLock) (Overview)</H1>
+<H2>Description</H2>
+<P>SpinLock is a mechanism that uses the ARM processor <code>swp</code> command to perform exclusion control among threads and processors.</P>
+<P>Mutex and Message can also be used to perform exclusion control among threads, but unlike those mechanisms, spin lock does not cause thread switching when locked. Instead, it loops, waiting for the locks to become unlocked.</P>
+<P><strong>CAUTION: </strong></font> There are no reference materials for <code>OS_InitLock()</code>. GamePak access exclusion control between processors Card access exclusion control between processors  VRAM C and VRAM D access exclusion control between processors Synchronization between processors at initialization ( <code>OS_InitLock()</code> )</P>
+<P>This page describes the synchronization processing functions that use these NitroSDK spin locks.</P>
+<HR>
+<P><B>Initializing a Spin Lock Used by the SDK</B></P>
+<P><code>OS_InitLock()</code> performs the initialization for spin locks used by the SDK. However, since this is called from inside <a href="../init/OS_Init.html"><code>OS_Init()</code></a>, there is no need to call it with the application if <code><a href="../init/OS_Init.html">OS_Init()</a></code> is called.</P>
+<P><code>OS_InitLock()</code> also performs the process for synchronizing with the <code>OS_InitLock()</code> on other processors.</P>
+<P><strong>CAUTION: </strong></font> There are no reference materials for <code>OS_InitLock()</code>.</P>
+<HR>
+<P><B>Card Access Exclusion Control</B></P>
+<P>Generally, ARM7 has Game Card access privileges. Calling <code><a href="OS_LockCard.html">OS_LockCard()</a></code> gives access privileges to ARM9, and locks out access from ARM7.</P>
+<P>Calling <code><a href="OS_UnlockCard.html">OS_UnlockCard()</a></code> returns the access privileges to ARM7 and removes the lock.</P>
+<P><code><a href="OS_LockCard.html">OS_LockCard()</a></code> does not return from the function until there is a lock, but <code><a href="OS_TryLockCard.html">OS_TryLockCard()</a></code> only attempts the lock once. The return value indicates whether or not the lock was successful.</P>
+<HR>
+<P><B>GamePak Access Exclusion Control</B></P>
+<P>Generally, ARM7 has Game Pak access privileges. Calling <code><a href="OS_LockCartridge.html">OS_LockCartridge()</a></code> gives access privileges. to ARM9 and locks out access from ARM7.</P>
+<P>Calling <a href="OS_UnlockCartridge.html"><code>OS_UnlockCartridge()</code></a> returns the access privileges to ARM7 and removes the lock.</P>
+<P><code><a href="OS_LockCartridge.html">OS_LockCartridge()</a></code> does not return from the function until there is a lock, but <code><a href="OS_TryLockCartridge.html">OS_TryLockCartridge()</a></code> only attempts the lock once and returns immediately. The return value indicates whether or not the lock was successful.</P>
+<HR>
+<P><B>ID Used in the Lock Function</B></P>
+<P>When the ID used in the lock (a <code>u16</code> value) attempts to access the same resources between threads or between processors (cards, GamePaks, etc.), they must have different values. The following functions are configured to use these lock IDs in the NitroSDK.</P>
+<P><code><a href="OS_GetLockID.html">OS_GetLockID()</a></code> returns a value that is not in use from among the ID candidates available on ARM9. This value guarantees that there is no conflict with other modules regardless of whether it is on ARM9 or ARM7. However, one of the conditions is that other modules are also using <code><a href="OS_GetLockID.html">OS_GetLockID()</a></code> to obtain values. <code><a href="OS_GetLockID.html">OS_GetLockID()</a></code> is also used in places that need it inside the NitroSDK, so there is no overlap with the values if the application performs the configuration.</P>
+<P>Once an ID is no longer in use, unlock it with <code><a href="OS_ReleaseLockID.html">OS_ReleaseLockID()</a></code>. By calling this function, the specified ID is returned to the <code><a href="OS_GetLockID.html">OS_GetLockID()</a></code> candidates and can be used in other locks from any subsequent <code><a href="OS_GetLockID.html">OS_GetLockID()</a></code>.</P>
+<P>The values that can be obtained with <code><a href="OS_GetLockID.html">OS_GetLockID()</a></code> range from <code>0x40&nbsp;-&nbsp;0x6F</code>.</P>
+<P>The same function is also in the ARM7-side library, and can obtain values from <code>0x80&nbsp;-&nbsp;0xA0</code>.
+</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Mutex">Overview of OS Functions (Exclusion Control)<BR></A></CODE></P>
+<H2>Revision History</H2>
+<P>12/14/2004 Corrected typos<br /> 11/15/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

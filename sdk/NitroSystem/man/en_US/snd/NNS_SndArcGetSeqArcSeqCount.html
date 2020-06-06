@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcGetSeqArcSeqCount</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcGetSeqArcSeqCount</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">u32 NNS_SndArcGetSeqArcSeqCount( int <var>seqArcNo</var> );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAWLWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>seqArcNo</code></strong></em></td>
+<td>Sequence archive number</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFMWT"></a>
+<h2>Return Values</h2>
+
+<p>The number of sequences in the Sequence Archive. If the Sequence Archive number is invalid, the function returns 0.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Description</h2>
+      <p>
+Gets the number of sequences in the specified Sequence Archive.
+</p>
+      <div class="note">
+<h3 class="title">Note:</h3>
+<p>
+This function works only if the data from the specified Sequence Archive are already loaded in memory. If the data are not loaded, the function returns 0.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p>None.</p>
+<h2>Revision History</h2>
+<p>09/13/2004 Initial version.</p>
+</div>
+</body>
+</html>

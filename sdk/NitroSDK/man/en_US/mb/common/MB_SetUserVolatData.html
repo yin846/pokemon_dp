@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>MB_SetUserVolatData</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MB_SetUserVolatData</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/mb/mb_gameinfo.h&gt;</CODE><BR>
+<CODE>void
+MB_SetUserVolatData( u32 ggid, const u8 * userData, u32 size );
+</CODE></PRE>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>ggid</STRONG></EM></TD>
+<TD colspan="2">The GGID of the program that configures the data in the beacon. The GGID configured by <code><A href="../parent/MB_RegisterFile.html">MB_RegisterFile</A></code> is used as an identifier.</TD>
+    </TR>
+    <TR>
+<TD><B><I>userData</I></B></TD>
+<TD colspan="2">Pointer to the data to configure.</TD>
+    </TR>
+    <TR>
+<TD><B><I>size</I></B></TD>
+<TD colspan="2">The data size to configure. Maximum of 8 bytes.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>Configures the user data inside the volatile <code><A href="MBGameInfo.html">MBGameInfoVolatile</A></code> from among the MB parent device game information. It is possible to obtain the configured data from the <code><A href="MBGameInfo.html">MBGameInfo</A></code> parameters inside either <code><A href="MB_GetUserVolatData.html">MB_GetUserVolatData</A></code> or <code><A href="../fake_child/MBFakeScanCallback.html">MBFakeScanCallback</A></code>.</p>
+<h2>See Also</h2>
+<p><CODE><A href="MB_SetSendVolatCallback.html">MB_SetSendVolatCallback</A>, <A href="MBGameInfo.html">MBGameInfo</A></CODE></P>
+<H2>Revision History</H2>
+<P>01/18/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

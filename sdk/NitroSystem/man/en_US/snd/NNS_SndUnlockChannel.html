@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndUnlockChannel</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndUnlockChannel</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndUnlockChannel( u32 chBitFlag );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAWLWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>chBitFlag</code></strong></em></td>
+<td>The bit flag of the channel to unlock.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFMWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Description</h2>
+      <p>
+Unlocks locked channels.
+</p>
+      <p>
+The channel to unlock is designated with <em><strong><code>chBitFlag</code></strong></em>. Channel 0, channel 1, channel 2...are displayed in order from the lower bit, and all channels with an active bit are unlocked at the same time. For example, when unlocking channel 2 and channel 5, designate (1&lt;&lt;2) | (1&lt;&lt;5), or 0x0024.
+</p>
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+This function and the <code><a href="NNS_SndLockChannel.html">NNS_SndLockChannel</a></code> function must be called on a one-to-one correspondence. Be aware that attempting to unlock a channel that has not been locked will result in unexpected malfunctions.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndLockChannel.html">NNS_SndLockChannel</a></p>
+<h2>Revision History</h2>
+<p>10/25/2004 Initial version.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGeIsBufferOK</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGeIsBufferOK</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE><code>#include &lt;nnsys/g3d/gecom.h&gt;</CODE></PRE>
+<PRE>BOOL
+NNS_G3dGeIsBufferOK(
+u32 numWord);</code>
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>numWord</STRONG></EM></TD>
+<TD width="87%">The number of data that were appended to the command buffer.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>Returns <CODE>TRUE</CODE> if the data in <EM><STRONG>numWord</STRONG></EM> can be added to the geometry command buffer. </P>
+
+<H2>Description</H2>
+<P>This function checks whether a <code>numWord</I></B> quantity of data can be buffered to the geometry command buffer. Always returns FALSE when the geometry command buffer is not set.</P>
+
+
+<H2>See Also</H2>
+
+
+<H2>Revision History</H2>
+<P>10/15/2004 Revised description.<br /> 08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

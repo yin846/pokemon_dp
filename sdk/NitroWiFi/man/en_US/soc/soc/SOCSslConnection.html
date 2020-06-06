@@ -1,0 +1,118 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOCSslConnection</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOCSslConnection</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>typedef struct SOCSslConnection;</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>This structure maintains the settings and state for SSL communication. Although this member is generally for use internally to the library, there are some settings that should be performed within the application.</p>
+<p>The application must set the following fields prior to calling the <a href="SOC_EnableSsl.html">SOC_EnableSsl</a> function.</p>
+
+<table width="100%" height="77">
+  <tr>
+<th><strong>Member</strong></th>
+<th><strong>Description</strong></th>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>char* <strong><em>server_name</em></strong></code></td>
+<td><font size="-1">When the value is not NULL, it is compared with the certificate's server name (Common Name) and the result of the comparison is passed to the callback function. Supports wildcards for the certificate's server name.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>int (*<strong><em>auth_callback</em></strong>)(int, SOCSslConnection*, int)</code></td>
+<td><font size="-1">This is called each time the certificate authentication task ends. An error code is passed as the first parameter, the pointer to SOCSslConnection is passed as the second parameter, and the number of steps in the authentication chain (initial value = 0) is passed as the third parameter.<br>Errors can be ignored by changing a passed error code and returning it. Authentication fails if a non-zero value is returned.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code><a href="SOCCaInfo.html">SOCCaInfo</a>** <strong><em>ca_info</em></strong></code></td>
+<td><font size="-1">Specifies a list of trusted root certificates.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>int <strong><em>ca_builtins</em></strong></code></td>
+<td><font size="-1">Specifies the number of root certificates passed by ca_info.</td>
+  </tr>
+</table>
+
+<p>The following fields can be referenced from SOCSslConnection* functions passed to auth_callback:</p>
+
+<table width="100%" height="77">
+  <tr>
+<th><strong>Member</strong></th>
+<th><strong>Description</strong></th>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>u8* <strong><em>cert</em></strong></code></td>
+<td><font size="-1">A pointer to the certificate currently being authenticated. <a href="SOCCaInfo.html">SOCCaInfo</a> can be made from this certificate and added to the root certificate.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>int <strong><em>certlen</em></strong></code></td>
+<td><font size="-1">The data length of the certificate indicated by cert.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>char <strong><em>subject</em></strong>[]</code></td>
+<td><font size="-1">Certificate subject.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>char <strong><em>issuer</em></strong>[]</code></td>
+<td><font size="-1">Certificate issuer.</td>
+  </tr>
+</table>
+
+<p>A normal state is indicated when the first argument passed to auth_callback is 0. Numbers other than 0 are error codes and are as follows. Although auth_callback will basically return the value of the first argument as a return value, error values can be masked to allow SSL connection process to continue if there are errors you wish to ignore.</p>
+
+<table width="100%" height="77">
+  <tr>
+<td valign="top"><font size="-1"><code>SOC_CERT_OUTOFDATE</code></td>
+<td><font size="-1">The date for the certificate being authenticated has expired.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>SOC_CERT_BADSERVER</code></td>
+<td><font size="-1">The target host name, set in advance in SOCSslConnection.server_name, and the common name for the certificate do not match.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>SOC_CERT_NOROOTCA</code></td>
+<td><font size="-1">The root certificate set in SOCSslConnection.ca_info cannot authenticate the certificate chain currently under authentication.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>SOC_CERT_BADSIGNATURE</code></td>
+<td><font size="-1">The signature for the certificate under authentication cannot be verified. (Creation of the certificate failed on the server, etc.)</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>SOC_CERT_UNKNOWN_SIGALGORITHM</code></td>
+<td><font size="-1">The certificate under authentication uses an unknown signature algorithm.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code>SOC_CERT_UNKNOWN_PUBKEYALGORITHM</code></td>
+<td><font size="-1">The certificate under authentication uses an unknown public key encryption algorithm.</td>
+  </tr>
+</table>
+
+<p>For more information on SSL terminology and server setting methods, please see any number of SSL references commercially available.</p>
+
+<p>The NitroWiFi Library SSL supports the RSA algorithm up to 2048 bits for public key encryption and the RC4 algorithm up to 128 bits for shared key encryption.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOCCaInfo.html">SOCCaInfo</a></code>, <code><a href="SOC_EnableSsl.html">SOC_EnableSsl</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+12/21/2005 Initial version.</P>
+</body>
+</html>

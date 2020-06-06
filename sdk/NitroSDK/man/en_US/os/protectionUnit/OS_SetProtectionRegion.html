@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_SetProtectionRegion*</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_SetProtectionRegion*</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>OS_SetProtectionRegion( regionNo, address, sizeStr );</CODE>
+<CODE>OS_SetProtectionRegionParam( regionNo, param );</CODE>
+(These functions are macros)</PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>regionNo</I></B></TD>
+<TD>The Protection Region number. Specify a value between 0 and 7.</TD>
+    </TR>
+    <TR>
+<TD><B><I>address</I></B></TD>
+<TD>The base address (starting address). Specify as type u32.</TD>
+    </TR>
+    <TR>
+<TD><B><I>sizeStr</I></B></TD>
+<TD>Character string indicating area size. Only certain strings such as 4KB, 8KB, etc. can be specified.</TD>
+    </TR>
+    <TR>
+<TD><B><I>param</I></B></TD>
+<TD>Logical sum of specified base address and area size values. This logical sum value is set in CP15.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Sets the Protection Region's base address (starting address) and size. Also, with <CODE>OS_SetProtectionRegion()</CODE>, the protection unit is enabled.</P>
+<P><font color="red">The Protection Region's settings are closely related to system behavior. When making these settings, be sure you understand the design of the Protection Region and how each area is used.</font></P>
+<P><CODE>OS_SetProtectionRegion()</CODE> is a macro. <B><I>regionNo</I></B> is the region number of the Protection Region being set. The character string itself is used as the argument by the macro, so you cannot use the value to specify a variable. You should specify a number between 0 and 7.</P>
+<P><CODE>address</CODE> is the base address (starting address) of the Protection Region being set. Specify as type u32. The alignment restrictions of the specified address will vary, depending on the size of the Protection Region. The Protection Region's starting address must be a multiple of the area size. Thus, if the Protection Region is 4KB, then the lower 12 bits of the address expressed as a u32 value must be 0.</P>
+<P><CODE>sizeStr</CODE> is a character string that indicates the area size of the Protection Region.</P>
+<BLOCKQUOTE>
+<P>4KB 8KB 16KB 32KB 64KB 128KB 256KB 512KB<br> 1MB 2MB 4MB 8MB 16MB 32MB 64MB 128MB 256MB 512MB<br> 1GB 2GB 4GB</P>
+</BLOCKQUOTE>
+<BLOCKQUOTE>Example: <BR> OS_SetProtectionRegion( 2, 0x02080000, 32KB );<BR>
+</BLOCKQUOTE>
+<P>Regardless of the status before calling <CODE>OS_SetProtectionRegion()</CODE>, the region becomes enabled.  </P>
+<P><CODE>OS_SetProtectionRegionParam()</CODE> is also a macro. <B><I>regionNo</I></B> is handled the same as with <CODE>OS_SetProtectionRegion()</CODE>. The <B><I>param</I></B> parameter is the logical sum of the base address and <CODE>HW_C6_PR_SIZE_<I>xxx</I></CODE>, which is the value set to express the area size. <CODE><I>xxx</I></CODE> takes the string named for <B><I>sizeStr</I></B> (i.e., 4KB or 8KB or ...4GB). In addition, add <CODE>HW_C6_PR_ENABLE</CODE> in the logical sum to enable the region. </P>
+<BLOCKQUOTE>Example: <BR> OS_SetProtectionRegionParam( 2, 0x02080000 | HW_C6_PR_32KB | HW_C6_PR_ENABLE );<BR>
+</BLOCKQUOTE>
+<H2>Internal Operation</H2>
+<P>The function itself is a macro, but it ultimately operates register 6 of the CP15 system control co-processor.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="OS_EnableProtectionUnit.html">OS_EnableProtectionUnit</A>, <A href="OS_DisableProtectionUnit.html">OS_DisableProtectionUnit</A><BR> <A href="OS_GetProtectionRegion.html">OS_GetProtectionRegion*</A></CODE></P>
+<H2>Revision History</H2>
+<P>07/08/2004 Described <CODE>HW_C6_PR_ENABLE</CODE> <BR>05/28/2004 Initial version </P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

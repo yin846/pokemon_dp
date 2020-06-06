@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Alarm (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Alarm (Overview)</H1>
+<H2>Introduction</H2>
+<P>An alarm uses one of the four hardware timers to generate an interrupt at a time specified by the application. The reference unit for time is the <code>tick</code> used by the tick system, so that system must be operating for alarms to work properly. Since the tick system also uses a hardware timer, there are two hardware timers remaining and available to the user.</P>
+<HR>
+<P><B>Initialization</B></P>
+<P>To use the alarm system, it must be initialized by calling <nobr><code><a href="OS_InitAlarm.html">OS_InitAlarm()</a></code></nobr>. However, the tick system must be initialized by calling <nobr><code><a href="../time/OS_InitTick.html">OS_InitTick()</a></code></nobr> before calling <nobr><code>OS_InitAlarm()</code></nobr>.</P>
+<P>To determine whether or not an alarm can be used, call <nobr><code><a href="OS_IsAlarmAvailable.html">OS_IsAlarmAvailable()</a></code></nobr>.</P>
+<P>To free the hardware timer that was allocated to the alarm system and quit the alarm system, call <nobr><code><a href="OS_EndAlarm.html">OS_EndAlarm()</a></code></nobr>.</P>
+<HR>
+<P><B>Setting Alarms</B></P>
+<P>To set an alarm, first prepare an <code>OSAlarm</code> structure object. One alarm can be set for each prepared structure object. Initialize the object using <nobr><code><a href="OS_CreateAlarm.html">OS_CreateAlarm()</a></code></nobr>.</P>
+<P>Use the <nobr><code><a href="OS_SetAlarm.html">OS_SetAlarm()</a></code></nobr> function to set the alarm. For the setting, designate the time with the tick value (relative time based on the current time) at which you want to call the specified handler.</P>
+<P>A period alarm setting function called <nobr><code><a href="OS_SetPeriodicAlarm.html">OS_SetPeriodicAlarm()</a></code></nobr> is available to set an alarm handler is called at specified intervals.</P>
+<P>If an alarm cannot generate an interrupt at its specified time because another interrupt process or alarm handler is already active, the alarm handler is called as soon as interrupts can be used. This allows for delayed interrupts. When multiple alarms are delayed, they are called consecutively.</P>
+<P>We recommend that your processes generally end the interrupt handler quickly.</P>
+<HR>
+<P><B>Canceling Alarms</B></P>
+<P>To cancel a single alarm, call <nobr><code><a href="OS_CancelAlarm.html">OS_CancelAlarm()</a></code></nobr>. This function cancels one specified alarm.</P>
+<P>To cancel all alarms, call <nobr><code><a href="OS_CancelAllAlarms.html">OS_CancelAllAlarm()</a></code></nobr>.</P>
+<P>Another method (described below) uses tag values to cancel groups of alarms. &nbsp;</P>
+<HR>
+<P><B>About Alarm Tags</B></P>
+<P>Alarms can be assigned tag values of 1 to 255. These tag values are used to cancel all alarms with a given tag.</P>
+<P>Tag values are set to existing alarms using <nobr><code><a href="OS_SetAlarmTag.html">OS_SetAlarmTag()</a></code></nobr>.</P>
+<P>To cancel all alarms with a given tag value, use <nobr><code><a href="OS_CancelAlarms.html">OS_CancelAlarms()</a></code></nobr>. (Note that the function name is plural.))</P>
+<HR>
+<P><B>Internal Data Structure</B></P>
+<P>The OSAlarm alarm structures are inter-connected in a linked list according to the temporal order of the alarms.</P>
+<BLOCKQUOTE><IMG src="image_alarmStruct.gif" border="0"></BLOCKQUOTE>
+<P>If a given alarm structure is still connected to the list, that means its alarm has not yet gone off. Do not use this structure to set another alarm, because that will corrupt the link structure. If a structural corruption is detected, <a href="../debug/OS_Panic.html"><code>OS_Panic</code></a> stops the library, regardless of the build.</P>
+<P>Using <CODE><A href="OS_CreateAlarm.html">OS_CreateAlarm()</A></CODE> to initialize an alarm structure that is still connected to the list is also prohibited, since this can corrupt the link structure and cause unstable behavior. &nbsp;</P>
+<HR>
+<P><B>Handling Multiple Alarms</B></P>
+<P>Even though the alarm system only uses one timer, the application can set multiple alarms simultaneously. This is possible because the alarm system maintains an internal list of alarms arranged in chronological order, starting with the alarm that is set to go off the soonest. The alarm system follows this list to conduct the alarm process, using the hardware timer on only one alarm at a time. Once the process for one alarm ends, the system repeats the process on the next alarm in the list.</P>
+<P>In the example below, four alarms have been set. The current time (the present tick value) is 70, and the alarm that is set to go off the soonest is <code>Alarm1</code>. The alarm system is set to generate a timer interrupt for <code>Alarm1</code> after another 30 ticks elapse.</P>
+<P><IMG src="alarmList1.gif" border="0"></P>
+<P>When the time reaches 100, the timer interrupt for <code>Alarm1</code> is triggered and the alarm handler is called.</P>
+<P><IMG src="alarmList2.gif" border="0"></P>
+<P>When this process ends the next alarm is set. The alarm process for <code>Alarm1</code> ends at tick 105, and the list says <code>Alarm2</code> should go off at tick 150, so the alarm system is set to generate a timer interrupt for <code>Alarm2</code> after another 45 ticks elapse.</P>
+<P><IMG src="alarmList3.gif" border="0"></P>
+<P>The process is repeated for the other alarms in the list in turn.</P>
+<HR>
+<P><B>Canceling and Resetting Alarms Inside the Alarm Handler</B></P>
+<P>Below are explanations of the circumstances surrounding the process of alarms canceling and resetting themselves inside the alarm handler.</P>
+<P>1. A normal one-time alarm canceling its own alarm with an alarm handler</P>
+<BLOCKQUOTE>Since an alarm is generated at the time the alarm handler is called, there is no need for self-canceling and this action has no meaning.</BLOCKQUOTE>
+<P>2. A normal one-time alarm canceling its own alarm with an alarm handler</P>
+<BLOCKQUOTE>The alarm structure OSAlarm for that alarm has already been removed from the list, so the alarm can be reset. Cancellation is not necessary.</BLOCKQUOTE>
+<P>3. A periodic alarm canceling its own alarm with an alarm handler</P>
+<BLOCKQUOTE>Periodic alarms can cancel their own alarms with alarm handlers.</BLOCKQUOTE>
+<P>4. A periodic alarm resetting itself using an alarm handler</P>
+<BLOCKQUOTE>After canceling once, it is possible to set a new alarm using that alarm object.</BLOCKQUOTE>
+<HR>
+<P><B>Use of Hardware Timers</B></P>
+<P>The alarm system uses <code>timer 1</code>. This timer cannot be used by the application. The OS timer functions are checked in a debug build by <code><a href="../debug/SDK_ASSERT.html">SDK_ASSERT</a></code>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Alarm">List of OS Functions (Alarm)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;<br> 11/05/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MIi_SetCartridgeProcessor</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MIi_SetCartridgeProcessor</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>void MIi_SetCartridgeProcessor( MIProcessor proc )</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>proc</STRONG></EM></TD>
+<TD width="87%">Setup for access rights</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function sets up access rights to the AGB compatible 32-pin cartridge slot hardware. The argument <EM><STRONG><code>proc</code></STRONG></EM> is in <CODE>MIProcessor</CODE> enumeration format and has the following meanings:</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#e0e0e0"><CODE>MI_PROCESSOR_ARM9</CODE></TD>
+<TD bgcolor="#e0e0e0">Sets access permission to ARM9.</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#e0e0e0"><CODE>MI_PROCESSOR_ARM7</CODE></TD>
+<TD bgcolor="#e0e0e0">Sets access permission to ARM7.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> <STRONG>Note:</STRONG> If a debug print is carried out with <CODE>OS_Printf()</CODE> while using the TEG version of the IS_NITRO_EMULATOR, the access rights will go to the ARM7 processor.</P>
+<P>Do not use this function as the usual method of setting up access rights. Carry out the process while considering <CODE>spinLock</CODE> with <CODE><A href="../../os/spinLock/OS_LockCartridge.html">OS_LockCartridge()</A></CODE> and <CODE><A href="../../os/spinLock/OS_TryLockCartridge.html">OS_TryLockCartridge()</A></CODE>.</P>
+<h2>Internal Operation</h2>
+<P>Accesses the <code>EXMEMCNT</code> I/O register <code>(0x4000204)</code>.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="MI_GetCartridgeProcessor.html">MI_GetCardProcessor</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>08/17/2004 Standardized the notation of IS-NITRO-EMULATOR.<br> 03/30/2004 &quot;<code>MI_</code>&quot; is changed to &quot;<code>MIi_</code>&quot;.<br> 03/16/2004 Description of going to ARM7 when debug print is carried out.<br> 01/14/2004 Changed function name from MI_SetCartridgePriority.<br> 12/25/2003 Changed enum name to MIProcessor.<br> 12/18/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

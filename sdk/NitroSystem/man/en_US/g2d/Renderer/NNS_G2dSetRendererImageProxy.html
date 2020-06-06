@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+
+
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRendererImageProxy</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRendererImageProxy</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Renderer.h&gt;</CODE></pre>
+  <pre><CODE>void NNS_G2dSetRendererImageProxy
+	( 
+		NNSG2dRendererInstance*             pRend, 
+		const NNSG2dImageProxy*             pImgProxy, 
+		const NNSG2dImagePaletteProxy*      pPltProxy 
+	);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pRend</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] Renderer entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pImgProxy</font></strong></em></td>
+<td width="87%">[IN] Image information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pPltProxy</font></strong></em></td>
+<td width="87%">[IN] Palette information</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Sets the image data and the palette data to the renderer entity. Execute this function before using the renderer entity.<BR> This function can be used in the Begin-End rendering block.<BR> <BR> Note:<BR> When rendering is done by specifying the optimization flag and <code>NNS_G2D_RDR_OPZHINT_LOCK_PARAMS</code>, the use inside the Begin-End rendering block is prohibited.<BR> This is because the Begin-End rendering of the rendering core module is called at the same timing as the Begin-End rendering of the renderer module.<BR> <BR> With the renderer core module, the switching of the image proxy in Begin-End rendering is prohibited. This is because the precalculation of the parameters associated with <code>ImageProxy</code> is done at Begin-End rendering.<BR> <BR> <code>NNS_G2dSetCurrentImageProxy</code> has undergone a name change. The previous function name remains as a separate name. <BR>
+</p>
+
+<h2>See Also</h2>
+<p>
+<CODE><A href="NNS_G2dSetCurrentImageProxy.html">NNS_G2dSetCurrentImageProxy</A><br></CODE>
+</p>
+<H2>Revision History</H2>
+<P>11/10/2004 Added description.</P>
+<P>08/02/2004 Renamed function.</P>
+<P>05/28/2004 Initial version.</P>
+</body>
+</html>

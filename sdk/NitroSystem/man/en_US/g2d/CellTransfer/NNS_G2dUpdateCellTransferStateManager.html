@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dUpdateCellTransferStateManager</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dUpdateCellTransferStateManager</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_CellTransferManager.h&gt;</CODE></pre>
+<pre><CODE>void NNS_G2dUpdateCellTransferStateManager();</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+<p>None.
+</p>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Updates the cell VRAM transfer state object manager. Please call this before the VRAM transfer and after each frame animation update and draw request has finished. Caution is required with the call location)<BR> The program determines whether or not there is a need to generate a VRAM transfer for all of the transfer state objects registered internally, and if necessary, a task generation request is issued.<BR>
+</p>
+
+<h2>See Also</h2>
+<p>None.</p>
+<H2>Revision History</H2>
+<P>07/20/2004 Initial version.</P>
+</body>
+</html>

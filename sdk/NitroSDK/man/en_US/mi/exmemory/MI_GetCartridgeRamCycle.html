@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_GetCartridgeRamCycle</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_GetCartridgeRamCycle</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>MICartridgeRamCycle MI_GetCartridgeRamCycle( void )</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>Access cycle setting to access the cartridge RAM region</p>
+
+<H2>Description</H2>
+<P>Gets the access cycle value settting for accessing the Game Pak's RAM region.</P>
+<P>The return values are <code>MICartridgeRamCycle</code> enumerated types. The meanings are shown below.
+</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_CTRDG_RAMCYCLE_6</CODE></TD>
+<TD bgcolor="#eeeeee">6 cycles</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_CTRDG_RAMCYCLE_8</CODE></TD>
+<TD bgcolor="#eeeeee">8 cycles</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_CTRDG_RAMCYCLE_10</CODE></TD>
+<TD bgcolor="#eeeeee">10 cycles</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_CTRDG_RAMCYCLE_18</CODE></TD>
+<TD bgcolor="#eeeeee">18 cycles</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Internal Operation</h2>
+<P>Accesses the <code>EXMEMCNT</code> I/O register <code>(0x4000204)</code>.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="MI_SetCartridgeRamCycle.html">MI_SetCartridgeRamCycle</A>,<BR> <A href="MI_GetCartridgeRomCycle1st.html">MI_GetCartridgeRomCycle1st</A>, <A href="MI_GetCartridgeRomCycle2nd.html">MI_GetCartridgeRomCycle2nd</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>05/25/2004 Name changed by adding &quot;cartridge&quot;  12/18/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

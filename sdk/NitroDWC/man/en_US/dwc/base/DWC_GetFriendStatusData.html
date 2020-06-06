@@ -1,0 +1,104 @@
+<HTML>
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>DWC_GetFriendStatusData</TITLE>
+    <LINK rel="stylesheet" href="../../css/function.css">
+    <BASE target="main">
+  </HEAD>
+  <BODY>
+<H1>DWC_GetFriendStatusData</H1>
+
+<H2>C Specification</H2>
+    <DL>
+      <DD>
+<PRE><CODE>#include &lt;dwc.h&gt;
+
+u8 DWC_GetFriendStatusData( const <A href="DWCFriendData.html">DWCFriendData</A>* friendData,
+char* statusData,
+int* size);</CODE></PRE>
+      </DD>
+    </DL>
+
+<H2>Description</H2>
+	<P>
+	  This function gets the communication status of the friend specified with <CODE>friendData</CODE>. The GameSpy server sends notification each time the friend's communication status changes, which is saved in the internal cache of the DWC library. Therefore, this function references that status and does not perform communications.
+	</P>
+	<P>
+	  A player's communication status is made up of the status flag expressed in this function's return value and the status character string. The player status is managed on the GameSpy server. This function presumes the <CODE>status</CODE> character to be a Base-64 encoded character string and obtains the status data (the <CODE>statusData</CODE> argument) by decoding it. The <CODE>status</CODE> flag is automatically set by the DWC library, but the application can set the status data by using the<a href="DWC_SetOwnStatusData.html"><CODE>DWC_SetOwnStatusData</CODE></a> function. The data specified by this function is encoded in Base64 and sent to the GameSpy server as the status character string.
+	</P>
+	<P>
+	  Use the <a href="DWC_GetFriendStatusDataSC.html"><CODE>DWC_GetFriendStatusDataSC</CODE></a> function to obtain specific information in server-client matchmaking. Also, for applications where character strings (rather than binary data such as <CODE>statusData</CODE>) are set with the <a href="DWC_SetOwnStatusString.html"><CODE>DWC_SetOwnStatusString</CODE></a> function, get the binary data by using the <a href="DWC_GetFriendStatus.html"><CODE>DWC_GetFriendStatus</CODE></a> or <a href="DWC_GetFriendStatusSC.html"><CODE>DWC_GetFriendStatusSC</CODE></a> function.
+	</P>
+    
+    <p>
+<strong>This function takes several hundred microseconds. Be sensitive of this fact when you need to check status several times in a short period.</strong>
+    </p>
+    
+<H2>Arguments</H2>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+<TD width="25%"><EM><STRONG><CODE>friendData</CODE></STRONG></EM></TD>
+<TD width="75%">The pointer to the type <A href="DWCFriendData.html"><CODE>DWCFriendData</CODE></A> friend information.</TD>
+        </TR>
+        <TR>
+<TD><EM><STRONG><CODE>statusData</CODE></STRONG></EM></TD>
+<TD>The pointer to where the friend status data is stored. If NULL is passed, the data will not be copied.
+          </TD>
+        </TR>
+        <TR>
+<TD><EM><STRONG><CODE>size</CODE></STRONG></EM></TD>
+<TD>The pointer to where the friend status data length is stored. -1 is stored in the case of invalid data.
+          </TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+
+<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+				  <TD width="25%"><EM><STRONG><CODE>DWC_STATUS_OFFLINE</CODE></STRONG></EM></TD>
+				  <TD>Offline<BR>(Indicates the DWC is offline or that the friendship with the partner is not established.)</TD>
+				</TR>
+				<TR>
+				  <TD width="25%"><EM><STRONG><CODE>DWC_STATUS_ONLINE</CODE></STRONG></EM></TD>
+				  <TD>Online (Logged in to a Wi-Fi connection server.)</TD>
+				</TR>
+				<TR>
+				  <TD width="25%"><EM><STRONG><CODE>DWC_STATUS_PLAYING</CODE></STRONG></EM></TD>
+				  <TD>In-game (After matchmaking has completed.)</TD>
+				</TR>
+				<TR>
+				  <TD width="25%"><EM><STRONG><CODE>DWC_STATUS_MATCH_ANYBODY</CODE></STRONG></EM></TD>
+				  <TD>In &quot;connect to anybody peer matchmaking&quot;</TD>
+				</TR>
+				<TR>
+				  <TD width="25%"><EM><STRONG><CODE>DWC_STATUS_MATCH_FRIEND</CODE></STRONG></EM></TD>
+				  <TD>In &quot;connect to friends peer matchmaking&quot;</TD>
+				</TR>
+				<TR>
+				  <TD width="25%"><EM><STRONG><CODE>DWC_STATUS_MATCH_SC_CL</CODE></STRONG></EM></TD>
+				  <TD>Client DS undergoing server-client matchmaking</TD>
+				</TR>
+				<TR>
+				  <TD width="25%"><EM><STRONG><CODE>DWC_STATUS_MATCH_SC_SV</CODE></STRONG></EM></TD>
+				  <TD>Server DS undergoing server-client matchmaking</TD>
+				</TR>
+				</TBODY>
+		  </TABLE>
+
+<H2>See Also</H2>
+    <P>
+<code><a href="DWC_GetFriendStatus.html">DWC_GetFriendStatus</a>, <a href="DWC_GetFriendStatusSC.html">DWC_GetFriendStatusSC</a>, <a href="DWC_GetFriendStatusDataSC.html">DWC_GetFriendStatusDataSC</a>, <a href="DWC_SetOwnStatusString.html">DWC_SetOwnStatusString</a>, <a href="DWC_SetOwnStatusData.html">DWC_SetOwnStatusData</a></code>
+    </P>
+
+<H2>Revision History</H2>
+    <P>
+	  12/16/2005 Added a description about the networking states and introduced other similar functions.<BR>11/07/2005 Initial version<BR>
+    </P>
+
+  </BODY>
+</HTML>

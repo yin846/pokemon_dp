@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_COMMAND_SEEKDIR</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_COMMAND_SEEKDIR</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<BR> <CODE>FSResult FS_ARCHIVE_PROC_FUNC(FSFile *p_file, FSCommandType command /* = FS_COMMAND_SEEKDIR */);<br></CODE><br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Operating specifications for the archive command <code>FS_COMMAND_SEEKDIR</code> are shown below: <BR> <BR>
+
+<HR>
+<B>Arguments passed to this command</B>
+<BLOCKQUOTE>
+<PRE>This command takes as a command argument the variable <code>arg.seekdir</code> that is stored in <code>p_file</code>.<br /> 
+This variable is defined in <code>nitro/fs/file.h</code> as shown below:
+
+typedef struct {
+<a href="../fs_dir_pos_type.html">FSDirPos</a>        pos;
+} FSSeekDirInfo;</code> </PRE>
+</BLOCKQUOTE>
+<BLOCKQUOTE>Argument content is listed below:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1" width="50%">
+  <TBODY>
+    <TR>
+<TD style="text-align : center;" width="95">Arguments</TD>
+<TD style="text-align : center;" width="522">Content</TD>
+    </TR>
+    <TR>
+<TD width="95" style="text-align : center;"><code><EM><STRONG>pos</STRONG></EM></code></TD>
+<TD width="522">The directory position to be moved is stored in a <code><a href="../fs_dir_pos_type.html">FSDirPos</a></code> type.<br />The <code><a href="fs_command_readdir_spec.html">FS_COMMAND_READDIR</a></code> command generates this value.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<HR>
+<B>Actions required of this command</B>
+<BLOCKQUOTE>
+<PRE>It sets the <code>p_file</code> variable <code>prop.dir</code> as shown below:<br />
+
+Sets the directory position that is held by the argument <code>pos</code> in <code>prop.dir.pos</code>.
+If both <code>pos.index</code> and <code>pos.pos</code> are <code>0</code>, it signifies the top of the directory array position.<br />
+The set values are used by subsequent <code>FS_COMMAND_SEEKDIR</code> and <code><a href="fs_command_readdir_spec.html">FS_COMMAND_READDIR</a></code> commands.
+You may determine your own meanings for the <code>pos</code> name variables as long as they are appropriate arguments for these commands.
+
+Sets the index for the parent directory at the directory position indicated by the argument <code>pos</code> in <code>prop.dir.parent</code>.
+<code>pos.own_id = 0</code>&quot; signifies the root directory.
+In the case of the root directory, this sets the total number of directories into <code>prop.dir.parent</code>.<br />
+The set values are used by subsequent <code><a href="fs_command_getpath_spec.html">FS_COMMAND_GETPATH</a></code> commands.
+</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Default Implementation</B>
+<BLOCKQUOTE>The command sets values based on the following determinants:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="185">prop.dir.pos.arc</TD>
+<TD width="432">Uses the arguments as-is</TD>
+    </TR>
+    <TR>
+<TD width="185">prop.dir.pos.own_id</TD>
+<TD width="432">Uses the arguments as-is</TD>
+    </TR>
+    <TR>
+<TD width="185">prop.dir.pos.index</TD>
+<TD width="432">The position at which the next FNT directory entry resides.<br /> (Conforms to NitroROM format)</TD>
+    </TR>
+    <TR>
+<TD width="185">prop.dir.pos.pos</TD>
+<TD width="432">If the next directory entry is a file, that file's index<br /> This value increments by one each time <code><a href="fs_command_readdir_spec.html">FS_COMMAND_READDIR</a></code> completes successfully.<br /> (Conforms to NitroROM format)</TD>
+    </TR>
+    <TR>
+<TD>prop.dir.parent</TD>
+<TD>Parent directory's index, or total number of directories.<br /> (Conforms to NitroROM format)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BLOCKQUOTE>As long as the archive's FNT conforms to the NitroROM format (determined by using the archive read callback function), this information is acquired from the FNT entry block that is indicated by <code>pos.own_id</code>.
+</BLOCKQUOTE>
+<HR>
+<B>Command Results</B><BR>
+
+<BLOCKQUOTE>
+<PRE>If this command returns <code>FS_RESULT_SUCCESS</code>, <code>p_file</code> becomes a handle that contains directory position information.
+Subsequently the <code><a href="../file/FS_IsDir.html">FS_IsDir</a></code> function returns <code>TRUE</code>.
+It can also be used as an argument in functions that operate on directories.</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Functions that use this command</B><BR>
+<BLOCKQUOTE>FS_SeekDir <code><a href="../file/FS_RewindDir.html">FS_RewindDir</a></code><br /> (indirectly from the default <code><a href="fs_command_findpath_spec.html">FS_FINDPATH</a></code> command) FS_ChangeDir FS_OpenFile <code><a href="../file/FS_ConvertPathToFileID.html">FS_ConvertPathToFileID</a></code><br /> (indirectly from the default <a href="fs_command_getpath_spec.html">FS_GETPATH</a> command) FS_GetPathName FS_GetPathLength</BLOCKQUOTE>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a></code>, <code><a href="../fs_archive_proc_func_type.html">FS_ARCHIVE_PROC_FUNC</a></code>, <code><a href="../fs_command_type_const.html">FS_COMMAND_*</a></code>, <code><a href="../archive/FS_SetArchiveProc.html">FS_SetArchiveProc</a></code></p>
+
+<H2>Revision History</H2>
+<P>07/12/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

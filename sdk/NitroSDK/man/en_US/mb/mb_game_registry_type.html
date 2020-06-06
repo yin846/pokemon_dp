@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MBGameRegistry</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MBGameRegistry</h1>
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR>
+<PRE>
+typedef	struct
+{
+const char    *romFilePathp;
+u16           *gameNamep;
+u16           *gameIntroductionp;
+const char    *iconCharPathp;
+const char    *iconPalettePathp;
+u32 ggid;
+u8            maxPlayerNum;
+u8            pad[3];
+u8            userParam[MB_DOWNLOAD_PARAMETER_SIZE];
+} MBGameRegistry;
+</PRE>
+  <br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>This file defines the structure used when specifying the download file with the <code>MB_RegistryFile</code> function. The meaning of each member is shown in the following table:
+<TABLE border="0">
+  <TBODY>
+    <TR>
+<TD>Member</TD>
+<TD>Description</TD>
+    </TR>
+    <TR>
+<TD>romFilePathp</TD>
+<TD>Pointer to the file path string of the program binary. The current implementation of the MB function requests the pointer to the <code>FSFile</code> structure that does not reference this member. Note: <code>romFilePathp</code> is provided for future enhancements.
+	  </TD>
+    </TR>
+    <TR>
+<TD>gameNamep</TD>
+<TD>Pointer to the game name string. The string must be less than <code><a href="mb_game_consts.html">MB_GAME_NAME_LENGTH</a></code>.
+	  </TD>
+    </TR>
+    <TR>
+<TD>gameIntroductionp</TD>
+<TD>Pointer to the introduction string of the game content. The string must be less than <code><a href="mb_game_consts.html">MB_GAME_INTRO_LENGTH</a></code>.
+	  </TD>
+    </TR>
+    <TR>
+<TD>iconCharPathp</TD>
+<TD>Pointer that indicates path character string to icon character data file.
+	  </TD>
+    </TR>
+    <TR>
+<TD>iconPalettePathp</TD>
+<TD>Pointer that indicates path character string to icon palette data file.
+	  </TD>
+    </TR>
+    <TR>
+<TD>ggid</TD>
+      <TD>
+GGID value that is passed to a child when this game is downloaded. This value is stored in little-endian format in <code>ssid[0]</code>, <code>ssid[1]</code>, <code>ssid[2]</code>, and <code>ssid[3]</code> of the <a href="mb_parent_bss_desc_type.html"><code>MBParentBssDesc</code></a> structure which the multiboot child obtained with the <a href="common/MB_GetMultiBootParentBssDesc.html"><code>MB_GetMultiBootParentBssDesc</code></a> function. The <a href="child/MB_ReadMultiBootParentBssDesc.html"><code>MB_ReadMultiBootParentBssDesc</code></a> function uses this value to create the <a href="../wm/wm/WMBssDesc.html"><code>WMBssDesc</code></a> information that is used to connect to the parent.<br> When not used for another purpose, GGID can be used as a random u32 value.<br>
+	  </TD>
+    </TR>
+    <TR>
+<TD>maxPlayerNum</TD>
+<TD>The maximum number of simultaneous players for this game, including the parent. The maximum is 16 machines. The maximum number of children that can be connected via multiboot is set with <code>MB_SetParentCommParam</code>, which does not include the parent. So <code>MB_SetParentCommParam</code> is 1 less than the <code>MBGameRegistry</code> value.</TD>
+    </TR>
+    <TR>
+<TD>userParam</TD>
+<TD>These are the user-defined extended parameters, which can be provided to the child program that started up this game. Up to <code>MB_DOWNLOAD_PARAMETER_SIZE</code> (=32) bytes of data can be freely configured. The child program that was started up can reference this data by calling the <A href="child/MB_GetMultiBootDownloadParameter.html"><code>MB_GetMultiBootDownloadParameter</code></A> function.
+	  </TD></TR>
+  </TBODY>
+</TABLE>
+<BR>
+<h2>See Also</h2>
+<p><CODE><a href="mb_game_consts.html">MB_GAME_*</a> <A href="mb_icon_info_type.html">MBIconInfo</A> <A href="mb_parent_bss_desc_type.html">MBParentBssDesc</A> <a href="../wm/wm/WMBssDesc.html">WMBssDesc</a> <BR> <A href="common/MB_GetMultiBootParentBssDesc.html">MB_GetMultiBootParentBssDesc</A> <A href="child/MB_GetMultiBootDownloadParameter.html">MB_GetMultiBootDownloadParameter</A> <A href="child/MB_ReadMultiBootParentBssDesc.html">MB_ReadMultiBootParentBssDesc</A> <A href="parent/MB_RegisterFile.html">MB_RegisterFile</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+08/17/2005 Added link to MB_GetMultiBootDownloadParameter function.<br> 05/20/2005 Added member userParam.<br>11/02/2004 Corrected member names.<br> 10/18/2004 Corrected the description of <code>ggid</code>.<BR> 10/05/2004 Corrected description of <code>ggid</code>.<BR> 09/27/2004 Added links.<BR> 09/10/2004 Revised the description of <code>iconCharp</code> and <code>iconPalettep</code>.<BR>08/09/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_GetConsoleType</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_GetConsoleType</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>u32 OS_GetConsoleType( void );</CODE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>A type <code>u32</code> value that depends on the program's execution environment. Details are provided in the Description section above.</P>
+<H2>Description</H2>
+<P>Returns a type <code>u32</code> value which indicates the environment in which the program is executing</P>
+<P>This function is an effective way to automatically switch processes depending on the operating environment. It allows you to create a common program for multiple operating environments.</P>
+<P>The function examines and identifies devices, memory, and other factors when it is called the first time; but on subsequent calls, it returns the same value that was previously returned. However, in the latest ROM version library (<code>FINALROM</code>), it always returns constant <nobr>(<code>OS_CONSOLE_NITRO&nbsp;|&nbsp;OS_CONSOLE_DEV_CARD&nbsp;|&nbsp;OS_CONSOLE_SIZE_4MB</code>)</nobr>.</P>
+<P>Performing an AND operation on the return value and <code>OS_CONSOLE_MASK</code> results in a value that depends on the operating environment in which the program is running:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="240"><CODE>OS_CONSOLE_ENSATA</CODE></TD>
+<TD>Running on ensata NITRO Software Emulator</TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_CONSOLE_ISEMULATOR</CODE></TD>
+<TD>Running on the TEG version of IS-NITRO-EMULATOR</TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_CONSOLE_ISDEBUGGER</CODE></TD>
+<TD>Running on IS-NITRO-DEBUGGER</TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_CONSOLE_NITRO</CODE></TD>
+<TD>Running on an actual NITRO console</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<P>Performing an AND operation on the return value and <code>OS_CONSOLE_DEV_MASK</code> results in a value that depends on the device that reads the Game Card data:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="240"><CODE>OS_CONSOLE_DEV_CARD</CODE></TD>
+<TD>Load from a Game Card device</TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_CONSOLE_DEV_CARTRIDGE</CODE></TD>
+<TD>Load from a Game Pak</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<P>Performing an AND operation on the return value and <code>OS_CONSOLE_SIZE_MASK</code> results in a value that depends on the size of the implemented memory:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="240"><CODE>OS_CONSOLE_SIZE_4MB</CODE></TD>
+<TD>4MByte</TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_CONSOLE_SIZE_8MB</CODE></TD>
+<TD>8MByte</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<BLOCKQUOTE>Example:<br /> switch( OS_GetConsoleType() &amp; OS_CONSOLE_MASK ) case OS_CONSOLE_ENSATA: OS_Printf( &quot;running on ENSATA&quot; ); break; case OS_CONSOLE_ISEMULATOR: OS_Printf( &quot;running on IS-NITRO-EMULATOR&quot; ); break; case OS_CONSOLE_ISDEBUGGER: OS_Printf( &quot;running on IS-NITRO-DEBUGGER&quot; ); break; case OS_CONSOLE_NITRO: OS_Printf( &quot;running on retailed NITRO&quot; ); break;
+</BLOCKQUOTE>
+<H2>See Also</H2>
+<P><CODE><A href="OS_IsRunOnEmulator.html">OS_IsRunOnEmulator</A></CODE></P>
+<H2>Revision History</H2>
+<P>10/12/2004 Explained the constants returned with FINALROM version.<BR>08/17/2004 Standardized the notation of IS-NITRO-EMULATOR.<BR>06/08/2004 Initial version. </P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

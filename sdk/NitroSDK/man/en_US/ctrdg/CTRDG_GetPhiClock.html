@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CTRDG_GetPhiClock</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CTRDG_GetPhiClock</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/ctrdg.h&gt;</CODE><BR> <BR> <CODE>CTRDGPhiClock CTRDG_GetPhiClock( void )</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>PHI terminal output control settings.</p>
+
+<H2>Description</H2>
+<P>This function acquires the PHI terminal output control settings.</P>
+<P>The return value is a <CODE>CTRDGPhiClock</CODE> ennumerated type that has the following meanings:</P>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD bgcolor="#eeeeee"><CODE>CTRDG_PHI_CLOCK_LOW</CODE></TD>
+<TD bgcolor="#eeeeee">Low-level output</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#eeeeee"><CODE>CTRDG_PHI_CLOCK_4MHZ</CODE></TD>
+<TD bgcolor="#eeeeee">4.19MHz clock output</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#eeeeee"><CODE>CTRDG_PHI_CLOCK_8MHZ</CODE></TD>
+<TD bgcolor="#eeeeee">8.38MHz clock output</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#eeeeee"><CODE>CTRDG_PHI_CLOCK_16MHZ</CODE></TD>
+<TD bgcolor="#eeeeee">16.76MHz clock output</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> This function reads the setting value of the ARM9 and returns the value. (Usually, the ARM9 and ARM7 use the same setting value. The <CODE><A href="CTRDG_SetPhiClock.html">CTRDG_SetPhiClock()</A></CODE> function simultaneously sets both processors.)</P>
+<h2>Internal Operation</h2>
+<P>Accesses the <code>EXMEMCNT</code> I/O register <code>(0x4000204)</code>.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="CTRDG_SetPhiClock.html">CTRDG_SetPhiClock</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>04/28/2006 Changed from MI_ to CTRDG_ <BR> 12/18/2003 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

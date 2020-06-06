@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>SVC_WaitByLoop</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">SVC_WaitByLoop</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os/systemCall.h&gt;</CODE></PRE>
+<PRE><CODE>void SVC_WaitByLoop( s32 count );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>count</I></B></TD>
+<TD>Number of times to loop.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function runs the loop process at the specified number of times on the system ROM. Four cycles are needed for one loop. Normally, this makes it possible to reduce the number of times that the ARM9 processor stalls when the ARM7 processor has prior rights to the main memory, and the ARM7 processor is made to run a program on the system ROM. There are times when it is effective to effect a call on the ARM9 processor side when it is necessary to give prior rights to the ARM9 processor for main memory display or other modes, but in most cases if operations are left to the cache or TCM, then there will not be any need to call the ARM9 processor.</P>
+<H2>See Also</H2>
+<P><A href="../os/system/OS_SpinWait.html"><CODE><code><a href="../os/system/OS_SpinWait.html">OS_SpinWait()</a> </code></CODE></A></P>
+<H2>Revision History</H2>
+<P>07/20/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

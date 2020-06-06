@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>WM Block Transfer Protocol API Function List (WBT)</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>WM Block Transfer Protocol API Function List (WBT)</H1>
+<H3><A name="Init">Initialization</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="init/WBT_InitParent.html" target="_self">WBT_InitParent</A></TH>
+<TD>Initializes the library as a wireless parent device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="init/WBT_InitChild.html" target="_self">WBT_InitChild</A></TH>
+<TD>Initializes the library as a wireless child device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="init/WBT_End.html" target="_self">WBT_End</A></TH>
+<TD>Ends the library.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Common">Common</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="common/WBT_AidbitmapToAid.html" target="_self">WBT_AidbitmapToAid</A></TH>
+<TD>Converts the lowest bit of an AID bitmap to an AID.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/WBT_AidToAidbitmap.html" target="_self">WBT_AidToAidbitmap</A></TH>
+<TD>Converts an AID to an AID bitmap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/WBT_GetOwnAid.html" target="_self">WBT_GetOwnAid</A></TH>
+<TD>Gets the AID set in self.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/WBT_CalcPacketbitmapSize.html" target="_self">WBT_CalcPacketbitmapSize</A></TH>
+<TD>Gets the bitmap buffer size necessary to receive data.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/WBT_GetCurrentDownloadProgress.html" target="_self">WBT_GetCurrentDownloadProgress</A></TH>
+<TD>Gets the progress status of the current reception.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/WBT_NumOfRegisteredBlock.html" target="_self">WBT_NumOfRegisteredBlock</A></TH>
+<TD>Gets the total number of data blocks currently registered.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/WBT_RegisterBlock.html" target="_self">WBT_RegisterBlock</A></TH>
+<TD>Registers data blocks.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/WBT_UnregisterBlock.html" target="_self">WBT_UnregisterBlock</A></TH>
+<TD>Releases registered data blocks.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="common/WBT_PrintBTList.html" target="_self">WBT_PrintBTList</A></TH>
+<TD>Debug outputs the current WBT internal status.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Parent">Parent Device Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="parent/WBT_SetPacketSize.html" target="_self">WBT_SetPacketSize</A></TH>
+<TD>Resets the MP communication packet size that can be used with WBT.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="parent/WBT_MpParentSendHook.html" target="_self">WBT_MpParentSendHook</A></TH>
+<TD>Generates the WBT protocol packet data that should be sent with MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="parent/WBT_MpParentRecvHook.html" target="_self">WBT_MpParentRecvHook</A></TH>
+<TD>Notifies the WBT of WBT protocol packet data received with MP communication.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Child">Child Device Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="child/WBT_SetOwnAid.html" target="_self">WBT_SetOwnAid</A></TH>
+<TD>Notifies the WBT of its own AID.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="child/WBT_MpChildSendHook.html" target="_self">WBT_MpChildSendHook</A></TH>
+<TD>Generates the WBT protocol packet data that should be sent with MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="child/WBT_MpChildRecvHook.html" target="_self">WBT_MpChildRecvHook</A></TH>
+<TD>Notifies the WBT of WBT protocol packet data received with MP communication.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H3><A name="Command">Commands</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="command/WBT_RequestSync.html" target="_self">WBT_RequestSync</A></TH>
+<TD>Synchronizes the communication status.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="command/WBT_GetBlockInfo.html" target="_self">WBT_GetBlockInfo</A></TH>
+<TD>Gets the data block information registered by the other party.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="command/WBT_GetBlock.html" target="_self">WBT_GetBlock</A></TH>
+<TD>Gets the data block registered by the other party.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="command/WBT_PutUserData.html" target="_self">WBT_PutUserData</A></TH>
+<TD>Sends optional small-sized data to the other party.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="command/WBT_CancelCurrentCommand.html" target="_self">WBT_CancelCurrentCommand</A></TH>
+<TD>Stops the WBT command that is being issued.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="const">Constants and Macros</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wbt_num_max_block_info_id_const.html" target="_self">WBT_NUM_MAX_BLOCK_INFO_ID</A></TH>
+<TD>The maximum number of data blocks that can be registered at the same time.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_block_id_min_const.html" target="_self">WBT_BLOCK_ID_MIN</A></TH>
+<TD>The minimum value for IDs that can be registered as data blocks.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_packet_size_min_const.html" target="_self">WBT_PACKET_SIZE_MIN</A></TH>
+<TD>The minimum value for MP communication packet sizes to be set in the WBT library.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_user_id_len_const.html" target="_self">WBT_USER_ID_LEN</A></TH>
+<TD>The maximum size of user-specific information that can be given to the registered block information.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_size_user_data_const.html" target="_self">WBT_SIZE_USER_DATA</A></TH>
+<TD>The maximum size of data that can be sent with the <A href="command/WBT_PutUserData.html" target="_self"><CODE>WBT_PutUserData</CODE></A> function.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_result_const.html" target="_self">WBTResult</A></TH>
+<TD>The enumerated type that expresses the WBT library command result.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_command_type_const.html" target="_self">WBTCommandType</A></TH>
+<TD>The enumerated type that expresses the command type that notifies the WBT callback.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_packet_bitmap_size.html" target="_self">WBT_PACKET_BITMAP_SIZE</A></TH>
+<TD>Calculates the necessary reception bitmap buffer size from the packet size and data size.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_aid_consts.html" target="_self">WBT_AID_*</A></TH>
+<TD>Macro group for the AID.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="struct">Structure</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wbt_callback_type.html" target="_self">WBTCallback</A></TH>
+<TD>Format for WBT library callback functions.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_command_type.html" target="_self">WBTCommand</A></TH>
+<TD>Structure for information passed to WBT library callbacks.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_block_info_type.html" target="_self">WBTBlockInfo</A></TH>
+<TD>Structure that expresses registered block information.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_block_info_list_type.html" target="_self">WBTBlockInfoList</A></TH>
+<TD>Structure that expresses list elements used in data block registration.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_block_info_list_type.html" target="_self">WBTBlockInfoTable</A></TH>
+<TD>Table that manages pointers to where registered block information requested by other parties is stored.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_packet_bitmap_table_type.html" target="_self">WBTPacketBitmapTable</A></TH>
+<TD>Table that manages the pointers to bitmap buffers to manage the reception progress of data requested by other parties.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_recv_buf_table_type.html" target="_self">WBTRecvBufTable</A></TH>
+<TD>Table that manages pointers to where data reception requested by other parties is stored.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_request_sync_callback_type.html" target="_self">WBTRequestSyncCallback</A></TH>
+<TD rowspan="5">Structure passed when the callback completes. <BR> See the <A href="wbt_command_type_const.html" target="_self"><CODE>WBTCommandType</CODE></A> function for details.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_get_block_done_callback_type.html" target="_self">WBTGetBlockDoneCallback</A></TH>
+      <TD></TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_prepare_send_data_callback_type.html" target="_self">WBTPrepareSendDataCallback</A></TH>
+      <TD></TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_recv_user_data_callback_type.html" target="_self">WBTRecvUserDataCallback</A></TH>
+      <TD></TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wbt_get_block_callback_type.html" target="_self">WBTGetBlockCallback</A></TH>
+      <TD></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<table border="0" height="100%"><tr><td style="background-color : white;"></td></tr></table>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_GetPhiClock</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_GetPhiClock</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>MIPhiClock MI_GetPhiClock( void );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>PHI terminal output control settings.</p>
+
+<H2>Description</H2>
+<P>This function acquires the PHI terminal output control settings.</P>
+<P>The return value is in the <CODE>MIPhiClock</CODE> array format and has the following meanings:</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_PHI_CLOCK_LOW</CODE></TD>
+<TD bgcolor="#eeeeee">Low-level output</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_PHI_CLOCK_4MHZ</CODE></TD>
+<TD bgcolor="#eeeeee">4.19MHz clock output</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_PHI_CLOCK_8MHZ</CODE></TD>
+<TD bgcolor="#eeeeee">8.38MHz clock output</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_PHI_CLOCK_16MHZ</CODE></TD>
+<TD bgcolor="#eeeeee">16.76MHz clock output</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Internal Operation</h2>
+<P>Accesses the <code>EXMEMCNT</code> I/O register <code>(0x4000204)</code>.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="MI_SetPhiClock.html">MI_SetPhiClock</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>12/18/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

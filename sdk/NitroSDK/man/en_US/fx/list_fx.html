@@ -1,0 +1,561 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>List of API Functions Related to Fixed Decimals</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>List of API Functions Related to Fixed Decimals</H1>
+<H2>Data Types</H2>
+<H3><A name="TypeFixed">Fixed decimal type</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="fx16.html">fx16</A></TH>
+<TD width="70%">This type represents a signed fixed point decimal with a 3-bit integer and 12-bit fraction.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="fx32.html">fx32</A></TH>
+<TD width="70%">This type represents a signed fixed point decimal with a 19-bit integer and 12-bit fraction.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="fx64.html">fx64</A></TH>
+<TD width="70%">This type represents a signed fixed point decimal with a 51-bit integer and 12-bit fraction.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="fx64c.html">fx64c</A></TH>
+<TD width="70%">This type represents a signed fixed point decimal with a 31-bit integer and 32-bit fraction.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="TypeMtxVec">Matrix/Vector Types</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="mtx/MtxFx22.html">MtxFx22</A></TH>
+<TD width="70%">This is a 2x2 matrix with elements of type fx32.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MtxFx33.html">MtxFx33</A></TH>
+<TD width="70%">This is a 3x3 matrix with elements of type fx32.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MtxFx43.html">MtxFx43</A></TH>
+<TD width="70%">This is a 4x3 matrix with elements of type fx32.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MtxFx44.html">MtxFx44</A></TH>
+<TD width="70%">This is a 4x4 matrix with elements of type fx32.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="vec/VecFx32.html">VecFx32</A></TH>
+<TD width="70%">This is a three-dimensional vector with elements of type fx32.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VecFx16.html">VecFx16</A></TH>
+<TD>This is a three-dimensional vector with elements of type fx16.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Initialization</H2>
+<H3><A name="Init">Initialization</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="FX_Init.html">FX_Init</A></TH>
+<TD width="70%">This initializes the fixed-point decimal APIs.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Calculation</H2>
+<H3><A name="CalcSync">Calculation of Fixed Decimal</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="FX_Whole.html">FX_Whole</A></TH>
+<TD width="70%">Returns results as integers by discarding values after the decimal point.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_Floor.html">FX_Floor</A></TH>
+<TD width="70%">Discards values after the decimal point.</TD>
+    </TR>
+    <TR>
+<TH><A href="FX_Modf.html">FX_Modf</A></TH>
+<TD>Separates fx32 into integer and decimal portions.</TD>
+    </TR>
+    <TR bgcolor="#ffffff">
+<TH width="30%"><A href="FX_Mul.html">FX_Mul</A></TH>
+<TD width="70%">Performs multiplication calculations with other fx32 types.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_Mul32x64c.html">FX_Mul32x64c</A></TH>
+<TD width="70%">Performs multiplication calculations of fx32 and fx64c types.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_Div.html">FX_Div</A></TH>
+<TD width="70%">Performs division calculations with other fx32 types.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_DivFx64c.html">FX_DivFx64c</A></TH>
+<TD width="70%">Performs division calculations with other fx32 types. Returns an fx64c value.</TD>
+    </TR>
+    <TR>
+<TH><A href="FX_Mod.html">FX_Mod</A></TH>
+<TD>Returns the remainder of dividing two fx32 types.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_Sqrt.html">FX_Sqrt</A></TH>
+<TD width="70%">Obtains a square root of type fx32.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_InvSqrt.html">FX_InvSqrt</A></TH>
+<TD width="70%">Obtains the reciprocal of a square root of type fx32.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_Inv.html">FX_Inv</A></TH>
+<TD width="70%">Obtains a reciprocal number of type fx32 and returns an fx32 value.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_InvFx64c.html">FX_InvFx64c</A></TH>
+<TD width="70%">Obtains a reciprocal number of type fx32 and returns an fx64c value.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_SinIdx.html">FX_SinIdx</A></TH>
+<TD width="70%">Calculates a sine. Receives a 16-bit index and returns the result as type fx16 (table lookup).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_CosIdx.html">FX_CosIdx</A></TH>
+<TD width="70%">Calculates a cosine. Receives a 16-bit index and returns the result as type fx16 (table lookup).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_SinFx64c.html">FX_SinFx64c</A></TH>
+<TD width="70%">Calculates a sine. Receives radians as fx32 type and returns the result as type fx64c (when precision is required).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_CosFx64c.html">FX_CosFx64c</A></TH>
+<TD width="70%">Calculates a cosine. Receives radians as fx32 type and returns the result as type fx64c (when precision is required).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_AtanIdx.html">FX_AtanIdx</A></TH>
+<TD width="70%">Calculates the arctangent. Receives <CODE>fx32</CODE> type values and returns results as <CODE>u16</CODE> type (table lookup).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_Atan2Idx.html">FX_Atan2Idx</A></TH>
+<TD width="70%">Calculates the arctangent. Receives (y, x) as <CODE>fx32</CODE> type values and returns results as <CODE>u16</CODE> type (table lookup).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_Atan.html">FX_Atan</A></TH>
+<TD width="70%">Calculates the arctangent. Receives <CODE>fx32</CODE> type values and returns results as <CODE>fx16</CODE> type (in units of radian) (table lookup).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_Atan2.html">FX_Atan2</A></TH>
+<TD width="70%">Calculates the arctangent. Receives (y, x) as <CODE>fx32</CODE> type values and returns results as <CODE>fx16</CODE> type (in units of radian) (table lookup).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="CalcAsync">Calculation of Fixed Decimal (Asynchronous)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="FX_DivAsync.html">FX_DivAsync</A></TH>
+<TD width="70%">Performs asynchronous division.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_DivAsyncImm.html">FX_DivAsyncImm</A></TH>
+<TD width="70%">Performs asynchronous division. It does not set the division mode.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_GetDivResultFx64c.html">FX_GetDivResultFx64c</A></TH>
+<TD width="70%">Obtains the result of division as an fx64c type.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_GetDivResult.html">FX_GetDivResult</A></TH>
+<TD width="70%">Obtains the result of division as a fx32 type.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_InvAsync.html">FX_InvAsync</A></TH>
+<TD width="70%">Performs asynchronous reciprocal calculations.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_InvAsyncImm.html">FX_InvAsyncImm</A></TH>
+<TD width="70%">Performs asynchronous reciprocal calculations. It does not set the division mode.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_GetInvResultFx64c.html">FX_GetInvResultFx64c</A></TH>
+<TD width="70%">Same as FX_GetDivResultFx64c.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_GetInvResult.html">FX_GetInvResult</A></TH>
+<TD width="70%">Same as FX_GetDivResult.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_SqrtAsync.html">FX_SqrtAsync</A></TH>
+<TD width="70%">Performs asynchronous square root calculations.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_SqrtAsyncImm.html">FX_SqrtAsyncImm</A></TH>
+<TD width="70%">Performs asynchronous square root calculations. Does not set the square root calculation mode.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_GetSqrtResult.html">FX_GetSqrtResult</A></TH>
+<TD width="70%">Obtains the result of a square root calculation as a fx32 type.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Calc2x2Mtx">2x2 Matrix Calculation</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Identity22.html">MTX_Identity22</A></TH>
+<TD width="70%">Sets the identity matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Transpose22.html">MTX_Transpose22</A></TH>
+<TD width="70%">Sets the transpose of a matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_Scale22.html">MTX_Scale22</A></TH>
+<TD>Sets the scale matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_ScaleApply22.html">MTX_ScaleApply22</A></TH>
+<TD>Apply the scale matrix from left.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Rot22.html">MTX_Rot22</A></TH>
+<TD width="70%">Sets the rotation matrix</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Inverse22.html">MTX_Inverse22</A></TH>
+<TD width="70%">Calculates the inverse matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Concat22.html">MTX_Concat22</A></TH>
+<TD width="70%">Performs matrix multiplication.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy22.html">MTX_Copy22</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Calc3x3Mtx">3x3 Matrix Calculation</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Identity33.html">MTX_Identity33</A></TH>
+<TD width="70%">Sets the identity matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy33To43.html">MTX_Copy33To43</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy33To44.html">MTX_Copy33To44</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Transpose33.html">MTX_Transpose33</A></TH>
+<TD width="70%">Sets the transpose of a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Scale33.html">MTX_Scale33</A></TH>
+<TD width="70%">Sets the scale matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_ScaleApply33.html">MTX_ScaleApply33</A></TH>
+<TD width="70%">Apply the scale matrix from left.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotX33.html">MTX_RotX33</A></TH>
+<TD width="70%">Sets the rotation matrix for the X-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotY33.html">MTX_RotY33</A></TH>
+<TD width="70%">Sets the rotation matrix for the Y-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotZ33.html">MTX_RotZ33</A></TH>
+<TD width="70%">Sets the rotation matrix for the Z-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotAxis33.html">MTX_RotAxis33</A></TH>
+<TD width="70%">Sets the rotation matrix for any axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Inverse33.html">MTX_Inverse33</A></TH>
+<TD width="70%">Calculates the inverse matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Concat33.html">MTX_Concat33</A></TH>
+<TD width="70%">Performs matrix multiplication.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_MultVec33.html">MTX_MultVec33</A></TH>
+<TD width="70%">Applies the matrix to a vector from left.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy33.html">MTX_Copy33</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Calc4x3Mtx">4x3 Matrix Calculation</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Identity43.html">MTX_Identity43</A></TH>
+<TD width="70%">Sets the identity matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy43To33.html">MTX_Copy43To33</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy43To44.html">MTX_Copy43To44</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Transpose43.html">MTX_Transpose43</A></TH>
+<TD width="70%">Sets the transpose of a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Scale43.html">MTX_Scale43</A></TH>
+<TD width="70%">Sets the scale matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_ScaleApply43.html">MTX_ScaleApply43</A></TH>
+<TD width="70%">Apply the scale matrix from left.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotX43.html">MTX_RotX43</A></TH>
+<TD width="70%">Sets the rotation matrix for the X-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotY43.html">MTX_RotY43</A></TH>
+<TD width="70%">Sets the rotation matrix for the Y-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotZ43.html">MTX_RotZ43</A></TH>
+<TD width="70%">Sets the rotation matrix for the Z-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotAxis43.html">MTX_RotAxis43</A></TH>
+<TD width="70%">Sets the rotation matrix for any axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Inverse43.html">MTX_Inverse43</A></TH>
+<TD width="70%">Calculates the inverse matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Concat43.html">MTX_Concat43</A></TH>
+<TD width="70%">Performs matrix multiplication.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_MultVec43.html">MTX_MultVec43</A></TH>
+<TD width="70%">Applies the matrix to a vector from left.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_TransApply43.html">MTX_TransApply43</A></TH>
+<TD width="70%">Applies from left a matrix with the translation matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_LookAt.html">MTX_LookAt</A></TH>
+<TD width="70%">Sets the camera matrix to the matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy43.html">MTX_Copy43</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Calc4x4Mtx">4x4 Matrix Calculation</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Identity44.html">MTX_Identity44</A></TH>
+<TD width="70%">Sets the identity matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy44To33.html">MTX_Copy44To33</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy44To43.html">MTX_Copy44To43</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Transpose44.html">MTX_Transpose44</A></TH>
+<TD width="70%">Sets the transpose of a matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Scale44.html">MTX_Scale44</A></TH>
+<TD width="70%">Sets the scale matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_ScaleApply44.html">MTX_ScaleApply44</A></TH>
+<TD width="70%">Apply the scale matrix from left.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotX44.html">MTX_RotX44</A></TH>
+<TD width="70%">Sets the rotation matrix for the X-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotY44.html">MTX_RotY44</A></TH>
+<TD width="70%">Sets the rotation matrix for the Y-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotZ44.html">MTX_RotZ44</A></TH>
+<TD width="70%">Sets the rotation matrix for the Z-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_RotAxis44.html">MTX_RotAxis44</A></TH>
+<TD width="70%">Sets the rotation matrix for any axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Concat44.html">MTX_Concat44</A></TH>
+<TD width="70%">Performs matrix multiplication.</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_TransApply44.html">MTX_TransApply44</A></TH>
+<TD>Applies from left a matrix with the translation matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_Frustum.html">MTX_Frustum</A></TH>
+<TD>Sets the projection matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_Perspective.html">MTX_Perspective</A></TH>
+<TD>Sets the projection matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_Ortho.html">MTX_Ortho</A></TH>
+<TD>Sets the projection matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_FrustumW.html">MTX_FrustumW</A></TH>
+<TD>Sets the projection matrix. (with scale W parameters)</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_PerspectiveW.html">MTX_PerspectiveW</A></TH>
+<TD>Sets the projection matrix (with the scaleW parameter)</TD>
+    </TR>
+    <TR>
+<TH><A href="mtx/MTX_OrthoW.html">MTX_OrthoW</A></TH>
+<TD>Sets the projection matrix. (with scale W parameters)</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="mtx/MTX_Copy44.html">MTX_Copy44</A></TH>
+<TD width="70%">Copies a matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="CalcVec">Vector Calculation</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><A href="vec/VEC_Set.html">VEC_Set</A></TH>
+<TD>Sets up values in fx32 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="vec/VEC_Add.html">VEC_Add</A></TH>
+<TD width="70%">Adds two fx32 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="vec/VEC_Subtract.html">VEC_Subtract</A></TH>
+<TD width="70%">Subtracts two fx32 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="vec/VEC_DotProduct.html">VEC_DotProduct</A></TH>
+<TD width="70%">Calculates the dot product of fx32 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="vec/VEC_CrossProduct.html">VEC_CrossProduct</A></TH>
+<TD width="70%">Calculates the cross product of fx32 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="vec/VEC_Mag.html">VEC_Mag</A></TH>
+<TD width="70%">Calculates the magnitude of a fx32 type 3-dimensional vector.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Distance.html">VEC_Distance</A></TH>
+<TD>Calculates the distance between two fx32 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="vec/VEC_Normalize.html">VEC_Normalize</A></TH>
+<TD width="70%">Normalizes a fx32 type 3-dimensional vector.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_MultAdd.html">VEC_MultAdd</A></TH>
+<TD>Scalar multiplies a fx32 type 3-dimensional vector and then adds a fx32 type 3-dimensional vector.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_MultSubtract.html">VEC_MultSubtract</A></TH>
+<TD>Scalar multiplies a fx32 type 3-dimensional vector and then subtracts a fx32 type 3-dimensional vector.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Fx16Set.html">VEC_Fx16Set</A></TH>
+<TD>Sets up values in <CODE>fx16</CODE> type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Fx16Add.html">VEC_Fx16Add</A></TH>
+<TD>Adds two fx16 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Fx16Subtract.html">VEC_Fx16Subtract</A></TH>
+<TD>Subtracts two fx16 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Fx16DotProduct.html">VEC_Fx16DotProduct</A></TH>
+<TD>Calculates the dot product of fx16 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Fx16CrossProduct.html">VEC_Fx16CrossProduct</A></TH>
+<TD>Calculates the cross product of fx16 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Fx16Mag.html">VEC_Fx16Mag</A></TH>
+<TD>Calculates the magnitude of a fx16 type 3-dimensional vector.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Fx16Distance.html">VEC_Fx16Distance</A></TH>
+<TD>Calculates the distance between two fx16 type 3-dimensional vectors.</TD>
+    </TR>
+    <TR>
+<TH><A href="vec/VEC_Fx16Normalize.html">VEC_Fx16Normalize</A></TH>
+<TD>Normalizes a fx16 type 3-dimensional vector.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3>Other</H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="FX_DivS32.html">FX_DivS32</A></TH>
+<TD width="70%">Division with s32 types.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="FX_ModS32.html">FX_ModS32</A></TH>
+<TD width="70%">Calculates the remainder from s32 type division.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Macros</H2>
+<P><A href="fx16_macros.html">fx16 Type Macros</A></P>
+<P><A href="fx32_macros.html">fx32 Type Macros</A></P>
+<P><A href="fx64_macros.html">fx64 Type Macros</A></P>
+<P><A href="fx64c_macros.html">fx64c Type Macros</A></P>
+<H2>Constants</H2>
+<P><A href="fx16_const.html">fx16 Type Constant Macros</A></P>
+<P><A href="fx32_const.html">fx32 Type Constant Macros</A></P>
+<P><A href="fx64c_const.html">fx64c Type Constant Macros</A></P>
+
+<table border="0" height="100%"><tr><td style="background-color : white;"></td></tr></table>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

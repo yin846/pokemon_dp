@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNSSndArcStrmCallback</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNSSndArcStrmCallback</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo"><code>typedef struct NNSSndArcStrmCallbackInfo
+{
+int playerNo;
+int strmNo;
+} NNSSndArcStrmCallbackInfo;</pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef struct NNSSndArcStrmCallbackParam
+{
+int strmNo;
+u32 offset;
+} NNSSndArcStrmCallbackParam;</pre></dd>
+<dd><pre class="funcprototype">typedef BOOL (*NNSSndArcStrmCallback)(
+NNSSndArcStrmCallbackStatus status,
+const NNSSndArcStrmCallbackInfo* info,
+NNSSndArcStrmCallbackParam* param,
+void* arg );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAHMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code><code><EM><STRONG>status</STRONG></EM></code></code></strong></em></td>
+<td>The callback state.</td>
+</tr>
+<tr>
+<td><em><strong><code>info</code></strong></em></td>
+<td>This is the callback information structure pointer.</td>
+</tr>
+<tr>
+<td><em><strong><code>param</code></strong></em></td>
+<td>This is the callback parameter structure pointer.</td>
+</tr>
+<tr>
+<td><em><strong><code><code><EM><STRONG>arg</STRONG></EM></code></code></strong></em></td>
+<td>The user argument.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDALNWT"></a>
+<h2>Return Values</h2>
+
+<p>The meaning of the return values varies depending on the callback state, <em><strong><code>status</code></strong></em>. FALSE is returned to carry out default processing. Refer to the description above for information about the individual types of <em><strong><code>status</code></strong></em>.
+</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAXNWT"></a>
+<h2>Description</h2>
+      <p>
+This callback function is called at a specified time during stream playback.
+</p>
+      <p>
+It is registered in the <tt class="function"><a href="NNS_SndArcStrmStartEx2.html">NNS_SndArcStrmStartEx2</a></tt> function and the <code><a href="NNS_SndArcStrmPrepareEx2.html">NNS_SndArcStrmPrepareEx2</a></code> function.
+</p>
+      <p>
+The callback function is called at at specified time. The timing it was called with can be determined with the callback state, <em><strong><code>status</code></strong></em>. The callback state <em><strong><code>status</code></strong></em> obtains the following values.
+</p>
+      
+<div class="table"><a name="IDAROWT"></a><p class="title"><b><b>Table 1. NNSSndArcStrmCallbackStatus</b><br /></b></p>
+<table summary="NNSSndArcStrmCallbackStatus" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_ARC_STRM_CALLBACK_DATA_END</td>
+<td>Data supply of stream without a loop has reached the end of the data.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <p>
+The callback information structure <em><strong><code>info</code></strong></em> stores additional information for the callback. The meaning of the structure members is as follows.
+</p>
+      
+<div class="table"><a name="IDATPWT"></a><p class="title"><b><b>Table 2. NNSSndArcStrmCallbackInfo</b><br /></b></p>
+<table summary="NNSSndArcStrmCallbackInfo" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>playerNo</td>
+<td>The number of the stream player used in the current playback.</td>
+</tr>
+<tr>
+<td>strmNo</td>
+<td>The number of the stream currently being played.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+        <p>
+The meaning of the settings for the callback parameter structure <em><strong><code>param</code></strong></em> and the function's return values varies with each callback state <em><strong><code>status</code></strong></em>. Refer to the following for information about the processing for each <em><strong><code>status</code></strong></em>.
+</p>
+      
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+In the future the types of <em><strong><code>status</code></strong></em> callback states may increase. Always check the values for <em><strong><code>status</code></strong></em> and return FALSE if they are ignored.
+</p>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAORWT"></a>
+<h2>Processing for each status</h2>
+      
+      <div class="refsection" lang="ja"><a name="IDASRWT"></a>
+<h3>NNS_SND_ARC_STRM_CALLBACK_DATA_END</h3>
+        <p>
+If you enter the stream number of the stream data to be played next in the member <em><strong><code>strmNo</code></strong></em> of the callback parameter structure <em><strong><code>param</code></strong></em>, and return TRUE, the stream data specified will be played in continuation. At this time, you can specify the playback start offset position in units of msec in the member <em><strong><code>offset</code></strong></em> of the callback parameter structure <em><strong><code>param</code></strong></em>.
+</p>
+      <p>
+If FALSE is returned, the data supply is stopped and the stream stops after the remaining playback of the buffer.
+            </p>
+          <p>
+If you want to have continuous playback, the formats of the previous stream data and the data to be played next need to fulfil the following requirements or it will fail.
+</p>
+          <div class="itemizedlist">
+<ul type="disc">
+<li>The sampling rate is the same.</li>
+<li>Both of the sample formats are 8-bit PCM, or both are not 8-bit PCM.</li>
+</ul>
+</div>
+    </div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndArcStrmStartEx2.html">NNS_SndArcStrmStartEx2</a>, <a href="NNS_SndArcStrmPrepareEx2.html">NNS_SndArcStrmPrepareEx2</a></code></p>
+<h2>Revision History</h2>
+<p>11/26/2004 Initial version.</p>
+</div>
+</body>
+</html>

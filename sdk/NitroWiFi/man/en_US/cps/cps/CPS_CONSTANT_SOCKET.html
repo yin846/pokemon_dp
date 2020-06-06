@@ -1,0 +1,64 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_STT_*</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_STT_*</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>enum {
+	CPS_STT_CLOSED = 0,
+	CPS_STT_LISTEN,
+	CPS_STT_SYN_SENT,
+	CPS_STT_SYN_RCVD,
+	CPS_STT_ESTABLISHED,
+	CPS_STT_CLOSE_WAIT,
+	CPS_STT_LAST_ACK,
+	CPS_STT_FIN_WAIT1,
+	CPS_STT_FIN_WAIT2,
+	CPS_STT_CLOSING,
+	CPS_STT_DATAGRAM,
+	CPS_STT_PING
+};</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>Constants set in <CODE>CPSSoc.state</CODE>. Indicate the socket state. Users must not change these values.</p>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>CPS_STT_CLOSED<BR> CPS_STT_LISTEN<BR> CPS_STT_SYN_SENT<BR> CPS_STT_SYN_RCVD<BR> CPS_STT_ESTABLISHED<BR> CPS_STT_CLOSE_WAIT<BR> CPS_STT_LAST_ACK<BR> CPS_STT_FIN_WAIT1<BR> CPS_STT_FIN_WAIT2<BR> CPS_STT_CLOSING</CODE></STRONG></EM></TD>
+			<TD width="75%">Each element indicates the corresponding TCP states.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_STT_DATAGRAM</CODE></STRONG></EM></TD>
+			<TD>Indicates that the socket is in UDP mode.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_STT_PING</CODE></STRONG></EM></TD>
+			<TD>Indicates that the socket is in PING (ICMP echo) mode.</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<h2>See Also</h2>
+
+<p>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

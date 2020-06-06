@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATH_Rand*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATH_Rand*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/rand.h&gt;
+
+static inline u16 MATH_Rand16( <A href="MATHRandContext.html">MATHRandContext16</A> *context, u16 max );<BR></CODE></PRE>
+<PRE><CODE>static inline u32 MATH_Rand32( <A href="MATHRandContext.html">MATHRandContext32</A> *context, u32 max );
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    
+    
+    <TR>
+<TD width="176"><em><strong><font face="Courier New"><em><strong><code>context</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD width="670">Pointer to the context of the random number</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">max</font></strong></em></TD>
+<TD>Sets a maximum value for the random number being gotten. With this setting, the largest random number will be <nobr><code>max - 1</code></nobr>. If <code>0</code> is set here, the entire range of numbers can be gotten.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function gets a random number generated using the linear congruential method.</P>
+<P>This is an inline function, so you can optimize the code and reduce waste by setting a constant in the <em><strong><code>max</code></strong></em> argument.</P>
+<h2>See Also</h2>
+<P><a href="MATHRandContext.html"><code>MATHRandContext*</code></a>, <a href="MATH_InitRand.html"><code>MATH_InitRand*</code></a></P>
+<H2>Revision History</H2>
+<P>12/13/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

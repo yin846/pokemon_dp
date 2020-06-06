@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_SetIrqCheckFlag</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_SetIrqCheckFlag</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_SetIrqCheckFlag( OSIrqMask intr );</CODE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>intr</I></B></TD>
+<TD>The IRQ interrupt cause to be enabled (expressed as a logical sum)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Sets a check flag for IRQ interrupts Normally, this flag is called by the handler for each interrupt. When individual interrupt processes finish, the check flag is set to indicate that this function has been called by the interrupt. For example, the function that is called by a V-Blank interrupt will be: </P>
+<BLOCKQUOTE><CODE> <code>OS_SetIrqCheckFlag(&nbsp;OS_IE_V_BLANK&nbsp;);</code> </CODE></BLOCKQUOTE>
+<P>and a check flag is set. The table below describes these flags.</P>
+<P>The flag set here is used to check whether or not an interrupt occurred with <code>OS_WaitIntr</code>, <a href="../system/OS_WaitInterrupt.html"><code>OS_WaitInterrupt</code></a>, or <a href="../../svc/SVC_WaitVBlankIntr.html"><code>SVC_WaitVBlankIntr</code></a>. Therefore, if there are interrupts that do not wait with those functions, the flags will not be used from anywhere even if they are set, so they do not necessarily have to be set. But if you carry out separate processes for each situation you may forget to write them when they are necessary. It is recommended that you always set the flags for interrupts if doing this creates no problems.</P>
+<P>If <code>OS_WaitIntr</code>, <a href="../system/OS_WaitInterrupt.html"><code>OS_WaitInterrupt</code></a>, and/or <a href="../../svc/SVC_WaitVBlankIntr.html"><code>SVC_WaitVBlankIntr</code></a> are carried out for the same interrupt with multiple threads, be aware that a restore can only be performed with one of these threads for one interrupt.</P>
+<P><B>Interrupt Check Flags</B></P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_V_BLANK</TD>
+<TD bgcolor="#eeeeee">V-blank interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_H_BLANK</TD>
+<TD bgcolor="#eeeeee">H-blank interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_V_COUNT</TD>
+<TD bgcolor="#eeeeee">V counter interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_TIMER0</TD>
+<TD bgcolor="#eeeeee">Timer0 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_TIMER1</TD>
+<TD bgcolor="#eeeeee">Timer1 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_TIMER2</TD>
+<TD bgcolor="#eeeeee">Timer2 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_TIMER3</TD>
+<TD bgcolor="#eeeeee">Timer3 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_DMA0</TD>
+<TD bgcolor="#eeeeee">DMA0 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_DMA1</TD>
+<TD bgcolor="#eeeeee">DMA1 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_DMA2</TD>
+<TD bgcolor="#eeeeee">DMA2 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_DMA3</TD>
+<TD bgcolor="#eeeeee">DMA3 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_KEY</TD>
+<TD bgcolor="#eeeeee">Key interrupt <sup><strong><font color="red">*1</font></strong></sup></TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_CARTRIDGE</TD>
+<TD bgcolor="#eeeeee">Game Pak IREQ/DREQ interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_SUBP</TD>
+<TD bgcolor="#eeeeee">ARM7 interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_SPFIFO_SEND</TD>
+<TD bgcolor="#eeeeee">ARM9-ARM7 send FIFO empty interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_SPFIFO_RECV</TD>
+<TD bgcolor="#eeeeee">ARM9-ARM7 receive FIFO not-empty interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_CARD_DATA</TD>
+<TD bgcolor="#eeeeee">Card data transfer end interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_CARD_IREQ</TD>
+<TD bgcolor="#eeeeee">Card IREQ interrupt</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_GXFIFO</TD>
+<TD bgcolor="#eeeeee">Geometry command FIFO interrupt</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><B><FONT color="#ff0033"><BR> <font size="-2" color="red"><strong>*1</strong></font> <font size="-2">The hardware specification does not allow the use of the key interrupt. However, it can be used for waking from sleep.</font></P>
+<P>Besides flags for hardware interrupts, there are dummy check flags like those shown below, which can be used freely in the application. In order to obtain synchronization with callback functions, these can replace the processing for polling carried out by volatile variables with a combination of <CODE><A href="OS_WaitIrq.html">OS_WaitIrq()</A></CODE>, <CODE><A href="OS_ClearIrqCheckFlag.html">OS_ClearIrqCheckFlag()</A></CODE>, and <CODE><A href="OS_SetIrqCheckFlag.html">OS_SetIrqCheckFlag()</A></CODE>.
+</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_USER_FLAG0</TD>
+<TD bgcolor="#eeeeee">Check Flag 0 that can be used freely in the application</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_IE_USER_FLAG1</TD>
+<TD bgcolor="#eeeeee">Check Flag 1 that can be used freely in the application</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+<P><a href="OS_ClearIrqCheckFlag.html"><code>OS_ClearIrqCheckFlag</a></code>, <code><a href="OS_GetIrqCheckFlag.html">OS_GetIrqCheckFlag</a></code></P>
+<H2>Internal Operation</H2>
+<P>In the ARM9, the predetermined location (<code>DTCM_END - 8</code>) in DTCM is designated to be the check flag region. This function operates on this region. In the ARM7, the predetermined location of the ARM7 WRAM (highest address - 8) is designated to be the check flag region. The function operates on this region.</P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the use of the term 'interrupt' in Japanese. <br>12/08/2004 Added cautions about OS_IE_KEY.<BR> 11/24/2004 Deleted OS_IE_SIO.<BR>11/02/2004 Deleted <CODE>SVC_WaitIntr()</CODE> from See Also.<br>09/01/2004 Changed 'subprocessor' to 'ARM7' and 'between subprocessors' to 'between ARM9 and ARM7'.<BR>04/22/2004 Added cautions about using multiple threads.<BR>01/09/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

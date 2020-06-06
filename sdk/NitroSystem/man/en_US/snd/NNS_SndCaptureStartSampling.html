@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndCaptureStartSampling</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndCaptureStartSampling</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef void ( *NNSSndCaptureCallback )(
+void* bufferL,
+void* bufferR,
+u32 len,
+NNSSndCaptureFormat format,
+void* arg
+);</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndCaptureStartSampling(
+void* buffer_p,
+u32 bufSize,
+NNSSndCaptureFormat format,
++int sampleRate,
+int interval,
+NNSSndCaptureCallback callback,
+void* arg );</code></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDANNWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>buffer_p</code></strong></em></td>
+<td>The pointer to the sampling buffer. Must have 32-byte alignment.</td>
+</tr>
+<tr>
+<td><em><strong><code>bufSize</code></strong></em></td>
+<td>The size of the sampling buffer. Must be a multiple of <code>interval * 64</code>. The maximum value is 0x7fff8.</td>
+</tr>
+<tr>
+<td><em><strong><code>format</code></strong></em></td>
+<td>The format of the sample data.</td>
+</tr>
+<tr>
+<td><em><strong><code>sampleRate</code></strong></em></td>
+<td>This is the sampling rate.</td>
+</tr>
+<tr>
+<td><em><strong><code>interval</code></strong></em></td>
+<td>Callback interval. This specifies a value of 2 or more.</td>
+</tr>
+<tr>
+<td><em><strong><code>callback</code></strong></em></td>
+<td>The pointer to the sampling callback function.</td>
+</tr>
+<tr>
+<td><em><strong><code><code><EM><STRONG>arg</STRONG></EM></code></code></strong></em></td>
+<td>The parameters that serve as the arguments of the sampling callback function.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAJPWT"></a>
+<h2>Return Values</h2>
+
+<p>The success or failure of the start of sampling.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAQPWT"></a>
+<h2>Description</h2>
+      <p>
+This function begins the sampling process.
+</p>
+      <p>
+Output from the mixer is captured using the capture feature and the sampled data is retrieved using the callback function. The sampling operation consumes two of the 16 channels (channel 1 and channel 3). If channel 1 or channel 3 is being used by a sequence, the sounds from that channel are forcibly stopped.
+</p>
+      <p>
+Using the sampling process requires a sampling buffer. The smaller the sampling buffer, the more often the callback function is called. The  starting address <code>buffer_p</code> must have a 32-byte alignment. The buffer size <code>bufSize</code> must be a multiple of <code>interval * 64</code>.
+</p>
+      <p>
+<code>format</code> takes one of the two values shown in the following table for the sample data format. The 16-bit format provides better sound quality, but the callback function is called twice as often as with the 8-bit format.
+</p>
+<div class="table"><a name="IDAJQWT"></a><p class="title"><b><strong>Table: <code>SNDCapture</code> Format</strong></b></p>
+<table summary="NNSSndCaptureFormat" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_CAPTURE_FORMAT_PCM8</td>
+<td>8-bit PCM</td>
+</tr>
+<tr>
+<td>NNS_SND_CAPTURE_FORMAT_PCM16</td>
+<td>16-bit PCM</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <p>
+The higher the sampling rate <code>sampleRate</code>, the better the sound quality of the captured data, but the more frequently the callback function is called.
+</p>
+      <p>
+The value set for <code>interval</code> specifies how many times to call the callback function while the entire sampling buffer is captured. This callback interval is normally set to 2, so the second half of the data is sampled while the first half is loaded.
+</p>
+      <p>
+The callback function <code>callback</code> is called when data is captured to the sampling buffer, with a recurrence rate specified by the <code>interval</code>. The arguments of this callback function are pointers to the starting addresses of the L and R mixer components <code>bufferL</code> and <code>bufferR</code> and the buffer size <code>len</code>. The values passed to the <code>format</code> and the user argument <code>arg</code> are the same as those entered as the arguments for the <code>NNS_SndCaptureStartSampling</code> function. The buffer passed to the argument indicates the region where the capture ended.
+</p>
+        <p>
+When the capture thread is started by the <a  href="NNS_SndCaptureCreateThread.html"><code>NNS_SndCaptureCreateThread</code></a> function, the callback function is called from the capture thread. If the capture thread has not been started, the callback function is called from the IRQ handler.
+</p>
+      <p>
+Sampling may fail to start for one of the following reasons. 
+</p>
+      <div class="itemizedlist">
+<ul type="disc">
+<li>Capture is being used for something other than sampling</li>
+<li>Channel 1 or Channel 3 is being used for something other than playing sampling or sequence </li>
+</ul>
+</div>
+
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndCaptureCreateThread.html">NNS_SndCaptureCreateThread</a></p>
+<h2>Revision History</h2>
+<p>06/27/2005 Added reasons for function failure.</p><p>01/06/2005 Deleted the description regarding TEG.</p><p>09/13/2004 Initial version.</p>
+</div>
+</body>
+</html>

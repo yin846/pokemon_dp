@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_SetVAlarm</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_SetVAlarm</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_SetVAlarm(
+OSVAlarm*           alarm ,
+s16                 count ,
+s16              delay ,
+OSVAlarmHandler     handler ,
+void*           arg );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>alarm</STRONG></EM></TD>
+<TD width="87%">Pointer to the V count alarm structure for setting V count alarm</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>count</STRONG></EM></TD>
+<TD width="87%">The V Count value at which the V Count alarm is actuated (the handler is called)</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>delay</STRONG></EM></TD>
+<TD>The maximum permissible number of V Counts for delay</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>handler</STRONG></EM></TD>
+<TD>The V count alarm handler</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>arg</STRONG></EM></TD>
+<TD>The argument when calling the V count alarm handler</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Sets up a one-time V count alarm</P>
+<P><code><strong><em>handler</em></strong></code> is called when the V Count reaches the value specified by <code><strong><em>count</em></strong></code>. The V count alarm handler <code><strong><em>handler</em></strong></code> is an <code>OSVAlarmHandler</code> function type defined by the following: </P>
+<P><CODE>typedef void          (*OSVAlarmHandler)( void*);</CODE></P>
+<P>  <B><I>handler</I></B> is called from the OS V-count interrupt handler. Therefore, interrupts are prohibited. When the <em><strong><code>handler</code></strong></em> is called, it takes <code><strong><em>arg</em></strong></code> as an argument.</P>
+<P>It is possible to specify the amount of permissible delay with <B><I>delay</I></B> when the handler cannot be called on the specified V count because of another count alarm or interrupt. For example, at count=100 and delay=5, V count is called if it is possible to call it by count 105, even if it was not possible to call it by count 100. When you specify <code>0</code>, the alarm is called only at the specified V count. If <code>OS_VALARM_DELAY_MAX</code>, it is always called when a call is possible for the specified V count and subsequent V counts. The V alarm that was not called will be postponed until the specified V count in the next frame. For details, see the description in <a href="about_VAlarm.html">VAlarm Overview</a>. </P>
+<P>If <em><strong><code>alarm</code></strong></em> is specified for the pointer to the <code>OSAlarm</code> structure in which the V count has been set, it stops with <a href="../debug/OS_Panic.html"><code>OS_Panic()</code></a>. </P>
+<P>The following example sets the V Count alarm, calls <code>handle</code> when the next V Count = 100, and displays &quot;<code>handler called. arg=0x12345678</code>&quot;. </P>
+<BLOCKQUOTE>Example: <BR> <CODE>#define COUNT  100<BR>#define DELAY  1100<BR> #define ARG   0x12345678<BR> OSVAlarm  alarm;<BR> <BR> main()<BR> {<BR> :<BR>OS_InitVAlarm(); OS_CreateVAlarm( &amp;alarm ); OS_SetVAlarm(  &amp;alarm ,  COUNT ,  handler ,  (void*)ARG );}<BR> <BR> void handler( void* arg )<BR> {<BR> OS_Printf( &quot;handler called. arg=0x%x\n&quot;, arg );<BR> }</CODE></BLOCKQUOTE>
+<P>Note: </strong></font> Prior to NITRO-SDK 2.0 RC1, this function took only four arguments and you could not specify the delay. Internally, it was treated as delay=10. But the <a href="OS_SetOneTimeVAlarm.html"><code>OS_SetOneTimeVAlarm()</code></a> function was added for your use if you prefer the old format over this new one.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitVAlarm.html">OS_InitVAlarm</A>, <A href="OS_CancelVAlarm.html">OS_CancelVAlarm</A>, <A href="OS_SetPeriodicVAlarm.html">OS_SetPeriodicVAlarm</A>, <A href="OS_SetVAlarmTag.html">OS_SetVAlarmTag</A><BR> <A href="OS_SetOneTimeVAlarm.html">OS_SetOneTimeVAlarm</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese word for &quot;interrupt&quot;<br /> 10/22/2004 Added delay to the arguments. 08/30/2004 Added description that the V alarm structure that has been set is not usable <BR>02/24/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>Foundation Library API Function List</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>Foundation Library (Fnd) API Function List</H1>
+<H3><A name="Heap">Shared Heap</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="heap/NNS_FndGetHeapStartAddress.html" target="_self">NNS_FndGetHeapStartAddress</A></TH>
+<TD>Gets the starting address of the memory region used by the heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="heap/NNS_FndGetHeapEndAddress.html" target="_self">NNS_FndGetHeapEndAddress</A></TH>
+<TD>Gets the ending address +1 of the memory region used by the heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="heap/NNS_FndFindContainHeap.html" target="_self">NNS_FndFindContainHeap</A></TH>
+<TD>Finds the heap that includes the memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="heap/NNS_FndSetFillValForHeap.html" target="_self">NNS_FndSetFillValForHeap</A></TH>
+<TD>Sets the value in memory at the time of heap creation and at the time of memory block allocation/deallocation. (Used in debugging)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="heap/NNS_FndGetFillValForHeap.html" target="_self">NNS_FndGetFillValForHeap</A></TH>
+<TD>Gets the value in memory at the time of heap creation and at the time of memory block allocation/deallocation. (Used in debugging)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="heap/NNS_FndDumpHeap.html" target="_self">NNS_FndDumpHeap</A></TH>
+<TD>Displays heap contents (for debug). (Used in debugging)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="ExpHeap">Extended Heap</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndCreateExpHeap.html" target="_self">NNS_FndCreateExpHeap</A></TH>
+<TD>Creates the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndCreateExpHeapEx.html" target="_self">NNS_FndCreateExpHeapEx</A></TH>
+<TD>Creates the extended heap. (Option designation)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndDestroyExpHeap.html" target="_self">NNS_FndDestroyExpHeap</A></TH>
+<TD>Gets rid of the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndAllocFromExpHeap.html" target="_self">NNS_FndAllocFromExpHeap</A></TH>
+<TD>Allocates a memory block from the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndAllocFromExpHeapEx.html" target="_self">NNS_FndAllocFromExpHeapEx</A></TH>
+<TD>Allocates a memory block from the extended heap. (Alignment designation)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndResizeForMBlockExpHeap.html" target="_self">NNS_FndResizeForMBlockExpHeap</A></TH>
+<TD>Changes the size of a memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndFreeToExpHeap.html" target="_self">NNS_FndFreeToExpHeap</A></TH>
+<TD>Deallocates a memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndSetAllocModeForExpHeap.html" target="_self">NNS_FndSetAllocModeForExpHeap</A></TH>
+<TD>Sets the allocation mode of the memory block of the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndGetAllocModeForExpHeap.html" target="_self">NNS_FndGetAllocModeForExpHeap</A></TH>
+<TD>Gets the allocation mode of the memory block of the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndSetGroupIDForExpHeap.html" target="_self">NNS_FndSetGroupIDForExpHeap</A></TH>
+<TD>Sets the group ID of the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndGetGroupIDForExpHeap.html" target="_self">NNS_FndGetGroupIDForExpHeap</A></TH>
+<TD>Gets the group ID of the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndVisitAllocatedForExpHeap.html" target="_self">NNS_FndVisitAllocatedForExpHeap</A></TH>
+<TD>Applies the specified function to all memory blocks.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndGetTotalFreeSizeForExpHeap.html" target="_self">NNS_FndGetTotalFreeSizeForExpHeap</A></TH>
+<TD>Gets the total size of the empty region inside the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndGetAllocatableSizeForExpHeap.html" target="_self">NNS_FndGetAllocatableSizeForExpHeap</A></TH>
+<TD>Gets the maximum size of the allocatable memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndGetAllocatableSizeForExpHeapEx.html" target="_self">NNS_FndGetAllocatableSizeForExpHeapEx</A></TH>
+<TD>Gets the maximum size of the allocatable memory block. (Alignment designation)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndGetSizeForMBlockExpHeap.html" target="_self">NNS_FndGetSizeForMBlockExpHeap</A></TH>
+<TD>Gets the size of the memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndGetGroupIDForMBlockExpHeap.html" target="_self">NNS_FndGetGroupIDForMBlockExpHeap</A></TH>
+<TD>Gets the group ID of the memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndGetAllocDirForMBlockExpHeap.html" target="_self">NNS_FndGetAllocDirForMBlockExpHeap</A></TH>
+<TD>Gets the allocation direction of the memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndCheckExpHeap.html" target="_self">NNS_FndCheckExpHeap</A></TH>
+      
+<TD>Checks whether the extended heap is corrupted. (Used in debugging)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="expheap/NNS_FndCheckForMBlockExpHeap.html" target="_self">NNS_FndCheckForMBlockExpHeap</A></TH>
+      
+<TD>Checks whether a memory block in the extended heap is corrupted. (Used in debugging)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="FrameHeap">Frame Heap</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndCreateFrmHeap.html" target="_self">NNS_FndCreateFrmHeap</A></TH>
+<TD>Creates the frame heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndCreateFrmHeapEx.html" target="_self">NNS_FndCreateFrmHeapEx</A></TH>
+<TD>Creates the frame heap. (Option designation)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndDestroyFrmHeap.html" target="_self">NNS_FndDestroyFrmHeap</A></TH>
+<TD>Gets rid of the frame heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndAllocFromFrmHeap.html" target="_self">NNS_FndAllocFromFrmHeap</A></TH>
+<TD>Allocates the memory block from a frame heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndAllocFromFrmHeapEx.html" target="_self">NNS_FndAllocFromFrmHeapEx</A></TH>
+<TD>Allocates the memory block from a frame heap. (Alignment designation)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndResizeForMBlockFrmHeap.html" target="_self">NNS_FndResizeForMBlockFrmHeap</A></TH>
+      
+<TD>Changes the size of a memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndFreeToFrmHeap.html" target="_self">NNS_FndFreeToFrmHeap</A></TH>
+<TD>Deallocates a memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndRecordStateForFrmHeap.html" target="_self">NNS_FndRecordStateForFrmHeap</A></TH>
+<TD>Records the allocation state of the memory block of the frame heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndFreeByStateToFrmHeap.html" target="_self">NNS_FndFreeByStateToFrmHeap</A></TH>
+<TD>Returns to the memory block allocation state right before recording using the recorded information about the allocation state of the memory block of the frame heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndAdjustFrmHeap.html" target="_self">NNS_FndAdjustFrmHeap</A></TH>
+<TD>Deallocates the empty space of the frame heap, and reduces the memory region used by the frame heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndGetAllocatableSizeForFrmHeap.html" target="_self">NNS_FndGetAllocatableSizeForFrmHeap</A></TH>
+<TD>Gets the maximum size of the allocatable memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="frameheap/NNS_FndGetAllocatableSizeForFrmHeapEx.html" target="_self">NNS_FndGetAllocatableSizeForFrmHeapEx</A></TH>
+<TD>Gets the maximum size of the allocatable memory block. (Alignment designation)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="UnitHeap">Unit Heap</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="unitheap/NNS_FndCreateUnitHeap.html" target="_self">NNS_FndCreateUnitHeap</A></TH>
+<TD>Creates the unit heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="unitheap/NNS_FndCreateUnitHeapEx.html" target="_self">NNS_FndCreateUnitHeapEx</A></TH>
+<TD>Creates the unit heap. (Alignment, option designation)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="unitheap/NNS_FndDestroyUnitHeap.html" target="_self">NNS_FndDestroyUnitHeap</A></TH>
+<TD>Gets rid of the unit heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="unitheap/NNS_FndAllocFromUnitHeap.html" target="_self">NNS_FndAllocFromUnitHeap</A></TH>
+<TD>Allocates a memory block from the unit heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="unitheap/NNS_FndFreeToUnitHeap.html" target="_self">NNS_FndFreeToUnitHeap</A></TH>
+<TD>Deallocates a memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="unitheap/NNS_FndCountFreeBlockForUnitHeap.html" target="_self">NNS_FndCountFreeBlockForUnitHeap</A></TH>
+<TD>Gets the number of memory blocks allocatable from the unit heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="unitheap/NNS_FndCalcHeapSizeForUnitHeap.html" target="_self">NNS_FndCalcHeapSizeForUnitHeap</A></TH>
+<TD>Obtains the size of the required unit heap by taking the size and quantity of the memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="unitheap/NNS_FndGetMemBlockSizeForUnitHeap.html" target="_self">NNS_FndGetMemBlockSizeForUnitHeap</A></TH>
+<TD>Obtains the size of the memory block of the unit heap.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Archive">Archive</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="archive/NNS_FndMountArchive.html" target="_self">NNS_FndMountArchive</A></TH>
+<TD>Mounts the archive on the file system.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="archive/NNS_FndUnmountArchive.html" target="_self">NNS_FndUnmountArchive</A></TH>
+<TD>Unmounts an archive mounted on the file system.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="archive/NNS_FndGetArchiveFileByIndex.html" target="_self">NNS_FndGetArchiveFileByIndex</A></TH>
+<TD>Gets the address where the file is stored by file ID.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="archive/NNS_FndGetArchiveFileByName.html" target="_self">NNS_FndGetArchiveFileByName</A></TH>
+<TD>Gets the address where the file is stored by file name.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="archive/NNS_FndOpenArchiveFileByIndex.html" target="_self">NNS_FndOpenArchiveFileByIndex</A></TH>
+<TD>Specify the file ID and open the file.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="List">List</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FND_INIT_LIST.html" target="_self">NNS_FND_INIT_LIST</A></TH>
+<TD>Initializes the list structure (Macro version)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FndInitList.html" target="_self">NNS_FndInitList</A></TH>
+<TD>Initializes the list structure</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FndAppendListObject.html" target="_self">NNS_FndAppendListObject</A></TH>
+<TD>Adds an object to the end of the list.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FndPrependListObject.html" target="_self">NNS_FndPrependListObject</A></TH>
+<TD>Adds an object to the beginning of the list.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FndInsertListObject.html" target="_self">NNS_FndInsertListObject</A></TH>
+<TD>Inserts an object at a specified position in the list.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FndRemoveListObject.html" target="_self">NNS_FndRemoveListObject</A></TH>
+<TD>Deletes an object from the list.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FndGetNextListObject.html" target="_self">NNS_FndGetNextListObject</A></TH>
+<TD>Gets the next object connected to the specified object.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FndGetPrevListObject.html" target="_self">NNS_FndGetPrevListObject</A></TH>
+<TD>Gets the previous object connected to the specified object.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="list/NNS_FndGetNthListObject.html" target="_self">NNS_FndGetNthListObject</A></TH>
+<TD>Gets the object in the <i>n</i>th position from the beginning of the list.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Allocator">Memory Allocator</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="allocator/NNS_FndAllocFromAllocator.html" target="_self">NNS_FndAllocFromAllocator</A></TH>
+<TD>Allocates a memory block from the allocator.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="allocator/NNS_FndFreeToAllocator.html" target="_self">NNS_FndFreeToAllocator</A></TH>
+<TD>Returns the memory block to the allocator and frees the memory block.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="allocator/NNS_FndInitAllocatorForExpHeap.html" target="_self">NNS_FndInitAllocatorForExpHeap</A></TH>
+<TD>Initializes the allocator to allocate and free the memory from the extended heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="allocator/NNS_FndInitAllocatorForFrmHeap.html" target="_self">NNS_FndInitAllocatorForFrmHeap</A></TH>
+<TD>Initializes the allocator to allocate and free the memory from the frame heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="allocator/NNS_FndInitAllocatorForUnitHeap.html" target="_self">NNS_FndInitAllocatorForUnitHeap</A></TH>
+<TD>Initializes the allocator to allocate and free the memory from the unit heap.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="allocator/NNS_FndInitAllocatorForSDKHeap.html" target="_self">NNS_FndInitAllocatorForSDKHeap</A></TH>
+<TD>Initializes the allocator to allocate and free the memory from the NITRO-SDK heap.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

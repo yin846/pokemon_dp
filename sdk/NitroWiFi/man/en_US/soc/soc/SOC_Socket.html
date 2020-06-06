@@ -1,0 +1,71 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Socket</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Socket</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define SOC_PF_INET      2   // ARPA Internet protocols
+
+#define SOC_SOCK_STREAM  1   // stream socket
+#define SOC_SOCK_DGRAM   2   // datagram socket</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Socket ( int pf, int type, int protocol );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>pf</strong></em></code></td>
+<td>Specifies the protocol family of the socket to be created. For now, set <code><strong><em>pf</em></strong></code> to <code>SOC_PF_INET</code> (IPv4 Internet protocol).</td>
+  </tr>
+  <tr>
+<td><code><em><strong>type</strong></em></code></td>
+<td>Specifies the type of socket to be created. Currently, <code>SOC_SOCK_STREAM</code> (TCP) and <code>SOC_SOCK_DGRAM</code> (UDP) are supported. </td>
+  </tr>
+  <tr>
+<td><code><em><strong><B>protocol</B></strong></em></code></td>
+<td>Specifies the protocol to use with the socket. If <em><code><strong><B>protocol</B></strong></code></em> is 0, the default protocol for the specified protocol family and type is used. For now, set <code><em><strong><B>protocol</B></strong></em></code> to 0. </td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>0 or higher</td>
+<td>The new socket descriptor. </td>
+  </tr>
+  <tr>
+<td ><code>SOC_ENOMEM</code></td>
+<td >Insufficient memory.</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Please treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p>This function creates a socket that is not bound and returns the socket descriptor. </p>
+
+<h2>See Also</h2>
+<p><code><a href="SOC_Close.html">SOC_Close</a></code>, <code><a href="SOC_Bind.html">SOC_Bind</a></code>, <code><a href="SOC_Connect.html">SOC_Connect</a></code>, <code><a href="SOC_Listen.html">SOC_Listen</a></code>, <code><a href="SOC_Accept.html">SOC_Accept</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

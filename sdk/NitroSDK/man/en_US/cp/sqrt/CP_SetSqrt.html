@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CP_SetSqrt*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CP_SetSqrt*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/cp.h&gt;</CODE><BR> <BR> <CODE>void CP_SetSqrt64( u64 param );</CODE><br> <CODE>void CP_SetSqrt32( u32 param );</CODE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>param</STRONG></EM></TD>
+<TD width="87%">Value of the square root to be calculated.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>Sets the parameters for square root calculations. Sets the square root calculation mode first, and then stores parameters. There are two calculation modes, as follows:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD>Division Mode</TD>
+<TD>Calculation</TD>
+    </TR>
+    <TR>
+<TD>CP_SQRT_32BIT_MODE</TD>
+<TD>Square root calculation of 32-bit value</TD>
+    </TR>
+    <TR>
+<TD>CP_SQRT_64BIT_MODE</TD>
+<TD>Square root calculation of 64-bit value</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><B>Note:</B> With the square root calculator, sometimes the value is overwritten in the interrupt. If the parameters are set up, an interrupt occurs during the square root calculation and the square root calculator is used, then the original calculated result is invalid. Therefore, if you are using the square root calculator in an interrupt, the status of the square root calculator needs to be temporarily saved/restored using <a href="../CP_SaveContext.html"><code>CP_SaveContext</code></a> and <a href="../CP_RestoreContext.html"><code>CP_RestoreContext</code></a>.<B><FONT color="#ff3300">During a thread switch, the contents of the square root calculator are also automatically saved/restored.</FONT></B></P>
+<BLOCKQUOTE><BR>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD style="background-color : #eeeeee;"><STRONG>Example:</strong> Restore the square root calculator status <BR> <BR> <CODE>intr_func( void ) <BR> {<BR> CPContext context;<BR> <BR> CP_SaveContext( &amp;context );<BR> CP_SetSqrt32( 1000 );<BR> CP_WaitSqrt();<BR> result = CP_GetSqrtResult32();<BR> CP_RestoreContext( &amp;context );<BR> }</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BLOCKQUOTE>
+<h2>Internal Operation</h2>
+<p><CODE>Stores values in <code>SQRTCNT(0x40002B0)</code> and <code>SQRT_PARAM(0x40002B8)</code> of the IO register.<br></CODE></p>
+
+<h2>See Also</h2>
+<p><code><a href="CP_SetSqrtImm.html">CP_SetSqrtImm*</a>, <a href="CP_IsSqrtBusy.html">CP_IsSqrtBusy</a>, <a href="CP_WaitSqrt.html">CP_WaitSqrt</a>, <a href="CP_GetSqrtResult.html">CP_GetSqrtResult*</a>, <a href="../CP_SaveContext.html">CP_SaveContext</a>, <a href="../CP_RestoreContext.html">CP_RestoreContext</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Unified Japanese term for &quot;interrupt.&quot;<BR> 05/06/2004 Added description about status restoration.<br> 01/09/2004 Added content.<br> 12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

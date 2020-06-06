@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_TellDir</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_TellDir</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>BOOL FS_TellDir( const FSFile *p_dir, FSDirPos *p_pos );</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p_dir</STRONG></EM></TD>
+<TD width="87%">Address of the <code><a href="../fs_file_type.html">FSFile</a></code> structure</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>p_pos</STRONG></EM></TD>
+<TD width="87%">The address of the structure that stores the directory position.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the directory entry is legal, it stores the value of <CODE>FSDirPos</CODE> that indicates current position, and returns TRUE.<BR>Otherwise it returns FALSE.</p>
+
+<H2>Description</H2>
+<P>This acquires the list position that is currently maintained in the specified directory list as <CODE>FSDirPos</CODE>. If you use this value when you call the <CODE>FS_SeekDir</CODE> function, you will be able to repeat the current list position once more. <BR>
+<h2>See Also</h2>
+<p><CODE><A href="../fs_file_type.html">FSFile</A>, <A href="../fs_dir_pos_type.html">FSDirPos</A>, <A href="FS_FindDir.html">FS_FindDir</A>, <A href="FS_ReadDir.html">FS_ReadDir</A>, <A href="FS_SeekDir.html">FS_SeekDir</A>, <A href="FS_RewindDir.html">FS_RewindDir</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+05/14/2004 Revised description due to changes in <CODE>FSDirPos</CODE><BR> 04/08/2004 Revised description due to the integration of <CODE>FSDir</CODE> and <CODE>FSFile</CODE><BR> 04/01/2004 Initial Version<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

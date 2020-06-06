@@ -1,0 +1,51 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--==========================================================================   Project:  NitroWiFi - WCM - man   File:     WCM_CountApList.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Log: WCM_CountApList.html,v $   Revision 1.2  2005/07/22 13:00:24  terui   "ƒtƒF[ƒY"‚ð"ó‘Ô"‚É—pŒê“ˆê   —š—ð‚Ì‰”Å“ú‚ð“ˆê    Revision 1.1  2005/07/20 13:11:10  terui   Initial upload    $NoKeywords: $  ==========================================================================-->
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>WCM_CountApList</TITLE>
+		<LINK rel="stylesheet" href="../../css/nitro.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>WCM_CountApList</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;nitroWiFi/wcm.h&gt;
+
+s32   WCM_CountApList( void );
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+			A synchronous function that obtains the number of devices found during wireless access point auto-search and listed in the internal buffer. Because the internal list is initialized by the <A href="WCM_ClearApList.html"><CODE>WCM_ClearApList</CODE></A> function, the number of devices is also initialized to 0. Also, if a valid buffer for the internal list is not provided when <A href="WCM_StartupAsync.html"><CODE>WCM_StartupAsync</CODE></A> is called, there is no listing made in the internal buffer, so this function always returns <CODE>0</CODE>. If the function is called before the WCM library is initialized, it will return <CODE>0</CODE>. During wireless access point auto-search, the internal list buffer's state can be changed at random times. Accordingly, we recommend using this function after disabling updates of the internal list by calling <A href="WCM_LockApList.html"><CODE>WCM_LockApList</CODE></A> function. 
+		</P>
+
+		<H2>Arguments</H2>
+		<P>
+			None.
+		</P>
+
+		<H2>Return Values</H2>
+		<P>
+			Returns the number of wireless access point information sets listed in the internal buffer. 
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="WCM_StartupAsync.html">WCM_StartupAsync</A>, <A href="WCMConfig.html">WCMConfig</A>, <A href="WCM_LockApList.html">WCM_LockApList</A>, <A href="WCM_ClearApList.html">WCM_ClearApList</A>, <A href="WCM_PointApList.html">WCM_PointApList</A>, <A href="WCM_PointApListLinkLevel.html">WCM_PointApListLinkLevel</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			07/22/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

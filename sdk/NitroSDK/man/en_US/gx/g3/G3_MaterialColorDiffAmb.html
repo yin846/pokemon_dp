@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_MaterialColorDiffAmb</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_MaterialColorDiffAmb</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_MaterialColorDiffAmb(RGB diffuse, GXRgb ambient, BOOL IsSetVtxColor);
+
+// Below are APIs for creating the display list (command list):
+void G3B_MaterialColorDiffAmb(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+GXRgb diffuse,
+GXRgb ambient,
+BOOL IsSetVtxColor);
+
+void G3C_MaterialColorDiffAmb(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+GXRgb diffuse,
+GXRgb ambient,
+BOOL IsSetVtxColor);
+
+void G3BS_MaterialColorDiffAmb(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+GXRgb diffuse,
+GXRgb ambient,
+BOOL IsSetVtxColor);
+
+void G3CS_MaterialColorDiffAmb(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+GXRgb diffuse,
+GXRgb ambient,
+BOOL IsSetVtxColor);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">diffuse</font></strong></em></td>
+<td width="87%">Diffuse reflection color</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">ambient</font></strong></em></td>
+<td width="87%">Ambient reflection color</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">IsSetVtxColor</font></strong></em></td>
+<td width="87%">Vertex color set flag</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the reflected diffuse color and reflected ambient color for materials. The vertex color set flag specifies whether to set the reflected diffuse color as the vertex color (<code>TRUE</code>) or not as the vertex color (<code>FALSE</code>).</P>
+<h2>See Also</h2>
+<p><A href="G3_MaterialColorSpecEmi.html">G3*_MaterialColorSpecEmi</A></p>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

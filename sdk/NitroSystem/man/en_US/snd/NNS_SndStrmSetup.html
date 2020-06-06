@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndStrmSetup</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndStrmSetup</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndStrmSetup(
+NNSSndStrm* stream,
+NNSSndStrmFormat format,
+void* buffer,
+u32 bufSize,
+int <var>timer</var>,
+int interval,
+NNSSndStrmCallback callback,
+void* arg );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA1MWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>stream</code></strong></em></td>
+<td>Pointer to a stream structure.</td>
+</tr>
+<tr>
+<td><em><strong><code>format</code></strong></em></td>
+<td>Stream data format.</td>
+</tr>
+<tr>
+<td><em><strong><code>buffer</code></strong></em></td>
+<td>Address at the beginning of a stream buffer. Must have 32-byte alignment.</td>
+</tr>
+<tr>
+<td><em><strong><code>bufSize</code></strong></em></td>
+<td>Size of a stream buffer. It must be interval * (number of channels) * (a multiple of 32).</td>
+</tr>
+<tr>
+<td><em><strong><code>timer</code></strong></em></td>
+<td>The stream channel timer value.</td>
+</tr>
+<tr>
+<td><em><strong><code>interval</code></strong></em></td>
+<td>Callback interval. This specifies a value of 2 or more.</td>
+</tr>
+<tr>
+<td><em><strong><code>callback</code></strong></em></td>
+<td>Pointer to a stream callback function.</td>
+</tr>
+<tr>
+<td><em><strong><code><code><EM><STRONG>arg</STRONG></EM></code></code></strong></em></td>
+<td>User argument for the stream callback function.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDA4OWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns a boolean value to indicate if the setup is successful.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFPWT"></a>
+<h2>Description</h2>
+      <p>
+This function sets up a stream. Before using this function, you must allocate channels with the <a href="NNS_SndStrmAllocChannel.html"><code>NNS_SndStrmAllocChannel</code></a> function. To play the stream, call the <a href="NNS_SndStrmStart.html"><code>NNS_SndStrmStart</code></a> function after calling this function.
+</p>
+      <p>
+Select from the following stream formats (<em>format</em>). A 16-bit stream format offers better sound quality than an 8-bit stream format. However, when a 16-bit stream format is used, the callback function will be called twice as often as when an 8-bit stream format is used. In order to have the callback function called at the same frequency (as when an 8-bit stream format is used) when you are using a 16-bit stream format, you must prepare a stream buffer that is twice as large.
+</p>
+<div class="table"><a name="IDA1PWT"></a><p class="title"><b><b>Table: NNSSndStrmFormat</b><br /></b></p>
+<table summary="NNSSndStrmFormat" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_STRM_FORMAT_PCM8</td>
+<td>8-bit PCM</td>
+</tr>
+<tr>
+<td>NNS_SND_STRM_FORMAT_PCM16</td>
+<td>16-bit PCM</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+      <p>
+A stream buffer is required for a stream to be played. The smaller the stream buffer is, the more often the callback is called. The first address in the stream buffer <em>buffer</em> must be 32-bit aligned. The stream <em>buffer</em> size <em>bufSize</em> must be <code>interval</code> * (number of channels) * (a multiple of 32). Here the number of channels is the number of channels allocated by the <code>NNS_SndStrmAllocChannel</code> function.
+</p>
+      <p>
+The stream channel timer value <em>timer</em> is a parameter that controls stream play speed. The unit for this value is the number of clock cycles that are required to play one sample. The number of clock cycles per second is defined as <code>NNS_SND_STRM_TIMER_CLOCK</code>. For example, in order to play with a sampling rate of <em>sampleRate</em>, specify a time value of <code>NNS_SND_STRM_TIMER_CLOCK</code> / <em>sampleRate</em>.
+
+</p>
+      <p>
+The callback interval <em>interval</em> specifies how many times a callback function will be called during the time that an entire stream buffer is played. For example, if you specify a value of 2, waveform data will be written into the remaining half of the buffer while half of the buffer is being played.
+</p>
+      <p>
+The callback function <em>callback</em> is called when waveform data must be filled. The callback function user argument <em><strong><code>arg</code></strong></em> is passed unchanged to the argument in the <em><strong><code>callback</code></strong></em> argument's callback function. Refer to the description of <code><a href="NNSSndStrmCallback.html">NNSSndStrmCallback</a></code> for information on the stream callback function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndStrmAllocChannel.html"><code>NNS_SndStrmAllocChannel</code></a>, <a href="NNS_SndStrmStart.html"><code>NNS_SndStrmStart</code></a>, <a href="NNSSndStrmCallback.html"><code>NNSSndStrmCallback</code></a></p>
+<h2>Revision History</h2>
+<p>11/26/2004 Separated out the description of <code>NNSSndStrmCallback</code>.</P><P>08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

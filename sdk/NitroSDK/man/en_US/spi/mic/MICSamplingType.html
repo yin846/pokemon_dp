@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MICSamplingType</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MICSamplingType</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/spi.h&gt;</CODE><BR>
+<PRE><CODE>typedef enum
+{ 
+MIC_SAMPLING_TYPE_8BIT = 0 ,
+MIC_SAMPLING_TYPE_12BIT ,
+MIC_SAMPLING_TYPE_SIGNED_8BIT ,
+MIC_SAMPLING_TYPE_SIGNED_12BIT ,
+MIC_SAMPLING_TYPE_12BIT_FILTER_OFF ,
+MIC_SAMPLING_TYPE_SIGNED_12BIT_FILTER_OFF ,
+MIC_SAMPLING_TYPE_MAX
+    
+} MICSamplingType;</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">MIC_SAMPLING_TYPE_8BIT</font></strong></em></TD>
+<TD width="700">Sampling with a valid bit width of 8 bits (unsigned). The range of output data is 0 to 255.
+      </TD>
+    </TR>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">MIC_SAMPLING_TYPE_12BIT</font></strong></em></TD>
+<TD width="700">Sampling with a valid bit width of 12 bits (unsigned). The range of output data is 0 to 65520.
+      </TD>
+    </TR>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">MIC_SAMPLING_TYPE_SIGNED_8BIT</font></strong></em></TD>
+<TD width="700">Sampling with a valid bit width of 8 bits (signed). The range of output data is -128 to 127.
+      </TD>
+    </TR>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">MIC_SAMPLING_TYPE_SIGNED_12BIT</font></strong></em></TD>
+<TD width="700">Sampling with a valid bit width of 12 bits (signed). The range of output data is -32768 to 32752.
+      </TD>
+    </TR>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">MIC_SAMPLING_TYPE_12BIT_FILTER_OFF</font></strong></em></TD>
+<TD width="700">Sampling with a valid bit width of 12 bits (unsigned).<br />The range of output data is <code>0</code> to <code>65520</code>.<br />If there was a conflict with another SPI device access and sampling failed, the output data becomes <code>0xffff</code> (<code>65535</code>).
+      </TD>
+    </TR>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">MIC_SAMPLING_TYPE_SIGNED_12BIT_FILTER_OFF</font></strong></em></TD>
+<TD width="700">Sampling with a valid bit width of 12 bits (signed)<br />The range of output data is <code>-32768</code> to <code>32752</code>.<br />If there was a conflict with another SPI device access and sampling failed, the output data becomes <code>0xffff</code> (<code>-1</code>).
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>List of the sampling types Sampling can be conducted with one of two levels of resolution: 8 bits or 12 bits. Data can be output in the format regardless of whether it is signed or unsigned. With 8-bit sampling, 1 byte of data is obtained each time. With 12-bit sampling, 2 bytes of data are obtained each time (the upper 12 bits are valid, the lower 4 bits are zero-padded).<br />When the input sound exceeds the valid bit width, the output data is clamped to the minimum or the maximum value. The volume that can be covered with the valid bit width can be changed using the <code>PM_SetAmpGain</code> function. When performing auto-sampling, sampling may fail if there is a conflict with another SPI device (such as touch panel). When this occurs, it is normally filtered by using the sampling data that is immediately before it. However, if <code>*_FILTER_OFF</code> was specified as the sampling type, filtering will not occur and the value that indicates a sampling failure (<code>0xffff</code>) will be output.
+</P>
+
+<h2>See Also</h2>
+<P><a href="MIC_DoSampling.html"><code>MIC_DoSampling</code></a>, <a href="MIC_DoSamplingAsync.html"><code>MIC_DoSamplingAsync</code></a>, <a href="MIC_StartAutoSampling.html"><code>MIC_StartAutoSampling</code></a>, <a href="MIC_StartAutoSamplingAsync.html"><code>MIC_StartAutoSamplingAsync</code></a>, <a href="../pm/PM_SetAmpGain.html"><code>PM_SetAmpGain</code></a></P>
+
+<H2>Revision History</H2>
+<P>
+12/03/2004 Added a sampling type without a filter<br /> 06/01/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

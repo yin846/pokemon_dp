@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FSFile</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FSFile</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE><pre>
+<font color="#008000">/* file and directory structure */</font>
+typedef struct FSFile
+{
+/* private: */</font>
+
+<font color="#008000">/* for archive control */</font>
+FSFileLink          link;
+struct  FSArchive   *arc;
+<font color="#008000">/* for internal status */</font>
+u32                 stat;
+FSCommandType       command;
+FSResult            error;
+OSThreadQueue       queue[4 / sizeof(OSThreadQueue)];
+
+/* private: (except direct operation with FSArchive) */
+
+<font color="#008000">/* handle property */</font>
+union {
+<font color="#008000">/* file-handle property */</font>
+struct {
+u32           own_id; /* own file-id */
+u32           top;    /* image-top */
+u32           bottom; /* image-bottom */
+u32           pos;    /* current position */
+} file;
+<font color="#008000">/* directory-handle property */</font>
+struct {
+FSDirPos      pos;    /* current-directory-position */
+u32           parent; /* parent directory-id */
+} dir;
+} prop;
+
+<font color="#008000">/* command argument and return value area */</font>
+union {
+FSReadFileInfo        readfile;
+FSWriteFileInfo       writefile;
+FSSeekDirInfo         seekdir;
+FSReadDirInfo         readdir;
+FSFindPathInfo        findpath;
+FSGetPathInfo         getpath;
+FSOpenFileFastInfo    openfilefast;
+FSOpenFileDirectInfo  openfiledirect;
+FSCloseFileInfo       closefile;
+} arg;
+
+} FSFile;
+  <br></pre></code>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>This structure is used by file and directory access functions.<BR>All members are used only in internal processing. Direct operation of these is prohibited. <BR>
+</P>
+<H2>Note</H2>
+<P>This type of internal expression may change in future enhancements. Avoid programming that depends upon sizes and members in the current package. <BR>
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="file/FS_OpenFile.html">FS_OpenFile</A>, <A href="file/FS_OpenFileFast.html">FS_OpenFileFast</A>, <A href="file/FS_CloseFile.html">FS_CloseFile</A>, <A href="file/FS_GetLength.html">FS_GetLength</A>, <A href="file/FS_ReadFile.html">FS_ReadFile</A>, <A href="file/FS_SeekFile.html">FS_SeekFile</A>, <A href="file/FS_SeekFileToBegin.html">FS_SeekFileToBegin</A>, <A href="file/FS_SeekFileToEnd.html">FS_SeekFileToEnd</A>, <A href="file/FS_FindDir.html">FS_FindDir</A>, <A href="file/FS_ReadDir.html">FS_ReadDir</A>, <A href="file/FS_TellDir.html">FS_TellDir</A>, <A href="file/FS_SeekDir.html">FS_SeekDir</A>, <A href="file/FS_RewindDir.html">FS_RewindDir</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+11/02/2004 Corrected the structure definition to match the header file.<BR> 05/20/2004 Description changes due changes in <CODE>FSFile</CODE>.<BR> 05/14/2004 Description changes due changes in <CODE>FSFile</CODE>.<BR> 04/13/2004 Description changes due changes in <CODE>FSFile</CODE>.<BR> 04/08/2004 Description changes due to the integration of <CODE>FSDir</CODE> and <CODE>FSFile</CODE>.<BR> 04/01/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

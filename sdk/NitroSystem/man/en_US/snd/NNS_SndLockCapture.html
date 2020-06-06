@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndLockCapture</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndLockCapture</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndLockCapture( u32 capBitFlag );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAWLWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>capBitFlag</code></strong></em></td>
+<td>The bit flag of the capture to lock.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFMWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns TRUE if the lock was successful. Returns FALSE if it fails.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Description</h2>
+      <p>
+Locks the capture. The locked capture will no longer be used inside the library.
+</p>
+      <p>
+Designate the capture to lock with  <em><strong><code>capBitFlag</code></strong></em>. In order from the lower bits, show capture 0 and capture 1, then simultaneously lock all captures with active bits.
+</p>
+      <p>
+The function will fail if you try to lock a capture that is already in use. Also, if you are trying to lock both captures at the same time and one of the locks fails, both locks will fail.
+</p>
+      <p>
+Call the <code><a href="NNS_SndUnlockCapture.html">NNS_SndUnlockCapture</a></code> function in order to unlock a capture.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndUnlockCapture.html">NNS_SndUnlockCapture</a></p>
+<h2>Revision History</h2>
+<p>10/25/2004 Initial version.</p>
+</div>
+</body>
+</html>

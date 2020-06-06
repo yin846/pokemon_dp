@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<TITLE>NNS_G3dGlbFlushP</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">NNS_G3dGlbFlushP</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE>#include &lt;nnsys/g3d/glbstate.h&gt;
+
+void NNS_G3dGlbFlush( void );
+void NNS_G3dGlbFlushP( void );</PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Sends the entire global state kept in the G3D library to the geometry engine. The global state includes the following information (if available): <UL><LI>The projective transformation matrix</LI><LI>The camera matrix</LI><LI>The modeling matrix</LI><LI>The view port</LI><LI>The light direction and color</LI><LI>The default material color</LI></UL>Regarding matrices, the projective transformation matrix is set to the current projection matrix, and the matrix composed of the camera matrix and modeling matrix is set to the current position coordinate matrix and directional vector matrix. After sending the global state to the geometry engine, the matrix mode becomes <code>POSITION/VECTOR</code>.</P>
+<H2>See Also</H2>
+<P><code><a href="NNS_G3dGlbFlushVP.html">NNS_G3dGlbFlushVP</a>, <a href="NNS_G3dGlbFlushAlt.html">NNS_G3dGlbFlushWVP</a></code></P>
+<H2>Revision History</H2>
+<P>10/12/2004 Left NNS_G3dGlbFlush only in the C Specification section<br> 09/16/2004 Added <code>NNS_G3dGlbFlushP</code> as a separate name<br> 08/02/2004 Initial version</P>
+</BODY>
+</HTML>

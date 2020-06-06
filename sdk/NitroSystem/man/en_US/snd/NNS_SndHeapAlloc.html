@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndHeapAlloc</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndHeapAlloc</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef void (*NNSSndHeapDisposeCallback)( void*   mem, u32     size, u32     data1, u32     data2 );</pre></dd>
+<dd><pre class="funcprototype">void* NNS_SndHeapAlloc(
+NNSSndHeapHandle    heap,
+u32                         size,
+NNSSndHeapDisposeCallback   callback,
+u32 data1,
+u32 data2 );</code></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDARMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>heap</code></strong></em></td>
+<td>The sound heap handle.</td>
+</tr>
+<tr>
+<td><em><strong><code>size</code></strong></em></td>
+<td>The memory size to be allocated.</td>
+</tr>
+<tr>
+<td><em><strong><code>callback</code></strong></em></td>
+<td>The callback function called when the memory block is de-allocated.</td>
+</tr>
+<tr>
+<td><em><strong><code>data1, data2</code></strong></em></td>
+<td>The user data for the argument of the callback function.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAVNWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns the starting address of the allocated memory block. Returns a <code>NULL</code> if the allocation fails.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA2NWT"></a>
+<h2>Description</h2>
+      <p>
+Allocates memory from the sound heap.
+</p>
+      <p>
+A management region is needed in each memory block. In actuality, a space slightly larger than the memory size <code><b><i>size</i></b></code> to be allocated is necessary. The function will fail if there is not enough space.
+</p>
+      <p>
+The callback function <code><i><b>callback</b></i></code> is called when the memory block is de-allocated via the <code><a href="NNS_SndHeapClear.html">NNS_SndHeapClear</a></code> function or the <code><a href="NNS_SndHeapLoadState.html">NNS_SndHeapLoadState</a></code> function. The memory block starting address <code><i><b>mem</b></i></code>, the memory block size <code><i><b>size</b></i></code>, and the user data <code><i><b>data1</b></i></code> and <code><i><b>data2</b></i></code> are passed to the argument of the callback function. Enter a <code>NULL</code> into callback when the callback function is not needed.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndHeapClear.html">NNS_SndHeapClear</a>, <a href="NNS_SndHeapLoadState.html">NNS_SndHeapLoadState</a></code></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

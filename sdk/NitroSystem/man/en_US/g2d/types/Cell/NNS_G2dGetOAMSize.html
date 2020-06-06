@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dGetOAMSize*</title>
+<LINK rel="stylesheet" href="../../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dGetOAMSize / NNS_G2dGetOAMSizeX / NNS_G2dGetOAMSizeY</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/fmt/g2d_Oam_data.h&gt;</CODE></pre>
+  <pre><CODE>static inline GXOamShape NNS_G2dGetOAMSize( const GXOamAttr* oamAttr );
+static inline int NNS_G2dGetOamSizeX( const GXOamShape* oamShape );
+static inline int NNS_G2dGetOamSizeY( const GXOamShape* oamShape );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">oamAttr</font></strong></em></td>
+<td width="87%">[IN] OAM attribute</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">oamShape</font></strong></em></td>
+<td width="87%">[IN] GXOamShape enumerator that indicates the OBJ shape information</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>Obtains the OBJ size.
+</p>
+<H2>Description</H2>
+<P>
+Obtains the OBJ size as an <code>int</code> type from the OAM attribute. Internally, the <code>NNS_G2dGetOamSize*()</code> function refers to a table to determine the size.
+</p>
+<h2>See Also</h2>
+<p>None.</p>
+<H2>Revision History</H2>
+<P>10/12/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsInitPrint</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsInitPrint</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre>void NNS_McsInitPrint(
+void*   pBuffer,
+u32 size);</pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ 
+    <tr> 
+<td width="13%"><em><strong><font face="Courier New">pBuffer</font></strong></em></td>
+<td width="87%">The work buffer used for character string output. Use the buffer designated here with the <code>NNS_McsPrintf</code> function.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">size</font></strong></em></td>
+<td width="87%">Size (in bytes) of the work buffer used for character string output</td>
+ </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<p>Performs the initialization necessary to make the MCS character string output function usable. In order to create a character string for output, the character string output function <code><A href="NNS_McsPrintf.html">NNS_McsPrintf</A></code> uses the buffer designated with the arguments <em><strong><code>pBuffer</code></strong></em> and <em><strong><code>size</code></strong></em>. The maximum length of the character string that the  <code>NNS_McsPrintf</code> function can output is the size (in bytes) designated with the argument <em><strong><code>size</code></strong></em>.</p>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_McsPutString.html">NNS_McsPutString</A>, <A href="NNS_McsPrintf.html">NNS_McsPrintf</A></CODE></p>
+<H2>Revision History</H2>
+<P>12/17/2004 Initial version.</P>
+</body>
+</html>

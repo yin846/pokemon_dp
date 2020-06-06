@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+<title>DWC_StartUtility</title>
+  <link rel="stylesheet" href="../../css/function.css">
+  <base target="main">
+</head>
+<body>
+<h1>DWC_StartUtility</h1>
+<h2>C Specification</h2>
+<dl>
+  <dd>
+<pre><code>#include &lt;dwc.h&gt;
+
+int DWC_StartUtility( void* work, int language, int param );</code></pre>
+  </dd>
+</dl>
+<h2>Description</h2>
+<p>Starts the Nintendo Wi-Fi Connection setup. When calling this function, be aware of the following:</p>
+<ul>
+<li>Make the function call after all other processes are ended. The following are specific cautions for using this function.
+<ul class="sub">
+<li>Stop the use of DS wireless communications. </li>
+<li>Stop the touch panel auto-sampling.</li>
+<li>Make sure that the application program is not called by interrupts, callback functions, etc.</li>
+</ul>
+</li>
+<li>When creating the production version, change the authentication server to the production authentication server by using the <a href="DWC_SetAuthServer.html">DWC_SetAuthServer</a> function.</li>
+<li>The Nintendo Wi-Fi Connection setup has been created to start with a white screen. For this reason, if the application is called with a white screen, the transition will be natural.</li>
+</ul>
+
+<p>Furthermore, after the function ends normally, be aware of the following. (nothing is processed if it ends as a result of an argument error)</p>
+<ul>
+<li>Output to LCD ends in an OFF state.</li>
+<li>All IRQ interrupts end in a disabled state.</li>
+<li>The VRAM state is undefined.</li>
+<li>2D graphics engine settings are also undefined. </li>
+<li>The settings will need to be redone when using the same library, because NITRO-Composer also uses it.</li>
+</ul>
+<p>The Nintendo Wi-Fi Connection settings reference files on the DS card by using the NITRO-SDK file system. Specify <CODE>$(NITRODWC_ROOT)/file/dwc/utility.bin</CODE> in the <CODE>dwc/</CODE> directory as a root directory. If the application does not use the file system, add the following text to the RomSpec section in the ROM spec file, and call <CODE>FS_Init()</CODE> from the application to enable file system use.</p>
+	
+<pre class="sample"><code>RomSpec
+{
+	...
+	# From here
+	HostRoot	./file/dwc    # file directory name on PC
+	Root	/dwc
+	File	utility.bin
+	# To here
+}</code></pre>
+
+<p>The function <a href="DWC_StartUtilityEx.html"><CODE>DWC_StartUtilityEx</CODE></a> is also provided for static linking of the necessary buffers.</p>
+
+<h2>Arguments</h2>
+<table border="1">
+  <tbody>
+    <tr>
+<td width="25%"><em><strong><code>work</code></strong></em></td>
+<td width="75%">Pointer to a 32-byte aligned <CODE>DWC_UTILITY_WORK_SIZE</CODE> byte buffer. Can be deleted after the function completes.</td>
+    </tr>
+    <tr>
+<td><em><strong><code>language</code></strong></em></td>
+<td>Language used by the application <br> DWC_LANGUAGE_JAPANESE // Japanese<br> DWC_LANGUAGE_ENGLISH // English<br> DWC_LANGUAGE_FRENCH // French<br> DWC_LANGUAGE_GERMAN // German<br> DWC_LANGUAGE_ITALIAN // Italian<br> DWC_LANGUAGE_SPANISH // Spanish<br>
+      </td>
+    </tr>
+    <tr>
+<td><em><strong><code>param</code></strong></em></td>
+<td>Specifies the destination and configuration utility start position. The support phone number displayed in the configuration utility and whether easy wireless start is used will depend on the destination. <br>DWC_UTILITY_TOP_MENU_FOR_USA // For North America  Start from top menu<br> DWC_UTILITY_SETTING_FOR_USA&nbsp; //For North America   Start from connection target selection<br> DWC_UTILITY_TOP_MENU_FOR_EUR //For Europe    Start from top menu<br> DWC_UTILITY_SETTING_FOR_EUR // For Europe    Start from connection target selection<br> DWC_UTILITY_TOP_MENU_FOR_JPN //For Japan    Start from top menu<br> DWC_UTILITY_SETTING_FOR_JPN //For Japan    Start from connection target selection<br> DWC_UTILITY_TOP_MENU_COMMON //For Common    Start from top menu<br> DWC_UTILITY_SETTING_COMMON //For Common     Start from connection target selection<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<p><strong>Language and destination combination and support phone number, use of easy wireless start</strong></p>
+<table border="1">
+  <tbody>
+    <tr>
+<td style="text-align: center;" width="20%"><em><strong><code>Language</code></strong></em></td>
+<td style="text-align: center;" width="20%"><em><strong><code>Destination</code></strong></em></td>
+<td style="text-align: center;" width="20%"><em><strong><code>Support phone number</code></strong></em></td>
+<td style="text-align: center;" width="20%"><em><strong><code>Easy Wireless Start</code></strong></em></td>
+<td style="text-align: center;" width="20%"><em><strong><code>Comments</code></strong></em></td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Japan</td>
+<td style="text-align: center;">Japan</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Japan</td>
+<td style="text-align: center;">Outside of Japan</td>
+      <td style="text-align: center;">---</td>
+      <td style="text-align: center;">---</td>
+<td style="text-align: center;">Error</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">English</td>
+<td style="text-align: center;">North America</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">English</td>
+<td style="text-align: center;">Europe/Common</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">English</td>
+<td style="text-align: center;">Japan</td>
+      <td style="text-align: center;">---</td>
+      <td style="text-align: center;">---</td>
+<td style="text-align: center;">Error</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Neither Japanese nor English</td>
+<td style="text-align: center;">North America</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Neither Japanese nor English</td>
+<td style="text-align: center;">Europe/Common</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Neither Japanese nor English</td>
+<td style="text-align: center;">Japan</td>
+      <td style="text-align: center;">---</td>
+      <td style="text-align: center;">---</td>
+<td style="text-align: center;">Error</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<table border="1">
+  <tbody>
+    <tr>
+      <td width="25%"><em><strong><code>0</code></strong></em></td>
+<td width="75%">Function completed normally.</td>
+    </tr>
+    <tr>
+<td><em><strong><code>Non-zero</code></strong></em></td>
+<td>Argument error.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>See Also</h2>
+<p>
+<code><a href="DWC_StartUtilityEx.html">DWC_StartUtilityEx</a> , <a href="DWC_SetAuthServer.html">DWC_SetAuthServer</a></code>
+</p>
+<h2>Revision History</h2>
+<p>
+02/22/2006 Added description specific to NITRO-Composer<BR>12/16/2005 Revisions<BR>09/30/2005 Added notes to Description, corrected errors in Arguments, and added a table on language and market region combinations<BR>07/22/2005 Initial version<BR>
+</p>
+</body>
+</html>

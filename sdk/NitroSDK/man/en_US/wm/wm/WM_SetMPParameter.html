@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_SetMPParameter</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_SetMPParameter</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_SetMPParameter(
+<A href="WMCallbackFunc.html">WMCallbackFunc</A>  callback ,
+const <A href="WMMPParam.html">WMMPParam</A>* param
+);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">param</FONT></STRONG></EM></TD>
+<TD width="800">Pointer to the structure storing parameters used for MP communications.</TD>
+    </TR>
+   </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>Sets various parameters used for MP communications. Although this function may be called any time after <CODE>WM_Initialize</CODE>, some parameters can only be set during certain communication states. Basically, this function is called to make detailed MP settings after a connection has been established by <CODE><A href="WM_StartParent.html">WM_StartParent</A></CODE> or <CODE><A href="WM_StartConnect.html">WM_StartConnect</A></CODE> but before <CODE><A href="WM_StartMP.html">WM_StartMP</A></CODE> has been called.</P>
+<P>For details on parameters that can be set, see <CODE><A href="WMMPParam.html">WMMPParam</A></CODE>.</P>
+<h2>See Also</h2>
+<P><code><A href="WMMPParam.html">WMMPParam</A>, <A href="WM_StartMP.html">WM_StartMP</A>, <A href="WM_StartMPEx.html">WM_StartMPEx</A>, <A href="WM_SetParentParameter.html">WM_SetParentParameter</A></code></P>
+
+<H2>Revision History</H2>
+<P>
+11/24/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

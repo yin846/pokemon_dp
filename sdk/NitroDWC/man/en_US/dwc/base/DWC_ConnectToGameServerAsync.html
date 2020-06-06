@@ -1,0 +1,85 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_ConnectToGameServerAsync</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_ConnectToGameServerAsync</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_ConnectToGameServerAsync(
+                         int serverIndex,
+                         <A href="DWCMatchedSCCallback.html">DWCMatchedSCCallback</A> matchedCallback,
+                         void* matchedParam,
+                         <A href="DWCNewClientCallback.html">DWCNewClientCallback</A> newClientCallback,
+                         void* newClientParam);</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function specifies and connects to the server DS that the friend roster index connected to. The server DS is the DS that waits for a connection from a client DS after calling the <A href="DWC_SetupGameServer.html">DWC_SetupGameServer</A> function in this server-client matchmaking. If the <a href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</a> function is continually called after calling this function, the matchmaking process will continue. The matchmaking completion callback will be called if the matchmaking results in a success, an error, or a cancellation.
+		</P>
+		<P>
+		  If a new client DS attempts to connect to the server DS after a connection with the server DS is established, a new connection client notification callback is called. Also, once the new connection client's connection operation has completed, the matchmaking end callback is called again.<BR>
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>serverIndex</CODE></STRONG></EM></TD>
+					<TD width="75%">Friend roster index on the destination server DS.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>matchedCallback</CODE></STRONG></EM></TD>
+					<TD>Pointer to the connection complete callback function. This is called for each person connected.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>matchedParam</CODE></STRONG></EM></TD>
+					<TD>Parameter for the connection completion callback.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>newClientCallback</CODE></STRONG></EM></TD>
+					<TD>The pointer to the new connection client notification callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>newClientParam</CODE></STRONG></EM></TD>
+					<TD>Parameter for the new connection client notification callback.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">The process starts. The results are indicated via the callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD>Not a good state for calling this function.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_SetupGameServer.html">DWC_SetupGameServer</A>, <A href="DWC_SetupGameServerAsync.html">DWC_SetupGameServerAsync</A>, <A href="DWCMatchedSCCallback.html">DWCMatchedSCCallback</A>, <A href="DWCNewClientCallback.html">DWCNewClientCallback</A>, <a href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</a></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+		  12/16/2005 Added a detailed description of the function. Corrected a notation error in the return value.<BR>11/07/2005 Revised version.<br> 07/22/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

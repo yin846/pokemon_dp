@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dScrPosToWorldLine</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dScrPosToWorldLine</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE>#include &lt;nnsys/g3d/util.h&gt;
+
+int
+NNS_G3dScrPosToWorldLine(
+int px,
+int py,
+VecFx32* pNear,
+VecFx32* pFar
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>px</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>x</code> coordinate on the screen</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>py</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>y</code> coordinate on the screen</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>pNear</STRONG></EM></TD>
+<TD>Point of the world coordinate position on the near clip plane corresponding to the coordinate position on the screen</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>pFar</STRONG></EM></TD>
+<TD>Point of the world coordinate position on the far clip plane corresponding to the coordinate position on the screen</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>Returns <code>0</code> if <em><strong><code>*px</code></strong></em> and <em><strong><code>*py</code></strong></em> are inside the viewport. Returns <code>-1</code> if they are outside of the viewport.</P>
+<H2>Description</H2>
+<P>Returns the point on the near clip plane and the far clip plane corresponding to the position on the screen as a world coordinate. When <em><strong><code>pFar</code></strong></em> is NULL, the calculation of the point on the far clip plane is abbreviated.<!-- abbreviated or truncated??? -->The camera matrix and the projection matrix must be configured in the <code>NNS_G3dGlb</code> structure. Even if the return value is <code>-1</code>, the value is stored in <em><strong><code>*pNear</code></strong></em> and <em><strong><code>*pFar</code></strong></em> can be used as a directional guide. For perspective projections, the margin of error for the <em><strong><code>*pFar</code></strong></em> value will be larger when compared with <em><strong><code>*pNear</code></strong></em>. This is because the far clip plane is bigger than the near clip plane, so when looking for the original point from the normalized screen coordinate point, the far plane is enlarged. When applying a horizontal offset to the 3D screen by using the Nitro-SDK <code>G3X_SetHOffset</code> function, only the offset portion of the <code>x</code> coordinate argument needs to be moved in advance.</P>
+
+<H2>See Also</H2>
+<P><a href="NNS_G3dLocalOriginToScrPos.html"><code>NNS_G3dLocalOriginToScrPos</a></code>, <code><a href="NNS_G3dWorldPosToScrPos.html">NNS_G3dWorldPosToScrPos</a></code></P>
+<H2>Revision History</H2>
+<P>11/01/2004 Initial version.</P>
+</BODY>
+
+</HTML>

@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Environmental Resource Management (Overview) </TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Environmental Resources (Overview)</H1>
+<H2>Description</H2>
+<P>The ENV Library provides a method for easily obtaining values defined as resources from a program. Resources are various parameters and configuration values for which the resource names have been defined. Resource values are obtained from a program by designating a resource name.</P>
+<P>This environmental resource library is very convenient for testing operation during program development by changing parameters or by using shared configuration values on multiple programs.</P>
+<HR>
+<P><B>Resource Definitions</B></P>
+<P>In this ENV library, resource values are returned in response to queries about resource names. A resource name comprises a class name, a period (&quot;.&quot;), and a member name.</P>
+<BLOCKQUOTE><B>(Example)</B><BR>In the case of the resource <CODE>myServer.Hostname</CODE>, <CODE>myServer</CODE> is the class name, and <CODE>Hostname</CODE> is the member name.</BLOCKQUOTE>
+<P>These resources can be assigned any of the following values: u8, s8, u16, s16, u32, s32, u64, s64, BOOL, string, or binary. string is character string data, while binary is binary data.</P>
+<P>Resources are managed internally with one ENVResource structure. (Two structures are used for 64-bit resource values.)</P>
+<BLOCKQUOTE>
+<P><CODE>struct&nbsp;&nbsp;ENVResource<BR>{<BR>char*&nbsp;&nbsp;name;<BR>u16&nbsp;&nbsp;len;<BR>u16&nbsp;&nbsp;type;<BR>void*&nbsp;&nbsp;ptr;<BR>};</CODE></P>
+</BLOCKQUOTE>
+<P><CODE>name</CODE> is a pointer to the resource name. <CODE>len</CODE> is the length of the resource. <CODE>type</CODE> is the information type when the resource is declared. <CODE>ptr</CODE> is the pointer to the location where the character string and data are actually stored for string and binary. Values for u8, s8, u16, s16, u32, s32, or BOOL are assigned to <CODE>ptr</CODE>. u64 and s64 use two continuous resource data structures.</P>
+<HR>
+<P><B>A Description of the Resource Data</B><BR>
+</P>
+<P>Resource data is defined with the ENVResource structure array. The following macros, which define at once the len, type, and ptr members for  the previously-described ENVResource structure, will make it easier to include resources.<BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>ENV_U8()</CODE></TD>
+<TD><CODE>A macro for a u8 value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_S8() </CODE></TD>
+<TD><CODE>A macro for an s8 value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_U16() </CODE></TD>
+<TD><CODE>A macro for a u16 value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_S16() </CODE></TD>
+<TD><CODE>A macro for an s16 value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_U32() </CODE></TD>
+<TD><CODE>A macro for a u32 value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_S32() </CODE></TD>
+<TD><CODE>A macro for an s32 value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_U64() </CODE></TD>
+<TD><CODE>A macro for a u64 value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_S64() </CODE></TD>
+<TD><CODE>A macro for an s64 value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_BOOL() </CODE></TD>
+<TD><CODE>A macro for a BOOL value.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_STRING() </CODE></TD>
+<TD><CODE>A macro for a character string.</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>ENV_BINARY()</CODE></TD>
+<TD><CODE>A macro for binary data.</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> By using these macros, resources are defined as combinations of resource names and resource macros as shown below.</P>
+<BLOCKQUOTE><CODE>ENVResource&nbsp;myResource[]&nbsp;=&nbsp;{<BR>&quot;myClass.str1&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENV_STRING(&nbsp;&quot;mario&quot;&nbsp;),<BR>&quot;myClass.bin1&quot;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENV_BINARY(&nbsp;&quot;\x12\x34\x56\x78&quot;&nbsp;),<BR>&quot;myClass2.data1&quot;,&nbsp;&nbsp;&nbsp;&nbsp;ENV_S32(&nbsp;-500&nbsp;),<BR>&quot;myClass2.data2&quot;,&nbsp;&nbsp;&nbsp;&nbsp;ENV_U16(&nbsp;0x8000&nbsp;),<BR>ENV_RESOURCE_END<BR>};</CODE></BLOCKQUOTE>
+<P><CODE><FONT color="#ff0033"><B>Be sure to add <CODE>ENV_RESOURCE_END</CODE> at the end of the data.</B></FONT></CODE></P>
+<P>The resource array defined above is then managed internally in the following way.</P>
+<BLOCKQUOTE><CODE><IMG src="image_envResource1.gif" border="0"><BR></CODE></BLOCKQUOTE>
+<HR>
+<P><B>The Resource Array List</B></P>
+<P>Searches for resources are performed from the resource array. In the ENV Library, multiple resource arrays can be registered in the system. The resource arrays are linked together as a list inside the system. When a search is performed, it is conducted on every array listed in that list. Searches are performed from the very beginning of the list, and from the very beginning of the arrays. If the same resource exists in both, the first one found will be used.</P>
+<P><CODE><A href="ENV_AppendResourceSet.html">ENV_AppendResourceSet()</A></CODE> adds new resource arrays to the end of the list.<BR><CODE><A href="ENV_PrependResourceSet.html">ENV_PrependResourceSet()</A></CODE> adds new resource arrays to the beginning of the list.<BR><CODE><A href="ENV_InsertResourceSet.html">ENV_InsertResourceSet()</A></CODE> adds new resource arrays to a location of the user's choice.<BR></P>
+<P><CODE><A href="ENV_SetResourceSet.html">ENV_SetResourceSet()</A></CODE> and <CODE><A href="ENV_SetResourceSetArray.html">ENV_SetResourceSetArray()</A></CODE> delete lists that have been registered up to this point and then register a specified list.</P>
+<P>There is a limit to the number of resource arrays that can be registered. The number is <CODE>ENV_RESOURCE_SET_MAX</CODE>. (Defined as <code>8</code>.)</P>
+<BLOCKQUOTE><IMG src="image_envResource2.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Declaring Resource Arrays</B></P>
+<P><CODE><A href="ENV_Init.html">ENV_Init()</A></CODE> is used to initialize the ENV Library and to set which resource arrays will be used. Set the resource arrays used for <CODE>resourceArray[]</CODE> in advance, and call them before all ENV functions. <CODE><A href="ENV_Init.html">ENV_Init()</A></CODE> needs to be called only once (but it doesn't matter if it is called more than once).</P>
+
+<HR>
+<P><B>Obtaining Resource Values</B></P>
+<P>Use the functions that get resource values from resource names based on the resource definition, as shown below.<BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetU8()</A></CODE></TD>
+<TD><CODE>A u8 value defined with ENV_U8().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetS8()</A></CODE></TD>
+<TD><CODE>An s8 value defined with ENV_S8().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetU16()</A></CODE></TD>
+<TD><CODE>A u16 value defined with ENV_U16().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetS16()</A></CODE></TD>
+<TD><CODE>An s16 value defined with ENV_S16().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetU32()</A></CODE></TD>
+<TD><CODE>A u32 value defined with ENV_U32().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetS32()</A></CODE></TD>
+<TD><CODE>An s32 value defined with ENV_S32().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetU64()</A></CODE></TD>
+<TD><CODE>A u64 value defined with ENV_U64().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetS64()</A></CODE></TD>
+<TD><CODE>An s64 value defined with ENV_S64().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV&nbsp;GetBOOL()</A></CODE></TD>
+<TD><CODE>A BOOL value defined with ENV_BOOL().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV_GetString()</A></CODE></TD>
+<TD><CODE>A character string defined with ENV_STRING().</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE><A href="ENV_GetXXX.html">ENV_GetBinary()</A></CODE></TD>
+<TD><CODE>Binary data defined with ENV_BINARY().</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>The obtained values are stored at the beginning of the pointer designated in the arguments. The function return value indicates whether or not the values were successfully obtained.</P>
+<P>Two functions have been prepared that get character strings and binaries along with their sizes: <CODE><A href="ENV_GetXXX.html">ENV_GetStringAndLength()</A></CODE> and <CODE><A href="ENV_GetXXX.html">ENV_GetBinaryAndSize()</A></CODE>.</P>
+<HR>
+<P><B>Omitting Class Names</B></P>
+<P>By passing the class names to the ENV Library in advance, the class name part can be omitted and the member name can be used alone to designate the functions that require resource names. When designating a member name by itself, be sure to add a period (&quot;.&quot;) before the name.</P>
+<P>Use <CODE><A href="ENV_SetClass.html">ENV_SetClass()</A></CODE> to declare class names.</P>
+<BLOCKQUOTE><B>(Example)</B><BR>All of the following, where the class name is declared, <BR><CODE>u32&nbsp;d1,&nbsp;d2,&nbsp;d3;<BR>(void)ENV_GetU32(&nbsp;&quot;myClass.myData1&quot;,&nbsp;&amp;d1&nbsp;);<BR>(void)ENV_GetU32(&nbsp;&quot;myClass.myData2&quot;,&nbsp;&amp;d2&nbsp;);<BR>(void)ENV_GetU32(&nbsp;&quot;myClass.myData3&quot;,&nbsp;&amp;d3&nbsp;);<BR></CODE><BR>can be designated in the following forms, with only the member names:<BR><CODE>u32&nbsp;d1,&nbsp;d2,&nbsp;d3;<BR>ENV_SetClass(&nbsp;&quot;myClass&quot;&nbsp;);<BR>(void)ENV_GetU32(&nbsp;&quot;.myData1&quot;,&nbsp;&amp;d1&nbsp;);<BR>(void)ENV_GetU32(&nbsp;&quot;.myData2&quot;,&nbsp;&amp;d2&nbsp;);<BR>(void)ENV_GetU32(&nbsp;&quot;.myData3&quot;,&nbsp;&amp;d3&nbsp;);<BR></CODE><BR></BLOCKQUOTE>
+<P>The function used to obtain the current configuration values is <CODE><A href="ENV_GetClass.html">ENV_GetClass()</A></CODE>.</P>
+<HR>
+<P><B>An Example of Using the ENV Library</B></P>
+<P>Below is an example of using the ENV Library.</P>
+<BLOCKQUOTE><CODE>ENVResource myResource1[] = {<BR> &quot;server1.hostName&quot;, ENV_STRING( &quot;myserver&quot; ),<BR> &quot;server1.IP&quot;, ENV_BINARY( &quot;\xc0\xA8\x00\x01&quot; ),<BR> &quot;server1.port&quot;, ENV_U16( 5000 ),<BR> <B><FONT color="#ff0033">ENV_RESOURCE_END</FONT></B><BR> };<BR> <BR> ENVResource myResource2[] = {<BR> &quot;server2.hostName&quot;, ENV_STRING( &quot;ftpserver&quot; ),<BR> &quot;server2.IP&quot;, ENV_BINARY( &quot;\xc0\xA8\x00\x02&quot; ),<BR> &quot;server2.port&quot;, ENV_U16( 21 ),<BR> <B><FONT color="#ff0033">ENV_RESOURCE_END</FONT></B><BR> };<BR> <BR> ENVResource* resourceArray[]={ myResource1, myResource2, NULL };</CODE><BR> <BR>
+
+<BR> <BR> main()<BR> {<BR> char* hostname;<BR> u8* ipAddress;<BR> int ipSize;<BR> u16 portNum;<BR> :<BR>//----ENV system initialization<BR> ENV_Init();<BR> <BR>//---specify omitted class name<BR> ENV_SetClass(&quot;server1&quot;);<BR> <BR>//----get resource<BR> if ( ! ENV_GetString( &quot;.hostName&quot;, &amp;hostname ) )<BR>&nbsp;{<BR> OS_Printf( &quot;error: <CODE>hostname is not defined.\n&quot; );<BR> };<BR> if&nbsp;(&nbsp;!</CODE><CODE>ENV_GetBinaryAndSize( &quot;.IP&quot;, &amp;ipAddress, &amp;ipSize ) )<BR> {<BR> OS_Printf( &quot;error:</CODE>ipAddress is not defined.\n&quot; );<BR> };<BR> if ( ! <CODE>ENV_GetU16( &quot;.port&quot;, &amp;portNum ) )<BR> {<BR> OS_Printf( &quot;error:</CODE><CODE>portNum is not defined.\n&quot; );<BR> };<BR>} <BR></CODE></BLOCKQUOTE>
+<HR>
+<P><B>Searching for Resources under Specified Conditions</B></P>
+<P>The ENVResourceIter structure has been defined to search for resources using specified class names or member names. This is used as a search iterator. The functions that obtains the resource by using the iterators are <CODE><A href="ENV_InitIter.html">ENV_InitIter()</A></CODE>, <CODE><A href="ENV_SearchByClass.html">ENV_SearchByClass()</A></CODE>, <CODE><A href="ENV_SearchByMember.html">ENV_SearchByMember()</A></CODE>, <CODE><A href="ENV_SearchByType.html">ENV_SearchByType()</A></CODE>, and <CODE><A href="ENV_SearchByPartialName.html">ENV_SearchByPartialName()</A></CODE>.</P>
+<P>The following shows the resource with the specified class &quot;className&quot; being obtained.</P>
+<BLOCKQUOTE><B><CODE>ENVResourceiter&nbsp;&nbsp;iter;</CODE></B><CODE><BR>ENVResource*&nbsp;&nbsp;&nbsp;&nbsp;p;<BR> <BR><B>ENV_InitIter( &amp;iter );</B><BR>while(&nbsp;(p&nbsp;= <B>ENV_SearchByClass( &amp;iter,<BR>&quot;className&quot; )</B>&nbsp;)&nbsp;)<BR>{<BR>OS_Printf( &quot;resource = %s\n&quot;, p-&gt;name );<BR>}</CODE></BLOCKQUOTE>
+<P>To search for a resource with the specific name &quot;<CODE>memberName</CODE>,&quot; use the following statements. The member name is a text string that does not contain a period (&quot;.&quot;). If there are any periods other than the delimiter between the class and member, the comparison will be performed on the member name up to the location of the first period.</P>
+<BLOCKQUOTE><CODE><B>ENVResourceIter  iter;</B><BR>ENVResource*    p;<BR><BR><B>ENV_InitIter( &amp;iter );</B><BR>while( (p = <B>ENV_SearchByMember( &amp;iter, &quot;memberName&quot; )</B>) )<BR>{<BR>OS_Printf( &quot;resource = %s\n&quot;, p-&gt;name );<BR>}</CODE></BLOCKQUOTE>
+<P>For example, when searching with the member name &quot;member,&quot;</P>
+<BLOCKQUOTE><CODE>&quot;class.member&quot;<BR> &quot;class.member.001&quot;<BR> &quot;class.member.class&quot;</CODE></BLOCKQUOTE>
+<P><CODE>has a match, but</CODE></P>
+<BLOCKQUOTE><CODE>&quot;class.member001&quot;<BR> &quot;class.member2.member&quot;</CODE></BLOCKQUOTE>
+<P>contain no matches.</P>
+<HR>
+<P><B>Resource Arrays that Include Resources</B></P>
+<P>The resource array to which the resource belongs can be obtained with <CODE><A href="ENV_GetLastResourceSetForIter.html">ENV_GetLastResourceSetForIter()</A></CODE> immediately after searching for the resource using an iterator.</P>
+<P>To designate a resource and obtain the resource array that belongs to that resource, use <CODE><A href="ENV_GetBelongingResourceSet.html">ENV_GetBelongingResourceSet()</A></CODE>.<BR>
+</P>
+<H2>See Also</H2>
+<P><CODE><A href="list_env.html">List of ENV Functions</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>08/29/2005 Added support for multiple registrations of a resource array.<BR>08/17/2005 Initial version.</P>
+</BODY>
+</HTML>

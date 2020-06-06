@@ -1,0 +1,176 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOCConfig</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOCConfig</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define SOC_VENDOR_NINTENDO  0x0000      // Nintendo TCP/IP stack
+#define SOC_VERSION          0x0100      // Version 1.0
+
+// Name for SOCConfig.alloc() and SOCConfig.free()
+#define SOC_MEM_TCP_INFO         0
+#define SOC_MEM_TCP_SENDBUF      1
+#define SOC_MEM_TCP_RECVBUF      2
+#define SOC_MEM_UDP_INFO         3
+#define SOC_MEM_UDP_RECVBUF      4
+#define SOC_MEM_TIMEWAITBUF      5
+#define SOC_MEM_REASSEMBLYBUF    6
+
+// Flags for SOCConfig{}.flag
+#define SOC_FLAG_DHCP            0x0001  // Use DHCP
+#define SOC_FLAG_PPPoE           0x0002  // Use PPPoE</code></pre>
+  </dd>
+<dd><pre><code>typedef struct SOCConfig
+{
+    u16         vendor;             // SOC_VENDOR_NINTENDO
+    u16         version;            // SOC_VERSION
+
+    //
+    // vendor-specific section
+    //
+    void*    (* alloc )(u32 name, s32 size);
+    void     (* free ) (u32 name, void* ptr, s32 size);
+
+    u32         flag;               // ORed SOC_FLAG_*
+    SOCInAddr    addr;
+    SOCInAddr    netmask;
+    SOCInAddr    router;
+    SOCInAddr    dns1;
+    SOCInAddr    dns2;
+
+    s32         timeWaitBuffer;     // time wait buffer size
+    s32         reassemblyBuffer;   // reassembly buffer size
+    s32         mtu;                // maximum transmission unit size
+
+    // TCP
+    s32         rwin;               // default TCP receive window size (default 2 x MSS)
+    SOCTime     r2;                 // default TCP total retransmit timeout value
+
+    // PPP
+    const char* peerid;
+    const char* passwd;
+
+    // PPPoE
+    const char* serviceName;        // UTF-8 string
+
+    // DHCP
+    const char* hostName;           // DHCP host name
+    s32         rdhcp;              // DHCP retransmit times
+
+    // UDP
+    s32         udpSendBuff;        // default UDP send buffer size
+    s32         udpRecvBuff;        // defualt UDP receive buffer size
+} SOCConfig;</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<h3><code>SOC_VENDOR_NINTENDO</code> implementation: </h3>
+
+<p>When the socket layer requests a new memory block, the <code>alloc</code> function is called. The <code>name</code> argument is one of <code>SOC_MEM_*</code> that indicates the memory block type used. The <code>alloc</code> function must allocate a memory block of <code>size</code> bytes and return a pointer to the allocated memory block. If the stack layer can free the allocated memory block, the <code>free</code> function is called. The <code>free</code> function must release the memory block pointed to by the <code>ptr</code> argument. The other arguments (<code>name</code> and <code>size</code>) are the same as those in the <code>alloc</code> function. <strong><em>Mutual exclusion between threads must be implemented in the </em><code><em>alloc</em></code><em> and <code>free</code> functions. </em></strong><code>alloc</code> functions and <code>free</code> functions are not called directly from callback functions, so a thread-level synchronous primitive such as <code>OS_LockMutex()</code> can be used.</p>
+
+<table width="100%" height="77">
+      <tr>
+<th><strong>Member</strong></th>
+<th><strong>Description</strong></th>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>vendor</code></em></strong></td>
+<td>Designates the vendor name. This member is included for compatibility issues, but it is ignored in actual use of the function.</td>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>version</code></em></strong></td>
+<td>Designates the version. This member is included for compatibility issues, but it is ignored in actual use of the function.</td>
+      </tr>
+      <tr>
+<td valign="top"><strong><em><code>alloc</code></em></strong></td>
+<td>This function allocates memory for use inside the project.</td>
+      </tr>
+      <tr>
+<td valign="top"><strong><em><code>free</code></em></strong></td>
+<td>This function deallocates memory used inside the project.</td>
+      </tr>
+      <tr>
+<td valign="top"><strong><em><code>flags</code></em></strong></td>
+<td>Designates the host configuration method.<br>
+        <table width="100%">
+          <tr>
+<td valign="top"><code>SOC_FLAG_DHCP</code></td>
+<td>The host is configured using DHCP.</td>
+          </tr>
+          </table>
+If SOC_FLAG_DHCP is FALSE, the structure members addr, netmask, and router are used in the host configuration.
+        </td>
+      </tr>
+<td valign="top"><strong><em><code>dns1</code></em></strong></td>
+<td>Designates a DNS server address to a structure member.<br>This structure members is used by <code><a href="SOC_GetHostByAddr.html">SOC_GetHostByAddr()</a></code> and <code><a href="SOC_GetHostByName.html">SOC_GetHostByName()</a></code>.</td>
+      </tr>
+      <tr>
+<td valign="top"><strong><em><code>dns2</code></em></strong></td>
+<td>Designates a DNS server address to a structure member.<br>This structure members is used by <code><a href="SOC_GetHostByAddr.html">SOC_GetHostByAddr()</a></code> and <code><a href="SOC_GetHostByName.html">SOC_GetHostByName()</a></code>.</td>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>timeWaitBuffer</code></em></strong></td>
+<td><font size="-1"color="#808080">Designates the size of the time wait buffer. <br>This member is included for compatibility, but is ignored.
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>reassemblyBuffer</code></em></strong></td>
+<td><font size="-1"color="#808080">Designates the size of the fragment packet reassembly buffer. <br>This member is included for compatibility, but is ignored.</td>
+      </tr>
+      <tr>
+<td valign="top"><strong><em><code>mtu</code></em></strong></td>
+<td>Designates the default interface MTU size.<br>If a 0 is designated here, the default interface MTU size is set.<br>Also, when the host is configured with DHCP, the host will communicate with the DHCP server to adjust the MTU size.<br>In this case, an MTU size that is smaller than the specified size could be used. The actual MTU size can be found with <code><a href="SOC_GetMtu.html">SOC_GetMtu()</a></code>.</td>
+      </tr>
+      <tr>
+<td valign="top"><strong><em><code>rwin</code></em></strong></td>
+<td>Designates the size of the default TCP reception window. If 0 is specified, it will be set to 2x MSS (the maximum segment size). </td>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>r2</code></em></strong></td>
+<td><font size="-1"color="#808080">Designates the default total retransfer timeout time after the TCP connection is established. <br>This member is included for compatibility, but is ignored.</td>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>serviceName</code></em></strong></td>
+<td><font size="-1"color="#808080">Designates the service name to be used when connecting with PPPoE. <br>This member is included for compatibility, but is ignored.</td>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>hostName</code></em></strong></td>
+<td><font size="-1"color="#808080">Designates the host name of the client to be used when connecting with DHCP. <br>This member is included for compatibility, but is ignored.</td>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>rdhcp</code></em></strong></td>
+<td><font size="-1"color="#808080">Configures the number of times to resend a DHCP packet. <br>This member is included for compatibility, but is ignored.</td>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>udpSendBuff</code></em></strong></td>
+<td><font size="-1"color="#808080">Designates the default UDP send buffer size. <br>This member is included for compatibility, but is ignored.</td>
+      </tr>
+      <tr>
+<td valign="top"><font size="-1"color="#808080"><strong><em><code>udpRecvBuff</code></em></strong></td>
+<td><font size="-1"color="#808080">Designates the default UDP receive buffer size. <br>This member is included for compatibility, but is ignored.</td>
+      </tr>
+    </table>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_GetHostByAddr.html">SOC_GetHostByAddr</a></code>, <code><a href="SOC_GetHostByName.html">SOC_GetHostByName</a></code>, <code><a href="SOC_GetMtu.html">SOC_GetMtu</a></code>, <code><a href="SOC_Startup.html">SOC_Startup</a></code>, <code><a href="SOCInAddr.html">SOCInAddr</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

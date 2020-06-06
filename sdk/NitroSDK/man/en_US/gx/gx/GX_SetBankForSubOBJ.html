@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_SetBankForSubOBJ</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_SetBankForSubOBJ</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>void GX_SetBankForSubOBJ(GXVRamSubOBJ obj);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>obj</code></strong></em>&nbsp;&nbsp;</font></strong></em></td>
+<td width="87%">Specifies a VRAM bank to allocate to the sub 2D Engine's OBJ</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function allocates the specified VRAM bank to the sub 2D Engine's OBJ. If the specified VRAM bank is either disabled or allocated to LCDC, that VRAM bank is allocated to the sub 2D Engine's OBJ.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>GX_VRAM_SUB_OBJ_NONE</CODE></TD>
+<TD>VRAM is not allocated to OBJ.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_SUB_OBJ_128_D</CODE></TD>
+<TD>128 kilobytes of OBJ are reserved. VRAM-D is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_SUB_OBJ_16_I</CODE></TD>
+<TD>16 kilobytes of OBJ are reserved. VRAM-I is allocated.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following is the type definition for <CODE>GXVRamSubOBJ</CODE> types.</P>
+<PRE><CODE>typedef enum
+{
+GX_VRAM_SUB_OBJ_NONE  = 0x0000,
+GX_VRAM_SUB_OBJ_128_D = GX_VRAM_D,
+GX_VRAM_SUB_OBJ_16_I  = GX_VRAM_I
+}
+GXVRamSubOBJ;</PRE>
+<h2>See Also</h2>
+<P><A href="GX_GetBankForSubOBJ.html"><code>GX_GetBankForSubOBJ</code></A>, <A href="GX_ResetBankForSubOBJ.html"><code>GX_ResetBankForSubOBJ</code></A>, <A href="GX_DisableBankForSubOBJ.html"><code>GX_DisableBankForSubOBJ</code></A>, <a href="GX_GetSizeOfSubOBJ.html"><code>GX_GetSizeOfSubOBJ</code></a></P>
+<H2>Revision History</H2>
+<P>02/09/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

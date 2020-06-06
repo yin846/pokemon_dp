@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_WaitIrq</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_WaitIrq</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_WaitIrq( BOOL clear, OSIrqMask irqFlags );</CODE></dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>clear</I></B></TD>
+<TD>Indicates whether or not check flags should be cleared.</TD>
+    </TR>
+    <TR>
+<TD><B><I>irqFlags</I></B></TD>
+<TD>The mask value of the interrupt generation for which the function is waiting. You can specify more than one by using a logical sum.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<p>Waits for the generation of a specified IRQ interrupt source In <code>irqFlags</code> you can specify multiple interrupt sources by logical OR-ing the mask values. Generation of any of the interrupts included here will cause a return from the function.</p>
+<p>A check flag can be set after an IRQ interrupt is generated it indicate that interrupt. To set this flag, the user must explicitly call <code><a href="../irq/OS_SetIrqCheckFlag.html">OS_SetIrqCheckFlag</a></code> from the interrupt handler.</p>
+<p>If you set <strong><em><code>clear</code></em></strong> to <code>TRUE</code>, before waiting, this resets interrupt flags that are specified by <strong><em><code>irqFlags</code></em></strong> from amongst the interrupt check flags. If a relevant check flag has been preset, and there are no flags to reset, return from the function will be immediate.</p>
+<P>The difference between <A href= "../system/OS_WaitInterrupt.html"><code>OS_WaitInterrupt()</code></a> and <code>OS_WaitIrq()</code> is this: While <code>OS_WaitInterrupt()</code> is waiting for an interrupt, it it uses <a href="../system/OS_Halt.html"><code>OS_Halt()</code></a> to stop. While <code>OS_WaitIrq()</code> is waiting for an interrupt, it switches processing to another thread. It restarts operation after an interrupt is generated. If no threads are used, both functions behave the same.
+</P>
+<h2>See Also</h2>
+<p><a href="OS_SetIrqCheckFlag.html"><code>OS_SetIrqCheckFlag()</code></a>, <code><A href="../system/OS_WaitInterrupt.html">OS_WaitInterrupt</A></code></p>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot; <br>05/24/2004 Clarified the differences from<CODE>OS_WaitInterrupt()</CODE> <BR> 05/01/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

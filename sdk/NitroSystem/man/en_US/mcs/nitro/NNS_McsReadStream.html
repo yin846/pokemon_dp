@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsReadStream</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsReadStream</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre>BOOL NNS_McsReadStream(
+u16             channel ,
+void*       data,
+u32         size,
+u32*        pReadSize);</pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">channel</font></strong></em></td>
+<td width="87%">Value for identifying a stream. You can specify in the range 0-0x3FFF. 0x4000-0x7FFF is reserved for NITRO-System applications. 0x8000-0xFFFF is reserved for the MCS system.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">data</font></strong></em></td>
+<td width="87%">Pointer to the buffer where read data is to be stored.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">size</font></strong></em></td>
+<td width="87%">Size of the buffer where read data is to be stored.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">pReadSize</font></strong></em></td>
+<td width="87%">Actual size of read data.</td>
+ </tr>
+</table>
+<h2>Return Values</h2>
+<p>TRUE if the function operates successfully. FALSE if it fails.</p>
+<H2>Description</H2>
+<p>This function acts to receive data.</p>
+<p>If the length of received data exceeds the size of the buffer size as specified by <i>size</i>, then only this <i>size </i>portion of the data is read into the buffer. If this occurs, the function returns FALSE. The remaining balance of data can be gotten with <code><a href="NNS_McsGetStreamReadableSize.html">NNS_McsGetStreamReadableSize()</a></code>.</p>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_McsWriteStream.html">NNS_McsWriteStream</A></CODE></p>
+<H2>Revision History</H2>
+<P>10/08/2004 Added a description of the channel argument.<br />08/26/2004 Corrected the Description and changed the argument channel type.<br />06/01/2004 Initial version.</P>
+</body>
+</html>

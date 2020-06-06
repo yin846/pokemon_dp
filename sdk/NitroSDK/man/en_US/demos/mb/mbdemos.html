@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>MB Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Multiboot Library (MB) Sample Demo</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/mb</CODE></P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/mb</CODE> directory and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/mb/<strong><em>sample_name</em></strong>/bin/<strong><em>platform</em></strong>/<strong><em>target</em></strong>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/mb/multiboot/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+
+<H2>Execution</H2>
+<P>Move to the <code>$NitroSDK/build/demos/mb/<strong><em>sample_name</em></strong>/bin/<strong><em>platform</em></strong>/<strong><em>target</em></strong>/</code> directory and do one of the following.</P>
+<UL>
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER.
+</UL>
+<P><FONT color="#ff0000">The MB library samples use multi-boot functions. Therefore, you must have multiple development machines with the same communication environment (wireless or wired). The <code>MB_child.srl</code> program in the directory <code>$NitroSDK/bin/ARM9-TS/Release</code> is a sample providing the same features as the multi-boot child in the last device. Therefore, read this binary into other equipment using the same method as for the sample program, and execute them together. Depending on the optional setting on IS-NITRO-DEBUGGER, the &quot;The transfer destination address on the ARM9 Processor is incorrect&quot; dialog box appears when <code>MB_child.srl</code> is loaded. Select [NO] in this dialog box to proceed with loading.</P>
+<H2>Description</H2>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>multiboot</CODE></STRONG></EM></TD>
+<TD width="525">This is a simple sample that downloads the program file from the multi-boot parent to the child.<br />Opens two program files and downloads to an unspecified connected child.<br />After the download, press the [START] button on the parent to boot the child that has completed the download.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>multiboot-Model</CODE></STRONG></EM></TD>
+<TD width="525">This is a normative sample that shows the procedure of a multiboot parent downloading a program file to a child and executing data sharing communication with the downloaded child program.
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>cloneboot</CODE></STRONG></EM></TD>
+<TD width="525">This sample downloads the parent's program to a child. This is called clone booting. The program structure is the same as the multiboot-Model sample model.</TD>
+    </TR>
+    <TR>
+<TD><B><I>fake_child</I></B></TD>
+<TD>This sample makes an entrance wtih the multiboot parent as a pseudo-multiboot child. This sample sets the same GGID as used in the multiboot-Model sample, allowing it to fake an entry as a multiboot child.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>mbm</CODE></STRONG></EM></TD>
+<TD width="525">Demo that uses the <code><a href="../../wm/wm/WM_MeasureChannel.html">WM_MeasureChannel</a></code> function to measure the wireless signal use rate.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>multiboot-PowerSave</CODE></STRONG></EM></TD>
+<TD width="525">A simple demo that selects power save mode and boots the machine as a multiboot parent. Identical to the multiboot demo, except that all settings are fixed as default settings aside from power-save mode.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>multiboot-wfs</CODE></STRONG></EM></TD>
+<TD width="525">This sample downloads the program file to the child as the multiboot parent, and the child uses the file system via a wireless connection.<br>It uses the sample module, $NitroSDK/build/demos/wireless_shared/wfs.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Emulator</H2>
+<P><CODE>The MB library demo does not function in ensata.</CODE></P>
+<H2>See Also</H2>
+<P><A href="../../mb/list_mb.html"><CODE>MB Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+06/23/2005 Added description of <code>multiboot-wfs</code> demo.<br>05/10/2005 Added explanation of mbm demo.<br />04/28/2005 Added multiboot-PowerSave demo.<br /> 11/16/2004 Added cloneboot sample.<br /> 10/06/2004 Corrected the lack of description regarding multiboot-Model sample.<br /> 09/13/2004 Added caution for loading <code>mb_child.srl</code>.<br /> 08/17/2004 Clarified the execution instructions and the multiboot description.<br /> 08/10/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

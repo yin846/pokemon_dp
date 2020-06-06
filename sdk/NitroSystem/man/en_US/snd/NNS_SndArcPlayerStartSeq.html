@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcPlayerStartSeq*</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcPlayerStartSeq*</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code>BOOL NNS_SndArcPlayerStartSeq( NNSSndHandle* handle, int seqNo );
+BOOL NNS_SndArcPlayerStartSeqEx( NNSSndHandle* handle, int playerNo, int bankNo, int playerPrio, int seqNo );</code></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAQNWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>The sound handle pointer.</td>
+</tr>
+<tr>
+<td><em><strong><code>seqNo</code></strong></em></td>
+<td>Sequence number.</td>
+</tr>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The Player number.</td>
+</tr>
+<tr>
+<td><em><strong><code>bankNo</code></strong></em></td>
+<td>Bank number.</td>
+</tr>
+<tr>
+<td><em><strong><code>playerPrio</code></strong></em></td>
+<td>This is the player priority. The values is in the range of 0-127; a greater value indicates higher priority.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1OWT"></a>
+<h2>Return Values</h2>
+
+<p>If playback succeeds TRUE. If it fails FALSE. </p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDACPWT"></a>
+<h2>Description</h2>
+      <p>
+Plays sequence. 
+</p>
+      <p>
+With <code>NNS_SndArcPlayerStartSeq</code>, the player number and other parameters are read from the sound data. With <code>NNS_SndArcPlayerStartSeqEx</code>, the program can specify the player number, bank number and player priority. If any of these parameters (<code><em><b>playerNo</b></em></code>, <code><em><b>bankNo</b></em></code>, and <code><em><b>playerPrio</b></em></code>) are set to <code>-1</code>, it will be configured based on the sound data. 
+</p>
+      <p>
+The sound archive must first be initialized with <code>NNS_SndArcInit</code> or <code>NNS_SndArcInitOnMemory</code>.
+</p>
+      <p>
+The sound handle (handle) must be initialized once with <code>NNS_SndHandleInit</code>. When this function is called, the sequence already bound to the sound handle will be unbound (but not stopped). If playback is successful, the sequence will be bound to the sound handle. 
+</p>
+      <p>
+This function calls <code>NNS_SndArcGetFileAddress</code> to determine if the required sound data is loaded into memory. If the data is not there, it attempts to load it into the player heap. If there is no player heap or the player heap is not large enough, the playback will fail.
+</p>
+      <p>
+The function internally calls <code>NNS_SndPlayerSetSeqNo</code> so that you can later use <code>NNS_SndPlayerStopSeqBySeqNo</code> to stop playback by sequence number. 
+</p>
+      <p>
+If you want to reset the channel priority and volume settings specified by the sound data, you can call <code>NNS_SndPlayerSetChannelPriority</code> or  <code>NNS_SndPlayerSetInitialVolume</code> immediately after starting the sequence. 
+</p>
+      <p>
+Playback failure may be the result of the following factors: 
+</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>Sequence archive number is invalid</li>
+<li>Priority is lower than the sequence already playing</li>
+<li>Data is not in memory or cannot be loaded</li>
+</ul>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndArcInit.html">NNS_SndArcInit</a>, <a href="NNS_SndArcInitOnMemory.html">NNS_SndArcInitOnMemory</a>, <a href="NNS_SndHandleInit.html">NNS_SndHandleInit</a>, <a href="NNS_SndArcGetFileAddress.html">NNS_SndArcGetFileAddress</a>, <a href="NNS_SndPlayerStopSeq.html">NNS_SndPlayerStopSeqBySeqNo</a>, <a href="NNS_SndPlayerSetSeqNo.html">NNS_SndPlayerSetSeqNo</a>, <a href="NNS_SndPlayerSetChannelPriority.html">NNS_SndPlayerSetChannelPriority</a>, <a href="NNS_SndPlayerSetInitialVolume.html">NNS_SndPlayerSetInitialVolume</a></code></p>
+<h2>Revision History</h2>
+<p>11/30/2004 Corrected erroneous return value type.</p><p>06/01/2004 Expanded <CODE>NNS_SndArcPlayerStartSeqWithPlayerNo</CODE> and <CODE>NNS_SndArcPlayerStartSeqEx</CODE> was modified. Explanation of player heap was added.</p><p>04/19/2004 Manuals for <code>NNS_SndArcPlayerStartSeq</code> and <code>NNS_SndArcPlayerStartSeqWithPlayerNo</code> were combined.</p><p>04/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

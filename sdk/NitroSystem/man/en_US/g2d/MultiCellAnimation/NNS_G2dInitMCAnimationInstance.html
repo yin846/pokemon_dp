@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dInitMCAnimationInstance</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dInitMCAnimationInstance</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_MultiCellAnimation.h&gt;</CODE></pre>
+  <pre><CODE>void NNS_G2dInitMCAnimationInstance
+( 
+NNSG2dMultiCellAnimation*   pMultiCellAnim,
+void*                              pWork,
+const NNSG2dCellAnimBankData* pAnimBank,
+const NNSG2dCellDataBank*          pCellDataBank,
+const NNSG2dMultiCellDataBank*  pMultiCellDataBank,
+NNSG2dMCType  mcType
+);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pMultiCellAnim</font></strong></em></td>
+<td width="87%">[OUT] Multicell animation</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pWork</font></strong></em></td>
+<td width="87%">[IN] Work region used by the multicell entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pAnimBank</font></strong></em></td>
+<td width="87%">[IN] Animation bank that defines the cell animation that composes the multicell</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCellDataBank</font></strong></em></td>
+<td width="87%">[IN] Cell data bank</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pMultiCellDataBank</font></strong></em></td>
+<td width="87%">[IN] Multicell data bank</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">mcType</font></strong></em></td>
+<td width="87%">[IN] Multicell entity type (<code>NNSG2dMCType<code> type)</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Initializes multicell animation. <em><strong><code>pWork</code></strong></em> is a pointer to the memory region in the entity to be used as the work region. The work region size required for initializing the entity is obtained with the <code>NNS_G2dGetMCWorkAreaSize</code> function. <em><strong><code>mcType</code></strong></em> is an enumerated <code>NNSG2dMCType</code> that shows the multicell animation entity type. The <code>NNSG2dMCType</code> definition is shown below.
+
+<CODE><pre>
+typedef enum
+{
+NNS_G2D_MCTYPE_DONOT_SHARE_CELLANIM,
+NNS_G2D_MCTYPE_SHARE_CELLANIM
+    
+}NNSG2dMCType;
+</CODE></pre>
+When <code>NNS_G2D_MCTYPE_DONOT_SHARE_CELLANIM</code> is specified as <em><strong><code>mcType</code></strong></em>, the entity is initialized as the same data structures that were used in past versions and is processed in the same manner. If the programmer does not access multicell structure nodes or overwrite data, designating <code>NNS_G2D_MCTYPE_SHARE_CELLANIM</code> when initializing the entity provides an advantage in memory consumption and processing efficiency. When <code>NNS_G2D_MCTYPE_SHARE_CELLANIM</code> is specified as <em><strong><code>mcType</code></strong></em> and when data is input that plays back the same animation sequence on multiple nodes of a multicell, the cell animation entity is shared among those multiple nodes. This sharing reduces the memory consumption and the processing load for animation updates.</p>
+<p> When <code>NNS_G2D_MCTYPE_SHARE_CELLANIM</code> has been specified, the multicell runtime entity does not store node-related information. As a result, node location changes and affine conversions are not supported. However, this specification uses fewer hardware resources (affine parameters) than <code>NNS_G2D_MCTYPE_DONOT_SHARE_CELLANIM</code> because it is guaranteed that nodes that playback the same cell animation will reference the same affine parameters, due to the above limitations. This is particulary true when rendering with the 2D graphics engine.
+
+This function replaces the <code>NNS_G2dInitMCAnimation</code>, <code>NNS_G2dInitMCInstance</code>, and <code>NNS_G2dSetMCDataToMCInstance</code> functions. The previous functions will remain to maintain compatibility. &nbsp;
+</p>
+
+<h2>See Also</h2>
+<p>
+<CODE><A href="NNS_G2dGetMCWorkAreaSize.html">NNS_G2dGetMCWorkAreaSize</A></CODE>, <CODE><A href="NNS_G2dInitMCAnimation.html">NNS_G2dInitMCAnimation</A></CODE>, <CODE><A href="NNS_G2dInitMCInstance.html">NNS_G2dInitMCInstance</A></CODE>, <CODE><A href="NNS_G2dSetMCDataToMCInstance.html">NNS_G2dSetMCDataToMCInstance</A></CODE>
+
+</p>
+<H2>Revision History</H2>
+<P>01/31/2005 Initial version.</P>
+</body>
+</html>

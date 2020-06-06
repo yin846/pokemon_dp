@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>TP_RequestAutoSamplingStopAsync</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">TP_RequestAutoSamplingStopAsync</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/spi.h&gt;</CODE><BR>
+<PRE><CODE>void TP_RequestAutoSamplingStopAsync( void );</CODE></PRE>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function asynchronously issues a request to ARM7 to stop autosampling touch panel values.</P>
+<P>In this function, you must confirm whether the request to ARM7 was properly processed. To obtain the success or failure of the request, you can either first use <A href="TP_WaitBusy.html"><CODE>TP_WaitBusy</CODE></A> to wait for completion and then use <A href="TP_CheckError.html"><CODE>TP_CheckError</CODE></A>, or if a user callback has been set in <A href="TP_SetCallback.html"><CODE>TP_SetCallback</CODE></A>, use an argument.</P>
+<h2>See Also</h2>
+<P><A href="TP_RequestAutoSamplingStart.html"><code>TP_RequestAutoSamplingStart</code></A>, <A href="TP_WaitBusy.html"><code>TP_WaitBusy</code></A>, <A href="TP_CheckError.html"><code>TP_CheckError</code></A>, <A href="TP_RequestAutoSamplingStop.html"><code>TP_RequestAutoSamplingStop</code></A></P>
+<H2>Revision History</H2>
+<P>04/21/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

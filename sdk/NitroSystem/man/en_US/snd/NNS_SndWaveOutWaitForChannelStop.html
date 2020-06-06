@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndWaveOutWaitForChannelStop</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndWaveOutWaitForChannelStop</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndWaveOutWaitForChannelStop(
+NNSSndWaveOutHandle handle );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAWLWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>Waveform playback handle.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFMWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Description</h2>
+      <p>
+Waits until the channel stops completely.
+</p>
+      <p>
+Waits until the waveform playback handle channel playback stops completely. This function must be called to ensure that the memory area that was once used for playback of the waveform data is to be used for other purposes, or to update waveform data.</p>
+      <p>
+This function processes relatively quickly after the <code><a href="NNS_SndWaveOutStop.html">NNS_SndWaveOutStop</a></code> function is called. If not called, waits until the playback ends in the function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndWaveOutStop.html">NNS_SndWaveOutStop</a></p>
+<h2>Revision History</h2>
+<p>07/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

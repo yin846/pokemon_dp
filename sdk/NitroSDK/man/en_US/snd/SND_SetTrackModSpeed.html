@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_SetTrackModSpeed</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAFLWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_SetTrackModSpeed</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">void SND_SetTrackModSpeed(
+int <var>playerNo</var>,
+u32 <var>trackBitMask</var>,
+int <var>speed</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDACNWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The Player number. Takes a value between 0 and 15.</td>
+</tr>
+<tr>
+<td><em><strong><code>trackBitMask</code></strong></em></td>
+<td>This is the track bit mask. It designates which track to use.</td>
+</tr>
+<tr>
+<td><em><strong><code>speed</code></strong></em></td>
+<td>The modulation speed. Takes a value between 0 and 255.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDA5NWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAGOWT"></a>
+<h2>Description</h2>
+      <p>
+Changes the modulation speed of the tracks of the sequence being played by the Player specified by <code>playerNo</code>.
+</p>
+      <p>
+The track bit mask, <em><strong><code>trackBitMask</code></strong></em>, designates which track to use. Each bit expresses a track in descending order track 0 as the lowest bit. Operations are performed only on tracks with active bits.
+</p>
+      <p>
+The default value for the modulation speed <code>speed</code> is 16, which corresponds to approximately 6.4 Hz. When the value doubles in size, the frequency also doubles.
+</p>
+      <div class="note">
+<h3 class="title">Caution</h3>
+<p>
+If a modulation speed value is already set inside the sequence data,  the value set later is the one that is valid. 
+</p>
+<p>
+This function is an ARM7 reserved function. After this function is called, processing occurs only after the command is issued with the <a href="SND_FlushCommand.html"><code>SND_FlushCommand</code></a> function.
+</p>
+<p>
+When it is necessary to synchronize something with the completion of the process, first use <a href="SND_GetCurrentCommandTag.html"><code>SND_GetCurrentCommandTag</code></a> to obtain the command tag immediately after calling this function. After the command is issued, use the command tag and call either the <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a> or <a href="SND_WaitForCommandProc.html"><code>SND_WaitForCommandProc</code></a> function to confirm that the process has finished or to wait for it to complete.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="SND_FlushCommand.html">SND_FlushCommand</a>, <a href="SND_GetCurrentCommandTag.html">SND_GetCurrentCommandTag</a>, <a href="SND_IsFinishedCommandTag.html">SND_IsFinishedCommandTag</a>, <a href="SND_WaitForCommandProc.html">SND_WaitForCommandProc</a></code></p>
+<h2>Revision History</h2>
+<p>02/17/2005 Added a note about ARM7 command processing<br /> 07/01/2004 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

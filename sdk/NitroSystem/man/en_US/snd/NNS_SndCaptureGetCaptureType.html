@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndCaptureGetCaptureType</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndCaptureGetCaptureType</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code>NNSSndCaptureType NNS_SndCaptureGetCaptureType( void );</code></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAULWT"></a>
+<h2>Arguments</h2>
+      
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1LWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns the type of the executing capture. Capture type takes one of the values shown below.
+</p>
+<div class="table"><a name="IDABMWT"></a><p class="title"><b>Table. NNSSndCaptureType</b></p>
+<table summary="NNSSndCaptureType" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_CAPTURE_TYPE_REVERB</td>
+<td>Reverb</td>
+</tr>
+<tr>
+<td>NNS_SND_CAPTURE_TYPE_EFFECT</td>
+<td>Effects</td>
+</tr>
+<tr>
+<td>NNS_SND_CAPTURE_TYPE_SAMPLING</td>
+<td>Sampling</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDANNWT"></a>
+<h2>Description</h2>
+      <p>
+Obtains information about the type of capture that is currently executing.
+</p>
+      <p>
+This function can only be called while capture is executing. To check whether capture that is executing, call the <tt class="function"><a href="NNS_SndCaptureIsActive.html">NNS_SndCaptureIsActive</a></tt> function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndCaptureIsActive.html">NNS_SndCaptureIsActive</a></p>
+<h2>Revision History</h2>
+<p>08/18/2005 Initial version.</p>
+</div>
+</body>
+</html>

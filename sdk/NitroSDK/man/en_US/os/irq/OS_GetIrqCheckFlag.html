@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_GetIrqCheckFlag</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_GetIrqCheckFlag</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>OSIrqMask OS_GetIrqCheckFlag( void );</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<P>An IRQ interrupt check flag.</P>
+<H2>Description</H2>
+<P>Gets an IRQ check flag These flags are normally set by the IRQ interrupt handler. For information on the types of flags see <A href="OS_SetIrqCheckFlag.html"><code>OS_SetIrqCheckFlag</code></a>.
+</P>
+<h2>See Also</h2>
+<p><A href="OS_SetIrqCheckFlag.html"><CODE>OS_SetIrqCheckFlag</CODE></A>, <a href="OS_ClearIrqCheckFlag.html"><CODE>OS_ClearIrqCheckFlag</CODE></a></p>
+
+<h2>Internal Operation</h2>
+<p>In the ARM9, the predetermined location (<code>DTCM_END - 8</code>) in DTCM is designated to be the check flag region. This function operates on this region. In the ARM7, the predetermined location of the ARM7 WRAM (highest address - 8) is designated to be the check flag region. The function operates on this region.</p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt.&quot;<br> 04/06/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

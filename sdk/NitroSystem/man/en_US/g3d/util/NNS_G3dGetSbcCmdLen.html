@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGetSbcCmdLen</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGetSbcCmdLen</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/util.h&gt;</CODE></PRE>
+<PRE>BOOL
+NNS_G3dGetSbcCmdLen(
+const u8* c
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>c</STRONG></EM></TD>
+<TD width="87%">Pointer to the SBC command</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>Returns the length of the SBC command.</P>
+
+<H2>Description</H2>
+<P>Gets the length (in bytes) of the SBC command designated by <code>c</code>. A <code>-1</code> is returned if <code>c</code> designates something other than an SBC command.</P>
+
+<H2>See Also</H2>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

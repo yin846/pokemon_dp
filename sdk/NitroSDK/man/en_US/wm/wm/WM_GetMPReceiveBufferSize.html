@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_GetSharedDataAddress</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_GetMPReceiveBufferSize</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+int WM_GetMPReceiveBufferSize( void );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>Returns the size needed for the receive buffer passed as the argument of <A href="WM_StartMP.html"><code>WM_StartMP</code></A>.</p>
+
+<H2>Description</H2>
+<P>This function looks for the size that is needed for the receive buffer that the SDK uses internally for MP communication. This function can be executed only if the WM is in either the <A href="wm_state_diagram.html">PARENT</A> state or the <A href="wm_state_diagram.html">CHILD</A> state. </P>
+<P>On the child, the return value is calculated based on the externally obtained beacon information. Therefore, when using it to allocate memory for the receive buffer, be sure to either confirm that the return value of this function is an appropriate value or confirm that memory was successfully allocated after allocating the memory.</P>
+
+<h2>See Also</h2>
+<P><A href="WM_StartMP.html"><code>WM_StartMP</code></A>, <A href="WM_GetMPSendBufferSize.html"><code>WM_GetMPSendBufferSize</code></A></P>
+
+<H2>Revision History</H2>
+<P>
+12/21/2005 Clearly stated that the value on the child should not be trusted.<BR>08/18/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

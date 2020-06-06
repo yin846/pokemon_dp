@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsWriteStream</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsWriteStream</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre>BOOL NNS_McsWriteStream(
+u16             channel ,
+const void* data,
+u32 size);</pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">channel</font></strong></em></td>
+<td width="87%">Value for identifying a stream. You can specify in the range 0-0x3FFF. 0x4000-0x7FFF is reserved for NITRO-System applications. 0x8000-0xFFFF is reserved for the MCS system.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">data</font></strong></em></td>
+<td width="87%">Pointer to the buffer storing the data being transmitted.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">size</font></strong></em></td>
+<td width="87%">Size of the data being transmitted.</td>
+ </tr>
+</table>
+<h2>Return Values</h2>
+<p>TRUE if the function operates successfully. FALSE if it fails.</p>
+<H2>Description</H2>
+<p>This function transmits data. When using the function <code>NNS_McsWriteStream</code> to write the data that exceeds the size that can be sent at once, the function calls will be blocked until the PC reads the written data, and the control will not be returned.</p>
+<p>If the device opened with the function <code><a href="NNS_McsOpen.html">NNS_McsOpen</a></code> is IS-NITRO-UIC, and the MCS server is not connected to the Nintendo DS hardware, this function call will not return control until the MCS server connects to the Nintendo DS hardware. Use the function <code>NNS_McsIsServerConnect</code> to determine whether the MCS server is connected to the Nintendo DS hardware.</p>
+<h2>See Also</h2>
+<p><code><a href="NNS_McsReadStream.html">NNS_McsReadStream</a>, <a href="NNS_McsGetStreamWritableLength.html">NNS_McsGetStreamWritableLength</a>, <a href="NNS_McsIsServerConnect.html">NNS_McsIsServerConnect</a></code></p>
+<H2>Revision History</H2>
+<P>01/24/2005 Added description. 11/30/2004 Added description. 10/08/2004 Added a description of the channel argument. 08/26/2004 Changed the argument channel type. 06/01/2004 Initial version.</P>
+</body>
+</html>

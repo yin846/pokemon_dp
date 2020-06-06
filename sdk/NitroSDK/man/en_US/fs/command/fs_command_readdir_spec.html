@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_COMMAND_READDIR</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_COMMAND_READDIR</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<BR> <CODE>FSResult FS_ARCHIVE_PROC_FUNC(FSFile *p_file, FSCommandType command /* = FS_COMMAND_READDIR */);<br></CODE><br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Operating specifications for the archive command <code>FS_COMMAND_READDIR</code> are shown below: <BR> <BR>
+
+<HR>
+<B>Arguments passed to this command</B>
+<BLOCKQUOTE>
+<PRE>This command takes as a command argument the variable <code>arg.readdir</code> that is stored in <code>p_file</code>. 
+This variable is defined in <code>nitro/fs/file.h</code> as shown below:
+
+typedef struct
+{
+<a href="../fs_dir_entry_type.html">FSDirEntry</a>  *p_entry;
+BOOL        skip_string;
+} FSReadDirInfo;</code> </PRE>
+</BLOCKQUOTE>
+<BLOCKQUOTE>Argument content is listed below:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1" width="50%">
+  <TBODY>
+    <TR>
+<TD style="text-align : center;" width="95">Arguments</TD>
+<TD style="text-align : center;" width="522">Content</TD>
+    </TR>
+    <TR>
+<TD width="95" style="text-align : center;">p_entry</TD>
+<TD width="522">Pointer to the <code><a href="../fs_dir_entry_type.html">FSDirEntry</a></code> structure that stores directory information.<br />Command results are stored in the memory that is indicated by this pointer.</TD>
+    </TR>
+    <TR>
+<TD style="text-align : center;">skip_string</TD>
+<TD>When this value is not FALSE, a name character string does not need to be stored in the <code>p_entry</code>'s name buffer. (It can be stored as well.)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<HR>
+<B>Actions required of this command</B>
+<BLOCKQUOTE>
+<PRE><code>p_file</code> is a handle that always holds directory position information in <code>prop.dir</code>.
+Based on <code>p_file</code>'s <code>prog.dir</code> variable, the command makes the following settings:
+
+It correctly sets each variable in the <code><a href="../fs_dir_entry_type.html">FSDirEntry</a></code> structure that is identfied by the <code>p_entry</code> argument.
+
+If the next directory entry indicated by p_file is file information,
+it sets <code>p_entry-&gt;is_directory</code> to 0, and sets the file ID in <code>p_entry-&gt;file_id</code>.
+These set values are used by subsequent <code><a href="fs_command_openfilefast_spec.html">FS_COMMAND_OPENFILEFAST</a></code> commands.
+
+If the next directory entry indicated by p_file is directory information,
+it sets <code>p_entry-&gt;is_directory</code> to 1, and sets the directory position in <code>p_entry-&gt;dir_id</code>.
+These set values are used by subsequent <code><a href="fs_command_seekdir_spec.html">FS_COMMAND_SEEKDIR</a></code> commands.
+
+In either case, if <code>p_entry-&gt;skip_string</code> is FALSE,
+it will store the file name or directory name, including the terminating '<code>\0</code>' in <code>p_entry-&gt;name</code>.
+It will also set the length of the name in <code>p_entry-&gt;name_len</code>.
+
+
+If the next directory entry information is invalid, or if the directory position is a terminator, the command does nothing.
+Otherwise, after setting the above, it will advance to the next <code>p_file</code> directory position information.
+Subsequently, this information is used by the <code><a href="fs_command_seekdir_spec.html">FS_COMMAND_SEEKDIR</a></code> and <code><a href="fs_command_readdir_spec.html">FS_COMMAND_READDIR</a></code> commands.</PRE>
+</BLOCKQUOTE>
+<HR>
+Default Implementation
+<BLOCKQUOTE>The command sets values based on the following determinants:<br />
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="185">p_entry-&gt;is_directory</TD>
+<TD width="432">If the next directory is a file, <code>0</code>; if it is a directory, <code>1</code>.</TD>
+    </TR>
+    <TR>
+<TD width="185">p_entry-&gt;file_id</TD>
+<TD width="432">File ID (only if the next directory entry is a file)<br /> Index is set as <code>prop.dir.index</code>.</TD>
+    </TR>
+    <TR>
+<TD width="185">p_entry-&gt;dir_id</TD>
+<TD width="432">Directory position (used only if the next directory entry is a directory)<br /> The top is set by <code>index = 0</code>, <code>pos = 0</code>.</TD>
+    </TR>
+    <TR>
+<TD width="185">p_entry-&gt;name_len</TD>
+<TD width="432">Name character string length of the next directory entry.</TD>
+    </TR>
+    <TR>
+<TD>p_entry-&gt;name</TD>
+<TD>Name character string of the next directory entry.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BLOCKQUOTE>As long as the archive's FNT conforms to the NitroROM format (determined by using the archive read callback function), this information is acquired from the FNT entry block that is indicated by <code>prop.dir.pos.pos</code>.
+</BLOCKQUOTE>
+<HR>
+<B>Command Results</B><BR>
+
+<BLOCKQUOTE>
+<PRE>If <code>FS_RESULT_SUCCESS</code> is returned by the command, then the current directory entry has been properly stored at the address indicated by the argument <code>p_entry</code>.
+ 
+If anything else is returned, it is determined that the end of the diretory entries was reached, or
+the listing was stopped due to some type of error.
+<br /> In either case, this command can be called again later for <code>p_file</code>.
+</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Functions that use this command</B><BR>
+<BLOCKQUOTE><a href="../file/FS_ReadDir.html"><code>FS_ReadDir</code></a> (indirectly from the default <a href="fs_command_findpath_spec.html"><code>FS_FINDPATH</code></a> command)<BR><code>FS_ChangeDir</code><BR><code>FS_OpenFile</code> <BR><a href="../file/FS_ConvertPathToFileID.html"><code>FS_ConvertPathToFileID</code></a> (indirectly from the default <a href="fs_command_getpath_spec.html"><code>FS_GETPATH</code></a> command)<BR><code>FS_GetPathName</code> <BR><code>FS_GetPathLength</code></BLOCKQUOTE>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a></code>, <code><a href="../fs_archive_proc_func_type.html">FS_ARCHIVE_PROC_FUNC</a></code>, <code><a href="../fs_command_type_const.html">FS_COMMAND_*</a></code>, <code><a href="../archive/FS_SetArchiveProc.html">FS_SetArchiveProc</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+07/28/2004 Revised &quot;if <code>skip_string</code> is not <code>FALSE</code>&quot; to &quot;if <code>skip_string</code> is <code>FALSE</code>&quot;<br /> 07/12/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

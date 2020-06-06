@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCT_Request</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCT_Request</h1>
+<h2>Syntax</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>int VCT_Request( <A href="VCTSession.html">VCTSession</A> *session, <a href="VCTRequestCode.html">VCTRequestCode</a> request );</CODE></PRE></dd> 
+</dl>
+
+<h2>Argument</h2>
+<TABLE border="1" width="100%" id="table1">
+  <TBODY>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>session</STRONG></EM></TD>
+      <TD width="87%" height="17">A session to issue a request.</TD>
+    </TR>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>request</STRONG></EM></TD>
+      <TD width="87%" height="17">A request code.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Value</h2>
+<p>0 if successful; otherwise, the <a href="VCTErrorCode.html">error code returns as a negative number</a>.</p>
+
+<H2>Description</H2>
+<P>VCT_Request issues a request of SSP.</P>
+<P>In Transceiver Mode, the <code><a href="VCT_Contact.html">VCT_Contact</a></code> function and the <code><a href="VCT_Release.html">VCT_Release</a></code> function should be used instead of VCT_Request.</P>
+<h2>See Also</h2>
+<p><CODE><A href="VCT_CreateSession.html">VCT_CreateSession</A>, <A href="VCT_Response.html">VCT_Response</A></CODE></p>
+<H2>Revision History</H2>
+<P>
+2006/04/17 Error code link was added.<BR>
+2006/04/14 Note regarding Transceiver Mode was added.<BR>
+2006/01/25 First release</P>
+</body>
+</html>

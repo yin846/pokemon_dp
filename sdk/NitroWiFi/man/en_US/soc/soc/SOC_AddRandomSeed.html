@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_AddRandomSeed</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_AddRandomSeed</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void SOC_AddRandomSeed ( void* <em><strong>seed</strong></em>, u32 <em><strong>len</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>seed</strong></em></code></td>
+<td>A pointer to the seed for generating a pool of random numbers.</td>
+  </tr>
+  <tr>
+<td><code><em><strong>con</strong></em></code></td>
+<td>The length of the seed specified by the seed pointer.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<p>None.</p>
+
+<h2>Description</h2>
+
+<p>Generates a pool of random numbers for generating the random numbers used in SSL communication. This function may be called prior to initializing the communication library.</p>
+<p>Prior to commencing SSL communications, <strong>be certain</strong> to provide this function with sufficient entropy to ensure safe SSL communications. It is also recommended to subsequently provide fresh entropy on a regular basis.</p>
+<p>For data specified by the seed pointer, sampling data from the microphone, for example, would afford a high amount of entropy, but it is impractical to constantly continue sampling. The <CODE>OS_GetLowEntropyData</CODE> is available as an economical and easy way to obtain a small entropy source. However, the data entropy obtained from calling the <CODE>OS_GetLowEntropyData</CODE> function once is not very high, so prior to SSL communication, call the <CODE>OS_GetLowEntropyData</CODE> function periodically and pass the data obtained to the <CODE>SOC_AddRandomSeed</CODE> function to provide sufficient entropy for generating random numbers.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_EnableSsl.html">SOC_EnableSsl</a></code>
+</p>
+
+<H2>Revision History</H2>
+<P>
+12/21/2005 Initial version.</P>
+</body>
+</html>

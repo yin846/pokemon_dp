@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3_MakeTexPlttBaseParam</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3_MakeTexPlttBaseParam</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><code>#include &lt;nitro/gx/g3.h&gt;
+
+</CODE>static inline
+GXTexPlttBaseParam G3_MakeTexPlttBaseParam( u32 plttBaseAddr, GXTexFmt texfmt )
+
+</PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">plttBaseAddr</font></strong></em></td>
+<td width="87%">The palette's base address</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">texfmt</font></strong></em></td>
+<td width="87%">Texture format</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<P>The address value to set in <code>REG_G3TEXPLTT_BASE</code>.</P>
+<H2>Description</H2>
+<P>This function is used to convert the texture palette's base address into a value that can be set in the texture palette base address register, <code>REG_G3_TEXPLTT_BASE</code>. This function is not necessary if you are using the <code>G3*_TexPlttBase</code> function, but if <em><strong><code>texfmt</code></strong></em> is specified as a constant, it optimizes and thereby speeds up execution.</P>
+<h2>See Also</h2>
+<P><A href="G3_TexPlttBase.html" target="_self">G3*_TexPlttBase</A></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,1818 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>NITRO-SDK CHANGELOG</TITLE>
+</HEAD>
+<BODY>
+<HR>
+<H1>NITRO-SDK Revision History</H1>
+<HR>
+
+<DL>
+<DT><A href="#sdk_3_01">NITRO-SDK 3.1 Release version</A> (05/02/2006)
+<DD><A href="#note38-01">Note 38-01: (CARD) Made revision regarding DMA transfer from ROM</A>
+  <DD><A href="#note38-02">Note38-02:  (CTRDG) Added AGB backup access functions</A>
+  <DD><A href="#note38-03">Note 38-03: (CTRDG) Added the functions CTRDG_SetPhiClock and CTRDG_GetPhiClock</A>
+  <DD><A href="#note38-04">Note 38-04: (FS) Internally revised the ROM archive</A>
+  <DD><A href="#note38-05">Note 38-05: (FX) Changed the FX_Mul function</A>
+  <DD><A href="#note38-06">Note 38-06: (FX) Revised the VEC_Normalize function
+  <DD><A href="#note38-07">Note 38-07: (GX) Added a description to the reference for G2_SetBlendAlpha 
+  <DD><A href="#note38-08">Note 38-08: (MATH) Revised the MATHCompareFunc reference
+  <DD><A href="#note38-09">Note 38-09: (MI) Corrected the compression problem with the MI_CompressLZ function</A>
+<DD><A href="#note38-10">Note 38-10: (OS) Revised the OS_GetConsleType function.</A>
+<DD><A href="#note38-11">Note 38-11: (OS) Revised the sample demo exceptionDisplay-2</A>
+<DD><A href="#note38-12">Note 38-12: (PRC) Added figure dictionary data for demo</A>
+<DD><A href="#KnownIssues_3_01">Known issues in SDK 3.1 release version</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_01_rc">NITRO-SDK 3.1 RC</A> (04/11/2006)
+<DD><A href="#note37-01">Note 37-01: (CARD) Made compatible with new backup devices.</A>
+  <DD><A href="#note37-02">Note 37-02: (DevEnv) Added .itcm.bss/.dtcm.bss/.wram.bss section</A>
+  <DD><A href="#note37-03">Note 37-03: (DevEnv) Revised modulerules.cctype.CW</A>
+  <DD><A href="#note37-04">Note 37-04: (FX) Added reference to MTX_Copy* function.</A>
+  <DD><A href="#note37-05">Note 37-05: (GX) Added G3OP_DUMMY_COMMAND</A>
+  <DD><A href="#note37-06">Note 37-06: (GX) Revised the geometry command cycle list</A>
+  <DD><A href="#note37-07">Note 37-07: (MI) Added endian-aware memory access functions</A>
+  <DD><A href="#note37-08">Note 37-08: (OS) Revised OS_CheckHeap</A>
+  <DD><A href="#note37-09">Note 37-09: (OS) Revised arena overview
+<DD><A href="#note37-10">Note 37-10: (OS) 8-byte alignment support for the stack</A>
+<DD><A href="#note37-11">Note 37-11: (PM) Revised the PM_ForceToPowerOff and PM_ForceToPowerOffAsync functions</A>
+<DD><A href="#note37-12">Note 37-12: (SND) Added the SND_SetTrackMuteEx function
+<DD><A href="#note37-13">Note 37-13: (TOOL) Revised reference regarding attachsign</A>
+<DD><A href="#note37-14">Note 37-14: (TOOL) Corrected a problem where PPM files could not be loaded using the ppmconv tool
+<DD><A href="#note37-15">Note 37-15: (VIB) Revised the pulse_vib sample demo</A>
+<DD><A href="#note37-16">Note 37-16: (WM) Revised the dataShare-Model sample demo</A>
+<DD><A href="#note37-17">Note 37-17: (WM) Added the wireless-all sample demo
+<DD><A href="#note37-18">Note 37-18: (WM) Corrected sample demos</A>
+<DD><A href="#KnownIssues_3_01_rc">Known issues in SDK 3.1 RC</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_01_pr">NITRO-SDK 3.1 PR</A> (03/14/2006)
+<DD><A href="#note36-01">Note 36-01: (ARM7) Improved automatic pull-out detection of components</A>
+  <DD><A href="#note36-02">Note 36-02: (CARD) Internal revisions made to the CARD_CheckPulledOut function.</A>
+  <DD><A href="#note36-03">Note 36-03: (CTRDG) Strengthened access restrictions to the AGB cartridge region</A>
+  <DD><A href="#note36-04">Note 36-04: (CTRDG) Added the CTRDG_CheckPulledOut function.</A>
+  <DD><A href="#note36-05">Note 36-05: (GX) Corrected 2D_CharBg_Direct sample demos</A>
+  <DD><A href="#note36-06">Note 36-06: (GX) Edited references in G2_GetBG2ScrPtr and G2_GetBG3ScrPtr functions</A>
+  <DD><A href="#note36-07">Note 36-07: (MB) Added MB_FAKESCAN_PARENT_BEACON notification</A>
+  <DD><A href="#note36-08">Note 36-08: (MB) Changed the operation of MB_ReadMultiBootParentBssDesc</A>
+  <DD><A href="#note36-09">Note 36-09: (MB) Corrected a problem with the number of retries when reconnecting to a clone boot sample parent</A>
+<DD><A href="#note36-10">Note 36-10: (MB) Updated documentation</A>
+<DD><A href="#note36-11">Note 36-11: (MIC) Described restrictions during automatic sampling</A>
+<DD><A href="#note36-12">Note 36-12: (PM) Corrected problem related to the PMAmpGain enumeration type</A>
+<DD><A href="#note36-13">Note 36-13: (PM) Changed the PM_ForceToPowerOff and PM_ForceToPowerOffAsync functions</A>
+<DD><A href="#note36-14">Note 36-14: - (TOOL)  Fixed the inclusion order within ROM when specifying files to makerom using wildcards.</A> 
+<DD><A href="#note36-15">Note 36-15: (STD) Added VIB library</A>
+<DD><A href="#note36-16">Note 36-16: (WBT) Revised the WFS sample module</A>
+<DD><A href="#note36-17">Note 36-17: (WBT) Revised function reference</A>
+<DD><A href="#note36-18">Note 36-18: (WBT) Added function reference overview</A>
+<DD><A href="#note36-19">Note 36-19: (WM) Changed specifications regarding NULL response of children during MP communications</A>
+<DD><A href="#note36-20">Note 36-20: (WM) Changed WMGameInfo structure definitions</A>
+<DD><A href="#note36-21">Note 36-21: (WM) Added the WM_IsValidGameBeacon and WM_IsValidGameInfo functions</A>
+<DD><A href="#note36-22">Note 36-22: (WM) Corrected a problem with minPollBmpMode</A>
+<DD><A href="#note36-23">Note 36-23: (WM) Updated documentation</A>
+<DD><A href="#note36-24">Note 36-24: (Misc) Revised description of macros</A>
+<DD><A href="#KnownIssues_3_01_pr">Known issues in SDK 3.1 PR</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_00">NITRO-SDK 3.0 Release version</A> (01/16/2006)
+<DD><A href="#note35-01">Note 35-01: (CARD) Added an overview of function references</A>
+  <DD><A href="#note35-02">Note 35-02: (DevEnv) Added a reference manual for the packnlf tool</A>
+  <DD><A href="#note35-03">Note 35-03: (DevEnv) Unified the source code format</A>
+  <DD><A href="#note35-04">Note 35-04: (MI) Corrected LZ compression problems with the MI_CompressLZFast function and ntrcomp.exe</A>
+  <DD><A href="#note35-05">Note 35-05: (OS) Corrected problems in the OS_ResetSystem function</A>
+  <DD><A href="#note35-06">Note 35-06: (OS) Edited the Chinese version startup screen</A>
+  <DD><A href="#note35-07">Note 35-07: (PRC) Added figure dictionary data for demo</A>
+  <DD><A href="#note35-08">Note 35-08: (WM) Corrected the display of the debug string in the sample demo</A>
+  <DD><A href="#note35-09">Note 35-09: (WM) Revised internal communications parameters</A>
+<DD><A href="#KnownIssues_3_00">Known issues in SDK 3.0 release version</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_00_rc3">NITRO-SDK 3.0 RC3</A> (12/26/2005)
+<DD><A href="#note34-01">Note 34-01: (MATH) Added bit operation function</A>
+  <DD><A href="#note34-02">Note 34-02: (MB) Fixed a bug that occurred when designating memory conservation with the MB_ReadSegment function</A>
+  <DD><A href="#note34-03">Note 34-03: (MB) Improved MP communication effectiveness under adverse conditions</A>
+  <DD><A href="#note34-04">Note 34-04: (OS) Revised the CARD_CheckPulledOut function reference</A>
+  <DD><A href="#note34-05">Note 34-05: (OS) Revised the OS_CreateThread function</A>
+  <DD><A href="#note34-06">Note 34-06: (WBT) Revised wbt-1 sample demos</A>
+  <DD><A href="#note34-07">Note 34-07: (WBT) Corrected a problem with the user callback</A>
+  <DD><A href="#note34-08">Note 34-08: (WM) Corrected a problem with MP communications parameters</A>
+  <DD><A href="#note34-09">Note 34-09: (WM) Made changes to the method of setting the WH-related parameters</A>
+<DD><A href="#note34-10">Note 34-10: (WM) Improved internal operations during disconnect
+<DD><A href="#KnownIssues_3_00_rc3">Known problems with SDK 3.0 RC3</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_00_rc2">NITRO-SDK 3.0 RC2</A> (12/05/2005)
+<DD><A href="#note33-01">Note 33-01: (CARD) Corrected problem with backup function</A>
+  <DD><A href="#note33-02">Note 33-02: (CTRDG) Added access permission function for AGB cartridges</A>
+  <DD><A href="#note33-03">Note 33-03: (DevEnv) Added macro for comparing SDK versions</A>
+  <DD><A href="#note33-04">Note 33-04: (DevEnv) Added SDK_INLINE, SDK_DECL_INLINE</A>
+  <DD><A href="#note33-05">Note 33-05: (DevEnv) Corrected makebanner tool</A>
+  <DD><A href="#note33-06">Note 33-06: (DevEnv) Updated ntexconv</A>
+  <DD><A href="#note33-07">Note 33-07: (DevEnv) Added the packnlf tool</A>
+  <DD><A href="#note33-08">Note 33-08: (MB) Revised MBP sample module</A>
+  <DD><A href="#note33-09">Note 33-09: (MB) Added MB_FAKE_WORK_SIZE definition</A>
+<DD><A href="#note33-10">Note 33-10: (MB) Corrected problem regarding the parent beacon flag</A>
+<DD><A href="#note33-11">Note 33-11: (MI) Added the MI_CompressLZFast function</A>
+<DD><A href="#note33-12">Note 33-12: (OS) Added an automatic build switch for ARM7 debug output</A>
+<DD><A href="#note33-13">Note 33-13: (OS) Changed the definition of the VBlank wait function</A>
+<DD><A href="#note33-14">Note 33-14: (OS) Deleted  OS_InitPrintServer and OS_PrintServer from the sample demo</A>
+<DD><A href="#note33-15">Note 33-15: (OS) Deleted  PXI_Init from the sample demo</A>
+<DD><A href="#note33-16">Note 33-16: (OS) Changed SVC_WaitVBlankIntr in the sample demo</A>
+<DD><A href="#note33-17">Note 33-17: (OS) Revised the start location of extended main RAM arena</A>
+<DD><A href="#note33-18">Note 33-18: (WBT) Revised the WFS sample module</A>
+<DD><A href="#note33-19">Note 33-19: (WBT) Revised the WFS-related sample demo</A>
+<DD><A href="#note33-20">Note 33-20: (WM) 2D_Updated the CharBg_3 and Sub_CharBg_3 sample demos</A>
+<DD><A href="#note33-21">Note 33-21: (WM) Added a timing configuration function for MP communications</A>
+<DD><A href="#note33-22">Note 33-22: (WM) Added a send size configuration function for MP communications</A>
+<DD><A href="#note33-23">Note 33-23: (WM) Added a spacing control function for MP communications</A>
+<DD><A href="#note33-24">Note 33-24: (WM) Updated the dataShare-Model sample demo</A>
+<DD><A href="#note33-25">Note 33-25: (WM) Revised the display of the dataShare-Model sample demo</A>
+<DD><A href="#note33-26">Note 33-26: (WM) Added a setting value for the maximum number of MP communications per frame.</A>
+<DD><A href="#note33-27">Note 33-27: (WM) Changed the specification for the receive signal strength level</A>
+<DD><A href="#note33-28">Note 33-28: (WM) Added an option for disabling the pre-check of the send/receive buffer size</A>
+<DD><A href="#note33-29">Note 33-29: (WM) Added a note regarding the wireless communication event counter</A>
+<DD><A href="#KnownIssues_3_00_rc2">Known problems with SDK 3.0 RC2</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_00_rc">NITRO-SDK 3.0 RC</A> (11/07/2005)
+<DD><A href="#note32-01">Note 32-01: (CARD) Revised internal processing of EEPROM device operations</A>
+  <DD><A href="#note32-02">Note 32-02: CARD) Added removal detection after ROM access</A>
+  <DD><A href="#note32-03">Note 32-03: (CARD) Made compatible with new backup devices.</A>
+<DD><A href="#note32-04">Note24-04: (DevEnv) Corrected the #pragma define_section parameters</A>
+  <DD><A href="#note32-05">Note 32-05: (DevEnv) Added a resource data conversion tool for the ENV library</A>
+  <DD><A href="#note32-06">Note 32-06: (DevEnv) Corrected the NITRO-SDK Package creation script</A>
+  <DD><A href="#note32-07">Note 32-07: (DevEnv) Changed the version of CodeWarrior used for SDK package build</A>
+  <DD><A href="#note32-08">Note 32-08: (DevEnv) Added a reference to the compile target</A>
+  <DD><A href="#note32-09">Note 32-09: (ENV) Added a reference to the ENV library</A>
+<DD><A href="#note32-10">Note 32-10: (ENV) Changed the ENV library</A>
+<DD><A href="#note32-11">Note 32-11: (GX) Corrected the G3BS_LoadMtx43 function</A>
+<DD><A href="#note32-12">Note 32-12: (GX) Further corrections to Sub_Double3D sample demo.</A>
+<DD><A href="#note32-13">Note 32-13: (MATH) Corrected problem with the MATH_QSort  function.</A>
+<DD><A href="#note32-14">Note 32-14: (OS) Corrected the HI address calculations for the ARM7-specific WRAM arena</A>
+<DD><A href="#note32-15">Note 32-15: (OS) Created the OS_GetTotalOccupiedSize function</A>
+<DD><A href="#note32-16">Note 32-16: (OS) Corrected the OS_PutString function.</A>
+<DD><A href="#note32-17">Note 32-17: (OS) Added SDK_COMPILER_ASSERT</A>
+<DD><A href="#note32-18">Note 32-18: (OS) Improved the VBlank wait function</A>
+<DD><A href="#note32-19">Note 32-19: (OS) Changed the argument const of the cache function</A>
+<DD><A href="#note32-20">Note 32-20: (OS) Corrected the stack overflow check function</A>
+<DD><A href="#note32-21">Note 32-21: (OS) Support for the argument data buffer switch</A>
+<DD><A href="#note32-22">Note 32-22: (OS) Corrected the real-time and check value conversion macro</A>
+<DD><A href="#note32-23">Note 32-23: (OS) Updated the Chinese version&rsquo;s startup screen</A>
+<DD><A href="#note32-24">Note 32-24: (OS) Corrected thread cue operations including threads about to terminate</A>
+<DD><A href="#note32-25">Note 32-25: (PRC) Corrected the sample tool &ldquo;pdic2c.pl&rdquo;</A>
+<DD><A href="#note32-26">Note 32-26: (RTC) Changed the method for getting RTC day of the week information</A>
+<DD><A href="#note32-27">Note 32-27: (SND) Corrected a problem where the SND_CalcDecibel function would not return a suitable value when the argument 0 had been entered</A>
+<DD><A href="#note32-28">Note 32-28: (STD) Added STD library</A>
+<DD><A href="#note32-29">Note 32-29: (WBT) Corrected a problem with GetBlock request notifications</A>
+<DD><A href="#note32-30">Note 32-30: (WBT) Revised the WFS sample module</A>
+<DD><A href="#note32-31">Note 32-31: (WM) Updated the WM test tool</A>
+<DD><A href="#note32-32">Note 32-32: (WM) Corrected the WM_SetLifeTime function&rsquo;s reference description</A>
+<DD><A href="#note32-33">Note 32-33: (WM) improved mongoose components</A>
+<DD><A href="#note32-34">Note 32-34: (WM) Added information to be notified to the port receive callback</A>
+<DD><A href="#note32-35">Note 32-35: (WM) Added notification when the port receive callback initializes</A>
+<DD><A href="#note32-36">Note 32-36: (WM) Added API for tests</A>
+<DD><A href="#note32-37">Note 32-37: (WM) Corrected a problem where the wireless connection function stops when a child device calls the WM_EndMP function</A>
+<DD><A href="#note32-38">Note 32-38: (WM) Added a disconnection notification for when the local player disconnects</A>
+<DD><A href="#note32-39">Note 32-39: (WM) Re-corrected internal operations for connecting and disconnecting</A>
+<DD><A href="#KnownIssues_3_00_rc">Known issues in SDK 3.0 RC</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_00_pr4">¦NITRO-SDK 3.0 PR4</A> (09/08/2005)
+<DD><A href="#note31-01">Note 31-01: (CARD) Added CARD_CancelBackupAsync function </A>
+  <DD><A href="#note31-02">Note 31-02: (CARD) Fixed internal process in FRAM device operation </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 release version)</font size>
+  <DD><A href="#note31-03">Note 31-03: (CARD) Added CARD_RESULT_NO_RESPONSE error code </A>
+  <DD><A href="#note31-04">Note 31-04: (DevEnv) Support for overlay groups in lsf files </A>
+  <DD><A href="#note31-05">Note 31-05: (DevEnv) Fixed bug in certain section names of makelcf </A>
+  <DD><A href="#note31-06">Note 31-06: (DevEnv) Revised makelcf </A>
+  <DD><A href="#note31-07">Note 31-07: (DevEnv) Added loadrun, nitrorun tool commands</A>
+  <DD><A href="#note31-08">Note 31-08: (ENV) Added libenv*.a environment resource library </A>
+  <DD><A href="#note31-09">Note 31-09: (CARD) Revised FS_EndOverlay function </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-10">Note 31-10: (FS) Revised documents </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-11">Note 31-11: (FX) Revised FX_FX64C_TO_F32 macro </A>
+<DD><A href="#note31-12">Note 31-12: (CARD) Fixed bug in FX_InvSqrt function </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-13">Note 31-13: (CARD) Added MB_GetMultiBootDownloadParameter function </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-14">Note 31-14: (NVRAM) Fixed bug with error determination when loading data from NVRAM </A>
+<DD><A href="#note31-15">Note 31-15: (OS) Added reference for debug output functions on ARM7 side</A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-16">Note 31-16: (OS) Fixed bug in upper address of DTCM arena </A>
+<DD><A href="#note31-17">Note 31-17: (OS) Added NitroStaticInit function reference </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-18">Note 31-18: (OS) Organized const-type arguments in OSThread-related functions</A>
+<DD><A href="#note31-19">Note 31-19: (OS) Added OS_GetOpt function.</A>
+<DD><A href="#note31-20">Note 31-20: (SND) Optimized the cache invalidation process</A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-21">Note 31-21: (WM) Fixed bug in disconnect detection process for communication</A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-22">Note 31-22: (WM) Added scan types that are performed by specifying the matching length of SSID</A>
+<DD><A href="#note31-23">Note 31-23: (WM) Corrected scan SSID matching length in infrastructure mode</A>
+<DD><A href="#note31-24">Note 31-24: (WM) Revised internal process for child connection</A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note31-25">Note 31-25: (WM) Added interface that indicates more detailed information about causes of connection failure time</A>
+<DD><A href="#KnownIssues_3_00_pr4">Known problems with SDK 3.0 PR4</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_00_pr3">¦NITRO-SDK 3.0 PR3</A> (08/10/2005)
+<DD><A href="#note30-01">Note 30-01: (CARD) Added CARD_CheckPulledOut function reference </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+  <DD><A href="#note30-02">Note 30-02: (CARD) Added argument restrictions for CARD_IdentifyBackup function </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+  <DD><A href="#note30-03">Note 30-03: (MB) Revised sample demos </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+  <DD><A href="#note30-04">Note 30-04: (OS) Added the OS_SetThreadDestructorStack function</A>
+  <DD><A href="#note30-05">Note 30-05: (OS) Alarm cancel process used in OS_Sleep function</A>
+  <DD><A href="#note30-06">Note 30-06: (WM) Changed process during overload on child</A>
+  <DD><A href="#note30-07">Note 30-07: (WM) Changed internal operation for disconnect </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#KnownIssues_3_00_pr3">Known problems with SDK 3.0 PR3</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_00_pr2">¦NITRO-SDK 3.0 PR2</A> (08/04/2005)
+<DD><A href="#note29-01">Note 29-01: (DevEnv) Revised ISD_NITRO_DEBUGGER path </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note29-02">Note29-02: (MB) Revised the Sub double3D sample demos again</A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+  <DD><A href="#note29-03">Note 29-03: (GX) Added const modifier to arguments of function that gets display list state</A><font size="-1"color="#808080">  (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note29-04">Note24-04: (OS) Added OS_GetLowEntropyData function.</A>
+  <DD><A href="#note29-05">Note 29-05: (PM) Fixed restore process after transitioning to sleep mode from the LCD off state. </A><font size="-1"color="#808080">   (Released in NITRO-SDK 2.2 official release)</font size>
+  <DD><A href="#note29-06">Note 29-06: (WM) Added notification to WM_SetIndCallback function callback </A>
+  <DD><A href="#note29-07">Note 29-07: (WM) Added WM_SetPowerSaveMode function</A>
+  <DD><A href="#note29-08">Note 29-08: (WM) Fixed bug at time of setting ignoreFatalError</A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 RC )</font size>
+  <DD><A href="#note29-09">Note 29-09: (WM) Changed receive process on child. </A>
+<DD><A href="#note29-10">Note 29-10: (WVR) Corrected bug in thumb build version of ichneumon component. </A><font size="-1"color="#808080"> (NITRO-SDK 2.2 RC ????)</font size>
+<DD><A href="#KnownIssues_3_00_pr2">Known problems with SDK 3.0 PR2</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_3_00_pr">NITRO-SDK 3.0 PR</A> (07/22/2005)
+<DD><A href="#note28-01">Note 28-01: (Cht) Added Pictocatch demo </A>
+  <DD><A href="#note28-02">Note 28-02: (DevEnv) Support for nitro.h precompiled headers </A>
+<DD><A href="#note28-03">Note28-03: (FS) Changed overlay function operation</A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note28-04">Note28-04: (GX) Corrected GX demos</A>
+<DD><A href="#note28-05">Note28-05: (MATH) Increased speed for MD5 function </A><font size="-1"color="#808080"> (Released in NITRO-SDK 2.2 official release)</font size>
+<DD><A href="#note28-06">Note28-06: (OS) Added mechanism to check for stack overflow in IRQ stack. </A>
+  <DD><A href="#note28-07">Note 28-07: (OS) Added argument support using OS_GetArgc function and OS_GetArgv functions</A>
+  <DD><A href="#note28-08">Note 28-08: (OS) OS_KillThread and OS_KillThreadWithPriority functions added</A>
+  <DD><A href="#note28-09">Note 28-09: (OS) Implementation of thread destructors </A>
+<DD><A href="#note28-10">Note 28-10: (OS) Added user parameters to thread structure</A>
+<DD><A href="#note28-11">Note 28-11: (OS) Removed limit on maximum number of threads </A>
+<DD><A href="#KnownIssues_3_00_pr">Known issues in SDK 3.0 PR</A>
+</DL>
+
+<H4>The NITRO-SDK 3.0 andNITRO-SDK 2.2 series are maintained as parallel versions branching from NITRO-SDK 2.2 PR.  <br>However, all the changes in the 2.2 series are included in the 3.0 series. <br>For details on the 2.2 series, click <A href="changelog2.2branch.html">here</A>.</H4>
+
+<DL>
+<DT><A href="#sdk_2_02_pr">NITRO-SDK 2.2 PR</A> (07/15/2005)
+<DD><A href="#note27-01">Note 27-01: (CARD) Added the CARD_CheckPulledOut function.</A>
+  <DD><A href="#note27-02">Note 27-02: (CARD) Made compatible with new backup devices.</A>
+  <DD><A href="#note27-03">Note 27-03: (CTRDG) Corrected cache operations when getting cartridge information</A>
+  <DD><A href="#note27-04">Note 27-04: (DevEnv) Added the bin2obj tool</A>
+  <DD><A href="#note27-05">Note 27-05: (DevEnv) Provided support for times where the cygdrive prefix of CYGWIN is not  /cygdrive.</A>
+  <DD><A href="#note27-06">Note 27-06: (DevEnv) Corrected the LCF template.</A>
+  <DD><A href="#note27-07">Note 27-07: (DevEnv) Corrected problem with the StackSize specification for rsf.</A>
+  <DD><A href="#note27-08">Note 27-08: (DevEnv) Changed the default value for TS_VERSION.</A>
+  <DD><A href="#note27-09">Note 27-09: (DevEnv) Changed the #include search path.</A>
+<DD><A href="#note27-10">Note 27-10: (FS) Added the functions FS_CreateFileFromMemory and FS_CreateFileFromRom.</A>
+<DD><A href="#note27-11">Note 27-11: (FS) Added the FS_End function.</A>
+<DD><A href="#note27-12">Note 27-12: (FS) Corrected problem with the FS_WaitAsync function.</A>
+<DD><A href="#note27-13">Note 27-13: (FS) Corrected problem during overlay unloading.</A>
+<DD><A href="#note27-14">Note 27-14: (FX) Corrected problem with the arc tangent functions.</A>
+<DD><A href="#note27-15">Note 27-15: (GX) Corrected the Sub_Double3D sample demo.</A>
+<DD><A href="#note27-16">Note 27-16: (GX) Corrected problem with ASSERT inside functions that manipulate display lists.</A>
+<DD><A href="#note27-17">Note 27-17: (MATH) Corrected problem with the MATH_QSort  function.</A>
+<DD><A href="#note27-18">Note 27-18: (MATH)  Accelerated the SHA-1 functions.</A>
+<DD><A href="#note27-19">Note 27-19: (MATH) Added Fast Fourier Transform functions.</A>
+<DD><A href="#note27-20">Note 27-20: (MB) Added multiboot-wfs sample.</A>
+<DD><A href="#note27-21">Note 27-21: (MB) Released the debug use expanded memory region.</A>
+<DD><A href="#note27-22">Note 27-22: (MB) Added user definition expanded parameters.</A>
+<DD><A href="#note27-23">Note 27-23: (MI) Corrected problems with the MI_CompressHuffman function and Hufmann compression by ntrcomo.exe.</A>
+<DD><A href="#note27-24">Note 27-24: (OS) Corrected internal operation of <code>OS_Sleep</code> function</A>
+<DD><A href="#note27-25">Note 27-25: (OS) Corrected problem with the OS_TryLockMutex function.</A>
+<DD><A href="#note27-26">Note 27-26: (OS) Added the OS_YieldThread function.</A>
+<DD><A href="#note27-27">Note 27-27: (OS) Made internal corrections to initialization process at startup time.</A>
+<DD><A href="#note27-28">Note 27-28: (OS) Expanded the startup screen process for Chinese-language version.</A>
+<DD><A href="#note27-29">Note 27-29: (OS) Corrected problems with flushing of data cache.</A>
+<DD><A href="#note27-30">Note 27-30: (OS) Corrected problem when multiple OSMutex are locked.</A>
+<DD><A href="#note27-31">Note 27-31: (OS) Added header file-related references.</A>
+<DD><A href="#note27-32">Note 27-32: (RTC) Added functions to convert back and forth between date/time and total passage of seconds.</A>
+<DD><A href="#note27-33">Note 27-33: (RTC) Added restrictions to APIs for changing date and time.</A>
+<DD><A href="#note27-34">Note 27-34: (WBT) Corrected wbt-fs sample demo</A>
+<DD><A href="#note27-35">Note 27-35: (WBT) Corrected WBT sample demos</A>
+<DD><A href="#note27-36">Note 27-36: (WM) Clarified the specification changes and planned abolition of Key Sharing functions.</A>
+<DD><A href="#note27-37">Note 27-37: (WM) Changed the internal operations of the WM_StartScanEx function.</A>
+<DD><A href="#note27-38">Note 27-38: (WM) Updated WMTestTool.srl</A>
+<DD><A href="#note27-39">Note 27-39: (WM) Deterred MP communications when child not connected.</A>
+<DD><A href="#note27-40">Note 27-40: (WM) Corrected problem with notification when child disconnects</A>
+<DD><A href="#note27-41">Note 27-41: (WM) Added restriction on number of MP communications per frame.</A>
+<DD><A href="#KnownIssues_2_02_pr">Known issues in SDK 2.2 PR</A>
+</DL>
+<DL>
+<DT><A href="changelog-oldver.html">Previous Revision Histories</A>
+</DL>
+
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_01" id="sdk_3_01">NITRO-SDK Version 3.1 Release</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/05/02)</P>
+</DIV>
+
+<HR>
+<H3><A name="note38-01" id="note38-01">Note 38-01: (CARD) Made revisions regarding DMA transfer from ROM</A></H3>
+<P>A problem was corrected where variables adjacent to the transfer destination buffer used for DMA transfer from the ROM were being affected by cache operations if the buffer cache line was not aligned at 32-byte boundaries.
+</P>
+
+<HR>
+<H3><A name="note38-02" id="note38-02">Note38-02:  (CTRDG) Added AGB backup access functions</A></H3>
+<P>Added a series of APIs to the CTRDG library for accessing the backup device installed in the AGB cartridge.
+</P>
+
+<HR>
+<H3><A name="note38-03" id="note38-03">Note 38-03: (CTRDG) Added the functions CTRDG_SetPhiClock and CTRDG_GetPhiClock</A></H3>
+<P>The CTRDG_SetPhiClock and CTRDG_GetPhiClock functions have been created for setting and getting the clock value output from the PHI terminal of the cartridge.<br> MI_SetPhiClock and MI_GetPhiClock provided the same funcitonality in past version releases, but this was changed to CTRDG_ when categories were reviewed. <br> <br> Even in terms of internal operation, the CTRDG_SetPhiClock function has been changed to set the clocks of both the ARM7 and ARM9. <br> Until now, it's only been possible to change the setting of the ARM9, but the clock output pattern would change when moving the cartridge access privilege to the ARM7. <br> <br>The operation of the CTRDG_GetPhiClock function for getting the clock settings is the same as the MI-GetPhiClock function.
+</P>
+
+<HR>
+<H3><A name="note38-04" id="note38-04">Note 38-04: (FS) Internally revised the ROM archive</A></H3>
+<P>A problem was corrected where processing would not complete if the callback function set using CARD_SetPulledOutCallback returned FALSE and an attempt was made to access ROM files using a function like FS_OpenFile before the CARD_TerminateForPulledOut function could be called. <br> <br>This problem did not occur when loading a file table into memory using FS_LoadTable.
+</P>
+
+<HR>
+<H3><A name="note38-05" id="note38-05">Note 38-05: (FX) Changed the FX_Mul function</A></H3>
+<P>Changed FX_Mul so that a message is displayed by SDK_WARNING if digits overflow.<br> Additions were also made to the function reference. 
+</P>
+
+<HR>
+<H3><A name="note38-06" id="note38-06">Note 38-06: (FX) Revised the VEC_Normalize function</H3>
+<P>There was a problem where correct results could not be obtained when the value given to this function was greater than a set value, so it was changed so that a message would be displayed by the SDK_WARNING macro when the value was above this set amount. <br> Additions were also made to the function reference. 
+</P>
+
+<HR>
+<H3><A name="note38-07" id="note38-07">Note 38-07: (GX) Added a description to the reference for G2_SetBlendAlpha </H3>
+<P>Added a note to the reference for the G2_SetBlendAlpha function that a backdrop cannot be specified for a the first target screen.
+</P>
+
+<HR>
+<H3><A name="note38-08" id="note38-08">Note 38-08: (MATH) Revised the MATHCompareFunc reference</H3>
+<P>This function is used when sorting using the MATH_QSort function. A note was added to the reference for MATHCompareFunc that 0 must be returned when two elements being compared are equal. 
+</P>
+
+<HR>
+<H3><A name="note38-09" id="note38-09">Note 38-09: (MI) Corrected the compression problem with the MI_CompressLZ function</A></H3>
+<P>The problem where over-access would occur during LZ compression that was revised in <a href="changelog.html#note35-04">Note35-04</a> is not reflected in MI_CompressLZ--the low-speed version of the LZ compression function. <br>This problem was corrected.
+</P>
+
+<HR>
+<H3><A name="note38-10" id="note38-10">Note 38-10: (OS) Revised the OS_GetConsleType function.</A></H3>
+<P>A problem was corrected where OS_GetConsoleType might return a value that differs from that described in the function reference. 
+</P>
+
+<HR>
+<H3><A name="note38-11" id="note38-11">Note 38-11: (OS) Revised the sample demo exceptionDisplay-2</A></H3>
+<P>There was a problem where the required function would be dead stripped due to using CW2.0 in the $NitroSDK/build/demos/os/exceptionDisplay-2 sample demo. This has been corrected so that dead stripping is explicitely not performed.
+</P>
+
+<HR>
+<H3><A name="note38-12" id="note38-12">Note 38-12: (PRC) Added figure dictionary data for demo</A></H3>
+<P>The stroke order for the Japanese character &quot;KE&quot; in the figure dictionary data for the demo was wrong, so &quot;KE&quot; in the figure dictionary demo was corrected.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_01" id="KnownIssues_3_01">Known issues in SDK 3.1 release version</A></H3>
+<P>
+- Provisional support for CodeWarrior 2.0. However, accompanying changes will have no effect on current applications.<br> We plan to officially support the extended language codes in the next release.<br>
+</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_01_rc" id="sdk_3_01_rc">NITRO-SDK Version 3.1 RC</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/04/11)</P>
+</DIV>
+
+<HR>
+<H3><A name="note37-01" id="note37-01">Note 37-01: (CARD) Made compatible with new backup devices.</A></H3>
+<P>Made the Card Library compatible with the 8MB Flash Backup Device and added CARD_BACKUP_TYPE_FLASH_8MBITS to the CARDBackupType enumerated type.<br>In relation, the reference and sample demos were updated. 
+</P>
+
+<HR>
+<H3><A name="note37-02" id="note37-02">Note 37-02: (DevEnv) Added .itcm.bss/.dtcm.bss/.wram.bss section</A></H3>
+<P>Data placed in a .bss section that did not include initial values was accidentally being placed in the .data section due to the fact a .bss section had not been specified in the .itcm/.dtcm/.wram section until now.<br> <br>Revised $NitroSDK/build/tools/makelcf and $NitroSDK/include/nitro/section.h, revised the .template files found under $NitroSDK/include/nitro/specfiles and $NitroSDK/build/components/ichneumon, and added a .bss section to .itcm/.dtcm/.wram.
+</P>
+
+<HR>
+<H3><A name="note37-03" id="note37-03">Note 37-03: (DevEnv) Revised modulerules.cctype.CW</A></H3>
+<P>Corrected the problem where, depending on the version of the sed command, a NITRO-SDK build error would sometimes occur.
+</P>
+
+<HR>
+<H3><A name="note37-04" id="note37-04">Note 37-04: (FX) Added reference to MTX_Copy* function.</A></H3>
+<P>Added the descriptions of the MTX_Copy* function to the FX category in the function reference.<br> The following function references were added.
+<ul>
+<li>MTX_Copy22 function
+<li>MTX_Copy33 function
+<li>MTX_Copy43 function
+<li>MTX_Copy44 function
+</ul>
+</P>
+
+<HR>
+<H3><A name="note37-05" id="note37-05">Note 37-05: (GX) Added G3OP_DUMMY_COMMAND</A></H3>
+<P>Added 0xFF, an undefined geometry command, as the dummy command G3OP_DUMMY_COMMAND.
+</P>
+
+<HR>
+<H3><A name="note37-06" id="note37-06">Note 37-06: (GX) Revised the geometry command cycle list</A></H3>
+<P>We confirmed that the number of command cycles corresponding to each source increases when an environment map is used.<br> Information was added to the geometry command cycle list in the function reference.
+</P>
+
+<HR>
+<H3><A name="note37-07" id="note37-07">Note 37-07: (MI) Added endian-aware memory access functions</A></H3>
+<P>Added a group of functions for reading/writing memory with full awareness of little endian and big endian issues.
+</P>
+
+<HR>
+<H3><A name="note37-08" id="note37-08">Note 37-08: (OS) Revised OS_CheckHeap</A></H3>
+<P>There was a problem where an error would be returned if the heap handle specification was OS_CURRENT_HEAP_HANDLE.<br>This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note37-09" id="note37-09">Note 37-09: (OS) Revised arena overview</H3>
+<P>Corrected a mistake in the graphic about arena management and memory allocation in the OS arena overview in the function reference. Also added descriptive text.
+</P>
+
+<HR>
+<H3><A name="note37-10" id="note37-10">Note 37-10: (OS) 8-byte alignment support for the stack</A></H3>
+<P>Adjusted stack processing so that the stack pointer is always aligned at 8 byte boundaries during function calls.
+</P>
+
+<HR>
+<H3><A name="note37-11" id="note37-11">Note 37-11: (PM) Revised the PM_ForceToPowerOff and PM_ForceToPowerOffAsync functions</A></H3>
+<P>Corrected a problem with the specification changes given in <a href="changelog.html#note36-13">Note 36-13.</a>
+</P>
+
+<HR>
+<H3><A name="note37-12" id="note37-12">Note 37-12: (SND) Added the SND_SetTrackMuteEx function</H3>
+<P>Added the SND_SetTrackMuteEx function for selecting processing to apply to a sound played while a sequence track is muted.
+</P>
+
+<HR>
+<H3><A name="note37-13" id="note37-13">Note 37-13: (TOOL) Revised reference regarding attachsign</A></H3>
+<P>Changed the description in the reference for the attachsign tool about getting the authentication code.
+</P>
+
+<HR>
+<H3><A name="note37-14" id="note37-14">Note 37-14: (TOOL) Corrected a problem where PPM files could not be loaded using the ppmconv tool</H3>
+<P>When an attempt was made to convert ppm files created with photoshop (via a NetPBMformats plugin), the message &quot;Cannot convert file &quot;xxxx.ppm&quot; appeared and conversion failed.<br> The problem was due to the fact that the processing implemented for analyzing file headers did not fully cover ppm specifications.<br> <br> This bug was fixed.<br> Several ppm files which could not be converted can now be converted. <br>This fix has no impact on the ppm files that could be converted correctly.
+</P>
+
+<HR>
+<H3><A name="note37-15" id="note37-15">Note 37-15: (VIB) Revised the pulse_vib sample demo</A></H3>
+<P>The SVC_WaitVBlankIntr function deleted from the source code for all sample demos in the NITRO-SDK as described in <a href="changelog.html#note36-15">Note 36-15</a> was being used in the pulse_vib sample demo, so this function was changed to OS-WaitVBlankIntr.<br> Furthermore, specifications have changed so that the sample does not stop even if parameters that violate restrictions on the Rumble Pak library are entered.
+</P>
+
+<HR>
+<H3><A name="note37-16" id="note37-16">Note 37-16: (WM) Revised the dataShare-Model sample demo</A></H3>
+<P>If the number of children specified by the user (WH_CHILD_MAX) is less than WM_NUM_MAX_CHILD, the WM_GetSharedDataAddress function would be called instead of WH__CHILD_MAX. This problem was fixed.
+</P>
+
+<HR>
+<H3><A name="note37-17" id="note37-17">Note 37-17: (WM) Added the wireless-all sample demo</H3>
+<P>The sample demo $NitroSDK/build/demos/wm/wireless-all shows the comprehensive use of WM library functions.
+</P>
+
+<HR>
+<H3><A name="note37-18" id="note37-18">Note 37-18: (WM) Corrected sample demos</A></H3>
+<P>Added the following revisions to the WM sample demo.
+<ul>
+<li>Revisions were made so that data sharing and both MP direct control modes can be used in the WC sample module of $NitroSDK/build/demos/wireless_shared/wc. 
+<li>Made changes so that the maximum number of MP communications per frame when using the $NitroSDK/build/demos/wireless_shared/wh WH sample module can be set in wh_config.h as WH_MP_FREQUENCY.<br> The default value of 1 is used for conventional programs where this value is undefined.</li>
+</ul>
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_01_rc" id="KnownIssues_3_01_rc">Known issues in SDK 3.1 RC</A></H3>
+<P>
+- Added a series of APIs to the CTRDG library for accessing the backup device installed in the AGB cartridge.<br> However, operations are not guaranteed because verification of these newly added AGB backup access functions is not complete.<br> We plan to officially support the extended language codes in the next release.<br> <br>- Provisional support for CodeWarrior 2.0. However, accompanying changes will have no effect on current applications.<br> We plan to officially support the extended language codes in the next release.<br>
+</P>
+
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_01_pr" id="sdk_3_01_pr">NITRO-SDK Version 3.1 PR</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/03/14)</P>
+</DIV>
+
+<HR>
+<H3><A name="note36-01" id="note36-01">Note 36-01: (ARM7) Improved automatic pull-out detection of components</A></H3>
+<P>In the past, it was not possible to execute pull-out detection for the other device when continuously locking one of the card or cartridge buses using the OS_Lock* function for an extended period, but this has been changed under the current release so that pull-out detection can be performed.
+</P>
+
+<HR>
+<H3><A name="note36-02" id="note36-02">Note 36-02: (CARD) Internal revisions made to the CARD_CheckPulledOut function.</A></H3>
+<P>Specifications have been changed when the CARD_CheckPulledOut function is called multiple times so that a callback function is not called for each instance. From now on, the callback can only be called once due to calling the CARD_CheckPulledOut function or due to ARM7 pull-out detection.
+</P>
+
+<HR>
+<H3><A name="note36-03" id="note36-03">Note 36-03: (CTRDG) Strengthened access restrictions to the AGB cartridge region</A></H3>
+<P>In order to avoid sudden write access to the AGB cartridge region, processing for changing the initial settings of the protection region have been added to the CTRDG_Init function. When writing to a cartridge, cartridge information must be checked and the CTRDG_Enable function must be called. <br>Note that processing will be forcibly stopped when outputting a debug string using OS_Printf or other function unless using IS-NITRO-DEBUGGER ver1.65, which is compatible with this function.
+</P>
+
+<HR>
+<H3><A name="note36-04" id="note36-04">Note 36-04: (CTRDG) Added the CTRDG_CheckPulledOut function.</A></H3>
+<P>The function CTRDG_CheckPulledOut, for quick cartridge pull-out detection from the ARM9, has been added.
+</P>
+
+<HR>
+<H3><A name="note36-05" id="note36-05">Note 36-05: (GX) Corrected 2D_CharBg_Direct sample demos</A></H3>
+<P>Revisions were made so that correct settings are made by the G2_SetBG3ControlDCBmp function before the GX_LoadBG3Bmp when using the sample demo $NitroSDK/build/demos/gx/UnitTours/2D_CharBg_Direct.
+</P>
+
+<HR>
+<H3><A name="note36-06" id="note36-06">Note 36-06: (GX) Edited references in G2_GetBG2ScrPtr and G2_GetBG3ScrPtr functions</A></H3>
+<P>A mistake was corrected in the description for when a bitmap BG in a G2_GetBG2ScrPtr and G2_GetGB3ScrPtr function reference.
+</P>
+
+<HR>
+<H3><A name="note36-07" id="note36-07">Note 36-07: (MB) Added MB_FAKESCAN_PARENT_BEACON notification</A></H3>
+<P>MB_FAKESCAN_PARENT_BEACON was added to events notified to the MBFakeScanCallbackFunc callback. This notification is issued each time an MB parent beacon is received. <br> <br>In relation to this, processing for using the MB_GetUserVolatData function with the sample demos multiboot-Model and fake_child have been added.
+</P>
+
+<HR>
+<H3><A name="note36-08" id="note36-08">Note 36-08: (MB) Changed the operation of MB_ReadMultiBootParentBssDesc</A></H3>
+<P>A problem was corrected where the magicNumber and ver members of gameinfo, which should usually be specified inside the MB_ReadMultiBootParentBssDesc function, remained uninitialized.
+</P>
+
+<HR>
+<H3><A name="note36-09" id="note36-09">Note 36-09: (MB) Corrected a problem with the number of retries when reconnecting to a clone boot sample parent</A></H3>
+<P>A problem was corrected where revisions described in <a href="changelog-oldver.html#note20-08">Note 20-08:</a> were not applied to the clone boot sample and retry was impossible if even one attempt at connection to the parent failed when reconnecting to a parent after child boot.
+</P>
+
+<HR>
+<H3><A name="note36-10" id="note36-10">Note 36-10: (MB) Updated documentation</A></H3>
+<P>The following MB library-related document has been updated.<br>$NitroSDK/docs/technicalNotes/AboutMultiBoot.pdf
+</P>
+
+<HR>
+<H3><A name="note36-11" id="note36-11">Note 36-11: (MIC) Described restrictions during automatic sampling</A></H3>
+<P>A note was added to the reference manual that there is a restriction which does not allow extended main memory to be specified as a buffer for storing sampling results when performing auto-sampling for the mic. No change has been made to library operations.
+</P>
+
+<HR>
+<H3><A name="note36-12" id="note36-12">Note 36-12: (PM) Corrected problem related to the PMAmpGain enumeration type</A></H3>
+<P>The constant PM_AMPGAIN_DEFAULT used inside the PM_GAINAMP_DEFAULT macro was not actually defined. This has been corrected and PM_AMPGAIN_DEFAULT has been added to the PMAmpGain enumerator type.
+</P>
+
+<HR>
+<H3><A name="note36-13" id="note36-13">Note 36-13: (PM) Changed the PM_ForceToPowerOff and PM_ForceToPowerOffAsync functions</A></H3>
+<P>When an application attempts to turn OFF the power of the DS unit, the DS main unit will occasionally restart if main power was turned off during LCD OFF status. <br>The specifications of the PM_ForceToPowerOff and PM_ForceToPowerOffAsync functions have therefore been changed so that power is turned OFF after LCDs are turned ON.
+</P>
+
+<HR>
+<H3><A name="note36-14" id="note36-14">Note 36-14: - (TOOL)  Fixed the inclusion order within ROM when specifying files to makerom using wildcards.</A> </H3>
+<P>When using wildcards to specify files to be stored in ROM with makerom, the order files were stored depended on the order entries appear under the PC file system. This resulted in a phenomenon where the order files were stored would change for different PCs regardless of the fact the same application was being built. This problem was fixed so that files are now sorted by name and then stored when using makerom.
+</P>
+
+
+<HR>
+<H3><A name="note36-15" id="note36-15">Note 36-15: (STD) Added VIB library</A></H3>
+<P>The VIB library has been added to control the Rumble Pak option cartridge for the Nintendo DS.
+</P>
+
+
+<HR>
+<H3><A name="note36-16" id="note36-16">Note 36-16: (WBT) Revised the WFS sample module</A></H3>
+<P>We fixed the following problems with the WFS sample module compiled in $NitroSDK/build/demos/wireless_shared/wfs. 
+<ul>
+<li>A problem was corrected where data at the end of the list was undefined in file list initialization on the parent side.
+<li>A problem was corrected where file handles on the parent side were insufficient when receiving multiple file requests simultaneously at high frequency from the maximum number of children that can be connected.
+<li>A problem was corrected where file requests of other children would not proceed when a child in the middle of requesting a file was disconnected.
+</ul>
+</P>
+
+<HR>
+<H3><A name="note36-17" id="note36-17">Note 36-17: (WBT) Revised function reference</A></H3>
+<P>A problem was corrected where the fact that the following commands can be directly issued from one child to another was described incorrectly in the function reference.
+<ul>
+<li>WBT_PutUserData
+<li>WBT_GetBlockInfo
+<li>WBT_GetBlock
+</ul>
+</P>
+
+<HR>
+<H3><A name="note36-18" id="note36-18">Note 36-18: (WBT) Added function reference overview</A></H3>
+<P>The item &quot;Overview&quot; was added to teh WBT library function reference.
+</P>
+
+<HR>
+<H3><A name="note36-19" id="note36-19">Note 36-19: (WM) Changed specifications regarding NULL response of children during MP communications</A></H3>
+<P>Although specifications were changed so that a Null response would not be returned by children in the middle of MP communications as described in <a href="changelog.html#note30-06">Note 30-06</a>, this would occasionally result in unstable operations depending on the environment, so the change described in <a href="changelog.html#note30-06">Note 30-06</a> has been canceled the previous specification has been restored.<br> In addition, instead of allowing Null responses from children, specifications have been changed to that the child is seen to have failed to communicate if the parent receives a Null response. <br>Since the WM_SetMPInterval function has been added, excess load problems on the child side should not result even if changes are made to allow the return of Null responses.
+</P>
+
+<HR>
+<H3><A name="note36-20" id="note36-20">Note 36-20: (WM) Changed WMGameInfo structure definitions</A></H3>
+<P>The definition of the WMGameInfo structure has been changed. The version field was eliminated and the name was changed to magicNumber. The magicNumber field is fixed at a value of 0x0001 when used as a DS beacon. In addition, the ver field has been established using one byte from of reserved memory. <br>Under the current version, the ver field is always 0, but in the future this will increase as the format of the WMGameInfo structure changes. Note, however, that in order to ensure backward compatibility in the future there must be no restriction on operations based on checking the ver field. Due to these changes, it is necessary to re-write programs that accessed WMGameInfo.version. <br>In addition, the name of the field gameNameCount_attribute has been changed to &quot;attribute.&quot; Although this field can be accessed using the old name, be sure to use the new field name from now on. <br> <br>In addition, support of the compile switch WM_GAMEINFO_TYPE_OLD, which is never used, has ended due to this change.
+</P>
+
+
+<HR>
+<H3><A name="note36-21" id="note36-21">Note 36-21: (WM) Added the WM_IsValidGameBeacon and WM_IsValidGameInfo functions</A></H3>
+<P>WM_IsValidGameBeacon and WM_IsValidGameInfo functions have been added in order to determine whether or not the scan result beacon is that of a DS wireless play parent. Internally, a determination is made whether or not WMGameInfo.magicNumber is correct. In addition, each WM demo has been changed to use this function.
+</P>
+
+<HR>
+<H3><A name="note36-22" id="note36-22">Note 36-22: (WM) Corrected a problem with minPollBmpMode</A></H3>
+<P>A problem was corrected where communications would be discontinued after a set time interval and the MP lifetime would run out when the MP communications option minPollBmpMode was enabled. <br> <br>Only titles that perform special communications using minPollBmpMode are affected by this problem.
+</P>
+
+<HR>
+<H3><A name="note36-23" id="note36-23">Note 36-23: (WM) Updated documentation</A></H3>
+<P>The following WM library-related document has been updated. <br>$NitroSDK/docs/technicalNotes/AboutWirelessManager.pdf
+</P>
+
+<HR>
+<H3><A name="note36-24" id="note36-24">Note 36-24: (Misc) Revised description of macros</A></H3>
+<P>Corrected the descriptions of macros where () were not attached to arguments.<br>This change has no effect as long as arguments where operations change depending on the presence of parentheses are not being used. <br>The following macros have been revised.
+<ul>
+<li>SDK_NULL_ASSERT
+<li>SDK_ALIGN4_ASSERT
+<li>GX_VFCFX10
+<li>GX_FX16ST
+<li>GX_COMP4x4_PLTT_IDX
+<li>GX_PACK_MTXMODE_PARAM
+<li>GX_PACK_VIEWPORT_PARAM
+<li>SVC_CpuClear*
+<li>SVC_CpuCopy*
+<li>WC_ROUNDUP_32
+</ul>
+Corresponding function references have also be revised along with this change.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_01_pr" id="KnownIssues_3_01_pr">Known issues in SDK 3.1 PR</A></H3>
+<P>
+None.
+</P>
+
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_00" id="sdk_3_00">NITRO-SDK Version 3.0 Release</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/01/16)</P>
+</DIV>
+
+<HR>
+<H3><A name="note35-01" id="note35-01">Note 35-01: (CARD) Added an overview of function references</A></H3>
+<P>Added an &quot;overview&quot; items to the function references in the CARD library.
+</P>
+
+<HR>
+<H3><A name="note35-02" id="note35-02">Note 35-02: (DevEnv) Added a reference manual for the packnlf tool</A></H3>
+<P>Added a reference manual for the packnlf tool.
+</P>
+
+<HR>
+<H3><A name="note35-03" id="note35-03">Note 35-03: (DevEnv) Unified the source code format</A></H3>
+<P>The code style has been unified regarding indents and carriage returns in the library and demos. 
+</P>
+
+<HR>
+<H3><A name="note35-04" id="note35-04">Note 35-04: (MI) Corrected LZ compression problems with the MI_CompressLZFast function and ntrcomp.exe</A></H3>
+<P>There was a possibility when using the MI_CompressLZFast function for LZ compression that memory would be over-accessed. <br><br> The same problem was found in ntrcomp.exe after NITRO-SDK 3.0 RC2, and there was a possibility of unusual termination or a slight increase in the size of compressed data.<br> <br>These problems have been corrected.
+</P>
+
+<HR>
+<H3><A name="note35-05" id="note35-05">Note 35-05: (OS) Corrected problems in the OS_ResetSystem function</A></H3>
+<P>A problem was corrected where an endless loop inside the library would result if the cartridge bus was locked when the OS_ResetSystem function was called because this function internally accesses cartridges. <br>This problem only appears in NITRO-SDK 3.0 RC3.
+</P>
+
+<HR>
+<H3><A name="note35-06" id="note35-06">Note 35-06: (OS) Edited the Chinese version startup screen</A></H3>
+<P>A problem was corrected where changes described in <a href="changelog.html#note32-23">Note 32-23</a> resulted in the display of garbage characters on the startup screen.
+</P>
+
+<HR>
+<H3><A name="note35-07" id="note35-07">Note 35-07: (PRC) Added figure dictionary data for demo</A></H3>
+<P>The stroke order for the Japanese character &quot;KE&quot; in the figure dictionary data for the demo was wrong, so &quot;KE&quot; in the figure dictionary demo was corrected.
+</P>
+
+<HR>
+<H3><A name="note35-08" id="note35-08">Note 35-08: (WM) Corrected the display of the debug string in the sample demo</A></H3>
+<P>Changed the debug output of the sample libraries wh, wfs, and wc in $NitroSDK/build/demo/wireless_shared to display &quot;0x&quot; before hexadecimal numbers.
+</P>
+
+<HR>
+<H3><A name="note35-09" id="note35-09">Note 35-09: (WM) Revised internal communications parameters</A></H3>
+<P>There was a problem making it easy for MP communications to fail depending on the environment, so improvements were made by adding revisions to communications internal parameters.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_00" id="KnownIssues_3_00">Known issues in SDK 3.0 release version</A></H3>
+<P>
+None.
+</P>
+
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_00_rc3" id="sdk_3_00_rc3">NITRO-SDK Version 3.0 RC3</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/12/26)</P>
+</DIV>
+
+<HR>
+<H3><A name="note34-01" id="note34-01">Note 34-01: (MATH) Added bit operation function</A></H3>
+<P>The following inline function groups which perform bit operations were added:
+<ul>
+<li>The MATH_CountTrailingZeros and MATH_CTZ macros
+<li>The MATH_GetLeastSignificantBit and MATH_LSB macros
+<li>The MATH_GetMostSignificantBit and MATH_MSB macros
+</ul>
+</P>
+
+<HR>
+<H3><A name="note34-02" id="note34-02">Note 34-02: (MB) Fixed a bug that occurred when designating memory conservation with the MB_ReadSegment function</A></H3>
+<P>When a small buffer size was designated with the MB_ReadSegment function and the distribution data was dynamically loaded from the archive, block transfer became unable to proceed. This problem has been fixed.
+</P>
+
+<HR>
+<H3><A name="note34-03" id="note34-03">Note 34-03: (MB) Improved MP communication effectiveness under adverse conditions</A></H3>
+<P>Fixed the problem that caused transfer rates to be adversely affected where WM_ERRCODE_SEND_FAILED was issued frequently on the parent device in bad communication environments during implementation of block transfer in the MB library.
+</P>
+
+<HR>
+<H3><A name="note34-04" id="note34-04">Note 34-04: (OS) Revised the CARD_CheckPulledOut function reference</A></H3>
+<P>Because ARM946E-S, which is a CPU on Nintendo DS, has the specification that does nothing, such description has been added in the reference for the DC_TouchRange function that uses this feature.
+</P>
+
+<HR>
+<H3><A name="note34-05" id="note34-05">Note 34-05: (OS) Revised the OS_CreateThread function</A></H3>
+<P>There was a bug where, depending upon the initial value of the thread structure initialized with OS_CreateThread, an access exception error would occur when the thread was executed. That bug has been fixed.
+</P>
+
+<HR>
+<H3><A name="note34-06" id="note34-06">Note 34-06: (WBT) Revised wbt-1 sample demos</A></H3>
+<P>A compilation error prevented a correct build when the macro switch NOT_USE_ALLOC in the sample source of the $NitroSDK/build/demos/wbt/wbt-1 sample demo was enabled. This error has been corrected.
+</P>
+
+<HR>
+<H3><A name="note34-07" id="note34-07">Note 34-07: (WBT) Corrected a problem with the user callback</A></H3>
+<P>The values of the result member of the arguments in the user callbacks which notify of each command completion were indeterminate. This problem has been corrected.
+</P>
+
+<HR>
+<H3><A name="note34-08" id="note34-08">Note 34-08: (WM) Corrected a problem with MP communications parameters</A></H3>
+<P>The configurations for each of the MP communication parameters added in 3.0 RC2 were not operating normally. This problem has been corrected.
+</P>
+
+<HR>
+<H3><A name="note34-09" id="note34-09">Note 34-09: (WM) Made changes to the method of setting the WH-related parameters</A></H3>
+<P>All of the SDK demos which use WH directly referenced $NitroSDK/build/demos/wireless_shared/wh/wh_config.h and had shared configurations. Now, each demo has its own individual configuration.<br>Because of this change, the location of wh_config.h has been changed to $NitroSDK/build/demos/wireless_shared/wh/default/.
+</P>
+
+<HR>
+<H3><A name="note34-10" id="note34-10">Note 34-10: (WM) Improved internal operations during disconnect</H3>
+<P>Internal operations are sometimes affected immediately after a disconnect. Processes were added within the WM library to address this.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_00_rc3" id="KnownIssues_3_00_rc3">Known problems with SDK 3.0 RC3</A></H3>
+<P>
+None.
+</P>
+
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_00_rc2" id="sdk_3_00_rc2">NITRO-SDK Version 3.0 RC2</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/12/05)</P>
+</DIV>
+
+
+<HR>
+<H3><A name="note33-01" id="note33-01">Note 33-01: (CARD) Corrected problem with backup function</A></H3>
+<P>Corrected a problem that might cause a return of CARD_RESULT_TIMEOUT even if the backup write succeeds when a backup write with a small size specification executes during wireless communication.
+</P>
+
+<HR>
+<H3><A name="note33-02" id="note33-02">Note 33-02: (CTRDG) Added access permission function for AGB cartridges</A></H3>
+<P>Added the following group of functions for controlling access permissions to AGB cartridges.
+<ul>
+<li>CTRDG_IsEnabled
+<li>CTRDG_Enable
+<li>CTRDGi_CheckEnableld
+</ul>
+</P>
+
+<HR>
+<H3><A name="note33-03" id="note33-03">Note 33-03: (DevEnv) Added macro for comparing SDK versions</A></H3>
+<P>Added the macro SDK_VERSION_NUMBER for converting the SDK version to a numeric value. <BR>Also added the constant SDK_CURRENT_VERSION_NUMBER to represent the current SDK version.
+</P>
+
+<HR>
+<H3><A name="note33-04" id="note33-04">Note 33-04: (DevEnv) Added SDK_INLINE, SDK_DECL_INLINE</A></H3>
+<P>Added SDK_INLINE and SDK_DCL_INLINE as macro symbols for inline function specifications.<BR>This allows the format of inline specifications to be changed all at once.<BR>The entire NITRO-SDK must be rebuilt if these macro values are changed.<BR><BR>However, the code size can be reduced by changing these macros from static inline to inline only when using the environment with the compiler version in which the the inline function materialization problem has been fixed and using the functions that have been changed from inline to static inline to avoid this problem.<BR> <BR>Since the result of changing these macros is essentially not guaranteed, base the decision on the application.
+</P>
+
+<HR>
+<H3><A name="note33-05" id="note33-05">Note 33-05: (DevEnv) Corrected makebanner tool</A></H3>
+<P>A problem was corrected where character strings could not be included in a banner file if the start of the game title or descriptive text in question happened to matched a specifiable parameter described in the bsf file used by the makebanner tool.
+</P>
+
+<HR>
+<H3><A name="note33-06" id="note33-06">Note 33-06: (DevEnv) Updated ntexconv</A></H3>
+<P>$NitroSDK/tools/bin/ntexconv.exe has been updated the version of netconv.exe inside the latest release of the TXLib package. <BR>Although operations do not change under the SDK due to the fact that ntexconv.exe is only used during the creation of icon images, the version of ntexconv.exe inside the SDK can now be used even when creating textures.
+</P>
+
+<HR>
+<H3><A name="note33-07" id="note33-07">Note 33-07: (DevEnv) Added the packnlf tool</A></H3>
+<P>The tool paknlf has been added to collect all file specifications referenced by a .nlf file as absolute paths and output them as a ZIP file.<BR><BR>Although this tool was included under NITRO-SDK 3.0 RC, mention of its addition was left out of the changelog.
+</P>
+
+<HR>
+<H3><A name="note33-08" id="note33-08">Note 33-08: (MB) Revised MBP sample module</A></H3>
+<P>We made the following correction to the MBP sample module included in$NitroSDK/build/demos/wireless_shared/mbp:
+<ul>
+<li>A problem was corrected where processing by the parent device would hang if the parent called MBP_StartRebootAll and the last child still connected cancelled its connection just as the other children were attempting to reboot.
+</ul>
+</P>
+
+<HR>
+<H3><A name="note33-09" id="note33-09">Note 33-09: (MB) Added MB_FAKE_WORK_SIZE definition</A></H3>
+<P>The buffer size required in order to call the MB_FakeInit function has been defined as MB_FAKE_WORK_SIZE. This value is defined as a constant equal in value to the size of data retrieved by the conventional MB-FakeGetWorkSize function.
+</P>
+
+<HR>
+<H3><A name="note33-10" id="note33-10">Note 33-10: (MB) Corrected problem regarding the parent beacon flag</A></H3>
+<P>A problem was corrected where it was possible for applications sharing the same GGID under wireless play and download play to fail to detect the situation due to the fact that the WM_ATTR_FLAG_MB flag remained disabled, and only the WM_ATTR_FLAG_ENTRY flag was enabled, for the first beacon sent by an MB parent device.
+</P>
+
+<HR>
+<H3><A name="note33-11" id="note33-11">Note 33-11: (MI) Added the MI_CompressLZFast function</A></H3>
+<P>Rather than requiring a work buffer of about 9KB, the function M_CompressLZFast has been added to perform LZ compression at rates several times faster than MI_CompressLZ, which has been available.
+</P>
+
+<HR>
+<H3><A name="note33-12" id="note33-12">Note 33-12: (OS) Added an automatic build switch for ARM7 debug output</A></H3>
+<P>NITRO_ENABLE_ARM7_PRINT has been added as a build switch for setting the debugger to automatically call the OS_InitPrintServer and  OS_PrintServer functions from inside the OS library.<BR>Conventional specifications are used if this switch is not specified.<BR><BR> This build switch is only enabled for the OS library. The OS library must be rebuilt if the setting is changed.
+</P>
+
+<HR>
+<H3><A name="note33-13" id="note33-13">Note 33-13: (OS) Changed the definition of the VBlank wait function</A></H3>
+<P>
+Specifications are such that SVC_WaitVBlankIntr does not release resources to low-priority threads. Since this would cause problems depending on how the function was used, specifications have been changed so that a call to SVC_WaitVBlankIntr is automatically replaced by a call to OS_WaitVBlankIntr. Note, however, that this replacement is made using defines inside a header file and that the desired result is achieved after the first rebuild.<br>The result of this change is actually a slight increase in overhead until V-blank interrupt wait operations are entered. Although there is almost no effect on application behavior, if you must use conventional system calls for some reason, you can disable this change by defining the environment variable NITRO_SVC_WAITVBLANK_COMPATIBLE. Be sure to verify your code thoroughly as the problem with threads remains unresolved if you do this.<br><br> or <a href="#note32-18">Note 32-18: Although it was reported in <a href="#note32-18">Note 32-18:(OS) Improved V-blank wait function</a> that the SVC_WaitVBlankIntr function could now be overwritten by another definition using weak symbols, specifications have been returned to original status because the need for weak symbols has been eliminated under this revision.
+</P>
+
+<HR>
+<H3><A name="note33-14" id="note33-14">Note 33-14: (OS) Deleted  OS_InitPrintServer and OS_PrintServer from the sample demo</A></H3>
+<P>Deleted OS_InitPrintServer and OS_PrintServer from all NITRO-SDK sample demo source code.
+</P>
+
+<HR>
+<H3><A name="note33-15" id="note33-15">Note 33-15: (OS) Deleted  PXI_Init from the sample demo</A></H3>
+<P>Deleted PXI_Init from all NITRO-SDK sample demo source code.<BR>Demo operations are not affected by this change.
+</P>
+
+<HR>
+<H3><A name="note33-16" id="note33-16">Note 33-16: (OS) Changed SVC_WaitVBlankIntr in the sample demo</A></H3>
+<P>The parts of all NITRO-SDK sample demo source code that used to call SVC_WwaitVBlankIntr have been changed to call OS_WaitVBlankIntr.<BR>Demo operations are not affected by this change.
+</P>
+
+<HR>
+<H3><A name="note33-17" id="note33-17">Note 33-17: (OS) Revised the start location of extended main RAM arena</A></H3>
+<P>0x240000 is used for the lcf template definition even though the start address of the extended main memory arena given on the OS arena overview page is 0x23e0000. (If there is an overlay, an even higher address results. <BR>0x23e0000 is used so as to match the information on the OS overview page.
+</P>
+
+<HR>
+<H3><A name="note33-18" id="note33-18">Note 33-18: (WBT) Revised the WFS sample module</A></H3>
+<P>We fixed the following problems with the WFS sample module compiled in $NitroSDK/build/demos/wireless_shared/wfs.
+<ul>
+<li>In the case of several functions, better decisions have been made regarding the appropriateness of making calls before initialization and after exiting.
+</ul>
+</P>
+
+<HR>
+<H3><A name="note33-19" id="note33-19">Note 33-19: (WBT) Revised the WFS-related sample demo</A></H3>
+<P>Processing inside the sample demo below, which uses the WFS sample module, has been revised so that parent disconnections during a read by a child calling FS_ReadFile can be detected.
+<ul>
+<li>$NitroSDK/build/demos/wbt/wbt-fs
+<li>$NitroSDK/build/demos/mb/multiboot-wfs
+</ul>
+</P>
+
+<HR>
+<H3><A name="note33-20" id="note33-20">Note 33-20: (WM) 2D_Updated the CharBg_3 and Sub_CharBg_3 sample demos</A></H3>
+<P>Corrected a problem in the $NitroSDK/build/demos/gx/UnitTours/{2D_CharBg_3,Sub_CharBg_3} sample demo where execution would stop due to an assert if the object was shrunk too much.
+</P>
+
+<HR>
+<H3><A name="note33-21" id="note33-21">Note 33-21: (WM) Added a timing configuration function for MP communications</A></H3>
+<P>Previously, the V alarm count was fixed at 260 for the parent and at 240 for children during frame synchronous communication mode when beginning to prepare the first MP communication of each frame. The WM_SetMPTiming function has been added to make this setting. Due to restrictions on the implementation these values must be set in the range 220 to 260 or 0 to 190.<br>The ARM7 operates actively during communication processing and frequently stalls the ARM9 from accessing main memory. The average operational performance of the ARM9 can sometimes be improved by adjusting communication timing to help alleviate the situation. The conventional setting values are used as defaults unless other settings are explicitly made. <br>
+</P>
+
+<HR>
+<H3><A name="note33-22" id="note33-22">Note 33-22: (WM) Added a send size configuration function for MP communications</A></H3>
+<P>Up until now, the size of transmissions sent using MP communications have been fixed at values given by the parentMaxSize and childMaxSize fields of the WMParentParam structure as set by the parent using the WM_SetParentParameter function before communications start. The parent send size and child send size can be set using the functions WM_SetMPParentSize and WM_SetMPChildSize.<br>The send size of the parent and child are initialized to the values set for parentMaxSize and childMaxSize in the WMParentParam structure when the WM_StartParent function is executed by the parent. Smaller values than these can be set using the WM_SetMPParentSize and WM_SetMPChildSize functions, but the default initial values cannot be exceeded. Even though setting the parent send size on the child side is meaningless, the setting used for the child send size is used to overwrite the child send size setting on the parent side every time MP communications are carried out.<br>There is not much advantage in changing the setting for parent transmissions because the smaller the amount of data, the shorter the radio signal output. Still, the child side always sent out a radio signal of the number of bytes designated with childMaxSize, so by reconfiguring the necessary size, the transmission time can be reduced and communications can be stabilized. Note that under the current implementation, if an amount of data larger than the send size modified using these functions has already been prepared for sending by the WM_SetMPDataToPort function, that data will not be sent and will just continue to collect on the send queue.</P>
+
+
+<HR>
+<H3><A name="note33-23" id="note33-23">Note 33-23: (WM) Added a spacing control function for MP communications</A></H3>
+<P>The function WM-SetMPInterval has been added to allow setting the time interval between one MP communication and the next during MP communications in continuous communication mode beginning from the second transmission in frame synchronous mode. This can be specified independently for the parent and children in units of microseconds.<br>The default values are 1000 microseconds for the parent and 0 microseconds (no interval) for children. Although throughput can be increased by adjusting this value, throughput may also be worsened due to dropped data if the MP communication interval for the parent is shorter than the time it takes children to process the received data. Note that bandwidth availability will also be adversely affacted if useless resends are attempted under these conditions.<br>
+</P>
+
+
+
+
+<HR>
+<H3><A name="note33-24" id="note33-24">Note 33-24: (WM) Updated the dataShare-Model sample demo</A></H3>
+<P>A feature for displaying information about the parent to be connected to has been added to the parent list window in the sample demo $NitroSDK/build/demos/wm/dataShare-Model.
+</P>
+
+<HR>
+<H3><A name="note33-25" id="note33-25">Note 33-25: (WM) Revised the display of the dataShare-Model sample demo</A></H3>
+<P>A problem was corrected where the text output screen displayed at startup of the sample demo $NitroSDK/build/demos/wm/dataShare-Model would sometimes break.
+</P>
+
+
+<HR>
+<H3><A name="note33-26" id="note33-26">Note 33-26: (WM) Added a setting value for the maximum number of MP communications per frame.</A></H3>
+<P>Although the maximum number of MP communications per frame (including resends) was fixed at six in the past, specifications have been changed so that this can now be set to other values. Set WMMMPParam.maxFrequency using WM_SetMPParameter. The processing of the fixFreqMode argument by WM_StartMPEx has been changed internally so that maxFrequency is also set to the value of mpFreq.<br>
+</P>
+
+<HR>
+<H3><A name="note33-27" id="note33-27">Note 33-27: (WM) Changed the specification for the receive signal strength level</A></H3>
+<P>If a send fails, correction is applied to the receive signal strength level that can be retrieved by WM_GetLinkLevel; however, this correction has been performed differently for the parent than for the children and the receive signal strength level for parent and children can differ greatly even under the same conditions.<BR>To solve this problem, the standard to detect failed transmission of a parent were loosened so that                     the behavior of the reception strength level of the parent and child were more similar.
+</P>
+
+<HR>
+<H3><A name="note33-28" id="note33-28">Note 33-28: (WM) Added an option for disabling the pre-check of the send/receive buffer size</A></H3>
+<P>A special option has been added for ignoring various validity checks (pre-check of the send/receive size setting value, send/receive buffer size, and communication time limit of 5600 microseconds) previously carried out internally by the WM_StartMP function. Be sure to set WMMPParam.ignoreSizePrecheckMode to TRUE using the WM_SetMPParameter function before calling WM_StartMP.<br>Combining this feature with the WM_SetMPParentSize and WM_SetMPChildSize functions allows the send size to be flexibly adjusted according to changing conditions such as the number of connected children. Note, however, that you must be careful in the application not to exceed the communication time limits and the send/receive buffer size. If a setting is made such that the send buffer size is insufficient and an attempt is made by the parent to start MP communications, the situation will be detected at time of execution and the communication will be cut-off due to a timeout on the MP lifetime that will occur if the condition continues.</P>
+
+<HR>
+<H3><A name="note33-29" id="note33-29">Note 33-29: (WM) Added a note regarding the wireless communication event counter</A></H3>
+<P>Unexpected behavior was reported where several even counters would be cleared when accessing buffers located in a particular address space in wireless hardware. <BR>Due to this problem, the count accumulating in an event counter being managed in software would sometimes be less than the actual number of events that had occured.<BR>Note that there is a possibility that some event counts retrieved by WM_GetWirelessCounter may not represent the correct value. <BR>Information has also been added to the reference manual about the event counters that may be adversely effected.
+</P>
+
+
+<HR>
+<H3><A name="KnownIssues_3_00_rc2" id="KnownIssues_3_00_rc2">Known problems with SDK 3.0 RC2</A></H3>
+<P>
+None.
+</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_00_rc" id="sdk_3_00_rc">NITRO-SDK Version 3.0 RC</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/11/07)</P>
+</DIV>
+
+<HR>
+<H3><A name="note32-01" id="note32-01">Note 32-01: (CARD) Revised internal processing of EEPROM device operations</A></H3>
+<P>When an EEPROM device is being used for backup, there was an occasional problem with abnormalities in the initial values of the hardware internal status at startup. A process was added to deal with this issue.
+</P>
+
+<HR>
+<H3><A name="note32-02" id="note32-02">Note 32-02: CARD) Added removal detection after ROM access</A></H3>
+<P>Added a process to detect whether the card has been removed every time the read process completed with the CARD_ReadRom function or the CARD_ReadRomAsync function.<br>This way, the application will no longer refer to invalid data before it receives a notification of the remove-detection callback.
+</P>
+
+<HR>
+<H3><A name="note32-03" id="note32-03">Note 32-03: (CARD) Made compatible with new backup devices.</A></H3>
+<P>Made the Card Library support the 4MB Flash Backup Device and added CARD_BACKUP_TYPE_FLASH_2MBITS to the CARDBackupType enumerated type.<br>In relation, the reference and sample demos were updated.
+</P>
+
+<HR>
+<H3><A name="note32-04" id="note32-04">Note24-04: (DevEnv) Corrected the #pragma define_section parameters</A></H3>
+<P>The #pragma define_section parameters were separated by commas like this: <br>&ldquo;#pragma define_section DTCM &quot;.dtcm&quot;,&quot;.dtcm&quot;,abs32,RWX.&rdquo; <br>This made for an incorrect description, so they were changed to be separated by spaces like this: <br>&ldquo;#pragma define_section DTCM &quot;.dtcm&quot; abs32 RWX.&rdquo;<br><br>Please correct any other mistaken descriptions, like the one above, in the same way.
+</P>
+
+<HR>
+<H3><A name="note32-05" id="note32-05">Note 32-05: (DevEnv) Added a resource data conversion tool for the ENV library</A></H3>
+<P>Added the xml2env tool to convert resource data for the ENV library written in XML format to the C Source file format, and the init2env tool for  converting resource data for the ENV library written in INIT format to the C Source file format.
+</P>
+
+<HR>
+<H3><A name="note32-06" id="note32-06">Note 32-06: (DevEnv) Corrected the NITRO-SDK Package creation script</A></H3>
+<P>In the NITRO SDK 3.0 PR - 3.0 PR4 packages, there was a flaw in the script used when creating packages causing a problem where the THUMB version ichneumon components did not operate correctly.<br>This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note32-07" id="note32-07">Note 32-07: (DevEnv) Changed the version of CodeWarrior used for SDK package build</A></H3>
+<P>(DevEnv) Changed the version of CodeWarrior used for SDK package build to 1.2SP1.<br>Also made it so the build numbers of the CodeWarrior compiler and linker used to build to $NitroSDK/include/nitro/version.h are recorded.
+</P>
+
+<HR>
+<H3><A name="note32-08" id="note32-08">Note 32-08: (DevEnv) Added a reference to the compile target</A></H3>
+<P>Added an explanation of the compile target to the function information in the function reference.
+</P>
+
+<HR>
+<H3><A name="note32-09" id="note32-09">Note 32-09: (ENV) Added a reference to the ENV library</A></H3>
+<P>Added a reference to the ENV library
+</P>
+
+<HR>
+<H3><A name="note32-10" id="note32-10">Note 32-10: (ENV) Changed the ENV library</A></H3>
+<P>Changed the ENV_Init function features and added a new ENV_AppendResourceSet function. Until now, it has been delivering ENVResource as an argument to the ENV_Init function, but now several ENVResources can be registered.
+</P>
+
+<HR>
+<H3><A name="note32-11" id="note32-11">Note 32-11: (GX) Corrected the G3BS_LoadMtx43 function</A></H3>
+<P>There was a bug where the condition parameters of the ASSERT being used by G3BS_LoadMtx43 were wrong.  This has been corrected.
+</P>
+
+<HR>
+<H3><A name="note32-12" id="note32-12">Note 32-12: (GX) Further corrections to Sub_Double3D sample demo.</A></H3>
+<P>The following correction was made to the <code>$NitroSDK/build/demos/gx/UnitTours/Sub_Double3D</code> sample demo:<br> The correction described in <a href="changelog.html#note29-02">Note 29-02</a> was not complete and the same symptoms still appeared occasionally. The problem was corrected again, and explanations were added as comments to the SwapBuffers command and the geometry engine.
+</P>
+
+<HR>
+<H3><A name="note32-13" id="note32-13">Note 32-13: (MATH) Corrected problem with the MATH_QSort  function.</A></H3>
+<P>There was a bug in the MATH_QSort function, and there was a possibility that some values would not line up properly in either ascending or descending order after being sorted.<br>This problem has been corrected.
+</P>
+
+<HR>
+<H3><A name="note32-14" id="note32-14">Note 32-14: (OS) Corrected the HI address calculations for the ARM7-specific WRAM arena</A></H3>
+<P>If the IRQ stack size on the ARM7 side was set to 0 or negative, the domain was determined by the first position in WRAM. The cause was a mistake in the HI address calculations of the ARM7 specific WRAM arena.<br>It should have been based on the end of a program domain which occupies the first position of WRAM.<br>After being corrected, they calculate properly.<br><br> However, since the stack area specification is defined with a positive value in the previous mongoose and ichneumon, there is no difference in operation whether it is of before or after the correction.<br> Since mongoose and ichneumon of SDK attachments are used in usual game applications, they are not influenced by this change.
+</P>
+
+<HR>
+<H3><A name="note32-15" id="note32-15">Note 32-15: (OS) Created the OS_GetTotalOccupiedSize function</A></H3>
+<P>Added the OS_GetTotalOccupiedSize function that gets the memory size used in the heap.<br>The OS_GetTotalAllocSize function which existed until now had totaled the size of the data area of the memory block currently used, but the OS_GetTotalOccupiedSize function added this time is also adds the size of the header portion of the memory block.
+</P>
+
+<HR>
+<H3><A name="note32-16" id="note32-16">Note 32-16: (OS) Corrected the OS_PutString function.</A></H3>
+<P>When the FINALROM is built, the OS_PutString function was transposed to the uninfluential code, but the dead strip of the argument was not performed. This was corrected, and now none of this function is performed, but the dead strip of the argument is made.
+</P>
+
+<HR>
+<H3><A name="note32-17" id="note32-17">Note 32-17: (OS) Added SDK_COMPILER_ASSERT</A></H3>
+<P>Conditions are inspected when compiling, and the SDK_COMPILER_ASSERT macro was added to make a compile error if conditions are not met.
+</P>
+
+<HR>
+<H3><A name="note32-18" id="note32-18">Note 32-18: (OS) Improved the VBlank wait function</A></H3>
+<P>When waiting for a VBlank interrupt using the SVC_WaitVBlankIntr system call, the thread called for this function does not stop, and there is a problem that resources are not opened in threads that are of lower priority than itself while waiting for the interruption. The cause is an internal correction in the system call, so the OS_WaitVBlankIntr function was prepared as an alternative that stops the tread while waiting for a VBlank interruption. Also, the SVC_WaitVBlankIntr function which calls the system call was made into a weak symbol, and was corrected so that it could be overwritten by another definition.
+</P>
+
+<HR>
+<H3><A name="note32-19" id="note32-19">Note 32-19: (OS) Changed the argument const of the cache function</A></H3>
+<P>Within the function that takes the memory pointer of a cache operation function starting with DC or IC as an argument, use const for internal operations that don't change the content. <br> The functions that were changed are below:
+<ul>
+<li>DC_StoreRange
+<li>DC_FlushRange
+<li>DC_TouchRange
+<li>DC_LockdownRange
+<li>DC_CleanRange
+<li>DC_CleanAndInvalidateRange
+<li>IC_PrefetchRange
+<li>IC_LockdownRange
+</ul>
+</P>
+
+<HR>
+<H3><A name="note32-20" id="note32-20">Note 32-20: (OS) Corrected the stack overflow check function</A></H3>
+<P>In the check stack overflow functions OS_SstIrqStackWarningOffset and OS_SetThreadStackWarningOffest that set the check code in the middle of the stack, the overflow check code set at the bottom of the stack was being over-written. For this reason, the stack check was not operating correctly; this has been corrected.
+</P>
+
+<HR>
+<H3><A name="note32-21" id="note32-21">Note 32-21: (OS) Support for the argument data buffer switch</A></H3>
+<P>In the ROM image, there is a feature with which you can get argument data embedded with the tool command buryarg from the program using functions such as OS_GetArgv function and OS_GetOpt. This argument data buffer can now be changed in run time. See the OS_SetArgumentBuffer function and the OS_GetArgumentBuffer function. <br> Moreover, in order to create data in the argument data buffer, the OS_ConvertToArguments function changed from a character string was prepared.
+</P>
+
+<HR>
+<H3><A name="note32-22" id="note32-22">Note 32-22: (OS) Corrected the real-time and check value conversion macro</A></H3>
+<P>The Macro that changes the real time and tick values in functions such as OS_SecondsToTicks and OS_TicksToSeconds was corrected. <br>Until this correction, since it was calculating in 32-bit accuracy with a symbol internally, when a slighlty larger argument was specified, overflow occurred and the correct value was not returned. <br><br> The correction contents are as follows.<br> <br> -For Macros used so far, internal operation has been changed to 64 bit.<br> -When you explicitly want to use 32 bit internal operation, the following functions have been prepared:
+<ul>
+<li>OS_SecondsToTicks32 Function
+<li>OS_MilliSecondsToTicks32 Function
+<li>OS_MicroSecondsToTicks32 Function
+<li>OS_TicksToSeconds32 Function
+<li>OS_TicksToMilliSeconds32 Function
+<li>OS_TicksToMicroSeconds32 Function
+</ul>
+   
+</P>
+
+<HR>
+<H3><A name="note32-23" id="note32-23">Note 32-23: (OS) Updated the Chinese version&rsquo;s startup screen</A></H3>
+<P>The Chinese version startup screen displayed with OS_InitChina was updated.
+</P>
+
+<HR>
+<H3><A name="note32-24" id="note32-24">Note 32-24: (OS) Corrected thread cue operations including threads about to terminate</A></H3>
+<P>When a certain thread registered with the thread cue was completed with functions such as OS_DestroyThread or OS_KillThread , the information in the thread was removed from thread cue. This includes when that certain thread ends another thread while waiting for it to end in the OS_JoinThread function.<br> Until now, deleted thread information remained in the thread cue, so when the OS_WakeupThread function was used to make all threads in the cue executable, the deleted threads were also included. This caused a bug in the thread list status. This was corrected this time.
+</P>
+
+<HR>
+<H3><A name="note32-25" id="note32-25">Note 32-25: (PRC) Corrected the sample tool &ldquo;pdic2c.pl&rdquo;</A></H3>
+<P>The pdic2c.pl sample tool used together with the PRC demo was in an old format. This has been corrected. Also, an option has been added to output header files and source files to separate files.
+</P>
+
+<HR>
+<H3><A name="note32-26" id="note32-26">Note 32-26: (RTC) Changed the method for getting RTC day of the week information</A></H3>
+<P>When data including the day of the week is read from RTC, it will now return the day of the week calculated from the date. Until now, the value stored in RTC was returned as-is, but after passing the latest date that can be displayed by RTC - 12/31/2099 23:59 - the day of the week information was wrong until the RTC was re-set.
+</P>
+
+<HR>
+<H3><A name="note32-27" id="note32-27">Note 32-27: (SND) Corrected a problem where the SND_CalcDecibel function would not return a suitable value when the argument 0 had been entered</A></H3>
+<P>With the function SND_CalcDecibel (or SND_CalcDecibelSquare), -723 has been returned when the argument is set at 0, but this was corrected to return -32768.<br> Until now, when using the volume modulation, sound could still be heard even if the player volume had been set to 0.<br> This problem was fixed.
+</P>
+
+<HR>
+<H3><A name="note32-28" id="note32-28">Note 32-28: (STD) Added STD library</A></H3>
+<P>Created an STD library to handle the string operation related API group. The following functions are included in the STD library:
+<ul>
+<li>STD_CopyString (STD_StrCpy)
+<li>STD_CopyLString (STD_StrLCpy)
+<li>STD_SearchString (STD_StrStr)
+<li>STD_GetStringLength (STD_StrLen)
+<li>STD_ConcatenateString (STD_StrCat)
+<li>STD_CompareString (STD_StrCmp)
+<li>STD_CompareNString (STD_StrNCmp)
+<li>STD_CompareLString (STD_StrLCmp)
+<li>STD_TSScanf
+<li>STD_TVSScanf
+</ul>
+The functions in the () such as STD_StrCpy are defined as others names for the functions on the left such as STD_CopyString.
+</P>
+
+<HR>
+<H3><A name="note32-29" id="note32-29">Note 32-29: (WBT) Corrected a problem with GetBlock request notifications</A></H3>
+<P>Originally, there was a problem that the system callback notification WBT_CMD_REQ_GET_BLOCK_DONE, which whould only be generated when a partner's WBT_GetBlock function finishes, was being generated by the WBT_GetBlockInfoi as well. This was fixed so it won't be generated. Applications that do not use this notification have no problems.
+</P>
+
+<HR>
+<H3><A name="note32-30" id="note32-30">Note 32-30: (WBT) Revised the WFS sample module</A></H3>
+<P>We fixed the following problems with the WFS sample module compiled in $NitroSDK/build/demos/wireless_shared/wfs.
+<ul>
+<li>When WFS_Init is called multiple times, the function would return still in the interrupt prohibit state. This bug has been fixed.
+<li>Changed the internal work memory that has been statically resident so that it is allocated from the allocator when the WFS_Init function is called.
+<li>This was corrected because WM_PORT_BT reserved by SDK as a port number was used in the various sample demonstrations using WFS.
+</ul>
+</P>
+
+<HR>
+<H3><A name="note32-31" id="note32-31">Note 32-31: (WM) Updated the WM test tool</A></H3>
+<P>Made the channel information on the same parent device change when WMTestToll.srl Scans.
+</P>
+
+<HR>
+<H3><A name="note32-32" id="note32-32">Note 32-32: (WM) Corrected the WM_SetLifeTime function&rsquo;s reference description</A></H3>
+<P>There was a mistake in the description in the WM_SetLifeTime function reference. This was corrected. The description said that the frame lifetime default value was &quot;no lifetime,&quot; but the correct description is &quot;beacon interval x 5.&quot;
+</P>
+
+<HR>
+<H3><A name="note32-33" id="note32-33">Note 32-33: (WM) improved mongoose components</A></H3>
+<P>When mongoose is used as an ARM7 component, there is a problem that access to the ARM9 main memory during the asymmetric operation to transition the state of the WM library is prevented considerably. This problem has been solved by improving the mongoose component. Note that this problem was not necessarily solved, but improved.
+</P>
+
+<HR>
+<H3><A name="note32-34" id="note32-34">Note 32-34: (WM) Added information to be notified to the port receive callback</A></H3>
+<P>Added the connectedAidBitmap field to the WMPortRecvCallback. The AID bitmap during the current connection is stored.
+</P>
+
+<HR>
+<H3><A name="note32-35" id="note32-35">Note 32-35: (WM) Added notification when the port receive callback initializes</A></H3>
+<P>WM_STATECODE_PORT_INIT was added to WMStateCode, and it was changed so that the port receive callback in this state code is called when WM_SetPortCallback is called. This is assuming the initialization operation using the connectedAidBitmap field or myAid field of WMPortRecvCallback is run. In order to maintain the connection notification consistency, keep in mind the call-back call by WM_STATECODE_PORT_INIT also happens during an interrupt prohibited state. <br>Due to this change, there is a possibility that a similar incompatibility to <a href="#note32-38">Note 32-38<a> might appear.
+</P>
+
+<HR>
+<H3><A name="note32-36" id="note32-36">Note 32-36: (WM) Added API for tests</A></H3>
+<P>The test API in the WM library was expanded. These API are for testing and do not normally need to be used. Also, based on this expantion, WMlibrary operations do not change when these are used normally. However, the WMApiid listing type is extended by the addition of API., so keep in mind that programs which depend on the row order of the listing may be affected.
+</P>
+
+<HR>
+<H3><A name="note32-37" id="note32-37">Note 32-37: (WM) Corrected a problem where the wireless connection function stops when a child device calls the WM_EndMP function</A></H3>
+<P>When the parent device was continuing an MP connection, there was a bug that stopped the wireless communication feature after a child device called the WM_EndMP function at a specific time.  This was corrected. This bug appears in SDK versions after 3.0. When wireless communications are ended, the finish callback for wireless-communications-related asymmetric functions will no longer be called. We know the bug happens when several child devices are connected using fake_child. Further, when communications are ended by an operation from the parent device, there is no influence from this bug.
+</P>
+
+<HR>
+<H3><A name="note32-38" id="note32-38">Note 32-38: (WM) Added a disconnection notification for when the local player disconnects</A></H3>
+<P>Until now, when WM functions, such as a WM_DisconnectChildren function, were called clearly and communications were disconnected, the specification was that a disconnection notification was not generated. WM_STATECODE_DISCONNECTED_FROM_MYSELF was added to WMStateCode in the parent which change it to give a disconnection notification.<br> Due to this change, there is a chance that an incompatibility will arise.<br> State codes which may go into the state field of WMStartParentCallback, WMStartConnectCallback, and WMPortRecvCallback are increasing, so use caution when performing processes such as those to stop the execution of programs when a state code other than the known WM_STATECOD_* is received.<br> Also, even if DataSharing clearly disconnects the child from the parent using this notice, it won't stop.<br> <br> The following functions were added with this correspondence.
+<ul>
+<li>WM_GetAID function
+<li>WM_GetConnectedAIDs function
+</ul>
+</P>
+
+<HR>
+<H3><A name="note32-39" id="note32-39">Note 32-39: (WM) Re-corrected internal operations for connecting and disconnecting</A></H3>
+<P>The corrected items released in <a href="changelog.html#note31-24">Note 31-24<a> and <a href="changelog.html#note30-07">Note 30-07<a> did not fully correspond to the problem, so these were re-corrected.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_00_rc" id="KnownIssues_3_00_rc">Known issues in SDK 3.0 RC</A></H3>
+<P>
+<ul>
+<li>The ntexconv in this SDK ($NitroSDK/tools/bin/ntexconv.exe) is an older version than the ntexconv in the TXLib package of the current release. Since SDK only uses ntexconv to create icon images, using an old version does not pose a problem, but there would be a problem if ntexconv was used to create textures.  Please use ntexconv in the latest TXLib package.
+</ul>
+</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_00_pr4" id="sdk_3_00_pr4">¦ NITRO-SDK Version 3.0 PR4</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/09/08)</P>
+</DIV>
+
+<HR>
+<H3><A name="note31-01" id="note31-01">Note 31-01: (CARD) Added CARD_CancelBackupAsync function </A></H3>
+<P>Added the CARD_CancelBackupAsync function as a function for aborting the asynchronous process on the backup device. <br>Also added CARD_RESULT_CANCELED to the CARDResult enumerated values as a result for processes that were aborted with this function.
+</P>
+
+<HR>
+<H3><A name="note31-02" id="note31-02">Note 31-02: (CARD) Corrections to internal processing of FRAM device operations</A></H3>
+<P>When a FRAM device is being used for backup, there was an occasional problem with inconsistency of the hardware internal status. A process was added to deal with this issue.
+</P>
+
+<HR>
+<H3><A name="note31-03" id="note31-03">Note 31-03: (CARD) Added CARD_RESULT_NO_RESPONSE error code </A></H3>
+<P>Added CARD_RESULT_NO_RESPONSE to the CARDResult enumerated values as a result value for backup manipulation functions. <br>This is an error value that was split off of CARD_RESULT_TIMEOUT. It is returned when contact with the card appears to be poor.
+</P>
+
+<HR>
+<H3><A name="note31-04" id="note31-04">Note 31-04: (DevEnv) Support for overlay groups in lsf files </A></H3>
+<P>Added support for overlay groups. <br>The linker assumes that overlays belonging to the same group are located in the same memory region.<br>By specifying mutually exclusive overlay modules as belonging to the same group, it is possible to use the function calls between overlays to detect errors during linking.<br>To maintain compatibility, the group with the same name as the current section name is set if the overlay group specification is omitted.<br>
+</P>
+
+<HR>
+<H3><A name="note31-05" id="note31-05">Note 31-05: (DevEnv) Fixed bug in certain section names of makelcf </A></H3>
+<P>In some cases, if the section description in an lsf file had sections named &quot;existing section name&quot; + &quot;_bss,&quot; such as with &quot;main&quot;and &quot;main_bss,&quot; problems would occur. <br>In addition to &quot;_bss,&quot; the same problem occurred with some text strings, such as &quot;_DATA,&quot; &quot;_BSS.&quot;  <br>This is a lcf.template file problem. <br>We fixed the <CODE>*.lcf.</CODE>template files under <CODE>$NitroSDK/include/nitro/specfiles</CODE>. <br><br> As a result, you can no longer directly reference symbol information about overlays that existed in previous versions.<br> Because there may be problems with applications that directly reference symbols, for now, the *.lcf.template files for the old version is included in $NitroSDK/include/nitro/specfiles/2.x.<br> Overwrite these in $NitroSDK/include/nitro/specfiles as needed. <br> (When building with make, specify the LCFILE_TEMPLATE variable.) <br> <br> The official way to obtain information about overlays is to reference the overlay table using the overlay ID as an index.
+</P>
+
+<HR>
+<H3><A name="note31-06" id="note31-06">Note 31-06: (DevEnv) Revised makelcf </A></H3>
+<P>When an overlay was placed in DTCM, a bug occurred with the arena configuration of the main memory area. This was corrected. <br>We also fixed the ITCM arena configuration for use with a ITCM overlay. <br>We added support for overlays of the extended main memory region, which was not possible previously.
+</P>
+
+<HR>
+<H3><A name="note31-07" id="note31-07">Note 31-07: (DevEnv) Added loadrun, nitrorun tool commands</A></H3>
+<P>loadrun is a command that downloads and runs binary data to the IS-NITRO-EMULATOR. <br>It can be terminated with an operation time or call of the OS_Exit function. <br><br> nitrorun is a script that calls the buryarg command, which embeds argument data in the binary, and the loadrun command at the same time. <br> This allows to execute a binary in a manner similar to passing arguments from the command line.
+</P>
+
+<HR>
+<H3><A name="note31-08" id="note31-08">Note 31-08: (ENV) Added libenv*.a environment resource library </A></H3>
+<P>Added the ENV library, which retrieves a value corresponding to a resource from its resource name. This is used to provide the program with operating environment parameters. Although the library must be recompiled, it is convenient for rewriting parameters and configuring an environment common to several programs.
+</P>
+
+<HR>
+<H3><A name="note31-09" id="note31-09">Note 31-09: (FS) Corrections to the FS_EndOverlay function.</A></H3>
+<P>Due to the operation changes noted in <a href="changelog.html#note28-03">Note 28-03<a>, there was a problem that the destructor for the global object array in the overlay would not start correctly when unloading the overlay. This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note31-10" id="note31-10">Note 31-10: (FS) Corrections to document</A></H3>
+<P>Made numerous corrections to the following document explaining the FS library:
+<ul>
+<li>$NitroSDK/docs/TechnicalNotes/AboutFileSystem.pdf
+</ul>
+</P>
+
+<HR>
+<H3><A name="note31-11" id="note31-11">Note 31-11: (FX) Revised FX_FX64C_TO_F32 macro </A></H3>
+<P>There was a bug in the FX_FX64C_TO_F32 macro, which converted from fx64c to f32 types. It did not return a precise value. <br>This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note31-12" id="note31-12">Note 31-12: (FX) Corrected problem with FX_InvSqrt function</A></H3>
+<P>When the argument passed to the <code>FX_InvSqrt</code> function was above a fixed value the calculation would be incorrect. This problem has been fixed.
+</P>
+
+<HR>
+<H3><A name="note31-13" id="note31-13">Note 31-13: (MB) Added the MB_GetMultiBootDownloadParameter function</A></H3>
+<P>In conjunction with the features added in <a href="changelog.html#note27-22">Note 27-22</a>, a <code>MB_GetMultiBootDownloadParameter</code> function was added to reference the user definition expanded parameters when downloading.
+</P>
+
+<HR>
+<H3><A name="note31-14" id="note31-14">Note 31-14: (NVRAM) Fixed bug with error determination when loading data from NVRAM </A></H3>
+<P>When reading data from NVRAM, the read failed when the target read buffer address exceeded  0x02400000. <br>This problem was corrected.
+</P>
+
+<HR>
+<H3><A name="note31-15" id="note31-15">Note 31-15: (OS) Added reference for debug output functions on ARM7 side.</A></H3>
+<P>Added references for the <code>OS_InitPrintServer</code> and  <code>OS_PrintServer</code> functions, which are used for ARM 7 debug output. Also added that it is not necessary to use these functions in the application.
+</P>
+
+<HR>
+<H3><A name="note31-16" id="note31-16">Note 31-16: (OS) Fixed bug in upper address of DTCM arena </A></H3>
+<P>There was a problem where the upper address of the DTCM arena is determined. <br>This was caused when a negative value was specified for the stack size in the rsf file. <br>This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note31-17" id="note31-17">Note 31-17: (OS) Added reference for NitroStaticInit function.</A></H3>
+<P>Added an explanation of the <code>NitroStaticInit</code> function to the Function Reference, in line with the addition made in <a href="changelog.html#note27-31">Note 27-31</a>.
+</P>
+
+<HR>
+<H3><A name="note31-18" id="note31-18">Note 31-18: (OS) Organized const-type arguments in OSThread-related functions</A></H3>
+<P>In OSThread-related functions, we determined and changed some &quot;OSThread*&quot; type arguments to be defined as &quot;const OSThread*.&quot; <br><br> These are the functions we revised.
+<ul>
+<li>OS_IsThreadTerminated function
+<li>OS_CheckStack Function
+<li>OS_GetThreadPriority Function
+<li>OS_GetThreadDestructor Function
+<li>OS_GetThreadParameter Function
+<li>OS_GetStackStatus Function
+<li>OS_DumpThreadCallTrace Function
+</ul>
+</P>
+
+<HR>
+<H3><A name="note31-19" id="note31-19">Note 31-19: (OS) Added OS_GetOpt function.</A></H3>
+<P>Added OS_GetOpt functionthat makes obtaining strings that start with '-' as program execution options from argument data in binary files convenient (e.g., srl file that were embedded using the buryarg tool command). <br>For execution, the parameters should come after the options. Added code that uses the OS_GetOpt function in the $NitroSDK/build/demos/os/argument-1 sample demo.
+</P>
+
+<HR>
+<H3><A name="note31-20" id="note31-20">Note 31-20: (SND) Optimized the cache disabling process.</A></H3>
+<P>At the place where the <code>DC_InvalidateRange</code> function is called from the Sound library, the specified range was larger than necessary, so corrected this to be an appropriate size. This correction reduces the load of the sound process.
+</P>
+
+<HR>
+<H3><A name="note31-21" id="note31-21">Note 31-21: (WM) Corrected problem in process that detects disconnection during MP communications.</A></H3>
+<P>During MP communications, if the communications partner disappears (e.g., the power gets cut), there is a timeout and notification is made of the disconnection. However, due to a bug in the timeout process, sometimes notification of the disconnection was not made. This problem was corrected.
+</P>
+
+<HR>
+<H3><A name="note31-22" id="note31-22">Note 31-22: (WM) Added scan types that are performed by specifying the matching length of SSID</A></H3>
+<P>Added WM_SCANTYPE_ACTIVE_CUSTOM and WM_SCANTYPE_PASSIVE_CUSTOM to WMScanExParam.scanType to support special usage that limits SSID matching confirmations performed with the WM_StartScanEx function to certain lengths. <br>When these scanType are used, SSID match confirmations will be made only up to the length specified with WMScanExParam.ssidMatchLength. <br>As a result, we changed the WMScanExParam structure.
+</P>
+
+<HR>
+<H3><A name="note31-23" id="note31-23">Note 31-23: (WM) Corrected scan SSID matching length in infrastructure mode</A></H3>
+<P>In infrastructure mode, by specifying SSIDs using WM_StartScanEx during scans, matching confirmation was made for only the first eight bytes.  <br>We modified it so that matching confirmation is taken for the length specified by WMScanExParam.ssidLength.
+</P>
+
+<HR>
+<H3><A name="note31-24" id="note31-24">Note 31-24: (WM) Fixed internal process related to connecting to child.</A></H3>
+<P>In environments where communications status is extremely bad and the child repeatedly tries to connect to the parent, there was a bug that put parent into an abnormal internal state. That bug has been fixed.
+</P>
+
+<HR>
+<H3><A name="note31-25" id="note31-25">Note 31-25: (WM) Added interface that indicates more detailed information about causes of connection failure time</A></H3>
+<P>We added a feature that notifies the status code of the communication partner, which uses a callback function to help analyze the cause of failure when a connection attempting to use WM_StartConnect[Ex] fails. <br>Specifically, we added the wlStatus member to the WMStartConnectCallback structure. <br>During normal usage, there is no need to reference this from the application.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_00_pr4" id="KnownIssues_3_00_pr4">Known problems with SDK 3.0 PR4</A></H3>
+<P>
+<ul>
+<li>We did a test release of the STD library as a library compatible with C standard functions. Currently only some of the functions can be used, but they are not included in the reference.
+</ul>
+</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_00_pr3" id="sdk_3_00_pr3">NITRO-SDK Version 3.0 PR3</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/08/10)</P>
+</DIV>
+
+<HR>
+<H3><A name="note30-01" id="note30-01">Note 30-01: (CARD) Corrected reference to CARD_CheckPulledOut function.</A></H3>
+<P>Added a statement to the <code>CARD_CheckPulledOut</code> function reference indicating that the <code>CARD_LockRom</code> function must be called and CARD-ROM bus needs to be locked before calling this function .
+</P>
+
+<HR>
+<H3><A name="note30-02" id="note30-02">Note 30-02: (CARD)  Argument restriction for CARD_IdentifyBackup function.</A></H3>
+<P>Added a restriction so that <code>CARD_BACKUP_TYPE_NOT_USE</code> cannot be specified as the device type passed to the <code>CARD_IdentifyBackup</code> function. This change was added in 3.0 PR, but it was left out of the changelog.
+</P>
+
+<HR>
+<H3><A name="note30-03" id="note30-03">Note 30-03: (MB) Made corrections to the sample demo.</A></H3>
+<P>The following correction was made to the <code>$NitroSDK/build/demos/mb/cloneboot</code> sample:<br>
+<ul>
+<li>When the <code>ConnectMain</code> function on the parent failed, a reattempt was made without ending the WH module. This bug has been fixed.
+</ul>
+</P>
+
+<HR>
+<H3><A name="note30-04" id="note30-04">Note 30-04: (OS) Added the OS_SetThreadDestructorStack function</A></H3>
+<P>Added the <CODE>OS_SetThreadDestructorStack</CODE> function, which specifies the stack used when a thread destructor is executed. <br>If there is no specification, the stack pointer does not change when its own thread is destroyed. When the thread is destroyed by other threads, the pointer changes to the stack's top address.
+</P>
+
+<HR>
+<H3><A name="note30-05" id="note30-05">Note 30-05: (OS) Alarm cancel process used in OS_Sleep function</A></H3>
+<P>When a thread that was paused with the <CODE>OS_Sleep</CODE> function is destroyed by another thread, the alarm set for the <CODE>OS_Sleep</CODE> function is destroyed. <br>Previously, because the alarm was not destroyed, the unneeded alarm handler was sometimes called or the alarm list was overwritten.
+</P>
+
+<HR>
+<H3><A name="note30-06" id="note30-06">Note 30-06: (WM) Changed process during overload on child</A></H3>
+<P>We changed the processing during overload on the child because of internal processing conditions. This is related to <a href="changelog.html#note29-08">Note 29-08</a>. <br>Previously, when the child side ARM was overloaded and the transmit data settings were not on time, a null response was generated. It was changed to no response. <br>As a side effect, when a child machine is overloaded, the receive processing is skipped. This impairs communications efficiency slightly but reduces the load.
+</P>
+
+<HR>
+<H3><A name="note30-07" id="note30-07">Note 30-07: (WM) Changed internal operations during disconnection process.</A></H3>
+<P>As mentioned in <a href="changelog-oldver.html#note25-22">Note 25-22</a>, internal operation was changed to wait for the signal strength that can send the disconnection notification when disconnecting. But this has been changed to timeout after a set period of time. This corrects those cases where the process did not end when <code>WMTestTool.srl</code> was used to set the Noise rate to 100%.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_00_pr3" id="KnownIssues_3_00_pr3">Known problems with SDK 3.0 PR3</A></H3>
+<P>  None.</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_00_pr2" id="sdk_3_00_pr2">¦ NITRO-SDK Version 3.0 PR2</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/08/04)</P>
+</DIV>
+
+<HR>
+<H3><A name="note29-01" id="note29-01">Note 29-01: (DevEnv) Corrected path for ISD_NITRO_DEBUGGER.</A></H3>
+<P>Corrected the path location that <code>ISD_NITRO_DEBUGGER</code> indicates, which is defined in <code>$NitroSDK/build/buildtools/commondefs.emtype.ISD</code>.
+</P>
+
+<HR>
+<H3><A name="note29-02" id="note29-02">Note29-02: (GX) Further corrections to Sub_Double3D sample demo.</A></H3>
+<P>The following correction was made to the <code>$NitroSDK/build/demos/gx/UnitTours/Sub_Double3D</code> sample demo:<br> The correction described in <a href="changelog.html#note27-15">Note 27-15</a> was not complete and the same symptoms still appeared occasionally. The problem was corrected again.
+</P>
+
+<HR>
+<H3><A name="note29-03" id="note29-03">Note 29-03: (GX) Added the qualifier 'const' to the arguments of the functions that get the status of the display list.</A></H3>
+<P>The contents of the pointer passed to the arguments of the following functions have not been rewritten; however, the <code>const</code> qualifier had not been added to the arguments so <code>const</code> has been added to them.
+<UL>
+<LI><code>G3_GetDLStart</code> function</LI>
+<LI><code>G3_GetDLLength</code> function</LI>
+<LI><code>G3_GetDLSize</code> function</LI>
+</UL>
+</P>
+
+<HR>
+<H3><A name="note29-04" id="note29-04">Note24-04: (OS) Added OS_GetLowEntropyData function.</A></H3>
+<P>We added the <CODE>OS_GetLowEntropyData function</CODE>, which generates and returns different data each time it is executed based on the system status. <br>We also added $NitroSDK/build/demos/os/entropy-1 as a demo.
+</P>
+
+<HR>
+<H3><A name="note29-05" id="note29-05">Note 29-05: (PM) Corrected the return process after LCD has transitioned from OFF state to sleep mode.</A></H3>
+<P>When transitioning from the LCD Off state to sleep mode and then returned, a discrepancy arose between the actual state and the internal state of the GX library. This has been fixed. (Reference:<A href="changelog-oldver.html#note22-23">Note 22-23:(PM) Changed the recovery process after transitioning from LCD OFF state to sleep mode.</A>)
+</P>
+
+<HR>
+<H3><A name="note29-06" id="note29-06">Note 29-06: (WM) Added notification to WM_SetIndCallback function callback </A></H3>
+<P>Added WM_STATECODE_INFORMATION for notification of the callback of WM_SetIndCallback function. This provides a notification containing information about the events occurring internally. <br>The contents of the notification are expressed with the WMIndCallback.reason callback argument. WM_INFOCODE_FATAL_ERROR, which is notified when ignoreFatalError of the WM_StartMPEx function is set to TRUE and a fatal error occurred, is defined as a reason value.
+</P>
+
+<HR>
+<H3><A name="note29-07" id="note29-07">Note 29-07: (WM) Added WM_SetPowerSaveMode function</A></H3>
+<P>Added the WM_SetPowerSaveMode function, which switches to power save mode during infrastructure communication.
+</P>
+
+<HR>
+<H3><A name="note29-08" id="note29-08">Note 29-08: (WM) Corrected problems with return process when ignoreFatalError has been set.</A></H3>
+<P>When the  <code>ignoreFatalError</code> argument of the <code>WM_StartMPEx</code> function is set to TRUE, there should be no auto-disconnect even when a fatal error occurs with the child. However, due to a problem in this process, communications become unavailable after this point. This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note29-09" id="note29-09">Note 29-09: (WM) Changed receive process on child. </A></H3>
+<P>Previously, when a child received an MP frame not addressed to it, the <CODE>WM_StartMP</CODE> function would receive a notification that the &quot;state&quot; was <CODE>WM_STATECODE_MP_IND</CODE> and the <CODE>errcode</CODE> was <CODE>WM_ERRCODE_INVALID_POLLBITMAP</CODE>. This was changed so that no notification is sent at all. <br>The MP ACK frame's <CODE>WM_STATECODE_MPACK_IND</CODE> notification was changed in a similar way. <br>This change does not affect sending and receiving using ports.
+</P>
+
+<HR>
+<H3><A name="note29-10" id="note29-10">Note 29-10: (WVR) Corrected problem with the thumb build version of the ichneumon component</A></H3>
+<P>It was confirmed that programs do not operate when the thumb build version of the ichneumon component is used. This has been corrected.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_00_pr2" id="KnownIssues_3_00_pr2">Known problems with SDK 3.0 PR2</A></H3>
+<P>  None.</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_3_00_pr" id="sdk_3_00_pr">NITRO-SDK Version 3.0 PR</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/07/22)</P>
+</DIV>
+
+<HR>
+<H3><A name="note28-01" id="note28-01">Note 28-01: (Cht) Added Pictocatch demo </A></H3>
+<P>Added sample demo that uses Pictocatch process to <CODE>$NitroSDK/build/demos/cht/catch-min</CODE>. <br>This sample implements only the bare minimum functionality so that it has less code than the previous PictoCatch sample demos.
+</P>
+
+<HR>
+<H3><A name="note28-02" id="note28-02">Note 28-02: (DevEnv) Support for nitro.h precompiled headers </A></H3>
+<P>We added support for precompiled headers for <CODE>$NitroSDK/include/nitro.h</CODE>. <br>The build system precompiles <CODE>$NitroSDK/include/nitro.h</CODE> before the build, and reads the result during building the file. <br>This should result in a faster build. <br>If you want to stop the compilation temporarily, set a value for NITRO_NO_STD_PCHDR.
+</P>
+
+<HR>
+<H3><A name="note28-03" id="note28-03">Note28-03: (FS) Changed the operations of the overlay functions.</A></H3>
+<P>When there was a global object in an overlay to be unloaded that required a destructor, the destructor was called automatically. The operation has been changed so that the destructor is not called.
+</P>
+
+<HR>
+<H3><A name="note28-04" id="note28-04">Note28-04: (GX) Corrected sample demos</A></H3>
+<P>In the <CODE>$NitroSDK/build/demos/gx/UnitTours/2D_Oam_256_16</CODE> sample demo, a bug made the +Control Pad unusable in the FINALROM build. <br>This problem has been corrected.
+</P>
+
+<HR>
+<H3><A name="note28-05" id="note28-05">Note28-05: (MATH) Accelerated the MD5 functions</A></H3>
+<P>Replaced the implementations of the MD5 functions. The code sizes are about half of what they were before, and the functions operate approximately 20% faster compared to the previous implementation. The interface has not been changed. This change was added in 2.2 PR, but it was left out of the changelog.
+</P>
+
+<HR>
+<H3><A name="note28-06" id="note28-06">Note28-06: (OS) Added mechanism to check for stack overflow in IRQ stack. </A></H3>
+<P>Added a mechanism to check for stack overflow in the IRQ mode stack, similar to that in the thread stack. <br>A check code is written at the top and bottom of the stack (or between, if necessary); by checking if these sections are rewritten, it helps to determine if the stack is filled to those points. <br><br>Below are the functions that were added for this purpose.
+<ul>
+<li>OS_SetIrqStackChecker
+<li>OS_SetIrqStackWarningOffset
+<li>OS_CheckIrqStack
+<li>OS_GetIrqStackStatus
+</ul>
+</P>
+
+<HR>
+<H3><A name="note28-07" id="note28-07">Note 28-07: (OS) Added argument support using OS_GetArgc function and OS_GetArgv functions</A></H3>
+<P>A mechanism that allows you to pass argument data to the ROM file, and then obtains this data using the program. <br>You can use the <CODE>$(NitroSDK)/tools/bin/buryarg</CODE> tool to embed argument data and then use the data from a program by using the <CODE>OS_GetArgc</CODE> and <CODE>OS_GetArgv functions</CODE>. By using this feature, you can change the program's execution conditions without compiling. <br>We added a demo that uses this feature. It is called <CODE>$NitroSDK/build/demos/os/argument-1</CODE>. <br><br> This feature is provided for debugging purposes and is invalid in FINALROM builds. 
+</P>
+
+<HR>
+<H3><A name="note28-08" id="note28-08">Note 28-08: (OS) OS_KillThread and OS_KillThreadWithPriority functions added</A></H3>
+<P>We added the <CODE>OS_KillThread</CODE> and <CODE>OS_KillThreadWithPriority</CODE> functions, which terminate other threads. You can select one based on whether you want to set the thread priority when terminating the thread. <br>The difference between <CODE>OS_KillThread</CODE> and <CODE>OS_DestroyThread</CODE> is whether the thread destructor of the terminated thread is called.  <br><br> We added a demo that compares these two functions. It is called <CODE>$NitroSDK/build/demos/os/thread-9</CODE>.
+</P>
+
+<HR>
+<H3><A name="note28-09" id="note28-09">Note 28-09: (OS) Implementation of thread destructors </A></H3>
+<P>We implemented thread destructors that call preset functions when a thread is terminated. <br>The destructors are set using the <CODE>OS_SetThreadDestructor</CODE> function. <br><br> Thread destructors are called under the following circumstances.
+<ul>
+<li>A thread's task is executed until the end.
+<li>A thread is terminated with the OS_ExitThread function.
+<li>A thread is terminated from another thread with the OS_KillThread* function.
+<li>A thread terminates itself using the OS_KillThread* function.
+</ul>
+Thread destructors are not called under the following circumstances.
+<ul>
+<li>A thread is terminated from another thread with the OS_DestroyThread function.
+<li>A thread terminates itself using the OS_DestroyThread function.
+</ul>
+We added a thread destructor demo. It is $NitroSDK/build/demos/os/thread-7.
+</P>
+
+<HR>
+<H3><A name="note28-10" id="note28-10">Note 28-10: (OS) Added user parameters to thread structure</A></H3>
+<P>We added a user parameter member to the OSThread thread structure. <br>The system does not reference or change this area. <br>This may be used for any purpose in each application.  <br>The following functions are for setting and getting thread parameters.
+<ul>
+<li>OS_SetThreadParameter
+<li>OS_GetThreadParameter
+</ul>
+</P>
+
+
+<HR>
+<H3><A name="note28-11" id="note28-11">Note 28-11: (OS) Removed limit on maximum number of threads </A></H3>
+<P>Previously, the maximum number of threads that could be used by the OS at the same time was 16. (Normally 16, but by rewriting the header definitions, 8 to 32 is possible.) This limit was removed. <br>The thread-related APIs have not changed. <br><br> Reflecting this change, we have added two sample demos that create large numbers of threads: <CODE>$NitroSDK/build/demos/os/thread-8</CODE> and <CODE>$NitroSDK/build/demos/os/thread-10</CODE>.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_3_00_pr" id="KnownIssues_3_00_pr">Known issues in SDK 3.0 PR</A></H3>
+<P>  None.</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_2_02_pr" id="sdk_2_02_pr">NITRO-SDK Version 2.2 PR</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2005/07/15)</P>
+</DIV>
+
+<HR>
+<H3><A name="note27-01" id="note27-01">Note 27-01: (CARD) Added the CARD_CheckPulledOut function.</A></H3>
+<P>Added the <code>CARD_CheckPulledOut</code> function, which determines directly from ARM9 without waiting for the notification of the result of the card removal detection process that the ARM7 performs periodically. This function is not needed for normal scenes, where the Card is not being accessed, but in scenes where you need to know  without delay that the Card has been removed, you can use this function instead of <code>CARD_IsPulledOut</code>.
+</P>
+
+<HR>
+<H3><A name="note27-02" id="note27-02">Note 27-02: (CARD) Made compatible with new backup devices.</A></H3>
+<P>Added <code>CARD_BACKUP_TYPE_EEPROM_512KBITS</code> and <code>CARD_BACKUP_TYPE_FRAM_256KBITS</code> to the enum type <code>CARDBackupType</code> so the CARD library can support 512KB EEPROM and 256KB FRAM as backup devices.
+</P>
+
+<HR>
+<H3><A name="note27-03" id="note27-03">Note 27-03: (CTRDG) Corrected cache operations when getting cartridge information</A></H3>
+<P>Corrected the cache operations involved in the reading of the cartridge information region during the execution of the <CODE>CTRDG_Init</CODE> function. Up until now, when the cartridge information such as the maker and game code was obtained, sometimes incorrect values were returned. This problem has been corrected.
+</P>
+
+<HR>
+<H3><A name="note27-04" id="note27-04">Note 27-04: (DevEnv) Added the bin2obj tool</A></H3>
+<P>Added the bin2obj tool for converting binary files into object files. This tool operates the same way as the BinToElf tool in the CodeWarrior for NINTENDO DS package, so you can use either one.
+</P>
+
+<HR>
+<H3><A name="note27-05" id="note27-05">Note 27-05: (DevEnv) Provided support for times where the cygdrive prefix of CYGWIN is not  /cygdrive.</A></H3>
+<P>When a build was performed from the CYGWIN command line, building process failed if the cygdrive prefix was not <code>/cygdrive</code>, the default setting . This has been corrected so that builds are possible when the cygdrive prefix has been changed.
+</P>
+
+<HR>
+<H3><A name="note27-06" id="note27-06">Note 27-06: (DevEnv) Corrected the LCF template.</A></H3>
+<P>In programs that used the LCF template in <code>$NitroSDK/include/nitro/specfiles/ARM9-TS-cloneboot-C.lcf.template</code>, the <code>.sinit</code> sections were not linked and the features of the static initializer could not be used. This problem has been fixed.
+</P>
+
+<HR>
+<H3><A name="note27-07" id="note27-07">Note 27-07: (DevEnv) Corrected problem with the StackSize specification for rsf.</A></H3>
+<P>With <code>StackSize</code> specified in <code>rsf</code> (linker spec file), the specification that subtracts the absolute value from the maximum possible specified size when a negative number was specified for the first parameter was not valid. This has been fixed.
+</P>
+
+<HR>
+<H3><A name="note27-08" id="note27-08">Note 27-08: (DevEnv) Changed the default value for TS_VERSION.</A></H3>
+<P>Changed the default value of the <code>SDK_TS_VERSION</code> constant that indicates the PMIC version. The value was 100 but has been changed to 200. <code>SDK_TS_VERSION</code> = 200 appears in versions E and later for the IS-NITRO-EMULATOR hardware and corresponds to the PMIC version embedded in the Nintendo DS retail product. This change does not alter the internal operations of the NITRO-SDK features, but you should be aware that this could affect applications that use this constant as a build switch for changing the behavior (such as sample demos that use the microphone) . When <code>NITRO_TS_VERSION</code> is specified as the environment variable, <code>SDK_TS_VERSION</code> takes the specified value and not the default value.<br> NITRO-SDK has an OS and an SPI library prepared for every TS_VERSION.<br> This is relevant when the development environment uses the TS breadboard, etc. and has owner information in an old save format. But when the save format is the same as that used for the retail DS system, the library is exactly the same.<br> When the make system is used, the library for linking is selected automatically based on the environment variable. But in a development environment using IDE, you need to manually select which library to link. <br> However, except in cases where the development environment used the TS breadboard, etc., there is really no meaning in selecting a library, and it is OK to use the library that gets linked by default.
+</P>
+
+<HR>
+<H3><A name="note27-09" id="note27-09">Note 27-09: (DevEnv) Changed the #include search path.</A></H3>
+<P>Changed the <code>#include</code> search path when building with <code>Makefile</code> to include the directory of the file that has called <code>#include</code>. If the previous search path is required, enter a specification as <code>MACRO_FLAGS += -cwd proj</code> inside <code>Makefile</code>.
+</P>
+
+<HR>
+<H3><A name="note27-10" id="note27-10">Note 27-10: (FS) Added the functions FS_CreateFileFromMemory and FS_CreateFileFromRom.</A></H3>
+<P>Added the <code>FS_CreateFileFromMemory</code> function and <code>FS_CreateFileFromRom</code> function to treat a specific memory region or Card as a temporary file to open it. Also added the sample demo <code>$NitroSDK/build/demos/fs/file-3</code> that demonstrates the operation of these functions.
+</P>
+
+<HR>
+<H3><A name="note27-11" id="note27-11">Note 27-11: (FS) Added the FS_End function.</A></H3>
+<P>Added the <code>FS_End</code> function to return the state to what it was before the FS library was initialized.
+</P>
+
+<HR>
+<H3><A name="note27-12" id="note27-12">Note 27-12: (FS) Corrected problem with the FS_WaitAsync function.</A></H3>
+<P>When the <code>FS_WaitAsync</code> function was called for a file handle and an asynchronous command was not yet processing in the archive, the archive processing would stop. This problem has been fixed.
+</P>
+
+<HR>
+<H3><A name="note27-13" id="note27-13">Note 27-13: (FS) Corrected problem during overlay unloading.</A></H3>
+<P>When the <code>FS_UnloadOverlay</code> or <code>FS_EndOverlay</code> function unloaded an overlay, the destructor was not called correctly. The problem has been fixed. This applies to objects when all of the following circumstances occur simultaneously:
+<ul>
+<li>Placed in the overlay's <code>*.data</code> section.
+<li>The entity of the destructor is not placed in the overlay.
+</ul>
+</P>
+<HR>
+<H3><A name="note27-14" id="note27-14">Note 27-14: (FX) Corrected problem with the arc tangent functions.</A></H3>
+<P>The arctangent functions below returned incorrect values when the (x,y) slope is extremely close to 1. This has been fixed.
+<ul>
+<li>FX_Atan2
+<li>FX_Atan2Idx
+</ul>
+This applies to (x,y) when the following conditions are met:<br>((x != y) &amp;&amp; (FX_Div(y, x) == FX32_ONE))
+</P>
+
+<HR>
+<H3><A name="note27-15" id="note27-15">Note 27-15: (GX) Corrected the Sub_Double3D sample demo.</A></H3>
+<P>The following correction was made to the <code>$NitroSDK/build/demos/gx/UnitTours/Sub_Double3D</code> sample demo: <br> When double screen 3D and a heavy load process were put together, the image on the upper screen would occasionally instantly wrap around to the bottom screen (or visa-versa).  This problem has been fixed.
+</P>
+
+<HR>
+<H3><A name="note27-16" id="note27-16">Note 27-16: (GX) Corrected problem with ASSERT inside functions that manipulate display lists.</A></H3>
+<P>When the <code>G3C_UpdateGXDLInfo</code> and <code>G3B_UpdateGXDLInfo</code> functions were called from inside functions that manipulate display lists, the ASSERT criterion would be applied when a display list was being created that was the same size as the buffer. This problem has been corrected.
+</P>
+
+<HR>
+<H3><A name="note27-17" id="note27-17">Note 27-17: (MATH) Corrected problem with the MATH_QSort  function.</A></H3>
+<P>When sorting with the <code>MATH_QSort</code> function, in some cases the target array would face over access. This problem has been corrected.
+</P>
+
+<HR>
+<H3><A name="note27-18" id="note27-18">Note 27-18: (MATH)  Accelerated the SHA-1 functions.</A></H3>
+<P>Replaced the implementations of the SHA-1 functions. The code size has hardly changed, but they can operate approximately twice as fast as before. The interface has not been changed.
+</P>
+
+<HR>
+<H3><A name="note27-19" id="note27-19">Note 27-19: (MATH) Added Fast Fourier Transform functions.</A></H3>
+<P>Added functions that perform fast Fourier transforms. Also added the demos <code>$NitroSDK/build/demos/math/fft-1</code> and <code>fft-2</code> to confirm the operation of these functions.
+</P>
+
+<HR>
+<H3><A name="note27-20" id="note27-20">Note 27-20: (MB) Added multiboot-wfs sample.</A></H3>
+<P>Added <code>$NitroSDK/build/demos/mb/multiboot-wfs</code> as a sample of the child in Single-Card Play using the file system via wireless communications.
+</P>
+
+<HR>
+<H3><A name="note27-21" id="note27-21">Note 27-21: (MB) Released the debug use expanded memory region.</A></H3>
+<P>For a child booted with the MB protocol, there was a restriction that prevented the use of expanded memory and forcibly set main memory to 4MB.  The restriction has been removed, enabling use of expanded memory by IS-NITRO-EMULATOR and other hardware that have 8MB of main memory.
+</P>
+
+<HR>
+<H3><A name="note27-22" id="note27-22">Note 27-22: (MB) Added user definition expanded parameters.</A></H3>
+<P>Added the <code>userParam</code> member to the <code>MBGameRegistry</code> structure. Set as much as 32 bytes of any kind of data in this buffer and use the <code>MB_RegisterFile</code> function to allow a Single-Card Play child to reference this data after startup.
+</P>
+
+<HR>
+<H3><A name="note27-23" id="note27-23">Note 27-23: (MI) Corrected problems with the MI_CompressHuffman function and Hufmann compression by ntrcomo.exe.</A></H3>
+<P>The <code>MI_CompressHuffman</code> function and <code>ntrcomp.exe</code> had a bug that sometimes caused abnormal compression of data filled with a single value. This problem has been corrected.
+</P>
+
+<HR>
+<H3><A name="note27-24" id="note27-24">Note 27-24: (OS) Corrected internal operation of <code>OS_Sleep</code> function</A></H3>
+<P>If  the <code>OS_WakeupThreadDirect</code> function was called for a thread that was in the wait state after a call to the <code>OS_Sleep</code> function, after that there would be problems with the alarm process.  That has been fixed.
+</P>
+
+<HR>
+<H3><A name="note27-25" id="note27-25">Note 27-25: (OS) Corrected problem with the OS_TryLockMutex function.</A></H3>
+<P>There were errors in the list operations on mutex stored in the OS when mutex was locked by the <code>OS_TryLockMutex</code> function. As a result, sometimes the <code>OS_UnlockMutex</code> function would cause exceptions, and problems would arise when a thread ended while mutex was still locked. This has been fixed. The <code>OS_LockMutex</code> function (which is different from the <code>OS_TryLockMutex</code> function mentioned) operates normally and has no problems.
+</P>
+
+<HR>
+<H3><A name="note27-26" id="note27-26">Note 27-26: (OS) Added the OS_YieldThread function.</A></H3>
+<P>Added the <code>OS_YieldThread</code> function, which performs thread rescheduling and gives executable threads with the same priority level as the current thread an opportunity to execute.
+</P>
+
+<HR>
+<H3><A name="note27-27" id="note27-27">Note 27-27: (OS) Made internal corrections to initialization process at startup time.</A></H3>
+<P>Corrected the internal processes that confirms the cache has been cleaned/invalidated at program startup time for <I>autoload</I> and at the time of initialization of each segment.
+</P>
+
+<HR>
+<H3><A name="note27-28" id="note27-28">Note 27-28: (OS) Expanded the startup screen process for Chinese-language version.</A></H3>
+<P>The startup screen display process for Chinese language applications can be modified with <code>SDK_WEAK_SYMBOL</code> and made public with the <code>OS_ShowAttentionChina</code> function. Its implementation can be changed by external definitions. <br> In conjunction with this, added the sample <CODE>$NitroSDK/build/demos/os/forChina-fs</CODE> to show how to load the data for images that are only used at startup from the file system without a static link.
+</P>
+
+<HR>
+<H3><A name="note27-29" id="note27-29">Note 27-29: (OS) Corrected problems with flushing of data cache.</A></H3>
+<P>The cause of the bugs mentioned in <a href="changelog-oldver.html#note24-10">Note 24-10</a> and <a href="changelog-oldver.html#note25-16">Note 25-16</a> has been clarified.  Along with this, the internal implementations of the functions <code>DC_FlushRange</code> and <code>DC_FlushAll</code> have been changed so that the CPU flush command is realized. Specifically, a command to wait for the write buffer to be empty had been inserted immediately before the flush command and when returning from the interrupt handler.  This was done in order to avoid the symptoms of the problem, which was that a clean cache line would be invalidated when the flush command was executed when the write buffer was full. The function specifications have not changed.
+</P>
+
+<HR>
+<H3><A name="note27-30" id="note27-30">Note 27-30: (OS) Corrected problem when multiple OSMutex are locked.</A></H3>
+<P>There was a problem with the list process of mutex stored in OSMutex. Specifically, a problem arose when one thread used the <code>OS_LockMutex</code> or <code>OS_TryLockMutex</code> function to lock more than one <code>OSMutex</code> at the same time. This has been fixed. <br>The problem dose not occur when one thread only locks one OSMutex at a time.
+</P>
+
+<HR>
+<H3><A name="note27-31" id="note27-31">Note 27-31: (OS) Added header file-related references.</A></H3>
+<P>Added explanations about the main items and the special features of the NITRO-SDK header files, placing the explanations inside the OS category of the Function Reference. Explanations were added about the following files:
+<ul>
+<li><code>nitro.h</code>
+<li><code>nitro_win32.h</code>
+<li><code>nitro/sinit.h</code>
+<li><code>nitro/code32.h, nitro/code16.h, nitro/codereset.h</code>
+<li><code>nitro/dtcm_begin.h, nitro/dtcm_end.h</code>
+<li><code>nitro/itcm_begin.h, nitro/itcm_end.h</code>
+<li><code>nitro/parent_begin.h, nitro/parent_end.h</code>
+<li><code>nitro/version_begin.h, nitro/version_end.h</code>
+<li><code>nitro/wram_begin.h, nitro/wram_end.h</code>
+<li><code>nitro/version.h</code>
+</ul>
+</P>
+
+<HR>
+<H3><A name="note27-32" id="note27-32">Note 27-32: (RTC) Added functions to convert back and forth between date/time and total passage of seconds.</A></H3>
+<P>Added functions to the RTC category that convert between type <code>RTCDate</code> and <code>RTCTime</code> date/time data and the total number of seconds that have passed since January 1 of the year 2000. Also added functions that convert between type <code>RTCDate</code> data and the total number of days that have passed. The demo that can be used to confirm these operations is <code>$NitroSDK/build/demos/rtc/convert-1</code>.
+</P>
+
+<HR>
+<H3><A name="note27-33" id="note27-33">Note 27-33: (RTC) Added restrictions to APIs for changing date and time.</A></H3>
+<P>APIs have been prepared for debugging purposes that can change the RTC's date and time.  To avoid incorrect use of these APIs in non-debugging applications, a restriction has been introduced that causes any request to write to the RTC to fail if <code>NITRO_FINALROM</code> has been specified. Following are the APIs whose operations have been changed:
+<ul>
+<li>RTC_SetDateTimeAsync
+<li>RTC_SetDateTime
+<li>RTC_SetTimeAsync
+<li>RTC_SetTime
+<li>RTC_SetDateAsync
+<li>RTC_SetDate
+</ul>
+</P>
+
+<HR>
+<H3><A name="note27-34" id="note27-34">Note 27-34: (WBT) Corrected wbt-fs sample demo</A></H3>
+<P>The following correction was made to the sample demo <code>$NitroSDK/build/demos/wbt/wbt-fs</code>: <br> Table memory processed with the FS_LoadTable function would not be released with every connection and disconnection, but instead would continue to be maintained, causing memory leaks.  The problem has been fixed.
+</P>
+
+<HR>
+<H3><A name="note27-35" id="note27-35">Note 27-35: (WBT) Corrected WBT sample demos</A></H3>
+<P>The following revisions were made to the <code>$NitroSDK/build/demos/wireless_shared/wc</code> sample module and the <code>$NitroSDK/build/demos/wbt/wbt-1</code> demo: <br> During continuous MP communications, the wireless parent would unconditionally overwrite the Send buffer when a new child was connected.  Depending on the timing, data would be sent to wireless hardware while data was being loaded to the Send buffer, and this would result in WBT packet mismatches. This problem has been fixed. <br> To fix the problem, a process was added to <CODE>$NitroSDK/build/demos/wbt/wbt-1/src/main.c</CODE> that defines one of three actions for the WBT parent to take based on the information it has on the current child connection situation:<br>  1) If it is the first child, commence MP communications. <br>2) If it is the second or higher child, do nothing. (It is OK to do nothing, since continuous MP communications are taking place.)<br>3) If there is no child, end continuous MP communications.<br><br><br>Since the above process requires information about the disconnection of child units, <CODE>$NitroSDK/build/demos/wireless_shared/wc/wc.c</CODE> has been revised so that a callback is called on the sample side when a child is disconnected.
+</P>
+
+<HR>
+<H3><A name="note27-36" id="note27-36">Note 27-36: (WM) Clarified the specification changes and planned abolition of Key Sharing functions.</A></H3>
+<P>In order to reduce the amount of memory used by WM, the specifications have been changed for these three functions that are almost never used: <code>WM_StartKeySharing</code>, <code>WM_EndKeySharing</code> and <code>WM_GetKeySet</code>.  Along with this change, a fixed buffer for Key Sharing is now secured when WM is initialized. In addition, since the Key Sharing features are scheduled to be abolished at a later date, a section was added to the document asking that programmers instead use the functions <code>WM_StartDataSharing</code>, <code>WM_EndDataSharing</code>, and <code>WM_StepDataSharing</code>.
+</P>
+
+<HR>
+<H3><A name="note27-37" id="note27-37">Note 27-37: (WM) Changed the internal operations of the WM_StartScanEx function.</A></H3>
+<P>It has been determined that when an SSID filter is specified by the <code>WM_StartScanEx</code> function, sometimes the SSID inside the discovered parent information has invalid data that differs from the specified SSID. To deal with this problem, a process has been added inside the WM library that, when necessary, overwrites the filter-specified SSID with the SSID inside the discovered parent information. <br>Note that this only happens when the parent is using infrastructure mode communications and is hiding its SSID.
+</P>
+
+<HR>
+<H3><A name="note27-38" id="note27-38">Note 27-38: (WM) Updated WMTestTool.srl</A></H3>
+<P>Updated the tool that is used for testing wireless communications: <code>NitroSDK/bin/ARM9-TS/Rom/WMTestTool.srl</code>. Up until now, when an access point was discovered during scanning, the message &quot;WLAN AP&quot; was displayed.  That has been changed so that now the SSID is displayed. This was was implemented for both Scan Test mode and ScanEx Test mode.
+</P>
+
+<HR>
+<H3><A name="note27-39" id="note27-39">Note 27-39: (WM) Deterred MP communications when child not connected.</A></H3>
+<P>Up until now, when the wireless communications parent called the <code>WM_StartMP</code> function, it would send an MP frame even if no child was connected.  This has been changed so the parent does not do this. The basic behavior of the port's send/receive callbacks has not changed.
+</P>
+
+<HR>
+<H3><A name="note27-40" id="note27-40">Note 27-40: (WM) Corrected problem with notification when child disconnects</A></H3>
+<P>During MP communications, when the child responded with nothing but NULL and the communications timed out, the notification <code>WM_STATECODE_DISCONNECTED</code> would get posted multiple times to the parent's callback <code>WMStartParentCallback</code>.  This has been fixed. <br>This problem mainly occurred when a child was started by IS-NITRO-DEBUGGER and was paused for a long time during MP communications.
+</P>
+
+<HR>
+<H3><A name="note27-41" id="note27-41">Note 27-41: (WM) Added restriction on number of MP communications per frame.</A></H3>
+<P>Up until now, during continuous communications mode and after communications failed repeatedly, transmissions would just keep on happening.  But in a situation where only empty data is being sent and received, the number of MP communications expands rapidly and the child's data-receiving process cannot keep up.  This can trigger problems. To counter this problem, a restriction has been set that limits the number of MP communications that the parent can send in one frame to 6 (including resends). This restriction is not placed on normal communications.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_2_02_pr" id="KnownIssues_2_02_pr">Known issues in SDK 2.2 PR</A></H3>
+<P>  None.</P>
+
+<HR>
+<P style="text-align: right">Nintendo Technical Support Center</P>
+<BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR>
+
+<BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR>
+
+<BR> <BR> <BR>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

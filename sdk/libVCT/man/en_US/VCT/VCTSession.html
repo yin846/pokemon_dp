@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCTSession</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCTSession</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>
+typedef struct
+{
+    <a href="VCTMode.html">VCTMode</a>         mode;
+    u8              aid;
+    u8              talking;
+    u32             aidBitmap;
+
+    <a href="VCTState.html">VCTState</a>        state;
+    void*           userData;
+} VCTSession;
+</CODE></PRE>
+  </dd>
+</dl>
+<H2>Definition</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD width="30%"><B><I>mode</I></B></TD>
+      <TD width="70%">The session mode (Telephone / Transceiver / Conference).</TD>
+    </TR>
+    <TR>
+      <TD><B><I>aid</I></B></TD>
+      <TD>AID of a talking partner.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>talking</I></B></TD>
+      <TD width="70%">AID of terminals in conversation in Transceiver Mode.</TD>
+    </TR>
+    <TR>
+      <TD><B><I>aidBitmap</I></B></TD>
+      <TD>Bitmap of AID of clients participating in conversation in Transceiver Mode.</TD>
+    </TR>
+    <TR>
+      <TD><B><I>state</I></B></TD>
+      <TD>Current session status.</TD>
+    </TR>
+    <TR>
+      <TD><B><I>userData</I></B></TD>
+      <TD>Used for storing user context.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Description</H2>
+<P>VCTSession is a structure that stores an SSP session.<br>
+One session is necessary for one conversation. Therefore, one session is necessary for Telephone and Transceiver Modes where only one party talks at a time.   Multiple sessions are required in situations where multiple players talk simultaneously, such as Conference Mode. The number of necessary sessions is defined as the number of participating players minus one (X - 1 where X is the number of participating players). In case an interruption request is handled in Telephone Mode, multiple sessions are required.
+</P>
+
+<P>The necessary number of sessions must be provided in advance using <code><a href="VCT_Init.html">VCT_Init</a></code> function.
+
+<h2>See Also</h2>
+<P><CODE>
+<A href="VCT_Init.html">VCT_Init</A>, <A href="VCT_CreateSession.html">VCT_CreateSession</A>
+</CODE></P>
+<H2>Revision History</H2>
+<P>2006/01/25 First release</P>
+</body>
+</html>

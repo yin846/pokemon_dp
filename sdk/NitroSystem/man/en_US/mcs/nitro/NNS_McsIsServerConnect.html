@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsIsServerConnect</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsIsServerConnect</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre><CODE>BOOL NNS_McsIsServerConnect(void);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+<p>None.</p>
+<h2>Return Values</h2>
+<p>Returns TRUE if the MCS server is connected to the Nintendo DS hardware, or FALSE if it is disconnected.</p>
+<H2>Description</H2>
+<p>Returns whether or not the MCS server is in a connected state with the Nintendo DS hardware. However, the value that this function returns is not necessarily in complete synchronization with the MCS server state. Since the state is obtained using the MCS communication features, there is a slight time lag until the state of the MCS server can be determined on the Nintendo DS side.</p>
+<p>A return value of TRUE indicates that the MCS server is connected to the Nintendo DS hardware. A return value of FALSE indicates that either the MCS server has never connected to the Nintendo DS hardware, or that it has become disconnected.</p>
+<p>Since the MCS communication features are being used to obtain the connection state, the function <CODE><a href="NNS_McsOpen.html">NNS_McsOpen</a></CODE> must be used to start communications. The function <CODE><a href="NNS_McsPollingIdle.html">NNS_McsPollingIdle</a></CODE> is also called internally.</p>
+<h2>See Also</h2>
+<p><CODE><a href="NNS_McsOpen.html">NNS_McsOpen</a>, <a href="NNS_McsPollingIdle.html">NNS_McsPollingIdle</a></CODE></p>
+<H2>Revision History</H2>
+<P>01/24/2005 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_BlankScr</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_BlankScr</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx.h&gt;</CODE><BR> <BR> <CODE>void GX_BlankScr(BOOL blank);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">blank</font></strong></em></td>
+<td width="87%">When not <CODE>FALSE</CODE>, the LCD screen will be set to display white</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>When not <CODE>FALSE</CODE>, this function uses the CPU to force termination of the 2D graphics circuit. During a forced blank, the 2D graphics circuit will not access VRAM and the LCD screen will be set to display white. However, the internal HV sync counters are operating even during a forced blank. When the internal HV sync counters change the force blank during the display period, switching from ON to OFF will take place immediately after setting; switching from OFF to ON will take place at the beginning of the third line after the setting.</P>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

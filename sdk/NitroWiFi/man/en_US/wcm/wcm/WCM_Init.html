@@ -1,0 +1,76 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--==========================================================================   Project:  NitroWiFi - WCM - man   File:     WCM_Init.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Log: WCM_Init.html,v $   Revision 1.3  2005/09/02 01:19:24  terui   キープアライブ機能のため、OSアラームを使用することに関して注意書きを追記    Revision 1.2  2005/07/22 13:00:24  terui   "フェーズ"を"状態"に用語統一   履歴の初版日を統一    Revision 1.1  2005/07/20 13:11:10  terui   Initial upload    $NoKeywords: $  ==========================================================================-->
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>WCM_Init</TITLE>
+		<LINK rel="stylesheet" href="../../css/nitro.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>WCM_Init</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;nitroWiFi/wcm.h&gt;
+
+s32   WCM_Init( void* buf , s32 len );
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+			The synchronous function that initializes the WCM library. Call this API once before calling other APIs in the WCM library. If initialization is successful, the internal state of the WCM library becomes <CODE>WCM_PHASE_WAIT</CODE>. Option settings etc. are all initialized to their default settings. Also, to implement the keep-alive functionality, if the OS library's Tick and Alarm features have not been enabled, the OS_InitTick and OS_InitAlarm functions will be called automatically to enable these features. 
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>buf</CODE></STRONG></EM></TD>
+					<TD width="75%">Specifies a pointer to the work buffer used internally by the WCM library.  This work buffer must be 32-byte aligned. After initialization completes without problems, do not use the passed buffer for any other purpose until the WCM library is ended using <A href="WCM_Finish.html"><CODE>WCM_Finish</CODE> function</A>. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>len</CODE></STRONG></EM></TD>
+					<TD>The size of the work buffer specified with <EM><STRONG><CODE><B>buf</B></CODE></STRONG></EM>. Must specify the size larger than <CODE>WCM_WORK_SIZE</CODE>. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<P>
+			Returns one of the following process results. 
+		</P>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_RESULT_SUCCESS</CODE></STRONG></EM></TD>
+					<TD width="75%">Indicates that the initialization process completed without problems.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_FAILURE</CODE></STRONG></EM></TD>
+					<TD>Indicates that initialization failed because the WCM library was already initialized, the passed parameters were invalid, etc. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_RESULT_NOT_ENOUGH_MEM</CODE></STRONG></EM></TD>
+					<TD>Indicates that the passed work buffer is smaller than <CODE>WCM_WORK_SIZE</CODE> and there is not enough memory to run the WCM library. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="WCM_Finish.html">WCM_Finish</A>, <A href="WCM_StartupAsync.html">WCM_StartupAsync</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			09/02/2005 Added text about usage of OS alarm feature. <BR> 07/22/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

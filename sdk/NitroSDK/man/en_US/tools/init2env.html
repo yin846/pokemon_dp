@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>init2env</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">init2env</H1>
+<H2>Description</H2>
+<P><CODE>init2env</CODE> is a tool to convert the resource data for the ENV library written in INIT format to the source file format in C.</P>
+<H2>Using the Library</H2>
+<H3>Start Command</H3>
+<PRE><CODE>% init2env RESOURCE_FILE
+[-o OUTPUT_FILE]</CODE></PRE>
+<P>The resource data written in the INIT format specified by <CODE>RESOURCE_FILE</CODE> is changed to the C source file format and is output with the name <CODE>result.c</CODE>.</P>
+<P>With the <CODE>-o</CODE> option, the output file name can be changed from <CODE>result.c</CODE> to <CODE>OUTPUT_FILE</CODE>.</P>
+
+<BR>
+<P><B>Description example of the resource data for the ENV library in INIT format.</B></P>
+<BR>
+<P>INIT formatted resource data before being changed.</P>
+<BLOCKQUOTE><CODE>&lt;environment1&gt;<BR> [myClass11]<BR> str1    STRING mario<BR> bin1    BINARY 12345678<BR> bin2    BINARY &quot;testbin&quot;<BR> &lt;environment2&gt;<BR> [myClass21]<BR> str1    STRING mario<BR> bin1    BINARY abcd123<BR> bin2    BINARY &quot;test.txt&quot;<BR> [myClass22]<BR> data1   S32    -500<BR> data2   U16    0x8000<BR></CODE></BLOCKQUOTE>
+<BR>
+<P>C Source File formatted Resource Data after being changed.</P>
+<BLOCKQUOTE><CODE>ENVResource myResource1[] = {<BR> &quot;myClass11.str1&quot;,    ENV_STRING( &quot;mario&quot; ),<BR> &quot;myClass11.bin1&quot;,    ENV_BINARY( &quot;12345678&quot; ),<BR> &quot;myClass11.bin2&quot;,    ENV_BINARY( &amp;quottestbin file contents&quot; ),<BR> ENV_RESOUCE_END<BR> };<BR> <BR> ENVResource myResource2[] = {<BR> &quot;myClass21.str1&quot;,    ENV_STRING( &quot;mario&quot; ),<BR> &quot;myClass21.bin1&quot;,    ENV_BINARY( &quot;abcd123&quot; ),<BR> &quot;myClass21.bin2&quot;,    ENV_BINARY( &amp;quottest.txt file contents&quot; ),<BR> &quot;myClass22.data1&quot;,   ENV_S32( -500 ),<BR> &quot;myClass22.data2&quot;,   ENV_U16( 0x8000 ),<BR> ENV_RESOUCE_END<BR> };<BR> <BR> ENVResource* resourceArray[]={ myResource1, myResource2, NULL };</CODE></BLOCKQUOTE>
+
+<P>When the resource type is BINARY, data within <CODE> &quot;&quot; </CODE> is seen as file names and it is possible to make the file contents into data automatically.</P>
+<P>Resource data can be used as is by compiling the generated C source file and the program using ENV together.</P><BR>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/init2env.exe</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="../env/about_env.html">ENV</A></CODE></P>
+<H2>Revision History</H2>
+<P>10/20/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

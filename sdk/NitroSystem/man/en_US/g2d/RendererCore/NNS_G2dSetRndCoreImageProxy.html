@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRndCoreImageProxy</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRndCoreImageProxy</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_RendererCore.h&gt;</CODE></pre>
+<pre><CODE>void NNS_G2dSetRndCoreImageProxy
+    ( 
+        NNSG2dRndCoreInstance*              pRnd,
+        const NNSG2dImageProxy*             pImgProxy, 
+        const NNSG2dImagePaletteProxy*      pPltProxy
+    );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pRnd</font></strong></em></td>
+<td width="87%">[OUT] Renderer core</td>    
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pImgProxy</font></strong></em></td>
+<td width="87%">[IN] Image proxy</td>    
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pPltProxy</font></strong></em></td>
+<td width="87%">[IN] Image palette proxy</td>
+  </tr>
+  
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<p>
+Sets the image proxy that will be referenced when the Renderer core module draws. Unlike with the Renderer module, calling this function inside the begin-end rendering block and changing the image proxy is illegal. This is because the renderer core module calculates parameters with BeginRendering. This function must be called outside of the <code>BeginRendering</code> &mdash; <code>EndRendering</code> block.<BR>
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dInitRndCore.html">NNS_G2dInitRndCore</A><br></CODE>
+
+</p>
+
+<H2>Revision History</H2>
+<P>11/10/2004 Initial version.</P>
+</body>
+</html>

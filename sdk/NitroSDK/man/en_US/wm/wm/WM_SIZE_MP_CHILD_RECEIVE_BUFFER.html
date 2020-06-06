@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_SIZE_MP_CHILD_RECEIVE_BUFFER</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_SIZE_MP_CHILD_RECEIVE_BUFFER</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+WM_SIZE_MP_CHILD_RECEIVE_BUFFER( parentMaxSize, ksFlag );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">parentMaxSize</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the maximum value of the parent send capacity.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">ksFlag</FONT></STRONG></EM></TD>
+<TD width="800"><DEL>A Boolean value that indicates whether to use key sharing.</DEL>This is not used. Specify FALSE.</TD>
+    </TR>
+  </tbody>
+</table>
+<h2>Return Values</h2>
+<p>Returns the size needed for the receive buffer passed as the argument of <A href="WM_StartMP.html"><code>WM_StartMP</code></A>.</p>
+
+<H2>Description</H2>
+<P>This is a function macro that looks for the size as a constant value in the receive buffer that the SDK uses internally for MP communications.</P>
+
+<h2>See Also</h2>
+<P><A href="WM_StartMP.html"><code>WM_StartMP</code></A>, <A href="WM_GetMPReceiveBufferSize.html"><code>WM_GetMPReceiveBufferSize</code></A>, <A href="WM_SIZE_MP_PARENT_RECEIVE_BUFFER.html"><code>WM_SIZE_MP_PARENT_RECEIVE_BUFFER</code></A>, <A href="WM_SIZE_MP_PARENT_SEND_BUFFER.html"><code>WM_SIZE_MP_PARENT_SEND_BUFFER</code></A>, <A href="WM_SIZE_MP_CHILD_SEND_BUFFER.html"><code>WM_SIZE_MP_CHILD_SEND_BUFFER</code></A></P>
+
+<H2>Revision History</H2>
+<P>
+12/08/2005 Deleted a description related to key sharing.<BR>09/09/2004 Added the <EM><STRONG><code>ksFlag</code></STRONG></EM> argument.<BR>08/18/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

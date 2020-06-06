@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>DC_InvalidateRange</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">DC_InvalidateRange</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void DC_InvalidateRange( void* startAddr, u32 nBytes );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>startAddr</STRONG></EM></TD>
+<TD width="87%">Lowest address in the region to be invalidated</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>nBytes</STRONG></EM></TD>
+<TD width="87%">Number of bytes of the region to be invalidated</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Invalidates the data in the specified data cache region.</P>
+<P><em><strong><code>startAddr</code></strong></em> is rounded down to the closest 32-byte boundary. <em><strong><code>startAddr</code></strong></em> + <em><strong><code>nBytes</code></strong></em>, is rounded up to the closest 32-byte boundary.</P>
+<P>The official documentation for the ARM processor sometimes describes <strong>Flush</strong> as the operation that invalidates the data cache, <strong>Clean</strong> as the operation that writes back the data cache and puts it into a clean state, and <strong>Clean and Flush</strong> as the operation that writes back and then invalidates. However, this SDK follows the conventions of the Nintendo&nbsp;GameCube and Nintendo64 by using <strong>Invalidate</strong> for invalidation, <strong>Store</strong> for writeback, and <strong>Flush</strong> for writeback and invalidate operations. &nbsp;</P>
+<H2>Internal Operation</H2>
+<P>Operates register 7 of the system control coprocessor. This function divides the specified range into cache-line units and repeats its operation. Thus the amount of time it takes is proportional to the size of the range.
+</P>
+<H2>See Also</H2>
+<P><CODE><A href="IC_InvalidateAll.html">IC_InvalidateAll</A></code>, <code><A href="IC_InvalidateRange.html">IC_InvalidateRange</A></code>, <code><A href="DC_InvalidateAll.html">DC_InvalidateAll</A></code>, <code><A href="DC_StoreAll.html">DC_StoreAll</A></code>, <code><A href="DC_StoreRange.html">DC_StoreRange</A></code>, <code><A href="DC_FlushAll.html">DC_FlushAll</A></code>, <code><A href="DC_FlushRange.html">DC_FlushRange</A></CODE></P>
+<H2>Revision History</H2>
+<P>
+04/19/2005 Added note explaining that processing time is proportional to the size of the range.<BR>12/22/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

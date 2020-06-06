@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndResizeForMBlockFrmHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_FndResizeForMBlockFrmHeap</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+	  <pre><CODE>u32 NNS_FndResizeForMBlockFrmHeap(
+NNSFndHeapHandle    heap,
+void*               memBlock,
+u32                 size);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">heap</font></strong></em></td>
+<td width="87%">Frame heap handle.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">memBlock</font></strong></em></td>
+<td width="87%">Pointer to the memory block which changes size.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">size</font></strong></em></td>
+    
+<td width="87%">Size (in bytes) of memory block to be changed. If a value less than 4 is specified, it will be processed as though a 4 had been specified.</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p> Returns the size (in bytes) of the changed memory block if the function succeeds. 0 is returned if the function doesn't succeed.</p>
+<H2>Description</H2>
+<p>This changes the size of a memory block allocated from the frame heap. Note that there are conditions regarding the memory blocks whose size can be changed. The following condition must be true.</p>
+<ul>
+<li>The last memory block allocated among the memory blocks allocated from the front of the empty area in the heap.</li>
+</ul>
+<p>Use either the <code>NNS_FndAllocFromFrmHeap()</code> function or the <code>NNS_FndAllocFromFrmHeapEx()</code> function and specify a positive value for the alignment value to allocate a memory block from the front of the empty area in the heap.</p>
+<p>When making the memory block larger than the current size, there must be sufficient empty space for expansion at the end of the memory block. If there is insufficient empty space, the function will fail and 0 will be returned. If the size of the memory block is successfully increased, the size may be larger than desired.</p>
+<p>Decreasing the current size of the memory block, may not be possible if the decrease in size amounts to just a few bytes. In such cases, the size of the current memory block will be returned.</p>
+<P>With this function, there is no check to see if the the value specified using <code>memBlock</code> points to the pointer for the memory block that satisfies the conditions of this function. The behavior is uncertain when a value that does not satisfy the conditions has been specified.</p>
+<p></p>
+<h2>See Also</h2>
+<p><code><a href="NNS_FndAllocFromFrmHeap.html">NNS_FndAllocFromFrmHeap</a>, <a href="NNS_FndAllocFromFrmHeapEx.html">NNS_FndAllocFromFrmHeapEx</a>, <a href="NNS_FndCreateFrmHeap.html">NNS_FndCreateFrmHeap</a>, <a href="NNS_FndCreateFrmHeapEx.html">NNS_FndCreateFrmHeapEx</a></code></p><H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</body>
+</html>

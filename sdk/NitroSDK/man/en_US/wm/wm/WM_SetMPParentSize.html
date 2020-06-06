@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_SetMPParentSize</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_SetMPParentSize</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_SetMPParentSize(
+<A href="WMCallbackFunc.html">WMCallbackFunc</A>  callback ,
+u16             parentSize
+);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">parentSize</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the parent send capacity. This value is rounded up to a multiple of 2.</TD>
+    </TR>
+   </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>Sets the parent send capacity. The send capacity must be a multiple of 2, so if an odd number is designated, it is rounded up so that it is even. This only affects the parent. Be sure to use this function after referring to the &quot;Wireless Communication Library Description&quot; for thorough understanding.</P>
+<P>The parent send capacity is initialized by the <CODE><A href="WM_StartParent.html">WM_StartParent</A></CODE> or <CODE><A href="WM_StartConnect.html">WM_StartConnect</A></CODE> function. This cannot be reset to a value larger than the initial value. In addition, the setting value is overwritten using the value specified by the parent every time an MP sequence is performed on the child.</P>
+<P>This wrapper function calls the <CODE><A href="WM_SetMPParameter.html">WM_SetMPParameter</A></CODE> function internally.</P>
+
+<h2>See Also</h2>
+<P><code><A href="WM_SetMPParameter.html">WM_SetMPParameter</A>, <A href="WM_StartMP.html">WM_StartMP</A>, <A href="WM_SetMPDataToPort.html">WM_SetMPDataToPort</A></code></P>
+
+<H2>Revision History</H2>
+<P>
+12/08/2005 Clearly stated that the send capacity must be an even number.<BR>11/24/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNSG3dJntAnmResult</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG3dJntAnmResult</H1>
+<H2>C Specification</H2>
+<PRE>#include &lt;nnsys/g3d/anm.h&gt;
+
+typedef enum
+{
+NNS_G3D_JNTANM_RESULTFLAG_SCALEONE      = 0x00000001,
+NNS_G3D_JNTANM_RESULTFLAG_ROT_ZERO      = 0x00000002,
+NNS_G3D_JNTANM_RESULTFLAG_TRANS_ZERO    = 0x00000004,
+NNS_G3D_JNTANM_RESULTFLAG_SCALEEX0_ONE  = 0x00000008,
+NNS_G3D_JNTANM_RESULTFLAG_SCALEEX1_0NE  = 0x00000010,
+NNS_G3D_JNTANM_RESULTFLAG_MAYA_SSC      = 0x00000020
+}
+NNSG3dJntAnmResultFlag;
+
+typedef struct NNSG3dJntAnmResult_
+{
+NNSG3dJntAnmResultFlag  flag;
+VecFx32                 scale;
+VecFx32                 scaleEx0;
+VecFx32                 scaleEx1;
+MtxFx33                 rot;
+VecFx32  trans;
+}
+NNSG3dJntAnmResult;</PRE>
+<H2>Description</H2>
+<P>The <code>NNSG3dJntAnmResult</code> structure stores material information relating to the joint's position, direction, and scale. GD3 uses the information stored in this structure to send commands to the Geometry Engine. The structure is created and used during the execution of the <code>NNSi_G3dFuncSbc_NODEDESC</code> function (i.e., when it is called during the SBC's NODEDESC command process). To implement material animation, the <code>NNSi_G3dFuncSbc_NODEDESC</code> function acts internally to set the data stored in this structure in accordance with the animation data. By setting a callback in <A href="../sbc/SBC_NODEDESC.html"><CODE>NNS_G3D_SBC_NODEDESC</CODE></A>, the material's settings can be controlled from the user program by accessing the <CODE>NNSG3dJntAnmResult</CODE> structure via the <A href="../sbc/NNSG3dRS.html"><CODE>NNSG3dRS</CODE></A> structure.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="320">Data Member</TH>
+<TH align="center" width="717">Description</TH>
+    </TR>
+    <TR>
+<TD width="320"><I><B>flag</B></I></TD>
+<TD width="717">The flag of type <code>NNSG3dJntAnmResultFlag</code>.</TD>
+    </TR>
+    <TR>
+<TD width="320"><I><B>scale</B></I></TD>
+<TD width="717">Scale by which joint is multiplied.</TD>
+    </TR>
+    <TR>
+<TD width="320"><I><B>scaleEx0</B></I></TD>
+<TD width="717">Auxiliary scale value. The meaning of this value differs depending on the CG tool. This value normally is not manipulated.</TD>
+    </TR>
+    <TR>
+<TD width="320"><I><B>scaleEx1</B></I></TD>
+<TD width="717">Auxiliary scale value. The meaning of this value differs depending on the CG tool. This value normally is not manipulated.</TD>
+    </TR>
+    <TR>
+<TD width="320"><B><I>rot</I></B></TD>
+<TD width="717">Joint's 3x3 rotation matrix.</TD>
+    </TR>
+    <TR>
+<TD width="320"><B><I>trans</I></B></TD>
+<TD width="717">Joint's parallel transform component.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="320"><code>NNSG3dMatAnmResultFlag</code> Values</TH>
+<TH width="717">Description</TH>
+    </TR>
+    <TR>
+<TD width="320"><CODE>NNS_G3D_JNTANM_RESULTFLAG_SCALE_ONE</CODE></TD>
+<TD width="717">When this flag is set, the value stored in <em><strong><code>scale</code></strong></em> is disabled. All scale components are treated as if <code>FX32_ONE</code> has been entered.</TD>
+    </TR>
+    <TR>
+<TD width="320"><CODE>NNS_G3D_JNTANM_RESULTFLAG_ROT_ZERO</CODE></TD>
+<TD width="717">When this flag is set, the value stored in <em><strong><code>rot</code></strong></em> is disabled. The rotation matrix is treated as a unit matrix.</TD>
+    </TR>
+    <TR>
+<TD width="320"><CODE>NNS_G3D_JNTANM_RESULTFLAG_TRANS_ZERO</CODE></TD>
+<TD width="717">When this flag is set, the value stored in <em><strong><code>trans</code></strong></em> is disabled. All parallel transform components are treated as if <code>0</code> has been entered.</TD>
+    </TR>
+    <TR>
+<TD width="320"><CODE>NNS_G3D_JNTANM_RESULTFLAG_SCALEEX0_ONE</CODE></TD>
+<TD width="717">When this flag is set, <em><strong><code>scaleEx0</code></strong></em> is disabled. All components are treated as <code>FX32_ONE</code>.</TD>
+    </TR>
+    <TR>
+<TD width="320"><CODE>NNS_G3D_JNTANM_RESULTFLAG_SCALEEX1_ONE</CODE></TD>
+<TD width="717">When this flag is set, the value stored in <em><strong><code>scaleEx1</code></strong></em> is disabled. All components are treated as <code>FX32_ONE</code>.</TD>
+    </TR>
+    <TR>
+<TD width="320"><CODE>NNS_G3D_JNTANM_RESULTFLAG_MAYA_SSC</CODE></TD>
+<TD width="717">When this flag is set, this joint is multiplied by Maya's Segment Scale Compensate.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+<P><a href="../list_g3d.html#Kernel">Kernel</a>, <a href="../list_g3d.html#SBC">Rendering Engine</a></P>
+<H2>Revision History</H2>
+<P>10/13/2004 Initial version.</P>
+</BODY>
+
+</HTML>

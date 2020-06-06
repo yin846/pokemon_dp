@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_Init</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_Init</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>void CARD_Init( void );</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+None.
+</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function initializes a CARD module. It must be called at least once before any CARD function is called. However, if you call <code>MB_Init</code> more than once, nothing happens. Note that this function is called from within <code><a href="../../os/init/OS_Init.html">OS_Init</a></code>, so there is no need for an application to call it again.<br> This function generates an asynchronous process thread during initialization processing. This thread is used internally when execution of <code><A href="../rom/CARD_ReadRomAsync.html">CARD_ReadRomAsync</A></code> or other asynchronous function is not possible only with an interrupt handler because of restrictions on arguments or the operating environment. The priority of this thread at initialization is set to <code><A href="../card_thread_priority_default_const.html">CARD_THREAD_PRIORITY_DEFAULT</A></code>. It can be changed with <code><A href="CARD_SetThreadPriority.html">CARD_SetThreadPriority</A></code>. <br>
+</p>
+<h2>See Also</h2>
+<p><code><a href="CARD_IsAvailable.html">CARD_IsAvailable</a>, <a href="../../os/init/OS_Init.html">OS_Init</a></code></P>
+<H2>Revision History</H2>
+04/11/2005 Added description of self-generating asynchronous process thread<br /> 10/18/2004 Added text to the description about <code>OS_Init</code>.<br> 07/05/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

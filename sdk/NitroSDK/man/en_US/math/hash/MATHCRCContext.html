@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATHCRC*Context</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATHCRC*Context</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/math/crc.h&gt;<BR>
+typedef u8  MATHCRC8Context;
+typedef u16 MATHCRC16Context;
+typedef u32 MATHCRC32Context;
+</CODE></PRE>
+  </dd>
+</dl>
+<H2>Description</H2>
+<P>This is the context structure used for CRC calculations. Initialize the structure with <a href="MATH_CRCInit.html"><code>MATH_CRC*Init</code></a>, then use <a href="MATH_CRCUpdate.html"><code>MATH_CRC*Update</code></a> to provide input data and <a href="MATH_CRCGetHash.html"><code>MATH_CRC*GetHash</code></a> to obtain the message digest value. <BR> CRC (Cyclic Redundancy Check:  an error detection method that uses check values.
+</P>
+
+<h2>See Also</h2>
+<P><a href="MATH_ChecksumInit.html"><code>MATH_Checksum*Init</code></a>, <a href="MATH_ChecksumUpdate.html"><code>MATH_Checksum*Update</code></a>, <a href="MATH_ChecksumGetHash.html"><code>MATH_Checksum*GetHash</code></a></P>
+<H2>Revision History</H2>
+<P>
+04/12/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

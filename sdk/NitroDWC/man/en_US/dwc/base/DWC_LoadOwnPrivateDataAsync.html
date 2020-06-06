@@ -1,0 +1,71 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_LoadOwnPrivateDataAsync</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_LoadOwnPrivateDataAsync</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+BOOL DWC_LoadOwnPrivateDataAsync( char* keys, void* param );
+
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function loads its own data that was saved using the <A href="DWC_SavePrivateDataAsync.html"><CODE>DWC_SavePrivateDataAsync</CODE></A> function from the data storage server. The data for loading is specified in <CODE>keys</CODE> and must be a NULL-terminated character string.<BR><CODE>keys</CODE> is written using <CODE>\\</CODE> as a delimiter, as in <CODE>\\name\\stage</CODE>. This allows multiple keys to be loaded at once, as in this example. Once data loading is complete, the load completion notification callback specified by <CODE><A href="DWC_SetStorageServerCallback.html">DWC_SetStorageServerCallback</A></CODE> is called.
+		</P>
+		<P>
+		  When trying to load only non-existent keys or keys saved with the <CODE><A href="DWC_SavePrivateDataAsync.html">DWC_SavePublicDataAsync</A></CODE> function, the callback argument <CODE>success</CODE> becomes FALSE. However, if only some of the specified keys fall into this category, they will not be included in the load data, and the <CODE>success</CODE> argument will be TRUE. 
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>keys</CODE></STRONG></EM></TD>
+					<TD width="75%">Pointer to the key string for the data to be loaded.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>param</CODE></STRONG></EM></TD>
+					<TD>Callback parameter</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">Starting load.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD>Cannot load because either the DS is offline or an error is being generated.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_SavePublicDataAsync.html">DWC_SavePublicDataAsync</A>, <A href="DWC_SavePrivateDataAsync.html">DWC_SavePrivateDataAsync</A>, <A href="DWC_LoadOwnPublicDataAsync.html">DWC_LoadOwnPublicDataAsync</A>, <A href="DWC_LoadOthersDataAsync.html">DWC_LoadOthersDataAsync</A>, <A href="DWC_SetStorageServerCallback.html">DWC_SetStorageServerCallback</A>, <A href="DWCLoadFromServerCallback.html">DWCLoadFromServerCallback</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			02/21/2006 Error corrections<BR>01/18/2006 Initial version<BR>
+		</P>
+
+	</BODY>
+</HTML>

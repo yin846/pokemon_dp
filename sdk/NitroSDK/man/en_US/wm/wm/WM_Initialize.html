@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_Initialize</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_Initialize</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_Initialize(
+void*           wmSysBuf ,
+<A href="WMCallbackFunc.html">WMCallbackFunc</A>  callback ,
+u16             dmaNo
+);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">wmSysBuf</FONT></STRONG></EM></TD>
+<TD width="800">A pointer to the buffer allocated by the calling source. The buffer must have a size of <code>WM_SYSTEM_BUF_SIZE</code> and be 32-byte aligned.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">dmaNo</FONT></STRONG></EM></TD>
+<TD width="800">The DMA number that the WM uses. Use a valid DMA number (0-3).</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>
+Initializes the WM library and starts the wireless hardware If the return value is <code>WM_ERRCODE_OPERATING</code>, a callback is generated after the initialization process is complete. This function changes the WM from the <code>READY</code> state to the <code>IDLE</code> state. Do not free <em><strong><code>wmSysBuf</code></strong></em> until <a href="WM_Finish.html"><code>WM_Finish</code></a> or <a href="WM_End.html"><code>WM_End</code></a> ends successfully. Note that this function calls <a href="WM_PowerOff.html"><code>WM_PowerOff</code></a>, <a href="WM_Disable.html"><code>WM_Disable</code></a>, and <a href="WM_Finish.html"><code>WM_Finish</code></a>. Use these functions separately for low-level control of the termination process.
+</P>
+
+<h2>See Also</h2>
+<p><a href="WM_SetIndCallback.html"><code>WM_SetIndCallback</code></a>, <a href="WM_Reset.html"><code>WM_Reset</code></a>, <a href="WM_End.html"><code>WM_End</code></a>, <a href="WM_Init.html"><code>WM_Init</code></a>, <a href="WM_Enable.html"><code>WM_Enable</code></a>, <a href="WM_PowerOn.html"><code>WM_PowerOn</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callback being called from the interrupt handler.<br>03/02/2005 Added statement about range that can be specified with the dmaNo argument.<br>10/22/2004 Changed type of return value.<br>09/11/2004 Added description about feature division function groups.<br>07/29/2004 Added to Description<br>07/23/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

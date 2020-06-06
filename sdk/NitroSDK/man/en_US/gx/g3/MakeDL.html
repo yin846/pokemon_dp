@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>API Prefix to Create Display List</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">API Prefix to Create Display List</H1>
+<H2>Description</H2>
+<H3>API to Generate Display List (Command String)</H3>
+<TABLE border="0" width="100%">
+  <TBODY>
+    <TR>
+<TH width="75">Prefix</TH>
+<TH>Example</TH>
+<TH>Command String Format</TH>
+<TH>Pointer After Command is Generated</TH>
+    </TR>
+    <TR>
+<TD width="75"><CODE>G3B_</CODE></TD>
+<TD><CODE><CODE>G3B_Vtx()</CODE>, <CODE>G3B_LoadMtx43()</CODE></CODE></TD>
+<TD>Uncompressed</TD>
+<TD>Set pointer ahead</TD>
+    </TR>
+    <TR>
+<TD width="75"><CODE>G3C_</CODE></TD>
+<TD><CODE><CODE>G3C_Vtx()</CODE>, <CODE>G3C_LoadMtx43()</CODE></CODE></TD>
+<TD>Compressed</TD>
+<TD>Set pointer ahead</TD>
+    </TR>
+    <TR>
+<TD width="75"><CODE>G3BS_</CODE></TD>
+<TD><CODE><CODE>G3BS_Vtx()</CODE>, <CODE>G3BS_LoadMtx43()</CODE></CODE></TD>
+<TD>Uncompressed</TD>
+<TD>Do not set pointer ahead</TD>
+    </TR>
+    <TR>
+<TD width="75"><CODE>G3CS_</CODE></TD>
+<TD><CODE><CODE>G3CS_Vtx()</CODE>, <CODE>G3CS_LoadMtx43()</CODE></CODE></TD>
+<TD>Compressed</TD>
+<TD>Do not set pointer ahead</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3>Reference: API to Directly Transfer Command to Geometry FIFO</H3>
+<TABLE border="0" width="100%">
+  <TBODY>
+    <TR>
+<TH width="75">Prefix</TH>
+<TH>Example</TH>
+    </TR>
+    <TR>
+<TD><CODE>G3_</CODE></TD>
+<TD><CODE><CODE>G3_Vtx()</CODE>, <CODE>G3_LoadMtx43()</CODE></CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Description</H2>
+<P>There are four formats for one function for API to generate a display list as shown in the table above. They are distinguished by prefixes. They correspond to four types of situations to generate a display list.</P>
+<H3>Uncompressed Format vs Compressed Format</H3>
+<P>This corresponds to display list formats supported by Nitro hardware. Normally, it is advantageous to use compressed format.</P>
+<UL>
+<LI>Uncompressed
+  <DL>
+<DD>Wastes memory.
+<DD>Processor's generate process is fast.
+  </DL>
+<LI>Compressed
+  <DL>
+<DD>Does not waste memory.
+<DD>In comparison, the generate process is slow. However, as memory access is minimal, it could be fast overall.
+  </DL>
+</UL>
+<H3>Setting Pointer Ahead vs Not Setting Pointer Ahead</H3>
+<P>When generating the command list, keep the current output buffer pointer using the <code>DLInfo</code> structure. This corresponds to whether or not to move this pointer forward to the next output position aftercommand output. Use it according to the rewriting situation.</P>
+<UL>
+<LI>Set pointer ahead
+  <DL>
+<DD>Suitable for generating command list successively
+  </DL>
+<LI>Not set pointer ahead
+  <DL>
+<DD>Suitable for rewriting a part of command list after it is generated.
+  </DL>
+</UL>
+<H2>See Also</H2>
+<P><code><A href="../../mi/dma/MI_SendGXCommand.html">MI_SendGXCommand*</A></code>, <code><A href="G3_BeginMakeDL.html">G3_BeginMakeDL</A></code>, <code><A href="G3_EndMakeDL.html">G3_EndMakeDL</A></code></P>
+<H2>Revision History</H2>
+<P>03/29/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

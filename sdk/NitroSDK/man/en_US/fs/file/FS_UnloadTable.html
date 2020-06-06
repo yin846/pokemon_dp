@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_UnloadTable</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_UnloadTable</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>static inline void*	FS_UnloadTable(void);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+None.
+
+<h2>Return Values</h2>
+<p>If there is a preloaded memory, this function returns its address. If there is no preloaded memory, it returns a value of NULL.</p>
+
+<H2>Description</H2>
+<P>This function frees memory that was preloaded by the <a href="FS_LoadTable.html">FS_LoadTable</a> function to the user. The <a href="../archive_rom_spec.html">ROM archive </a> returns to default status. <BR>
+</P>
+<h2>See Also</h2>
+<p><CODE><a href="FS_LoadTable.html">FS_LoadTable</a></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+09/24/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

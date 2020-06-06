@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_SetLifeTime</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_SetLifeTime</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_SetLifeTime(
+<A href="WMCallbackFunc.html">WMCallbackFunc</A>  callback
+u16             tableNumber ,
+u16             camLifeTime ,
+u16             frameLifeTime ,
+u16             mpLifeTime
+);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">callback</FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">tableNumber</FONT></STRONG></EM></TD>
+<TD width="800">The CAM table number that sets the lifetime.<br />The state of the CAM table is controlled by each communication terminal.<br />In general, specify <code>0xFFFF</code> to batch-set the time-out period for every CAM table.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">camLifeTime</FONT></STRONG></EM></TD>
+<TD width="800">The lifetime of the CAM table with 100 ms resolution. Assigning <code>0xFFFF</code> invalidates the lifetime.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">frameLifeTime</FONT></STRONG></EM></TD>
+<TD width="800">The lifetime of data communications during infrastructure mode and administrative communications related to connecting/disconnecting are specified in terms of the number of beacon intervals. Use a value from 1 through 63, or 0xFFF.<br />Assigning <code>0xFFFF</code> invalidates the lifetime.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">mpLifeTime</FONT></STRONG></EM></TD>
+<TD width="800">The time a parent allows when a child returns NULL continuously during MP communication (in 100 ms units). Or, the time a child is allowed to remain in a state unable to receive MP frames from the parent (in 100 ms units). Assigning <code>0xFFFF</code> invalidates the lifetime.</TD>
+    </TR>
+   </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>
+Sets the communication lifetime (the time until timeout). The function is only executable when the WM is in the <code>IDLE</code> state. If the return value is <code>WM_ERRCODE_OPERATING</code>, a callback is generated after the lifetime setting process is complete. If this function is not called, the default values are 4 seconds for CAM lifetime, 5 beacons for frame lifetime, and 4 seconds for MP communication lifetime.
+</P>
+<P>
+The CAM lifetime is the time communication may be disrupted due to deteriorating communication conditions. On the other hand, the MP communication lifetime is the time allowed for a child to return only NULL (despite good communications with the parent) or the time a child cannot receive MP frames because the parent sends only a beacon. A NULL response is generated if the send data cannot be set because the wireless driver is overloaded. When the child's ARM7 bus freezes, it returns NULL for the MP frames from the parent. In case the child called <code><a href="WM_StartConnect.html">WM_StartConnect</a></code>, but did not call <code><a href="WM_StartMP.html">WM_StartMP</a></code> afterwards, the child returns NULL continuously until the child is disconnected by the MP communication lifetime. Unless there is a specific reason otherwise, call <code><a href="WM_StartMP.html">WM_StartMP</a></code> immediately after <code><a href="WM_StartConnect.html">WM_StartConnect</a></code>. With MP frame, the send cancellation might rarely occur with the parent due to overloading the wireless driver. When the parent's ARM7 bus freezes, the beacon is transmitted automatically, and the parent remains unable to send the MP frame. Also, the MP frame is not sent unless <code><a href="WM_StartMP.html">WM_StartMP</a></code> is called after <code><a href="WM_StartParent.html">WM_StartParent</a></code> (with a parent), and the parent is disconnected from the child by the MP communication lifetime. Unless there is a specific reason otherwise, call <code><a href="WM_StartMP.html">WM_StartMP</a></code> immediately after <code><a href="WM_StartParent.html">WM_StartParent</a></code>.
+</P>
+
+<H2>Revision History</H2>
+<P>
+06/12/2005 Added a description of the frame lifetime. 10/03/2005 Corrected description of the default frame lifetime.<br> 06/08/2005 Added statement about callback being called from the interrupt handler.<br> 03/02/2005 Added statement about range that can be specified with the <EM><STRONG><code>frameLifeTime</code></STRONG></EM> argument.<BR> 11/19/2004 Changed Description for <EM><STRONG><code>mpLifeTime</code></STRONG></EM>.<BR> 11/09/2004 Added <EM><STRONG><code>mpLifeTime</code></STRONG></EM> to arguments.<BR> 10/22/2004 Changed return value type.<BR> 08/11/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

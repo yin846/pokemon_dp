@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCTRequestCode</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCTRequestCode</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>
+typedef enum {
+	VCT_REQUEST_INVITE = 0,
+	VCT_REQUEST_BYE,
+	VCT_REQUEST_CANCEL,
+	VCT_REQUEST_CONTACT,
+	VCT_REQUEST_NOTIFY,
+	VCT_REQUEST_END
+} VCTRequestCode;
+
+</CODE></PRE>
+  </dd>
+</dl>
+<H2>Definition</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD width="30%"><B><I>VCT_REQUEST_INVITE</I></B></TD>
+      <TD width="70%">A request to talk.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_REQUEST_BYE</I></B></TD>
+      <TD width="70%">A request to terminate talking.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_REQUEST_CANCEL</I></B></TD>
+      <TD width="70%">Cancellation of the request to terminate talking.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_REQUEST_CONTACT</I></B></TD>
+      <TD width="70%">A request to talk in Transceiver Mode.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_REQUEST_NOTIFY</I></B></TD>
+      <TD width="70%">A request to send a notice in Transceiver Mode.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Description</H2>
+<P>These are SSP request codes. They are used in the <code><a href="VCT_Request.html">VCT_Request</a></code> function.</P>
+
+<p><b><i>VCT_REQUEST_COTACT</i></b> and <b><i>VCT_REQUEST_NOTIFY</i></b> are used internally; the <code>VCT_Request</code> function should not be called using these codes.</p>
+
+<h2>See Also</h2>
+<P><code><a href="VCT_Request.html">VCT_Request</a></code></P>
+<H2>Revision History</H2>
+<P>2006/01/25 First release</P>
+</body>
+</html>

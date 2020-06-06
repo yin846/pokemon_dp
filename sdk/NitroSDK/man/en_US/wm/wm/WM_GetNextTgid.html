@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_GetNextTgid</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_GetNextTgid</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+u16 WM_GetNextTgid( void );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>None.</p>
+
+<h2>Return Values</h2>
+<p>The first time it is called, it returns a TGID value based on the RTC. After that, it returns the previous return value incremented by 1.</p>
+
+<H2>Description</H2>
+<P>Returns a TGID value that is automatically generated according to the following rules:
+<UL>
+<LI>The first call: Obtains the current RTC time and generates a value based on the formula (minutes * 256 + seconds). <font color="#800000">(Internally, it calls the <CODE><a href="../../rtc/RTC_Init.html">RTC_Init</a></CODE> and <CODE><a href="../../rtc/RTC_GetTime.html">RTC_GetTime</a></CODE> functions.)</font>
+<LI>Thereafter: Increments the previous return value by 1 (If it exceeds 0xFFFF, it returns 0)
+</UL>
+</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="WM_SetParentParameter.html">WM_SetParentParameter</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>
+04/11/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

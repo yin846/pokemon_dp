@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>WMTestTool</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">WMTestTool</H1>
+<H2>Description</H2>
+<code>WMTestTool</code> is a program made to test the DS wireless features. When the program is started, the MAC address is displayed in the lower portion of the screen. The MAC address is the value obtained with <code><a href="../os/ownerInfo/OS_GetMacAddress.html">OS_GetMacAddress</a></code>. The following four items will be displayed on the main menu:
+<TABLE border="1" width="100%">
+  <TBODY>
+	<TR>
+<TD width="200"><strong><font face="Courier New">Scan Test</font></strong></TD>
+      <TD width="800">
+		Can perform a check on the GGID and TGID. <br> Uses <code><a href="../wm/wm/WM_StartScan.html">WM_StartScan</a></code>. When using a wireless LAN access point, the SSID will be displayed in the GGID field.
+      </TD>
+    </TR>
+	<TR>
+<TD width="200"><strong><font face="Courier New">ScanEx Test</font></strong></TD>
+      <TD width="800">
+		Can perform a check on the GGID and TGID. <br> Uses <code><a href="../wm/wm/WM_StartScanEx.html">WM_StartScanEx</a></code>. When using a wireless LAN access point, the SSID will be displayed in the GGID field.
+      </TD>
+    </TR>
+	<TR>
+<TD width="200"><strong><font face="Courier New">MeasureChannel Test</font></strong></TD>
+      <TD width="800">
+		Displays the usage rate of a designated channel. This rate will be a value from 0-100, and larger values indicate more crowding. <br> Uses <code><a href="../wm/wm/WM_MeasureChannel.html">WM_MeasureChannel</a></code>.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><strong><font face="Courier New">Noise Mode</font></strong></TD>
+      <TD width="800">
+		Transmits jamming on a designated channel. <br> Uses a command for non-public testing.
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+
+<H2>Scan Test</H2>
+Select items by pressing Up and Down on the +Control Pad. Pressing Left and Right on the +Control Pad will change the parameters. Start the scan by pressing the A Button, and end it with the B Button.
+<TABLE border="1" width="100%">
+  <TBODY>
+	<TR>
+<TD width="200"><strong><font face="Courier New">Channel</font></strong></TD>
+      <TD width="800">
+		When set to seek, this scans through channels 1, 7, and 13. <br> When a value of 1-13 is designated, only that channel will be searched. <br> However, even in that case the parent devices on a number of neighboring channels may be found.
+	  </TD>
+	</TR>
+	<TR>
+<TD width="200"><strong><font face="Courier New">MaxChannelTime</font></strong></TD>
+      <TD width="800">
+		This is the maximum amount of time to search on a single channel. <br> This time can be configured in the range of 10-300 milliseconds.
+	  </TD>
+	</TR>
+  </TBODY>
+</TABLE>
+
+<H2>ScanEx Test</H2>
+Select items by pressing Up and Down on the +Control Pad. Pressing Left and Right on the +Control Pad will change the parameters. Start ScanEx by pressing the A Button, and end it with the B Button.
+<TABLE border="1" width="100%">
+  <TBODY>
+	<TR>
+<TD width="200"><strong><font face="Courier New">Channel</font></strong></TD>
+      <TD width="800">
+		Designates a channel to scan. <br> When set to 1, 7, or 13, 0x1041 is configured to the channelList of <code><a href="../wm/wm/WMScanExParam.html">WMScanExParam</a></code>. <br> When a value of 1-13 is designated, only that channel will be searched. However, even in that case the parent devices on a number of neighboring channels may be found. <br> When the ScanType is Active, all channels from 1-13 are designated.
+	  </TD>
+	</TR>
+	<TR>
+<TD width="200"><strong><font face="Courier New">MaxChTime</font></strong></TD>
+      <TD width="800">
+		This is the maximum amount of time to search on a single channel. <br> This time can be configured in the range of 10-300 milliseconds. <br> When the ScanType is Active, this value is fixed at 50 milliseconds.
+	  </TD>
+	</TR>
+	<TR>
+<TD width="200"><strong><font face="Courier New">ScanType</font></strong></TD>
+      <TD width="800">
+		Configures the ScanType. <br> Be aware that the DS parent device can only be found in Passive mode.
+	  </TD>
+	</TR>
+  </TBODY>
+</TABLE>
+
+<H2>MeasureChannel Test</H2>
+Select items by pressing Up and Down on the +Control Pad. Pressing Left and Right on the +Control Pad will change the parameters. Start MeasureChannel with the A Button, and end it with the B Button.
+<TABLE border="1" width="100%">
+  <TBODY>
+	<TR>
+<TD width="200"><strong><font face="Courier New">Channel</font></strong></TD>
+      <TD width="800">
+		Designates the channel on which to execute MeasureChannel. <br> Keep in mind that this will have an effect on the usage rates of neighboring channels.
+	  </TD>
+	</TR>
+	<TR>
+<TD width="200"><strong><font face="Courier New">MeasureTime</font></strong></TD>
+      <TD width="800">
+		Configures the scan time (in milliseconds). <br> A value of 10-1000 in increments of 10 can be configured.
+	  </TD>
+	</TR>
+  </TBODY>
+</TABLE>
+
+<H2>Noise Mode</H2>
+Select items by pressing Up and Down on the +Control Pad. Pressing Left and Right on the +Control Pad will change the parameters. Start noise generation with the A Button, and end it with the B Button. Once noise generation has started, the number of times noise is generated or not generated will be displayed.
+<TABLE border="1" width="100%">
+  <TBODY>
+	<TR>
+<TD width="200"><strong><font face="Courier New">Channel</font></strong></TD>
+      <TD width="800">
+		Configures the channel that generates the noise. <br> A value of 1-13 can be configured here. <br> Keep in mind that this will influence a number of neighboring channels.
+	  </TD>
+	</TR>
+	<TR>
+<TD width="200"><strong><font face="Courier New">Noise rate</font></strong></TD>
+      <TD width="800">
+		Configures the noise generation rate. <br> Noise generation or non-generation is determined randomly for each frequency interval. <br> Make sure that this rate is the amount of time that the radio waves are being emitted rather than the strength of those waves. <br> Changes can be made even after noise generation starts. Note that a noise rate of 100% is an extreme case and this state is not sustainable in a real environment.
+	  </TD>
+	</TR>
+	<TR>
+<TD width="200"><strong><font face="Courier New">Frequency</font></strong></TD>
+      <TD width="800">
+		This is the cycle (in milliseconds) that determines whether noise is generated or not generated. A value from 5-50 can be configured here.
+	  </TD>
+	</TR>
+  </TBODY>
+</TABLE>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/bin/ARM9-TS/Rom/WMTestTool.srl</CODE></P>
+
+<H2>See Also</H2>
+
+<H2>Revision History</H2>
+
+<P>
+08/04/2005 Added a note regarding the noise rate. <br> 07/08/2005 Changed the display for the wireless LAN access point.<br> 03/03/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Tick (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Tick (Overview)</H1>
+<H2>Description</H2>
+<P>The tick system is a system for measuring time. The tick system uses one of four 16-bit hardware timers to allow for a 64-bit tick. The tick is a value incremented at regular intervals.</P>
+<HR>
+<P><B>Initialization</B></P>
+<P>Call <code><a href="OS_InitTick.html">OS_InitTick()</a></code> to initialize the tick system. The tick system is required if you want to use the alarm system. Before calling <code><a href="../alarm/OS_InitAlarm.html">OS_InitAlarm()</a></code>, which initializes the alarm system, <code><a href="OS_InitTick.html">OS_InitTick()</a></code> must be called.</P>
+<P>Use <code><a href="OS_IsTickAvailable.html">OS_IsTickAvailable()</a></code> to determine whether or not the tick system can be used.</P>
+<HR>
+<P><B>Obtaining the Tick Value</B></P>
+<P>The <code><a href="OS_GetTick.html">OS_GetTick()</a></code> and <code><a href="OS_GetTickLo.html">OS_GetTickLo()</a></code> functions obtain tick values.</P>
+<P>The hardware timer performs an interrupt each time the 16-bit counter completes a cycle. Whenever that happens, the 48-bit internal counter increments.</P>
+<P>When the user needs a tick value, calling <code><a href="OS_GetTick.html">OS_GetTick()</a></code> returns a 64-bit value. The value consists of the internal counter shifted left by 16 bits, with the current timer value appended to the counter.</P>
+<P><IMG src="image_tick1.gif" border="0"></P>
+<P>The <code><a href="OS_GetTickLo.html">OS_GetTickLo()</a></code> function gets only the 16-bit timer portion. &nbsp;</P>
+<P>The first time <code><a href="OS_InitTick.html">OS_InitTick()</a></code> is called, the tick value will be 0. Thereafter, the tick value will be updated internally using the 16-bit timer-counter and its timer overflow interrupts. &nbsp;Accordingly, if interrupts are disabled for more than one cycle (65536 * <code>OS_SYSTEM_CLOCK</code>/64 Hz or approximately 7.5 frames) of the timer-counter the counter will fail to advance, and the difference between the tick value before and after will be inconsistent.</P>
+<HR>
+<P><B>Configuring the Tick Value</B></P>
+<P>The <code><a href="OS_SetTick.html">OS_SetTick()</a></code> function sets the tick value.</P>
+<P>However, there are times when setting the tick value from the application can cause malfunctions in the alarm system. It is recommended that this configuration not be changed unless absolutely necessary.</P>
+<HR>
+<P><B>The Tick Value and Conversion to Actual Time</B></P>
+<P>One count of the hardware timer is configured to be 64x the system clock (which runs at approximately 33MHz). The tick 1 count that uses the hardware timer 1 count is configured the same way.</P>
+<P>Below is a table of the relationship between the counter value and the actual amount of time that can be used for calculations from this point. As long as these are thought of as 64-bit values, and as long as the tick system is not reset in-game, it can be assumed that the same values will not return during that game.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH>Tick Value</TH>
+<TH>Actual Amount of Time</TH>
+    </TR>
+    <TR>
+      <TD>1</TD>
+<TD>Approximately 64/33514000 seconds</TD>
+    </TR>
+    <TR>
+<TD><code>0x100</code> (one cycle is 8 bits)</TD>
+<TD>Approximately 0.0004887 seconds = Approximately 0.03 frames</TD>
+    </TR>
+    <TR>
+<TD><code>0x10000</code> (one cycle is 16 bits)</TD>
+<TD>Approximately 0.125 seconds = Approximately 7.5 frames</TD>
+    </TR>
+    <TR>
+<TD><code>0x100000000</code> (one cycle is 32 bits)</TD>
+<TD>Approximately 8200 seconds = Approximately 2 hours 17 minutes</TD>
+    </TR>
+    <TR>
+<TD><code>0x10000000000000000</code> (one cycle is 64 bits)</TD>
+<TD>Approximately 1,120,000 years</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> The functions that convert between tick values and actual time are listed below:</P>
+<P>The functions for converting the actual time to the tick value (macro): <CODE><A href="OS_SecondsToTicks.html">OS_MicroSecondsToTicks*(), OS_MilliSecondsToTicks*(), OS_SecondsToTicks*()</A></CODE><BR><BR>The functions for converting the tick value into the actual time (macro): <CODE><A href="OS_TicksToSeconds.html">OS_TicksToMicroSeconds*(), OS_TicksToMilliSeconds*(), OS_TicksToSeconds*()</A></CODE>
+</P>
+<HR>
+<P><B>The Hardware Timer to Use</B></P>
+<P>Timer 0 is used by default. The timer that is being used by the tick system cannot be used by the application. With the OS timer function, the tick is performed by <A href="../debug/SDK_ASSERT.html"><CODE>SDK_ASSERT</CODE></A> at the time of the DEBUG build.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Time">An Overview of OS Functions (Time)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>12/13/2004 Corrected typos<br /> 11/05/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

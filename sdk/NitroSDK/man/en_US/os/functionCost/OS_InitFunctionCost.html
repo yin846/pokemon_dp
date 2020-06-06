@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_InitFunctionCost</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_InitFunctionCost</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_InitFunctionCost( void* buf, u32 size );</CODE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><I><B>buf</B></I></TD>
+<TD>Function cost calculation buffer</TD>
+    </TR>
+    <TR>
+<TD><I><B>size</B></I></TD>
+<TD>Size of the function cost calculation buffer.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This sets the buffer that will be used for function cost calculation, and begins the function cost calculation. After function cost calculation settings are made by calling this function, calculation status will be Enabled. This is the status after <CODE>OS_EnableFunctionCost()</CODE> is called.)</P>
+<P>In order for a function to be calculated, it must be compiled with the <CODE>profile</CODE> feature ON. (When you compile with <CODE>NITRO_PROFILE=TRUE</CODE>, at compile time the <CODE>-profile</CODE> option will be attached and the profile feature will be ON.))
+</P>
+<P>To enable features that are related to function cost calculation, at link time you must include <CODE>libos.FUNCTIONCOST.a</CODE> (in the thumb version <CODE>libos.FUNCTIONCOST.thumb.a</CODE>). To do this, specify <CODE>NITRO_PROFILE_TYPE=FUNCTIONCOST</CODE> as a <CODE>make</CODE> option. You may also write it in the <CODE>makefile</CODE>. However, in the final ROM version (FINALROM) library, it will not do anything.</P>
+<P>An information header <CODE>sizeof(OSFunctionCostInfo) - sizeof(OSFunctionCost) in bytes</CODE> for function cost calculations is stored in the front of the buffer <B><I>buf</I></B>. The size of the information that is stored when the function is called will be <CODE>sizeof(OSFunctionCost)</CODE> bytes. </P>
+<P>If you are using a thread system, buffers are independent for each thread. Therefore, if you want to store cost calculations, you will have to define a separate buffer in each thread.</P>
+<P>To accumulate and display calculation results, accumulate them with <CODE><A href="OS_CalcStatistics.html">OS_CalcStatistics()</A></CODE> or <CODE><A href="OS_CalcThreadStatistics.html">OS_CalcThreadStatistics()</A></CODE>, and then call <CODE><A href="OS_DumpStatistics.html">OS_DumpStatistics()</A></CODE>. </P>
+
+<H2>See Also</H2>
+<P><CODE><A href="OS_CalcStatistics.html">OS_CalcStatistics</A>, <A href="OS_CalcThreadStatistics.html">OS_CalcThreadStatics</A>, <A href="OS_DumpStatistics.html">OS_DumpStatistics</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>06/02/2004 Changed description of the make options <BR>05/18/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

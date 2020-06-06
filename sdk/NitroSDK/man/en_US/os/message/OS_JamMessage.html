@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_JamMessage</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_JamMessage</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>BOOL OS_JamMessage(
+OSMessageQueue*   mq,
+OSMessage         msg,
+s32               flags );
+  </CODE></PRE>
+
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>mq</STRONG></EM></TD>
+<TD width="87%">Pointer to the message queue</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>msg</STRONG></EM></TD>
+<TD width="87%">Transmission message</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>flags</STRONG></EM></TD>
+<TD>When <code>OS_MESSAGE_BLOCK</code> is set, <code>OS_JamMessage</code> blocks the full queue. When <code>OS_MESSAGE_NOBLOCK</code> is set, <code>OS_JamMessage</code> returns whether or not the queue is full.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>
+<code>TRUE</code> is returned when the message is successfully sent. <code>FALSE</code> is returned when the queue is full and <code>OS_MESSAGE_NOBLOCK</code> is specified.
+</P>
+
+<H2>Description</H2>
+<P><code>OS_JamMessage()</code> is similar to <code>OS_SendMessage</code> except that it inserts a message at the beginning of the specified message queue. Call this function when transmitting high priority messages.</P>
+
+<P>If <code>OS_MESSAGE_BLOCK</code> is set in <em><strong><code>flags</code></strong></em> and the queue is full, the thread that called this function is temporarily stopped. It can be restarted by running a reception thread and removing a message from the queue. Be aware that if there are transmission threads of higher priority, they will execute first and may fill up the queue. In this case, this thread will again temporarily stop until an opening in the message queue is made by the reception thread.</P>
+
+<P>When <code>OS_MESSAGE_NOBLOCK</code> is set in <em><strong><code>flags</code></strong></em>, the called thread is returned to immediately. When the queue is not full, <code>TRUE</code> is returned. If the queue is full, <code>FALSE</code> is returned.</P>
+<H2>See Also</H2>
+<P><code><a href="OS_InitMessageQueue.html">OS_InitMessageQueue</a></code>, <code><a href="OS_SendMessage.html">OS_SendMessage</a></code>, <code><a href="OS_ReceiveMessage.html">OS_ReceiveMessage</a></code></P>
+<H2>Revision History</H2>
+<P>12/01/2003 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

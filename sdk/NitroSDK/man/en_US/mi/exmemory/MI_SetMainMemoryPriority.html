@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>MI_SetMainMemoryPriority</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">MI_SetMainMemoryPriority</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>void MI_SetMainMemoryPriority( MIProcessor proc );</CODE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>proc</STRONG></EM></TD>
+<TD width="87%">Access priority setting</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function sets the priority for access to the main memory. It sets the priority for instances when both ARM9 and ARM7 are accessed simultaneously. The argument <EM><STRONG><code>proc</code></STRONG></EM> is in <CODE>MIProcessor</CODE> enumeration format and has the following meanings:</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#e0e0e0"><CODE>MI_PROCESSOR_ARM9</CODE></TD>
+<TD bgcolor="#e0e0e0">Gives priority to ARM9.</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#e0e0e0"><CODE>MI_PROCESSOR_ARM7</CODE></TD>
+<TD bgcolor="#e0e0e0">Gives priority to ARM7.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Internal Operation</H2>
+<P>Accesses the <code>EXMEMCNT</code> I/O register <code>(0x4000204)</code>.</P>
+<H2>See Also</H2>
+<P><A href="MI_GetMainMemoryPriority.html"><code>MI_GetMainMemoryPriority</code></A>, <a href="../dma/MI_DispMemDmaCopy.html"><code>MI_DispMemDmaCopy</code></a>, <a href="../dma/MI_HBlankDmaCopy.html"><code>MI_HBlankDmaCopy</code></a></P>
+<H2>Revision History</H2>
+<P>08/26/2004 Added MI_DispMemDmaCopy to See Also.<br> 12/25/2003 enum name changed to <CODE>MIProcessor</CODE>.<BR> 12/18/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

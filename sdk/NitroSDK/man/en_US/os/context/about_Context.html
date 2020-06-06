@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Context (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Context (Overview)</H1>
+<H2>Introduction</H2>
+<P>The <em>context</em> indicates the internal state of the system at a given time, or the data (structure) stored in that internal state. The context is normally mainly a collection of register values, but it can also contain other information. NitroSDK has a thread system that comprises an assembly of operations to save, switch and reset the context. Below is an explanation of the context information that NitroSDK will save.</P>
+<P>There are functions to initialize the context (<nobr><code><a href="OS_InitContext.html">OS_InitContext()</a></code></nobr>), save the existing context (<nobr><code><a href="OS_SaveContext.html">OS_SaveContext()</a></code></nobr>), load the context (<nobr><code><a href="OS_LoadContext.html">OS_LoadContext()</a></code></nobr>), and a function for debugging (<nobr><code><a href="OS_DumpContext.html">OS_DumpContext()</a></code></nobr>). But because the thread system handles these functions, the user seldom calls them directly.</P>
+<HR>
+<P><B>Context Information</B></P>
+<BLOCKQUOTE>The context structure <code>OSContext</code> is defined as in the example below: <BR>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD>
+<PRE>
+typedef struct OSContext<BR>
+{<BR>    u32 cpsr;<BR>    u32 r[13];<BR>    u32 sp;<BR>    u32 lr;<BR>    u32 pc_plus4;<BR>
+#ifdef SDK_CONTEXT_HAS_SP_SVC<BR>    u32 sp_svc;<BR>
+#endif<BR>
+#ifdef SDK_ARM9<BR>    CPContext cp_context;<BR>
+#endif<BR>
+} OSContext;
+</PRE>
+</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR> <BR> <B>CPSR</B> The Current Program Status Register<BR>A region that stores the register where the status of flags and interrupt states.</BLOCKQUOTE>
+<BLOCKQUOTE><B>r[13]</B> The region for storing general-use registers R0 to R12.</BLOCKQUOTE>
+<BLOCKQUOTE><B>sp</B> The region for storing the stack pointer (R13)</BLOCKQUOTE>
+<BLOCKQUOTE><B>lr</B> The region for storing the link register (R14)</BLOCKQUOTE>
+<BLOCKQUOTE><B>pc_plus4</B> The region for storing the value of the program counter (PC) To execute from the next command when the context is reset, the PC value is incremented by 4 and stored here.</BLOCKQUOTE>
+<BLOCKQUOTE><B>sp_svc</B> Can be included or excluded according to the definitions during compilation. The value for the stack pointer for SVC (supervisor call) mode is entered here.</BLOCKQUOTE>
+<BLOCKQUOTE><B>cp_context</B> The status of the arithmetic coprocessor Includes the states of the divider and the square rooter. The arithmetic unit is designed to move to the appropriate state even if the context is switched. Since the ARM7 has neither a divider nor a square rooter, this member of the context structure only exists for the ARM9. It is defined as follows:<BR>
+<BLOCKQUOTE>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD>
+<PRE>
+typedef struct CPContext
+{
+u64     div_numer;
+u64     div_denom;
+u64     sqrt;
+u16     div_mode;
+u16     sqrt_mode;
+} CPContext;
+</PRE>
+</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Context">List of OS Functions (Context)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>12/13/2004 Corrected typos<br /> 11/05/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

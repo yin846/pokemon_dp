@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>loadrun</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">loadrun</H1>
+<H2>Description</H2>
+
+<P><CODE>loadrun</CODE> is a tool for downloading and executing specified binary data on devices, such as IS-NITRO-EMULATOR. This tool can execute quickly from command line because there is no need to run the debugger.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% loadrun [OPTION]... [NITROSRLFILE]</CODE></P>
+<P><CODE>NITROSRLFILE</CODE> is the ROM file to execute. srl files can be specified.</P>
+<P>Specifying the option <CODE><B>-L</B> or <B>--list</B></CODE> will display a list of identifiable devices that are currently connected. An example of a list that may display is given below.</P>
+<BLOCKQUOTE><CODE>---- Connected devices: <BR> 0: [NITROUSB]  IS-NITRO-EMULATOR serial:04070680<BR> 1: [NITROUSB]  IS-NITRO-EMULATOR serial:04070682<BR> 2: [NITROUSB]  IS-NITRO-EMULATOR serial:04070683<BR> 3 device(s) found.</CODE></BLOCKQUOTE>
+<P><CODE>serial</CODE> is the serial number specified by using the <CODE>-s</CODE> option. <CODE>[NITROUSB]</CODE> is a device type. If NITRO-DEBUGGER and other applications are using the device, <CODE>[NITROUSB]</CODE> is set to <CODE>[UNKNOWN]</CODE>.</P>
+<P>If <CODE><B>-l</B> or <B>--lap</B></CODE> is specified, the time from the start of the execution is added to the top of each line as {xx:xx} (minutes: seconds) format when the debug output is output from the ROM file to the display using <CODE>OS_Printf()</CODE>.  An example of this display is given below.</P>
+<BLOCKQUOTE><CODE>{0:01}Program started<BR> {0:01}--- heap init<BR> {0:02}x=14 y=50<BR> {0:04}</CODE></BLOCKQUOTE>
+
+<P>The <CODE><B>-s</B></CODE> and <CODE><B>--serial</B></CODE> options take numeric values as arguments. This option specifies the serial number of the device that will download the srl file. Data is downloaded to the device with that specified serial number. Although an unlikely case, if more than one device has the same serial number, data will be downloaded to the first device found. Note that if a serial number such as 04070680 is displayed in the device list when using the <CODE>-L</CODE> option, you can omit the initial zero and specify the device using 4070680.</P>
+<P>The <B><CODE>-t</CODE></B> and <B><CODE>--timeout</CODE></B> options take numeric values as arguments. This option is used to specify the display timeout in units of seconds. After executing the srl file and receiving the latest <CODE>OS_Printf()</CODE> data, execution is forced to terminate if more data does not arrive transimitted within the specified amount of time. If zero is specified, no timeout occurs. The same holds if this option is not specified.</P>
+<P>The <CODE><B>-T</B></CODE> and <CODE><B>--exec-timeout</B></CODE> options take numeric values as arguments. This option is used to specify the execution timeout in units of seconds. Execution is forced to terminate if the number of specified seconds has elapsed since execution of the srl file began. If zero is specified, there is no execution timeout. The same holds if this option is not specified.</P>
+<P>The <CODE><B>-a</B></CODE> and <CODE> <B>--abort-string</B></CODE> options specify the character string that ends execution. If the text string specified here appears at the head of the line, execution is forced to terminate. Termination is not determined until a carriage return is found. Gaps of time between displays is fine.</P>
+<P>For example, if the termination character string is  &quot;ABORT,&quot; any of the following</P>
+<BLOCKQUOTE>
+<P><CODE>OS_Printf(&quot;ABORT\n&quot;)<BR> OS_Printf(&quot;ABORTING\n&quot;)<BR> OS_Printf(&quot;ABORT\nQUIT\n&quot;)<BR> OS_Printf(&quot;ABOR&quot;);OS_Sleep(1000);OS_Printf(&quot;T\n&quot;);</CODE></P>
+</BLOCKQUOTE>
+will result in termination, but the following
+<BLOCKQUOTE>
+<P><CODE>OS_Printf(&quot; &#x3000;ABORT\n&quot;)  // Spaces in front<BR> OS_Printf(&quot;ABO\nRT\n&quot;)  // Line break in the middle<BR> OS_Printf(&quot;A B O R T\n&quot;)  // With spaces included so that it the character string is not &quot;ABORT&quot;</CODE></P>
+</BLOCKQUOTE>
+<P>will not cause termination. In addition,</P>
+<BLOCKQUOTE><CODE>OS_Printf(&quot;ABORT&quot;)</CODE></BLOCKQUOTE>
+<P>will not immediately terminate because a line break has not been added. Termination will occur after <CODE>OS_Printf(&quot;\n&quot;)</CODE>, <CODE>OS_Printf(&quot; SOON\n&quot;)</CODE>, or other line feed code is encountered later.</P>
+<P>The <CODE><B>-c</B></CODE> and <CODE><B>--card-slot</B></CODE> options take arguments. ON or OFF may be specified as arguments. This option is used to lock the card slot during execution. OFF is used if unspecified.</P>
+<P>The <CODE><B>-c</B></CODE> and <CODE><B>--cartridge-slot</B></CODE> options take arguments. ON or OFF may be specified as arguments. This option locks the cartridge slot during execution. OFF is used if unspecified.</P>
+
+<P>The <CODE><B>--stdin</B></CODE> option specifies the binary file input that is read from the standard input. In this case, the <CODE>NITROSRLFILE</CODE> is not a required argument in the command.</P>
+<P>If the <CODE><B>-q</B></CODE> or <CODE><B>--quiet</B></CODE> option is specified, quiet mode is used and only error messages will be output. </P>
+<P>If the <B><CODE>-v</CODE></B> or <B><CODE>--verbose</CODE></B> option is specified, detailed descriptions of operations are displayed. </P>
+<P>The <CODE><B>-h</B></CODE> or  <CODE><B>--help</B></CODE> options display simple instructions. </P>
+<P>The <CODE><B>--version</B></CODE> option displays the command version. </P>
+<H3><BR> <BR> Termination Conditions</H3>
+<P>- Calling <CODE><A href="../os/system/OS_Exit.html">OS_Exit()</A></CODE> on the DS will cause the specified text string to be displayed and result in program HALT status. If <CODE>loadrun</CODE> accepts this display text string data, the termination status will be set to the value specified by <CODE><A href="../os/system/OS_Exit.html">OS_Exit()</A></CODE> and <CODE>loadrun</CODE> will terminate. </P>
+<P>- Using an option ends it with the display of a character string specified by the user. </P>
+<P>-Using an option ends it as if the execution time exceeds the execution timeout specified by the user. </P>
+<P>- Using an option ends it as if there is no display for a longer period of time than the display timeout specified by the user. </P>
+<P>- It also terminates if ctrl-C is used to stop the program. </P>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/loadrun.exe</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="buryarg.html">buryarg</A>, <A href="nitrorun.html">nitrorun</A>, <A href="../os/system/OS_Exit.html">OS_Exit</A></CODE></P>
+<H2>Revision History</H2>
+<P>09/05/2005 Deleted device type options.<BR> 08/31/2005  Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

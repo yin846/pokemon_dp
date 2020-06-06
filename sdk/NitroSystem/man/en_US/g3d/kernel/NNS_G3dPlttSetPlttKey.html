@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dPlttSetPlttKey</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dPlttSetPlttKey</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/kernel.h&gt;</CODE></PRE>
+<PRE><CODE>void
+NNS_G3dPlttSetPlttKey(
+NNSG3dResTex*   pTex,
+NNSG3dPlttKey plttKey
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pTex</STRONG></EM></TD>
+<TD width="87%">Pointer to the texture resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>plttKey</STRONG></EM></TD>
+<TD width="87%">Palette key that indicates the memory for the palette</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>Configures the palette key which indicates the memory used to store the palette to the texture resource.</P>
+<P>The palette key is generated using the address and size of the memory for the palette allocated in VRAM. It can be obtained by allocating the memory for the palette using the VRAM manager of the NITRO-System library. The palette key format is the same as for <code>NNSGfdPlttKey</code>.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="NNS_G3dTexSetTexKey.html">NNS_G3dTexSetTexKey</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

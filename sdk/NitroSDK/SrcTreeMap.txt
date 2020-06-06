@@ -1,0 +1,169 @@
+------------------------------------------------------------------------------
+$Id: SrcTreeMap.txt,v 1.22 12/12/2005 04:24:38 okubata_ryoma Exp $
+------------------------------------------------------------------------------
+
+* Source tree directory map
+
+The following is an overall diagram of the source tree.
+First refer to the README file in the docs subdirectory.
+
+$NitroSDK		NITRO-SDK ROOT directory
+   |
+   |----bin		    NITRO Executable binaries
+   |  
+   |----docs		    Documents
+   |     |----README		-  -  SDK release related document (start here)
+   |     |----SDKHowTo		-  -  Description of how to use SDK
+   |     |----SDKRules		-  -  Description of rules related to SDK
+   |     |----SDKTools		-  -  Description of tools related to SDK
+   |     |----TechnicalNotes	-  -  Technical description of SDK
+   |  
+   |----build		    Build directory
+   |      |----buildtools		-  Necessary files for build
+   |      |----buildsetup		-  Dynamically created header files, etc.
+   |      |----demos		-  Demo applications
+   |      |      |  
+   |      |      |----gx			-  -  Graphics (GX) demos
+   |      |      |      |----UnitTours	-  -  -  GX function tests
+   |      |      |         |----DEMOLib	-  -  -  -  GX function test library
+   |      |      |         |----2D_CharBg_1-  -  -  -  GX function test 2D_CharBG_1
+   |      |      |         |----2D_CharBg_2-  -  -  -  GX function test 2D_CharBG_2
+   |      |      |         |----2D_CharBg_3-  -  -  -  GX function test 2D_CharBG_3
+   |      |      |         |----......			...
+   |      |      |         |----......			Many more
+   |      |      |         |----......			...
+   |      |      |  
+   |      |      |----os			-  - OS function demo code
+   |      |      |     |----thread-1	-  -  -  Thread test 1
+   |      |      |     |----thread-2	-  -  -  Thread test 2
+   |      |      |     |----......				...
+   |      |      |     |----......				...
+   |      |      |  
+   |      |      |----pad		-  - PAD function demo code
+   |      |      |      |----padRead	-  -  -  PAD read test
+   |      |      |  
+   |      |      |----template		-  - Framework
+   |      |  
+   |      |----libraries		- Libraries
+   |      |  
+   |      |----tools			- Tools that come with SDK
+   |          |----makelcf		-  - makelcf tool source file
+   |          |----......				...
+   |  
+   |----components	Component files that have been built (mainly for ARM7)
+   |     |----mongoose	- ARM7 standard component mongoose
+   |     |----ichneumon	- ARM7 wireless function extention component ichneumon
+   |     |----.....					...
+   |  
+   |----data		    data files for library
+   |      |----wl_icons		- icon data for wireless strength indication
+   |      |----.....			...
+   |  
+   |----include		    include files
+   |      |----nitro			- Subheader files for nitro
+   |      |     |----cp			-  -  CP  header files
+   |      |     |----gx			-  -  GX/G2/G3 header files
+   |      |     |----hw			-  -  Hardware related definition files
+   |      |     |----init		-  -  crt0 init. process related header files
+   |      |     |----os			-  -  OS  Header files
+   |      |     |----pad		-  -  PAD Header files
+   |      |     |----......				...
+   |      |     |----specfiles		-  -  LCF files, etc.
+   |      |----nitro_wl		- Header files for nitro wireless
+   |  
+   |----man		    Reference manual (html)
+   |      |----en_US			-  English (US)
+   |      |----ja_JP			-  Japanese
+   |  
+   |----lib		    Library create targets
+   |      |----ARM9-TS		-  Main processor (ARM9) library
+   |      |     |----Debug		-  -  debug version
+   |      |     |----Release	-  -  release version
+   |      |     |----Rom		-  -  Final rom version
+   |      |  
+   |      |----NitroSystem		-  Copy of NITRO-SYSTEM library
+   |  
+   |----tools		Tools that come with SDK
+      |----bin		-  All tools that come with SDK
+      |----lib                -  Libraries for tools that come with SDK
+      |----makerom	-  Place to leave makerom related files
+      |----elftobin		-  Place to leave elftobin related files
+
+------------------------------------------------------------------------------
+$Log: SrcTreeMap.txt,v $
+Revision 1.22  2005/12/12 04:24:38  okubata_ryoma
+Fixed log.
+
+Revision 1.21  2005/12/12 04:15:10  okubata_ryoma
+Replaced half-width periods with full-width periods.
+
+Revision 1.20  2005/03/11 02:26:46  terui
+Reorganized for 2.0 release
+
+Revision 1.19  2004/10/05 09:19:42  yasu
+Updates for 2.0 release
+
+Revision 1.18  2004/07/29 04:42:30  yasu
+Added library directory for TS version 
+Added mongoose description
+
+Revision 1.17  2004/06/08 07:58:55  yasu
+add description for ferret
+
+Revision 1.16  2004/05/24 12:37:07  yasu
+add description for $NitroSDK/bin
+
+Revision 1.15  2004/03/30 06:35:50  yasu
+add NitroSystem lib dir
+
+Revision 1.14  2004/02/27 10:12:16  yasu
+Moved to the docs/README directory
+
+Revision 1.13  2004/02/27 07:48:33  yasu
+Integrated ARM7 related directories
+
+Revision 1.12  2004/02/05 12:21:14  yasu
+change SDK prefix iris -> nitro
+
+Revision 1.11  2004/01/20 01:45:19  yasu
+Revision: support version 040120
+
+Revision 1.10  2003/12/11 05:49:13  yasu
+Revision: _template/ -> template/
+
+Revision 1.9  2003/12/03 04:14:06  yasu
+Added description of GX stand-alone test
+
+Revision 1.8  2003/12/02 07:47:10  yasu
+doc directory to beginning of description
+
+Revision 1.7  2003/12/01 11:34:50  yasu
+elftobin related revision
+
+Revision 1.6  2003/11/13 07:10:27  yasu
+Revision: BB -> ARM9-BB, etc
+
+Revision 1.5  2003/11/07 00:35:11  nishida
+Addition: Tool related tree
+
+Revision 1.4  2003/11/05 09:59:51  yasu
+Addition: buildsetup/sp
+Revision: PLATFORM name
+
+Revision 1.3  2003/10/30 12:07:40  yasu
+Revision: in buildsetup
+Subdivision under include
+
+Revision 1.2  2003/10/29 13:21:59  yasu
+Addition and Revision around buildsetup
+
+Revision 1.1  2003/10/28 01:24:20  yasu
+Move from upper level directory to inside $NitroSDK
+
+Revision 1.2  2003/10/24 13:17:56  yasu
+Directory definition for register definition header files.
+
+Revision 1.1  2003/10/24 06:23:23  yasu
+Initial version
+
+------------------------------------------------------------------------------

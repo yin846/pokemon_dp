@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dEndRendering</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dEndRendering</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Renderer.h&gt;</CODE></pre>
+<pre>void NNS_G2dEndRendering();</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+<p>None.
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Call after the renderer drawing. This function must be called after renderer drawing functions (<CODE>NNS_G2dDrawXXX</CODE>) are called. Do not call this function within <CODE>NNS_G2BeginRendering</CODE> and <CODE>NNS_G2EndRendering</CODE> functions. Nested function calls are prohibited.<BR> Restores the internal state that was changed after the drawing.<BR> If the optimization hint flag was set (<CODE>NNS_G2dBeginRenderingEx</CODE> is used), it performs the post-processing of the optimization.<BR>
+                
+The optimization hint flag is reset by this function. In other words, the optimization hint flag is valid only within the renderer's Begin-End rendering block. <BR>
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dBeginRendering.html">NNS_G2dBeginRendering</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>11/10/2004 Revised the description</P>
+<P>05/28/2004 Initial version.</P>
+</body>
+</html>

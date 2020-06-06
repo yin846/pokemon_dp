@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MBUserInfo</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MBUserInfo</h1>
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR>
+<PRE>
+typedef	struct
+{
+u8   favoriteColor   : 4;
+u8   playerNo        : 4;
+u8   nameLength;
+u16  name[ MB_USER_NAME_LENGTH];
+} MBUserInfo;	/* 22byte */
+</PRE>
+  <br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>This structure defines the style of user data used in the multi-boot process of both parent and child. The meaning of each member is shown in the following table:
+<TABLE border="0">
+  <TBODY>
+    <TR>
+<TD>Member</TD>
+<TD>Description</TD>
+    </TR>
+    <TR>
+<TD>favoriteColor</TD>
+<TD>The color set number showing the player's favorite color.
+	  </TD>
+    </TR>
+     <TR>
+<TD>playerNo</TD>
+<TD>The Player number. Parent is fixed at 0. Child is 1&ndash;15.<font color="#800000">(Note that this has been changed from NITRO-SDK 2.0 PR5 and older versions.)</font>
+	  </TD>
+    </TR>
+   <TR>
+<TD>nameLength</TD>
+<TD>The length of player nicknames. Assigns the number of characters available for names.
+	  </TD>
+    </TR>
+   <TR>
+<TD>name</TD>
+<TD>The player nickname. Specifies by nameLength the number of characters available within <code>MB_USER_NAME_LENGTH</code>. You can use special characters defined in UTF-16LE and IPL. Basically, this sets the name obtained from the system.
+	  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</P>
+<BR>
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="common/MB_Init.html">MB_Init</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+11/02/2004 Matched the structure definition to the header file, added to the <code>name</code> description.<br> 08/09/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

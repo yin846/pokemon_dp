@@ -1,0 +1,87 @@
+#! make -f
+#----------------------------------------------------------------------------
+# Project:  NITRO-System - nnslibdefs - nns library definitions for build system
+# File:     nnslibdefs
+#
+#  Copyright 2004,2005 Nintendo.  All rights reserved.
+#
+# These coded instructions, statements, and computer programs contain
+# proprietary information of Nintendo of America Inc. and/or Nintendo
+# Company Ltd., and are protected by Federal copyright law.  They may
+# not be disclosed to third parties or copied or duplicated in any form,
+# in whole or in part, without the prior written consent of Nintendo.
+#
+# $Log: nnslibdefs,v $
+# Revision 1.7  04/18/2005 05:38:07  ida
+# Moved SND to NITRO-SDK
+#
+# Revision 1.6  10/06/2004 06:48:34  nishida
+# Embedded NITROSYSTEM_LIB_ROOT and added library path in case it is not in the private environment.
+#
+# Revision 1.5  10/06/2004 04:26:41  nishida
+# Made correction so that the NITRO-System library is not registered when building components.
+#
+# Revision 1.4  10/05/2004 10:15:10  nishida
+# Added library settings.
+#
+# Revision 1.3  04/01/2004 02:36:47  ida
+# Fixed wrong include path
+#
+# Revision 1.2  03/31/2004 10:05:45  nishida
+# Created _nnslibdefs_private.
+#
+# Revision 1.1  03/30/2004 07:21:22  ida
+# soundlibdefs -> nnslibdefs
+#
+# $NoKeywords: $
+#----------------------------------------------------------------------------
+
+
+ifdef NITROSYSTEM_ROOT
+
+NITROSYSTEM_ROOT_ 		:= $(subst $(SPACE),\ ,$(subst \,/,$(NITROSYSTEM_ROOT)))
+NNS_NITROSDK_ROOT 		:= $(subst $(SPACE),\ ,$(subst \,/,$(NITROSDK_ROOT)))
+
+NITROSYSTEM_LIB_ROOT	?= $(NITROSYSTEM_ROOT)/lib
+NITROSYSTEM_LIB_ROOT	:= $(subst $(SPACE),\ ,$(subst \,/,$(NITROSYSTEM_LIB_ROOT)))
+
+
+-include $(NITROSYSTEM_ROOT_)/build/buildtools/_nnslibdefs_private
+
+
+#----------------------------------------------------------------------------
+#
+# NITRO-System Library settings
+#
+# When NITRO-System commondefs are used, configure so that 
+# the NITRO-System library is used.
+#
+
+ifdef NITROSYSTEM_COMMONDEFS_
+
+NITROSYSTEM_INCDIR := $(NITROSYSTEM_ROOT_)/include
+NITROSYSTEM_LIBDIR := $(NITROSYSTEM_LIB_ROOT)/$(NITRO_LIBTYPE)
+
+ifeq ($(CODEGEN_PROC),ARM9)
+NITROSYSTEM_LIBS := \
+		libnnsfnd$(NITRO_LIBSUFFIX).a \
+		libnnsgfd$(NITRO_LIBSUFFIX).a \
+		libnnsg2d$(NITRO_LIBSUFFIX).a \
+		libnnsg3d$(NITRO_LIBSUFFIX).a \
+		libnnssnd$(NITRO_LIBSUFFIX).a \
+		libnnsmcs$(NITRO_LIBSUFFIX).a \
+
+else # ($(CODEGEN_PROC),ARM7)
+NITROSYSTEM_LIBS := 
+
+endif
+
+# NITROSYSTEM_COMMONDEFS_
+endif
+
+# NITROSYSTEM_ROOT
+endif
+
+
+#----- End of nnslibdefs -----
+

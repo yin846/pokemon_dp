@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATHCompareFunc</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATHCompareFunc</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/qsort.h&gt;
+
+typedef s32 (*MATHCompareFunc) (void *elem1, void *elem2);
+
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    
+    
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">elem1</font></strong></em></TD>
+<TD width="670">Pointer to Element 1.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">elem2</font></strong></em></TD>
+<TD>Pointer to Element 2.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>Returns a positive number when Element 1 should preceed Element 2. Returns a negative number when Element 1 should follow Element 2.</p>
+<p>Be sure to return 0 if the comparison shows Element 1 is equal to Element 2. </p>
+<H2>Description</H2>
+<P>The type of the comparison function that is passed as a comparison function for sorting with <a href="MATH_QSort.html"><code>MATH_QSort</code></a>. If a positive number is returned, the first element will be arranged further back in the array. If a negative is returned, the second element will be arranged further back in the array.</P>
+<h2>See Also</h2>
+<P><A href="MATH_QSort.html">MATH_QSort</A></P>
+<H2>Revision History</H2>
+<P>04/21/2006 Added text in Return Values.<br/> 04/12/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

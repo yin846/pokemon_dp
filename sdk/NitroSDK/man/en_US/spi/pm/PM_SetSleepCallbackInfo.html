@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>PM_SetSleepCallbackInfo</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">PM_SetSleepCallbackInfo</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/spi.h&gt;</CODE></PRE>
+<PRE><CODE>void PM_SetSleepCallbackInfo(
+ PMSleepCallbackInfo* info,
+ PMSleepCallback callback,
+ void* arg );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><code>info</code></STRONG></EM></TD>
+<TD width="87%">Pointer to set callback information structure.</TD>
+    </TR>
+    <TR>
+<TD><B><I>callback</I></B></TD>
+<TD>Callback Function</TD>
+    </TR>
+    <TR>
+<TD><B><I><code><EM><STRONG>arg</STRONG></EM></code></I></B></TD>
+<TD>Callback argument.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Sets sleep mode callback information.</P>
+<P>Registers the callback function <code>callback</code> and its argument <code>arg</code> in callback information structure specified with <code>info</code>. Specifying this <code>info</code> performs sleep mode callback registration.</P>
+<P>Only the following processes are performed internally: set <code>callback</code> and <code>arg</code> in <code>info</code> member.</P>
+<H2>See Also</H2>
+<P><a href="PM_Init.html"><code>PM_Init</a></code>, <code><a href="PM_GoSleepMode.html">PM_GoSleepMode</a></code>, <code><a href="PM_AppendPreSleepCallback.html">PM_AppendPreSleepCallback</a></code>, <code><a href="PM_PrependPreSleepCallback.html">PM_PrependPreSleepCallback</a></code>, <code><a href="PM_AppendPostSleepCallback.html">PM_AppendPostSleepCallback</a></code>, <code><a href="PM_PrependPostSleepCallback.html">PM_PrependPostSleepCallback</a></code></P>
+<H2>Revision History</H2>
+<P>2005/09/14 <CODE>PM_SetSleepCallback</CODE> was changed to <CODE>PM_SetSleepCallbackInfo</CODE>.<BR>10/06/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

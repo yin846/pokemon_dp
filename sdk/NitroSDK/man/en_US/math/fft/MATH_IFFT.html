@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATH_IFFT</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATH_IFFT</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/fft.h&gt;
+
+void MATH_IFFT( fx32* data, u32 nShift, const fx16* sinTable );
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">data</font></strong></em></TD>
+<TD width="670">Pointer to the data to transform. Data after the transform is overwritten.</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">nShift</font></strong></em></TD>
+<TD width="670">The value obtained by taking the base-2 logarithm of the number of the input complex numbers.</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">sinTable</font></strong></em></TD>
+<TD width="670">Pointer to the table of sine values.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>
+Uses a fast Fourier transform algorithm to perform the inverse transform of a discrete Fourier transform. Takes a sequence of complex number as input, and outputs a sequence of complex numbers. This is the reverse operation of the <A href="MATH_FFT.html">MATH_FFT</A> function.
+</P>
+<P>
+In the explanation below, the value 2<sup>nShift</sup> (2 to the nShift power) is represented as N. <I>data </I>is a type fx32 array of length 2*N. N number of complex numbers is passed to data in a format that stores real numbers and imaginary numbers alternately. Thus, if <i>i</i> is the unit for imaginary numbers, then the input data is the complex number sequence of N length <CODE>{data[0]+<i>i</i>*data[1], data[2]+<i>i</i>*data[3], ..., data[N*2-2]+<i>i</i>*data[N*2-1]}</CODE>. <I>sinTable</I> is the pointer to the array of N*3/4 length that has fx16 type sine values assigned that satisfy <CODE>sinTable[k] = <i>sin</i>( (2&#x3C0;/N) * k )  (k = 0, 1,..., N*3/4-1)</CODE>. This can be created using the <A href="MATH_MakeFFTSinTable.html"><CODE>MATH_MakeFFTSinTable</CODE></A> function. The result of the inverse transform of a discrete Fourier transform also becomes a sequence of complex numbers, and overwritten in data as the same format as the input and returned. 
+</P>
+<P>
+The calculations are performed using fixed-decimal numbers, so if a large value is given as the input, there is a risk of overflow. When the input value is viewed as type s32, the absolute value should not be greater than or equal to <CODE>0x80000000/N</CODE>. Also note that the maximum error when performing both the forward transform and inverse transform is around several times <CODE>FX32_ONE</CODE>.
+</P>
+<h2>See Also</h2>
+<P><CODE><A href="MATH_MakeFFTSinTable.html">MATH_MakeFFTSinTable</A>, <A href="MATH_FFT.html">MATH_FFT</A>, <A href="MATH_FFTReal.html">MATH_FFTReal</A>, <A href="MATH_IFFTReal.html">MATH_IFFTReal</A></CODE></P>
+<H2>Revision History</H2>
+<P>
+07/21/2005 Corrected the explanation for <i>sinTable</i>.<BR>07/11/2005 Corrected the explanation.<BR> 05/13/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_EndOverlay</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_EndOverlay</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>void FS_EndOverlay(FSOverlayInfo *p_ovi);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p_ovi</STRONG></EM></TD>
+<TD width="87%"><code>FSOverlayInfo</code> structure that holds overlay module information</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function runs the overlay module's static uninitializer. A static uninitializer disassembles an object that has a static memory duration. This function must be called once before freeing an overlay module that was started by the <code>FS_StartOverlay()</code> function. <br></p>
+<h2>Internal Operation</h2>
+<p>
+In the case of an overlay that is coded in C++, this function runs a destructor for every object that is contained within the scope of the overlay.
+</p>
+<h2>See Also</h2>
+<p><A href="../fs_overlay_info_type.html"><code>FSOverlayInfo</code></A> <A href="FS_LoadOverlayInfo.html"><code>FS_LoadOverlayInfo</code></A> <A href="FS_StartOverlay.html"><code>FS_StartOverlay</code></A> <A href="FS_UnloadOverlayImage.html"><code>FS_UnloadOverlayImage</code></A></p>
+<H2>Revision History</H2>
+<P>
+09/10/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsOpen</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsOpen</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre><CODE>BOOL NNS_McsOpen(NNSMcsDeviceCaps* pCaps);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCaps</font></strong></em></td>
+    
+<td width="87%">Pointer to the structure that stores information regarding the opened device</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>TRUE if the device was opened successfully. Returns FALSE if it failed.</p>
+<H2>Description</H2>
+<p>Opens a device and stores that device's information in the  variable specified by <em><strong><code>pCaps</code></strong></em>.</P>
+<p>The <code>NNSMcsDeviceCaps</code> structure is defined as follows:</p>
+<pre>typedef struct NNSMcsDeviceCaps NNSMcsDeviceCaps;
+struct NNSMcsDeviceCaps
+{
+u32         deviceID;
+u32         maskResource;
+};</code></pre>
+<p>The contents of each member is shown below: </p>
+<table>
+ <tr> 
+<td><em><strong><font face="Courier New">deviceID</font></strong></em></td>
+<td>Device ID</td>
+ </tr>
+ <tr> 
+<td><em><strong><font face="Courier New">maskResource</font></strong></em></td>
+<td>Resource information necessary for operating the device. For details, see the following.</td>
+ </tr>
+  </table>
+<p>The <em><strong><code>maskResource</code></strong></em> member is a combination of following values:</p>
+<table>
+  <tbody>
+    <tr>
+<td><em><strong><font face="Courier New">NITROMASK_RESOURCE_POLL</font></strong></em></td>
+<td>Call the function <code>NNS_McsPollingIdle</code> repeatedly within the main loop.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NITROMASK_RESOURCE_VBLANK</font></strong></em></td>
+<td>Call the function <code>NNS_McsVBlankInterrupt</code> in every frame.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NITROMASK_RESOURCE_CARTRIDGE</font></strong></em></td>
+<td>Call the function <code>NNS_McsCartridgeInterrupt</code> when the cartridge interrupt is generated.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If more than one connected device exists, the discovered devices are opened in the following order:</P>
+<ol>
+<li>IS-NITRO-UIC</li>
+<li>IS-NITRO-EMULATOR</li>
+<li>Unknown device</li>
+</ol>
+<h2>See Also</h2>
+<p><a href="NNS_McsClose.html">NNS_McsClose</a>,  <a  href="NNS_McsReadStream.html">NNS_McsReadStream</a>,  <a  href="NNS_McsWriteStream.html">NNS_McsWriteStream</a>, <a  href="NNS_McsPollingIdle.html">NNS_McsPollingIdle</a>, <a  href="NNS_McsVBlankInterrupt.html">NNS_McsVBlankInterrupt</a>, <a  href="NNS_McsCartridgeInterrupt.html">NNS_McsCartridgeInterrupt</a></code></p>
+<H2>Revision History</H2>
+<P>2005/01/24 01/24/2005 Added an explanation about the <code>NNSMcsDeviceCaps</code> structure. Deleted the description regarding IS-CGB-EMULATOR. 06/01/2004 Initial version.</P>
+</body>
+</html>

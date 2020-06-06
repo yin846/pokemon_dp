@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Renderer Matrix State</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">Renderer Matrix State</h1>
+<H2>Renderer Matrix State Transition Diagram</H2>
+<P><span lang=EN-US style='font-size:10.5pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r –¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"  coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"  filled="f" stroked="f">  <v:stroke joinstyle="miter"/>  <v:formulas>   <v:f eqn="if lineDrawn pixelLineWidth 0"/>   <v:f eqn="sum @0 1 0"/>   <v:f eqn="sum 0 0 @1"/>   <v:f eqn="prod @2 1 2"/>   <v:f eqn="prod @3 21600 pixelWidth"/>   <v:f eqn="prod @3 21600 pixelHeight"/>   <v:f eqn="sum @0 0 1"/>   <v:f eqn="prod @6 1 2"/>   <v:f eqn="prod @7 21600 pixelWidth"/>   <v:f eqn="sum @8 21600 0"/>   <v:f eqn="prod @7 21600 pixelHeight"/>   <v:f eqn="sum @10 21600 0"/>  </v:formulas>  <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>  <o:lock v:ext="edit" aspectratio="t"/> </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:4in;  height:200.4pt'>  <v:imagedata src="file:///C:\DOCUME~1\KITANI~1\LOCALS~1\Temp\msohtml1\01\clip_image001.emz"   o:title="}1"/> </v:shape><![endif]--><IMG width="384" height="267" src="clip_image0022.gif" v:shapes="_x0000_i1025"></span></P>
+<H2>Description</H2>
+The renderer has an internal matrix stack. When the renderer carries out rendering with the 2D graphics engine, this internal stack takes care of the load processing to the matrix affine parameters. When rendering with the 2D graphics engine, the current matrix contents of the matrix stack are loaded to the OAM as affine parameters. The affine numbers need to be set up in the OAM attributes so the affine parameters are referenced.)<BR>
+
+<pre>
+The renderer manages the matrix state to conserve affine parameters and attempts to decrease the number of loads.
+
+The matrix states can be divided roughly into the following categories:
+Not SR(scale, rotation) converted.
+SR(scale, rotation) converted, not read.
+SR(scale, rotation) converted, not read. The current matrix is pushed.
+SR(scale, rotation) converted, read.
+&nbsp;
+</pre>
+The matrix state supports events as shown in the diagram and changes. <BR> <BR>
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

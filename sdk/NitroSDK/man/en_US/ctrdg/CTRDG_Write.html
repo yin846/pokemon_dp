@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_Write*</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_Write*</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+<PRE><CODE>BOOL CTRDG_Write8( u8* address, u8 data );
+BOOL CTRDG_Write16( u16* address, u16 data );
+BOOL CTRDG_Write32( u32* address, u32 data );
+ 
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>address</I></B></TD>
+<TD>The write address.</TD>
+    </TR>
+    <TR>
+<TD><B><I>data</I></B></TD>
+<TD>The data to write.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>Returns a value of TRUE if the write succeeds. Returns a value of FALSE when there is no Game Pak or if the write fails.</P>
+<H2>Description</H2>
+<P>This function writes to the Game Pak area.</P>
+<P><CODE>CTRDG_Write8()</CODE> writes 8-bit data.<BR><CODE>CTRDG_Write16()</CODE> writes 16-bit data.<BR><CODE>CTRDG_Write32()</CODE> writes 32-bit data.</P>
+<P>These functions do not set the access cycle. The access cycle must be set in advance.</P>
+<H2>See Also</H2>
+<P><CODE><A href="CTRDG_Init.html"><code>CTRDG_Init</code></A>, <A href="CTRDG_DmaCopy.html"><code>CTRDG_DmaCopy*</code></A>, <A href="CTRDG_CpuCopy.html"><code>CTRDG_CpuCopy*</code></A>, <A href="CTRDG_Read.html"><code>CTRDG_Read*</code></A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>09/17/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

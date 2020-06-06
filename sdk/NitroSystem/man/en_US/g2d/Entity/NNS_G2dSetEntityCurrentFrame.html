@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetEntityCurrentFrame</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetEntityCurrentFrame</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Entity.h&gt;</CODE></pre>
+<pre><CODE>void  NNS_G2dSetEntityCurrentFrame
+( 
+NNSG2dEntity* pEntity,
+u16           frameIndex
+);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pEntity</font></strong></em></td>
+<td width="87%">[OUT] Entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">frameIndex</font></strong></em></td>
+<td width="87%">[IN] Playback animation frame number</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Sets the playback animation frame number of the entity. No action will occur if an invalid index is input.<BR>
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="../CellAnimation/NNS_G2dSetCellAnimationCurrentFrame.html">NNS_G2dSetCellAnimationCurrentFrame</A><br></CODE></p>
+<p><CODE><A href="../MultiCellAnimation/NNS_G2dSetMCAnimationCurrentFrame.html">NNS_G2dSetMCAnimationCurrentFrame</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>05/28/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRC_GetEntryData</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRC_GetEntryData</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+void* PRC_GetEntryData(const <A href="PRCPrototypeEntry.html">PRCPrototypeEntry</A>* entry);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">entry</font></strong></em></td>
+<td width="87%">Pointer to a sample DB entry.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Return Values</h2>
+<p>Returns the user data that is associated with a sample DB <CODE>entry</CODE> as a <CODE>void*</CODE> type. If <CODE>entry</CODE> is <CODE>NULL</CODE>, it returns <CODE>NULL</CODE>.</p>
+
+<H2>Description</H2>
+<P>Returns user data (<CODE>entry-&gt;data</CODE>) that is associated with the sample DB entry.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="PRC_GetRecognizedEntry.html">PRC_GetRecognizedEntry*</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>06/23/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

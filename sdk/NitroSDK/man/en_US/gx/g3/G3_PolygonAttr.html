@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_PolygonAttr</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_PolygonAttr</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;</CODE><BR>
+<CODE>void G3_PolygonAttr(
+int light,
+GXPolygonMode polyMode,
+GXCull cullMode,
+int polygonID,
+int alpha,
+int misc
+</CODE>);<BR>
+// Below are APIs for creating the display list (command list):
+<CODE>void G3B_PolygonAttr(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, ...);
+void G3C_PolygonAttr(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, ...);
+void G3BS_PolygonAttr(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, ...);
+</CODE><CODE>void G3CS_PolygonAttr(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, ...);</CODE></PRE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">light</font></strong></em></td>
+<td width="87%">4-bit mask to specify the light to illuminate</td>
+  </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">polyMode</font></strong></em></TD>
+<TD>Specifies polygon mode</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">cullMode</font></strong></em></TD>
+<TD>Specifies the screen to cull</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New"><em><strong><code>polygonID</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD>Specifies the polygon ID</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">alpha</font></strong></em></TD>
+<TD>Specifies the &alpha; value</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">misc</font></strong></em></TD>
+<TD>Bit field to specify other polygon attributes</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the polygon attribute values.<BR> <em><strong><code>light</code></strong></em> is the 4-bit flag that specifies, in order from the lower bit of the lower 4 bits, whether Light 0, Light 1, Light 2, and Light 3 are ON/OFF. <em><strong><code>polyMode</code></strong></em> is the argument that specifies the polygon mode in <CODE>GXPolygonMode</CODE> type. <em><strong><code>cullMode</code></strong></em> is the argument that specifies the polygon culling method in <CODE>GXCull</CODE> type. <em><strong><code>polygonID</code></strong></em> is the argument that specifies the polygon ID between 0 - 63. Used when rendering translucent polygons, shadow polygons, and edge marking. <em><strong><code>alpha</code></strong></em> is the argument that specifies the &alpha; value for a polygon between 0 - 31. A setting of 31 displays a opaque polygon; a setting of 0 displays a wireframe (use the settings of <code><A href="G3X_AlphaTest.html">G3X_AlphaTest</A></code> to hide). Settings between 1 - 30 display translucent polygons. <em><strong><code>misc</code></strong></em> is a bit field comprising the other attribute flags, and passes the logical sum of <CODE>GXPolygonAttrMisc</CODE> type values.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGONMODE_MODULATE</CODE></TD>
+<TD width="70%">Modulation mode</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGONMODE_DECAL</CODE></TD>
+<TD width="70%">Decal mode</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGONMODE_TOON</CODE></TD>
+<TD width="70%">Toon shading/highlight shading mode</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGONMODE_SHADOW</CODE></TD>
+<TD width="70%">Shadow polygon mode</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_CULL_ALL</CODE></TD>
+<TD width="70%">Do not show on either plane</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_CULL_FRONT</CODE></TD>
+<TD width="70%">Do not show front plane</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_CULL_BACK</CODE></TD>
+<TD width="70%">Do not show back plane</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_CULL_NONE</CODE></TD>
+<TD width="70%">Show both planes</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGON_ATTR_MISC_NONE</CODE></TD>
+<TD width="70%">Indicates that nothing is visible.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGON_ATTR_MISC_XLU_DEPTH_UPDATE</CODE></TD>
+<TD width="70%">Update the depth buffer when rendering translucent polygons.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGON_ATTR_MISC_FAR_CLIPPING</CODE></TD>
+<TD width="70%">Clip if the polygon intersects the FAR plane (delete if intersects when not specified).</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGON_ATTR_MISC_DISP_1DOT</CODE></TD>
+<TD width="70%">Show 1-dot polygons. See also <A href="G3X_SetDisp1DotDepth.html"><CODE>G3X_SetDisp1DotDepth</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGON_ATTR_MISC_DEPTHTEST_DECAL</CODE></TD>
+<TD width="70%">Renders when the depth value of the fragment matches the depth value in the depth buffer. When not specified, renders when smaller than the depth value.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_POLYGON_ATTR_MISC_FOG</CODE></TD>
+<TD width="70%">The rendering engine performs fog blending.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following indicate type definitions for <code>GXPolygonMode</code>, <code>GXCull</code>, and <code>GXPolygonAttrMisc</code> types.</P>
+<PRE><CODE>typedef enum
+{
+GX_POLYGONMODE_MODULATE = 0,
+GX_POLYGONMODE_DECAL = 1,
+GX_POLYGONMODE_TOON = 2,
+GX_POLYGONMODE_SHADOW = 3
+}
+GXPolygonMode;
+
+typedef enum
+{
+GX_CULL_ALL = 0,
+GX_CULL_FRONT = 1,
+GX_CULL_BACK = 2,
+GX_CULL_NONE = 3
+}
+GXCull;
+
+typedef enum
+{
+GX_POLYGON_ATTR_MISC_NONE = 0,
+GX_POLYGON_ATTR_MISC_XLU_DEPTH_UPDATE = 1 &lt;&lt; REG_G3_POLYGON_ATTR_XL_SHIFT,
+GX_POLYGON_ATTR_MISC_FAR_CLIPPING = 1 &lt;&lt; REG_G3_POLYGON_ATTR_FC_SHIFT,
+GX_POLYGON_ATTR_MISC_DISP_1DOT = 1 &lt;&lt; REG_G3_POLYGON_ATTR_D1_SHIFT,
+GX_POLYGON_ATTR_MISC_DEPTHTEST_DECAL = 1 &lt;&lt; REG_G3_POLYGON_ATTR_DT_SHIFT,
+GX_POLYGON_ATTR_MISC_FOG = 1 &lt;&lt; REG_G3_POLYGON_ATTR_FE_SHIFT
+}
+GXPolygonAttrMisc;</CODE></PRE>
+<H2>See Also</H2>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version.</P>
+<PRE>
+</PRE>
+</body></html> 

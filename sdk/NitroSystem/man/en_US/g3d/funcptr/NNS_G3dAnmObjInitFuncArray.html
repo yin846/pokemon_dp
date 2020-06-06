@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNSG3dAnmObjInitFuncArray</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG3dAnmObjInitFuncArray</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/anm.h&gt;
+
+typedef void (*NNSG3dAnimInitFunc) (NNSG3dAnmObj*, void*, const NNSG3dResMdl*);
+
+typedef struct
+{
+u8                  category0;
+u8                  dummy_;
+u16                 category1;
+NNSG3dAnimInitFunc  func;
+}
+NNSG3dAnmObjInitFunc;
+
+NNSG3dAnmObjInitFunc NNS_G3dAnmObjInitFuncArray[NNS_G3D_ANMFMT_MAX];</CODE></PRE>
+</DL>
+<H2>Description</H2>
+<P>When initializing the <code><a href="../struct/NNSG3dAnmObj.html" target="_self">NNSG3dAnmObj</a></code> structure with the <code><a href="../kernel/NNS_G3dAnmObjInit.html" target="_self">NNS_G3dAnmObjInit</a></code> function, processes must be allocated to each type of animation resource. <code>NNS_G3dAnmObjInitFuncArray</code> is an array used for that allocation. The elements of the array (<code>NNSG3dAnmObjInitFunc</code>) will be pointers to <code>NNSG3dAnimInitFunc</code>&ndash;type functions. The <code>NNSG3dAnimInitFunc</code>&ndash;type functions initialize the <code><a href="../struct/NNSG3dAnmObj.html" target="_self">NNSG3dAnmObj</a></code> structure so that it will be suitable as an actual animation format. When adding a new animation format to G3D by adding an element to this array, the initialization used by the <code><a href="../kernel/NNS_G3dAnmObjInit.html" target="_self">NNS_G3dAnmObjInit</a></code> becomes possible. Category <code>0</code> and category <code>1</code> of the <code>NNSG3dAnmObjInitFunc</code> structure are compared with category <code>0</code> and category <code>1</code> of the <code>NNSG3dResAnmHeader</code> structure. <code>NNSG3dResAnmHeader</code> is a data structure inside the animation resource.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="../kernel/NNS_G3dAnmObjInit.html" target="_self">NNS_G3dAnmObjInit</A></CODE></P>
+<H2>Revision History</H2>
+<P>10/19/2004 Initial version.</P>
+</BODY>
+
+</HTML>

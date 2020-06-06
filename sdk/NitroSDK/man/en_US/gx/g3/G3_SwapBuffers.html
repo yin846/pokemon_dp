@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_SwapBuffers</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_SwapBuffers</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;</CODE><BR>
+<CODE>void G3_SwapBuffers(GXSortMode am, GXBufferMode zw);</CODE>
+
+// Below are APIs for creating the display list (command list)<BR><CODE>void G3B_SwapBuffers(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXSortMode am, GXBufferMode zw);</CODE><BR><CODE>void G3C_SwapBuffers(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXSortMode am, GXBufferMode zw);</CODE><BR><CODE>void G3BS_SwapBuffers(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXSortMode am, GXBufferMode zw);</CODE><BR><CODE>void G3CS_SwapBuffers(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXSortMode am, GXBufferMode zw);</CODE></PRE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">am</font></strong></em></td>
+<td width="87%">Translucent polygon y-sorting selection</td>
+  </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">zw</font></strong></em></TD>
+<TD>Depth buffering selection</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function swaps the data group referenced by the rendering engine. <em><strong><code>zw</code></strong></em> is the depth buffering selection flag that selects the value to use in the depth test. Buffering using w-values will not function normally for orthogonal projections. <em><strong><code>am</code></strong></em> is the translucent polygon sorting selection flag that should be set to the manual sort mode when you want to specify the drawing order when using shadow volumes. When the V-Blank period starts immediately after the <code>SwapBuffers</code> command is issued, the data that is referenced by the rendering engine is swapped. This data includes the polygon list RAM, vertex RAM, and rendering-related registers. Therefore, the written graphics data will be rendered in the frame after the V-Blank that is started after the <code>SwapBuffers</code> command was issued.<BR> <b>Note</b>: When this instruction is issued after the V-Blank begins, the data will be swapped when the next V-Blank begins. <b>Note</b>: The Geometry engine will maintain a busy status until the data swap is performed. In addition, subsequent processing of geometry commands is not performed.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_SORTMODE_AUTO</CODE></TD>
+<TD width="70%">Auto sort mode</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_SORTMODE_MANUAL</CODE></TD>
+<TD width="70%">Manual sort mode</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_BUFFERMODE_Z</CODE></TD>
+<TD width="70%">Buffering using z-values</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BUFFERMODE_W</CODE></TD>
+<TD width="70%">Buffering using w-values (does not function normally if <A href="G3_Ortho.html"><CODE>G3_Ortho</CODE></A> is used)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following indicates the type definitions for <CODE>GXSortMode</CODE> and <CODE>GXBufferMode</CODE> types.</P>
+<PRE><CODE>typedef enum
+{
+GX_SORTMODE_AUTO = 0,
+GX_SORTMODE_MANUAL = 1
+}
+GXSortMode;
+
+typedef enum
+{
+GX_BUFFERMODE_Z = 0,
+GX_BUFFERMODE_W = 1
+}
+GXBufferMode;</CODE></PRE>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>02/09/2004</P>
+<UL>
+<LI>Added a note
+</UL>
+<P>01/19/2004 Initial version</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

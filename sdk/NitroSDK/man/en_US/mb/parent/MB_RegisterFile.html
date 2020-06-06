@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MB_RegisterFile</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MB_RegisterFile</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR> <CODE>BOOL MB_RegisterFile(const MBGameRegistry *game_reg, const void *buf);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>game_reg</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>MBGameRegistry</code> structure where the program information to register is saved.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>buf</STRONG></EM></TD>
+<TD width="87%">Pointer to the memory where the extracted segment is saved. Get the segment data with the <code><A href="MB_ReadSegment.html">MB_ReadSegment</A></code> function. When the function succeeds, the memory specified here is used internally until the <code><A href="MB_UnregisterFile.html">MB_UnregisterFile</A></code> function is called.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>This function returns <code>TRUE</code> when the program registers correctly. Otherwise, it returns <code>FALSE</code>.</p>
+
+<H2>Description</H2>
+<P>This function registers the specified program file on the download program list. The parent can simultaneously download game programs up to <code>MB_MAX_FILE</code>. The specified segment data must be obtained by calling <code><A href="MB_ReadSegment.html">MB_ReadSegment</A></code> before calling this function. When calling this function using segment data that is set for dynamic reading from an archive, note that the MB library will internally start a single thread automatically. For details, see the &quot;Internal Operation&quot; section of the <code><A href="MB_ReadSegment.html">MB_ReadSegment</A></code> function. <br></CODE></p>
+<P><B><FONT color=red>(Note)</FONT></B><BR> When a DS Single-Card Play child selects a game on the IPL, the game will be downloaded from a parent that is not selected, if the following procedure is performed on the parent side. This bug can be prevented from occuring by having the game application set a different GGID in the MBGameRegistry structure for each game registered using the MB_RegisterFile function. For further details, read the section about clone booting in the document that explains DS Single-Card Play (<CODE>$NitroSDK/docs/TechnicalNotes/AboutMultiBoot.pdf</CODE>).
+</P>
+<h2>See Also</h2>
+<p><code><A href="../mb_game_registry_type.html">MBGameRegistry</A>, <A href="MB_GetSegmentLength.html">MB_GetSegmentLength</A>, <A href="MB_ReadSegment.html">MB_ReadSegment</A>, <A href="MB_UnregisterFile.html">MB_UnregisterFile</A></code></P>
+<H2>Revision History</H2>
+<P>
+02/22/2005 Added a description of problems with DS single-card play.<BR> 04/11/2005 Added a note and link regarding task threads.<br> 09/09/2004 Added a description of MB_UnregisterFile functions.<br> 08/09/2004 Initial version.<br>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

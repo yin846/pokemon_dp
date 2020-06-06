@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndGetAllocModeForExpHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_FndGetAllocModeForExpHeap</h1>
+<h2>C Specification</h2>
+
+<dl> 
+	<dd> 
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+		<pre><CODE>u16 NNS_FndGetAllocModeForExpHeap(NNSFndHeapHandle heap);</CODE></pre>
+	</dd>
+</dl>
+<h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">heap</font></strong></em></td>
+<td width="87%">Extended heap handle</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>Returns the memory allocation mode of the current extended heap.</p>
+<H2>Description</H2>
+<P>This function obtains the memory allocation mode of the extended heap.</P>
+<P>It takes one of the following values for the memory allocation mode:</P>
+<table>
+	<tr>
+		<td><em><strong><font face="Courier New">NNS_FND_EXPHEAP_ALLOC_MODE_FIRST</font></strong></em></td>
+		<td>Allocates a memory block from the first available empty region that is at least the size of the memory block to be allocated.</td>
+	</tr>
+	<tr>
+		<td><em><strong><font face="Courier New">NNS_FND_EXPHEAP_ALLOC_MODE_NEAR</font></strong></em></td>
+		<td>Searches for the empty region nearest in size to the memory block to be allocated, then allocates the memory block from that empty region.</td>
+	</tr>
+</table>
+<p>Immediately after the heap is created, goes into the <code>NNS_FND_EXPHEAP_ALLOC_MODE_FIRST</code> state.</p>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_FndSetAllocModeForExpHeap.html">NNS_FndSetAllocModeForExpHeap</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>04/01/2004 Initial version.</P>
+</body>
+</html>

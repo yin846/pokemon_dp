@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNS_G2dArrangeOBJ*</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G2dArrangeOBJ*</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nnsys/g2d/g2d_CharCanvas.h&gt;
+
+int NNS_G2dArrangeOBJ1D(
+GXOamAttr * oam,
+int areaWidth,
+int areaHeight,
+int x,
+int y,
+GXOamColorMode color,
+int charName,
+NNSG2dOBJVramMode vramMode
+);
+
+int NNS_G2dArrangeOBJ2DRect(
+GXOamAttr * oam,
+int areaWidth,
+int areaHeight,
+int x,
+int y,
+GXOamColorMode color,
+int charName
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>oam</STRONG></EM></TD>
+<TD width="87%"> [OUT] Pointer to the OAM array of the OBJ that   will be used for displaying CharCanvas. </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>areaWidth</STRONG></EM></TD>
+<TD width="87%"> [IN] CharCanvas width (in character units) </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>areaHeight</STRONG></EM></TD>
+<TD width="87%"> [IN]CharCanvas height (in character units) </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>x</STRONG></EM></TD>
+<TD width="87%"> [IN] CharCanvas upper-left corner display location (in pixel units) </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>y</STRONG></EM></TD>
+<TD width="87%"> [IN] CharCanvas upper-left corner display location (in pixel units) </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>color</STRONG></EM></TD>
+<TD width="87%"> [IN] CharCanvas color mode </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>charName</STRONG></EM></TD>
+<TD width="87%"> [IN] Starting character name </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>vramMode</STRONG></EM></TD>
+<TD width="87%"> [IN] OBJ VRAM capacity </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>
+	The number of OBJ being used.
+</P>
+
+<H2>Description</H2>
+<P>
+	This functions appropriately positions OBJ so the CharCanvas initialized by <code><a href="NNS_G2dCharCanvasInitForOBJ1D.html">NNS_G2dCharCanvasInitForOBJ1D</a></code> or <code><a href="NNS_G2dCharCanvasInitForOBJ2DRect.html">NNS_G2dCharCanvasInitForOBJ2DRect</a></code> can actual display on the screen. To be specific, the function sets the OBJ parameters for location, size, starting-character name and color mode. The other parameters require special settings.
+</P>
+
+<P>
+	Specify one of the following for the OBJ VRAM capacity <em><strong>vramMode</strong></em>
+</P>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD>NNS_G2D_OBJVRAMMODE_32K</TD>
+<TD>Maximum capacity of available OBJ VRAM is 32KB</TD>
+    </TR>
+    <TR>
+<TD>NNS_G2D_OBJVRAMMODE_64K</TD>
+<TD>Maximum capacity of available OBJ VRAM is 64KB</TD>
+    </TR>
+    <TR>
+<TD>NNS_G2D_OBJVRAMMODE_128K</TD>
+<TD>Maximum capacity of available OBJ VRAM is 128KB</TD>
+    </TR>
+    <TR>
+<TD>NNS_G2D_OBJVRAMMODE_256K</TD>
+<TD>Maximum capacity of available OBJ VRAM is 256KB</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>
+	Depending on the color mode <em><strong>color</strong></em> and the OBJ VRAM capacity <em><strong>vramMode</strong></em>, there are some restrictions on the <em><strong>areaWidth</strong></em> and <em><strong>areaHeight</strong></em> that can be set with <CODE>NNS_G2dArrangeOBJ1D</CODE>. The restrictions are explained in the table below.
+</P>
+<TABLE border="1" width="100%">
+  <THEAD>
+    <TR>
+<TH rowspan="2">Color mode</TH>
+<TH colspan="4">OBJ VRAM Capacity</TH>
+    </TR>
+    <TR>
+<TH>32K</TH>
+<TH>64K</TH>
+<TH>128K</TH>
+<TH>256K</TH>
+    </TR>
+  </THEAD>
+  <TBODY>
+    <TR>
+<TH>16 colors</TH>
+<TD>(No restrictions)<br></TD>
+<TD>(No restrictions)<br></TD>
+<TD>Cannot be an odd number that has a remainder of 3 when divided by 4.<br></TD>
+<TD>Cannot be an odd number.<br></TD>
+    </TR>
+    <TR>
+<TH>256 colors</TH>
+<TD>(No restrictions)<br></TD>
+<TD>(No restrictions)<br></TD>
+<TD>(No restrictions)<br></TD>
+<TD>Cannot be an odd number that has a remainder of 3 when divided by 4.<br></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<P>
+	To find out how many OBJ are required before calling this function, use either <code><a href="NNS_G2dCalcRequiredOBJXXX.html">NNS_G2dCalcRequiredOBJ1D</a></code> or <code><a href="NNS_G2dCalcRequiredOBJXXX.html">NNS_G2dCalcRequiredOBJ2DRect</a></code>.
+</P>
+
+<H2>See Also</H2>
+<P><CODE><a href="NNS_G2dCharCanvasInitForOBJ1D.html">NNS_G2dCharCanvasInitForOBJ1D</a>, <a href="NNS_G2dCharCanvasInitForOBJ2DRect.html">NNS_G2dCharCanvasInitForOBJ2DRect</a>, <a href="NNS_G2dCalcRequiredOBJXXX.html">NNS_G2dCalcRequiredOBJ1D</a>, <a href="NNS_G2dCalcRequiredOBJXXX.html">NNS_G2dCalcRequiredOBJ2DRect</a></CODE></P>
+
+<H2>Revision History</H2>
+<P>05/25/2005 Initial version.</P>
+</BODY>
+
+</HTML>

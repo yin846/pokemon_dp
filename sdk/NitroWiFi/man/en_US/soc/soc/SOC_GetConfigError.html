@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_GetConfigError</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_GetConfigError</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define SOC_IP_ERR_DHCP_TIMEOUT    -100</code></pre>
+  </dd>
+<dd><pre><code>s32 SOC_GetConfigError ( SOCInterface* <em><strong>interface</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><font size="-1"color="#808080"><code><em><strong>interface</strong></em></code></td>
+<td>The pointer to the SOCInterface that obtains the error code. This argument is included for compatibility issues, but it is ignored in actual use of the function.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+    <td>0</td>
+<td>Successful.</td>
+  </tr>
+  <tr>
+<td><code>SOC_IP_ERR_DHCP_TIMEOUT</code></td>
+<td>DHCP server not found.</td>
+  </tr>
+  <tr>
+<td><code>SOC_IP_ERR_LINK_DOWN</code></td>
+<td>There is a broken link.</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Please treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p>Gets the host configuration error code. The error code is a sticky code and is not cleared until SOC_ClearConfigError() is called.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_ClearConfigError.html">SOC_ClearConfigError</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description.<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

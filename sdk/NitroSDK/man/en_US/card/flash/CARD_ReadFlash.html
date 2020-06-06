@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_ReadFlash</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_ReadFlash</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>BOOL	CARD_ReadFlash(u32 src, void *dst, u32 len);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>src</STRONG></EM></TD>
+<TD width="87%">The FLASH address of the transfer source</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>dst</STRONG></EM></TD>
+<TD width="87%">Transfer destination memory address</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>len</STRONG></EM></TD>
+<TD width="87%">Byte length of data being read</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>TRUE if the process succeeds. FALSE otherwise.</p>
+
+<H2>Description</H2>
+<P>This function synchronously reads out data from the FLASH device. The function does not return control until it has finished processing. It returns TRUE if the process was successful or FALSE if it failed. To get the detailed result value when the process fails, call the <A href="../common/CARD_GetResultCode.html"><CODE>CARD_GetResultCode</CODE></A> function. In order to use this function, you must first lock the access bus with the <A href="../backup/CARD_LockBackup.html"><CODE>CARD_LockBackup</CODE></A> function.<BR> <BR> <font color="#800000">This function communicates with the ARM7 processor internally via PXI.<br> The process will not end if PXI interrupts are not enabled.<br></font> <br>
+</P>
+<h2>See Also</h2>
+<p><a href="../common/CARD_GetResultCode.html"><code>CARD_GetResultCode</code></a>, <A href="CARD_IsBackupFlash.html"><code>CARD_IsBackupFlash</code></A>, <A href="CARD_ReadFlashAsync.html"><code>CARD_ReadFlashAsync</code></A>, <A href="CARD_WriteFlash.html"><code>CARD_WriteFlash</code></A>, <A href="CARD_VerifyFlash.html"><code>CARD_VerifyFlash</code></A>, <A href="CARD_WriteAndVerifyFlash.html"><code>CARD_WriteAndVerifyFlash</code></A> </p>
+
+<H2>Revision History</H2>
+<P>
+12/09/2004 Changed &quot;IO processor&quot; to &quot; ARM7 processor&quot;. <br> 08/31/2004 Added description of the <code>CARD_GetResultCode</code> function.<br> 08/23/2004 Revised links due to changes to the function.<br> 08/18/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

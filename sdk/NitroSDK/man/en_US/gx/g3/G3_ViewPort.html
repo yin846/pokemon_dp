@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_ViewPort</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_ViewPort</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_ViewPort(int x1, int y1, int x2, int y2);
+
+// Below are APIs for creating the display list (command list)<BR>void G3B_ViewPort(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, int x1, int y1, int x2, int y2);<BR>void G3C_ViewPort(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, int x1, int y1, int x2, int y2);<BR>void G3BS_ViewPort(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, int x1, int y1, int x2, int y2);<BR>void G3CS_ViewPort(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, int x1, int y1, int x2, int y2);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>x1</code></strong></em>&nbsp;&nbsp;</font></strong></em></td>
+<td width="87%">Lower left x-coordinate</td>
+  </tr>
+    <TR>
+<TD><em><strong><font face="Courier New"><em><strong><code>y1</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD>Lower left y-coordinate</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">x2</font></strong></em></TD>
+<TD>Upper right x-coordinate</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">y2</font></strong></em></TD>
+<TD>Upper right y-coordinate</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the viewport. The coordinate values for viewport settings are 0 - 255 for the x-coordinate and 0 - 191 for the y-coordinate.</P>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

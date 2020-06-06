@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_SetBankForBGExtPltt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_SetBankForBGExtPltt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>void GX_SetBankForBGExtPltt(GXVRamBGExtPltt bgExtPltt);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">bgExtPltt</font></strong></em></td>
+<td width="87%">Specifies a VRAM bank to allocate to the main 2D Engine's BG Extended palette</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function allocates the specified VRAM bank to the Main 2D Engine's BG Extended palette. If the specified VRAM bank is either disabled or allocated to LCDC, that VRAM bank is allocated to the Main 2D Engine BG Extended palette.<BR> <b>Note:</B>&nbsp; When the VRAM bank is allocated to the BG Extended palette, the palette information of the BG Extended palette is referenced when 256 colors are specified as the color mode for text BG or 256x16 palette BG is selected. At all other times, the standard palette is referenced.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>GX_VRAM_BGEXTPLTT_NONE</CODE></TD>
+<TD>The VRAM bank is not allocated to the BG Extended palette.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_BGEXTPLTT_01_F</CODE></TD>
+<TD>Slots 0 and 1 of the BG Extended palette are reserved. VRAM-F is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_BGEXTPLTT_23_G</CODE></TD>
+<TD>Slots 2 and 3 of the BG Extended palette are reserved. VRAM-G is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_BGEXTPLTT_0123_E</CODE></TD>
+<TD>Slots 0, 1, 2, and 3 of the BG Extended palette are reserved. VRAM-E is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_BGEXTPLTT_0123_FG</CODE></TD>
+<TD>Slots 0, 1, 2, and 3 of the BG Extended palette are reserved. VRAM-F and -G are allocated.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> The following is the type definition for <CODE>GXVRamBGExtPltt</CODE> types.</P>
+<PRE>typedef enum
+{
+GX_VRAM_BGEXTPLTT_NONE    = 0x0000,
+GX_VRAM_BGEXTPLTT_01_F    = GX_VRAM_F,              // BGExtPltt 0-1 &lt;--- Caution
+GX_VRAM_BGEXTPLTT_23_G    = GX_VRAM_G,              // BGExtPltt 2-3 &lt;--- Caution // BGCNT
+GX_VRAM_BGEXTPLTT_0123_E  = GX_VRAM_E,              // BGExtPltt 0-3
+GX_VRAM_BGEXTPLTT_0123_FG = GX_VRAM_F | GX_VRAM_G   // BGExtPltt 0-1,2-3
+}
+GXVRamBGExtPltt;</CODE></PRE>
+<h2>See Also</h2>
+<P><A href="GX_GetBankForBGExtPltt.html"><code>GX_GetBankForBGExtPltt</code></A>, <A href="GX_ResetBankForBGExtPltt.html"><code>GX_ResetBankForBGExtPltt</code></A>, <A href="GX_DisableBankForBGExtPltt.html"><code>GX_DisableBankForBGExtPltt</code></A>, <a href="GX_GetSizeOfBGExtPltt.html"><code>GX_GetSizeOfBGExtPltt</code></a></P>
+<H2>Revision History</H2>
+<P>02/09/2004</P>
+<UL>
+<LI>Added a note
+</UL>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRndCoreAffineOverwriteMode</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRndCoreAffineOverwriteMode</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_RendererCore.h&gt;</CODE></pre>
+<pre><CODE>void NNS_G2dSetRndCoreAffineOverwriteMode
+    ( 
+        NNSG2dRndCoreInstance*                  pRnd, 
+        NNSG2dRendererAffineTypeOverwiteMode    mode 
+    );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pRnd</font></strong></em></td>
+<td width="87%">[OUT] Renderer core</td>    
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">mode</font></strong></em></td>
+<td width="87%">[IN] Enumerator to display the overwrite operation of the affine transformation mode. (NNSG2dRendererAffineTypeOverwiteMode)</td>    
+  </tr>
+  
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<p>
+Sets the overwrite behavior for the affine transformation mode.<BR> The enumerator definitions for the various types of overwrite actions are shown in the following example:
+
+<pre>typedef enum NNSG2dRendererAffineTypeOverwiteMode
+{
+NNS_G2D_RND_AFFINE_OVERWRITE_NONE,  // Does not overwrite
+NNS_G2D_RND_AFFINE_OVERWRITE_NORMAL,// Sets to the normal affine transformation
+NNS_G2D_RND_AFFINE_OVERWRITE_DOUBLE // Sets to the double-size affine transformation
+  
+}NNSG2dRendererAffineTypeOverwiteMode;</pre>
+
+This function can be called inside or outside of the <code>BeginRendering</code> &mdash; <code>EndRendering</code> block.<BR> <BR> When <CODE>NNS_G2D_RND_AFFINE_OVERWRITE_DOUBLE</CODE> is specified, the renderer will internally perform position correction of the OBJ.<BR> Starting with the 06/06/2005 Version, position correction processing is performed only when the OBJ's affine transformation mode is actually changed. (In other words, data created as a double-size affine OBJ will not be corrected.)<BR>        
+</P>
+<h2>See Also</h2>
+<p>
+None.
+</p>
+
+<H2>Revision History</H2>
+<P>06/06/2005 Added warning about position correction processing.<BR>11/10/2004 Initial version.</P>
+</body>
+</html>

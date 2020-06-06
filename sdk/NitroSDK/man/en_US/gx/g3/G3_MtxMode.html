@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_MtxMode</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_MtxMode</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_MtxMode(GXMtxMode mode);
+
+// Below are APIs for creating the display list (command list)<BR>void G3B_MtxMode(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXMtxMode mode);<BR>void G3C_MtxMode(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXMtxMode mode);<BR>void G3BS_MtxMode(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXMtxMode mode);<BR>void G3CS_MtxMode(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXMtxMode mode);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">mode</font></strong></em></td>
+<td width="87%">Matrix mode</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets matrix mode. <em><strong><code>mode</code></strong></em> is selected from the following:
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_MTXMODE_PROJECTION</CODE></TD>
+<TD>Projection mode</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_MTXMODE_POSITION</CODE></TD>
+<TD>Position mode</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_MTXMODE_POSITION_VECTOR</CODE></TD>
+<TD>Position-Vector simultaneous set mode</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_MTXMODE_TEXTURE</CODE></TD>
+<TD>Texture mode</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following indicates the type definition for the <CODE>GXMtxMode</CODE> format.</P>
+<PRE><CODE>typedef enum
+{
+GX_MTXMODE_PROJECTION = 0,
+GX_MTXMODE_POSITION = 1,
+GX_MTXMODE_POSITION_VECTOR = 2,
+GX_MTXMODE_TEXTURE = 3
+}
+GXMtxMode;</CODE></PRE>
+<h2>See Also</h2>
+<P><CODE><A href="G3_MtxMode.html" target="_self">G3*_MtxMode</A>, <A href="G3_Identity.html" target="_self">G3*_Identity</A>, <A href="G3_LoadMtx43.html" target="_self">G3*_LoadMtx43</A>, <A href="G3_LoadMtx44.html" target="_self">G3*_LoadMtx44</A>, <A href="G3_MultMtx43.html" target="_self">G3*_MultMtx43</A>, <A href="G3_MultMtx44.html" target="_self">G3*_MultMtx44</A>, <A href="G3_MultMtx33.html" target="_self">G3*_MultMtx33</A>, <A href="G3_PushMtx.html" target="_self">G3*_PushMtx</A>, <A href="G3_PopMtx.html" target="_self">G3*_PopMtx</A>, <A href="G3_StoreMtx.html" target="_self">G3*_StoreMtx</A>, <A href="G3_RestoreMtx.html" target="_self">G3*_RestoreMtx</A>, <A href="G3_Scale.html" target="_self">G3*_Scale</A>, <A href="G3_Translate.html" target="_self">G3*_Translate</A></CODE></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

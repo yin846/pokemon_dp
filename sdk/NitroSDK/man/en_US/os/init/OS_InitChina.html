@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_InitChina</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_InitChina</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_InitChina( const char** isbn );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="20%" rowspan="5"><EM><STRONG><FONT face="Courier New">isbn</FONT></STRONG></EM></TD>
+<TD colspan="4">This specifies four character strings for the ISBN that is displayed on the health and safety caution screen. The format of the character strings is shown below. Characters other than numbers or a dash will be handled as a space.</TD>
+    </TR>
+    <TR>
+      <TD width="5%"><CENTER>0</CENTER></TD>
+<TD width="10%"><CODE>char[ 13 ]</CODE></TD>
+      <TD width="20%"><CODE>&quot;*-******-**-*&quot;</CODE></TD>
+<TD width="45%">ISBN Hao Ma (Chinese transliteration)</TD>
+    </TR>
+    <TR>
+      <TD><CENTER>1</CENTER></TD>
+<TD><CODE>char[ 12 ]</CODE></TD>
+      <TD><CODE>&quot;***-****-***&quot;</CODE></TD>
+<TD>He Tong Deng Ji Hao (Chinese transliteration)</TD>
+    </TR>
+    <TR>
+      <TD><CENTER>2</CENTER></TD>
+<TD><CODE>char[ 4 ]</CODE></TD>
+      <TD><CODE>&quot;****&quot;</CODE></TD>
+<TD>Xin Chu Yin Guan (Chinese transliteration) (this information is displayed on the left side)</TD>
+    </TR>
+    <TR>
+      <TD><CENTER>3</CENTER></TD>
+<TD><CODE>char[ 4 ]</CODE></TD>
+      <TD><CODE>&quot;****&quot;</CODE></TD>
+<TD>Xin Chu Yin Guan (Chinese transliteration) (this information is displayed on the right side)</TD>
+    </TR>
+  </tbody>
+</table>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>This function initializes the system in the same way as the <CODE><A href="OS_Init.html">OS_Init</A></CODE> function, and then it confirms hardware launch restrictions. If an application designed for China is launched on a DS unit that is not localized for China, the launch of the application will be restricted and control will not return from this function. If an application designed for China is launched properly on a Chinese-market DS system, this function displays the health and safety cautions screen and informs the user of the mandatory information, such as the ISBN number. To make an application for China, you must use this function instead of <CODE><A href="OS_Init.html">OS_Init</A></CODE> and define additional information in the ROM image that indicates that the application supports the Chinese language. For details, see the description in <CODE><A href="../../tools/makerom.html">makerom</A></CODE>. For information about system initialization, see the description for <CODE><A href="OS_Init.html">OS_Init</A></CODE>.
+</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_Init.html">OS_Init</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+05/14/2005 Added to description.<BR>04/25/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

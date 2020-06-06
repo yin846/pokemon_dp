@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_EndMP</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_EndMP</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_EndMP( <A href="WMCallbackFunc.html">WMCallbackFunc</A> callback );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>Ends the MP mode This function is executable only when the WM state is in either the <a href="wm_state_diagram.html"><code>MP_PARENT</code></a> or <a href="wm_state_diagram.html"><code>MP_CHILD</code></a> state. If the return value for the API is <CODE>WM_ERRCODE_OPERATING</CODE>, a callback is generated after the MP mode termination process is complete. The WM state goes back to its original <a href="wm_state_diagram.html"><code>PARENT</code></a> or <a href="wm_state_diagram.html"><code>CHILD</code></a> state.</P>
+
+<P>
+When a child that performs MP communication calls the <a href="WM_EndMP.html"><code>WM_EndMP</code></a> function, the parent returns NULL for the communication from then on. When this status exceeds the MP communication lifetime set with the <a href="WM_SetLifeTime.html"><code>WM_SetLifeTime</code></a> function, the child is disconnected from the parent. Note that when data is sent from a parent to the child in this condition by MP communication, the parent receives the send successful notice, but the child discards all the received data.
+</P>
+
+<h2>See Also</h2>
+<p><a href="WM_StartMP.html"><code>WM_StartMP</code></a>, <a href="WM_StartMPEx.html"><code>WM_StartMPEx</code></a>, <a href="WM_SetMPDataToPort.html"><code>WM_SetMPDataToPort</code></a>, <a href="WM_SetPortCallback.html"><code>WM_SetPortCallback</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callback being called from the interrupt handler.<br>11/09/2004 Added description about NULL reply.<br>10/22/2004 Changed type of return value.<br>09/25/2004 Added to and revised description.<br>07/29/2004 Added to Description<br>07/23/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Entity Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">Entity Overview</h1>
+<H2>Conceptual Diagram</H2>
+<P><!--[if mso & !supportInlineShapes & supportFields]><span lang=EN-US style='font-size:10.5pt;mso-bidi-font-size:12.0pt;font-family:Century; mso-fareast-font-family:"‚l‚r –¾’©";mso-bidi-font-family:"Times New Roman"; mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:JA; mso-bidi-language:AR-SA'><span style='mso-element:field-begin;mso-field-lock: yes'></span><span style='mso-spacerun:yes'>&nbsp;</span>SHAPE <span style='mso-spacerun:yes'>&nbsp;</span>\* MERGEFORMAT <span style='mso-element:field-separator'></span></span><![endif]--><span lang=EN-US style='font-size:10.5pt;mso-bidi-font-size:12.0pt;font-family:Century; mso-fareast-font-family:"‚l‚r –¾’©";mso-bidi-font-family:"Times New Roman"; mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:JA; mso-bidi-language:AR-SA'><IMG src="clip_image001.gif" width="681" height="252" border="0"></span><!--[if mso & !supportInlineShapes & supportFields]><span lang=EN-US style='font-size:10.5pt;mso-bidi-font-size:12.0pt;font-family:Century; mso-fareast-font-family:"‚l‚r –¾’©";mso-bidi-font-family:"Times New Roman"; mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:JA; mso-bidi-language:AR-SA'><v:shape id="_x0000_i1029" type="#_x0000_t75" style='width:410pt;  height:191pt'>  <v:imagedata croptop="-65520f" cropbottom="65520f"/> </v:shape><span style='mso-element:field-end'></span></span><![endif]--></P>
+<H2>Description</H2>
+Entity is the concept of managing and storing information from the upper layer (user program) of the data structures (cell animations and multicell animations). Entity is located in the uppermost layer of data as the data structure defined internally in G2D. Therefore, future versions may include changes and expanded features for the upper layer (user program). <BR>
+
+
+
+<h2>Internal Data of Entity</h2>
+
+Entity contains the following information.
+<h3>Entity Data Pointer</h3>
+The pointer to the entity data (<code>.nenr</code> file) read to the main memory is stored here. Entity data is static&mdash;it will not be rewritten.
+
+<h3>Sequence Number Being Played</h3>
+The sequence number of the animation that is currently playing is stored here. The Animation Sequence Number corresponds to the sequence number of the animation in the entity data designated by the pointer to the entity data.
+
+<h3>Pointer to the Display Data</h3>
+The pointer to the cell or multicell animation currently being rendered is stored here.
+
+<h3>Pointer to the Color Palette Conversion Table</h3>
+There may be situations where different characters are expressed by changing the color palette used by the same character so a table exists for converting color palettes. The color palette conversion table specifies which color palette number from the sixteen color palettes it is changed to.
+
+<BR>
+
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

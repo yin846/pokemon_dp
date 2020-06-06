@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GXS_LoadOBJPltt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GXS_LoadOBJPltt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/gx/gx_load.h&gt;</CODE><BR>
+<CODE>void GXS_LoadOBJPltt(const void *pSrc, u32 offset, u32 szByte);</CODE></PRE></dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New">pSrc</font></strong></em></TD>
+<TD width="512">Pointer to transfer origin</TD>
+    </TR>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New">offset</font></strong></em></TD>
+<TD width="512">Offset</TD>
+    </TR>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New">szByte</font></strong></em></TD>
+<TD width="512">Transfer size (in bytes)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function uses DMA to transfer standard OBJ palette data to the sub 2D Engine palette RAM for OBJ. An offset can be specified for the transfer destination address. The DMA channel that is used is <CODE>GX_DMAID</CODE> (defined in <code>gxcommon.h</code>). The transfer destination address is <code>HW_DB_OBJ_PLTT</code> in the ARM9 memory space + <em><strong><code>offset</code></strong></em>. Both <em><strong><code>offset</code></strong></em> and <em><strong><code>szByte</code></strong></em> must be multiples of 2.</P>
+<P>Notes: Because the DMA transfer is carried out internally, the transfer source data must be flushed to the main memory using a function such as <code><A href="../../os/cache/DC_FlushRange.html" target="_self">DC_FlushRange</A></code> prior to the process. If the regions for transfer source and transfer destination overlap, the operation result is not guaranteed.</P>
+
+<h2>See Also</h2>
+<P><code><A href="GXS_LoadOBJ.html">GXS_LoadOBJ</A></code>, <code><A href="GXS_LoadOAM.html">GXS_LoadOAM</A></code></P>
+<H2>Revision History</H2>
+<P>02/09/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

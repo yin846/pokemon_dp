@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Reset (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Reset (Overview)</H1>
+<H2>Introduction</H2>
+<P>A Reset System is included in the NitroSDK. This system loads the ROM data from the Game Card into main memory and moves the Program Counter register to the appropriate address so the program always starts at the beginning.</P>
+<P>The <code><a href="OS_InitReset.html">OS_InitReset()</a></code> function must be called before you can use this Reset System. However, this function is called internally by <code><a href="../init/OS_Init.html">OS_Init()</a></code>, there is no need to call <code><a href="OS_InitReset.html">OS_InitReset()</a></code> if you've already called <code><a href="../init/OS_Init.html">OS_Init()</a></code>.</P>
+<P>Reset can be performed only from the ARM9. Only the ARM9 can issue a reset command, which will in turn call <CODE><A href="OS_ResetSystem.html">OS_ResetSystem()</A></CODE>. The ARM7 continues to operate normally until the reset instruction comes from the ARM9. When this reset instruction is sent via PXI (communicated as a PXI interrupt), the ARM7 performs the reset process.</P>
+<HR>
+<P><B>Internal Operations of the Reset Process</B></P>
+<P>This section explains the operations of the two processors after the <code><a href="OS_ResetSystem.html">OS_ResetSystem()</a></code> function is called.</P>
+<BLOCKQUOTE><IMG src="image_resetChart.gif" border="0"></BLOCKQUOTE>
+<P>The ARM9 waits for the card bus to unlock and immediately locks it. Next, all DMA tasks are ended. Then PXI-communication interrupts (and only these interrupts) are enabled in order to receive communications from the ARM7. Other interrupts are disabled. Finally, a reset notification is posted to the ARM7.</P>
+<P>On the ARM7 side, when the reset notification comes from the ARM9, all DMA tasks are ended and PXI-communication interrupts (and only these interrupts) are enabled in order to receive communications from the ARM9. Also, the stop command is communicated to the Sound library.</P>
+<P>In the explanations of these subsequent steps, all operations take place in ITCM on the ARM9, and in WRAM on the ARM7.</P>
+<P>All interrupts are disabled in both the ARM7 and the ARM9. The ARM9 then reads ROM data from the Game Card in accordance with the ROM header information stored in the shared area of main memory.</P>
+<P><IMG src="image_resetImg.gif" border="0"></P>
+<P>Once synchronized after the data have been read, the ARM7 and the ARM9 both act to clear memory and registers.</P>
+<P>The starting address is set in the Program Counter (PC) according to the ROM header information.</P>
+<HR>
+<P align="left"><B>The Reset Parameters</B></P>
+<P>The Reset System has a <code>u32</code> value, called the Reset Parameter, which can be used to determine if the current program is running because the power has been turned on or because the program was restarted.</P>
+<P>This Reset Parameter is obtained by <code><a href="OS_GetResetParameter.html">OS_GetResetParameter()</a></code>. The value of the Reset Parameter is <code>0</code> after the power is turned on, but once the <code><a href="OS_ResetSystem.html">OS_ResetSystem()</a></code> function is called, it takes the value of the function's argument. If resets are performed multiple times, the Reset Parameter holds the value of the argument from <code><a href="OS_ResetSystem.html">OS_ResetSystem()</a></code> most recently called.</P>
+<P>The Reset Parameter is stored in a part of the shared region of main memory. Since this part is not cleared during the reset process, the value of the Reset Parameter can be passed to programs after the reset.</P>
+<BLOCKQUOTE><IMG src="image_resetParam.gif" border="0"></BLOCKQUOTE>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Reset">OS Function List (Reset)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Unified the Japanese term for &quot;interrupt.&quot;<br>12/13/2004 Corrected terms and word endings.<BR>11/02/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

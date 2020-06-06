@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>The Divider (Overview)</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">The Divider (Overview)</h1>
+<P>The DS has accelerators for division and square-root computations. This section explains the Divider.</P>
+<HR>
+<P><B>Registers for Division</B></P>
+
+<P>Data registers have been prepared for the dividend, the divisor, the quotient and the remainder.</P>
+<BLOCKQUOTE><IMG src="image_reg_DIV_NUMER.gif" border="0"></BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_reg_DIV_DENOM.gif" border="0"></BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_reg_DIV_RESULT.gif" border="0"></BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_reg_DIVREM_RESULT.gif" border="0"></BLOCKQUOTE>
+<P>The relationship between these registers is as follows:</P>
+<BLOCKQUOTE><IMG src="image_Divider1.gif" border="0"></BLOCKQUOTE>
+<P>Also, a control register is provided to control the Divider.</P>
+<BLOCKQUOTE><IMG src="image_reg_DIVCNT.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Operations of the Divider</B></P>
+<P>To perform calculations, the Divider sets the dividend and the divisor in the data registers <code>DIV_NUMER</code> and <code>DIV_DENOM</code>. After the control register <code>DIVCNT</code> is appropriately set, the results of the division are saved in <code>DIV_RESULT</code> and <code>DIVREM_RESULT</code>. (In actuality, the calculation begins right after a value has been set in either <code>DIV_NUMER</code>, <code>DIV_DENOM</code>, or <code>DIVCNT</code>. If data is written to the registers during the calculation, the calculation begins all over again.)</P>
+<P>There are three modes for division:<br /><UL>
+<LI>32bit divided by 32bit, with result obtained as 32bit quotient and 32bit remainder.
+<LI>64bit divided by 32bit, with result obtained as 64bit quotient and 32bit remainder.
+<LI>64bit divided by 64bit, with result obtained as 64bit quotient and 32bit remainder.
+</UL>
+<P>You can switch between modes by changing the value set in the <code>MODE</code> bit of the <code>DIVCNT</code> register.</P>
+
+<P>When the Divider begins a division calculation, the <code>DIVCNT</code> register's <code>BUSY</code> bit becomes <code>1</code>. The bit retains that value until the result are computed. When this bit changes to <code>0</code>, the values in the <code>DIV_RESULT</code> and <code>DIVREM_RESULT</code> registers hold the completed computation result.</P>
+<P>When the divisor is <code>0</code>, the <code>DIVCNT</code> register's <code>DIV0</code> bit becomes <code>1</code>. When this is the case, the calculation result is undefined.</P>
+<HR>
+<P><B>Calculation Cycles</B></P>
+<P>The number of cycles required by the Divider to perform a division calculation varies, depending on the division mode.<br /></P>
+
+
+<UL>
+<LI>18 cycles for 32bit divided by 32bit mode, with result obtained as 32bit quotient and 32bit remainder.
+<LI>34 cycles for 64bit divided by 32bit mode, with result obtained as 64bit quotient and 32bit remainder.
+<LI>34 cycles for 64bit divided by 64bit mode, with result obtained as 64bit quotient and 32bit remainder.
+</UL>
+<P>To make more efficient use of the Divider, you can perform another task while waiting for the results after setting the parameters in the Divider's data registers.</P>
+<HR>
+<P><B>Setting the Parameters</B></P>
+<P>Use <a href="CP_SetDivImm.html"><code>CP_SetDivImm*()</code></a> and <code><a href="CP_SetDiv.html">CP_SetDiv*()</a></code> to set the parameters for the Divider. Both functions can set both the dividend and the divisor. The <code><a href="CP_SetDiv.html">CP_SetDiv*()</a></code> function can also be used to set the <code>DIVCNT</code> register's division mode.</P>
+<P><code><a href="CP_SetDivImm.html">CP_SetDivImm32_32()</a></code>, <code><a href="CP_SetDivImm.html">CP_SetDivImm64_32()</a></code>, <code><a href="CP_SetDivImm.html">CP_SetDivImm_64_64()</a></code><br /> <code><a href="CP_SetDiv.html">CP_SetDiv32_32()</a></code>, <code><a href="CP_SetDiv.html">CP_SetDiv64_32</a></code>, <code><a href="CP_SetDiv.html">CP_SetDivImm64_64()</a></code></P>
+<P>Thus, if you plan to perform a succession of division calculations in the same division mode, you can use <code><a href="CP_SetDiv.html">CP_SetDiv*()</a></code> the first time and then use <code><a href="CP_SetDivImm.html">CP_SetDivImm*()</a></code> for all subsequent calculations.</P>
+<HR>
+<P><B>Waiting for Calculation to End</B></P>
+<P>To check whether or not the calculation has ended, call <code><a href="CP_IsDivBusy.html">CP_IsDivBusy()</a></code>.</P>
+<P>To wait for the calculation to end, call <code><a  href="CP_WaitDiv.html">CP_WaitDiv()</a></code>.</P>
+<HR>
+<P><B>Getting the Calculation Result</B></P>
+<P>To get the quotient of the division calculation, call either <code><a href="CP_GetDivResult.html">CP_GetDivResult*()</a></code> or <code><a href="CP_GetDivResult.html">CP_GetDivResultImm*()</a></code>.<br />The former waits until the <code>DIVCNT</code> register is no longer in the <code>BUSY</code> state before fetching the result. The latter acts immediately.</P>
+<P>To get the remainder, call <code><a href="CP_GetDivRemainder.html">CP_GetDivRemainder()</a></code> or <code><a href="CP_GetDivRemainder.html">CP_GetDivRemainderImm*()</a></code>.<br />The former waits until the <code>DIVCNT</code> register is no longer in the <code>BUSY</code> state before fetching the result. The latter acts immediately.</P>
+
+<HR>
+<P><B>Notes</B></P>
+<P>
+When the division mode is &quot;32bit divided by 32bit&quot; or &quot;64bit divided by 32bit,&quot; the upper 32 bits in data registers for which only 32 bits are being used need to be filled with zeros. The NitroSDK functions do this automatically. However, don't forget to do this when your application directly sets values in the registers.</P>
+<P>If you are using the thread system, the Divider calculations are thread safe by default.</P>
+<HR>
+<P><B>Example</B></P>
+<P>The following is an example using the Divider to conduct a division calculation and then displaying the result.</P>
+<BLOCKQUOTE>
+<P><CODE>u32 quotient;<BR> u32 remainder;<BR> <BR> //---- set parameter and div-mode<BR> CP_SetDiv( 0x12345678, 0x300, CP_DIV_32_32BIT_MODE );<BR> <BR> //---- wait for division to finish<BR> CP_WaitDiv();<BR> <BR> //---- display result<BR> quotient = CP_GetDivResultImm32();<BR> remainder = CP_GetDivRemainderImm32();<BR> OS_Printf( &quot;quotient=%x, remainder=%x\n&quot;, quotient, remainder );<BR></CODE></P>
+</BLOCKQUOTE>
+<H2>Revision History</H2>
+<P>12/27/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

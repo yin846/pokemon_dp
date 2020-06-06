@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>TP_SetCallback</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">TP_SetCallback</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/spi.h&gt;</CODE><BR>
+<PRE><CODE>void TP_SetCallback( <A href="TPRecvCallback.html">TPRecvCallback</A> callback );</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">callback</font></strong></em></TD>
+<TD width="700">Pointer to the user callback function <br>This callback is called from the interrupt handler.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the user callback function called during acquisition of the result of a touch panel request to the ARM7 processor. If the argument is NULL, no user callback will be called until it is subsequently reset. (The default is NULL.)</P>
+
+<h2>See Also</h2>
+<P><A href="TPRecvCallback.html"><CODE>TPRecvCallback</CODE></A></P>
+<H2>Revision History</H2>
+<P>06/27/2005 Added additional text indicating that the callback is called from the interrupt handler. <br> 04/16/2004 Initial version<BR></P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

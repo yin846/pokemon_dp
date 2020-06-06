@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SNDTrackInfo</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SNDTrackInfo</h1>
+<h2>Definitions</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo"><code>typedef struct SNDTrackInfo
+{
+u16 prgNo;
+u8 volume;
+u8 volume2;
+s8 pitchBend;
+u8 bendRange;
+u8 pan;
+s8 transpose;
+u8 pad_;
+u8 chCount;
+u8 channel[ SND_CHANNEL_NUM ];
+} SNDTrackInfo;
+</code></pre></dd>
+<dd><pre class="funcprototype"></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAPLWT"></a>
+<h2>Elements</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>prgNo</code></strong></em></td>
+<td>The program number.</td>
+</tr>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>The track volume corresponding to the <code>volume</code> command (MIDI:7). Takes values in the range of 0 to 127.</td>
+</tr>
+<tr>
+<td><em><strong><code>volume2</code></strong></em></td>
+<td>The track volume corresponding to the <code>volume2</code> command (MIDI:11). Takes values in the range of 0 to 127.</td>
+</tr>
+<tr>
+<td><em><strong><code>pitchBend</code></strong></em></td>
+<td>The pitch bend. Takes values in the range of -128 to 127.</td>
+</tr>
+<tr>
+<td><em><strong><code>bendRange</code></strong></em></td>
+<td>The pitch bend range. Units are in half tones. Values represent the amount of change when <em><strong><code>pitchBend</code></strong></em> is at maximum.</td>
+</tr>
+<tr>
+<td><em><strong><code>pan</code></strong></em></td>
+<td>The pan. Takes values in the range of 0 (left) to 64 (center) to 127 (right).</td>
+</tr>
+<tr>
+<td><em><strong><code>transpose</code></strong></em></td>
+<td>The transpose value. Units are in half tones.</td>
+</tr>
+<tr>
+<td><em><strong><code>chCount</code></strong></em></td>
+<td>The number of channels currently playing tracks.</td>
+</tr>
+<tr>
+<td><em><strong><code>channel[]</code></strong></em></td>
+<td>An array of the channel numbers of channels playing tracks. Valid for only <em><strong><code>chCount</code></strong></em> number of channels.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAWNWT"></a>
+<h2>Description</h2>
+      <p>
+This is the track information structure. It stores the information for a single track.
+</p>
+      <p>
+The contents of the structure can be obtained with <code><a href="SND_ReadTrackInfo.html">SND_ReadTrackInfo</a></code>.
+</p>
+<div class="note">
+<h3 class="title">Caution</h3>
+<p>
+The structure size and the member arrangement may be changed in the future.
+        </p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="SND_ReadTrackInfo.html">SND_ReadTrackInfo</a></p>
+<h2>Revision History</h2>
+<p>02/17/2005 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

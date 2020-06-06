@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_GetIrqStackStatus</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_GetIrqStackStatus</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>OSStackStatus OS_GetIrqStackStatus( void );
+ </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P><code>OS_STACK_OVERFLOW</code> &mdash; The magic number at the bottom of the stack is rewritten.<br /><code>OS_STACK_UNDERFLOW</code> &mdash; The magic number at the top of the stack is rewritten.<br /><code>OS_STACK_ABOUT_TO_OVERFLOW</code> &mdash; The warning level magic number set by the user is rewritten.</P>
+<P>When none of the previous cases apply, returns <code>OS_STACK_NO_ERROR</code> (defined as <code>0</code>).</P>
+<H2>Description</H2>
+<P>Checks the stack used for IRQ mode for stack leaks and checks stack status.</P>
+<P>This function checks a magic number that is preset in the top and bottom (in addition, a warning level if set by the user) of the stack, to see whether it is overwritten (if that portion is ever used).</P>
+<P>If the magic number at the bottom of the stack is overwritten, it returns <code>OS_STACK_OVERFLOW</code>.<br />If the magic number at the top of the stack is overwritten, it returns <code>OS_STACK_UNDERFLOW</code>.<br />If the magic number at the warning level set by the user in the stack is overwritten, it returns <code>OS_STACK_ABOUT_TO_OVERFLOW</code>.</P>
+<P>The stack is checked in this order so that <code>OS_STACK_OVERFLOW</code> is returned when both the top and bottom of the stack are overwritten.   </P>
+<P>If none of these condition are met (none of the magic numbers have been overwritten), it returns <code>OS_STACK_NO_ERROR</code>. If none of these condition are met (none of the magic numbers have been overwritten), <CODE>OS_STACK_NO_ERROR</CODE> is returned. <CODE>OS_STACK_NO_ERROR</CODE> is defined as 0, so whether an error has occurred can be determined by whether the value is 0 or non-zero.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="OS_SetIrqStackWarningOffset.html">OS_SetIrqStackWarningOffset</A>, <A href="OS_CheckIrqStack.html">OS_CheckIrqStack</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>07/15/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

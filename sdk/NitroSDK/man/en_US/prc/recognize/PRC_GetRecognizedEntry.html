@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRC_GetRecognizedEntry*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRC_GetRecognizedEntry*</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+fx32 PRC_GetRecognizedEntry(
+<A href="PRCPrototypeEntry.html">PRCPrototypeEntry</A>**         resultEntry,
+void*                       buffer,
+const <A href="PRCInputPattern.html">PRCInputPattern</A>*      input,
+const <A href="PRCPrototypeDB.html">PRCPrototypeDB</A>*       protoDB );
+
+fx32 PRC_GetRecognizedEntryEx(
+<A href="PRCPrototypeEntry.html">PRCPrototypeEntry</A>**         resultEntry,
+void*                       buffer,
+const <A href="PRCInputPattern.html">PRCInputPattern</A>*      input,
+const <A href="PRCPrototypeDB.html">PRCPrototypeDB</A>*       protoDB,
+u32                         kindMask,
+const <A href="PRCRecognizeParam.html">PRCRecognizeParam</A>*    param );
+
+int PRC_GetRecognizedEntries(
+<A href="PRCPrototypeEntry.html">PRCPrototypeEntry</A>**         resultEntries,
+fx32*                       resultScores,
+int                         numRanking,
+void*                       buffer,
+const <A href="PRCInputPattern.html">PRCInputPattern</A>*      input,
+const <A href="PRCPrototypeDB.html">PRCPrototypeDB</A>*       protoDB );
+
+int PRC_GetRecognizedEntriesEx(
+<A href="PRCPrototypeEntry.html">PRCPrototypeEntry</A>**         resultEntries,
+fx32*                       resultScores,
+int                         numRanking,
+void*                       buffer,
+const <A href="PRCInputPattern.html">PRCInputPattern</A>*      input,
+const <A href="PRCPrototypeDB.html">PRCPrototypeDB</A>*       protoDB,
+u32                         kindMask,
+const <A href="PRCRecognizeParam.html">PRCRecognizeParam</A>*    param );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">resultEntry</font></strong></em></td>
+<td width="87%">Pointer for receiving the <code>PRCPrototypeEntry*</code> recognition results.</td>
+    </tr>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">buffer</FONT></STRONG></EM></TD>
+<TD width="87%">Pointer to the memory region used by the recognition algorithm.</TD>
+    </TR>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">input</font></strong></em></td>
+<td width="87%">Input pattern data to be recognized.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">protoDB</font></strong></em></td>
+<td width="87%">Sample DB.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">kindMask</font></strong></em></td>
+<td width="87%">Bit field specification of the pattern type that is used to qualify match targets.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">param</font></strong></em></td>
+<td width="87%">Other parameter values that are dependent on the recognition algorithm (use NULL as the default).</td>
+    </tr>
+  </tbody>
+</table>
+
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">resultEntries</font></strong></em></td>
+<td width="87%">Pointer to the array that receives the <code>PRCPrototypeEntry*</code> recognition results.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">resultScores</font></strong></em></td>
+<td width="87%">Pointer to the array that receives the recognition result score.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">numRanking</font></strong></em></td>
+<td width="87%">Specifies up to what rank of the recognition results will be accepted.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p><code>PRC_GetRecognizedEntry</code> and <code>PRC_GetRecognizedEntryEx</code> return the recognition result score as a <code><A href="../../fx/fx32.html">fx32</A></code> type.</p>
+<P><code>PRC_GetRecognizedEntries</code> and <code>PRC_GetRecognizedEntriesEx</code> return how many of the sample DB patterns are matching targets.</P>
+<H2>Description</H2>
+<P>Performs pattern recognition. This function matches the <code><A href="PRCInputPattern.html">PRCInputPattern</A></code> type input pattern and each entry in the <code><A href="PRCPrototypeDB.html">PRCPrototypeDB</A></code> type sample DB and returns those that have high scores.</P>
+<P>When matching, the logical AND is taken of <code><em><strong>kind</strong></em></code> for each sample DB entry in <code><em><strong>protoDB</strong></em></code> and the value of <code><em><strong>kindMask</strong></em></code>. If the result is non-0, the entry will be targeted for matching. Specifying <code>PRC_KIND_ALL</code> in <code><em><strong>kindMask</strong></em></code> will select all <code><em><strong>kinds</strong></em></code>. If the <code><em><strong>enabled</strong></em></code> flag is FALSE, the DB entry will not be targeted for matching, even if the <code><em><strong>kind</strong></em></code> values match.</P>
+<P><code>PRC_GetRecognizedEntry</code> and <code>PRC_GetRecognizedEntryEx</code> return a pointer to the sample DB entry that has the highest score in <code>*resultEntry</code>. If no recognition was achieved, <code>NULL</code> will be returned to <code>*resultEntry</code>.</P>
+<P><code>PRC_GetRecognizedEntries</code> and <code>PRC_GetRecognizedEntriesEx</code> return pointers to high scoring sample DB entries scores above <code><strong><em>numRanking</em></strong></code>, in descending order according to score in <code>resultEntries[]</code>. It returns the numerical value of each score in <code>resultScores[]</code>. If the number of matching target sample DB entries does not reach <code><em><strong>numRanking</strong></em></code>, <code>NULL</code> will be assigned to the unfilled regions of <code>resultEntries[]</code>.</P>
+<P>Note that depending on the selected recognition algorithm and the complexity of the input pattern, depending on the number and complexity of the sample DB entries, and depending on other conditions, the cost of this process can become extremely high. Based on the fact that multiple frames will be involved in recognition, we recommend that this function run on a thread other than the main process. For a sample implementation see <code>prc/characterRecognition-1</code> in the demos.</P>
+<P>Use <code><em><strong>buffer</strong></em></code> to specify the memory region that the recognition algorithm will use. First obtain the amount of memory required using <code><A href="PRC_GetRecognitionBufferSize.html">PRC_GetRecognitionBufferSize*</A></code> and allocate at least that amount.</P>
+<P>Scores are returned as an <code>fx32</code>. The range will be <code>0&nbsp;&lt;=&nbsp;range&nbsp;&lt;=&nbsp;FX32_ONE</code>.</P>
+<P>Higher scores indicate a recognition result that has a closer resemblance to the pattern. Calling <code>PRC_GetRecognizedEntry, PRC_GetRecognizedEntries</code>, is the same as calling <code>PRC_GetRecognizedEntryEx, PRC_GetRecognizedEntriesEx</code> with <code><em><strong>kindMask</strong></em></code> set to <code>PRC_KIND_ALL</code>, and <code><em><strong>param</strong></em></code> set to <code>NULL</code>.</P>
+<P>For details on recognition algorithms see <code>docs/TechnicalNotes/AboutPatternRecognition.pdf</code>.</P>
+<h2>See Also</h2>
+<p><code><A href="PRC_GetRecognitionBufferSize.html">PRC_GetRecognitionBufferSize*</a></code>, <code><a href="PRCRecognizeParam.html">PRCRecognizeParam</a></code>, <code><a href="PRC_Init.html">PRC_Init</a></code>, <code><a href="PRC_InitPrototypeDB.html">PRC_InitPrototypeDB*</a></code>, <code><a href="PRC_InitInputPattern.html">PRC_InitInputPattern*</a></code>, <code><a href="PRC_GetEntryCode.html">PRC_GetEntryCode</a></code>, <code><a href="PRC_GetEntryData.html">PRC_GetEntryData</A></code></p>
+
+<H2>Revision History</H2>
+<P>02/18/2005 Revised file name of reference document<br /> 06/23/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

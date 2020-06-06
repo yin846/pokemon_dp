@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATH_QSort</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATH_QSort</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/qsort.h&gt;
+
+void MATH_QSort( void *head,
+u32 num,
+u32 width,
+<A href="MATHCompareFunc.html">MATHCompareFunc</A> comp, 
+void *stackBuf );<BR>
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    
+    
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">head</font></strong></em></TD>
+<TD width="670">Pointer to the data to sort.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">num</font></strong></em></TD>
+<TD>The number of pieces of data to sort.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">width</font></strong></em></TD>
+<TD>The size of each piece of data.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">comp</font></strong></em></TD>
+<TD>Comparison function for the elements in the array.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">stackBuf</font></strong></em></TD>
+<TD>Provides a buffer to be used interally. You can obtain the required buffer size with <a href="MATH_QSortStackSize.html"><code>MATH_QSortStackSize</code></a>.<br />If this argument is NULL, memory will be allocated from the stack. Be alert to the possiblity of stack overflow.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function performs a quicksort.<BR> The function does not use a recursive call. Instead, the <em><strong><code>stackBuf</code></strong></em> argument must be used to provide a work area for the sort.<BR> If the work area is provided by NULL, the stack will be used for the sort. Be aware of the possiblity of stack overflow.<BR> The required size of the work area is <nobr><code>(Log2(num)+1) * 8 bytes</code></nobr>. You can obtain this value with <a href="MATH_QSortStackSize.html"><code>MATH_QSortStackSize</code></a>.
+</P>
+<h2>See Also</h2>
+<P><a href="MATHCompareFunc.html"><code>MATHCompareFunc</code></a>, <a href="MATH_QSortStackSize.html"><code>MATH_QSortStackSize</code></a></P>
+<H2>Revision History</H2>
+<P>04/12/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

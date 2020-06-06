@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNSG2dTagCallback</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG2dTagCallback</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>
+#include &lt;nnsys/g2d/g2d_TextCanvas.h&gt;
+
+typedef void (*NNSG2dTagCallback)(
+	u16 c,	
+	<a href="NNSG2dTagCallbackInfo.html">NNSG2dTagCallbackInfo</a>* pInfo
+);
+</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>c</STRONG></EM></TD>
+<TD width="87%"> [IN] Character that caused the callback to be issued. </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>pInfo</STRONG></EM></TD>
+<TD width="87%"> [IN,OUT] Pointer to the drawing information structure. </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>
+	None.
+</P>
+
+<H2>Description</H2>
+<P>
+	This is the callback function that gets called from <code><a  href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a></code> for a tagged process.
+</P>
+<P>
+	The character that caused the callback to be issued gets passed to the argument <em><strong>c</strong></em>. This is some character whose character code is 0x001F or lower. The argument <em><strong>pInfo</strong></em> holds the parameters that <code><a href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a></code> uses internally for drawing. Rewriting this information is a way to alter the drawing conditions.
+</P>
+
+
+<H2>See Also</H2>
+<P><a href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a>, <a href="NNSG2dTagCallbackInfo.html">NNSG2dTagCallbackInfo</a> </code></P>
+
+<H2>Revision History</H2>
+<P>05/25/2005 Initial version.</P>
+</BODY>
+
+</HTML>

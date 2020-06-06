@@ -1,0 +1,68 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SocBind</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SocBind</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_SocBind (u16 local_port, u16 remote_port, CPSInAddr remote_ip);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>local_port</strong></em></code></td>
+<td>Own port</td>
+  </tr>
+  <tr>
+<td><code><em><strong>remote_port</strong></em></code></td>
+<td>Partner's port</td>
+  </tr>
+  <tr>
+<td><code><em><strong>remote_ip</strong></em></code></td>
+<td>Partner's address</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>Allocates own port, partner's port, and partner's address to socket. </p>
+<P>CPS_SocBind () used in TCP</P>
+	<UL>
+		<LI>CPS_SocBind() takes three arguments (own port, partner's port, and partner's IP address). If own port is 0, then an ephemeral port is assigned. If the partner's port is 0, the port becomes a wildcard. If the partner's IP address is 0, the port becomes a wildcard. </LI>
+		<LI>After establishing the TCP connection, information related to the partner's IP address and port can be obtained with <CODE>CPS_SocWho()</CODE>. This is used to find the actual partner for specified items using the wildcard. </LI>
+	</UL>
+<P><CODE>CPS_SocBind ()</CODE> used in UDP</P>
+	<UL>
+		<LI>In addition to the above, broadcast is possible with UDP by specifying 0xffffffff for the partner&rsquo;s IP in <CODE>CPS_SocBind()</CODE>. in this case, the partner&rsquo;s IP is treated as a wildcard for reception. </LI>
+		<LI>Items specified using the wildcard are rewritten by the actual partner&rsquo;s information after receiving the first packet. By doing so, port x is put on standby using <CODE>CPS_SocBind(x, 0, 0)</CODE>, and communication with the partner&rsquo;s IP and port that sent the first packet is automatically enabled. If this operation is not convenient, change back to the wildcard using <CODE>CPS_SocBind(x, 0, 0)</CODE> after every reception. </LI>
+		<LI>This doesn't pose a problem because the partner can't be a wildcard when output from here. </LI>
+	</UL>
+	<p>Does not block. </p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_TcpListen.html">CPS_TcpListen</A></CODE>, <CODE><A href="CPS_TcpConnect.html">CPS_TcpConnect</A></CODE>, <CODE><A href="CPS_SocWho.html">CPS_SocWho</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

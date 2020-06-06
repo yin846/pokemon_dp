@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsWriteFile</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsWriteFile</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre><code>u32 NNS_McsWriteFile(
+NNSMcsFile* pFile,
+const void* buffer,
+u32         length);</code></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">pFile</font></strong></em></td>
+<td width="87%">Pointer to the file information structure.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">buffer</font></strong></em></td>
+<td width="87%">Pointer to the buffer holding the data for writing.</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">length</font></strong></em></td>
+<td width="87%">The number of bytes of data being written.</td>
+ </tr>
+</table>
+<h2>Return Values</h2>
+<p>0 if data are written to the file successfully. A non-zero value otherwise. The return value is one of the following:</p>
+<H2>Description</H2>
+<p>This function writes data to a file.</p>
+<p>The return value takes one of the following values.</p>
+<table>
+  <tbody>
+    <tr>
+<td><em><strong><code>NNS_MCS_FILEIO_ERROR_SUCCESS</code></strong></em> (0)</td>
+<td>The function was successful.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_COMERROR</font></strong></em></td>
+<td>A communications error occurred.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_NOTCONNECT</font></strong></em></td>
+<td>Not connected to the mcs server.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_SERVERERROR</font></strong></em></td>
+<td>A error has occurred due to a file operation on the mcs server side. The error code is a Win32 system error code that can be obtained using the <code>NNS_McsGetServerErrorCode</code> function.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>See Also</h2>
+<p><code><a href="NNS_McsOpenFile.html">NNS_McsOpenFile</a>,  <a  href="NNS_McsReadFile.html">NNS_McsReadFile</a>,  <a  href="NNS_McsCloseFile.html">NNS_McsCloseFile</a> </code></p>
+<H2>Revision History</H2>
+<P>01/24/2005 Added the description regarding the error code.<br>07/01/2004 Initial version.</P>
+</body>
+</html>

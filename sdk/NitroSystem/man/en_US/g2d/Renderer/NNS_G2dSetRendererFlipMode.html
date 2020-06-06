@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRendererFlipMode</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRendererFlipMode</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Renderer.h&gt;</CODE></pre>
+  <pre><CODE>void NNS_G2dSetRendererFlipMode( NNSG2dRendererInstance* pRend, 
+BOOL bFlipH, 
+BOOL bFlipV );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pRend</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] Renderer entity</td>
+  </tr>
+  
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>bFlipH</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[IN] Horizontal flip</td>
+  </tr>
+  
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>bFlipV</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[IN] Vertical flip</td>
+  </tr>
+ 
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Sets renderer to render an object flipped. Do not use this function with affine transformation rendering. Flip rendering is not possible while rotation or scaling are being applied. In such a case, you must render flipped using an alternative method, such as by setting the scale value to a negative number. This can be called either inside or outside the Begin-End rendering block. <BR> <BR> <BR>
+</p>
+
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>11/10/2004 Added description.<BR>09/01/2004 Initial version.</P>
+</body>
+</html>

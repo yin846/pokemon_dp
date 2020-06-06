@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MB_SetParentCommSize</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MB_SetParentCommSize</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR> <CODE>BOOL MB_SetParentCommSize( u16 sendSize );</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>sendSize</STRONG></EM></TD>
+<TD width="87%">send buffer size in MB parent MP communication. This size must be greater than <a href="../mb_comm_parent_consts.html"><code>MB_COMM_PARENT_SEND_MIN</code></a> and less than <a href="../mb_comm_parent_consts.html"><code>MB_COMM_PARENT_SEND_MAX</code></a>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>Returns <code>TRUE</code> if the value is set in the correct range. Otherwise returns <code>FALSE</code>.</p>
+
+<H2>Description</H2>
+<P>Specifies the size of the MB library's send for internally-driven communication, including the maximum number of children. This function can be used to increase the efficiency of the MP communication packets when you already know the maximum number of connected devices. This function can be called only after calling the <a href="../common/MB_Init.html"><code>MB_Init</code></a> function and before calling the <a href="MB_StartParent.html"><code>MB_StartParent</code></a> function. This function is the same as the <a href="MB_SetParentCommParam.html"><code>MB_SetParentCommParam</code></a> function except it preserves the currently set maximum number of connected children.<BR> Note that you cannot use this function to change the parent receive size.<BR>
+</p>
+<h2>See Also</h2>
+<p><code><a href="../mb_comm_parent_consts.html">MB_COMM_PARENT_*</a>, <a href="../mb_user_info_type.html">MBUserInfo</a>, <a href="../common/MB_Init.html">MB_Init</a>, <a href="MB_SetParentCommParam.html">MB_SetParentCommParam</a>, <a href="../parent/MB_StartParent.html">MB_StartParent</a>, <a href="../parent/MB_RegisterFile.html">MB_RegisterFile</a></code></P>
+<H2>Revision History</H2>
+<P>11/18/2004 Discontinued the <b><i><code>recvSize</code></i></b> argument.<br> 10/05/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

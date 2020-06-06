@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcStrmAllocChannel</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcStrmAllocChannel</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndArcStrmAllocChannel( int playerNo );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA5LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The stream player number Takes a value between 0 and 3</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAOMWT"></a>
+<h2>Return Values</h2>
+
+      <p>
+Returns whether the channel was successfully allocated.
+</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAVMWT"></a>
+<h2>Description</h2>
+      <p>
+This function allocates the channels that are used when a stream is played.
+</p>
+      <p>
+The allocated channel is connected to the specified stream player. Thereafter, streams that are played with the stream player are played back using the allocated channel.
+</p>
+      <p>
+To playback streams without allocating a channel with this function, automatically allocate a channel using either the <a href="NNS_SndArcStrmStart.html"><code>NNS_SndArcStrmStart</code></a> or the <a href="NNS_SndArcStrmPrepare.html"><code>NNS_SndArcStrmPrepare</code></a> function. These functions are used to control the timing by which channels are allocated.
+</p>
+      <p>
+Use the <a href="NNS_SndArcStrmFreeChannel.html"><code>NNS_SndArcStrmFreeChannel</code></a> function to release channels that are allocated with this function.
+</p>
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+The function will fail if you call it for a stream player that is playing.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndArcStrmStart.html"><code>NNS_SndArcStrmStart</code></a>, <a href="NNS_SndArcStrmPrepare.html"><code>NNS_SndArcStrmPrepare</code></a>, <a href="NNS_SndArcStrmFreeChannel.html"><code>NNS_SndArcStrmFreeChannel</code></a></p>
+<h2>Revision History</h2>
+<p>11/25/2004 Added a caution concerning calling the function when a player is playing. 08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

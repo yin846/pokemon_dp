@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CARD_IsPulledOut</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CARD_IsPulledOut</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/card.h&gt;</CODE></PRE>
+<PRE><CODE>BOOL CARD_IsPulledOut( void );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None</P>
+<H2>Return Values</H2>
+<P>Returns TRUE when a Game Card removal is detected. Otherwise, FALSE is returned. A TRUE value will be always be returned after an initial Game Card removal event is detected.</P>
+<H2>Description</H2>
+<P>Detects the removal of a Game Card.</P>
+<P>To use this function, you must first call the <a href="../common/CARD_Init.html"><code>CARD_Init</code></a> function.</P>
+<P>By default, the library will call the <a href="CARD_TerminateForPulledOut.html"><code>OS_TerminateForPulledOut</code></a> function when card removal is detected. Because the program will stop at this point, if you are doing something like polling with the <code>CARD_IsPulledOut</code> function, you must use the <a href="CARD_SetPulledOutCallback.html"><code>CARD_SetPulledOutCallback</code></a> function to set a callback that returns FALSE.</P>
+<H2>See Also</H2>
+<P>
+<a href="../common/CARD_Init.html"><code>CARD_Init</code></a>, <a href="CARD_TerminateForPulledOut.html"><code>CARD_TerminateForPulledOut</code></a>, <a href="CARD_SetPulledOutCallback.html"><code>CARD_SetPulledOutCallback</code></a></P>
+<H2>Revision History</H2>
+<P>12/16/2004 Added description relating to callbacks<br /> 09/16/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

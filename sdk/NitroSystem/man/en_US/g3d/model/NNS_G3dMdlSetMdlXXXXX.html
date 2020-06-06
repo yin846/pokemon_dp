@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dMdlSetMdlXXXXX</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dMdlSetMdlXXXXX</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/model.h&gt;</CODE></PRE>
+<PRE>void NNS_G3dMdlSetMdlDiff(NNSG3dResMdl* pMdl, u32 matID, GXRgb col);
+void NNS_G3dMdlSetMdlAmb(NNSG3dResMdl* pMdl, u32 matID, GXRgb col);
+void NNS_G3dMdlSetMdlSpec(NNSG3dResMdl* pMdl, u32 matID, GXRgb col);
+void NNS_G3dMdlSetMdlEmi(NNSG3dResMdl* pMdl, u32 matID, GXRgb col);
+void NNS_G3dMdlSetMdlLightEnableFlag(NNSG3dResMdl* pMdl, u32 matID, int light);
+void NNS_G3dMdlSetMdlPolygonMode(NNSG3dResMdl* pMdl, u32 matID, GXPolygonMode polyMode);
+void NNS_G3dMdlSetMdlCullMode(NNSG3dResMdl* pMdl, u32 matID, GXCull cullMode);
+void NNS_G3dMdlSetMdlPolygonID(NNSG3dResMdl* pMdl, u32 matID, int polygonID);
+void NNS_G3dMdlSetMdlAlpha(NNSG3dResMdl* pMdl, u32 matID, int alpha);
+void NNS_G3dMdlSetMdlFogEnableFlag(NNSG3dResMdl* pMdl, u32 matID, BOOL flag);
+void NNS_G3dMdlSetMdlDepthTestCond(NNSG3dResMdl* pMdl, u32 matID, BOOL flag);
+void NNS_G3dMdlSetMdl1Dot(NNSG3dResMdl* pMdl, u32 matID, BOOL flag);
+void NNS_G3dMdlSetMdlFarClip(NNSG3dResMdl* pMdl, u32 matID, BOOL flag);
+void NNS_G3dMdlSetMdlXLDepthUpdate(NNSG3dResMdl* pMdl, u32 matID, BOOL flag);</PRE>
+</DL>
+
+<H2>Shared Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pMdl</STRONG></EM></TD>
+<TD width="87%">Pointer to the model resource</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>matID</STRONG></EM></TD>
+<TD>The material ID</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>These functions makes sure the model specified by <code>pMdl</code> is rendered using the values set inside the model resource.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlDiff</CODE></TD>
+<TD width="1078">Sets the <em>diffuse</em> color to <code>col</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlAmb</CODE></TD>
+<TD width="1078">Sets the <em>ambient</em> color to<code>col</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlSpec</CODE></TD>
+<TD width="1078">Sets the <em>specular</em> color to <code>col</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlEmi</CODE></TD>
+<TD width="1078">Sets the <em>emission</em> color to <code>col</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlLightEnableFlag</CODE></TD>
+<TD width="1078">Sets the <em>light-enable flag</em> to <code>light</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlPolygonMode</CODE></TD>
+<TD width="1078">Sets the <em>polygon mode</em> to <code>polyMode</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlCullMode</CODE></TD>
+<TD width="1078">Sets the <em>cull mode</em> to <code>cullMode</code>inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlPolygonID</CODE></TD>
+<TD width="1078">Sets the <em>polygon ID</em> to <code>polyID</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlAlpha</CODE></TD>
+<TD width="1078">Sets the <em>alpha</em> value to <code>alpha</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlFogEnableFlag</CODE></TD>
+<TD width="1078">Sets the <em>fog-enable flag</em> to <code>flag</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlDepthTestCond</CODE></TD>
+<TD width="1078">Sets the <em>depth-test condition</em> to <code>flag</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdl1Dot</CODE></TD>
+<TD width="1078">Sets the specification for displaying <em>1-dot</em> polygons to <code>flag</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlFarClip</CODE></TD>
+<TD width="1078">Sets the specification for displaying polygons that intersect with the <em>FAR clip</em> plane to <code>flag</code> inside the model resource.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlSetMdlXLDepthUpdate</CODE></TD>
+<TD width="1078">Sets the enable flag for updating the <em>depth</em> value of translucent polygons to <code>flag</code> inside the model resource.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+<P><a href="NNS_G3dMdlGetMdlXXXXX.html"><code>NNS_G3dMdlGetMdlXXXXX</a></code>, <code><a href="NNS_G3dMdlSetMdlXXXXXAll.html">NNS_G3dMdlSetMdlXXXXXAll</a></code></P>
+
+<H2>Revision History</H2>
+<P>10/12/2004 Initial version.</P>
+</BODY>
+
+</HTML>

@@ -1,0 +1,427 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>GX Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Graphics Sample Demos</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/gx/UnitTours</CODE></P>
+<P>All of the graphics sample demos use <CODE>DEMO.h</CODE> and <CODE>libDEMO.a</CODE>, which are found in <CODE>$NitroSDK/build/demos/gx/UnitTours/DEMOLib</CODE>.</P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/gx/UnitTours</CODE> directory and enter:</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/gx/UnitTours/<EM><STRONG>sample_name</STRONG></EM>/bin/<EM><STRONG>platform</STRONG></EM>/<EM><STRONG>target</STRONG></EM>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/gx/UnitTours/2D_Oam_1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Navigate to the directory <code>$NitroSDK/build/demos/gx/UnitTours/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> and perform one of the following:
+<UL>
+<LI>Execute <code>*.nef</code>, <code>*.srl</code> with ensata.
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER
+</UL>
+
+<H2>Description</H2>
+<H4>BG Samples</H4>
+<TABLE width="800">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_1</CODE></STRONG></EM></TD>
+<TD width="576">Displays BG in text mode.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_2</CODE></STRONG></EM></TD>
+<TD width="576">Displays BG in affine mode. You can rotate the screen with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_3</CODE></STRONG></EM></TD>
+<TD width="576">Displays BG in affine mode. You can scale the screen with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_4</CODE></STRONG></EM></TD>
+<TD width="576">Sets an offset to BG. You can scroll the screen with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_5</CODE></STRONG></EM></TD>
+<TD width="576">Flips each BG character. You can flip each screen character with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_6</CODE></STRONG></EM></TD>
+<TD width="576">Applies a mosaic to BG. You can change the size of the mosaic with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_7</CODE></STRONG></EM></TD>
+<TD width="576">Alpha blends 2 BGs. You can adjust the blending coefficient with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_8</CODE></STRONG></EM></TD>
+<TD width="576">Displays 2 windows. You can change window position and size with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_9</CODE></STRONG></EM></TD>
+<TD width="576">Sets BG brightness. You can change brightness with key operations.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_CharBg_256_16</CODE></STRONG></EM></TD>
+<TD>Displays a screen using the affine extension BG, 256 color x 16 palette.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_CharBg_256BMP</CODE></STRONG></EM></TD>
+<TD>Displays a screen using the affine-expanded, 256-color, bit-mapped BG.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_CharBg_Direct</CODE></STRONG></EM></TD>
+<TD>Displays a screen using the affine extension BG, direct color bit mapped BG.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_BmpBg_Vram</CODE></STRONG></EM></TD>
+<TD width="576">Displays a screen using VRAM display mode.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_BmpBg_MainRam</CODE></STRONG></EM></TD>
+<TD width="576">Displays a screen using main memory display mode.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_CharBg_BankEx</CODE></STRONG></EM></TD>
+<TD width="576">Displays screen, directly specifying BG-VRAM with <a href="../../gx/gx/GX_SetBankForBGEx.html"><CODE>GX_SetBankForBGEx</CODE></a>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H4>OBJ Samples</H4>
+<TABLE width="798">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_Oam_1</CODE></STRONG></EM></TD>
+<TD width="596">Displays an OBJ.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_Oam_2</CODE></STRONG></EM></TD>
+<TD width="596">Rotates an OBJ using affine mode. You can rotate an OBJ with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_Oam_3</CODE></STRONG></EM></TD>
+<TD width="596">Scales an OBJ using affine doubling mode. You can enlarge and reduce an OBJ with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_Oam_4</CODE></STRONG></EM></TD>
+<TD width="596">Flips an OBJ. You can flip an OBJ with key operations.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>2D_Oam_5</CODE></STRONG></EM></TD>
+<TD width="596">Applies a mosaic to an OBJ. You can change the size of the mosaic with key operations.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_Oam_256_16</CODE></STRONG></EM></TD>
+<TD>Displays a 256 color x 16 extended palette OBJ.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_Oam_Direct</CODE></STRONG></EM></TD>
+<TD>Displays a 2D mapping bit mapped OBJ.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_Oam_Bmp1D</CODE></STRONG></EM></TD>
+<TD>Displays a 1D mapping bitmapped OBJ.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_Oam_Char1D</CODE></STRONG></EM></TD>
+<TD>Displays a 1D mapping character OBJ.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_Oam_Translucent</CODE></STRONG></EM></TD>
+<TD>Displays a translucent OBJ. Key operations can change the translucent OBJ's blending factor.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>2D_Oam_OBJWindow</CODE></STRONG></EM></TD>
+<TD>Displays a background BG through a circular OBJ window. Key operations can move the OBJ window.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H4>3D Samples</H4>
+<TABLE width="798">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_OneTri</CODE></STRONG></EM></TD>
+<TD width="596">Displays one triangle on the screen.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Simple</CODE></STRONG></EM></TD>
+<TD width="596">Displays a rotating cube without light and vertex color.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Simple2</CODE></STRONG></EM></TD>
+<TD width="596">Displays a cube and uses the <a href="../../gx/g3/G3_VtxXY.html"><code>G3_VtxXY</code></a>, <a href="../../gx/g3/G3_VtxXZ.html"><code>G3_VtxXZ</code></a>, and <a href="../../gx/g3/G3_VtxYZ.html"><code>G3_VtxYZ</code></a> functions.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Simple3</CODE></STRONG></EM></TD>
+<TD width="596">Displays a cube and uses the <a href="../../gx/g3/G3_Vtx10.html"><code>G3_Vtx10</code></a> function.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Color</CODE></STRONG></EM></TD>
+<TD width="596">Displays a cube using the <a href="../../gx/g3/G3_Color.html"><code>G3_Color</code></a> function to set vertex color.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Light</CODE></STRONG></EM></TD>
+<TD width="596">Displays a cube using the <a href="../../gx/g3/G3_Normal.html"><code>G3_Normal</code></a> function to set normal vectors.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_LightColor</CODE></STRONG></EM></TD>
+<TD width="596">Shows the  difference in the display when changing the order of the <a href="../../gx/g3/G3_Color.html"><code>G3_Color</code></a> and the <a href="../../gx/g3/G3_Normal.html"><code>G3_Normal</code></a> functions.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Tex4_Plett</CODE></STRONG></EM></TD>
+<TD width="596">Applies a 4-color palette texture to a cube and displays it.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Tex16_Plett</CODE></STRONG></EM></TD>
+<TD width="596">Applies a 16-color palette texture to a cube and displays it.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Tex256_Plett</CODE></STRONG></EM></TD>
+<TD width="596">Applies a 256-color palette texture to a cube and displays it.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>3D_Pol_Tex32768</CODE></STRONG></EM></TD>
+<TD width="596">Applies a direct texture to a cube and displays it.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Tex4x4</CODE></STRONG></EM></TD>
+<TD width="596">Applies a 4x4 texel compressed texture to a cube and displays it.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Tex_Alpha</CODE></STRONG></EM></TD>
+<TD width="596">Applies a translucent texture to a cube and displays it.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Tex_Decal</CODE></STRONG></EM></TD>
+<TD width="596">Applies a texture in decal mode to a cube and displays it.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Toon</CODE></STRONG></EM></TD>
+<TD width="596">Displays a chair using toon shading.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_High_Light</CODE></STRONG></EM></TD>
+<TD width="596">Displays a chair using highlight shading.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_TexSRT</CODE></STRONG></EM></TD>
+<TD width="596">Specifies a TexCoord source with the <a href="../../gx/g3/G3_TexImageParam.html"> <code>G3_TexImageParam</code></a> function, and then scales, rotates, and translates the texture.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Env_Mapping</CODE></STRONG></EM></TD>
+<TD width="596">Specifies a Normal source with the <a href="../../gx/g3/G3_TexImageParam.html"> <code>G3_TexImageParam</code></a> function, and then displays an environment map.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Vertex_Source</CODE></STRONG></EM></TD>
+<TD>Specifies a Vertex source with the <a href="../../gx/g3/G3_TexImageParam.html"> <code>G3_TexImageParam</code></a> function, and then displays a projection map.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Translucent</CODE></STRONG></EM></TD>
+<TD width="596">Displays translucent polygons.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Transparent</CODE></STRONG></EM></TD>
+<TD width="596">Displays transparent polygons (wireframe display).</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Shininess</CODE></STRONG></EM></TD>
+<TD width="596">Sets a specular reflection brightness table, and converts specular reflection brightness.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Fog</CODE></STRONG></EM></TD>
+<TD width="596">Moves a cube  in a space to which fog has been applied.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Edge_Marking</CODE></STRONG></EM></TD>
+<TD width="596">Performs different edge marking  on each of three cubes, and then displays them.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Alpha_Test</CODE></STRONG></EM></TD>
+<TD width="596">Performs an alpha test. Although two cubes are drawn, only one is displayed.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Command_Pack</CODE></STRONG></EM></TD>
+<TD width="596">DMA transfers a previously prepared command list (display list), and displays a model.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_MakeDL</CODE></STRONG></EM></TD>
+<TD width="596">Dynamically generates a command list (display list) in the program and displays a model.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Pol_Split</CODE></STRONG></EM></TD>
+<TD>Displays a cube on both screens by switching output display during H-Blanks.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_PolAttr_1Dot</CODE></STRONG></EM></TD>
+<TD>Uses <code>MISC_DISP_1DOT</code> in the <a href="../../gx/g3/G3_PolygonAttr.html"> <code>G3_PolygonAttr</code></a> function to control the display of 1-dot polygons. Key operations toggle the display of 1-dot polygons ON/OFF.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_PolAttr_DpthTest</CODE></STRONG></EM></TD>
+<TD>Uses <code>MISC_DEPTHTEST_DECAL</code> in the <a href="../../gx/g3/G3_PolygonAttr.html"> <code>G3_PolygonAttr</code></a> function to control the display of decal polygons. Key operations toggle the effect ON/OFF.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_PolAttr_DpthUpdate</CODE></STRONG></EM></TD>
+<TD>Uses <code>MISC_XLU_DEPTH_UPDATE</code> in the <a href="../../gx/g3/G3_PolygonAttr.html"> <code>G3_PolygonAttr</code></a> function to update the depth buffer used when rendering translucent polygons. Key operations toggle the effect ON/OFF.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_PolAttr_FARClip</CODE></STRONG></EM></TD>
+<TD>Clips polygons that intersect the FAR plane defined in the <a href="../../gx/g3/G3_PolygonAttr.html"> <code>G3_PolygonAttr</code></a> function. Key operations move the far plane and toggle the effect ON/OFF.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_Shadow_Pol</CODE></STRONG></EM></TD>
+<TD>Displays a shadow using shadow polygons.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>3D_BoxTest</CODE></STRONG></EM></TD>
+<TD>Performs a box test. Switches between normal rendering and wireframe rendering by determining whether the rotating, moving sphere touches the surface of a cube.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>AntiAlias</CODE></STRONG></EM></TD>
+<TD>Antialiases polygons.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>FlipRepeat</CODE></STRONG></EM></TD>
+<TD>Sets flip and repeat for a texture and displays it. Key operations change the settings.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>ClearColor</CODE></STRONG></EM></TD>
+<TD>Sets the clear color and sets the inital value for the color buffer.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>ClearImage</CODE></STRONG></EM></TD>
+<TD>Uses a clear image to set an image in the clear color buffer's initial value, and displays it.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>ClearDepthOnly</CODE></STRONG></EM></TD>
+<TD>Without setting VRAM to the clear color image slot, uses only the clear depth image. At this time, all clear colors are initialized to 0.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>CurrentMtx</CODE></STRONG></EM></TD>
+<TD>Acquires the current clip matrix and displays it in debug output.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>PosVecTest</CODE></STRONG></EM></TD>
+<TD>Acquires and displays in debug output both the position coordinates transformed by the current clip coordinate matrix and the vectors transformed by the current direction vector matrix.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>LinesOver</CODE></STRONG></EM></TD>
+<TD>Detects lines over and displays in debug output.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>RamOverFlow</CODE></STRONG></EM></TD>
+<TD>Detects polygon list RAM and vertex list RAM overflow and displays them in debug output.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>ViewPort</CODE></STRONG></EM></TD>
+<TD>Sets and displays the viewport. Key operations can change the viewport size and position.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H4>Samples Using Screen Effects</H4>
+<TABLE width="800">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>MasterBright</CODE></STRONG></EM></TD>
+<TD width="576">Displays a screen using the special effect brightness up/down. Key operations can change the screen brightness.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Capture</CODE></STRONG></EM></TD>
+<TD>Displays a motion blur effect using the screen capture feature.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Window</CODE></STRONG></EM></TD>
+<TD>Changes the shape of the window display using H-blank interrupts.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Window_HDMA</CODE></STRONG></EM></TD>
+<TD>Changes the shape of the window display using H-blank auto-start DMA.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>VCount</CODE></STRONG></EM></TD>
+<TD>Changes the number of lines in a frame by changing VCount values. Key operations can change the number of lines rendered in a frame.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H4>Samples Using the Sub Graphics Engine and the Bottom LCD</H4>
+<TABLE width="800">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_1</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_1</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_2</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_2</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_3</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_3</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_4</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_4</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_5</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_5</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_6</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_6</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_7</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_7</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_8</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_8</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>Sub_CharBg_9</CODE></STRONG></EM></TD>
+<TD width="576">The same operation as for <em><strong><code>2D_CharBg_9</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Sub_Oam_1</CODE></STRONG></EM></TD>
+<TD>The same operation as for <em><strong><code>2D_Oam_1</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Sub_Oam_2</CODE></STRONG></EM></TD>
+<TD>The same operation as for <em><strong><code>2D_Oam_2</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Sub_Oam_3</CODE></STRONG></EM></TD>
+<TD>The same operation as for <em><strong><code>2D_Oam_3</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Sub_Oam_4</CODE></STRONG></EM></TD>
+<TD>The same operation as for <em><strong><code>2D_Oam_4</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Sub_Oam_5</CODE></STRONG></EM></TD>
+<TD>The same operation as for <em><strong><code>2D_Oam_5</code></strong></em> is carried out for the sub graphics engine and displayed on the Bottom LCD.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>Sub_Double3D</CODE></STRONG></EM></TD>
+<TD>The display of 3D on both screens is mimicked by using capture.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Emulator</H2>
+<P><code>3D_Pol_Transparent</code> does not function properly.</P>
+<H2>See Also</H2>
+<P><A href="../../gx/list_gx.html"><CODE>Graphics Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+2006/02/27 Corrected the mistaken description of 2D_CharBg_256BMP.<br>07/22/2005 Corrected sample demo names.<br>05/10/2005 Added description of <code>2D_CharBg_BankEx</code> demo.<br />03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 08/17/2004 Standardized the notation of the IS-NITRO-EMULATOR.<br /> 07/10/2004 Change from <code>.bin</code> to <code>.srl.</code><br />02/20/2004 Added Samples using the Sub Graphics Engine and the Bottom LCD.<br />01/09/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

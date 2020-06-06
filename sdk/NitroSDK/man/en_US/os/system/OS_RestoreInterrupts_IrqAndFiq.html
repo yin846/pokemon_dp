@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_RestoreInterrupts_IrqAndFiq</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_RestoreInterrupts_IrqAndFiq</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>OSIntrMode OS_RestoreInterrupts_IrqAndFiq( OSIntrMode state );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>state</STRONG></EM></TD>
+<TD width="87%">Interrupt status set up (<CODE>OSIntrMode</CODE> itself is a u32 typedef)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>The state before the function is called. This is the logical sum of <CODE>OSIntrMode_Irq</CODE> enum value and <CODE>OSIntrMode_Fiq</CODE> enum value.</p>
+<TABLE cellspacing="2">
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee">OS_INTRMODE_IRQ_DISABLE</TD>
+<TD bgcolor="#eeeeee">IRQ Disable (prohibited)</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_INTRMODE_IRQ_ENABLE</TD>
+<TD bgcolor="#eeeeee">IRQ Enable (permitted)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<p>
+Returns the <code>OSIntrMode_Fiq</code> enum value:
+</p>
+<TABLE cellspacing="2">
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee">OS_INTRMODE_FIQ_DISABLE</TD>
+<TD bgcolor="#eeeeee">FIQ Disable (prohibited)</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">OS_INTRMODE_FIQ_ENABLE</TD>
+<TD bgcolor="#eeeeee">FIQ Enable (permitted)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>   </P>
+<H2>Description</H2>
+<P>This function sets the interrupt state. It takes the interrupt state given by the argument. The status is provided by the logical sum of the IRQ status expressed in <code>OSIntrMode_Irq</code> enumerated, and the FIQ status expressed in <code>OSIntrMode_Fiq</code> enumerated. Mainly the return values are from <code>OS_EnableInterrupts_IrqAndFiq()</code> and <code>OS_DisableInterrupts_IrqAndFiq()</code>.</P>
+<P>They are most likely useful for returning to the previous status.</P>
+
+<h2>Internal Operation</h2>
+<P>The CPSR register (current program status register) IRQ and FIQ interrupt control bits are set/reset.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="OS_EnableInterrupts_IrqAndFiq.html">OS_EnableInterrupts_IrqAndFiq</A>, <A href="OS_DisableInterrupts_IrqAndFiq.html">OS_DisableInterrupts_IrqAndFiq</A>, <A href="OS_RestoreInterrupts.html">OS_RestoreInterrupts</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese word for &quot;interrupt.&quot;<br /> 03/04/2004 Transition from OS_RestoreInterrupts.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

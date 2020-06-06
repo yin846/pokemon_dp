@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<BASE target="main">
+	<TITLE>Multiple Channel Stream API Function List</TITLE>
+	<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+
+<BODY>
+
+<H1>Multiple Channel Stream (MCS) API Function List</H1>
+
+<H3><A name="Control">Initialization and Control</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY> 
+	<TR>
+		<TH width="25%"><A href="nitro/NNS_McsInit.html" target="_self">NNS_McsInit</A></TH>
+		<TD>The initialization function for communicating with devices</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsPollingIdle.html" target="_self">NNS_McsPollingIdle</A></TH>
+		<TD>An <i>idle </i>function for calling the callback function (inside the main loop)</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsVBlankInterrupt.html" target="_self">NNS_McsVBlankInterrupt</A></TH>
+		<TD>An <i>idle </i>function for calling the callback function (inside the V-Blank interrupt handler)</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsCartridgeInterrupt.html" target="_self">NNS_McsCartridgeInterrupt</A></TH>
+		<TD>An <i>idle </i>function for calling the callback function (inside the Game Pak interrupt handler)</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsRegisterRecvCallback.html" target="_self">NNS_McsRegisterRecvCallback</A></TH>
+		<TD>Registers the function to be called back when data is received</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsRegisterStreamRecvBuffer.html" target="_self">NNS_McsRegisterStreamRecvBuffer</A></TH>
+		<TD>Registers a buffer for receiving data</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsUnregisterRecvResource.html" target="_self">NNS_McsUnregisterRecvResource</A></TH>
+		
+<TD>Unregisters the callback function used for receiving data, and unregisters buffer registration</TD>
+	</TR>
+	</TBODY> 
+</TABLE>
+
+<H3><A name="Device">Device Control</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY> 
+	<TR>
+		<TH width="25%"><A href="nitro/NNS_McsOpen.html" target="_self">NNS_McsOpen</A></TH>
+		<TD>Opens a device</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsClose.html" target="_self">NNS_McsClose</A></TH>
+		<TD>Closes an opened device</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsGetMaxCaps.html" target="_self">NNS_McsGetMaxCaps</A></TH>
+		<TD>Gets the total number of communications devices currently connected to the target</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsIsServerConnect.html" target="_self">NNS_McsIsServerConnect</A></TH>
+		<TD>Gets whether the mcs server is connected to the NITRO hardware.</TD>
+	</TR>
+	</TBODY> 
+</TABLE>
+
+<H3><A name="StreamIO">Stream Input/Output</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY> 
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsReadStream.html" target="_self">NNS_McsReadStream</A></TH>
+		<TD>Reads data from the stream</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsWriteStream.html" target="_self">NNS_McsWriteStream</A></TH>
+		<TD>Writes data to the stream</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsGetStreamReadableSize.html" target="_self">NNS_McsGetStreamReadableSize</A></TH>
+		<TD>Gets the size of data that can be read with one call of the <code>NNS_McsReadStream()</code> function</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsGetStreamWritableLength.html" target="_self">NNS_McsGetStreamWritableLength</A></TH>
+		<TD>Gets the maximum length of the buffer for data transmission</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsGetTotalStreamReadableSize.html" target="_self">NNS_McsGetTotalStreamReadableSize</A></TH>
+		<TD>Gets the sum total size of readable data in the receive buffer<br></TD>
+	</TR>
+	</TBODY> 
+</TABLE>
+
+
+<H3><A name="FileIO">File Input/Output and Directory Search</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY> 
+	<TR>
+		<TH width="25%"><A href="nitro/NNS_McsInitFileIO.html" target="_self">NNS_McsInitFileIO</A></TH>
+		<TD>Performs the initialization for the API that reads files on the host (PC) side</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsOpenFile.html" target="_self">NNS_McsOpenFile</A></TH>
+		<TD>Opens an existing file or a new file</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsCloseFile.html" target="_self">NNS_McsCloseFile</A></TH>
+		<TD>Closes an open file</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsReadFile.html" target="_self">NNS_McsReadFile</A></TH>
+		<TD>Reads data from a file</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsWriteFile.html" target="_self">NNS_McsWriteFile</A></TH>
+		<TD>Writes data to a file</TD>
+	</TR>
+    <tr>
+<th width="25%"><A href="nitro/NNS_McsSeekFile.html" target="_self">NNS_McsSeekFile</A></th>
+<td>The file pointer is moved to the specified location.</td>
+    </tr>
+    <tr>
+<th width="25%"><a href="nitro/NNS_McsGetFileSize.html" target="_self">NNS_McsGetFileSize</a></th>
+<td>Obtains the size of the file.</td>
+    </tr>
+    <TR>
+		<TH width="25%"><A href="nitro/NNS_McsFindFirstFile.html" target="_self">NNS_McsFindFirstFile</A></TH>
+		<TD>Searches inside the directory for files that match the specified filename pattern</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsFindNextFile.html" target="_self">NNS_McsFindNextFile</A></TH>
+		<TD>Search for the next file that matches the pattern specified by <code>NNS_McsFindFirstFile()</code></TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsCloseFind.html" target="_self">NNS_McsCloseFind</A></TH>
+		<TD>Ends the search started by <code>NNS_McsFindFirstFile()</code></TD>
+	</TR>
+    <TR>
+<TH width="25%"><a href="nitro/NNS_McsGetServerErrorCode.html" target="_self">NNS_McsGetServerErrorCode</a></TH>
+<TD>Obtains the error code of the MCS server if an error occurred during the file input/output or directory search</TD>
+    </TR>
+  </TBODY> 
+</TABLE>
+
+<H3><a name="Print">Character String Output</a></H3>
+<TABLE border="1" width="100%">
+	<TBODY> 
+	<TR>
+		<TH width="25%"><A href="nitro/NNS_McsInitPrint.html" target="_self">NNS_McsInitPrint</A></TH>
+		<TD>Performs initialization for character string output</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsPutString.html" target="_self">NNS_McsPutString</A></TH>
+		<TD>This function outputs a character string.</TD>
+	</TR>
+	<TR> 
+		<TH width="25%"><A href="nitro/NNS_McsPrintf.html" target="_self">NNS_McsPrintf</A></TH>
+		<TD>Outputs character string with a format specification</TD>
+	</TR>
+	</TBODY> 
+</TABLE>
+
+
+<H3><A name="Windows">For Windows</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY> 
+	<TR>
+		<TH width="25%"><A href="win/NNS_McsOpenStream.html" target="_self">NNS_McsOpenStream</A></TH>
+		<TD>Opens a stream for Multiple Channel Stream</TD>
+	</TR>
+	<TR>
+		<TH width="25%"><A href="win/NNS_McsOpenStreamEx.html" target="_self">NNS_McsOpenStreamEx</A></TH>
+		<TD>Opens a stream for Multiple Channel Stream (and gets supplemental information)</TD>
+	</TR>
+	</TBODY> 
+</TABLE>
+
+
+<BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR>
+</BODY>
+</HTML>

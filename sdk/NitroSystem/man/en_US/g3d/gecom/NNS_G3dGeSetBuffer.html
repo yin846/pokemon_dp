@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGeSetBuffer</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGeSetBuffer</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/gecom.h&gt;</CODE></PRE>
+<PRE><CODE>void
+NNS_G3dGeSetBuffer(
+NNSG3dGeBuffer* p</code>
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p</STRONG></EM></TD>
+<TD width="87%">The pointer to the command buffer.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>If the the geometry command buffer is not set up, the buffer shown in the geometry command buffer by <code>p</code> is set up. Nothing happens if the command buffer is already set. The geometry buffer is used to allow processing to proceed without stopping the CPU. It does this by buffering the geometry commands when a geometry command send request is received while a geometry command is performing a DMA transfer via the <CODE>NNS_G3dGeSendDL</CODE> command.&nbsp;This method is effective for non-simple models with large display lists. Generally, the buffer is allocated in the DTCM (stack) area.</P>
+
+<H2>See Also</H2>
+<P><a href="NNS_G3dGeIsBufferExist.html"><code>NNS_G3dGeIsBufferExist</code></a>, <a href="NNS_G3dGeReleaseBuffer.html"><code>NNS_G3dGeReleaseBuffer</code></a></P>
+
+<H2>Revision History</H2>
+<P>10/15/2004 Revised description.<br /> 09/16/2004 Added description regarding the buffer.<br /> 08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

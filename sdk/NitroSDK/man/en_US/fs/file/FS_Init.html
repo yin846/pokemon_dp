@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_Init</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_Init</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>void FS_Init( u32 default_dma_no );</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>default_dma_no</STRONG></EM></TD>
+<TD width="87%">DMA number that the ROM Archive in the file system uses. If you specify <code><a href="../fs_dma_not_use_const.html">FS_DMA_NOT_USE</a></code>, instead of DMA, it uses the CPU to transfer. When a valid DMA channel is specified, this DMA channel cannot be used until the setting is changed with the <code><a href="FS_SetDefaultDMA.html">FS_SetDefaultDMA</a></code> function.<font color="#800000">The card access transfer source is an IO register, so DMA Channel 0 cannot be specified.</font>
+	  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>
+This function initializes the ROM file system. The following processes are performed.
+</P>
+<ul>
+<li>Initializes the CARD library by calling <code><a href="../../card/common/CARD_Init.html">CARD_Init</a></code> function.
+<li>Sets the current directory to ROM archive root (&quot;<code>rom:/</code>&quot;).
+<li>Initializes the DMA number that the ROM archive uses.
+</ul>
+<P>
+For more information on internal operations when allocating a DMA channel to the <A href="../archive_rom_spec.html"><code>ROM Archive</code></A>, refer to the description for the <a href="../../card/rom/CARD_ReadRomAsync.html"><code>CARD_ReadRomAsync</code></a> function.
+</P>
+<H2>Caution</H2>
+<P>
+When a valid DMA channel is specified, this DMA channel cannot be used until the setting is changed with the <code><a href="FS_SetDefaultDMA.html">FS_SetDefaultDMA</a></code> function. The file system uses this DMA channel internally to access the NITRO ROM device. Refer to the description on the <code><a href="../../card/rom/CARD_ReadRom.html">CARD_ReadRom</a></code> function and <code><a href="../../card/rom/CARD_ReadRomAsync.html">CARD_ReadRomAsync</a></code> functions.
+</P>
+<h2>See Also</h2>
+<p><a href="../fs_dma_not_use_const.html"><code>FS_DMA_NOT_USE</code></a>, <a href="FS_IsAvailable.html"><code>FS_IsAvailable</code></a>, <a href="FS_SetDefaultDMA.html"><code>FS_SetDefaultDMA</code></a>, <a href="../../card/rom/CARD_ReadRom.html"><code>CARD_ReadRom</code></a>, <a href="../../card/rom/CARD_ReadRomAsync.html"><code>CARD_ReadRomAsync</code></a></P>
+<H2>Revision History</H2>
+<P>
+08/28/2005 Added link to CARD_ReadRomAsync function in description.<br>04/28/2005 Added note that DMA Channel 0 cannot be specified.<br /> 04/11/2005 Added note that <code>CARD_Init</code> is called.<br /> 09/24/2004 Fixed links.<br /> 07/23/2004 Added caution regarding the ROM archive and DMA channel.<br /> 05/14/2004 Added description concerning <code>FS_DMA_NOT_USE</code>.<br /> 04/13/2004 Added a reference to the <code>FS_IsAvailable</code> function.<br /> 04/08/2004 Revised description due to the addition of DMA number specification.<br /> 04/02/2004 Changed &quot;file system&quot; to &quot;ROM file system&quot;.<br /> 04/01/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

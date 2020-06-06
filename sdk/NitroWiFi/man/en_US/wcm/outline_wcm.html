@@ -1,0 +1,64 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--==========================================================================   Project:  NitroWiFi - man   File:     outline_wcm.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Log: outline_wcm.html,v $   Revision 1.2  2005/09/02 01:19:24  terui   キープアライブ機能のため、OSアラームを使用することに関して注意書きを追記    Revision 1.1  2005/07/22 13:01:11  terui   Initial upload    $NoKeywords: $  ==========================================================================-->
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>[WCM] Wireless Connection Management Library Overview</TITLE>
+		<LINK rel="stylesheet" href="../css/apilist.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>[WCM] Wireless Connection Management Library Overview</H1>
+		<P>
+			The WCM library is a higher-level library of the WM library that specializes in the feature to search for nearby wireless access points and connect to and disconnect from these access points when performing wireless communication in Infrastructure Mode. <BR><FONT color="red"><B>Because the WCM library manages the WM library status, do not use the WM or MB libraries directly while using the WCM library.</B></FONT><BR> The WCM library functions as a stack that bridges the CPS (TCP/IP protocol stack) library and the wireless driver when sending or receiving data while connected to a wireless access point. The interface that directly sends or receives the data using the WCM library is designed to be used only by the CPS library and not released as an API.  In addition, in order to prevent disconnection from the wireless access point when there is no communication during the connection, the WCM library automatically sends a null packet to keep the connection alive after about one minute of no communication. Note that this keep-alive feature uses the OS library's alarm feature.
+		</P>
+
+		<H3>State Transitions</H3>
+		<P>
+			State transitions for the WCM library are shown in the following diagram. Each state is defined as a <A href="wcm/WCM_CONSTANT_NUMBER.html#phase"><CODE>WCM_PHASE_*</CODE> constant</A>. For details on each state, see <A href="wcm/WCM_CONSTANT_NUMBER.html#phase">WCM library constants</A>. 
+			<UL>
+				<LI>Before the WCM library is initialized, the state is <CODE>WCM_PHASE_NULL</CODE>. 
+				<LI><CODE>WCM_PHASE_IDLE</CODE> is the state that is ready for wireless communication. It does not communicate. <BR>
+				<LI>The <CODE>WCM_PHASE_SEARCH</CODE> state automatically searches for a nearby wireless access point. For information on auto-search, see <A href="#auto" target="_self">below</A>.
+				<LI><CODE>WCM_PHASE_DCF</CODE> is that state indicating that the device is connected to a wireless access point. Only in this state can communication in Infrastructure Mode actually take place. 
+				<LI>The <CODE>WCM_PHASE_IRREGULAR</CODE> state indicates that an error has occurred, but it is recoverable. However, the only possible action is to forcibly terminate using the <A href="wcm/WCM_TerminateAsync.html"><CODE>WCM_TerminateAsync</CODE> function</A>. 
+				<LI>The <CODE>WCM_PHASE_FATAL_ERROR</CODE> state means that the internal state can no longer be managed because a fatal error has occurred. Because recovery is not possible, display a screen telling the user to turn off the power, etc.
+			</UL>
+		</P>
+		<P>
+			<IMG src="wcm_diagram.jpg" width="952" height="728" border="0" usemap="#diagram">
+			<MAP name="diagram">
+				<AREA href="wcm/WCM_Init.html" shape="rect" coords="238,88,310,108">
+				<AREA href="wcm/WCM_Finish.html" shape="rect" coords="408,88,498,108">
+				<AREA href="wcm/WCM_StartupAsync.html" shape="rect" coords="176,200,312,220">
+				<AREA href="wcm/WCM_CleanupAsync.html" shape="rect" coords="408,280,544,300">
+				<AREA href="wcm/WCM_BeginSearchAsync.html" shape="rect" coords="0,372,166,392">
+				<AREA href="wcm/WCM_EndSearchAsync.html" shape="rect" coords="172,474,326,494">
+				<AREA href="wcm/WCM_ConnectAsync.html" shape="rect" coords="562,369,700,389">
+				<AREA href="wcm/WCM_DisconnectAsync.html" shape="rect" coords="402,474,562,494">
+				<AREA href="wcm/WCM_TerminateAsync.html" shape="rect" coords="802,416,950,436">
+			</MAP>
+		</P>
+
+		<H3>Asynchronous state transition flow</H3>
+		<P>
+			The APIs that change the WCM library's internal state are all asynchronous processes, except for the initialize and terminate functions. The asynchronous APIs in the WCM library return a processing result that indicates whether the asynchronous process could start. When <CODE>WCM_RESULT_ACCEPT</CODE> is returned, the asynchronous process has been started normally and a callback indicating the processing result must occur once. Internally, one or more asynchronous APIs in the WM library are called one or more times successively and only the final processing result is notified with the callback. For example, if asynchronous APIs in the WM library were called twice successively, the process flow would be as follows.
+		</P>
+		<P>
+			<IMG src="wcm_flow.jpg" width="1016" height="924" border="0">
+		</P>
+
+		<A name="auto"><H3>Wireless Access Point Auto-Search </H3></A>
+		<P>
+			When starting a wireless access point auto-search using the <A href="wcm/WCM_BeginSearchAsync.html"><CODE>WCM_BeginSearchAsync</CODE> function</A> in the WCM library, even after the asynchronous processing completion notification is made, the scan process automatically continues asynchronously inside the WCM library based on the settings.  When the internal state is <CODE>WCM_PHASE_SEARCH</CODE>, it indicates that the asynchronous process started by the API call is not performed, but the scan process continues successively inside the library as an asynchronous process. As a result, wireless access point discovery notifications will be generated at irregular intervals. The scan process in auto-search scans the list of channels specified by the options, starting with the lowest number and proceeding in ascending order. When it has finished scanning the channel with the highest number, it returns to the channel with the lowest number and continues to scan. If you provide a buffer that can store a certain amount of search result data to the <A href="wcm/WCMConfig.html"><CODE>WCMConfig</CODE></A> structure specified with the <A href="wcm/WCM_StartupAsync.html"><CODE>WCM_StartupAsync</CODE></A> function, the wireless access point information will be listed in this buffer (as size permits) whenever a discovery notification is called back. To correctly access the listed information, the <A href="list_wcm.html#aplist">API set</A> is provided. If you do not provide a buffer to store the search result information, you must provide some sort of buffer to store information inside the notification callback for wireless access point discovery. 
+		</P>
+
+		<H3>Revision History</H3>
+		<P>
+			07/22/2005 Initial version.
+		</P>
+
+		<TABLE border="0" height="100%"><TR><TD style="background-color : white;"></TD></TR></TABLE>
+	</BODY>
+</HTML>

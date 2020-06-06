@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsSeekFile</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsSeekFile</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre><CODE>u32 NNS_McsSeekFile(
+NNSMcsFile* pFile,
+s32         distanceToMove,
+u32         moveMethod,
+u32*        pNewFilePointer);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">pFile</font></strong></em></td>
+<td width="87%">Pointer to the file information structure</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New"><CODE>distanceToMove</CODE></font></strong></em></td>
+<td width="87%">Number of bytes to move the file pointer</td>
+ </tr>
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New"><CODE>moveMethod</CODE></font></strong></em></td>
+<td width="87%">Starting position from which file pointer will move (See <strong>Description</strong> for details)</td>
+ </tr>
+ <tr>
+<td width="13%"><em><strong><font face="Courier New"><CODE>pNewFilePointer</CODE></font></strong></em></td>
+<td width="87%">Pointer to the variable that receives the new file pointer</td>
+ </tr>
+</table>
+<h2>Return Values</h2>
+<p>Returns <code>0</code> if the data is successfully read from the file. A nonzero value is returned if the read process. The return value is one of the following:</p>
+<H2>Description</H2>
+<p>The file pointer is moved to the specified location. The position of the file pointer after the move is set in the variable indicated by the pointer specified by the <strong><em><code>pNewFilePointer</code></em></strong> argument. Set NULL when this value is unnecessary.</p>
+<p>The current position of the file pointer can be obtained by setting <code>0</code> in the <strong><em><code>distanceToMove</code></em></strong> argument and specifying <code>NNS_MCS_FILEIO_SEEK_CURRENT</code> in the <strong><em><code>moveMethod</code></em></strong>.</p>
+<p>The <strong><em><code>moveMethod</code></em></strong> argument takes one of the following values.</p>
+<table>
+  <tbody>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_SEEK_BEGIN</font></strong></em></td>
+<td>The start of the file is treated as the starting point.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_SEEK_CURRENT</font></strong></em></td>
+<td>The current position of the file pointer is treated as the starting point.B</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_SEEK_END</font></strong></em></td>
+<td>The end of the file is treated as the starting point.</td>
+    </tr>
+  </tbody>
+</table>
+<p>The return value takes one of the following values.</p>
+<table>
+  <tbody>
+    <tr>
+<td><em><strong><code>NNS_MCS_FILEIO_ERROR_SUCCESS</code></strong></em> (0)</td>
+<td>The function was successful.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_COMERROR</font></strong></em></td>
+<td>A communications error occurred.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_NOTCONNECT</font></strong></em></td>
+<td>Not connected to the mcs server.</td>
+    </tr>
+    <tr>
+<td><em><strong><font face="Courier New">NNS_MCS_FILEIO_ERROR_SERVERERROR</font></strong></em></td>
+<td>A error has occurred due to a file operation on the mcs server side. The error code is a Win32 system error code that can be obtained using the <code>NNS_McsGetServerErrorCode</code> function.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>See Also</h2>
+<p><CODE><a href="NNS_McsOpenFile.html">NNS_McsOpenFile</a></CODE></p>
+<H2>Revision History</H2>
+<P>02/03/2005 Initial version.</P>
+</body>
+</html>

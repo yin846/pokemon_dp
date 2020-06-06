@@ -1,0 +1,94 @@
+#! make -f
+#----------------------------------------------------------------------------
+# Project:  NitroDWC - buildtools
+# File:     modulerules
+#
+# Copyright 2005 Nintendo.  All rights reserved.
+#
+# These coded instructions, statements, and computer programs contain
+# proprietary information of Nintendo of America Inc. and/or Nintendo
+# Company Ltd., and are protected by Federal copyright law.  They may
+# not be disclosed to third parties or copied or duplicated in any form,
+# in whole or in part, without the prior written consent of Nintendo.
+#
+# $Log: modulerules,v $
+# Revision 1.6  2005/08/19 14:55:48  nakamud
+# Changed specifications so that NITRO_USEINET is seen in places where NITRO_USEWIFI is seen.
+#
+# Revision 1.5  2005/08/06 11:29:22  seiki
+# Moved compile switches to commondefs
+#
+# Revision 1.4  2005/08/06 11:03:14  seiki
+# Added a compile switch which releases relationships easily in the case of AOSS when using NitroWiFi
+#
+# Revision 1.3  08/06/2005 08:30:59  sasakit
+# Support for compiling using the NitroWiFi library
+#
+# Revision 1.2  08/06/2005 02:40:23  sasakit
+# Corrected a problem where compilation would not go smoothly under NitroSDK2.1/2.2
+#
+# Revision 1.1.1.1  2005/08/02 08:02:29  sasakit
+# First import of NitroDWC source tree.
+#
+# $NoKeywords: $
+#----------------------------------------------------------------------------
+
+ifdef NITRO_USEINET
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# NITRO-INET �̏ꍇ              #
+
+    include $(NITROINET_ROOT)/build/buildtools/modulerules
+
+#--------
+# commondefs from NITRO-SYSTEM and NITRO-SDK are both included at the same time
+#--------
+
+#________________________________#
+
+
+else
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# When using NITRO-WIFI          #
+
+ifdef NITROSYSTEM_ROOT
+
+    include $(NITROSYSTEM_ROOT)/build/buildtools/modulerules
+
+else
+
+    include $(NITROSDK_ROOT)/build/buildtools/modulerules
+
+endif
+
+
+ifdef NITROWIFI_ROOT
+
+    include $(NITROWIFI_ROOT)/build/buildtools/modulerules.WiFi
+
+#--------
+# Sockets are not included when using NITRO-INET or NITRO-WIFI
+#--------
+
+endif
+
+#________________________________#
+
+
+endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# NITRO-DWC is set last           #
+
+#  Inserted SDK2.x measures into INCLUDES.
+INCLUDES		= -gccinc -I. $(INCLUDE_DIRS)
+    include $(NITRODWC_ROOT)/build/buildtools/modulerules.dwc
+
+#________________________________#
+
+
+#===== End of modulerules =====

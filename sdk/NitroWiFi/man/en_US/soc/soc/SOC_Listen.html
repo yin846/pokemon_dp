@@ -1,0 +1,71 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SO_Listen</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Listen</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Listen ( int <em><strong>s</strong></em>, int <em><strong>backlog</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>s</strong></em></code></td>
+<td>Socket descriptor. </td>
+  </tr>
+  <tr>
+<td><code><em><strong>backlog</strong></em></code></td>
+<td>Specifies the maximum number of unprocessed connections in the socket's listen backlog queue. </td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+    <td>0</td>
+<td>Successful.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINVAL</code></td>
+<td>Invalid processing. (Starting the connection process, Not a TCP socket, etc.) </td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket library is not initialized. </td>
+  </tr>
+  <tr>
+<td><code>SOC_EWOULDBLOCK</code></td>
+<td>Cannot execute until the requested operation is blocked. </td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Please treat all negative return values as general errors. </p>
+
+<h2>Description</h2>
+
+<p>This function was included for compatibility, but sockets in connection mode do not actually receive connections.</p>
+
+
+<h2>See Also</h2>
+<p>
+<code><a href="SOC_Socket.html">SOC_Socket</a></code>, <code><a href="SOC_Bind.html">SOC_Bind</a></code>, <code><a href="SOC_Connect.html">SOC_Connect</a></code>, <code><a href="SOC_Accept.html">SOC_Accept</a></code></p>
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description and Return Values.<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

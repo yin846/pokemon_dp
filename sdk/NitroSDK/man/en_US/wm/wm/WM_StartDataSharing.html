@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_StartDataSharing</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_StartDataSharing</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_StartDataSharing(
+WMDataSharingInfo*  dsInfo ,
+u16             port ,
+u16                 aidBitmap ,
+u16                 dataLength ,
+BOOL                doubleMode
+);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">dsInfo</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the pointer to the data sharing information structure. The buffer must separately allocate each group that performs data sharing. Because the buffer is cache controlled, it must be 32-byte aligned.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">port</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the <a href="WMPort.html">port number</a> that performs data sharing. Use a value from 0-15.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">aidBitmap</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the Poll map of the AID of the terminal that performs data sharing. When data sharing with the maximum 16 units, it is 0xFFFF.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">dataLength</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the data length for one child to share. This must be a byte length that is a multiple of two.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">doubleMode</FONT></STRONG></EM></TD>
+<TD width="800">Specifies a value of TRUE for using DataSharing in every frame in the mode that executes one MP communication per frame.</TD>
+    </TR>
+   </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>
+Initializes data sharing. This function is executable when the WM is in either the <a href="wm_state_diagram.html"><code>MP_PARENT</code></a> state or the <a href="wm_state_diagram.html"><code>MP_CHILD</code></a> state. This is a synchronous function that promptly returns the <code>WM_ERRCODE_SUCCESS</code> return value when the process succeeds.<br />Be sure to call WM_StartDataSharing only after <a href="WM_StartMP.html"><code>WM_StartMP</code></a>. Processing and communication does not occur regularly simply by calling this API. Processing is started by calling <a href="WM_StepDataSharing.html"><code>WM_StepDataSharing</code></a>. For parents, it is possible to perform parallel data sharing for multiple groups. Prepare the <code>WMDataSharingInfo</code> structure for each group and call this function multiple times for different port numbers. You cannot specify a value (number of group terminals performing data sharing &times; shared data size) that exceeds the permitted range from the length limit (508 bytes) of data that the parent can send at once. When a value of TRUE is specified in the <em><strong><code>doubleMode</code></strong></em> argument, the value that can be obtained with the <a href="WM_StepDataSharing.html"><code>WM_StepDataSharing</code></a> function is the value that was set with two sets of <a href="WM_StepDataSharing.html"><code>WM_StepDataSharing</code></a> functions prior to the current function. This function can be called for each MP communication. When a value of FALSE is specified, it is possible to obtain the value that was specified immediately before this value, but it requires at least two intervals of MP communications for <a href="WM_StepDataSharing.html"><code>WM_StepDataSharing</code></a> to succeed.
+</P>
+
+<P>For the argument mpFreq of <A href="WM_StartMP.html"><code>WM_StartMP</code></A> and parameters of <code>WM_StartDataSharing</code>, the data sharing success interval and communication delay of shared data correspond as shown below.
+</P>
+<table border="1">
+  <tbody>
+    <tr>
+<td><EM><STRONG>mpFreq</STRONG></EM></td>
+<td><EM><STRONG>doubleMode</STRONG></EM></td>
+<td><STRONG>Data Sharing Intervals</STRONG></td>
+<td><STRONG>Delay</STRONG></td>
+<td><STRONG>Comments</STRONG></td>
+    </tr>
+    <tr>
+      <td>1</td>
+<td>TRUE</td>
+<td>Every frame</td>
+<td>2 frames</td>
+<td>If <EM><STRONG>doubleMode</STRONG></EM> is set to TRUE, it adds one set of buffering and the delay increases.</td>
+    </tr>
+    <tr>
+<td>2 or more, or 0 (continuous communication mode)</td>
+<td>FALSE</td>
+<td>Every frame</td>
+<td>1 frame</td>
+<td>When executing more than 2 MP communications per frame, data can be shared in every frame even when <EM><STRONG>doubleMode</STRONG></EM> is set to FALSE. However, it is more likely to cause errors and increase power consumption, so use it with caution. </td>
+    </tr>
+    <tr>
+      <td>1</td>
+<td>FALSE</td>
+<td>2 or more frames </td>
+<td>2 or more frames </td>
+<td>When data sharing is executed at intervals of 2 or more frames, <EM><STRONG>doubleMode</STRONG></EM> can be FALSE even if mpFreq is 1. Therefore, the delay time equals the data sharing interval. </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>See Also</h2>
+<P><a href="WM_EndDataSharing.html"><code>WM_EndDataSharing</code></a>, <a href="WM_StepDataSharing.html"><code>WM_StepDataSharing</code></a>, <a href="WMPort.html"><code>WMPort</code></a></P>
+
+<H2>Revision History</H2>
+<P>
+03/02/2005 Added description of allowable range for port argument.  <BR>10/25/2004 Changed maximum value of shared data to 508 bytes <BR>10/22/2004 Changed return value type <BR>09/25/2004 Added and revised descriptions <BR>08/31/2004 Added <EM><STRONG>doubleMode</STRONG></EM> to Arguments <BR>08/11/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

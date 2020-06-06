@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GXS_GetDispCnt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GXS_GetDispCnt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx.h&gt;</CODE><BR> <BR> <CODE>GXSDispCnt GXS_GetDispCnt( void );</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The value of the <code>GXSDispCnt</code> type that indicates the display control register value of the sub graphic engine.</p>
+<H2>Description</H2>
+<P>Obtains the value of the display control register of the sub graphics engine. <code>GXDispCnt</code> type contains the following information.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><B><I><CODE>bgMode</CODE></I></B></TD>
+<TD width="70%">BG mode information. See the GXBGMode type of <code><A href="GXS_SetGraphicsMode.html">GXS_SetGraphicsMode</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><I><B><CODE>objMapChar</CODE></B></I></TD>
+<TD width="70%">Character OBJ 1D/2D mapping selection flag.<BR>See <code><A href="GXS_SetOBJVRamModeChar.html">GXS_SetOBJVRamModeChar</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><B><I><CODE>objMapBmp</CODE></I></B></TD>
+<TD width="70%">Bitmap OBJ mapping selection flag.<BR>See <code><A href="GXS_SetOBJVRamModeBmp.html">GXS_SetOBJVRamModeBmp</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><I><B><CODE>blankScr</CODE></B></I></TD>
+<TD width="70%">2D display forced blank setting. Normally this parameter is not used and dispMode parameter is used for ON/OFF control of the display.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><I><B><CODE>visiblePlane</CODE></B></I></TD>
+<TD width="70%">2D display plane setting. For more information , see the GXPlaneMask type of <code><A href="GXS_SetVisiblePlane.html">GXS_SetVisiblePlane</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>visibleWnd</CODE></I></B></TD>
+<TD>Window display setting. For more information, see the GXWndMask type of <code><A href="GXS_SetVisibleWnd.html">GXS_SetVisibleWnd</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>dispMode</CODE></I></B></TD>
+<TD>Display mode setting. It is used with <code><A href="GXS_DispOn.html">GXS_DispOn</A></code> and <code><A href="GXS_DispOff.html">GXS_DispOff</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>extObjMapChar</CODE></I></B></TD>
+<TD>Character OBJ's VRAM capacity setting.<BR><BR> See <code><A href="GXS_SetOBJVRamModeChar.html">GXS_SetOBJVRamModeChar</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>hBlankObjProc</CODE></I></B></TD>
+<TD>Sets the OBJ process during the H-Blank. For more information, see <code><A href="GXS_HBlankOBJProc.html">GXS_HBlankOBJProc</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>bgExtPltt</CODE></I></B></TD>
+<TD>BG extended palette enable flag. It is set in the VRAM bank setting functions such as <code><A href="GX_SetBankForSubBGExtPltt.html">GX_SetBankForSubBGExtPltt</A></code>.</TD>
+    </TR>
+    <TR>
+<TD><B><I><CODE>objExtPltt</CODE></I></B></TD>
+<TD>OBJ extended palette enable flag. It is set in the VRAM bank setting functions such as <code><A href="GX_SetBankForSubOBJExtPltt.html">GX_SetBankForSubOBJExtPltt</A></code>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The type definition of <code>GXDispCnt</code> type is shown below.</P>
+<PRE><CODE>typedef union
+{
+u32 raw;
+struct {
+u32             bgMode          :3;
+u32     _reserve1       :1;
+u32             objMapChar      :1;
+u32             objMapBmp       :2;
+u32             blankScr        :1;
+u32             visiblePlane    :5;
+u32             visibleWnd      :3;
+u32             dispMode        :1;
+u32     _reserve2       :3;
+u32             extObjMapChar   :2;
+u32     _reserve3       :1;
+u32             hBlankObjProc   :1;
+u32     _reserve4       :6;
+u32             bgExtPltt       :1;
+u32             objExtPltt      :1;
+    };
+}
+GXSDispCnt;
+
+</CODE></PRE>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>12/24/2004 Initial version.</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

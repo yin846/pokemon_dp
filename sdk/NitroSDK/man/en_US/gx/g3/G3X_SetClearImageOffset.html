@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3X_SetClearImageOffset</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3X_SetClearImageOffset</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3x.h&gt;
+
+void G3X_SetClearImageOffset(int xOffset, int yOffset);<BR>
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    <tr>
+<TD width="109"><em><strong><font face="Courier New">xOffset</font></strong></em></TD>
+<TD width="593">x offset</TD>
+    </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">yOffset</font></strong></em></TD>
+<TD>y offset</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function assigns an offset to the clear image loaded when initializing the rendering buffer. If the 256x256 data region within the screen is exceeded, it will be wrapped and read.</P>
+<h2>See Also</h2>
+<P><a href="../gx/GX_SetBankForClearImage.html"><code>GX_SetBankForClearImage</code></a>, <a href="../gx/GX_BeginLoadClearImage.html"><code>GX_BeginLoadClearImage</code></a>, <a href="../gx/GX_LoadClearImageColor.html"><code>GX_LoadClearImageColor</code></a>, <a href="../gx/GX_LoadClearImageDepth.html"><code>GX_LoadClearImageDepth</code></a>, <a href="../gx/GX_EndLoadClearImage.html"><code>GX_EndLoadClearImage</code></a></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWCNdCallbackReason</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWCNdCallbackReason</H1>
+
+		<H2>Definition</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;nd/dwc_nd.h&gt;
+
+typedef enum {
+
+	DWC_ND_CBREASON_INITIALIZE,
+	DWC_ND_CBREASON_GETFILELISTNUM,
+	DWC_ND_CBREASON_GETFILELIST,
+	DWC_ND_CBREASON_GETFILE,
+
+} DWCNdCallbackReason;
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Enumeration type indicating what kind of process was running when the notifying callback function was called by the Download library.
+		</P>
+		<TABLE border="1">
+		<TBODY>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_ND_CBREASON_INITIALIZE</CODE></STRONG></EM></TD>
+			<TD>Notifying callback function was called while the Download library was initializing.<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_ND_CBREASON_GETFILELISTNUM</CODE></STRONG></EM></TD>
+			<TD>Notifying callback function was called while the total number of downloadable files was being downloaded.<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_ND_CBREASON_GETFILELIST</CODE></STRONG></EM></TD>
+			<TD>Notifying callback function was called while the file information list was being downloaded.<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_ND_CBREASON_GETFILE</CODE></STRONG></EM></TD>
+			<TD>Notifying callback function was called while a file was being downloaded.<BR></TD>
+          </TR>
+		</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<code><a href="DWCNdCallback.html">DWCNdCallback</a></code>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			04/26/2006 Initial version.<BR>
+		</P>
+
+	</BODY>
+</HTML>
+

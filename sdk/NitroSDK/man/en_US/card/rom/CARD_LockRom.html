@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_LockRom</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_LockRom</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>void	CARD_LockRom(u16 lock_id);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>lock_id</STRONG></EM></TD>
+<TD width="87%">The ID that is used for locking a card. This ID is obtained by the <a href="../../os/spinLock/OS_GetLockID.html"><code>OS_GetLockID</code></a> function.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None</p>
+
+<H2>Description</H2>
+<P>This function locks the access bus to a CARD ROM device. If another module (with another ID) has already locked the bus, <code>CARD_LockRom</code> waits until the bus returns to an unlocked state before it executes The function will return control after locking the card. When this function executes, it checks the ROM device at run-time, then automatically selects and locks the access bus to the game card or game pak. <BR> <BR>
+</P>
+<H2>Caution</H2>
+<P>
+<FONT color="#800000">All functions that access a CARD ROM device must first lock the access bus.<BR> You cannot access a CARD ROM device and a backup device simultaneously.<BR> While one bus is locked, other bus locks are forced to wait.<BR></FONT>
+</P>
+<h2>See Also</h2>
+<p><a href="../../os/spinLock/OS_GetLockID.html"><code>OS_GetLockID</code></a>, <a href="../../os/spinLock/OS_LockCard.html"><code>OS_LockCard</code></a>, <a href="../../os/spinLock/OS_LockCartridge.html"><code>OS_LockCartridge</code></a>, <a href="CARD_UnlockRom.html"><code>CARD_UnlockRom</code></a>, <a href="CARD_ReadRom.html"><code>CARD_ReadRom</code></a>, <a href="CARD_ReadRomAsync.html"><code>CARD_ReadRomAsync</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+09/06/2004 Corrected the description of the prototype<br> 08/31/2004 Added description that indicates that this function will always succeed.<br> 07/23/2004 Changed lock ID type from <code>u32</code> to <code>u16</code>.<br> 07/10/2004 Added description concerning bus lock and exclusive control of access with backup device.<br> 07/05/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

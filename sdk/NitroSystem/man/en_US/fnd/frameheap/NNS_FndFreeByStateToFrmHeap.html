@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndFreeByStateToFrmHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_FndFreeByStateToFrmHeap</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+	  <pre><CODE>BOOL NNS_FndFreeByStateToFrmHeap( NNSFndHeapHandle    heap ,  u32  tagName );</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">heap</font></strong></em></td>
+<td width="87%">Frame heap handle.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">tagName</font></strong></em></td>
+    
+<td width="87%">Tag name attached to the record state.</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>Returns TRUE if the memory block used by the record state was able to be deallocated. Returns FALSE if the deallocation fails.</p>
+<H2>Description</H2>
+<p>Deallocates memory allocated since the record state. The last record state is used if <em><strong><code>tagName</code></strong></em> is set to <code>0</code>. If a value other than <code>0</code> is set, the record state associated with that tag value is used. If multiple tags share the same value, the last record state is used.</p>
+<p>When <em><strong><code>tagName</code></strong></em> is <code>0</code>, the function will fail if there are no record states. The function will also fail if there is no record state with the designated tag value.</p>
+<p>If the tag value is set and deallocated, the states saved after the record state that has that tag value will be gotten rid of.</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_FndRecordStateForFrmHeap.html">NNS_FndRecordStateForFrmHeap</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>10/15/2004 Corrected description in &quot;Argument&quot;, &quot;Return Values&quot;, and &quot;Description&quot;<br />04/01/2004 Initial version.</P>
+</body>
+</html>

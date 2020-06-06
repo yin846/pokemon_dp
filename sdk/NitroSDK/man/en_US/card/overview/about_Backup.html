@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Backup Access (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Backup Access (Overview)</H1>
+<H2>Description</H2>
+<P>The backup device is connected to the SPI bus on a DS card. By conducting serial communications of commands through the IO register, operations such as state checks and data transfer are performed. The types and limitations of the prepared commands depend on the device type and size, but there are features below that are generally shared.<br>
+<ul>
+<li>The entire memory space is divided into fixed page sizes, and each page has an independent write count lifespan.
+<li>If a write-related command is generated, the device enters a busy state until it finishes.
+<li>Proportional to the write count accumulation, the period for the busy state gradually increases. Ultimately, completion will never occur within the guaranteed fixed time period.
+<li>A data storage period for the entire device also exists, but does not depend on the write count.
+</ul>
+</P>
+<HR>
+<P><B>Types of devices</B></P>
+The following are the main backup device types and their features that supported by the current CARD library. 
+<table>
+<tr><td>Types of devices</td><td>Features</td></tr>
+<tr><td>EEPROM</td><td>Memory with standard features and relatively small capacity.</td></tr>
+<tr><td>FLASH</td><td>Memory with relatively slow write, but large capacity.</td></tr>
+<tr><td>FRAM</td><td>Superior for write counts. Also, it does not use sectors and does not enter a busy state when writing.</td></tr>
+</table>
+<br> There is nothing provided to detect which types of backup devices are loaded in the DS card. So, after the application has recognized which device type it will be using, the type must be specified with the <A href="../common/CARD_IdentifyBackup.html">CARD_IdentifyBackup</a> function before using any backup access functions. You must make sure that ROM header information is determined beforehand, as indicated in the guidelines. This will prevent problems such as data being destroyed by carelessly accessing a DS card that is defined in detail. This is especially important for applications that will be executed by something other than the DS card, as in Single-Card Play.  Under these conditions, restrictions in the CARD library work automatically and the card cannot be accessed until the <A href="../common/CARD_Enable.html">CARD_Enable</a> function is called. The ROM header information of the inserted DS card can be referenced with the <A href="../common/CARD_GetRomHeader.html">CARD_GetRomHeader</a> function.<br>
+</P>
+<HR>
+<P><B>Access function process flow</B></P>
+<P>This is an explanation of the flow of operations after backup access functions are called.</P>
+<BLOCKQUOTE><IMG src="image_BackupAccess.gif" border="0"></BLOCKQUOTE>
+<ol>
+<li>Most device commands related to data transfer are restricted to a fixed size, such as pages or sectors, so the CARD library automatically divides content specified by the user into several appropriately sized commands.
+<li>Each divided command is executed in order. Command execution and the busy determination that follows needs to be processed from beginning to end directly by the CPU, so this operation is executed by a relatively low priority thread on the ARM7 component side.bc. Notifications of command issue requests are sent one at a time from ARM9 through PXI.
+<li>When the command is finished in ARM7, ARM9 is notified of the result through PXI.
+<li>If there are any remaining divided commands, another notification for a command issue request is sent from ARM9. The entire process is repeated until it completes, fails, or is cancelled with the <a href="../backup/CARD_CancelBackupAsync.html">CARD_CancelBackupAsync</a> function. Because waiting for completion or processing reissue requests may take a long time as a result of memory copy, they are executed by an internal thread in the CARD library instead of with a PXI interrupt handler.
+<li>When the operation is complete, a notification is sent to the source of the specified callback. The process result is referenced with the <a href="../common/CARD_GetResultCode.html">CARD_GetResultCode</a> function as a <a href="../card_result_const.html">CARDResult</a> type enumerated value.
+</ol>
+<P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_card.html">CARD Function List</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+01/11/2006 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

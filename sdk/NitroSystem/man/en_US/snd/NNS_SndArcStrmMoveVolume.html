@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcStrmMoveVolume</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcStrmMoveVolume</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code>void NNS_SndArcStrmMoveVolume(
+NNSSndStrmHandle* handle,
+int volume,
+int frames );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA4LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>Pointer to a stream handle</td>
+</tr>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>Volume value Takes a value between 0 and 127</td>
+</tr>
+<tr>
+<td><em><strong><code>frames</code></strong></em></td>
+<td>Frame count over which to change</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1MWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDACNWT"></a>
+<h2>Description</h2>
+      <p>
+This function changes the volume of the stream that is connected to the stream handle <em><strong><code>handle</code></strong></em>. This function does not perform any action if the stream handle is invalid.
+</p>
+     <p>
+The current volume value changes gradually over the number of <code><i><b>frames</b></i></code> to the volume value set with <code><i><b>volume</b></i></code>.
+</p>
+      <p>
+When <CODE><i><b>frames</b></i></CODE> is set to 0, the current volume value changes immediately. For example, when the volume is changed from a certain value that is unrelated to the current volume value to another targeted value, call this function with <CODE><i><b>frames</b></i></CODE> set to <code>0</code>. After changing the current volume value, specify the target volume value with a second call to this function </p>
+      <p>
+After a stream starts, the value of the volume is 0. The value of the volume changes to 127 after the next call to the <a href="NNS_SndMain.html"><code>NNS_SndMain</code></a> function. This feature allows for a fade-in effect to occur when this function is called directly after the stream is started to gradually change the volume from the value of 0 to the specified volume value.
+</p>
+      <p>
+This volume value is independent of the volume value that is set in the sound archive and can be combined to create effects. However, the value that is set here is ignored during a fadeout. 
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndMain.html">NNS_SndMain</a></p>
+<h2>Revision History</h2>
+<p>08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

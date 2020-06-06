@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>MATH Utility Functions Group</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">MATH Utility Functions Group</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/math.h&gt;</CODE></PRE>
+<PRE><CODE>static inline int MATH_IAbs( int a );
+static inline int MATH_IMin( int a , int b );
+static inline int MATH_IMax( int a , int b );
+MATH_ABS(         a );
+MATH_MIN(         a , b );
+MATH_MAX(         a , b );
+MATH_CLAMP(       x , low , high );
+MATH_ROUNDUP(     x , base );
+MATH_ROUNDDOWN(   x , base );
+MATH_ROUNDUP32(   x );
+MATH_ROUNDDOWN32( x );
+
+  </CODE></PRE>
+</DL>
+<H2>Description</H2>
+<P>This is the group of utility functions.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>MATH_IAbs</I></B></TD>
+<TD>Inline function that returns an int-type argument's absolute value.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_IMin</I></B></TD>
+<TD>Inline function that compares two int-type arguments and returns the smaller.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_IMax</I></B></TD>
+<TD>Inline function that compares two int-type arguments and returns the larger.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_ABS</I></B></TD>
+<TD>Function macro that returns argument's absolute value.<br />Arguments are sometimes evaluated twice, so expressions with side effects must not be placed in arguments.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_MIN</I></B></TD>
+<TD>Function macro that compares two arguments and returns the smaller.<br />Arguments are sometimes evaluated twice, so expressions with side effects must not be placed in arguments.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_MAX</I></B></TD>
+<TD>Function macro that compares two arguments and returns the larger.<br />Arguments are sometimes evaluated twice, so expressions with side effects must not be placed in arguments.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_CLAMP</I></B></TD>
+<TD>Function macro that returns value holding range from low to high in argument.<br />Arguments are sometimes evaluated twice, so expressions with side effects must not be placed in arguments.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_ROUNDUP</I></B></TD>
+<TD>Function macro that returns the value of the 1st argument, x, rounded up to a multiple of the 2nd argument, base. In other words, it returns the smallest multiple of base that is greater or equal to x. base must be a multiple of 2.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_ROUNDDOWN</I></B></TD>
+<TD>Function macro that returns the value of the 1st argument, x, rounded down to a multiple of the 2nd argument, base. In other words, it returns the largest multiple of base that is less than or equal to x. base must be a multiple of 2.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_ROUNDUP32</I></B></TD>
+<TD>Function macro that returns value of argument rounded up to a multiple of 32. The same as executing <nobr><code>MATH_ROUNDUP(x, 32)</code></nobr>.</TD>
+    </TR>
+    <TR>
+<TD><B><I>MATH_ROUNDDOWN32</I></B></TD>
+<TD>Function macro that returns value of argument rounded down to a multiple of 32. The same as executing <nobr><code>MATH_ROUNDDOWN(x, 32)</code></nobr>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<PRE>
+
+
+#define MATH_ABS(a)   (((a) &lt; 0 ) ? (-(a)) : (a))
+#define MATH_MIN(a,b) (((a) &lt;= (b)) ? (a) : (b))
+#define MATH_MAX(a,b) (((a) &gt;= (b)) ? (a) : (b))
+#define MATH_CLAMP(x, low, high) ( ( (x) &gt; (high) ) ? (high) : ( ( (x) &lt; (low) ) ? (low) : (x) ) )
+#define MATH_ROUNDUP(x, base)   (((x) + ((base)-1)) &amp; ~((base)-1))
+#define MATH_ROUNDDOWN(x, base) ((x) &amp; ~((base)-1))
+#define MATH_ROUNDUP32(x)   MATH_ROUNDUP(x, 32)
+#define MATH_ROUNDDOWN32(x) MATH_ROUNDDOWN(x, 32)
+
+</PRE>
+<H2>See Also</H2>
+<P><CODE>None.</CODE></P>
+<H2>Revision History</H2>
+<P>
+06/02/2005 Changed &amp; to &amp;.<BR>12/14/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

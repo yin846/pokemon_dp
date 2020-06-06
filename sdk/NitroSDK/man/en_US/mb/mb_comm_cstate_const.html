@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MBCommCState</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MBCommCState</h1>
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR>
+<PRE><CODE>typedef enum
+{
+MB_COMM_CSTATE_NONE,
+MB_COMM_CSTATE_INIT_COMPLETE,
+MB_COMM_CSTATE_CONNECT,
+MB_COMM_CSTATE_CONNECT_FAILED,
+MB_COMM_CSTATE_DISCONNECTED_BY_PARENT,
+MB_COMM_CSTATE_REQ_ENABLE,
+MB_COMM_CSTATE_REQ_REFUSED,
+MB_COMM_CSTATE_DLINFO_ACCEPTED,
+MB_COMM_CSTATE_RECV_PROCEED,
+MB_COMM_CSTATE_RECV_COMPLETE,
+MB_COMM_CSTATE_BOOTREQ_ACCEPTED,
+MB_COMM_CSTATE_BOOT_READY,
+MB_COMM_CSTATE_CANCELED,               
+MB_COMM_CSTATE_AUTHENTICATION_FAILED,
+MB_COMM_CSTATE_MEMBER_FULL,
+MB_COMM_CSTATE_GAMEINFO_VALIDATED,
+MB_COMM_CSTATE_GAMEINFO_INVALIDATED,
+MB_COMM_CSTATE_GAMEINFO_LOST,
+MB_COMM_CSTATE_GAMEINFO_LIST_FULL,
+MB_COMM_CSTATE_ERROR,
+MB_COMM_CSTATE_FAKE_END
+} MBCommCState;</PRE>
+  <br> <br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Indicates the enumerator constant showing the state of the multiboot child.<BR> These states are issued as callbacks when the fake MB child library is used<BR> The meaning of each enumerator constant is as follows:<BR>
+<TABLE border="0">
+  <TBODY>
+    <TR>
+<TD>Constant</TD>
+<TD>Description</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_NONE</TD>
+<TD>Indicates MB child state before initialization.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_INIT_COMPLETE</TD>
+<TD>Indicates MB child state after initialization is complete.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_END_CONNECT</TD>
+<TD>Indicates state after connection to parent is complete.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_CONNECT_FAILED</TD>
+<TD>Indicates state after connection to parent has failed.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_DISCONNECTED_BY_PARENT</TD>
+<TD>Indicates state after disconnect by parent.</TD>
+    <TR>
+<TD>MB_COMM_CSTATE_REQ_ENABLE</TD>
+<TD>Indicates the state in which MP is established and data request is possible.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_REQ_REFUSED</TD>
+<TD>Indicates the state in which the request was kicked by the parent.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_REQ_REFUSED</TD>
+<TD>Indicates the state in which the request was kicked by the parent.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_DLINFO_ACCEPTED</TD>
+<TD>Indicates the state in which the parent has accepted the request.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_RECV_PROCEED</TD>
+<TD>Indicates the state where the download of data was started.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_RECV_COMPLETE</TD>
+<TD>Indicates the state where the receipt of download data is complete.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_BOOTREQ_ACCEPTED</TD>
+<TD>Indicates the state where the parent has received a boot request.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_CANCELED</TD>
+<TD>Indicates the state where communication with the parent is cut and boot is complete.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_CANCELLED</TD>
+<TD><FONT color="#999999">Indicates the state where the download was cancelled before completion and the connection with the parent was completely cut.</FONT></TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_AUTHENTICATION_FAILED</TD>
+<TD>MB fake child cannot transition to this state.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_MEMBER_FULL</TD>
+<TD><FONT color="#999999">Indicates the state where the download was cancelled before completion and the connection with the parent was completely cut.</FONT></TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_GAMEINFO_VALIDATED</TD>
+<TD><FONT color="#999999">Indicates the state where the download was cancelled before completion and the connection with the parent was completely cut.</FONT></TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_GAMEINFO_LOST</TD>
+<TD><FONT color="#999999">Indicates the state where the download was cancelled before completion and the connection with the parent was completely cut.</FONT></TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_GAMEINFO_LIST_FULL</TD>
+<TD><FONT color="#999999">Indicates the state where the download was cancelled before completion and the connection with the parent was completely cut.</FONT></TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_ERROR</TD>
+<TD>Indicates state where communication error occurred before completion.</TD>
+    </TR>
+    <TR>
+<TD>MB_COMM_CSTATE_FAKE_END</TD>
+<TD>Indicates state where fake child was completed.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+<h2>See Also</h2>
+<p><CODE><A href="fake_child/MB_FakeSetCStateCallback.html">MB_FakeSetCStateCallback</A>, <A href="mb_comm_cstate_callback_type.html">MBCommCStateCallback</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>03/15/2005 Released.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

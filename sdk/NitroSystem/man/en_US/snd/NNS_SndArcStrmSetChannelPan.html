@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcStrmSetChannelPan</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcStrmSetChannelPan</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code>void NNS_SndArcStrmSetChannelPan(
+NNSSndStrmHandle* handle,
+int chNo,
+int pan );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA4LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>Pointer to a stream handle</td>
+</tr>
+<tr>
+<td><em><strong><code>chNo</code></strong></em></td>
+<td>The channel number</td>
+</tr>
+<tr>
+<td><em><strong><code>pan</code></strong></em></td>
+<td>Pan (position) value Takes values in the range of 0 (left) to 64 (center) to 127 (right)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1MWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDACNWT"></a>
+<h2>Description</h2>
+      <p>
+This function changes the channel pan of the stream that is connected to the stream handle <em><strong><code>handle</code></strong></em>. This function does not perform any action if the stream handle is invalid.
+</p>
+      <p>
+The channel number <em><strong><code>chNo</code></strong></em> is the channel number in the stream data. The channel number <em><strong><code>chNo</code></strong></em> value is not directly related to the channel number that is mounted in the NITRO sound circuit. For example, for stereo stream data, the left channel is channel 0 and the right channel is channel 1.
+</p>
+      <p>
+By default, monoaural data is played in the center (64) and stereo is played with channel 0 output from the left (0) and channel 1 output from the right (127). When this function is called, these default values can be changed.
+</p>
+    </div>
+<h2>See Also</h2>
+<p>None.</p>
+<h2>Revision History</h2>
+<p>08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

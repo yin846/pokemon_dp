@@ -1,0 +1,65 @@
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_SetResolver</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_SetResolver</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;ninet/socket.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_SetResolver( const <code><a href="SOCInAddr.html">SOCInAddr</a></code>* <strong><em>dns1</em></strong>, const <code><a href="SOCInAddr.html">SOCInAddr</a></code>* <strong><em>dns2</em></strong> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><strong><em>dns1</em></strong></code></td>
+<td>Primary DNS server address.</td>
+  </tr>
+  <tr>
+<td><code><strong><em>dns2</em></strong></code></td>
+<td>Secondary DNS server address.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+    <td>0</td>
+<td>Successful.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket library is not initialized. (Not connected.)</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p>This function sets the primary and secondary DNS server addresses used by <code><a href="SOC_GetHostByAddr.html">SOC_GetHostByAddr()</a></code>. </p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_GetHostByAddr.html">SOC_GetHostByAddr</a></code>, <code><a href="SOCInAddr.html">SOCInAddr</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description.<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

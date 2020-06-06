@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRCPrototypeDBParam</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRCPrototypeDBParam</h1>
+<h2>Definitions</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+typedef struct PRCPrototypeDBParam
+{
+int                     normalizeSize;
+<A href="PRCResampleMethod.html">PRCResampleMethod</A>       resampleMethod;
+int                     resampleThreshold;
+} PRCPrototypeDBParam;
+</CODE></PRE></dd>
+</dl>
+
+<h2>Elements</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">normalizeSize</FONT></STRONG></EM></TD>
+<TD width="87%">Length of the longer direction of a normalized line.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">resampleMethod</FONT></STRONG></EM></TD>
+<TD width="87%">Specification of the algorithm used for resampling.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">resampleThreshold</FONT></STRONG></EM></TD>
+<TD width="87%">Resampling parameter.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<H2>Description</H2>
+<P><font color="red"><b>Although we plan to implement the following features, they have not yet been implemented. <CODE><A href="PRC_InitPrototypeDB.html">PRC_InitPrototypeDBEx</A></CODE> simply ignores this function.</b></P>
+<P>This is an argument for <CODE><A href="PRC_InitPrototypeDB.html">PRC_InitPrototypeDBEx</A></CODE>.</P>
+<P>In the normalization process, first a bounding box is taken for the entire pattern that is to be normalized. Then, preserving the X Y ratio, it is scaled so that the longer direction becomes the size specified by <CODE>normalizeSize</CODE>. At this time the shorter direction is centered.</P>
+<P>Normalization will not occur if <CODE>normalizeSize</CODE> is set to 0.</P>
+<P>For information on <CODE>resample*</CODE> see <CODE><A href="PRCResampleMethod.html">PRCResampleMethod</A></CODE>.</P>
+<h2>See Also</h2>
+<p><CODE><A href="PRCResampleMethod.html">PRCResampleMethod, </A><A href="PRC_InitPrototypeDB.html">PRC_InitPrototypeDB*</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+10/28/2004 Changed <i>regularize</i> to <i>normalize</i>.<br> 06/23/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

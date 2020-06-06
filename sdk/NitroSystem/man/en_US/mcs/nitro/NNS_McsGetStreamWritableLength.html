@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_McsGetStreamWritableLength</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_McsGetStreamWritableLength</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		
+<pre><CODE>#include &lt;nnsys/mcs.h&gt;</CODE></pre>
+	  
+<pre><CODE>BOOL NNS_McsGetStreamWritableLength(u32* pLength);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+ <tr> 
+<td width="13%"><em><strong><font face="Courier New">pLength</font></strong></em></td>
+<td width="87%">Pointer to the variable to put the size (number of bytes) that can be sent at once</td>
+ </tr>
+</table>
+<h2>Return Values</h2>
+<p>TRUE if the function succeeds. FALSE otherwise.</p>
+<H2>Description</H2>
+<p>Obtains the size (number of bytes) that can be sent at once. When using the function <code>NNS_McsWriteStream</code> to write the data that exceeds the size that can be sent at once, function calls will be blocked until the PC reads the written data, and control will not be returned.</p>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_McsWriteStream.html">NNS_McsWriteStream</A></CODE></p>
+<H2>Revision History</H2>
+<P>11/30/2004 Added description. 06/01/2004 Initial version.</P>
+</body>
+</html>

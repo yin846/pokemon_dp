@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBT_RegisterBlock</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBT_RegisterBlock</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR> <CODE>BOOL WBT_RegisterBlock(WBTBlockInfoList *block_info_list, u32 block_id, const void *user_id, const void *data_ptr, int data_size, u16 permission_bmp);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>block_info_list</STRONG></EM></TD>
+<TD width="87%">Pointer to the <A href="../wbt_block_info_list_type.html"> <CODE>WBTBlockInfoList</CODE></A> structure used for registration. <br> This structure is used by the WBT library until it is released by the <A href="WBT_UnregisterBlock.html"> <CODE>WBT_UnregisterBlock</CODE></A> function.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>block_id</STRONG></EM></TD>
+<TD width="87%">A unique user-defined value allocated to the block to be registered<br> The value must be greater than <A href="../wbt_block_id_min_const.html"> <CODE>WBT_BLOCK_ID_MIN</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>user_id</STRONG></EM></TD>
+<TD width="87%">User-defined data given to a block.<br> The size is <A href="../wbt_user_id_len_const.html"> <CODE>WBT_USER_ID_LEN</CODE></A> bytes.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>data_ptr</STRONG></EM></TD>
+<TD width="87%">A buffer that holds block data.<br> If this value is not <CODE>NULL</CODE>, the buffer is referenced by the WBT library until the buffer is released with the <A href="WBT_UnregisterBlock.html"> <CODE>WBT_UnregisterBlock</CODE></A> function. Therefore, until the buffer is released, the buffer must not be changed or destroyed.<br>If the value is <CODE>NULL</CODE>, as required, partial buffer preparation requests are notified to the <A href="../wbt_command_type_const.html"> <CODE>WBT_CMD_SYSTEM_CALLBACK</CODE></A> callback as <A href="../wbt_command_type_const.html"> <CODE>WBT_CMD_PREPARE_SEND_DATA</CODE></a> events.
+	  </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>data_size</STRONG></EM></TD>
+<TD width="87%">The block data size.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>permission_bmp</STRONG></EM></TD>
+<TD width="87%">Reserved for a future extension. Always specify 0.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>Registers the block and returns <CODE>TRUE</CODE> if the specified block <CODE>ID</CODE> is not currently registered and the total number of registered blocks is less than <A href="../wbt_num_max_block_info_id_const.html"><CODE>WBT_NUM_MAX_BLOCK_INFO_ID</CODE></A>.<br>Otherwise, it does nothing and returns <CODE>FALSE</CODE>.</p>
+
+<H2>Description</H2>
+<p>This function registers a data block in the WBT internal block list, based on the information specified. A communicating party can receive the registered block with the <A href="../command/WBT_GetBlock.html"><CODE>WBT_GetBlock</CODE></A> function. <br>
+</p>
+<H2>See Also</H2>
+<code><A href="WBT_UnregisterBlock.html">WBT_UnregisterBlock</A>, <A href="../command/WBT_GetBlockInfo.html">WBT_GetBlockInfo</A>, <A href="../command/WBT_GetBlock.html">WBT_GetBlock</A>, <A href="../wbt_block_info_list_type.html">WBTBlockInfoList</A></code>
+<H2>Revision History</H2>
+<P>
+09/21/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

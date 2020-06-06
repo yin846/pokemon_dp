@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_SetBankForSubOBJExtPltt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_SetBankForSubOBJExtPltt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>void GX_SetBankForSubOBJExtPltt(GXVRamSubOBJExtPltt objExtPltt);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">objExtPltt</font></strong></em></td>
+<td width="87%">Specifies a VRAM bank to allocate to the sub 2D Engine's OBJ Extended palette.</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function allocates the specified VRAM bank to the sub 2D Engine's OBJ Extended palette. If the specified VRAM bank is either disabled or allocated to LCDC, that VRAM bank is allocated to the sub 2D Engine OBJ's Extended palette.<BR> Note: </b> When the OBJ Extended palette is allocated, the 256-color OBJ uses the OBJ Extended palette. However, 16-color OBJs normally use the standard palette.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>GX_VRAM_SUB_OBJEXTPLTT_NONE</CODE></TD>
+<TD>A VRAM bank is not allocated to the OBJ Extended palette.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_SUB_OBJEXTPLTT_0_I</CODE></TD>
+<TD>The OBJ Extended palette is reserved. VRAM-I is allocated.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following is the type definition for <CODE>GXVRamSubOBJExtPltt</CODE> types.</P>
+<PRE>typedef enum
+{
+GX_VRAM_SUB_OBJEXTPLTT_NONE = 0x0000,
+GX_VRAM_SUB_OBJEXTPLTT_0_I  = GX_VRAM_I
+}
+GXVRamSubOBJExtPltt;</CODE></PRE>
+<h2>See Also</h2>
+<P><a href="GX_GetSizeOfSubOBJExtPltt.html"><code>GX_GetSizeOfSubOBJExtPltt</code></a>, <a href="GX_GetBankForSubOBJExtPltt.html"><code>GX_GetBankForSubOBJExtPltt</code></a>, <a href="GX_ResetBankForSubOBJExtPltt.html"><code>GX_ResetBankForSubOBJExtPltt</code></a>, <a href="GX_DisableBankForSubOBJExtPltt.html"><code>GX_DisableBankForSubOBJExtPltt</code></a></P>
+<H2>Revision History</H2>
+<P>02/09/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

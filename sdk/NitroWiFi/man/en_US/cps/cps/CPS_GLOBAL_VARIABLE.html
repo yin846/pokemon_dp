@@ -1,0 +1,81 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS*(global variable)</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS*(global variable)</h1>
+
+
+<h2>Definitions</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+  <dd><pre><code>
+CPSInAddr CPSMyIp;
+
+CPSInAddr CPSNetMask;
+
+CPSInAddr CPSGatewayIp;
+
+CPSInAddr CPSDnsIp[2];
+
+CPSMacAddress CPSMyMac;
+
+CPSInAddr CPSDhcpServerIp;
+
+int CPSNoIpReason;
+  </code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>A list of global variables used by CPS.</p>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>CPSMyIp</CODE></STRONG></EM></TD>
+			<TD width="75%">Own IPv4 address. 0 if not yet assigned.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPSNetMask</CODE></STRONG></EM></TD>
+			<TD>Own IPv4 net mask.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPSGatewayIp</CODE></STRONG></EM></TD>
+			<TD>Default gateway address.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPSDnsIp[2]</CODE></STRONG></EM></TD>
+			<TD>DNS server address. If there are no servers, both <CODE>CPSDnsIp[0]</CODE> and <CODE>CPSDnsIp[1]</CODE> are set to 0. If there is one server, the server is set to <CODE>CPSDnsIp[0]</CODE>. If there are two or more servers, the first server is set to <CODE>CPSDnsIp[0]</CODE>and the next server is set to  <CODE>CPSDnsIp[1]</CODE>.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPSMyMac</CODE></STRONG></EM></TD>
+			<TD>Own MAC address.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPSDhcpServerIp</CODE></STRONG></EM></TD>
+			<TD>DHCP server address.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPSNoIpReason</CODE></STRONG></EM></TD>
+			<TD>The reason code when CPSMyIp is 0.</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<h2>See Also</h2>
+<CODE><A href="CPSConfig.html">CPSConfig</A></CODE>
+<p>
+</p>
+<H2>Revision History</H2>
+<P>
+10/24/2005 Initial version.</P>
+</body>
+</html>

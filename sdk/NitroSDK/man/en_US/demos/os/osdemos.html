@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>OS Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Operating System Sample Demos</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/os</CODE></P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/os</CODE> directory and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/os/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/os/thread-1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Navigate to the <code>$NitroSDK/build/demos/os/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and perform one of the following:</P>
+<UL>
+<LI>Execute <code>*.nef</code>, <code>*.srl</code> with ensata.
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER.
+</UL>
+
+<H2>Description</H2>
+<BR>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>alarm-1</CODE></STRONG></EM></TD>
+<TD width="525">Uses one one-shot alarm.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>alarm-2</CODE></STRONG></EM></TD>
+<TD width="525">Uses the cyclic alarm and one-shot alarm.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>arena-1</CODE></STRONG></EM></TD>
+<TD width="525">Set up the arena and acquire memory.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>argument-1</CODE></STRONG></EM></TD>
+<TD width="525">Embeds argument data in the ROM image and display.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>argument-2</CODE></STRONG></EM></TD>
+<TD width="525">Creates argument data from a character string in real-time and sets it.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>callTrace-1</CODE></STRONG></EM></TD>
+<TD>Carries out the function call trace display without using the thread system.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>callTrace-2</CODE></STRONG></EM></TD>
+<TD>Carries out the function call trace display using the thread system.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>cplusplus-1</CODE></STRONG></EM></TD>
+<TD>Carries out initialization of the memory control before calling the static initializer for C++ implementation.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>entropy-1</CODE></STRONG></EM></TD>
+<TD width="525">The demo uses the function <CODE>OS_GetLowEntropyData</CODE>.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>exceptionDisplay-1</CODE></STRONG></EM></TD>
+<TD width="525">Displays exceptions and uses the exception callback.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>exceptionDisplay-2</CODE></STRONG></EM></TD>
+<TD>Pseudo-generates an exception when dividing by 0.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>exceptionDisplay-3</CODE></STRONG></EM></TD>
+<TD>Shows the function call trace information when an exception occurs.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>favorite-color</CODE></STRONG></EM></TD>
+<TD>Demo that test-displays on the screen the &quot;favorite color&quot; included in the console information.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>forChina-1</CODE></STRONG></EM></TD>
+<TD>This is a simplified sample for creating applications designed for China.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>forChina-fs</CODE></STRONG></EM></TD>
+<TD>This is the same as forChina-1, but it uniquely defines the OS_ShowAttentionChina function and obtains the image data from the file system.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>functionCost-1</CODE></STRONG></EM></TD>
+<TD>Measures and displays the function cost.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>functionCost-2</CODE></STRONG></EM></TD>
+<TD>Measures and displays the function cost with multiple threads.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>functionCost-3</CODE></STRONG></EM></TD>
+<TD>Calculates and displays the total function cost measured with multiple threads.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>heap-1</CODE></STRONG></EM></TD>
+<TD width="525">Sets one heap and uses it.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>heap-2</CODE></STRONG></EM></TD>
+<TD width="525">Sets multiple heaps and uses them.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>heap-3</CODE></STRONG></EM></TD>
+<TD width="525">Sets multiple heaps and makes a region secured from one heap into a discontinuous region of another heap.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>mutex-1</CODE></STRONG></EM></TD>
+<TD width="525">When accessing one function from multiple threads, uses mutex to do exclusive control.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>mutex-2</CODE></STRONG></EM></TD>
+<TD width="525">Unlocks mutex when thread is completed.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>reset-1</CODE></STRONG></EM></TD>
+<TD>Executes software reset.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>sleep-1</CODE></STRONG></EM></TD>
+<TD width="525">Puts thread to sleep for a given length of time.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>spinwait-1</CODE></STRONG></EM></TD>
+<TD>Demo of <CODE><A href="../../os/system/OS_SpinWait.html">OS_SpinWait()</A></CODE>.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>thread-1</CODE></STRONG></EM></TD>
+<TD width="525">Creates 2 threads, where one directly wakes up the other.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>thread-2</CODE></STRONG></EM></TD>
+<TD width="525">Creates 2 threads, where idle threads wake up each of them.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>thread-3</CODE></STRONG></EM></TD>
+<TD width="525">Switches threads using a message queue.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>thread-4</CODE></STRONG></EM></TD>
+<TD width="525">Wakes up a thread from within the IRQ handler.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>thread-5</CODE></STRONG></EM></TD>
+<TD>Waits for a thread to complete.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>thread-6</CODE></STRONG></EM></TD>
+<TD>Demo of <CODE><A href="../../os/thread/OS_YieldThread.html">OS_YieldThread()</A></CODE>.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>thread-7</CODE></STRONG></EM></TD>
+<TD>Demo of thread destructor.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>thread-8</CODE></STRONG></EM></TD>
+<TD>Version 1 of demo for creating a large number of threads.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>thread-9</CODE></STRONG></EM></TD>
+<TD>Demo that compares <CODE><A href="../../os/thread/OS_KillThread.html">OS_KillThread()</A></CODE> and <CODE><A href="../../os/thread/OS_KillThread.html">OS_KillThreadWithPriority()</A></CODE>.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>thread-10</CODE></STRONG></EM></TD>
+<TD>Version 2 of demo for creating a large number of threads.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>tick-1</CODE></STRONG></EM></TD>
+<TD width="525">Uses the tick system to read and display a tick value.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>timer-1</CODE></STRONG></EM></TD>
+<TD width="525">Uses an interrupt that employs a timer.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>valarm-1</CODE></STRONG></EM></TD>
+<TD>Uses an alarm that uses V-count.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>waitIrq-1</CODE></STRONG></EM></TD>
+<TD>Waits for a V-blank while operating a separate thread.</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>waitIrq-2</CODE></STRONG></EM></TD>
+<TD>Shows the difference in operation between <CODE><A href="../../os/irq/OS_WaitIrq.html">OS_WaitIrq()</A></CODE> and <CODE><A href="../../os/irq/OS_WaitAnyIrq.html">OS_WaitAnyIrq()</A></CODE>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Operation</H2>
+<P><code>exceptionDisplay-1</code>, <code>exceptionDisplay-2</code>, <code>exceptionDisplay-3</code>, and <code>reset-1</code> do not function properly on ensata. <code>exceptionDisplay-1</code>, <code>exceptionDisplay-2</code>, and <code>exceptionDisplay-3</code> halt in IS-NITRO-DEBUGGER with code in which an exception occurs.</P>
+<H2>See Also</H2>
+<P><A href="../../os/list_os.html"><CODE>OS Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>09/09/2005 Added argument-2.<BR> 07/22/2005 Corrected the erroneous omission of functionCost-1.<BR> 07/21/2005 Added argument-1.<BR> 07/14/2005 Added thread-10.<BR> 07/13/2005 Added thread-6, thread-7, thread-8, and thread-9.<BR>07/11/2005 Added description for <code>forChina-1</code> and <CODE>forChina-fs</code> samples.<br />05/10/2005 Added description of <code>favorite-color</code> demo.<br />03/02/2005 Revised descriptions to reflect current support environment conditions.<br />12/08/2004 Removed <code>interrupt-key-1</code>, Revised Operation<br />09/01/2004 Added <code>reset-1</code>.<br />08/17/2004 Standardized the notation of the IS-NITRO-EMULATOR.<br />07/10/2004 Changed from <code>.bin</code> to <code>.srl.</code><br />06/25-2004 Added <code>thread-5.</code><br />06/08/2004 Made it possible to insert the demo of the <code>profile</code> function into <code>Makefile</code> by default.<br />05/24/2004 Added <code>functionCost-1</code>, <code>functionCost-2</code>, <code>functionCost-3</code>, and <code>waitlrq-1</code>, <code>waitlrq-2</code>. Added description about necessary <code>profile</code> functions.<br />04/15/2004 Added description of <code>callTrace-1</code>, <code>callTrace-2</code>, <code>cplusplus-1</code>, and <code>exceptionDisplay-3</code>.<br />04/05/2004 Added description for <code>mutex-2</code>, <code>sleep-1</code>, and <code>timer-1</code>. Changed <code>systemClock-1</code> to <code>tick-1</code>.<br />03/17/2004 Added description for <code>exceptionDisplay-2</code>, <code>valarm-1</code>, <code>spinWait-1.</code><br />02/05/2004 Added description for <code>alarm-1</code>, <code>alarm-2</code>, <code>exceptionDisplay-1</code>, and <code>systemClock-1.</code><br />01/18/2004 Moved <code>interrupt-dma-1</code> sample to <code>MI</code> as <code>dmaCallback-1</code>.<br />01/09/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

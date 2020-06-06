@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dLocalOriginToScrPos</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dLocalOriginToScrPos</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE>#include &lt;nnsys/g3d/util.h&gt;
+
+int
+NNS_G3dLocalOriginToScrPos(
+int* px ,
+int* py
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>px</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>x</code> coordinate on the screen</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>py</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>y</code> coordinate on the screen</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>Returns <code>0</code> if <em><strong><code>*px</code></strong></em> and <em><strong><code>*py</code></strong></em> are inside the viewport. Returns <code>-1</code> if they are outside of the viewport.</P>
+<H2>Description</H2>
+<P>Looks for the position of the local coordinate origin on the screen. The current position matrix and the current projection matrix must be appropriately configured. Even if the return value is <code>-1</code>, the value is stored in <code>*px</code> and <code>*py</code> can be used as a directional guide. When applying a horizontal offset to the 3D screen by using the Nitro-SDK <code>G3X_SetHOffset</code> function, only the offset portion of the obtained x coordinate needs to be moved.
+</P>
+
+<H2>See Also</H2>
+<P><a href="NNS_G3dWorldPosToScrPos.html"><code>NNS_G3dWorldPosToScrPos</a></code>, <code><a href="NNS_G3dScrPosToWorldLine.html">NNS_G3dScrPosToWorldLine</a></code></P>
+<H2>Revision History</H2>
+<P>11/01/2004 Initial version.</P>
+</BODY>
+
+</HTML>

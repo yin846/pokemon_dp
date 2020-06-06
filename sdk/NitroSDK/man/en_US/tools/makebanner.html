@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>makebanner</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">makebanner</H1>
+<H2>Description</H2>
+<P>The makebanner tool is used for creating banner files. A banner file is displayed in the NITRO startup menu. It contains information such as an image that identifies the application.</P>
+<P>The banner file contains image data and game title information for each language. It is created based on the description in the banner specification file (BSF). Once the banner file is created, makerom is used to write it to the application ROM image.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% makebanner [-d] [-N ICON_BASENAME] SPECFILE [BANNERFILE]</CODE></P>
+<P>This function links files according to the description in the banner specification file (described below) which is specified by <code>SPECFILE</code> and creates a file named <code>BANNERFILE</code>. Using <code>BANNERFILE</code> is optional and may be omitted. If you omit it, a file will be used that has the same name as those specified by <code>SPECFILE</code> with the extension <code>.bnr</code> appended.</P>
+<P>The <code>-N</code> option enables you to specify from the command line icon files of banners specified by normal banner spec files. It attaches the extensions <code>.nbfc</code> and <code>.nbfp</code> to the base names specified by <code>ICON_BASENAME</code>, turning the resultant files into an image file and image parameter file, respectively. This overwrites the values specified by <code>ImageFile:</code>and <code>PlttFile:</code>parameters in the banner <code>spec</code> file.</P>
+<P>The <code>-d</code> option is a debugging message output option for makebanner. It causes a debugging message to be generated at run time. This is usually unnecessary.</P>
+<H3>Banner Specification File Format</H3>
+<P>The banner specification file is a text file that specifies an image data file and the game title in each language. It must be described and saved in Unicode (UTF-16LE with BOM). Notepad in MS Windows 2000/XP supports Unicode. Select [Unicode] from the [Encoding] dropdown box when saving the file.</P>
+<H3>Parameter</H3>
+<P>The delimiter between parameter specifications and values is a colon (<code>:</code>).</P>
+<H4>Image file parameters</H4>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item">ImageFile:</CODE><I>[Image's image file name]</I>
+<DD class="command_desc">This specifies a binary image, 32x32 x 16 colors.<br />Store character data using one-dimensional mapping.<br />The first 512 bytes are written to the banner file.
+<DT class="command_item">PlttFile:</CODE><I>[Image's palette file name]</I>
+<DD class="command_desc">This specifies a binary image palette.<br />The first 32 bytes are written to the banner file.
+</DL>
+</BLOCKQUOTE>
+<P>Use <code>ntexconv</code> (<code>-no</code> <code>-bg</code> <code>-bgb</code> <code>-bgnc</code>) or the like to create image and palette binary data from an image file.</P>
+<P>The <code>-N</code> option allows you to specify image file parameters from the command line.</P>
+<H4>Language parameters</H4>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item">JP: [Japanese Game Title Name] EN: [English Game Title Name] FR: [French Game Title Name] GE: [German Game Title Name] IT: [Italian Game Title Name] SP:</CODE><I>[Spanish Game Title Name]</I>
+<DD class="command_desc">This describes the game title name in each language. The maximum is 3 rows, 128 characters (including carriage returns). A character string must be specified in the first line. If a line begins with a space or a tab, it will be deemed to be a continuation of the previous line. All content between a blank line and the next language parameter will be destroyed. If you want to leave line 1 or 2 blank and write something in line 3, place content in the form of quotation marks (<code>&quot;</code> <code>&quot;</code>) in the line you want to be blank. Always store in the banner file in the following order: Japanese, English, French, German, Italian, Spanish. As in the banner specification file, the save format is <code>UTF-16LE</code> (without <code>BOM</code>). Usable characters are shown below. For more information on codes, see the usable format list (<a href="bannerfont.rtf">rich text version</a>). However, your editor must be capable of displaying <code>UTF-16LE</code> character code compatible fonts (such as <strong>MS UI Gothic</strong>). <BR> <IMG src="font/Ascii.jpg"><BR> <IMG src="font/Latin.jpg"><BR> <IMG src="font/Kigou.jpg"><BR> <IMG src="font/Hiragana.jpg"><BR> <IMG src="font/Katakana.jpg">
+</DL>
+</BLOCKQUOTE>
+<H3>Format</H3>
+<P>Parameter specification must be at the beginning of the name line. Lines beginning with <code>#</code> are treated as comments. With the exception of the spaces at the beginning of a line, all spaces are included in the character string. If you want to include leading spaces, surround them with quotation marks (<code>&quot;</code> <code>&quot;</code>). Likewise, if you want to include quotation marks, surround them with quotation marks (<code>&quot;&quot;&quot;</code>).</P>
+<BLOCKQUOTE>
+<PRE class="sample_source"><code>#BSF --- Banner Spec File
+
+ImageFile: banner.nbfc
+PlttFile: banner.nbfp
+
+JP: ???
+&quot; ????&quot;
+EN: Nitro1
+English
+FR: Nitro2
+GE: Nitro3
+IT: Nitro4
+SP: &quot; Nitro5&quot;</code>
+</CODE></PRE>
+</BLOCKQUOTE>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/makebanner.exe</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="makerom.html">makerom</A></CODE></P>
+<H2>Revision History</H2>
+<P>09/10/2004 Added link to useable character list<br /> 08/28/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_CheckHeap</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_CheckHeap</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>long OS_CheckHeap( OSArenaId id, OSHeapHandle heap );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>id</STRONG></EM></TD>
+<TD width="87%">Arena ID of the arena that is associated with the heap to be checked.</TD>
+    </TR>
+    <TR>
+<TD><B><I>heap</I></B></TD>
+<TD>Handle of the heap to be checked.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>A value of -1 is returned if the heap is inconsistent. Otherwise, the function returns the number of bytes that can be used by a free list..</P>
+<H2>Description</H2>
+<P>This function checks the specified heap for debugging. This function is used for debugging.</P>
+<P>The arena that is associated with the heap  to be checked must be specified. The arena is specified with the arena ID (<em><strong>id</strong></em>). For information on this value see <A href="../arena/OS_InitArena.html"><CODE>OS_InitArena</CODE></A>.</P>
+<H2>See Also</H2>
+<P><A href="../arena/OS_InitArena.html"><code>OS_InitArena</code></A>, <A href="OS_InitAlloc.html"><code>OS_InitAlloc</code></A>, <A href="OS_DumpHeap.html"><code>OS_DumpHeap</code></A></P>
+<H2>Revision History</H2>
+<P>01/06/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

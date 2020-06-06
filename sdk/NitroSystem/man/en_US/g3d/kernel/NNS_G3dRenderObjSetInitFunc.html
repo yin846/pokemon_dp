@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dRenderObjSetInitFunc</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dRenderObjSetInitFunc</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/kernel.h&gt;</CODE>
+
+void
+NNS_G3dRenderObjSetInitFunc(
+NNSG3dRenderObj* pRenderObj,
+NNSG3dSbcCallBackFunc func
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pRenderObj</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>NNSG3dRenderObj</code> structure.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>func</STRONG></EM></TD>
+<TD width="87%">Pointer to the callback function to register</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>This is the callback function executed just before rendering is registered in the <CODE>NNSG3dRS</CODE> structure.&nbsp;The callback function that is registered can be used for registering the callback processes during the drawing by using the <code>NNS_G3dRSSetCallBack</code> function.</P>
+<H2>See Also</H2>
+<P><a href="NNS_G3dRenderObjSetCallBack.html"><code>NNS_G3dRenderObjSetCallBack</code></a>, <a href="NNS_G3dRenderObjResetCallBack.html"><code>NNS_G3dRenderObjResetCallBack</code></a></P>
+
+<H2>Revision History</H2>
+<P>10/11/2004 Initial version.</P>
+</BODY>
+
+</HTML>

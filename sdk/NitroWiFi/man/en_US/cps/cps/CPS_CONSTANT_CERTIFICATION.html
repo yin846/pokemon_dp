@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_CERT_*</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_CERT_*</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define CPS_CERT_OUTOFDATE 0x8000
+#define CPS_CERT_BADSERVER 0x4000
+
+#define CPS_CERT_ERRMASK 0x00ff
+
+enum {
+	CPS_CERT_NOERROR = 0,
+	CPS_CERT_NOROOTCA,
+	CPS_CERT_BADSIGNATURE,
+	CPS_CERT_UNKNOWN_SIGALGORITHM,
+	CPS_CERT_UNKNOWN_PUBKEYALGORITHM
+};</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>Defines error information passed to the callback function called during authentication.</p>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>CPS_CERT_OUTOFDATE</CODE></STRONG></EM></TD>
+			<TD width="75%">Independent bit that indicates that the certificate has expired.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_CERT_BADSERVER</CODE></STRONG></EM></TD>
+			<TD>Independent bit that indicates that the certificate's server name (Common Name) and the specified server name are different.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_CERT_ERRMASK</CODE></STRONG></EM></TD>
+			<TD>Mask for extracting the error codes shown below.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_CERT_NOERROR</CODE></STRONG></EM></TD>
+			<TD>Indicates that authentication occurred.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_CERT_NOROOTCA</CODE></STRONG></EM></TD>
+			<TD>Indicates that there is no root certificate.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_CERT_BADSIGNATURE</CODE></STRONG></EM></TD>
+			<TD>Indicates that the signatures do not match.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_CERT_UNKNOWN_SIGALGORITHM</CODE></STRONG></EM></TD>
+			<TD>Indicates an unknown signature algorithm.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>CPS_CERT_UNKNOWN_PUBKEYALGORITHM</CODE></STRONG></EM></TD>
+			<TD>Indicates an unknown public key algorithm.</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<h2>See Also</h2>
+
+<p>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_IsBssidEqual</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_IsBssidEqual</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm/ARM9/wm_api.h&gt;
+
+static inline
+BOOL WM_IsBssidEqual( const u8* idp1 , const u8* idp2 );
+
+static inline
+BOOL WM_IsBssidEqual16( const u8* idp1 , const u8* idp2 );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>idp1</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the pointer to the BSSID to compare. With <CODE>WM_IsBssidEqual16</CODE>, this address must be aligned to a 16-bit boundary.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>idp2</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the pointer to the BSSID to compare. With <CODE>WM_IsBssidEqual16</CODE>, this address must be aligned to a 16-bit boundary.</TD>
+    </TR>
+  </tbody>
+</table>
+<h2>Return Values</h2>
+<p>TRUE if the BSSIDs are identical, but FALSE if they are not identical.</p>
+<H2>Description</H2>
+<P>Compares two BSSIDs. <CODE>WM_IsBssidEqual16</CODE> can be used only if both compared addresses are aligned to 16-bit boundaries. This will improve performance somewhat.
+</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="WM_CopyBssid.html">WM_CopyBssid</A>, <A href="WM_CopyBssid.html">WM_CopyBssid16</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+02/10/2005 Added <CODE>WM_IsBssidEqual16</CODE><br /> 11/10/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

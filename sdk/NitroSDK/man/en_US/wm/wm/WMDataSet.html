@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WMDataSet</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WMDataSet</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wm.h&gt;</CODE><BR>
+  <PRE><CODE>
+typedef struct WMDataSet
+{
+u16 aidBitmap;
+u16 receivedBitmap;
+u16 data[WM_DS_DATA_SIZE/sizeof(u16)];
+
+} WMDataSet;
+</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">aidBitmap</font></strong></em></TD>
+<TD width="800">The AID bitmap of device performing data sharing. Determines the data structure of <code>data</code>.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">receivedBitmap</font></strong></em></TD>
+<TD width="800">The bitmap of AID with valid data in <code>data</code>. For unconnected children, the bit is 0.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">data</font></strong></em></TD>
+<TD width="800">The shared data array. The shared data of aidBitmap-enabled device is packed in order from low AID of each shared size. The shared size is not held in <code>WMDataSet</code>, so you need to get it separately when dividing.
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>
+This is the structure showing the shared data obtained with the data sharing function of WM. In general, access this structure with the <A href="WM_GetSharedDataAddress.html"><code>WM_GetSharedDataAddress</code> </A> function.
+</P>
+
+<H2>Revision History</H2>
+<P>
+09/21/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

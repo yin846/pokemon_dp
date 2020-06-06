@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNSG3dGlb</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG3dGlb</H1>
+<H2>Description</H2>
+<P>The <code>NNSG3dGlb</code> structure manages the kinds of data used for numerous models and all scenes; such as projection matrices, light color and direction, and camera position and direction. The structure stores data for the following:</P>
+<UL>
+<LI>Projection matrix
+<LI>Camera matrix (camera's position, eye point &amp; upward direction)
+<LI>Light direction
+<LI>Light color
+<LI>Viewpoint
+<LI>Object's world transformation matrix (SRT)
+<LI>Default material color, polygon attributes, etc.
+</UL>
+<P>The only instance of <code>NNSG3dGlb</code> structure is the global variable <code>NNS_G3dGlb</code>, which you can initialize before use by calling the <a href="../glbstate/NNS_G3dGlbInit.html"><code>NNS_G3dGlbInit</code></a> function. You can call either the <a href="../glbstate/NNS_G3dGlbFlush.html"><code>NNS_G3dGlbFlushP</code></a>, <a href="../glbstate/NNS_G3dGlbFlushVP.html"><code>NNS_G3dGlbFlushVP</code></a>, or <a href="../glbstate/NNS_G3dGlbFlushAlt.html"><code>NNS_G3dGlbFlushWVP</code></a> function so the data in the <code>NNSG3dGlb</code> structure is applied in the Geometry Engine before you draw with <a href="../sbc/NNS_G3dDraw.html"><code>NNS_G3dDraw</code></a>. The settings in this structure are used when the <code>NNS_G3dMdlUseGlbXXXXX</code> functions use default material color, etc. for model source. Note that G3D will sometimes use the data stored in the <code>NNSG3dGlb</code> structure when information such as the camera matrix is needed while drawing models that include billboards.</P>
+<H2>See Also</H2>
+<P><A href="../list_g3d.html#GlobalState">Global State</A></P>
+<H2>Revision History</H2>
+<P>10/12/2004 Initial version.</P>
+</BODY>
+
+</HTML>

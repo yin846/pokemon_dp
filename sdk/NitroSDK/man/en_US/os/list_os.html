@@ -1,0 +1,1278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>List of Operations System API Functions</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>List of operating system (OS) API functions</H1>
+<H3><A name="Init">Initialization</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="init/OS_Init.html" target="_self">OS_Init</A></TH>
+<TD>Initializes the system.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="init/OS_InitChina.html" target="_self">OS_InitChina</A></TH>
+<TD>Initializes system for applications designed for China.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="init/OS_ShowAttentionChina.html" target="_self">OS_ShowAttentionChina</A></TH>
+<TD>Displays the startup screen for applications designed for China.</TD>
+    </TR>
+    <TR>
+<TH><A href="init/NitroStartUp.html" target="_self">NitroStartUp</A></TH>
+<TD>Describes initialization processes to be executed before static constructor calls.</TD>
+    </TR>
+    <TR>
+<TH><A href="init/NitroStaticInit.html" target="_self">NitroStaticInit</A></TH>
+<TD>Describes the static initializer.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Reset">Reset</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="reset/OS_InitReset.html" target="_self">OS_InitReset</A></TH>
+<TD>This function initializes the reset system.</TD>
+    </TR>
+    <TR>
+<TH><A href="reset/OS_ResetSystem.html" target="_self">OS_ResetSystem</A></TH>
+<TD>Re-executes the program.</TD>
+    </TR>
+    <TR>
+<TH><A href="reset/OS_GetResetParameter.html" target="_self">OS_GetResetParameter</A></TH>
+<TD>Obtains the reset parameter value.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Cpsr"><A name="Cpsr"></A>System State</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="system/OS_EnableInterrupts.html" target="_self">OS_EnableInterrupts</A></TH>
+<TD>Enable CPSR IRQ interrupts.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="system/OS_DisableInterrupts.html" target="_self">OS_DisableInterrupts</A></TH>
+<TD>Disable CPSR IRQ interrupts.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_RestoreInterrupts.html" target="_self">OS_RestoreInterrupts</A></TH>
+<TD>Put CPSR IRQ interrupts into designated state.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="system/OS_EnableInterrupts_IrqAndFiq.html" target="_self">OS_EnableInterrupts_IrqAndFiq</A></TH>
+<TD>Enables IRQ, FIQ interrupts in CPSR.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="system/OS_DisableInterrupts_IrqAndFiq.html" target="_self">OS_DisableInterrupts_IrqAndFiq</A></TH>
+<TD>Prohibits IRQ, FIQ interrupts in CPSR.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_RestoreInterrupts_IrqAndFiq.html" target="_self">OS_RestoreInterrupts_IrqAndFiq</A></TH>
+<TD>Sets IRQ, FIQ interrupts in CPSR to a specified status.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_GetCpsrIrq.html" target="_self">OS_GetCpsrIrq</A></TH>
+<TD>Obtain current CPSR IRQ and FIQ interrupts.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_GetProcMode.html" target="_self">OS_GetProcMode</A></TH>
+<TD>Obtain current processor mode.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_Halt.html" target="_self">OS_Halt</A></TH>
+<TD>Sets the processor to HALT condition.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_Terminate.html" target="_self">OS_Terminate</A></TH>
+<TD>Sets the processor to HALT status and loops.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_Exit.html" target="_self">OS_Exit</A></TH>
+<TD>Displays the exit status and calls <A href="system/OS_Terminate.html" target="_self"><CODE>OS_Terminate()</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_SpinWait.html" target="_self">OS_SpinWait</A></TH>
+<TD>Sets the processor to idle.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Tcm">TCM</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><A href="tcm/OS_EnableITCM.html" target="_self">OS_EnableITCM</A></TH>
+<TD>This function enables the Instruction TCM.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_DisableITCM.html" target="_self">OS_DisableITCM</A></TH>
+<TD>Disables the Instruction TCM.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_GetITCMAddress.html" target="_self">OS_GetITCMAddress</A></TH>
+<TD>Enables data TCM.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_EnableDTCM.html" target="_self">OS_EnableDTCM</A></TH>
+<TD>This function enables the Data TCM.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_DisableDTCM.html" target="_self">OS_DisableDTCM</A></TH>
+<TD>This function disables the Data TCM.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_SetITCMParam.html" target="_self">OS_SetITCMParam</A></TH>
+<TD>Sets instruction TCM parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_GetITCMParam.html" target="_self">OS_GetITCMParam</A></TH>
+<TD>Obtains instruction TCM parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_SetDTCMParam.html" target="_self">OS_SetDTCMParam</A></TH>
+<TD>Sets data TCM parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_GetDTCMParam.html" target="_self">OS_GetDTCMParam</A></TH>
+<TD>Obtains the data TCM parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_SetDTCMAddress.html" target="_self">OS_SetDTCMAddress</A></TH>
+<TD>Sets the data TCM address.</TD>
+    </TR>
+    <TR>
+<TH><A href="tcm/OS_GetDTCMAddress.html" target="_self">OS_GetDTCMAddress</A></TH>
+<TD>Obtains the data TCM address.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="ProtectionUnit">Protection Unit</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><A href="protectionUnit/OS_EnableProtectionUnit.html" target="_self">OS_EnableProtectionUnit</A></TH>
+<TD>This function enables the protection unit.</TD>
+    </TR>
+    <TR>
+<TH><A href="protectionUnit/OS_DisableProtectionUnit.html" target="_self">OS_DisableProtectionUnit</A></TH>
+<TD>This function disables the protection unit.</TD>
+    </TR>
+    <TR>
+<TH><A href="protectionUnit/OS_SetProtectionRegion.html" target="_self">OS_SetProtectionRegion</A></TH>
+<TD>Sets the protection region.</TD>
+    </TR>
+    <TR>
+<TH><A href="protectionUnit/OS_SetProtectionRegion.html" target="_self">OS_SetProtectionRegionParam</A></TH>
+<TD>Sets the protection region with parameter specification.</TD>
+    </TR>
+    <TR>
+<TH><A href="protectionUnit/OS_GetProtectionRegion.html" target="_self">OS_GetProtectionRegionAddress</A></TH>
+<TD>Obtains the base address of the protection region setting.</TD>
+    </TR>
+    <TR>
+<TH><A href="protectionUnit/OS_GetProtectionRegion.html" target="_self">OS_GetProtectionRegionSize</A></TH>
+<TD>Obtains the region size of the protection region setting.</TD>
+    </TR>
+    <TR>
+<TH><A href="protectionUnit/OS_GetProtectionRegion.html" target="_self">OS_GetProtectionRegionParam</A></TH>
+<TD>Obtains the setting parameters of the protection region.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Exception">Exceptions</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH nowrap width="25%"><A href="exception/OS_InitException.html" target="_self">OS_InitException</A></TH>
+<TD>Initializes the exception display system.</TD>
+    </TR>
+    <TR>
+<TH><A href="exception/OS_SetUserExceptionHandler.html" target="_self">OS_SetUserExceptionHandler</A></TH>
+<TD>Sets the user handler to be used when an exception is generated.</TD>
+    </TR>
+    <TR>
+<TH><A href="exception/OS_SetExceptionVectorLower.html" target="_self">OS_SetExceptionVectorLower</A></TH>
+<TD>Sets the exception vector position as a normalized address.</TD>
+    </TR>
+    <TR>
+<TH><A href="exception/OS_SetExceptionVectorUpper.html" target="_self">OS_SetExceptionVectorUpper</A></TH>
+<TD>Sets the exception vector position as a high vector.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Irq">Interrupts</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH nowrap width="25%"><A href="irq/OS_EnableIrq.html" target="_self">OS_EnableIrq</A></TH>
+<TD>Enables all IRQ interrupts.</TD>
+    </TR>
+    <TR>
+<TH nowrap width="25%"><A href="irq/OS_DisableIrq.html" target="_self">OS_DisableIrq</A></TH>
+<TD>Disables all IRQ interrupts.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_RestoreIrq.html" target="_self">OS_RestoreIrq</A></TH>
+<TD>Puts all interrupts into designated state.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_SetIrqMask.html" target="_self">OS_SetIrqMask</A></TH>
+<TD>Sets IRQ interrupt parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_GetIrqMask.html" target="_self">OS_GetIrqMask</A></TH>
+<TD>Obtains currently established IRQ interrupt parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_EnableIrqMask.html" target="_self">OS_EnableIrqMask</A></TH>
+<TD>Enables IRQ of designated interrupt parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_DisableIrqMask.html" target="_self">OS_DisableIrqMask</A></TH>
+<TD>Disables IRQ of designated interrupt parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_ResetRequestIrqMask.html" target="_self">OS_ResetRequestIrqMask</A></TH>
+<TD>Releases the interrupt request's designated interrupt parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_GetRequestIrqMask.html" target="_self">OS_GetRequestIrqMask</A></TH>
+<TD>Obtains current interrupt request state.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_InitIrqTable.html" target="_self">OS_InitIrqTable</A></TH>
+<TD>Initializes IRQ handler table.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_SetIrqFunction.html" target="_self">OS_SetIrqFunction</A></TH>
+<TD>Sets handler corresponding to designated IRQ.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_GetIrqFunction.html" target="_self">OS_GetIrqFunction</A></TH>
+<TD>Obtains handler corresponding to designated IRQ.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_SetIrqCheckFlag.html">OS_SetIrqCheckFlag</A></TH>
+<TD>Sets the interrupt check flag.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_ClearIrqCheckFlag.html">OS_ClearIrqCheckFlag</A></TH>
+<TD>Clears the interrupt check flag.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_GetIrqCheckFlag.html">OS_GetIrqCheckFlag</A></TH>
+<TD>Obtains the interrupt check flag.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_WaitIrq.html">OS_WaitIrq</A></TH>
+<TD>Waits for the specified IRQ.</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_WaitAnyIrq.html">OS_WaitAnyIrq</A></TH>
+<TD>Waits for all IRQ.</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_WaitInterrupt.html">OS_WaitInterrupt</A></TH>
+<TD>Waits for the specified IRQ. (A thread switch is not done.))</TD>
+    </TR>
+    <TR>
+<TH><A href="system/OS_WaitVBlankIntr.html">OS_WaitVBlankIntr</A></TH>
+<TD>Waits for V-Blank. (A thread switch is done.)</TD>
+    </TR>
+    <TR>
+<TH><A href="irq/OS_GetVBlankCount.html">OS_GetVBlankCount</A></TH>
+<TD>Obtains the value of the V-Blank counter.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Timer">Timer</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="timer/OS_StartTimer.html" target="_self">OS_StartTimer</A></TH>
+<TD>Set timer and start. The counter value is 16-bit.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="timer/OS_StartTimer.html" target="_self">OS_StartTimer32</A></TH>
+<TD>Using two timers, start the 32-bit long timer.</TD>
+    </TR>
+    <TR>
+<TH><A href="timer/OS_StartTimer.html" target="_self">OS_StartTimer48</A></TH>
+<TD>Using three timers, start the 48-bit long timer.</TD>
+    </TR>
+    <TR>
+<TH><A href="timer/OS_StartTimer.html" target="_self">OS_StartTimer64</A></TH>
+<TD>Using four timers, start the 64-bit long timer.</TD>
+    </TR>
+    <TR>
+<TH><A href="timer/OS_StopTimer.html" target="_self">OS_StopTimer</A></TH>
+<TD>Stops the timer. The counter value is 16-bit.</TD>
+    </TR>
+    <TR>
+<TH><A href="timer/OS_StopTimer.html" target="_self">OS_StopTimer32</A></TH>
+<TD>Stops the two timers. Used when the 32-bit timer is being used.</TD>
+    </TR>
+    <TR>
+<TH><A href="timer/OS_StopTimer.html" target="_self">OS_StopTimer48</A></TH>
+<TD>Stops the three timers. Used when the 48-bit timer is being used.</TD>
+    </TR>
+    <TR>
+<TH><A href="timer/OS_StopTimer.html" target="_self">OS_StopTimer64</A></TH>
+<TD>Stops the four timers. Used when the 64-bit timer is being used.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Alarm">Alarms</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="alarm/OS_InitAlarm.html" target="_self">OS_InitAlarm</A></TH>
+<TD>Allocates a timer for an alarm system and initializes.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_EndAlarm.html" target="_self">OS_EndAlarm</A></TH>
+<TD>Frees a timer that was allocated to an alarm system.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_IsAlarmAvailable.html" target="_self">OS_IsAlarmAvailable</A></TH>
+<TD>Checks whether an alarm system is initialized and available.</TD>
+
+
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_CreateAlarm.html" target="_self">OS_CreateAlarm</A></TH>
+<TD>Initializes the alarm structure.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_SetAlarm.html" target="_self">OS_SetAlarm</A></TH>
+<TD>Sets an alarm.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_SetPeriodicAlarm.html" target="_self">OS_SetPeriodicAlarm</A></TH>
+<TD>Sets a periodic alarm.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_SetAlarmTag.html" target="_self">OS_SetAlarmTag</A></TH>
+<TD>Sets a tag to an alarm.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_CancelAlarm.html" target="_self">OS_CancelAlarm</A></TH>
+<TD>Cancels an alarm.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_CancelAlarms.html" target="_self">OS_CancelAlarms</A></TH>
+<TD>Cancels alarms that have a specified tag.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alarm/OS_CancelAllAlarms.html" target="_self">OS_CancelAllAlarms</A></TH>
+<TD>This function cancels all  alarms.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="VAlarm">V-Count Alarms</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="valarm/OS_InitVAlarm.html" target="_self">OS_InitVAlarm</A></TH>
+<TD>Initializes a V-count alarm system.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_EndVAlarm.html" target="_self">OS_EndVAlarm</A></TH>
+<TD>Ends a V-count alarm system.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_IsVAlarmAvailable.html" target="_self">OS_IsVAlarmAvailable</A></TH>
+<TD>Checks whether a V-count alarm system is initialized and available.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_CreateVAlarm.html" target="_self">OS_CreateVAlarm</A></TH>
+<TD>Initializes a V-count alarm structure.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_SetVAlarm.html" target="_self">OS_SetVAlarm</A></TH>
+<TD>Sets a V-count alarm.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_SetOneTimeVAlarm.html" target="_self">OS_SetOneTimeVAlarm</A></TH>
+<TD>Sets a V-count alarm. (Function added to maintain backwards-compatibility.)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_SetPeriodicVAlarm.html" target="_self">OS_SetPeriodicVAlarm</A></TH>
+<TD>Sets a periodic V-count alarm.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_SetVAlarmTag.html" target="_self">OS_SetVAlarmTag</A></TH>
+<TD>Sets a tag to a V-count alarm.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_CancelVAlarm.html" target="_self">OS_CancelVAlarm</A></TH>
+<TD>Cancels a V-count alarm.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_CancelVAlarms.html" target="_self">OS_CancelVAlarms</A></TH>
+<TD>Cancels V-count alarms that have a specified tag.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="valarm/OS_CancelAllVAlarms.html" target="_self">OS_CancelAllVAlarms</A></TH>
+<TD>This function cancels all of the V-count alarms.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Time">Time</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="time/OS_InitTick.html" target="_self">OS_InitTick</A></TH>
+<TD>Allocates a timer for ticks.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_IsTickAvailable.html" target="_self">OS_IsTickAvailable</A></TH>
+<TD>Checks whether a tick is initialized and available.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_GetTick.html" target="_self">OS_GetTick</A></TH>
+<TD>Acquires a tick value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_GetTickLo.html" target="_self">OS_GetTickLo</A></TH>
+<TD>Acquires the lower order 16-bit value of a tick value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_SetTick.html" target="_self">OS_SetTick</A></TH>
+<TD>Sets a tick value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_SecondsToTicks.html" target="_self">OS_MicroSecondsToTicks*</A></TH>
+<TD>Converts from microseconds to a tick value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_SecondsToTicks.html" target="_self">OS_MilliSecondsToTicks*</A></TH>
+<TD>Converts from milliseconds to a tick value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_SecondsToTicks.html" target="_self">OS_SecondsToTicks*</A></TH>
+<TD>Converts from seconds to a tick value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_TicksToSeconds.html" target="_self">OS_TicksToMicroSeconds*</A></TH>
+<TD>Converts from a tick value to microseconds.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_TicksToSeconds.html" target="_self">OS_TicksToMilliSeconds*</A></TH>
+<TD>Converts from a tick value to milliseconds.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="time/OS_TicksToSeconds.html" target="_self">OS_TicksToSeconds*</A></TH>
+<TD>Converts from a tick value to seconds.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Thread">Thread</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="thread/OS_InitThread.html" target="_self">OS_InitThread</A></TH>
+<TD>Initialize thread system.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="thread/OS_IsThreadAvailable.html" target="_self">OS_IsThreadAvailable</A></TH>
+<TD>Checks whether a thread is initialized and available.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="thread/OS_CreateThread.html" target="_self">OS_CreateThread</A></TH>
+<TD>Creates threads.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_InitThreadQueue.html" target="_self">OS_InitThreadQueue</A></TH>
+<TD>Create thread queue.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_ExitThread.html" target="_self">OS_ExitThread</A></TH>
+<TD>Exits current thread. The thread destructor is called.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_KillThread.html" target="_self">OS_KillThread</A></TH>
+<TD>Ends the specified thread. The thread destructor is called.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_KillThread.html" target="_self">OS_KillThreadWithPriority</A></TH>
+<TD>Sets the priority for the specified thread and then exits. The thread destructor is called.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_DestroyThread.html" target="_self">OS_DestroyThread</A></TH>
+<TD>Ends the specified thread. The thread destructor is not called.</TD>
+
+    </TR>
+    <TR>
+<TH><A href="thread/OS_JoinThread.html">OS_JoinThread</A></TH>
+<TD>Joins a thread and waits for it to terminate.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_IsThreadTerminated.html">OS_IsThreadTerminated</A></TH>
+<TD>Determines whether the thread has completed.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_SelectThread.html" target="_self">OS_SelectThread</A></TH>
+<TD>Select the next thread to be operated.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_SetSwitchThreadCallback.html" target="_self">OS_SetSwitchThreadCallback</A></TH>
+<TD>Sets the callback during thread switch.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_RescheduleThread.html" target="_self">OS_RescheduleThread</A></TH>
+<TD>Conduct thread scheduling.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_YieldThread.html" target="_self">OS_YieldThread</A></TH>
+<TD>Gives threads with same prority level a chance to execute and performs thread scheduling.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_SleepThread.html" target="_self">OS_SleepThread</A></TH>
+<TD>Put thread into sleep state.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_Sleep.html" target="_self">OS_Sleep</A></TH>
+<TD>Set threads to sleep status for a prescribed time.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_WakeupThread.html" target="_self">OS_WakeupThread</A></TH>
+<TD>Put thread into an operable state.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_WakeupThreadDirect.html" target="_self">OS_WakeupThreadDirect</A></TH>
+<TD>Put thread into an operable state.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_SetThreadPriority.html" target="_self">OS_SetThreadPriority</A></TH>
+<TD>Sets thread priority.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_GetThreadPriority.html" target="_self">OS_GetThreadPriority</A></TH>
+<TD>Obtains thread priority.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_GetCurrentThread.html" target="_self">OS_GetCurrentThread</A></TH>
+<TD>This function gets the current thread.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_GetNumberOfThread.html" target="_self">OS_GetNumberOfThread</A></TH>
+<TD>Obtains the number of threads being created.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_DisableScheduler.html" target="_self">OS_DisableScheduler</A></TH>
+<TD>Stops thread rescheduling temporarily.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_EnableScheduler.html" target="_self">OS_EnableScheduler</A></TH>
+<TD>Restarts thread rescheduling.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_SetThreadParameter.html" target="_self">OS_SetThreadrParameter</A></TH>
+<TD>Sets user parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_GetThreadParameter.html" target="_self">OS_GetThreadParameter</A></TH>
+<TD>Gets user parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_SetThreadDestructor.html" target="_self">OS_SetThreadDestructor</A></TH>
+<TD>Sets the thread destructor.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_GetThreadDestructor.html" target="_self">OS_GetThreadDestructor</A></TH>
+<TD>Gets the thread destructor.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_SetThreadDestructorStack.html" target="_self">OS_SetThreadDestructorStack</A></TH>
+<TD>Sets the stack to execute thread destructor.</TD>
+    </TR>
+    <TR>
+<TH><A href="thread/OS_DumpThreadList.html" target="_self">OS_DumpThreadList</A></TH>
+<TD>Display all threads (for debugging).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Mutex">Exclusion Control</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="mutex/OS_InitMutex.html" target="_self">OS_InitMutex</A></TH>
+<TD>Initialize mutex structure used for exclusive control.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="mutex/OS_LockMutex.html" target="_self">OS_LockMutex</A></TH>
+<TD>Lock thread using mutex.</TD>
+    </TR>
+    <TR>
+<TH><A href="mutex/OS_UnlockMutex.html" target="_self">OS_UnlockMutex</A></TH>
+<TD>Unlock the thread locked with mutex.</TD>
+    </TR>
+    <TR>
+<TH><A href="mutex/OS_TryLockMutex.html" target="_self">OS_TryLockMutex</A></TH>
+<TD>Attempt to lock the thread locked with mutex.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="spinLock/OS_InitLock.html" target="_self">OS_InitLock</A></TH>
+<TD>Performs exclusive-control initialization.</TD>
+
+    </TR>
+    <TR>
+<TH><A href="spinLock/OS_LockCard.html" target="_self">OS_LockCard</A></TH>
+<TD>Spin locks the card for exclusive control.</TD>
+    </TR>
+    <TR>
+<TH><A href="spinLock/OS_LockCartridge.html" target="_self">OS_LockCartridge</A></TH>
+<TD>Spin locks the Game Pak for exclusive control.</TD>
+    </TR>
+    <TR>
+<TH><A href="spinLock/OS_UnlockCard.html" target="_self">OS_UnlockCard</A></TH>
+<TD>Release a spin lock for the card.</TD>
+    </TR>
+    <TR>
+<TH><A href="spinLock/OS_UnlockCartridge.html" target="_self">OS_UnlockCartridge</A></TH>
+<TD>Release a spin lock for the Game Pak.</TD>
+    </TR>
+    <TR>
+<TH><A href="spinLock/OS_TryLockCard.html" target="_self">OS_TryLockCard</A></TH>
+<TD>Attempts to spin lock the card for exclusive control.</TD>
+    </TR>
+    <TR>
+<TH><A href="spinLock/OS_TryLockCartridge.html" target="_self">OS_TryLockCartridge</A></TH>
+<TD>Attempts to spin lock the Game Pak for exclusive control.</TD>
+    </TR>
+    <TR>
+<TH><A href="spinLock/OS_GetLockID.html" target="_self">OS_GetLockID</A></TH>
+<TD>Obtains the lock ID for spin lock.</TD>
+    </TR>
+    <TR>
+<TH><A href="spinLock/OS_ReleaseLockID.html" target="_self">OS_ReleaseLockID</A></TH>
+<TD>Releases the lock ID used for spin lock.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Context">Context</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="context/OS_InitContext.html" target="_self">OS_InitContext</A></TH>
+<TD>This function initializes context.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="context/OS_SaveContext.html" target="_self">OS_SaveContext</A></TH>
+<TD>Save current context.</TD>
+    </TR>
+    <TR>
+<TH><A href="context/OS_LoadContext.html" target="_self">OS_LoadContext</A></TH>
+<TD>Load current context.</TD>
+    </TR>
+    <TR>
+<TH><A href="context/OS_DumpContext.html" target="_self">OS_DumpContext</A></TH>
+<TD>Display contents of context structure (for debugging). (For debugging)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Message">Message</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+
+    <TR>
+
+<TH width="25%"><A href="message/OS_InitMessageQueue.html" target="_self">OS_InitMessageQueue</A></TH>
+<TD>Initialize message queue structure.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="message/OS_SendMessage.html" target="_self">OS_SendMessage</A></TH>
+<TD>Insert message at end of message queue.</TD>
+    </TR>
+    <TR>
+<TH><A href="message/OS_JamMessage.html" target="_self">OS_JamMessage</A></TH>
+<TD>Inserts a message in the front of the message queue.</TD>
+    </TR>
+    <TR>
+<TH><A href="message/OS_ReceiveMessage.html" target="_self">OS_ReceiveMessage</A></TH>
+<TD>Extract message from message queue.</TD>
+    </TR>
+    <TR>
+<TH><A href="message/OS_ReadMessage.html" target="_self">OS_ReadMessage</A></TH>
+<TD>Copies the message that is at the front of the message queue.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Cache">Cache</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="cache/DC_Enable.html" target="_self">DC_Enable</A></TH>
+<TD>Permits all data cache to be used.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/DC_Disable.html" target="_self">DC_Disable</A></TH>
+<TD>Prohibits all data cache from being used.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/DC_Restore.html" target="_self">DC_Restore</A></TH>
+<TD>Selects whether to permit or prohibit use of all data cache.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/DC_InvalidateAll.html" target="_self">DC_InvalidateAll</A></TH>
+<TD>Invalidates the data in the entire data cache region.</TD>
+    </TR>
+    <TR>
+<TH width="25%">DC_StoreAll (DC_CleanAll)</TH>
+<TD>Stores all data from data cache regions to memory.</TD>
+    </TR>
+    <TR>
+<TH width="25%">DC_FlushAll (DC_CleanAndInvalidateAll)</TH>
+<TD>Flushes all data in all data caches.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/DC_InvalidateRange.html" target="_self">DC_InvalidateRange</A></TH>
+<TD>Invalidates the data in the specified data cache region.</TD>
+    </TR>
+    <TR>
+<TH width="25%">DC_StoreRange (DC_CleanRange)</TH>
+<TD>Stores in the specified region of data cache to memory.</TD>
+    </TR>
+    <TR>
+<TH width="25%">DC_FlushRange (DC_CleanAndInvalidateRange)</TH>
+<TD>Flushes the data cache in the specified region.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/DC_TouchRange.html" target="_self"><font color="#808080">DC_TouchRange</font></A></TH>
+<TD><font color="#808080">This function does not actually do anything.</font></TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/DC_LockdownRange.html" target="_self">DC_LockdownRange</A></TH>
+<TD>Locks down specified range of data cache.</TD>
+    </TR>
+    <TR>
+<TH><A href="cache/DC_Unlockdown.html" target="_self">DC_Unlockdown</A></TH>
+<TD>Releases the locked-down data cache in block-sized units.</TD>
+    </TR>
+    <TR>
+<TH><A href="cache/DC_UnlockdownAll.html" target="_self">DC_UnlockdownAll</A></TH>
+<TD>Releases the entire locked-down data cache.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/DC_WaitWriteBufferEmpty.html" target="_self">DC_WaitWriteBufferEmpty</A></TH>
+<TD>Waits for the write buffer to empty.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/IC_Enable.html" target="_self">IC_Enable</A></TH>
+<TD>Permits the use of all instruction caches.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/IC_Disable.html" target="_self">IC_Disable</A></TH>
+<TD>Prohibits the use of all instruction caches.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/IC_Restore.html" target="_self">IC_Restore</A></TH>
+<TD>Selects whether to permit or prohibit use of all instruction cache.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/IC_InvalidateAll.html" target="_self">IC_InvalidateAll</A></TH>
+<TD>Invalidates instruction code through the entire instruction cache region.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/IC_InvalidateRange.html" target="_self">IC_InvalidateRange</A></TH>
+<TD>Disables specified range of instruction cache.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/IC_PrefetchRange.html" target="_self">IC_PrefetchRange</A></TH>
+<TD>Pre-fetches specified range of instruction cache.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="cache/IC_LockdownRange.html" target="_self">IC_LockdownRange</A></TH>
+<TD>Locks down specified range of instruction cache.</TD>
+    </TR>
+    <TR>
+<TH><A href="cache/IC_Unlockdown.html" target="_self">IC_Unlockdown</A></TH>
+<TD>Releases the locked-down instruction cache in block-sized units.</TD>
+    </TR>
+    <TR>
+<TH><A href="cache/IC_UnlockdownAll.html" target="_self">IC_UnlockdownAll</A></TH>
+<TD>Releases the entire locked-down instruction cache.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Arena">Arena</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="arena/OS_InitArena.html" target="_self">OS_InitArena</A></TH>
+<TD>Initializes the arena.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="arena/OS_EnableMainExArena.html" target="_self">OS_EnableMainExArena</A></TH>
+<TD>Declares use of main memory extended arena.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="arena/OS_DisableMainExArena.html" target="_self">OS_DisableMainExArena</A></TH>
+<TD>Declares disuse of main memory extended arena.</TD>
+
+    </TR>
+    <TR>
+<TH width="25%"><A href="arena/OS_SetArenaHi.html" target="_self">OS_SetArenaHi</A></TH>
+<TD>Sets the upper boundary of the arena.</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_SetArenaHi.html" target="_self">OS_Set*ArenaHi</A></TH>
+<TD>Sets the upper boundary of the arena. (Arena specification)</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_SetArenaLo.html" target="_self">OS_SetArenaLo</A></TH>
+<TD>Sets the lower boundary of the arena.</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_SetArenaLo.html" target="_self">OS_Set*ArenaLo</A></TH>
+<TD>Sets the lower boundary of the arena. (Arena specification)</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_GetArenaHi.html" target="_self">OS_GetArenaHi</A></TH>
+<TD>Gets the upper boundary of the arena.</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_GetArenaHi.html" target="_self">OS_Get*ArenaHi</A></TH>
+<TD>Gets the upper boundary of the arena. (Arena specification)</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_GetArenaLo.html" target="_self">OS_GetArenaLo</A></TH>
+<TD>Gets the lower boundary of the arena.</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_GetArenaLo.html" target="_self">OS_Get*ArenaLo</A></TH>
+<TD>Gets the lower boundary of the arena. (Arena specification)</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_AllocFromArenaHi.html" target="_self">OS_AllocFromArenaHi</A></TH>
+<TD>Allocates a region of specified size from the upper arena.</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_AllocFromArenaHi.html" target="_self">OS_AllocFrom*ArenaHi</A></TH>
+<TD>Allocates a region of specified size from the upper arena. (Arena specification)</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_AllocFromArenaLo.html" target="_self">OS_AllocFromArenaLo</A></TH>
+<TD>Allocates a region of specified size from the lower arena.</TD>
+    </TR>
+    <TR>
+<TH><A href="arena/OS_AllocFromArenaLo.html" target="_self">OS_AllocFrom*ArenaLo</A></TH>
+<TD>Allocates a region of specified size from the lower arena. (Arena specification)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Alloc">Memory Allocation</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="alloc/OS_InitAlloc.html" target="_self">OS_InitAlloc</A></TH>
+<TD>Initializes the memory allocation system.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alloc/OS_ClearAlloc.html" target="_self">OS_ClearAlloc</A></TH>
+<TD>Destroys the memory allocation system information.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="alloc/OS_CreateHeap.html" target="_self">OS_CreateHeap</A></TH>
+<TD>Creates a heap.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_DestroyHeap.html" target="_self">OS_DestroyHeap</A></TH>
+<TD>Destroys a heap.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_ClearHeap.html" target="_self">OS_ClearHeap</A></TH>
+<TD>Initializes a heap</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_AddToHeap.html" target="_self">OS_AddToHeap</A></TH>
+<TD>Adds the specified memory block to the heap.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_SetCurrentHeap.html">OS_SetCurrentHeap</A></TH>
+<TD>Sets the current heap.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_AllocFromHeap.html">OS_AllocFromHeap</A></TH>
+<TD>Allocate memory from the heap region.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_AllocFromHeap.html">OS_AllocFrom*</A></TH>
+<TD>Allocate memory from the heap region. (Arena specification)</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_AllocFromHeap.html">OS_Alloc</A></TH>
+<TD>Allocate memory from the heap region. (Main memory arena)</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_AllocFixed.html">OS_AllocFixed</A></TH>
+<TD>Allocate the specified region.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_FreeToHeap.html">OS_FreeToHeap</A></TH>
+<TD>Free memory to the heap region.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_FreeToHeap.html">OS_FreeTo*</A></TH>
+<TD>Free memory to the heap region. (Arena specification)</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_FreeToHeap.html">OS_Free</A></TH>
+<TD>Free memory to the heap region. (Main memory arena)</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_FreeAllToHeap.html">OS_FreeAllToHeap</A></TH>
+<TD>Frees all allocated memory to the heap region.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_FreeAllToHeap.html">OS_FreeAllTo*</A></TH>
+<TD>Frees all allocated memory to the heap region. (Arena specification)</TD>
+
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_FreeAllToHeap.html">OS_FreeAll</A></TH>
+<TD>Frees all allocated memory to the heap region. (Main memory arena)</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_CheckHeap.html">OS_CheckHeap</A></TH>
+<TD>Checks heap.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_DumpHeap.html">OS_DumpHeap</A></TH>
+<TD>Displays heap contents (for debugging). (For debugging)</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_ReferentSize.html">OS_ReferentSize</A></TH>
+<TD>Gets the size in memory of the memory block (excluding the header).</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_VisitAllocated.html">OS_VisitAllocated</A></TH>
+<TD>Applies the specified function to all memory blocks.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_GetTotalAllocSize.html">OS_GetTotalAllocSize</A></TH>
+<TD>This function obtains the total size of the memory blocks allocated to the heap. Header is not included.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_GetTotalOccupiedSize.html">OS_GetTotalOccupiedSize</A></TH>
+<TD>This function obtains the total size of the memory blocks (including the header) allocated to the heap.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_GetTotalFreeSize.html">OS_GetTotalFreeSize</A></TH>
+<TD>Gets total size of free blocks in heaps.</TD>
+    </TR>
+    <TR>
+<TH><A href="alloc/OS_GetMaxFreeSize.html">OS_GetMaxFreeSize</A></TH>
+<TD>Gets the size of the largest free block in the heaps.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Owner"><A name="Owner">System Information</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="ownerInfo/OS_GetOwnerInfo.html">OS_GetOwnerInfo</A></TH>
+<TD>Obtains the owner information.</TD>
+    </TR>
+    <TR>
+<TH><A href="ownerInfo/OSOwnerInfo.html">OSOwnerInfo</A></TH>
+<TD>Structure that indicates the owner information.</TD>
+    </TR>
+    <TR>
+<TH><A href="ownerInfo/OS_GetOwnerRtcOffset.html">OS_GetOwnerRtcOffset</A></TH>
+<TD>Obtains the RTC modification offset information.</TD>
+    </TR>
+    <TR>
+<TH><A href="ownerInfo/OS_GetMacAddress.html">OS_GetMacAddress</A></TH>
+<TD>Obtains the MAC address that is unique to each Nintendo DS system.</TD>
+    </TR>
+    <TR>
+<TH><A href="ownerInfo/OS_GetFavoriteColorTable.html">OS_GetFavoriteColorTable</A></TH>
+<TD>Gets a pointer to an array containing the RGBA color values that correspond to the IPL's &quot;favorite color&quot; menu.</TD>
+    </TR>
+    <TR>
+<TH><A href="ownerInfo/OS_GetFavoriteColor.html">OS_GetFavoriteColor</A></TH>
+<TD>Gets color value of &quot;favorite color&quot; owner information.</TD>
+    </TR>
+    <TR>
+<TH><A href="ownerInfo/os_favorite_color_const.html">OS_FAVORITE_COLOR_*</A></TH>
+<TD>Definition value of &quot;favorite color&quot; owner information.</TD>
+    </TR>
+    <TR>
+<TH><A href="entropy/OS_GetLowEntropyData.html">OS_GetLowEntropyData</A></TH>
+<TD>Different values are generated from system status for each execution, and these values are returned.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Debug-Environment">Debug (Operation Environment)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><A href="debug/OS_IsRunOnEmulator.html" target="_self">OS_IsRunOnEmulator</A></TH>
+<TD>Checks if the program is running on ensata.</TD>
+    </TR>
+    <TR>
+<TH><A href="debug/OS_GetConsoleType.html">OS_GetConsoleType</A></TH>
+<TD>Checks the operation environment of the program.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Debug-Print">Debug (Character String Display)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="debug/OS_PutString.html" target="_self">OS_PutString</A></TH>
+<TD>Displays the character string.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_Printf.html" target="_self">OS_Printf</A></TH>
+<TD>Displays the character string with formatting.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_TPrintf.html" target="_self">OS_TPrintf</A></TH>
+<TD>Displays the character string with formatting. This is a simplified version of <code>OS_Printf</code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_VPrintf.html" target="_self">OS_VPrintf</A></TH>
+<TD>Displays the character string with formatting. Uses the list of arguments.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_TVPrintf.html" target="_self">OS_TVPrintf</A></TH>
+<TD>Displays the character string with formatting. This is a simplified version of <code>OS_VPrintf</code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_SPrintf.html" target="_self">OS_SPrintf</A></TH>
+<TD>Outputs the formatted character string to the memory with variable arguments.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_VSPrintf.html" target="_self">OS_VSPrintf</A></TH>
+<TD>Outputs the formatted character string to the memory with the argument list.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_SNPrintf.html" target="_self">OS_SNPrintf</A></TH>
+<TD>Outputs the formatted character string to the memory with variable arguments. (The size is specified).</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_VSNPrintf.html" target="_self">OS_VSNPrintf</A></TH>
+<TD>Outputs the formatted character string to the memory with the argument list. (The size is specified).</TD>
+    </TR>
+    <TR>
+<TH><A href="debug/OS_Warning.html" target="_self">OS_Warning</A></TH>
+<TD>Displays a warning.</TD>
+    </TR>
+    <TR>
+<TH><A href="debug/OS_TWarning.html" target="_self">OS_TWarning</A></TH>
+<TD>Displays a warning. This is a simplified version of <code>OS_TWarning</code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_InitPrintServer.html" target="_self"><font color="#808080">OS_InitPrintServer</font></A></TH>
+<TD><font color="#808080">Initializes for display of debug message from ARM7. There is normally no need for this.</font></TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="debug/OS_PrintServer.html" target="_self"><font color="#808080">OS_PrintServer</font></A></TH>
+<TD><font color="#808080">Displays debug messages from ARM7. There is normally no need for this.</font></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Debug-Assert">Debug (Assert)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><A href="debug/SDK_ASSERT.html">SDK_ASSERT*</A></TH>
+<TD>Checks the requirements, displays a warning, and stops the program.</TD>
+    </TR>
+    <TR>
+<TH><A href="debug/SDK_WARNING.html">SDK_WARNING</A></TH>
+<TD>Checks the conditions and displays a warning.</TD>
+    </TR>
+    <TR>
+<TH><A href="debug/OS_Panic.html" target="_self">OS_Panic</A></TH>
+<TD>Stops the program.</TD>
+    </TR>
+    <TR>
+<TH><A href="debug/OS_TPanic.html" target="_self">OS_TPanic</A></TH>
+<TD>Stops the program. This is a simplified version of <code>OS_Panic</code>.</TD>
+    </TR>
+    <TR>
+<TH><A href="debug/SDK_COMPILER_ASSERT.html" target="_self">SDK_COMPILER_ASSERT</A></TH>
+<TD>Conditions are inspected when compiling, and if conditions are not met, a compile error is made.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Debug-CallTrace">Debug (Function Call Trace)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_InitCallTrace.html" target="_self">OS_InitCallTrace</A></TH>
+<TD>Sets the buffer of the function call trace.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_DumpCallTrace.html" target="_self">OS_DumpCallTrace</A></TH>
+<TD>Displays the contents of the function call trace buffer.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_DumpThreadCallTrace.html" target="_self">OS_DumpThreadCallTrace</A></TH>
+<TD>Displays the contents of the function call trace buffer for the specified thread.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_CalcCallTraceLines.html" target="_self">OS_CalcCallTraceLines</A></TH>
+<TD>Calculates the number of lines for the function call trace from the buffer size.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_CalcCallTraceBufferSize.html" target="_self">OS_CalcCallTraceBufferSize</A></TH>
+<TD>Calculates the buffer size for the function call trace from the number of lines.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_ClearCallTraceBuffer.html" target="_self">OS_ClearCallTraceBuffer</A></TH>
+<TD>Clears the contents of the function call trace buffer.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_EnableCallTrace.html" target="_self">OS_EnableCallTrace</A></TH>
+<TD>This function enables the function call trace feature.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_DisableCallTrace.html" target="_self">OS_DisableCallTrace</A></TH>
+<TD>This function disables the function call trace feature.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="callTrace/OS_RestoreCallTrace.html" target="_self">OS_RestoreCallTrace</A></TH>
+<TD>Sets the function call trace features to enabled or disabled.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Debug-FunctionCost">Debug (Function Cost Measurement)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_InitFunctionCost.html" target="_self">OS_InitFunctionCost</A></TH>
+<TD>Sets the function cost measurement buffer.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_CalcFunctionCostLines.html" target="_self">OS_CalcFunctionCostLines</A></TH>
+<TD>Calculates the amount of information for the function cost measurement from the buffer size.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_CalcFunctionCostBufferSize.html" target="_self">OS_CalcFunctionCostBufferSize</A></TH>
+<TD>Calculates the buffer size for the function cost measurement from the number of lines.</TD>
+
+    </TR>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_ClearFunctionCostBuffer.html" target="_self">OS_ClearFunctionCostBuffer</A></TH>
+<TD>Clears the contents of the function cost measurement buffer.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_EnableFunctionCost.html" target="_self">OS_EnableFunctionCost</A></TH>
+<TD>This function enables the function cost calculation feature.</TD>
+    </TR>
+    <TR>
+
+<TH width="25%"><A href="functionCost/OS_DisableFunctionCost.html" target="_self">OS_DisableFunctionCost</A></TH>
+<TD>This function disables the function cost calculation feature.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_RestoreFunctionCost.html" target="_self">OS_RestoreFunctionCost</A></TH>
+<TD>Sets the features of the function cost measurement to enabled or disabled.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_InitStatistics.html" target="_self">OS_InitStatistics</A></TH>
+<TD>Initializes the function cost calculation buffer.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_CalcStatistics.html" target="_self">OS_CalcStatistics</A></TH>
+<TD>Calculates the contents of the measurement buffer to the function cost calculation buffer.</TD>
+    </TR>
+    <TR>
+
+<TH width="25%"><A href="functionCost/OS_CalcThreadStatistics.html" target="_self">OS_CalcThreadStatitics</A></TH>
+<TD>Calculates the contents of the measurement buffer to the function cost calculation buffer with a thread specification.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="functionCost/OS_DumpStatistics.html" target="_self">OS_DumpStatistics</A></TH>
+<TD>Outputs the contents of the function cost calculation buffer.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Debug-Stack">Debug (Stack Check)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="stack/OS_SetThreadStackWarningOffset.html" target="_self">OS_SetThreadStackWarningOffset</A></TH>
+<TD>Sets the warning level for the thread stack overflow check.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stack/OS_CheckStack.html" target="_self">OS_CheckStack</A></TH>
+<TD>Checks the thread stack overflow.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stack/OS_GetStackStatus.html" target="_self">OS_GetStackStatus</A></TH>
+<TD>Obtains the stack overflow status of the thread.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="stack/OS_SetIrqStackChecker.html" target="_self">OS_SetIrqStackChecker</A></TH>
+<TD>Set the magic number to check if the stack used for IRQ mode has overflowed.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stack/OS_SetIrqStackWarningOffset.html" target="_self">OS_SetIrqStackWarningOffset</A></TH>
+<TD>Set the warning level to check if the stack used for IRQ mode has overflowed.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stack/OS_CheckIrqStack.html" target="_self">OS_CheckIrqStack</A></TH>
+<TD>Check if the stack used for IRQ mode has overflowed.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stack/OS_GetIrqStackStatus.html" target="_self">OS_GetIrqStackStatus</A></TH>
+<TD>Get the overflow status of the stack used for IRQ mode.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Debug-Argument">Debug (Argument)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><A href="argument/OS_GetArgc.html">OS_GetArgc</A></TH>
+<TD>Gets the number of arguments.</TD>
+    </TR>
+    <TR>
+<TH><A href="argument/OS_GetArgv.html">OS_GetArgv</A></TH>
+<TD>Gets the character string position of arguments.</TD>
+    </TR>
+    <TR>
+<TH><A href="argument/OS_GetOpt.html">OS_GetOpt*</A></TH>
+<TD>Gets the information for the argument options for the command line.</TD>
+    </TR>
+    <TR>
+<TH><A href="argument/OS_ConvertToArguments.html">OS_ConvertToArguments</A></TH>
+<TD>Converts character strings to argument data.</TD>
+    </TR>
+    <TR>
+<TH><A href="argument/OS_SetArgumentBuffer.html">OS_SetArgumentBuffer</A></TH>
+<TD>Sets argument data.</TD>
+    </TR>
+    <TR>
+<TH><A href="argument/OS_GetArgumentBuffer.html">OS_GetArgumentBuffer</A></TH>
+<TD>Gets argument data.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<table border="0" height="100%"><tr><td style="background-color : white;"></td></tr></table>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_Read</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_ReadAgbSram</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+  <PRE><CODE>void CTRDG_ReadAgbSram(u32 src, void* dst, u32 size);
+  </CODE></PRE>
+  <PRE>Corresponding AGB function: <A href="coordinate.html"><CODE>void ReadSram(u8 *src,u8 *dst,u32 size)</CODE></A></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD><B><I>src</I></B></TD>
+      <TD>Source SRAM address to read (address on the AGB memory map)</TD>
+    </TR>
+    <TR>
+      <TD><B><I>dst</I></B></TD>
+      <TD>Represents the address of the work area to store data that was read (address on the AGB memory map)</TD>
+    </TR>
+    <TR>
+      <TD><B><I>size</I></B></TD>
+      <TD>Represents the size of data read in bytes</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Reads data of the size given by &quot;size&quot; into the destination address given by &quot;dst&quot; from the SRAM address specified by argument. </P>
+<P>The access cycle setting is created in the function and does not need to be set beforehand.</P>
+<P>Note: The cartridge bus is locked for a set period by this function.<br> <br> In addition, the AGB backup device cannot be accessed normally by the IS-NITRO-DEBUGGER.<br> However, be sure to check operations using an actual DS handheld unit since normal access is possible with actual DS units. (This will be fixed in a future version of IS-NITRO-DEBUGGER.)</P>
+<H2>See Also</H2>
+<P><CODE><A href="CTRDG_ReadAgbSramAsync.html">CTRDG_ReadAgbSramAsync</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>04/07/2006 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

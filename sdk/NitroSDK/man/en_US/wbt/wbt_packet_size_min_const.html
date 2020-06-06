@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBT_PACKET_SIZE_MIN</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBT_PACKET_SIZE_MIN</h1>
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR> <CODE>#define WBT_PACKET_SIZE_MIN	14</CODE><br> <br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>The minimum MP communication packet size that must be allocated for the WBT library's own protocol.<BR>For data received by the <a href="command/WBT_GetBlock.html"><code>WBT_GetBlock</code></a> function, transfer processing is done using a packet region the size of the whole packet with this value subtracted.
+</P>
+<h2>See Also</h2>
+<p>
+<code><A href="init/WBT_InitParent.html">WBT_InitParent</A>, <A href="parent/WBT_SetPacketSize.html">WBT_SetPacketSize</A>, <A href="parent/WBT_MpParentSendHook.html">WBT_MpParentSendHook</A>, <A href="child/WBT_MpChildSendHook.html">WBT_MpChildSendHook</A>, <A href="command/WBT_GetBlock.html">WBT_GetBlock</A></code>
+</p>
+
+<H2>Revision History</H2>
+<P>
+09/21/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

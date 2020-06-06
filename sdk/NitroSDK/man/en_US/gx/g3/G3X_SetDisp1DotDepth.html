@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3X_SetDisp1DotDepth</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3X_SetDisp1DotDepth</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3x.h&gt;
+
+void G3X_SetDisp1DotDepth(fx32 w);<BR></CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<table border="1" width="100%">
+  
+    
+    <tr>
+<TD width="109"><em><strong><font face="Courier New">w</font></strong></em></TD>
+<TD width="593">W value (depth value)</TD>
+    </tr>
+  
+</table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function is used when the <A href="G3_PolygonAttr.html"><CODE>G3*_PolygonAttr</CODE></A> function sets to <CODE>GX_POLYGON_ATTR_MISC_DISP_1DOT</CODE>, and a polygon is coordinate converted within a range of one pixel or less. In this case, if the smallest <CODE>W</CODE> value (depth value) is larger than the <CODE>W</CODE> value specified by this function, the polygon will not be displayed (will not be written into polygon list RAM or vertex list RAM). The <CODE>W</CODE> value will be used even when using z-buffering.</P>
+<h2>See Also</h2>
+<P><A href="G3_PolygonAttr.html">G3*_PolygonAttr</A></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

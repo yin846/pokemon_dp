@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndPlayerSetPlayerVolume</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndPlayerSetPlayerVolume</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndPlayerSetPlayerVolume( int playerNo, int volume );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDADMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The Player number.</td>
+</tr>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>Volume value. Takes a value between 0 and 127.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAZMWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAANWT"></a>
+<h2>Description</h2>
+      <p>
+Sets the volume for the specified player. The default setting is the maximum value of 127.
+</p>
+<p>
+The volume set by this function is valid for the all sequences currently playing on the specified player and all sequences that will be played by the specified player. Furthermore, this value exhibits effects that are independent of all other track volume parameters. The track volume parameters have an cumulative effect. 
+</p>
+    </div>
+<h2>See Also</h2>
+<p>None.</p>
+<h2>Revision History</h2>
+<p>04/13/2005 Revised description to remove ambiguity.</P><P>03/17/2005 Initial version.</p>
+</div>
+</body>
+</html>

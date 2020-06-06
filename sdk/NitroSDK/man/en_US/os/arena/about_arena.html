@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Arena (Overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Arena (Overview)</H1>
+<H2>Introduction</H2>
+<P>NitroSDK allows you to define nine different Arena regions: main memory (one for ARM9 &amp; one for ARM7), expanded main memory, ITCM, DTCM, shared memory users, shared work RAM (one for ARM9 &amp; one for ARM7), and dedicated work RAM for ARM7. Each region gets an ID and is defined as an <code>OSArenaId</code> enumerated type, as shown  below.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD>OS_ARENA_MAIN</TD>
+<TD>Arena in main memory for ARM9</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_MAIN_SUBPRIV</TD>
+<TD>Arena in main memory for ARM7</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_MAINEX</TD>
+<TD>Expanded arena in main memory</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_ITCM</TD>
+<TD>Arena in ICTM</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_DTCM</TD>
+<TD>Arena in DTCM</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_SHARED</TD>
+<TD>User information Arena in shared memory</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_WRAM_MAIN</TD>
+<TD>Arena for ARM9 in shared work RAM</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_WRAM_SUB</TD>
+<TD>Arena for ARM7 in shared work RAM</TD>
+    </TR>
+    <TR>
+<TD>OS_ARENA_WRAM_SUBPRIV</TD>
+<TD>Arena in ARM7 work RAM</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>  </P>
+<P>These Arenas are initialized by <code><a href="OS_InitArena.html">OS_InitArena()</a></code>. ARM7 configures Arena regions in the following locations: main memory, shared work RAM, and ARM7 work RAM. The rest of the Arenas are configured by ARM9. The figure below illustrates the standard memory maps during development.</P>
+<BLOCKQUOTE>        <IMG src="image_arenaMap.gif" border="0">      </BLOCKQUOTE>
+<P><BR> <BR>
+</P>
+<P><B>Arena in ITCM</a></B></P>
+<BLOCKQUOTE>This explains the ITCM portion. </BLOCKQUOTE>
+<BLOCKQUOTE>The lower portion of ITCM stores the SDK's program code.  If the user specifies the overlay module, it is placed next. By taking into consideration the maximum address used by the overlay, the portion that follows determines the ITCM arena.  If there is no overlay, the ITCM arena begins at SDK_AUTOLOAD_ITCM_BSS_END. </BLOCKQUOTE>
+<BLOCKQUOTE>The starting address of this ITCM arena is determined automatcially in the lcf file as SDK_SECTION_ARENA_ITCM_START. </BLOCKQUOTE>
+<BLOCKQUOTE>The code placed in ITCM is the interrupt handler and part of the DMA function. This part is transferred to ITCM by the <strong><em>autoload</em></strong> feature before <code>NitroMain()</code> starts. This transferred part can be specified also by the user.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_arenaITCM.gif" border="0"><BR> <BR>
+</BLOCKQUOTE>
+<P><B>Arenas in main memory, expanded memory, DTCM and shared regions</B></P>
+<BLOCKQUOTE>The Arenas in main memory, expanded memory, DTCM, and shared regions are explained.</BLOCKQUOTE>
+<BLOCKQUOTE>If the main memory size set with <CODE><A href="OS_EnableMainExArena.html">OS_EnableMainExArena</A></CODE> is 8 MB, then the extended arena in main memory can be used. But if the main memory size set with <CODE><A href="OS_DisableMainExArena.html">OS_DisableMainExArena</A></CODE> is 4 MB or runs on the DS system, the extended arena in main memory cannot be used. (Functions that declare that the extended arena in main memory is used or not used must be called before <CODE><A href="../init/OS_Init.html">OS_Init</A></CODE> or <CODE><A href="OS_InitArena.html">OS_InitArena</A></CODE>.)</BLOCKQUOTE>
+<BLOCKQUOTE>The following two figures show examples of when the main memory size is set to 8 MB and 4 MB. Symbols that start with <code>SDK_</code> are defined automatically in the <em>lcf</em> file.</BLOCKQUOTE>
+<BLOCKQUOTE>The data region used for the interrupt process is allocated in the lower address of DTCM. The region can also be secured by a user addition. However, no program code can be placed in DTCM.    Like ITCM, the maximum address used by the overlay module is taken into consideration to determine the DTCM arena starting address SDK_SECTION_ARENA_DTCM_START. When there is no overlay, the value of SDK_AUTOLOAD_DTCM_BSS_END is used. </BLOCKQUOTE>
+<BLOCKQUOTE><code>HW_MAIN_ARENA_LO</code> is discussed below.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_arenaMainRAM_8m.gif" border="0"><BR> <BR> <BR> <BR> <IMG src="image_arenaMainRAM_4m.gif" border="0"></BLOCKQUOTE>
+<BLOCKQUOTE><BR> <code>SDK_MAIN_ARENA_LO</code> is positioned far back behind the static part of main memory, the program loaded by <strong><em>overlay</em></strong>, and the <strong><em>overlay </em></strong> portion of the BSS region.  This is the same as overlays in ITCM, DTCM, and extended main memory. <BR> <BR> <IMG src="image_arenaMainRAM_ol.gif" border="0"></BLOCKQUOTE>
+<P><B>Arenas in work RAM</B></P>
+<BLOCKQUOTE>The standard practice is to allocate all of work RAM to ARM7, so it is assumed that this Arena also will be used by ARM7. Shared work RAM and dedicated ARM7 work RAM are allocated to contiguous regions. Whether a work RAM Arena can be secured will vary depending on the size of the program code stored here. The examples below show cases where the program is so big it spills into dedicated ARM7 work RAM, and where it is contained in shared work RAM. In the first example, there is no Arena in shared work RAM for either ARM7 or ARM9. In the second example, there is no Arena in shared work RAM for ARM9.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_arenaWRAM1.gif" border="0"></BLOCKQUOTE>
+<BLOCKQUOTE><BR> <BR> <BR> <BR> <BR> <IMG src="image_arenaWRAM2.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Managing Arenas and Securing Memory</B></P>
+<BLOCKQUOTE>The Arena region depends on the pointers that indicate the start and the end of the region.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_arenaArea1.gif" border="0"></BLOCKQUOTE>
+<BLOCKQUOTE>The system stores only these two pointers and information regarding whether or not the Arena has been initialized. In other words, there is no information regarding the extent to which the Arena is used, the initial locations of the pointers, or the content of the Arena.</BLOCKQUOTE>
+<BLOCKQUOTE>For each Arena, there are pointers for the start and end of the Arena region and the information about initialization. This data is collected together and placed in a System shared region.</BLOCKQUOTE>
+<BLOCKQUOTE>When memory blocks are secured from an Arena, they can be secured from either the start or the end of the region. Accordingly, the memory region boundary moves on its own. For example, to secure a block of <em><strong><code>size1</code></strong></em> bytes from the start of the region (the low end), after calling <code><A href="OS_GetArenaLo.html">OS_GetArenaLo()</A></code>, call <CODE><A href="OS_SetArenaLo.html">OS_SetArenaLo()</A></CODE> to set the boundary with the returned value.</BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_arenaArea2.gif" border="0"></BLOCKQUOTE>
+<P><BR> In the following figure, a block of <em><strong><code>size2</code></strong></em>-bytes is secured from the tail end of the Arena (i.e., from the high-order end).</P>
+<BLOCKQUOTE><IMG src="image_arenaArea3.gif" border="0"></BLOCKQUOTE>
+<BLOCKQUOTE><BR> <BR>This series of tasks is performed automatically. The two functions <CODE><A href="OS_AllocFromArenaLo.html">OS_AllocFromArenaLo()</A></CODE> and <CODE><A href="OS_AllocFromArenaHi.html">OS_AllocFromArenaHi()</A></CODE> are available for securing memory from the start (the low end) or the end (the high end) of the memory region. We recommend using these functions when using the arena.<BR> <BR>Arenas are not suitable for frequently securing and releasing memory during the game. They are most often used for general assignments like securing lump regions for various purposes at the time of initialization. The OS has a system for repeated memory allocation during the game using <code><a href="../alloc/OS_AllocFromHeap.html">OS_AllocFromHeap()</a></code>.</BLOCKQUOTE>
+<H2>See Also</H2>
+<P><a href="../list_os.html#Arena">OS function list (Arena)</a>, <a href="../list_os.html#Alloc">OS function list (Alloc)</a></P>
+<H2>Revision History</H2>
+<P>
+03/16/2006 Revised figure depicting arena management and securing memory and added a description.<BR> 08/27/2005 Made revisions in line with ITCM, DTCM, and extended main memory arena overlay support.<BR> 07/28/2005 Corrected mistakes. 04/15/2005 Changed the locations of main memory and the arean in DTCM<BR> 12/13/2004 Revised terminology and word endings.<BR> 10/25/2004 Initial version.<CODE>OS_InitArena()</CODE></P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

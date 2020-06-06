@@ -1,0 +1,87 @@
+Example of how to deal with WM changes from NitroSDK2.0FC to 2.0RC1
+10/06/2004
+
+This document supports incompatibility-related revisions in the program under 2.0 RC1.
+For details on all changes, see changelog.html.
+
+1. Change in game group ID format
+===========================
+
+The structure of WMParentParam (the old name WMpparam can also be used) has changed.
+A u16 type dummy variable used for padding is inserted as the third member variable.
+In addition, u16 ggid[2] has changed to u32 ggid.
+
+As a result, the following changes are required.
+
+static const WMParentParam   wcDefaultParameter =
+  {
+NULL ,  0 ,
+-    { (u16)WC_GGID , (u16)(WC_GGID>>16) } ,  // Game Group ID
++    0 ,                         // padding
++    WC_GGID ,                   // Game Group ID
+0x0000 ,                    // temporary ID (+1 added each time)
+1 ,                         // Entry enable flag
+
+Be sure to set the game group ID assigned by Nintendo in WC_GGID as a u32 value.
+
+WMGameInfo has also been changed from u16 ggid[2] to u32 ggid.
+If there are segments where the ggid is compared while checking the result of scanning the parent using WMStarScan, those segments need to be changed.
+An example is shown below.
+
+// Checks whether the GameGroupID matches
+if(
+( ( wcWmBssDesc->length * 2 ) >= ( 64 + 8 ) ) &&
+-        ( wcWmBssDesc->gameInfo.ggid[ 0 ] == wcDefaultParameter.ggid[ 0 ] ) &&
+-        ( wcWmBssDesc->gameInfo.ggid[ 1 ] == wcDefaultParameter.ggid[ 1 ] )
++        ( wcWmBssDesc->gameInfo.ggid == wcDefaultParameter.ggid )
+      )
+      {
+
+Note: Although unrelated to this change, be aware that code comparing wcWmBssDesc->length was omitted from the old SDK demo.
+Since a check MUST be made that WMBssDesc.gameInfo contains a valid value, take this opportunity to confirm the value of WMBssDesc.length or WMBssDesc.gameInfoLength.
+
+
+2. Change in the type of the MAC address
+======================
+
+MAC address expressions were changed from u16 macAddress[3] to u8 macAddress[6].
+ 
+Make sure to change any section that receives the MAC address, such as the WM_STATECODE_CONNECTED notifications arriving at the callback to WM_StartParent.
+
+For example, the following type of change is necessary because WMScanParam.bssid set during scanning was also changed to u8 bssid[6].
+
+wcScanParameter->channel = WC_DEFAULT_CHAN;
+wcScanParameter->maxChannelTime = WC_SCAN_TIME_MAX;
+-    wcScanParameter->bssid[ 0 ] = 0xffff;
+-    wcScanParameter->bssid[ 1 ] = 0xffff;
+-    wcScanParameter->bssid[ 2 ] = 0xffff;
++    wcScanParameter->bssid[ 0 ] = 0xff;
++    wcScanParameter->bssid[ 1 ] = 0xff;
++    wcScanParameter->bssid[ 2 ] = 0xff;
++    wcScanParameter->bssid[ 3 ] = 0xff;
++    wcScanParameter->bssid[ 4 ] = 0xff;
++    wcScanParameter->bssid[ 5 ] = 0xff;
+
+
+3. Changes to the WM_StartMPEx interface
+======================================
+
+The argument BOOL ignoreFatalError was added to WM_StartMPEx.
+Under normal applications, make sure to add FALSE at the end of the arguments.
+<B>Note:</B> There are no changes to applications that use WM_StartMP.
+
+wmResult = WM_StartMPEx(
+WcCb_StartMP ,
+wcRecvBuffer ,
+(u16)wcRecvBufferSize ,
+wcSendBuffer ,
+(u16)wcSendBufferSize ,
+(u16)(wcParentParameter->CS_Flag ? 0 : 1),
+          0,
+TRUE,
+TRUE,
+FALSE
++        , FALSE       // ignoreFatalError was added in this version
+      );
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBT_MpParentRecvHook</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBT_MpParentRecvHook</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR> <CODE>void WBT_MpParentRecvHook(const void *recv_buf, int recv_size, int aid);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>recv_buf</STRONG></EM></TD>
+<TD width="87%">Parent device receive buffer that MP communicates by the <a href="../../wm/wm/WM_SetMPDataToPort.html"><CODE>WM_SetMPDataToPort</CODE></a> function for the WBT.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>recv_size</STRONG></EM></TD>
+<TD width="87%">The size of <code>recv_buf</code>.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>aid</STRONG></EM></TD>
+<TD width="87%">The AID of the target device that received <code>recv_buf</code>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>Report data the WBT library parent device received by MP communication from the WBT library. Data based on the WBT library protocol is extracted from the receive buffer. Various commands are executed by repeating this function during MP communication.<br> <strong>Note: </strong> This function merely processes data based on the WBT protocol.<br> Call this function inside the MP data receive callback that is specified by <code><A href="../../wm/wm/WM_SetPortCallback.html">WM_SetPortCallback</A></code>, etc.j<br> <br>
+
+A completion callback generates in this call when any command is executed. Also, the <code><A href="../wbt_command_type_const.html">WBT_CMD_SYSTEM_CALLBACK</A></code> callback may occur in this call when any command is received from the communication destination. <br>
+<h2>See Also</h2>
+<p><BR></P>
+<H2>Revision History</H2>
+<P>
+03/14/2005 Corrected link destination error.<br /> 02/18/2005 Added cautionary notes about the relationship with the WM library<br /> 09/21/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

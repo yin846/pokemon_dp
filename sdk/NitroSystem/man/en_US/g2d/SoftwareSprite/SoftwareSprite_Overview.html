@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Software Sprite Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">Software Sprite Overview</h1>
+<H2>Sample Execution Screen</H2>
+<P><span lang=EN-US style='font-size:9.0pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r ‚o–¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><IMG src="image.jpg" border="0" width="264" height="457"></span><BR>
+<H2>Description</H2>
+The software sprite displays a character using the square polygon of the NITRO 3D graphics engine. <BR>
+
+<h2>Software Sprite Feature</h2>
+
+<h3>Priority</h3>
+The rendering priority of the software sprite can be specified with the Z value of the square polygons that make up the software sprite. In order to use orthogonal projection with the rendering of the square polygons, the depth test needs to be set up in the Z-buffer mode to properly carry out the test. If you are using a 3D object and the software sprite together, the Z values of each must be managed so they do not interfere with each other.
+<h3>Alpha Blend</h3>
+The opacity can be changed for one sprite at a time with the alpha blend feature of the software sprite.
+
+<h3>Color Modulation</h3>
+A specified color can be applied to the software sprite.
+
+<h3>Setting the UV Value</h3>
+The software sprite is rendered as a polygon with textures mapped, but the UV value of the mapped texture can be changed. The UV values are specified for the upper left and lower right of the sprite.
+
+<h3>Setting of the Rotation Center</h3>
+The center of rotation can be specified when rotating a software sprite. The center of the software sprite is the default center of rotation.
+
+<h3>Vertical/Horizontal Flip</h3>
+The software sprite can be flipped in the vertical and horizontal directions during display.
+
+<h2>Software Sprite Rendering API</h2>
+The API that renders the software sprite is roughly divided into two categories. One is an API that uses the data organization provided by the library to render. The other is an API that does not use data organization. It directly specifies parameters to functions and arguments to carry out rendering.
+<h2>Differences in Performance Depending on API Classification</h2>
+<CODE><pre>
+void NNS_G2dDrawSprite(  s16 px, s16 py, int pz,
+int sx, int sy,
+int U0, int V0, int U1, int V1 );
+</pre></CODE> The API that specifies parameters and then carries out rendering is a simple function that sets up the UV value and renders the square polygons.<BR> It operates quickly, but the appropriate settings for the 3D graphics engine must be configured.<BR> <BR> <CODE><pre>
+void NNS_G2dDrawSpriteSimple  ( const  NNSG2dSimpleSprite*    pS );
+void NNS_G2dDrawSpriteBasic   ( const  NNSG2dBasicSprite*     pB );
+void NNS_G2dDrawSpriteExtended( const  NNSG2dExtendedSprite*  pE );
+</pre></CODE> The API that carries out rendering using the library data organization executes the various settings of the 3D graphics engine in the function.<BR> It is easy to use, but has a higher processing load in comparison to the API that directly designates parameters.<BR> <BR> Comparing the sample demos, the API that directly specifies parameters runs approximately forty percent faster than the API that renders using data structures.<BR> Using this API is recommended when your game involves rendering large sprites.<BR>
+
+<h2>Software Sprite Data Organization</h2>
+
+<h3>Software Sprite Data Organization</h3>
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><strong>Type</strong></td>
+<td width="47%"><strong>Possible Features</strong></td>
+<td width="40%"><strong>Application Example</strong></td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">Simple Sprite</font></strong></em></td>
+<td width="47%">Sprite position, rotation around Z-axis, priority, and alpha blend.</td>
+<td width="40%">rendering of particles, etc. where the texture is the same and only the position and size of the sprite differ.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">Basic Sprite</font></strong></em></td>
+<td width="47%">all features of Simple Sprite, texture specification, color modulation.</td>
+<td width="40%">rendering of standard sprites.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">Extended Sprite</font></strong></em></td>
+<td width="47%">all features of Basic Sprite, UV value setting, rotation center setting, vertical/horizontal flip.</td>
+<td width="40%">rendering of sprites with effects such as UV animation.</td>
+  </tr>
+  
+</table>
+<BR> Three formats of software sprites are available based on the number of parameters that can be specified.<BR> These parameters are processed internally as an Extended Sprite.<BR> There are default values for the features that cannot be specified with Simple Sprite and Basic Sprite. Their calculation cost is reduced.<BR> The default values can be changed by a separate API.<BR>
+  
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

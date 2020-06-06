@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dInitCellAnimationVramTransfered</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dInitCellAnimationVramTransfered</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_CellAnimation.h&gt;</CODE></pre>
+<pre>void NNS_G2dInitCellAnimationVramTransfered(
+        NNSG2dCellAnimation*     pCellAnim,
+        const NNSG2dAnimSequence*   pAnimSeq, 
+        NNSG2dCellDataBank*         pCellBank,
+        u32                         vramSettingHandle,
+        u32                         dstAddr3D,
+        u32                         dstAddr2DMain,
+        u32                         dstAddr2DSub,
+        void*                       pSrcNCGR,
+        void*                       pSrcNCBR,
+        u32                         szSrcData );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCellAnim</font></strong></em></td>
+<td width="87%">[OUT] Cell animation</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pAnimSeq</font></strong></em></td>
+<td width="87%">[IN] Animation sequence</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCellBank</font></strong></em></td>
+<td width="87%">[IN] Cell data bank</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">vramSettingHandle</font></strong></em></td>
+<td width="87%">[IN] Handle for the cell transfer state object</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">dstAddr3D</font></strong></em></td>
+<td width="87%">[IN] VRAM transfer destination address</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">dstAddr2DMain</font></strong></em></td>
+<td width="87%">[IN] VRAM transfer destination address</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">dstAddr2DSub</font></strong></em></td>
+<td width="87%">[IN] VRAM transfer destination address</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pSrcNCGR</font></strong></em></td>
+<td width="87%">[IN] VRAM transfer source data (Character data for 2D)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pSrcNCBR</font></strong></em></td>
+<td width="87%">[IN] VRAM transfer source data (Texture data for 3D)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">szSrcData</font></strong></em></td>
+<td width="87%">[IN] VRAM transfer source data size</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Initializes the cell animation that does the VRAM relay animation. Please specify <code>NNS_G2D_VRAM_ADDR_NONE</code> as the relay destination address specification for any unused VRAM. For <code>pSrcNCAGR</code> and <code>pSrcNCBR</code> of the relay source data, please specify NULL if they are not used. If <code>NNS_G2D_VRAM_ADDR_NONE</code> is specified, then <code>dstAddr3d</code>, <code>dstAddr2DMain</code> and <code>dstAddr2DSub</code> will all fail to assert. When NULL has been specified, both <code>pSrcNCGR</code> and <code>pSrcNCBR</code> will fail to assert. For <code>pCellBank</code>, please use the data that is output exclusively for VRAM relay that contains the VRAM relay data.
+
+This function has a new name, and was renamed from <code>NNS_G2dInitializeCellAnimationVramTransfered</code>. The previous function will remain to maintain compatibility.
+</p>
+
+<h2>See Also</h2>
+<p>
+<CODE><A href="NNS_G2dInitializeCellAnimationVramTransfered.html">NNS_G2dInitializeCellAnimationVramTransfered</A><br></CODE>
+</p>
+<H2>Revision History</H2>
+<P>07/20/2004 Initial version.</P>
+</body>
+</html>

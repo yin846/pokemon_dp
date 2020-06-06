@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_SuspendArchive</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_SuspendArchive</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>BOOL	FS_SuspendArchive(FSArchive *p_arc);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p_arc</STRONG></EM></TD>
+<TD width="87%">Address of the <a href="../fs_archive_type.html"><code>FSArchive</code></a> structure</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p><code>FALSE</code> if archive is in the suspended state before the change. <code>TRUE</code> if not.</p>
+
+<H2>Description</H2>
+<P>Sets the archive to the halted state. While the archive is stopped, commands that are sent from the file system are stored in the process-wait state.<br />To return the archive from the halted state to the normal state, call <code><a href="FS_ResumeArchive.html">FS_ResumeArchive</a></code>.<BR> In order to control the archive state immediately after the archive is loaded, you must call this function before you call the <code><a href="FS_LoadArchive.html">FS_LoadArchive</a></code> function.<BR> <BR>
+</P>
+<h2>See Also</h2>
+<p><CODE></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+07/12/2004 Changed the return value type<br /> 06/30/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

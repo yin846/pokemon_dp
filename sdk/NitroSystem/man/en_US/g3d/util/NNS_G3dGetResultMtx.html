@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGetResultMtx</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGetResultMtx</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/util.h&gt;</CODE></PRE>
+<PRE>BOOL
+NNS_G3dGetResultMtx(
+const NNSG3dRenderObj* pRenderObj,
+MtxFx43* pos,
+MtxFx33* nrm,
+u32 nodeID
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pRenderObj</STRONG></EM></TD>
+<TD width="87%">Pointer to the rendering object.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>pos</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Pointer to the matrix that is substituted for the clip coordinate matrix</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>nrm</STRONG></EM></TD>
+<TD width="87%">Pointer to the matrix that is substituted for the directional vector matrix</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>nodeID</STRONG></EM></TD>
+<TD width="87%">The node ID.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>Returns <code>TRUE</code> if the matrix was able to be extracted.</P>
+
+<H2>Description</H2>
+<P>
+Extracts any matrix corresponding to the <code>nodeID</code> that remains in the matrix stack after the <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code> function executes. A <code>TRUE</code> is returned if the function was able to extract the matrix, and a <code>FALSE</code> will be returned if it was unable to extract. When the return value is <code>TRUE</code>, the matrix mode will be changed to <code>position</code>&nbsp;/&nbsp;<code>vector</code> matrix mode. It will be set if <code>pos</code> and <code>nrm</code> are not <code>NULL</code>.</P>
+<P>
+Make sure that <code>pos_scale</code> is not in the matrix to be obtained. (The vertex coordinate is scaled with the attribute designated by &lt;model_data&gt; of the intermediate (<code>.imd</code>) file. It is stored in <code>NNSG3dResMdlInfo::posScale</code> in <code>fx32</code> format)
+</P>
+<P><STRONG>Caution:</STRONG></P>
+<P>
+When converting with <code>g3cvtr</code> and using the <code>-s</code> option, the joint matrices are all stored in the matrix stack. Rendering can be skipped when configuring the <code>NNS_G3D_RENDEROBJ_FLAG_SKIP_SBC_DRAW</code> of <code>NNSG3dRenderObj::flag</code> and calling the <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code> function. The matrix calculation can be skipped when configuring the <code>NNS_G3D_RENDEROBJ_FLAG_SKIP_SBC_MTXCALC</code> and calling the <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code> function.
+</P>
+<P>
+Using this features allows you to:
+</P>
+<P>
+@@Set the matrix in the matrix stack Process the matrix set in the stack Use the processed matrix for rendering
+</P>
+
+<H2>See Also</H2>
+<P><a href="NNS_G3dSetResultMtx.html"><code>NNS_G3dSetResultMtx</code></a>, <a href="NNS_G3dGetCurrentMtx.html"><code>NNS_G3dGetCurrentMtx</code></a></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

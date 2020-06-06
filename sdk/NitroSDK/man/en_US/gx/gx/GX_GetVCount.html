@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_GetVCount</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_GetVCount</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/gx.h&gt;
+
+s32 GX_GetVCount(void);<BR></CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>V-Counter value.</p>
+<H2>Description</H2>
+<P>This function returns which of the 263 lines in the LCD is currently being displayed. The return value is an integer 0 &ndash; 262. If 0 &ndash; 191, it is drawing; if 192 &ndash; 262 it is in the V-Blank period.</P>
+<h2>See Also</h2>
+<P><A href="GX_SetVCount.html">GX_SetVCount</A></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

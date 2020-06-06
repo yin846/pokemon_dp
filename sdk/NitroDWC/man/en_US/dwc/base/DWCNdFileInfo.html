@@ -1,0 +1,78 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWCNdFileInfo</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWCNdFileInfo</H1>
+
+		<H2>Definition</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;nd/dwc_nd.h&gt;
+
+typedef struct {
+
+	char name[32+1];
+	short explain[50+1];
+	char param1[DWCI_NDI_FILEATTR_LEN+1];
+	char param2[DWCI_NDI_FILEATTR_LEN+1];
+	char param3[DWCI_NDI_FILEATTR_LEN+1];
+	unsigned int size;
+
+} DWCNdFileInfo;
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This structure stores the file information that the Download library gets.
+		</P>
+		<TABLE border="1">
+		<TBODY>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>name</CODE></STRONG></EM></TD>
+			<TD>The file name, which is a string of up to 32 ASCII characters terminated with the NULL character. <BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>explain</CODE></STRONG></EM></TD>
+			<TD>The file's description, which is a string of up to 50 UTF16LE characters terminated with the NULL character. <BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>param1</CODE></STRONG></EM></TD>
+			<TD>Attribute string 1, which is a string of up to 10 ASCII characters terminated with a NULL character. <BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>param2</CODE></STRONG></EM></TD>
+			<TD>Attribute string 2, which is a string of up to 10 ASCII characters terminated with a NULL character. <BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>param3</CODE></STRONG></EM></TD>
+			<TD>Attribute string 3, which is a string of up to 10 ASCII characters terminated with a NULL character. <BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>size</CODE></STRONG></EM></TD>
+			<TD>The file size<BR></TD>
+          </TR>
+		</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<code><a href="DWC_NdGetFileListAsync.html">DWC_NdGetFileListAsync</a>, <a href="DWC_NdGetFileAsync.html">DWC_NdGetFileAsync</a></code>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			04/26/2006 Initial version.<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

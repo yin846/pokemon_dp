@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>RTC_ConvertSecondToDateTime</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">RTC_ConvertSecondToDateTime</h1>
+
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/rtc.h&gt;</CODE><BR>
+  <PRE><CODE>void RTC_ConvertSecondToDateTime( <A href="RTCDate.html">RTCDate</A>* date , <A href="RTCTime.html">RTCTime</A>* time, s64 sec );</CODE></PRE>
+  </dd>
+
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">date</font></strong></em></TD>
+<TD width="700">Pointer to the buffer storing the date data.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">time</font></strong></em></TD>
+<TD>Pointer to the buffer storing the time data.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">sec</font></strong></em></TD>
+<TD>The total elapsed number of seconds, using January 1, 2000, 12:00.00 a.m. as 0.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function converts the total elapsed number of seconds, using January 1, 2000, 12:00.00 a.m. as 0 to the <A href="RTCDate.html"><CODE>RTCDate</CODE></A> and <A href="RTCTime.html"><CODE>RTCTime</CODE></A> types. <em><strong><CODE>sec</CODE></strong></em> must be 0 or more and 3155759999 or lower. If less than 0 it is changed to 0 and if more than 3155759999 it is changed to 3155759999. Then the result is returned.</P>
+
+<h2>See Also</h2>
+<P><CODE><A href="RTC_ConvertDateTimeToSecond.html">RTC_ConvertDateTimeToSecond</A>, <A href="RTCDate.html">RTCDate</A>, <A href="RTCTime.html">RTCTime</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>
+05/17/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

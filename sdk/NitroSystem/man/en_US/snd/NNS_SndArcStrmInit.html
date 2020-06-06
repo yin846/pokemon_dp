@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcStrmInit</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcStrmInit</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndArcStrmInit( u32 threadPrio, NNSSndHeapHandle heap );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>threadPrio</code></strong></em></td>
+<td>Stream thread priority</td>
+</tr>
+<tr>
+<td><em><strong><code>heap</code></strong></em></td>
+<td>The sound heap handle</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDACNWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAJNWT"></a>
+<h2>Description</h2>
+      <p>
+This function initializes the sound archive stream library. Call this function before calling any other <code>NNS_SndArcStrm</code> function.
+</p>
+      <p>
+The sound archive must be initialized in advance by <code><a href="NNS_SndArcInit.html">NNS_SndArcInit</a></code> or <code><a href="NNS_SndArcInitOnMemory.html">NNS_SndArcInitOnMemory</a></code>.
+</p>
+      <p>
+The stream thread is started and the stream player is set up inside the function. To set up the stream player, the stream buffer is secured from the sound heap, which is specified with <code>heap</code>.
+</p>
+      <p>
+When the sound heap region that secures the stream buffer is released, the stream player stops automatically, and it becomes unusable. To make the stream player usable again, call the <A href="NNS_SndArcStrmSetupPlayer.html"><code>NNS_SndArcStrmSetupPlayer</code></A> function.
+</p>
+      <p>
+The stream thread performs processes such as the loading of stream data from the NITRO Game Card. The stream playback may be interrupted if the priority is low.
+</p>
+      <p>
+The size of the stream buffer for each stream player requires 2048 x number of channels (bytes). The sound archive defines the channel that each stream player number uses.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndArcInit.html">NNS_SndArcInit</a>, <a href="NNS_SndArcInitOnMemory.html">NNS_SndArcInitOnMemory</a>, <a href="NNS_SndArcStrmSetupPlayer.html">NNS_SndArcStrmSetupPlayer</a></p>
+<h2>Revision History</h2>
+<p>08/26/2005 Support for sound archive initialized by NNS_SndArcInitOnMemory function. 09/02/2004 Added explanation about NNS_SndArcStrmSetupPlayer function. 08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

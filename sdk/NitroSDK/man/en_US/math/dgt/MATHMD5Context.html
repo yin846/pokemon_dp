@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATHMD5Context</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATHMD5Context</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/math/dgt.h&gt;<BR>
+typedef struct MATHMD5Context MATHMD5Context;
+</CODE></PRE>
+  </dd>
+</dl>
+<H2>Elements</H2>
+<P>Do not access the elements of this structure directly.</P>
+<H2>Description</H2>
+<P>This is the context structure used in calculating MD5. It has a size of 88 bytes. Initialize the structure with <a href="MATH_MD5Init.html"><code>MATH_MD5Init</code></a>, use <a href="MATH_MD5Update.html"><code>MATH_MD5Update</code></a> to assign input data, and <a href="MATH_MD5GetHash.html"><code>MATH_MD5GetHash</code></a> to get the message digest value. MD5 is an algorithm to find the message digest value. For details, see RFC (Request For Comments) 1321, which is published by IETF (The Internet Engineering Task Force).
+</P>
+
+<h2>See Also</h2>
+<P><a href="MATH_MD5Init.html"><code>MATH_MD5Init</code></a>, <a href="MATH_MD5Update.html"><code>MATH_MD5Update</code></a>, <a href="MATH_MD5GetHash.html"><code>MATH_MD5GetHash</code></a></P>
+<H2>Revision History</H2>
+<P>
+04/12/2005 Added description of size.<br />04/01/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

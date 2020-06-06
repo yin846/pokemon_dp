@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRendererOverwriteEnable/Disable</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRendererOverwriteEnable/Disable</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Renderer.h&gt;</CODE></pre>
+<pre><CODE>NNS_G2D_INLINE void NNS_G2dSetRendererOverwriteEnable
+    ( 
+        NNSG2dRendererInstance*         pRnd, 
+        NNSG2dRendererOverwriteParam    flag 
+    )
+        NNS_G2D_INLINE void NNS_G2dSetRendererOverwriteDisable
+    ( 
+        NNSG2dRendererInstance*         pRnd, 
+        NNSG2dRendererOverwriteParam    flag 
+    )</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pRend</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] Renderer entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">flag</font></strong></em></td>
+<td width="87%">[IN] Enumerator that indicates which parameter items to set (NNSG2dRendererOverwriteParam)</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+This function sets the OAM parameters for the renderer to overwrite the OAM. The overwriting feature is enabled using the <code>NNS_G2dSetRendererOverwriteEnable()</code> function, and is disabled using the <code>NNS_G2dSetRendererOverwriteDisable()</code> function. The parameters that were enabled with this function are overwritten with the values that were set by the <code>NNS_G2dGetRendererOverwrite*()</code> function. The overwriting of the affine transformation mode is executed regardless of the setting for this function.
+
+<BR> The following is the definition of the enumerator <code>NNSG2dRendererOverwriteParam</code> that shows the parameter items to be set.<BR> <BR>
+
+<pre><CODE>typedef enum NNSG2dRendererOverwriteParam
+    {
+    NNS_G2D_RND_OVERWRITE_NONE          = 0x0, // Does not overwrite OBJ attribute
+    NNS_G2D_RND_OVERWRITE_PRIORITY      = 0x1, // Drawing priority
+    NNS_G2D_RND_OVERWRITE_PLTTNO        = 0x2, // Palette number
+    NNS_G2D_RND_OVERWRITE_MOSAIC        = 0x4, // Mosaic ON/OFF
+    NNS_G2D_RND_OVERWRITE_OBJMODE       = 0x8, // Object mode
+    NNS_G2D_RND_OVERWRITE_MAX
+        
+}NNSG2dRendererOverwriteParam;</CODE></pre>
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="NNS_G2dGetRendererOverwriteXXX.html">NNS_G2dGetRendererOverwrite*</A><br></CODE></p>
+<H2>Revision History</H2>
+
+<P>
+11/10/2004 Added a new item to <code>NNSG2dRendererOverwriteParam</code>. <br /> 10/12/2004 Initial version.
+</P>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GetMatch*Value</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GetMatch*Value</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+int DWC_GetMatchIntValue( int   index,
+                          const char* keyString,
+                          int   idefault );
+
+const char* DWC_GetMatchStringValue( int   index,
+                                     const char* keyString,
+                                     const char* sdefault );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function returns the value or character string that corresponds to the matchmaking index key.<BR>This function is guaranteed only for use inside the player evaluation callback. The returned value is undefined if the function is called from outside of the callback.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE><STRONG><EM><CODE>index</CODE></EM></STRONG></CODE></STRONG></EM></TD>
+					<TD width="75%">Index of matchmaking candidate players. Be sure to pass the player evaluation callback's <CODE>index</CODE> argument as is. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>keyString</CODE></STRONG></EM></TD>
+					<TD>Pointer to (the character string for key identification) the key name.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>idefault</CODE></STRONG></EM></TD>
+					<TD>The default value if the player does not have the specified key.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>sdefault</CODE></STRONG></EM></TD>
+					<TD>The default character string if the player does not have the specified key.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<P>
+		  The value or character string corresponding to the specified key held by the matchmaking candidate player. If the player does not have a key, the value or character string passed to the idefault argument is returned.
+		</P>
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_AddMatchKey.html">DWC_AddMatchKey*</A>, <A href="DWCEvalPlayerCallback.html">DWCEvalPlayerCallback</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			04/26/2006 Unified DWC_GetMatchIntValue/DWC_GetMatchStringValue<BR> 02/21/2005 Corrected writing errors<BR> 07/22/2005 Initial version<BR>
+		</P>
+
+	</BODY>
+</HTML>

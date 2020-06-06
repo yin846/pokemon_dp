@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_KillThread*</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_KillThread*</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_KillThread( OSThread* thread, void* arg );</CODE></PRE>
+<PRE><CODE>void OS_KillThreadWithPriority( OSThread* thread, void* arg, u32 prio );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><EM><B>thread</B></EM></TD>
+<TD>Pointer to the thread to be terminated</TD>
+    </TR>
+    <TR>
+<TD><EM><B><code><EM><STRONG>arg</STRONG></EM></code></B></EM></TD>
+<TD>Value passed to the thread destructor</TD>
+    </TR>
+    <TR>
+<TD><EM><B>prio</B></EM></TD>
+<TD>Thread priority level</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This terminates the specified thread, then switches to the next executable thread.</P>
+<P><CODE>OS_KillThread*()</CODE> is called if a thread destructor has been set in advance using <CODE><A href="OS_SetThreadDestructor.html">OS_SetThreadDestructor()</A></CODE>. The destructor function is defined by</P>
+<BLOCKQUOTE><CODE>typedef void (*OSThreadDestructor)( void* );</CODE></BLOCKQUOTE>
+<P>and is a function of <CODE>OSThreadDestructor</CODE> type.</P>
+<P><EM><B>thread</B></EM> is the thread to be terminated. <EM><B>arg</B></EM> is passed to the destructor function as its first argument.</P>
+<P>When the current thread is specified in <EM><B>thread</B></EM>, the operation is the same as calling <CODE><A href="OS_ExitThread.html">OS_ExitThread()</A></CODE>.</P>
+<P>If the thread <CODE>thread</CODE> has locked <CODE>mutex</CODE>, all locked mutex are unlocked.</P>
+<P><CODE>OS_KillThreadWithPriority()</CODE> changes the priority level of the thread to be terminated to <EM><B>prio</B></EM>.</P>
+<P>The difference between <CODE>OS_KillThread*()</CODE> and <CODE><A href="OS_DestroyThread.html">OS_DestroyThread()</A></CODE> is that a destructor function is called in the case of <CODE>OS_KillThread*()</CODE> while a destructor function is not called in the case of <CODE><A href="OS_DestroyThread.html">OS_DestroyThread()</A></CODE>.</P>
+<P>Be carefule when using <CODE>OS_KillThread*()</CODE> Because it suddenly terminates the specified thread <EM><B>thread</B></EM> without any advance warning. If you are going to use this function, be sure you understand the operation architecture of threads.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitThread.html">OS_InitThread</A>, <A href="OS_ExitThread.html">OS_ExitThread</A>, <A href="OS_DestroyThread.html">OS_DestroyThread</A>, <A href="OS_SetThreadDestructor.html">OS_SetThreadDestructor</A></CODE></P>
+<H2>Revision History</H2>
+<P>07/07/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

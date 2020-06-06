@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WVRResult</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WVRResult</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wvr.h&gt;</CODE><BR>
+<PRE><CODE>typedef enum WVRResult
+{
+WVR_RESULT_SUCCESS          = 0 ,
+WVR_RESULT_OPERATING        = 1 ,
+WVR_RESULT_DISABLE          = 2 ,
+WVR_RESULT_INVALID_PARAM    = 3 ,
+WVR_RESULT_FIFO_ERROR       = 4 ,
+WVR_RESULT_ILLEGAL_STATUS   = 5 ,
+WVR_RESULT_VRAM_LOCKED      = 6 ,
+WVR_RESULT_FATAL_ERROR      = 7
+
+} WVRResult;</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WVR_RESULT_SUCCESS</font></strong></em></TD>
+<TD width="800">Indicates that the process completed normally.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WVR_RESULT_OPERATING</font></strong></em></TD>
+<TD width="800">Indicates that an asynchronous process has begun normally.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WVR_RESULT_DISABLE</font></strong></em></TD>
+<TD width="800">Indicates that the ARM7-side component is not supported in the WVR library.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WVR_RESULT_INVALID_PARAM</font></strong></em></TD>
+<TD width="800">Indicates that the parameter assigned to the function is an invalid value.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WVR_RESULT_FIFO_ERROR</font></strong></em></TD>
+<TD width="800">Indicates that there was a communications failure via the FIFO with ARM7.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WVR_RESULT_ILLEGAL_STATUS</font></strong></em></TD>
+<TD width="800">Indicates that the process could not be executed due to the internal state of the WVR. <BR> This element is generated either when an asynchronous function is called before its callback, or when the wireless library operations start or stop processes overlap.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WVR_RESULT_VRAM_LOCKED</font></strong></em></TD>
+<TD width="800">Indicates that the process could not be executed because the VRAM bank is being allocated for other applications via another library (GX).</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WVR_RESULT_FATAL_ERROR</font></strong></em></TD>
+<TD width="800">Indicates that the process has failed due to some unforeseen reason that does not normally occur. <BR> When this error is generated, the cause is generally thought to be due to damage outside the memory that the library uses.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>
+This is an enumerated type that shows the results of the shared process in the WVR function. This is shared with the <em><strong><code>result</code></strong></em> argument that is passed to the callback function of the asynchronous process function.
+</P>
+
+<H2>Revision History</H2>
+<P>
+02/16/2005 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

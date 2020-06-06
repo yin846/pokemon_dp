@@ -1,0 +1,1362 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+	<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<BASE target="main">
+	<TITLE>Graphics 2D Library API Function List</TITLE>
+	<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+
+<BODY>
+
+<H1>Graphics 2D Library (G2D) API Function List</H1>
+
+    
+<H3><A name="structure">Data Structures</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dGetCellDataByIdx.html" target="_self" >NNS_G2dGetCellDataByIdx</A></TH>
+			<TD> Obtains the cell data at the specified index from the cell bank.</TD>
+		</TR>
+	    <TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dCellDataBankHasVramTransferData.html" target="_self" >NNS_G2dCellDataBankHasVramTransferData</A></TH>
+			<TD> Examines whether or not the Cell bank has the VRAM transfer information.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dGetSizeRequiredVramTransferCellDataBank.html" target="_self" >NNS_G2dGetSizeRequiredVramTransferCellDataBank</A></TH>
+			<TD> Obtains the VRAM byte size required for the VRAM transfer of Cell bank.</TD>
+		</TR>
+	    <TR>
+			<TH width="25%"><A href="types/Animation/NNS_G2dGetAnimSequenceByIdx.html" target="_self" >NNS_G2dGetAnimSequenceByIdx</A></TH>
+			<TD> Obtains the animation sequence of the specified index from the animation bank.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Animation/NNS_G2dCalcAnimSequenceTotalVideoFrames.html" target="_self" >NNS_G2dCalcAnimSequenceTotalVideoFrames</A></TH>
+			<TD> Calculates the total video frame length of the animation sequence data (note that this is different from animation frame).</TD>
+		</TR>
+		
+		
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dCellHasBR.html" target="_self" >NNS_G2dCellHasBR</A></TH>
+			<TD> Obtains whether the cell has the bounding rectangle.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dGetCellBoundingRect.html" target="_self" >NNS_G2dGetCellBoundingRect</A></TH>
+			<TD> Obtains the bounding rectangle of the cell.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dGetCellBoundingSphereR.html" target="_self" >NNS_G2dGetCellBoundingSphereR</A></TH>
+			<TD> Obtains the radius of the bounding sphere of the cell.</TD>
+		</TR>
+		
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dGetOAMSize.html" target="_self" >NNS_G2dGetOAMSize*</A></TH>
+			<TD> Obtains the size of the OBJ.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dRepeatXinCellSpace.html" target="_self" >NNS_G2dRepeatXinCellSpace / NNS_G2dRepeatYinCellSpace</A></TH>
+			<TD> Returns the s16 value to which the repeat process has been applied within the value range that can be taken by OBJ in the cell.</TD>
+		</TR>
+		
+		
+		<TR>
+			<TH width="25%"><A href="types/Animation/NNS_G2dGetAnimSequenceIndex.html" target="_self" >NNS_G2dGetAnimSequenceIndex</A></TH>
+			<TD> Obtains the animation sequence number in the animation information bank.</TD>
+		</TR>
+		
+		<TR>
+			<TH width="25%"><A href="types/Animation/NNS_G2dGetUserExAnimAttrBank.html" target="_self" >NNS_G2dGetUserExAnimAttrBank</A></TH>
+			<TD> Obtains the extended attribute bank of the animation user from the animation information bank.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Animation/NNS_G2dGetUserExAnimSequenceAttr.html" target="_self" >NNS_G2dGetUserExAnimSequenceAttr</A></TH>
+			<TD> Obtains the extended attribute of the sequence user from the user extended attribute bank.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Animation/NNS_G2dGetUserExAnimFrameAttr.html" target="_self" >NNS_G2dGetUserExAnimFrameAttr</A></TH>
+			<TD> Obtains the user extended attribute of the animation frame from the user extended attribute of the animation sequence.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Animation/NNS_G2dGetUserExAnimSeqAttrValue.html" target="_self" >NNS_G2dGetUserExAnimSeqAttrValue</A></TH>
+			<TD> Obtains the user extended attribute value of the type u32 user from the user extended attribute of the animation sequence.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Animation/NNS_G2dGetUserExAnimFrmAttrValue.html" target="_self" >NNS_G2dGetUserExAnimFrmAttrValue</A></TH>
+			<TD> Obtains the user extended attribute value of the type u32 user from the user extended attribute of the animation frame.</TD>
+		</TR>
+		
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dGetUserExCellAttr.html" target="_self" >NNS_G2dGetUserExCellAttr</A></TH>
+			<TD> Obtains the cell user extended attribute in the cell extended attribute bank by specifying the cell number.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dGetUserExCellAttrBankFromCellBank.html" target="_self" >NNS_G2dGetUserExCellAttrBankFromCellBank</A></TH>
+			<TD> Obtains the cell extended attribute bank from the cell bank.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="types/Cell/NNS_G2dGetUserExCellAttrValue.html" target="_self" >NNS_G2dGetUserExCellAttrValue</A></TH>
+			<TD> Obtains the actual attribute value from the cell user extended attribute.</TD>
+		</TR>
+		
+		<TR>
+			<TH width="25%"><A href="types/MultiCell/NNS_G2dGetUserExCellAttrBankFromMCBank.html" target="_self" >NNS_G2dGetUserExCellAttrBankFromMCBank</A></TH>
+			<TD> Obtains the cell user extended attribute bank from the multicell bank.</TD>
+		</TR>
+		
+	</TBODY>
+</TABLE>
+
+<H3><A name="Load">Load Files</A> <A href="Load/RuntimeBinary_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="Load/NNS_G2dIsBinFileValid.html" target="_self" >NNS_G2dIsBinFileValid</A></TH>
+			<TD> Examines whether or not the binary file format corresponds to the specified format.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Load/NNS_G2dFindBinaryBlock.html" target="_self" >NNS_G2dFindBinaryBlock</A></TH>
+			<TD> Searches for and obtains the specified binary block from the binary file.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Load/NNS_G2dPrintXXX.html" target="_self">NNS_G2dPrint*</A></TH>
+			<TD>Outputs the binary data contents to the debug output.</TD>
+		</TR>
+        <TR>
+			<TH width="25%"><A href="Load/NNS_G2dUnPackXXX.html" target="_self" >NNS_G2dUnPack*</A></TH>
+			<TD> Unpacks the binary data loaded from the file in a usable state.</TD>
+		</TR>
+        <TR>
+			<TH width="25%"><A href="Load/NNS_G2dGetUnpackedXXX.html" target="_self" >NNS_G2dGetUnpacked*</A></TH>
+			<TD>Gets each type of data in an unpacked state from the binary file.</TD>
+		</TR>
+	</TBODY>
+
+</TABLE>
+
+
+
+
+
+
+<H3><A name="Animation">Animation Controller</A> <A href="Animation/AnimationController_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+    <TBODY>
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dBindAnimCtrl.html" target="_self" >NNS_G2dBindAnimCtrl</A></TH>
+			<TD> Links the animation controller with the animation data of the control object. </TD></TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlType.html" target="_self" >NNS_G2dGetAnimCtrlType</A></TH>
+			<TD> Returns the animation type. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlCurrentElement.html" target="_self" >NNS_G2dGetAnimCtrlCurrentElement</A></TH>
+			<TD> Gets a void pointer that points to the header of the current animation result. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlNextElement.html" target="_self" >NNS_G2dGetAnimCtrlNextElement</A></TH>
+			<TD> Gets a void pointer that points to the animation header of the frame next to the current playback frame.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlNormalizedTime.html" target="_self" >NNS_G2dGetAnimCtrlNormalizedTime</A></TH>
+			<TD> Gets the normalized time of the display interval of the current playback frame. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dInitAnimCtrl.html" target="_self" >NNS_G2dInitAnimCtrl</A></TH>
+			<TD> Initializes the NNSG2dAnimController entity.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dInitAnimCtrlCallBackFunctor.html" target="_self" >NNS_G2dInitAnimCtrlCallBackFunctor</A></TH>
+			<TD> Initializes the controller callback. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dInitAnimCallBackFunctor.html" target="_self" >NNS_G2dInitAnimCallBackFunctor</A></TH>
+			<TD> Initializes the callback functor. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dIsAnimCtrlActive.html" target="_self" >NNS_G2dIsAnimCtrlActive</A></TH>
+			<TD>Gets whether or not an animation controller is being played.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dSetAnimCtrlPlayModeOverridden.html" target="_self" >NNS_G2dSetAnimCtrlPlayModeOverridden</A></TH>
+			<TD>Overrides the animation play mode.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dResetAnimCtrlPlayModeOverridden.html" target="_self" >NNS_G2dResetAnimCtrlPlayModeOverridden</A></TH>
+			<TD>Resets the overridden animation play mode. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dStartAnimCtrl.html" target="_self" >NNS_G2dStartAnimCtrl</A></TH>
+			<TD> Starts playing the animation.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dStopAnimCtrl.html" target="_self" >NNS_G2dStopAnimCtrl</A></TH>
+			<TD> Stops playing the animation.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dSetAnimCtrlSpeed.html" target="_self" >NNS_G2dSetAnimCtrlSpeed</A></TH>
+			<TD>  Sets the animation playback speed.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlSpeed.html" target="_self" >NNS_G2dGetAnimCtrlSpeed</A></TH>
+			<TD>  Gets the animation playback speed.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dResetAnimCtrlState.html" target="_self" >NNS_G2dResetAnimCtrlState</A></TH>
+			<TD> Resets the animation state. </TD>
+		</TR> 
+		
+		
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dSetAnimCtrlCurrentFrame.html" target="_self" >NNS_G2dSetAnimCtrlCurrentFrame</A></TH>
+			<TD> Sets the current playback frame. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlCurrentFrame.html" target="_self" >NNS_G2dGetAnimCtrlCurrentFrame</A></TH>
+			<TD> Obtains the current playback frame. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dSetAnimCtrlCurrentTime.html" target="_self" >NNS_G2dSetAnimCtrlCurrentTime</A></TH>
+			<TD> Sets the current animation frame display time of the animation controller.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlCurrentTime.html" target="_self" >NNS_G2dGetAnimCtrlCurrentTime</A></TH>
+			<TD> Obtains the current animation frame display time of the animation controller. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dSetAnimCtrlCurrentFrameNoResetCurrentTime.html" target="_self" >NNS_G2dSetAnimCtrlCurrentFrameNoResetCurrentTime</A></TH>
+			<TD> Sets the current playback frame. It does not reset the current frame display time counter inside the controller. </TD>
+		</TR> 
+		
+		
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dSetAnimCtrlCallBackFunctor.html" target="_self" >NNS_G2dSetAnimCtrlCallBackFunctor</A></TH>
+			<TD> Sets the callback on the animation controller. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dSetAnimCtrlCallBackFunctorAtAnimFrame.html" target="_self" >NNS_G2dSetAnimCtrlCallBackFunctorAtAnimFrame</A></TH>
+			<TD> Sets the callback specifying frame to the animation controller. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dTickAnimCtrl.html" target="_self" >NNS_G2dTickAnimCtrl</A></TH>
+			<TD> Advances the animation time. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlCurrentAnimSequence.html" target="_self" >NNS_G2dGetAnimCtrlCurrentAnimSequence</A></TH>
+			<TD> Obtains the animation sequence associated with the animation controller. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Animation/NNS_G2dGetAnimCtrlCurrentElemIdxVal.html" target="_self" >NNS_G2dGetAnimCtrlCurrentElemIdxVal</A></TH>
+			<TD> Obtains the index value (cell number or multicell number) from the current animation result of the animation controller.</TD>
+		</TR> 
+		
+    </TBODY>
+</TABLE>
+
+
+
+
+
+
+<H3><A name="CellAnimation">Cell</A> <A href="CellAnimation/CellAnimation_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dCopyCellAsOamAttr.html"	target="_self" >NNS_G2dCopyCellAsOamAttr</A></TH>
+			<TD> Copies the OAM attribute information inside the cell data to GXOamAttr. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dInitCellAnimation.html"	target="_self" >NNS_G2dInitCellAnimation</A></TH>
+			<TD> Initializes the cell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dInitCellAnimationVramTransfered.html" target="_self" >NNS_G2dInitCellAnimationVramTransfered</A></TH>
+			<TD> Initializes the VRAM transfer cell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dMakeCellToOams.html" target="_self" >NNS_G2dMakeCellToOams</A></TH>
+			<TD> Writes out a string of OBJ that draws the cell. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dSetCellAnimationCurrentFrame.html" target="_self" >NNS_G2dSetCellAnimationCurrentFrame</A></TH>
+			<TD> Sets the current playback frame.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dSetCellAnimationSequenceNoReset.html"	target="_self" >NNS_G2dSetCellAnimationSequenceNoReset</A></TH>
+			<TD> Sets the animation sequence in the cell animation. It does not reset the internal playback animation frame number or the current frame display time.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dSetCellAnimationSequence.html" target="_self" >NNS_G2dSetCellAnimationSequence</A></TH>
+			<TD> Sets the animation sequence in the cell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dSetCellAnimationSpeed.html"			target="_self" >NNS_G2dSetCellAnimationSpeed</A></TH>
+			<TD> Sets the playback speed of the cell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dGetCellAnimationAnimCtrl.html"			target="_self" >NNS_G2dGetCellAnimationAnimCtrl</A></TH>
+			<TD> Gets the animation controller that controls the cell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dGetCellAnimationCurrentCell.html"			target="_self" >NNS_G2dGetCellAnimationCurrentCell</A></TH>
+			<TD> Obtains the cell that is being displayed in the cell animation. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="CellAnimation/NNS_G2dTickCellAnimation.html"			target="_self" >NNS_G2dTickCellAnimation</A></TH>
+			<TD> Advances the cell animation time. </TD>
+		</TR> 
+	</TBODY>
+</TABLE>
+
+
+
+
+
+
+
+<H3><A name="MultiCellAnimation">MultiCell</A> <A href="MultiCellAnimation/MultiCellAnimation_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dGetMCWorkAreaSize.html" target="_self" >NNS_G2dGetMCWorkAreaSize</A></TH>
+			<TD> Gets the work region memory size required to initialize a multicell in the multicell data bank as an entity.</TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dInitMCAnimationInstance.html"	target="_self" >NNS_G2dInitMCAnimationInstance</A></TH>
+			<TD> Initializes the multicell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dMakeSimpleMultiCellToOams.html"			target="_self" >NNS_G2dMakeSimpleMultiCellToOams</A></TH>
+			<TD> Writes out the OBJ array that draws the multicell. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dSetAnimSequenceToMCAnimation.html"			target="_self" >NNS_G2dSetAnimSequenceToMCAnimation</A></TH>
+			<TD> Sets the playback animation sequence in the multicell animation. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dGetMCAnimAnimCtrl.html"			target="_self" >NNS_G2dGetMCAnimAnimCtrl</A></TH>
+			<TD> Obtains the animation controller in the multicell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dSetMCAnimationCurrentFrame.html"			target="_self" >NNS_G2dSetMCAnimationCurrentFrame</A></TH>
+			<TD> Sets the current playback frame. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dSetMCAnimationCellAnimFrame.html"			target="_self" >NNS_G2dSetMCAnimationCellAnimFrame</A></TH>
+			<TD> Sets the playback frames of the cell animations that make up the multicell. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dResetMCCellAnimationAll.html"			target="_self" >NNS_G2dResetMCCellAnimationAll</A></TH>
+			<TD> Resets the animation frames for the cell animation that composes the multicell entity. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dSetMCAnimationSpeed.html"			target="_self" >NNS_G2dSetMCAnimationSpeed</A></TH>
+			<TD> Sets the playback speed of the multicell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dTickMCAnimation.html"			target="_self" >NNS_G2dTickMCAnimation</A></TH>
+			<TD> Updates the animation of the multicell animation. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dTickMCInstance.html"			target="_self" >NNS_G2dTickMCInstance</A></TH>
+			<TD> Updates the animation of the cell animation that makes up the multicell entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dTraverseMCCellAnims.html"			target="_self" >NNS_G2dTraverseMCCellAnims</A></TH>
+			<TD> For cell animations composed of multicells, this function calls a callback function that takes every cell animation and cell animation number as arguments while going through the cell animations.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="MultiCellAnimation/NNS_G2dTraverseMCNodes.html"			target="_self" >NNS_G2dTraverseMCNodes</A></TH>
+			<TD> For nodes composed of multicells, this function calls a callback function that takes all sets of node information, cell animation, and node number as arguments while going through the nodes.</TD>
+		</TR> 
+	</TBODY>
+</TABLE>
+
+
+
+
+
+
+<H3><A name="Oam">OAM Manager</A> <A href="Oam/OAM_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dApplyOamManagerToHW.html"		target="_self" >NNS_G2dApplyOamManagerToHW</A></TH>
+			<TD> Reflects the internal state of the OAM manager in the actual hardware. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dApplyOamManagerToHWSprite.html"		target="_self" >NNS_G2dApplyOamManagerToHWSprite</A></TH>
+			<TD> Draws the contents of the internal buffer using the 3D graphics engine.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dEntryOamManagerOam.html"		target="_self" >NNS_G2dEntryOamManagerOam</A></TH>
+			<TD> Registers OBJ in the OAM manager. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dEntryOamManagerAffine.html"		target="_self" >NNS_G2dEntryOamManagerAffine</A></TH>
+			<TD> Sets the affine parameters in the OAM manager. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dEntryOamManagerOamWithAffineIdx.html"		target="_self" >NNS_G2dEntryOamManagerOamWithAffineIdx</A></TH>
+			<TD> Registers OBJ in the OAM manager. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dSetOamManagerAffine.html"		target="_self" >NNS_G2dSetOamManagerAffine</A></TH>
+			<TD> Sets the affine parameter with the designated index in the OAM manager. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dGetNewOamManagerInstance.html">NNS_G2dGetNewOamManagerInstance</A>(<A href="Oam/NNS_G2dGetNewManagerInstance.html">NNS_G2dGetNewManagerInstance</A>) (<A href="Oam/NNS_G2dInitManagerInstanceAffine.html">NNS_G2dInitManagerInstanceAffine</A>)</A></TH>
+			<TD> Initializes the OAM manager entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dGetNewOamManagerInstanceAsFastTransferMode.html"		target="_self" >NNS_G2dGetNewOamManagerInstanceAsFastTransferMode</A>
+			<TD> Initializes the OAM manager entity in a way that it can perform fast transfer of the buffer contents. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dGetOamManagerAffineCapacity.html"		target="_self" >NNS_G2dGetOamManagerAffineCapacity</A></TH>
+			<TD> Obtains the number of usable affine parameters of the OAM manager. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dGetOamManagerOamCapacity.html"		target="_self" >NNS_G2dGetOamManagerOamCapacity</A></TH>
+			<TD> Obtains the number of usable OBJs of the OAM manager. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dInitOamManagerModule.html"		target="_self" >NNS_G2dInitOamManagerModule</A></TH>
+			<TD> Initializes the OAM manager module. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dResetOamManagerBuffer.html"		target="_self" >NNS_G2dResetOamManagerBuffer</A></TH>
+			<TD> Resets the internal OAM buffer of the managing region of the OAM manager. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Oam/NNS_G2dSetOamManagerSpriteZoffsetStep.html"		target="_self" >NNS_G2dSetOamManagerSpriteZoffsetStep</A></TH>
+			<TD> Sets the z value added every time the software sprite is drawn. </TD>
+		</TR> 
+	</TBODY>
+</TABLE>
+
+
+<H3><A name="OamEx">Extended OAM Manager</A> <A href="OamEx/OAMEx_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="OamEx/NNS_G2dApplyOamManExToBaseModule.html"		target="_self">NNS_G2dApplyOamManExToBaseModule</A></TH>
+			<TD> Applies the contents of the extended OAM manager to the actual hardware.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamEx/NNS_G2dEntryOamManExAffine.html"		target="_self">NNS_G2dEntryOamManExAffine</A></TH>
+			<TD> Registers an affine matrix in the extended OAM manager. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamEx/NNS_G2dEntryOamManExOam.html"		target="_self">NNS_G2dEntryOamManExOam</A></TH>
+			<TD> Registers OBJs in the  extended OAM Manager and specifies the order of the entry when it is drawn. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamEx/NNS_G2dEntryOamManExOamWithAffineIdx.html"		target="_self">NNS_G2dEntryOamManExOamWithAffineIdx</A></TH>
+			<TD> Registers OBJs in the  extended OAM Manager and specifies the order of the entry when it is drawn. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamEx/NNS_G2dGetOamManExInstance.html"		target="_self">NNS_G2dGetOamManExInstance</A></TH>
+			<TD> Gets the extended OAM manager entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamEx/NNS_G2dResetOamManExBuffer.html"		target="_self">NNS_G2dResetOamManExBuffer</A></TH>
+			<TD> Resets the internal buffer which the extended OAM manager entity manages.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamEx/NNS_G2dSetOamManExEntryFunctions.html"		target="_self">NNS_G2dSetOamManExEntryFunctions</A></TH>
+			<TD> Sets the entry functions in the extended OAM manager.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamEx/NNSG2d_SetOamManExDrawOrderType.html"		target="_self">NNSG2d_SetOamManExDrawOrderType</A></TH>
+			<TD> Sets the OAM drawing order type in the extended OAM manager.</TD>
+		</TR> 
+	</TBODY>
+</TABLE>
+
+
+
+
+<H3><A name="SoftwareSprite">Software Sprite</A> <A href="SoftwareSprite/SoftwareSprite_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dSetupSoftwareSpriteCamera.html"		target="_self" >NNS_G2dSetupSoftwareSpriteCamera</A></TH>
+			<TD> Sets up the camera to be used when drawing the software sprite. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dDrawSprite.html"		target="_self" >NNS_G2dDrawSprite</A></TH>
+			<TD> Assigns each type of parameter and draws the software sprite. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dDrawSpriteXXX.html"		target="_self" >NNS_G2dDrawSprite*</A></TH>
+			<TD> Draws various types of sprite. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dDrawSpriteXXXFast.html"		target="_self" >NNS_G2dDrawSprite*Fast</A></TH>
+			<TD> Draws various types of sprite. This is a fast speed version that does not save the contents of the current matrix. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dGetSpriteDefaultAttr.html"		target="_self" >NNS_G2dGetSpriteDefaultAttr</A></TH>
+			<TD> Gets the pointer to the default value to be stored inside the module. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dIsSpriteAttrEnable.html"		target="_self" >NNS_G2dIsSpriteAttrEnable</A></TH>
+			<TD> Gets whether or not each type of draw attribute is valid when drawing the software sprite. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dSetSpriteCurrentPolygonID.html"		target="_self" >NNS_G2dSetSpriteCurrentPolygonID</A></TH>
+			<TD> Sets the polygon ID used for software sprite drawing. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dSetSpriteDefaultAttr.html"		target="_self" >NNS_G2dSetSpriteDefaultAttr</A></TH>
+			<TD> Sets the default value to store inside the module. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="SoftwareSprite/NNS_G2dSetSpriteAttrEnable.html"		target="_self" >NNS_G2dSetSpriteAttrEnable</A></TH>
+			<TD> Sets each kind of attribute that will be enabled when the software sprite is drawn. </TD>
+		</TR> 
+	</TBODY>
+</TABLE>
+
+
+
+
+<H3><A name="OAMSoftwareSpriteDraw">Drawing OAM Software Sprites</A> <A href="OamSoftEmu/OAMSoftEmu_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+    <TBODY>
+		<TR>
+			<TH width="25%"><A href="OamSoftEmu/NNS_G2dDrawOneOam3DDirect.html"		target="_self" >NNS_G2dDrawOneOam3DDirect</A></TH>
+			<TD> Directly draws a single OBJ using the 3D graphics engine without using the internal buffer. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamSoftEmu/NNS_G2dDrawOneOam3DDirectWithPos.html"		target="_self" >NNS_G2dDrawOneOam3DDirectWithPos</A></TH>
+			<TD> Draws a single OBJ by using the 3D graphics engine. The position of the OBJ can be specified. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamSoftEmu/NNS_G2dDrawOneOam3DDirectWithPosAffine.html"		target="_self" >NNS_G2dDrawOneOam3DDirectWithPosAffine</A></TH>
+			<TD> Draws a single OBJ by using the 3D graphics engine. The position of the OBJ and affine transformation matrix can be specified. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamSoftEmu/NNS_G2dDrawOneOam3DDirectXXXFast.html"		target="_self" >NNS_G2dDrawOneOam3DDirect*Fast</A></TH>
+			<TD>Draws a single OBJ by using the 3D graphics engine. The contents of the current matrix in the geometry engine are not saved before or after calling the function.</TD>
+		</TR> 
+		
+		
+		<TR>
+			<TH width="25%"><A href="OamSoftEmu/NNS_G2dSetOamSoftEmuSpriteParamCache.html"		target="_self" >NNS_G2dSetOamSoftEmuSpriteParamCache</A></TH>
+			<TD>Sets the parameter cache used for software sprite drawing.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamSoftEmu/NNS_G2dDrawOneOam3DDirectUsingParamCacheFast.html"		target="_self" >NNS_G2dDrawOneOam3DDirectUsingParamCacheFast</A></TH>
+			<TD>Sprite draws the OAM by using the parameter cache.</TD>
+		</TR> 
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="OamSoftEmu/NNS_G2dSetOamSoftEmuUVFlipCorrectFunc.html"		target="_self" >NNS_G2dSetOamSoftEmuUVFlipCorrectFunc</A></TH>
+			<TD>Sets the UV value-correction function pointer that is used for the OAM software sprite emulation.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="OamSoftEmu/NNS_G2dResetOamSoftEmuUVFlipCorrectFunc.html"		target="_self" >NNS_G2dResetOamSoftEmuUVFlipCorrectFunc</A></TH>
+			<TD>Invalidates the UV value-correction function pointer used in the OAM software sprite emulation.</TD>
+		</TR> 
+    </TBODY>
+</TABLE>
+
+
+
+
+<H3><A name="Entity">Entity</A> <A href="Entity/Entity_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dInitEntity.html"		target="_self" >NNS_G2dInitEntity</A></TH>
+			<TD> Initializes the entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dIsEntityValid.html"		target="_self" >NNS_G2dIsEntityValid</A></TH>
+			<TD> Checks the validity of the entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dIsEntityPaletteTblEnable.html"		target="_self" >NNS_G2dIsEntityPaletteTblEnable</A></TH>
+			<TD> Determines whether or not the palette conversion table of the entity is valid. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dResetEntityPaletteTable.html"		target="_self" >NNS_G2dResetEntityPaletteTable</A></TH>
+			<TD> Sets it so that the palette conversion table of the entity is not used. </TD>
+		</TR> 
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dGetEntityAnimCtrl.html"		target="_self" >NNS_G2dGetEntityAnimCtrl</A></TH>
+			<TD> Obtains the animation controller held in the entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dSetEntityCurrentAnimation.html"		target="_self" >NNS_G2dSetEntityCurrentAnimation</A></TH>
+			<TD> Sets the playback animation of the entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dSetEntityCurrentFrame.html"		target="_self" >NNS_G2dSetEntityCurrentFrame</A></TH>
+			<TD> Sets the current playback frame of the entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dSetEntityPaletteTable.html"		target="_self" >NNS_G2dSetEntityPaletteTable</A></TH>
+			<TD> Sets the palette conversion table in the entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dSetEntitySpeed.html"		target="_self" >NNS_G2dSetEntitySpeed</A></TH>
+			<TD> Sets the entity animation speed. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Entity/NNS_G2dTickEntity.html"		target="_self" >NNS_G2dTickEntity</A></TH>
+			<TD> Updates the animation of the entity. </TD>
+		</TR> 
+	</TBODY>
+</TABLE>
+
+
+
+
+<H3><A name="ImageLoad">Image Load-Related</A> <A href="Image/ImageProxy_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+    <TBODY>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dInitImageProxy.html" target="_self">NNS_G2dInitImageProxy</A></TH>
+			<TD>Initializes the image proxy.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dInitImagePaletteProxy.html" target="_self">NNS_G2dInitImagePaletteProxy</A></TH>
+			<TD>Initializes the image palette proxy.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dLoadImage1DMapping.html" target="_self" >NNS_G2dLoadImage1DMapping</A></TH>
+			<TD>Loads the image data to the hardware, then sets the load result and the image format to the image proxy (Exclusively for 1D mapping).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dLoadImage2DMapping.html" target="_self" >NNS_G2dLoadImage2DMapping</A></TH>
+			<TD>Loads the image data to the hardware, then sets the load result and the image format to the image proxy (Exclusively for 2D mapping).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dLoadImageVramTransfer.html" target="_self" >NNS_G2dLoadImageVramTransfer</A></TH>
+			<TD>Loads the image data to the hardware, then sets the load result and the image format to the image proxy (exclusively for VRAM transfer data).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dLoadPalette.html" target="_self">NNS_G2dLoadPalette</A></TH>
+			<TD>Loads the image palette data to the hardware, then sets the load results and the image format to the image palette proxy.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dLoadPaletteEx.html" target="_self">NNS_G2dLoadPaletteEx</A></TH>
+			<TD>Loads the compressed image palette data to the hardware, and sets the load results and the image format to the image palette proxy.</TD>
+		</TR>
+		
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dIsImageReadyToUse.html" target="_self">NNS_G2dIsImageReadyToUse</A></TH>
+			<TD>Determines whether or not the image proxy is in a usable state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dIsImagePaletteReadyToUse.html" target="_self">NNS_G2dIsImagePaletteReadyToUse</A></TH>
+			<TD>Determines whether or not the image palette proxy is in a usable state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dSetImageExtPaletteFlag.html" target="_self">NNS_G2dSetImageExtPaletteFlag</A></TH>
+			<TD>Sets the usage conditions of the extended palette in the image proxy.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dSetImageLocation.html" target="_self">NNS_G2dSetImageLocation</A></TH>
+			<TD>Sets the VRAM address to the image proxy.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dGetImageLocation.html" target="_self">NNS_G2dGetImageLocation</A></TH>
+			<TD>Gets the VRAM address from an image proxy.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dSetImagePaletteLocation.html" target="_self">NNS_G2dSetImagePaletteLocation</A></TH>
+			<TD>Sets the VRAM address to the image palette proxy.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Image/NNS_G2dGetImagePaletteLocation.html" target="_self">NNS_G2dGetImagePaletteLocation</A></TH>
+			<TD>Gets the VRAM address from an image palette proxy.</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+
+
+
+<H3><A name="CellTransfer">Cell VRAM Transfer State Manager</A> <A href="CellTransfer/CellTransfer_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="CellTransfer/NNS_G2dInitCellTransferStateManager.html"	 target="_self">NNS_G2dInitCellTransferStateManager</A></TH>
+			<TD>Initializes the cell VRAM transfer state object manager.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CellTransfer/NNS_G2dGetNewCellTransferStateHandle.html" target="_self">NNS_G2dGetNewCellTransferStateHandle</A></TH>
+			<TD>Obtains the handle for the cell VRAM transfer state object.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CellTransfer/NNS_G2dFreeCellTransferStateHandle.html"	 target="_self">NNS_G2dFreeCellTransferStateHandle</A></TH>
+			<TD>Returns the handle for the cell VRAM transfer state object.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CellTransfer/NNS_G2dSetCellTransferStateRequested.html"target="_self">NNS_G2dSetCellTransferStateRequested</A></TH>
+			<TD>Sets the cell VRAM transfer state object to the VRAM transfer request state.</TD>
+		</TR>	
+		<TR>
+			<TH width="25%"><A href="CellTransfer/NNS_G2dUpdateCellTransferStateManager.html"target="_self">NNS_G2dUpdateCellTransferStateManager</A></TH>
+			<TD>Updates the cell VRAM transfer state object manager.</TD>
+		</TR>	
+	</TBODY>
+</TABLE>
+
+
+
+
+<H3><A name="Renderer">Renderer</A> <A href="Renderer/Renderer_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+	    <TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dInitRenderer.html"		target="_self" >NNS_G2dInitRenderer</A></TH>
+			<TD> Initializes the renderer entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dAddRendererTargetSurface.html"		target="_self" >NNS_G2dAddRendererTargetSurface</A></TH>
+			<TD> Registers a render surface to the renderer entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dOptimizeRenderer.html"		target="_self" ><S>NNS_G2dOptimizeRenderer</S></A></TH>
+			<TD>Optimizes the renderer according to the current renderer state. (Eliminated.)</TD>
+		</TR> 
+		
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dBeginRendering.html"		target="_self" >NNS_G2dBeginRendering</A></TH>
+			<TD> Performs settings for the renderer before drawing. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dBeginRenderingEx.html"		target="_self" >NNS_G2dBeginRenderingEx</A></TH>
+			<TD> Performs settings for the renderer before drawing. The hint flag information for optimization can be specified. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dEndRendering.html"		target="_self" >NNS_G2dEndRendering</A></TH>
+			<TD> Call after the renderer drawing. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dDrawCell.html"		target="_self" >NNS_G2dDrawCell</A></TH>
+			<TD> Draws the cell data. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dDrawCellAnimation.html"		target="_self" >NNS_G2dDrawCellAnimation</A></TH>
+			<TD> Draws the cell animation entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dDrawEntity.html"		target="_self" >NNS_G2dDrawEntity</A></TH>
+			<TD> Draws the entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dDrawMultiCell.html"		target="_self" >NNS_G2dDrawMultiCell</A></TH>
+			<TD> Draws the multicell entity. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dDrawMultiCellAnimation.html"		target="_self" >NNS_G2dDrawMultiCellAnimation</A></TH>
+			<TD> Draws the multicell animation. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dGetRendererPaletteTbl.html"		target="_self" >NNS_G2dGetRendererPaletteTbl</A></TH>
+			<TD> Gets the palette conversion table. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dInitRenderSurface.html"		target="_self" >NNS_G2dInitRenderSurface</A></TH>
+			<TD> Initializes the render surface. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dPopMtx.html"		target="_self" >NNS_G2dPopMtx</A></TH>
+			<TD> Pops the renderer internal matrix stack. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dPushMtx.html"		target="_self" >NNS_G2dPushMtx</A></TH>
+			<TD> Pushes the renderer internal matrix stack. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dResetRendererPaletteTbl.html"		target="_self" >NNS_G2dResetRendererPaletteTbl</A></TH>
+			<TD> Sets it so that the palette conversion table is not used. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dTranslate.html"		target="_self" >NNS_G2dTranslate</A></TH>
+			<TD> Multiplies the current matrix of the renderer internal matrix stack by the translation matrix. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetTrans.html"		target="_self" >NNS_G2dSetTrans</A></TH>
+			<TD> Sets the translation matrix to the current matrix of the matrix stack inside the renderer. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dRotZ.html"		target="_self" >NNS_G2dRotZ</A></TH>
+			<TD> Multiplies the Z-axis rotation matrix by the current matrix of the renderer's internal matrix stack. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dScale.html"		target="_self" >NNS_G2dScale</A></TH>
+			<TD> Multiplies the scale matrix by the current matrix of the renderer's internal matrix stack. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetRendererFlipMode.html"		target="_self" >NNS_G2dSetRendererFlipMode</A></TH>
+			<TD> Sets the renderer to execute a flip drawing. </TD>
+		</TR> 
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetRendererSurfaceActiveFlag.html"		target="_self" >NNS_G2dSetRendererSurfaceActiveFlag</A></TH>
+			<TD> Sets the active status of the render surface. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dGetRendererSurfaceActiveFlag.html"		target="_self" >NNS_G2dGetRendererSurfaceActiveFlag</A></TH>
+			<TD> Obtains the active status of the render surface. </TD>
+		</TR> 
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetRendererAffineOverwriteMode.html"		target="_self" >NNS_G2dSetRendererAffineOverwriteMode</A></TH>
+			<TD> Sets the overwrite method for the OBJ's affine transformation mode that is executed by the renderer when using the 2D graphics engine. </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dGetRendererAffineOverwriteMode.html"		target="_self" >NNS_G2dGetRendererAffineOverwriteMode</A></TH>
+			<TD> Gets the overwrite method for the OBJ's affine transformation mode that is executed by the renderer when using the 2D graphics engine. </TD>
+		</TR> 
+		
+		
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetRendererImageProxy.html"		target="_self" >NNS_G2dSetRendererImageProxy</A></TH>
+			<TD> Sets the image data that the renderer uses. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetRendererPaletteTbl.html"		target="_self" >NNS_G2dSetRendererPaletteTbl</A></TH>
+			<TD> Sets the palette conversion table. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetRendererSpriteZoffset.html"		target="_self" >NNS_G2dSetRendererSpriteZoffset</A></TH>
+			<TD> Sets the z value added every time the software sprite is drawn. </TD>
+		</TR> 
+		
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetRendererOverwriteEnable.html"		target="_self" >NNS_G2dSetRendererOverwriteEnable/Disable</A></TH>
+			<TD> Sets the OAM parameter for the renderer to execute overwrite. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dSetRendererOverwriteXXX.html"		target="_self" >NNS_G2dSetRendererOverwrite*</A></TH>
+			<TD> Sets the parameter value used for overwriting the OAM that was drawn by the renderer.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Renderer/NNS_G2dGetRendererOverwriteXXX.html"		target="_self" >NNS_G2dGetRendererOverwrite*</A></TH>
+			<TD> Obtains the parameter value that is used for overwriting the OAM that was drawn by the renderer. </TD>
+		</TR> 
+		
+	</TBODY>
+</TABLE>
+
+<H3><A name="RendererCore">Renderer Core</A> <A href="RendererCore/RendererCore_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+	    <TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dInitRndCore.html"		target="_self" >NNS_G2dInitRndCore</A></TH>
+			<TD>Initializes the renderer core module.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dInitRndCoreSurface.html"		target="_self" >NNS_G2dInitRndCoreSurface</A></TH>
+			<TD>Initializes the renderer core drawing target surface.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dInitRndCore2DMtxCache.html"		target="_self" >NNS_G2dInitRndCore2DMtxCache</A></TH>
+			<TD>Initializes the matrix cache.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCore2DMtxCacheMtxParams.html"		target="_self" >NNS_G2dSetRndCore2DMtxCacheMtxParams</A></TH>
+			<TD>Sets matrix to the matrix cache.</TD>
+		</TR> 
+		
+		
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCoreCurrentMtx2D.html"		target="_self" >NNS_G2dSetRndCoreCurrentMtx2D</A></TH>
+			<TD>Sets the transformation matrix and affine transformation parameter applied to OBJ when drawing with 2D graphics engine.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCoreCurrentMtx3D.html"		target="_self" >NNS_G2dSetRndCoreCurrentMtx3D</A></TH>
+			<TD>Sets the affine transformation matrix to the renderer core when drawing with 3D graphics engine.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dIsRndCoreFlipXXX.html"		target="_self" >NNS_G2dIsRndCoreFlip*</A></TH>
+			<TD>Obtains the drawing flip state of the renderer core.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCoreFlipMode.html"		target="_self" >NNS_G2dSetRndCoreFlipMode</A></TH>
+			<TD>Sets the drawing flip state of the renderer core.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCoreImageProxy.html"		target="_self" >NNS_G2dSetRndCoreImageProxy</A></TH>
+			<TD>Sets the image proxy which the renderer core module references when drawing.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCoreOamRegisterFunc.html"		target="_self" >NNS_G2dSetRndCoreOamRegisterFunc</A></TH>
+			<TD>Sets the function pointer groups used when the renderer core module registers the OAM that represents the drawing OBJ to the external module. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCoreSurface.html"		target="_self" >NNS_G2dSetRndCoreSurface</A></TH>
+			<TD>Sets the drawing target surface to the renderer core.  </TD>
+		</TR> 
+		
+		
+		
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dRndCoreBeginRendering.html"		target="_self" >NNS_G2dRndCoreBeginRendering</A></TH>
+			<TD>Starts drawing with renderer core.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dRndCoreEndRendering.html"		target="_self" >NNS_G2dRndCoreEndRendering</A></TH>
+			<TD>Ends the drawing with renderer core.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dRndCoreDrawCell.html"		target="_self" >NNS_G2dRndCoreDrawCell</A></TH>
+			<TD>Draws a cell.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dRndCoreDrawCellFast2D.html"		target="_self" >NNS_G2dRndCoreDrawCellFast2D</A></TH>
+			<TD>Draws the cell quickly by using 2D graphics engine (OBJ functionality).  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCoreCellCloneSource3D.html"		target="_self" >NNS_G2dSetRndCoreCellCloneSource3D</A></TH>
+			<TD>Precalculates the UV parameters that are references by <code>NNS_G2dRndCoreDrawCellClone3D</code> and saves as UV parameter cache.</TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dRndCoreDrawCellClone3D.html"		target="_self" >NNS_G2dRndCoreDrawCellClone3D</A></TH>
+			<TD>Draws a cell that consists of OBJs with the same image data quickly by using software sprite.  </TD>
+		</TR> 
+		
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCore3DSoftSpriteZvalue.html"		target="_self" >NNS_G2dSetRndCore3DSoftSpriteZvalue</A></TH>
+			<TD>Sets the Z value of the sprite used for software sprite drawing.  </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="RendererCore/NNS_G2dSetRndCoreAffineOverwriteMode.html"		target="_self" >NNS_G2dSetRndCoreAffineOverwriteMode</A></TH>
+			<TD>Sets the overwrite operation of affine transformation mode.  </TD>
+		</TR> 
+		
+	</TBODY>
+</TABLE>
+
+
+
+<H3><A name="BG">BG</A> <A href="Bg\BG_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="Bg/NNS_G2dBGSetupXXX.html"			target="_self" >NNS_G2dBGSetup</A></TH>
+			<TD> Sets BG settings and loads the BG data to VRAM. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Bg/NNS_G2dBGSetupXXX.html"			target="_self" >NNS_G2dBGSetupEx</A></TH>
+			<TD> Configures BG and loads the BG data to VRAM. Compressed palettes and partial characters can be used. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Bg/NNS_G2dBGLoadElementsXXX.html"		target="_self" >NNS_G2dBGLoadElements</A></TH>
+			<TD> Loads the graphics data used for BG to an appropriate VRAM. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Bg/NNS_G2dBGLoadElementsXXX.html"		target="_self" >NNS_G2dBGLoadElementsEx</A></TH>
+			<TD> Loads the graphics data used for BG to the appropriate VRAM. Compressed palettes and partial characters can be used. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Bg/NNS_G2dBGLoadScreenRect.html"		target="_self" >NNS_G2dBGLoadScreenRect</A></TH>
+			<TD> Loads the specified rectangular box from the screen data. </TD>
+		</TR> 
+
+		<TR>
+			<TH width="25%"><A href="Bg/NNS_G2dSetBGAreaOver.html"		target="_self" >NNS_G2dSetBGAreaOver</A></TH>
+			<TD> Sets the out-of-area process specification used by <code>NNS_G2dBGSetup</code>. </TD>
+		</TR> 
+		<TR>
+			<TH width="25%"><A href="Bg/NNS_G2dGetBGAreaOver.html"		target="_self" >NNS_G2dGetBGAreaOver</A></TH>
+			<TD> Obtains the out-of-area process specification used by <code>NNS_G2dBGSetup</code>. </TD>
+		</TR> 
+	</TBODY>
+</TABLE>
+
+
+
+<H3><A name="Font">Font</A> <A href="Font/Font_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontInitAuto.html" target="_self" >NNS_G2dFontInitAuto</A></TH>
+			<TD> Creates the font, automatically determining the correct encoding. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontInitXXX.html" target="_self" >NNS_G2dFontInitUTF8</A></TH>
+			<TD> Creates a font using UTF8 encoding. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontInitXXX.html" target="_self" >NNS_G2dFontInitUTF16</A></TH>
+			<TD> Creates a font using UTF16 encoding. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontInitXXX.html" target="_self" >NNS_G2dFontInitShiftJIS</A></TH>
+			<TD> Creates a font using ShiftJIS encoding. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontInitXXX.html" target="_self" >NNS_G2dFontInitCP1252</A></TH>
+			<TD> Creates a font using Windows code page 1252 encoding. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetType.html" target="_self" >NNS_G2dFontGetType</A></TH>
+			<TD>Gets the font type. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetHeight.html" target="_self" >NNS_G2dFontGetHeight</A></TH>
+			<TD>Gets the font height. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetCellHeight.html" target="_self" >NNS_G2dFontGetCellHeight</A></TH>
+			<TD>Gets the height of the glyph image storage area. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetCellWidth.html" target="_self" >NNS_G2dFontGetCellWidth</A></TH>
+			<TD>Gets the width of the glyph image storage area. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetBpp.html" target="_self" >NNS_G2dFontGetBpp</A></TH>
+			<TD> Gets the bit count per dot of the glyph image. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetBaselinePos.html" target="_self" >NNS_G2dFontGetBaselinePos</A></TH>
+			<TD> Gets the baseline position seen from the top of the glyph image. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetMaxCharWidth.html" target="_self" >NNS_G2dFontGetMaxCharWidth</A></TH>
+			<TD>Gets the maximum width of characters included in the font. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetLineFeed.html" target="_self" >NNS_G2dFontGetLineFeed</A></TH>
+			<TD> Gets the line feed width of the font. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontSetLineFeed.html" target="_self" >NNS_G2dFontSetLineFeed</A></TH>
+			<TD> Sets the line feed width of the font. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetDefaultCharWidths.html" target="_self" >NNS_G2dFontGetDefaultCharWidths</A></TH>
+			<TD> Gets the font's default character width information. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontSetDefaultCharWidths.html" target="_self" >NNS_G2dFontSetDefaultCharWidths</A></TH>
+			<TD> Sets the font's default character width information. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetAlternateGlyphIndex.html" target="_self" >NNS_G2dFontGetAlternateGlyphIndex</A></TH>
+			<TD> Gets the alternative character glyph index used with the font. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontSetAlternateGlyphIndex.html" target="_self" >NNS_G2dFontSetAlternateGlyphIndex</A></TH>
+			<TD> Sets the alternative character glyph index used with the font. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontSetAlternateChar.html" target="_self" >NNS_G2dFontSetAlternateChar</A></TH>
+			<TD> Uses a character code to set the alternative character glyph index used with the font. </TD>
+		</TR>
+
+
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetGlyph.html" target="_self" >NNS_G2dFontGetGlyph</A></TH>
+			<TD> Gets the glyph data from the character code. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetGlyphImage.html" target="_self" >NNS_G2dFontGetGlyphImage</A></TH>
+			<TD> Gets the glyph image from the character code. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetCharWidth.html" target="_self" >NNS_G2dFontGetCharWidth</A></TH>
+			<TD> Gets the character width from the character code. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetCharWidths.html" target="_self" >NNS_G2dFontGetCharWidths</A></TH>
+			<TD> Gets the character width information from the character code. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontFindGlyphIndex.html" target="_self" >NNS_G2dFontFindGlyphIndex</A></TH>
+			<TD> Finds the glyph index from the character code. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetGlyphIndex.html" target="_self" >NNS_G2dFontGetGlyphIndex</A></TH>
+			<TD> Gets the glyph index from the character code. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetGlyphImageFromIndex.html" target="_self" >NNS_G2dFontGetGlyphImageFromIndex</A></TH>
+			<TD> Gets the glyph image from the glyph index. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetGlyphFromIndex.html" target="_self" >NNS_G2dFontGetGlyphFromIndex</A></TH>
+			<TD> Gets the glyph data from the glyph index. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetCharWidthFromIndex.html" target="_self" >NNS_G2dFontGetCharWidthFromIndex</A></TH>
+			<TD> Gets the character width from the glyph index. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetCharWidthsFromIndex.html" target="_self" >NNS_G2dFontGetCharWidthsFromIndex</A></TH>
+			<TD> Gets the character width information from the glyph index. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetStringWidth.html" target="_self" >NNS_G2dFontGetStringWidth</A></TH>
+			<TD> Calculates the drawing width for one line of the text string. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetTextWidth.html" target="_self" >NNS_G2dFontGetTextWidth</A></TH>
+			<TD> Calculates the width when the text string is drawn. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetTextHeight.html" target="_self" >NNS_G2dFontGetTextHeight</A></TH>
+			<TD> Calculates the height when the text string is drawn. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNS_G2dFontGetTextRect.html" target="_self" >NNS_G2dFontGetTextRect</A></TH>
+			<TD> Calculates the width and height when the text string is drawn. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="Font/NNSG2dCharWidths.html" target="_self" >NNSG2dCharWidths</A></TH>
+			<TD> Stores the glyph width information.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNSG2dGlyph.html" target="_self" >NNSG2dGlyph</A></TH>
+			<TD> Stores the data belonging to the glyph. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="Font/NNSG2dTextRect.html" target="_self" >NNSG2dTextRect</A></TH>
+			<TD> Displays the rectangle size. </TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<H3><A name="CharCanvas">Text Character Drawing</A> <A href="CharCanvas/CharCanvas_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasInitForBG.html" target="_self" >NNS_G2dCharCanvasInitForBG</A></TH>
+			<TD> Creates a CharCanvas for BG use. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasInitForOBJ1D.html" target="_self" >NNS_G2dCharCanvasInitForOBJ1D</A></TH>
+			<TD> Creates a CharCanvas for use with 1D mapping OBJ. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasInitForOBJ2DRect.html" target="_self" >NNS_G2dCharCanvasInitForOBJ2DRect</A></TH>
+			<TD> Creates a CharCanvas for use as a rectangle area in OBJ character memory. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasCalcCellDataSizeXXX.html" target="_self" >NNS_G2dCharCanvasCalcCellDataSize1D</A></TH>
+			<TD> Calculates the buffer size passed as the first argument of <CODE>NNS_G2dCharCanvasMakeCell1D()</CODE>. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasCalcCellDataSizeXXX.html" target="_self" >NNS_G2dCharCanvasCalcCellDataSize2DRect</A></TH>
+			<TD> Calculates the buffer size passed as the first argument of <CODE>NNS_G2dCharCanvasMakeCell2DRect()</CODE>. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasMakeCellXXX.html" target="_self" >NNS_G2dCharCanvasMakeCell1D</A></TH>
+			<TD> Constructs the cell that displays the CharCanvas that <CODE>NNS_G2dCharCanvasInitForOBJ1D() initializes</CODE>. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasMakeCellXXX.html" target="_self" >NNS_G2dCharCanvasMakeCell2DRect</A></TH>
+			<TD> Constructs the cell that displays the CharCanvas that <CODE>NNS_G2dCharCanvasInitForOBJ2DRect()</CODE> initializes. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasDrawChar.html" target="_self" >NNS_G2dCharCanvasDrawChar</A></TH>
+			<TD> Draws the character specified by the character code. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasDrawGlyph.html" target="_self" >NNS_G2dCharCanvasDrawGlyph</A></TH>
+			<TD> Draws the character specified by the glyph. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasClear.html" target="_self" >NNS_G2dCharCanvasClear</A></TH>
+			<TD> Paints the character on the CharCanvas with the specified color. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCharCanvasClearArea.html" target="_self" >NNS_G2dCharCanvasClearArea</A></TH>
+			<TD> Paints the specified area on the CharCanvas with the specified color. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dMapScrToCharText.html" target="_self" >NNS_G2dMapScrToCharText</A></TH>
+			<TD> Maps the specified area of the screen to the characters. For text BG use. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dMapScrToCharAffine.html" target="_self" >NNS_G2dMapScrToCharAffine</A></TH>
+			<TD> Maps the specified area of the screen to the characters. For affine BG use. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dMapScrToChar256x16Pltt.html" target="_self" >NNS_G2dMapScrToChar256x16Pltt</A></TH>
+			<TD> Maps the specified area of the screen to the characters. For use with Affine Extended BG 256x16 palette types. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCalcRequiredOBJXXX.html" target="_self" >NNS_G2dCalcRequireOBJ1D</A></TH>
+			<TD> Determines the number of OBJs needed for <CODE>NNS_G2dArrangeOBJ1D</CODE>. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dCalcRequiredOBJXXX.html" target="_self" >NNS_G2dCalcRequireOBJ2DRect</A></TH>
+			<TD> Determines the number of OBJs needed for <CODE>NNS_G2dArrangeOBJ2DRect</CODE>. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dArrangeOBJXXX.html" target="_self" >NNS_G2dArrangeOBJ1D</A></TH>
+			<TD> Arranges OBJs so that the characters written by the CharCanvas that was initialized with <CODE>NNS_G2dCharCanvasInitForOBJ1D</CODE> are displayed correctly. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/NNS_G2dArrangeOBJXXX.html" target="_self" >NNS_G2dArrangeOBJ2DRect</A></TH>
+			<TD> Arranges OBJs so that the characters written by the CharCanvas that was initialized with <CODE>NNS_G2dCharCanvasInitForOBJ2DRect</CODE> are displayed correctly. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="CharCanvas/RequiredOBJTable.html" target="_self" ><A href="CharCanvas/RequiredOBJTable.html">NNS_G2dCalcRequireOBJ* <font style="arial">Calculation Results Table</font></A></A></TH>
+			<TD> Displays the number of OBJs required by <CODE>NNS_G2dArrangeOBJ*</CODE> in a table. </TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<H3><A name="TextCanvas">Text String Drawing</A> <A href="TextCanvas/TextCanvas_Overview.html">(Overview)</A>
+</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasInit.html" target="_self" >NNS_G2dTextCanvasInit</A></TH>
+			<TD> Creates TextCanvas. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasGetCharCanvas.html" target="_self" >NNS_G2dTextCanvasGetCharCanvas</A></TH>
+			<TD> Sets the CharCanvas used for drawing by TextCanvas. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasSetCharCanvas.html" target="_self" >NNS_G2dTextCanvasSetCharCanvas</A></TH>
+			<TD> Sets the CharCanvas used for drawing by TextCanvas. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasGetFont.html" target="_self" >NNS_G2dTextCanvasGetFont</A></TH>
+			<TD> Sets the font used by TextCanvas for text drawing. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasSetFont.html" target="_self" >NNS_G2dTextCanvasSetFont</A></TH>
+			<TD> Sets the font used by TextCanvas for text drawing. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasGetHSpace.html" target="_self" >NNS_G2dTextCanvasGetHSpace</A></TH>
+			<TD> Sets the character space used by TextCanvas during text string drawing. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasSetHSpace.html" target="_self" >NNS_G2dTextCanvasSetHSpace</A></TH>
+			<TD> Sets the character space used by TextCanvas during text string drawing. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasGetVSpace.html" target="_self" >NNS_G2dTextCanvasGetVSpace</A></TH>
+			<TD> Sets the line space used by TextCanvas during text string drawing. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasSetVSpace.html" target="_self" >NNS_G2dTextCanvasSetVSpace</A></TH>
+			<TD> Sets the line space used by TextCanvas during text string drawing. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasGetStringWidth.html" target="_self" >NNS_G2dTextCanvasGetStringWidth</A></TH>
+			<TD> Calculates the drawing width for one line of the text string. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasGetTextWidth.html" target="_self" >NNS_G2dTextCanvasGetTextWidth</A></TH>
+			<TD> Calculates the width when the text string is drawn. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasGetTextHeight.html" target="_self" >NNS_G2dTextCanvasGetTextHeight</A></TH>
+			<TD> Calculates the height when the text string is drawn. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasGetTextRect.html" target="_self" >NNS_G2dTextCanvasGetTextRect</A></TH>
+			<TD> Calculates the width and height when the text string is drawn. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasDrawString.html" target="_self" >NNS_G2dTextCanvasDrawString</A></TH>
+			<TD> Draws one line of the text string. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasDrawText.html" target="_self" >NNS_G2dTextCanvasDrawText</A></TH>
+			<TD> Draws the text string. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasDrawTextRect.html" target="_self" >NNS_G2dTextCanvasDrawTextRect</A></TH>
+			<TD> Draws the text string aligned with the rectangle. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2dTextCanvasDrawTaggedText.html" target="_self" >NNS_G2dTextCanvasDrawTaggedText</A></TH>
+			<TD> Draws the text string including text format commands. </TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNSG2dTagCallback.html" target="_self" >NNSG2dTagCallback</A></TH>
+			<TD> Defines the callback function that performs tag processing. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNSG2dTagCallbackInfo.html" target="_self" >NNSG2dTagCallbackInfo</A></TH>
+			<TD> Structure holding drawing information passed to <CODE>NNSG2dTagCallback</CODE>. </TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="TextCanvas/NNS_G2D_UNICODE.html" target="_self" >NNS_G2D_UNICODE</A></TH>
+			<TD> Switches the text type for text string drawing routines. </TD>
+		</TR>
+	</TBODY>
+</TABLE>
+</BODY>
+</HTML>

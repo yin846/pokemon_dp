@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRCResampleMethod</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRCResampleMethod</h1>
+<h2>Definitions</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+typedef enum PRCResampleMethod
+{
+PRC_RESAMPLE_METHOD_NONE = 0,
+PRC_RESAMPLE_METHOD_DISTANCE,
+PRC_RESAMPLE_METHOD_ANGLE,
+PRC_RESAMPLE_METHOD_RECURSIVE,
+} PRCResampleMethod;
+</CODE></PRE></dd>
+</dl>
+
+<h2>Elements</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">PRC_RESAMPLE_METHOD_NONE</FONT></STRONG></EM></TD>
+<TD width="87%">No resampling.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">PRC_RESAMPLE_METHOD_DISTANCE</FONT></STRONG></EM></TD>
+<TD width="87%">Use the next point if the city block distance exceeds the threshold.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">PRC_RESAMPLE_METHOD_ANGLE</FONT></STRONG></EM></TD>
+<TD width="87%">If the angle differs from the line previously used by at least <CODE>threshold</CODE>, the next point will be used. The angle is in units of 2&pi;/65536 radians.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">PRC_RESAMPLE_METHOD_RECURSIVE</FONT></STRONG></EM></TD>
+<TD width="87%">Recursively processes so the points are used that cause all of the points before resampling to be distant from the line segments after resampling by no more than <CODE>threshold</CODE>.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<H2>Description</H2>
+<P>This enumerated type is contained in <CODE><A href="PRCInputPatternParam.html">PRCInputPatternParam</A></CODE> in the <CODE><A href="PRC_InitInputPattern.html">PRC_InitInputPatternEx</A></CODE> function.</P>
+<P>If raw input strokes are used as-is, there will be too many points, and an unsteady hand will cause much additional noise. Therefore a resampling process that keeps only the characteristic points is required. This enumerated type is for specifying the algorithm that is used to resample.</P>
+<dl>
+<dt>PRC_RESAMPLE_METHOD_NONE</dt>
+<dd>No resampling will be done. Only consecutive identical coordinate values will be removed. <BR> This is the quickest resampling method. However, because there is no removal of points targeted for resampling, overall processing slows down.</dd>
+<dt>PRC_RESAMPLE_METHOD_DISTANCE</dt>
+<dd>First this method uses the start point of each image. Then, after a total transverse distance exceeds a <CODE>threshold</CODE>, it uses the next point. Additionally it always uses each final image point. It does not use normal Euclidean distances, but instead uses city block distance (logical sum of the x coordinate difference and the y coordinate difference).<BR>Although processing speed is fast, it tends to not be very good at extracting characteristic points.</dd>
+<dt>PRC_RESAMPLE_METHOD_ANGLE</dt>
+<dd>First this method uses the start point of each image. Then it remembers the drawing direction as the &quot;previous direction&quot;. Next, it sequentially traces the line segments in the image. Whenever the angle deviates from the &quot;previous direction&quot; by at least the threshold, it uses that line segment's start point and remembers the direction of that segment as the &quot;previous direction.&quot; It then repeats the process. Additionally it always uses each final image point.<BR>It uses <CODE><A href="../../fx/FX_Atan2Idx.html">FX_Atan2Idx</A></CODE> to calculate the angle at each input point. Therefore the threshold is expressed using a <CODE>u16</CODE> range for a complete circle (for example, a right angle is 16384). Processing speed is in the mid range.</dd>
+<dt>PRC_RESAMPLE_METHOD_RECURSIVE</dt>
+<dd>It first uses the image's start and stop point, as point A and point B respectively. Next, for all of the points between A and B it seeks the distance from the points to the straight line that connects A and B, and obtains as point C the one having the largest distance. If this distance is at least as long as the <CODE>threshold</CODE>, it uses the point. If the distance is less, it discards the point. If point C is used, it then creates two new pairs of A and B points from the A-C pair and the C-B pair. It then recursively repeats the above process.<br>The calculation for the distances between a line segment and a point will be completed in a few integrations. However in a worst case, the distance calculation for each image could be in the order of the square of the number of points that constitute the image, which could become extremely slow. However, normally it will complete in a number that is several times the number of dots that constitute an image. Furthermore, compared to other resampling algorithms there will be fewer dots and better characteristics will be obtained.</dd>
+</dl>
+<P>For details on resampling algorithms see <CODE>docs/TechnicalNotes/PatternRecognition.pdf</CODE>.</P>
+<h2>See Also</h2>
+<p><CODE><A href="PRCInputPatternParam.html">PRCInputPatternParam</A>, <A href="PRC_InitInputPattern.html">PRC_InitInputPattern*</A>, <A href="PRC_ResampleStrokes.html">PRC_ResampleStrokes*</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>02/18/2005 Revised file name of reference document.<br /> 06/23/2004 Initial Version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

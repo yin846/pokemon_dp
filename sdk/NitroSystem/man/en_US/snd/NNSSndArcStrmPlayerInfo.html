@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNSSndArcStrmPlayerInfo</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNSSndArcStrmPlayerInfo</h1>
+<h2>Definition</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef struct NNSSndArcStrmPlayerInfo
+{
+u8 numChannels;
+u8 chNoList[ 2 ];
+} NNSSndArcStrmPlayerInfo;
+</code></pre></dd>
+<dd><pre class="funcprototype"></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAPLWT"></a>
+<h2>Elements</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>numChannels</code></strong></em></td>
+<td>The number of channels that the player uses.</td>
+</tr>
+<tr>
+<td><em><strong><code>chNoList</code></strong></em></td>
+<td>A channel number list of the channels that are used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFMWT"></a>
+<h2>Description</h2>
+      <p>
+This is a stream player information structure that is in the sound archive. 
+</p>
+      <p>
+You can acquire this structure from the sound archive with the <a href="NNS_SndArcGetStrmPlayerInfo.html"><code>NNS_SndArcGetStrmPlayerInfo</code></a> function.
+</p>
+      <p>
+The stream player setup is based on the information that is in the <a href="NNS_SndArcStrmInit.html"><code>NNS_SndArcStrmInit</code></a> function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndArcGetStrmPlayerInfo.html"><code>NNS_SndArcGetStrmPlayerInfo</code></a>, <a href="NNS_SndArcStrmInit.html"><code>NNS_SndArcStrmInit</code></a></p>
+<h2>Revision History</h2>
+<p>08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

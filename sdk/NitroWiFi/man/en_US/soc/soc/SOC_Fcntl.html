@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Fcntl</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Fcntl</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define SOC_F_GETFL 3
+#define SOC_F_SETFL 4
+#define SOC_O_NONBLOCK 0x04</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Fcntl( int <em><strong>s</strong></em>, int <em><strong>cmd</strong></em>, int <em><strong>mode</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>s</strong></em></code></td>
+<td>Socket descriptor. </td>
+  </tr>
+  <tr>
+<td><code><em><strong>cmd</strong></em></code></td>
+<td>Command (<code>SOC_F_*</code>).</td>
+  </tr>
+  <tr>
+<td><code><em><strong>mode</strong></em></code></td>
+<td>Value to be set or read. </td>
+  </tr>
+  </table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>0 or higher</td>
+<td>Successful.</td>
+  </tr>
+  <tr>
+    <td>-1</td>
+<td>Error.</td>
+  </tr>
+  </table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Please treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p>This function performs the following operations on the opened socket descriptor.</p>
+<table width="100%">
+  <tr>
+<th><strong>Commands</strong></th>
+<th><strong>Arguments</strong></th>
+<th><strong>Types</strong></th>
+<th><strong>Description</strong></th>
+  </tr>
+  <tr>
+<td><code>SOC_F_GETFL</code></td>
+<td><em>None</em></td>
+    <td> </td>
+<td>Gets the socket descriptor's flag.</td>
+  </tr>
+  <tr>
+<td><code>SOC_F_SETFL</code></td>
+<td> Logical sum of the <code>SOC_O_*</code> flag</td>
+<td><code>int</code></td>
+<td>Sets the socket descriptor's flag.</td>
+  </tr>
+  </table>
+<p>To set the socket descriptor to non-blocked mode, use the following code.</p>
+<dl>
+  <dd>
+<pre><code>val = SOC_Fcntl(s, SOC_F_GETFL, 0);
+SOC_Fcntl(s, SOC_F_SETFL, val | SOC_O_NONBLOCK);</code></pre>
+  </dd>
+</dl>
+<p>To return the socket descriptor to blocked mode, use the following code.</p>
+<dl>
+  <dd>
+<pre><code>val = SOC_Fcntl(s, SOC_F_GETFL, 0);
+SOC_Fcntl(s, SOC_F_SETFL, val &amp; ~SOC_O_NONBLOCK);</code></pre>
+  </dd>
+</dl>
+<p>The socket descriptor is set to blocked mode by default.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_Connect.html">SOC_Connect</a></code>, <code><a href="SOC_Accept.html">SOC_Accept</a></code>, <code><a href="SOC_Recv.html">SOC_Recv</a></code>, <code><a href="SOC_Send.html">SOC_Send</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

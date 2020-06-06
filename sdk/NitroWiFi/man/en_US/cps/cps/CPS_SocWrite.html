@@ -1,0 +1,53 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SocWrite</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SocWrite</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>u32 CPS_SocWrite (u8 *buf, u32 len);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>buf</strong></em></code></td>
+<td>Output buffer</td>
+  </tr>
+  <tr>
+<td><code><em><strong>len</strong></em></code></td>
+<td>Length of output buffer</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>The length of the output data.</P>
+
+<h2>Description</h2>
+
+<p>Outputs PING/UDP/TCP. Blocks until complete. For TCP, the process waits to receive an ACK for the output data that will be returned; therefore, outputting small units of data is inefficient. Buffering in the application or using the output service through the buffer prepared by the CPS Library is good.  The pointer passed to <CODE>CPS_SocWrite()</CODE> can be anywhere. If an address is obtained by adding a constant (14 + 20 + 8 for UDP or 14 + 20 + 20 for TCP) to <CODE><A href="CPSSoc.html">CPSSoc</A>.sndbuf.data</CODE>, ARM9 executes this with no-copy, and the speed and memory efficiency is advantageous. Applications must not use <CODE><A href="CPSSoc.html">CPSSoc</A>.sndbuf.data</CODE> for any other purpose. This can also be mixed with output services through a buffer. Data output occurs after an internal process equivalent to <CODE>CPS_SocFlush()</CODE> completes. The data length of the actual output is returned. This blocks.</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPSSoc.html">CPSSoc</A>, <A href="CPS_SocFlush.html">CPS_SocFlush</A>, <A href="CPS_GetProperSize.html">CPS_GetProperSize</A>
+</P>
+</CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

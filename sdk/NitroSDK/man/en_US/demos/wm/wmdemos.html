@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>WM Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>The Wireless Manager Sample Demo</H1>
+
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/wm</CODE></P>
+
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/wm</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (.<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE><code>$NitroSDK/build/demos/wm/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code></CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/wm/simple-1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Move to the <code>$NitroSDK/build/demos/wm/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and perform one of the following:</P>
+<UL>
+<LI>Load a <code>*.nlf</code> file with IS-NITRO-DEBUGGER and execute it
+<LI>Load and execute <code>*.srl</code> files on the IS-NITRO-DEBUGGER.
+</UL>
+
+<H2>Description</H2>
+<br>
+
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>simple-1</CODE></STRONG></EM></TD>
+<TD width="525">This is a simple feature sample that conducts communications with the MP protocol.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>dataShare-1</CODE></STRONG></EM></TD>
+<TD width="525">This shares the game frame value by using the data sharing feature.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>ball</CODE></STRONG></EM></TD>
+<TD width="525">This moves the OBJ by using the key sharing feature.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>dataShare-Model</CODE></STRONG></EM></TD>
+<TD width="525">This demo has a large number of notes for the tutorial document.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>wep-1</CODE></STRONG></EM></TD>
+<TD width="525">Demo that uses WEP for connection authentication during DS wireless play.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>wireless-all</CODE></STRONG></EM></TD>
+<TD width="525">This is a comprehensive sample of Nintendo DS wireless play.<br>This sample performs DS download play using the clone boot function of the MB library, and then performs data sharing communications with the distributed child device program. In addition, the connected child device program uses the file system to read data from the parent device's card via the wireless connection. <br> This sample uses a combination of the following sample modules.
+<ul>
+<li>$NitroSDK/build/demos/wireless_shared/wh</li>
+<li>$NitroSDK/build/demos/wireless_shared/mbp</li>
+<li>$NitroSDK/build/demos/wireless_shared/wfs</li>
+</ul>
+</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Operation</H2>
+<P>
+As of 03/02/2005, this does not operate normally on ensata. On the standard IS-NITRO-EMULATOR hardware, only wired communications are supported. If you have purchased the wireless option, wireless operation is supported.
+</P>
+
+<H2>See Also</H2>
+<P><A href="../../wm/list_wm.html"><CODE>The WM Function List</CODE></A></P>
+
+<H2>Revision History</H2>
+<P>
+04/10/2006 Added wireless-all<br>04/01/2005 Added <CODE>wep-1</CODE><br /> 03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 08/17/2004 Initial Version<br>
+</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dRenderObjSetBlendFuncMat</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dRenderObjSetBlendFuncMat</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE>#include &lt;nnsys/g3d/anm.h&gt;
+
+void
+NNS_G3dRenderObjSetBlendFuncMat(
+NNSG3dRenderObj* pRenderObj,
+NNSG3dFuncAnmBlendMat func
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pRenderObj</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>NNSG3dRenderObj</code> structure</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>func</STRONG></EM></TD>
+<TD width="87%">The pointer to the blend function of the visibility calculation result</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>Configures the material calculation results' blend function in the rendering object. The blend function configured here is called from G3D when rendering with the <code>NNS_G3dDraw</code> function. Since the default blend function is configured in the rendering object when it is initialized, there is no need to call this function when using the default blend function.</P>
+
+<H2>See Also</H2>
+
+<H2>Revision History</H2>
+<P>10/20/2004 Initial version.</P>
+</BODY>
+
+</HTML>

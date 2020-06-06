@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_GetLockID</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_GetLockID</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>s32 OS_GetLockID( void );</CODE>
+</PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>This is an unused ID. It produces an error for <CODE>OS_LOCK_ID_ERROR</CODE>. The ID itself is <CODE>u16</CODE> data, but because of the error detection, the return value has <CODE>s32</CODE> format.</P>
+<H2>Description</H2>
+<P>Obtains an unused ID The ID is obtained using this function so that IDs will not overlap with the <CODE>OS_Lock*</CODE> function.</P>
+<P>If there are unused IDs, one may be obtained in the <code>0x60</code> &ndash; <code>0x6F</code> range for the ARM9 environment and in the <code>0x80</code> &ndash; <code>0xAF</code> range for ARM7. For any processor, when an ID cannot be obtained (conceivably because there are no openings), <CODE>OS_LOCK_ID_ERROR</CODE> is returned. Note also that this value is a negative number.</P>
+<P>If an ID is not needed, release it using <CODE><a href="OS_ReleaseLockID.html">OS_ReleaseLockID()</a></CODE>. If all IDs are already assigned, <CODE>OS_GetLockID()</a></CODE> will not return an ID value until one is released.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_ReleaseLockID.html">OS_ReleaseLockID</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>07/22/2004 Noted that the ID is <code>u16</code><br /> 06/21/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

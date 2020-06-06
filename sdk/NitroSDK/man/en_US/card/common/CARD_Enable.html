@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_IsEnabled</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_Enable</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>void CARD_Enable(BOOL enable);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>enable</STRONG></EM></TD>
+<TD width="87%">Configures permission to access NITRO-CARD<br /> <code>TRUE</code> sets state to permit access; <code>FALSE</code> sets state to prohibit access.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>Changes the state, enabling or disabling access to NITRO-CARD. If the state prohibits access to NITRO-CARD, the program will forcedly halt when NITRO-CARD is accessed.<br> Access is prohibited in the initial state of a child program that has started from a wireless download.<br> <br>
+</p>
+<H2>Note</H2>
+<P>
+If you are going to use this function to enable access to NITRO-CARD, be sure to follow the stipulations in the Programming Guideline. Confirm that the procedure is correct before calling the function. <br>
+</p>
+
+<BR>
+<h2>See Also</h2>
+<p>
+<a href="CARD_Init.html"><code>CARD_Init</code></a>, <a href="CARD_IsEnabled.html"><code>CARD_IsEnabled</code></a>
+</P>
+<H2>Revision History</H2>
+<P>
+12/15/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

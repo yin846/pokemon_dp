@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Packet flow when using WBT</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Packet flow when using WBT</H1>
+<H2>Description</H2>
+<P>
+The figure below shows the packet flow during dowload and upload when using WBT.<BR> <BR> <FONT color="red"><B>(Note) Since half-duplex communications are used between parents and children, if an upload and download occur at the same time, the upload takes priority as seen from the child.</B></FONT><BR>
+</P>
+<HR>
+<P><B>Packet flow during download</B></P>
+<P>
+The following figure shows the packet flow exchanged between parent and child during download.
+</P>
+<BLOCKQUOTE><IMG src="image_WBT_Download.GIF" border="0"></BLOCKQUOTE>
+
+<HR>
+<P><B>Packet flow during upload</B></P>
+<P>
+Although processing flow is essentially only reversed between parent and child as compared to a download, the child must notify the parent by sending block information using WBT_PutUserData when child wants to upload because the upload must be performed as a download to the parent. (If the upload timing is immediately after RequestSync and blocks to be uploaded are fixed, the WBT_GetBlockInfo function may be called as the RequestSync receive callback.j<BR> The following figure shows the packet flow exchanged between parent and child during upload.<BR>
+</P>
+<BLOCKQUOTE><IMG src="image_WBT_Upload.GIF" border="0"></BLOCKQUOTE>
+
+<H2>See Also</H2>
+<P><CODE><A href="../list_wbt.html">WBT Function List</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+03/13/2006 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

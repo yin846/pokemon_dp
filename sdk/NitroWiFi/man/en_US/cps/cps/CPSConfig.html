@@ -1,0 +1,99 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPSConfig</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPSConfig</h1>
+
+
+<h2>Definitions</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define CPS_DONOTUSE_DHCP 0x0001</code></pre>
+  </dd>
+<dd><pre><code>typedef struct {
+u32 mode;
+void *(*alloc)(u32);
+void (*free)(void *);
+void (*dhcp_callback)(void);
+BOOL (*link_is_on)(void);
+unsigned long long random_seed;
+u8 *lan_buf;
+u32 lan_buflen;
+u32 mymss;
+CPSInAddr requested_ip;
+u32 yield_wait;
+} CPSConfig;</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>A structure that defines the configuration data to be passed to <CODE><A href="CPS_Startup.html">CPS_Startup()</A></CODE>.</p>
+<TABLE border="1">
+	<TBODY>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>mode</CODE></STRONG></EM></TD>
+			<TD width="75%">Sets the desired operating mode using bits. If the <CODE>CPS_DONOTUSE_DHCP</CODE> bit is enabled, DHCP is not used. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>alloc</CODE></STRONG></EM></TD>
+			<TD>Required. Sets the called functions when memory allocation is needed inside the CPS library. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>free</CODE></STRONG></EM></TD>
+			<TD>Required. Sets the called functions when memory release is needed inside the CPS library. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>dhcp_callback</CODE></STRONG></EM></TD>
+			<TD>If configured not to use DHCP, this callback is immediately called after the physical link is established. If configured to use DHCP, this callback is called if the DHCP server cannot be found. In <STRONG><EM><CODE>dhcp_callback</CODE></EM></STRONG>, <CODE><A href="CPS_GLOBAL_VARIABLE.html">CPSMyIp</A></CODE>, <CODE><A href="CPS_GLOBAL_VARIABLE.html">CPSNetMask</A></CODE>, <CODE><A href="CPS_GLOBAL_VARIABLE.html">CPSGatewayIp</A></CODE>, <CODE><A href="CPS_GLOBAL_VARIABLE.html">CPSDnsIp</A></CODE>, etc. are set. If NULL, a function that does nothing is set. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>link_is_on</CODE></STRONG></EM></TD>
+			<TD>Sets a function that returns the physical link state (a non-zero value when the link is ON). If NULL is specified, sets a function that always returns TRUE. The function generally should be set as follows:<CODE><BR> <BR> static BOOL some_func()<BR> {<BR> return WCM_GetApMacAddress() != NULL;<BR> }<BR> <BR></CODE></TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>random_seed</CODE></STRONG></EM></TD>
+			<TD>Sets the seed for random numbers. If 0 is specified, the value of <CODE>OS_GetTick()</CODE> is used. Because the initial value of the temporary port is set based on this value, it is recommended to set the most random value possible based on a user action. </TD>
+		</TR>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>lan_buf</CODE></STRONG></EM></TD>
+			<TD width="75%">Required. Sets the ring buffer address used for wireless LAN reception. </TD>
+		</TR>
+		<TR>
+			<TD width="25%"><EM><STRONG><CODE>lan_buflen</CODE></STRONG></EM></TD>
+			<TD width="75%">Required. Sets the ring buffer length used for wireless LAN reception. If the length that is set is too small, the packet may be dropped; therefore, a setting that ranges from 8K to 16K or more is recommended. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>mymss</CODE></STRONG></EM></TD>
+			<TD>Sets the maximum segment size for TCP reception. Set to 1460 if 0 is specified. </TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>requested_ip</CODE></STRONG></EM></TD>
+			<TD>If using DHCP, this sets the IP address you want to be assigned. The DHCP server attempts to assign this IP address if possible. 0 indicates that there is no IP address you want to be assigned. Some access points do not save the MAC and IP address pairs when the network disconnects and reconnects. Therefore, an IP address needs to be specified in this member so that the IP address from the previous connection is assigned by priority if necessary.</TD>
+		</TR>
+		<TR>
+			<TD><EM><STRONG><CODE>yield_wait</CODE></STRONG></EM></TD>
+			<TD>Specifies the OS wait feature to use to poll received packets in the CPS library.<BR> If 0, <CODE>OS_YieldThread()</CODE> is used. <BR> In this case, passing control to applications with a lower priority than the CPS library is difficult.<BR> If the value is non-zero, <CODE>OS_Sleep()</CODE> that uses this value as a parameter is used. Control is passed to low-priority applications, but network response may be slightly slower.</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P>
+<B>Note:</B> Exclusive control is required for functions set to alloc and free members. 
+</P>
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_Startup.html">CPS_Startup</A></CODE>, <CODE><A href="CPS_CONSTANT_TYPE.html">CPS Library Types</A></CODE>, <CODE><A href="CPS_GLOBAL_VARIABLE.html">CPS Library Global Variables</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+10/24/2005 Initial version.</P>
+</body>
+</html>

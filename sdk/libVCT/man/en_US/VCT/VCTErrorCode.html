@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Error Code List</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">Error Code List</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>
+#define VCT_ERROR_NONE                  0
+#define VCT_ERROR_BAD_PARAM            -1
+#define VCT_ERROR_BAD_MODE             -2
+#define VCT_ERROR_BAD_REQUEST          -3
+#define VCT_ERROR_SEND_FAIL            -4
+#define VCT_ERROR_TRANSCEIVER_BUSY     -5
+#define VCT_ERROR_EXHAUST_CLIENTS      -6
+</CODE></PRE>
+  </dd>
+</dl>
+<H2>Definition</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD width="30%"><B><I>VCT_ERROR_NONE</I></B></TD>
+      <TD width="70%">There is no error.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_ERROR_BAD_PARAM</I></B></TD>
+      <TD width="70%">Invalid function parameter.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_ERROR_BAD_MODE</I></B></TD>
+      <TD width="70%">Invalid mode (such as a Transceiver function is called in Telephone Mode).</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_ERROR_BAD_REQUEST</I></B></TD>
+      <TD width="70%">Invalid request.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_ERROR_SEND_FAIL</I></B></TD>
+      <TD width="70%">Transmission failure.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_ERROR_TRANSCEIVER_BUSY</I></B></TD>
+      <TD width="70%">Transceiver is currently busy (other clients are in conversation)</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_ERROR_EXHAUST_CLIENTS</I></B></TD>
+      <TD width="70%">The number of clients reached the participation limit.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Description</H2>
+<P>VCTErrorCode is an error code list for VoiceChat Library.
+
+<h2>See Also</h2>
+<P>None.</P>
+<H2>Revision History</H2>
+<P>2006/04/17 First release</P>
+</body>
+</html>

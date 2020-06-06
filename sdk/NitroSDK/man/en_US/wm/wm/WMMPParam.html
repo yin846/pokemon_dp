@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WMMPParam</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WMMPParam</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wm.h&gt;</CODE><BR>
+  <PRE><CODE>typedef struct WMMPParam
+{
+u32     mask;
+
+u16     minFrequency;
+u16     frequency;
+u16     maxFrequency;
+u16     parentSize;
+u16             childSize
+u16     parentInterval;
+u16     childInterval;
+u16     parentVCount;
+u16     childVCount;
+u16     defaultRetryCount;
+u8      minPollBmpMode;
+u8      singlePacketMode;
+u8      ignoreFatalErrorMode;
+u8      ignoreSizePrecheckMode;
+
+} WMMPParam;</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">mask</FONT></STRONG></EM></TD>
+<TD width="800">Specifies which of the following fields are enabled using bits.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">minFrequency</font></strong></em></TD>
+<TD width="800">Represents a member whose feature is not implemented.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">frequency</font></strong></em></TD>
+<TD width="800">Specifies the number of MP communications per picture frame.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">maxFrequency</font></strong></em></TD>
+<TD width="800">Specifies the maximum number of MP communications (including resends) per picture frame.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">parentSize</font></strong></em></TD>
+      <TD width="800">This is the current parent send capacity.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">childSize</font></strong></em></TD>
+      <TD width="800">This is the current child send capacity.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">parentInterval</font></strong></em></TD>
+<TD width="800">Specifies in microseconds the MP communication interval for a parent during which communications are carried out continuously during a single frame.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">childInterval</font></strong></em></TD>
+<TD width="800">Specifies in microseconds the MP communication interval for a child during which communications are carried out continuously during a single frame.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">parentVCount</font></strong></em></TD>
+<TD width="800">Represents the start V count of the parent process during frame synchronous communications.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">childVCount</font></strong></em></TD>
+<TD width="800">Represents the start V count of the child process during frame synchronous communications.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">defaultRetryCount</font></strong></em></TD>
+<TD width="800">Represents the default retry count for communications over the raw communication port.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">minPollBmpMode</font></strong></em></TD>
+<TD width="800">Indicates if in the mode where PollBitmap is minimized according to the send destination of the packet.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">singlePacketMode</font></strong></em></TD>
+<TD width="800">Indicates if in the mode that allows only one packet per MP communication.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">ignoreFatalErrorMode</font></strong></em></TD>
+<TD width="800">Indicates if in the mode that ignores fatal errors.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">ignoreSizePrecheckMode</font></strong></em></TD>
+<TD width="800">Indicates if in the mode that ignores pre-checking of the send/receive size when communications start.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>
+The structure of the information that should be set when starting activity as a parent. This structure is used by the <A href="WM_SetMPParameter.html">WM_SetMPParameter</A> function.
+</P>
+
+<P>Select the parameters to be set from among those shown below and specify the logical sum of the corresponding constants <CODE>WM_MP_PARAM_*</CODE> in the <CODE>mask</CODE> field. Note that some parameters are set automatically at the time of execution of particular WM functions. For details, see the descriptions of each parameter.</P>
+
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_FREQUENCY</font></strong></em></TD>
+<TD width="800">Specifies the frequency at which MP communications are performed. If &quot;0&quot; is specified, the device enters continuous communication mode provided for large volumes of data communication. Because the frequency of MP communications is always set when WM_StartMP or WM_StartMPEx is executed, this item is used only when changing the frequency of MP communications after they have started. This only affects the parent.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_MAX_FREQUENCY</font></strong></em></TD>
+<TD width="800">Specifies the maximum number of MP communications (including resends) per picture frame into maxFrequency. The default value is 6 times. This only affects the parent.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_PARENT_SIZE</font></strong></em></TD>
+      <TD width="800">Specifies an MP communication parent send capacity in parentSize. The send capacity must be a multiple of 2, so if an odd number is designated, it is rounded up so that it is even. This only affects the parent. This parameter is initialized using the value of WMParentParam.parentMaxSize specified by the WM_SetParentParameter function, and a value larger than that cannot be set.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_CHILD_SIZE</font></strong></em></TD>
+      <TD width="800">Specifies an MP communication child send capacity in childSize. The send capacity must be a multiple of 2, so if an odd number is designated, it is rounded up so that it is even. Although this setting can be made for both parent and children, this does not mean much due to the fact that the value set for the child here will be overwritten with that value specified for the parent each time an MP communication takes place. The parent is initialized to the value of WMParentParam.childMaxSize specified by the WM_SetParentParameter function, while children are initialized to the value of childMaxSize in the parent's beacon. It is not possible to set values higher than this.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_PARENT_INTERVAL</font></strong></em></TD>
+<TD width="800">Specifies in microseconds the interval needed for the parent to prepare MP communications into parentInterval. This is used when performing multiple MP communications during a single picture frame. The default value is 2000 microseconds.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_CHILD_INTERVAL</font></strong></em></TD>
+<TD width="800">Specifies in microseconds the interval needed for the child to prepare MP communications into childInterval. This is used when performing multiple MP communications during a single picture frame. The default value is 2000 microseconds.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_PARENT_VCOUNT</font></strong></em></TD>
+<TD width="800">Specifies in microseconds the VAlarmCount value needed for the parent to prepare MP communications into parentVCount. This is referenced when the first MP communication inside a frame is made while in frame synchronous mode. A value in the range 220 to 262 or 0 to 190 must be specified. The default value is 260.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_CHILD_VCOUNT</font></strong></em></TD>
+<TD width="800">Specifies in microseconds the VAlarmCount value needed for the child to prepare MP communications into childVCount. This is referenced when the first MP communication inside a frame is made while in frame synchronous mode. A value in the range 220 to 262 or 0 to 190 must be specified. The default value is 240.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_DEFAULT_RETRY_COUNT</font></strong></em></TD>
+<TD width="800">Specifies the default value of the number of resends when the communication on ports 0 to 7 fails in defaultRetryCount. The communication that occurs on ports 8-15 repeats resends endlessly regardless of this value. This only affects the parent. The default value is 0.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_MIN_POLL_BMP_MODE</font></strong></em></TD>
+<TD width="800">Specifies the flag for special send mode into minPollBmpMode. When TRUE, the value of PollBitmap in an MP frame becomes the logical sum of the destination of the packet that the parent sends on that communication. If FALSE, PollBitmap is always set for all children. A detailed understanding of MP communications is required when using this parameter. The default value is FALSE. This only affects the parent. It cannot be changed after MP communications start.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_SINGLE_PACKET_MODE</font></strong></em></TD>
+<TD width="800">Specifies the flag for special send mode into singlePacketMode. When this value is TRUE, this function always sends only one packet for each MP communication. When this value is FALSE, the maximum number of packets allowed by the send capacity are packed into the MP communication payload. The default value is FALSE. It cannot be changed after MP communications start.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_IGNORE_FATAL_ERROR_MODE</font></strong></em></TD>
+<TD width="800">Specifies the flag for special send mode into IgnoreFatalErrorMode. When this value is TRUE, the connection state is maintained without performing disconnect processing even if a fatal error occurs. This flag must not be set to TRUE in modes other than limited modes such as MB because the integrity of Sequential communications are not guaranteed when this flag is enabled. The default value is FALSE.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_MP_PARAM_IGNORE_SIZE_PRECHECK_MODE</font></strong></em></TD>
+<TD width="800">Specifies the flag for managing the special send size into ignoreSizePrecheckMode. When this value is TRUE, the precheck of the parent/child send capacity, communication time with maximum number of connections and the send/receive buffer size usually made when starting MP communications with the WM_StartMP function is disabled. A detailed understanding of MP communications is required when using this parameter. The default value is FALSE.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<P>Using minPollBmpMode and ignoreSizePrecheckMode requires a detailed understanding of MP communications. Because of this, it should normally not be enabled. Also, when minPollBmpMode is enabled on ports 8 through 15, communication must occur once every 60 seconds for all ports on all children.</P>
+<P>Refer to the section &quot;An Explanation of the Wireless Communication Library&quot; for details about each configuration value.</P>
+
+
+<H2>Revision History</H2>
+<P>
+12/20/2005 Clearly stated that the risk of ignoreSizePrecheckMode<BR>12/08/2005 Clearly stated that the send capacity must be an even number<BR>11/24/2005 Initial version<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

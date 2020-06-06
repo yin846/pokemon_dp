@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PADi_SetIrq</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PADi_SetIrq</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/pad/pad.h&gt;</CODE><BR> <BR> <CODE>void PADi_SetIrq( PADLogic logic, BOOL enable, u16 padMask );</CODE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><B><I>logic</I></B>&nbsp;&nbsp;</STRONG></EM></TD>
+<TD width="87%">Logic specification flag for interrupt generation</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>enable</STRONG></EM></TD>
+<TD width="87%">Enable flag for interrupt request generation</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><B><I>padMask</I></B>&nbsp;&nbsp;</STRONG></EM></TD>
+<TD>Button/Key Selection</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>Performs settings for generation of an interrupt corresponding to key input. The generated interrupt corresponds to the IRQ interrupt trigger <CODE>OS_IE_KEY</CODE>. This function uses the IO register <CODE>REG_KEYCNT</CODE> (Key Control).</P>
+<P>When <EM>enable</EM> is TRUE, interrupts are enabled. When it is FALSE, interrupts are not generated, regardless of the other settings.</P>
+<P>The argument <EM>logic</EM> specifies how an interrupt is generated according to the key state. If <CODE>PAD_OR_INTR</CODE> is specified, when any of the keys/buttons specified with <EM>padMask</EM> are pressed, an interrupt is generated. If <CODE>PAD_AND_INTR</CODE> is specified, when all of the keys/buttons specified with <EM>padMask</EM> are pressed, an interrupt is generated.</P>
+<P>The argument <EM>padMask</EM> specifies the keys/buttons targeted by the process. The specification is the same as the button press information in <A href="PAD_Read.html"><CODE>PAD_Read()</CODE></A>. However, the X, Y, and DEBUG buttons are not targeted. Specify only the buttons in the range of <CODE>PAD_KEYPORT_MASK</CODE>. (A check is done in the <CODE>DEBUG</CODE> build using <CODE>SDK_ASSERT</CODE>.)</P>
+<BLOCKQUOTE><B>For example:</B><BR> <CODE>void nitroMain()<BR> {<BR> // ---- Key Interrupt Handler Setting<BR> OS_SetIrqFunction( OS_IE_KEY, keyintr );<BR> <BR> // ---- Generate Interrupt if the A or B Button is Pressed<BR> PADi_SetIrq( PAD_LOGIC_OR, TRUE, PAD_BUTTON_A | PAD_BUTTON_B );<BR> <BR> // ---- Permit Interrupts<BR> OS_SetIrqMask( OS_IE_KEY );<BR> OS_EnableIrq();<BR> }<BR> <BR> void keyintr( void )<BR> {<BR> // Key Interrupt Process<BR> }</CODE></BLOCKQUOTE>
+
+<h2>See Also</h2>
+<p><code><A href="PAD_Read.html">PAD_Read</A>, <A href="PADi_ClearIrq.html">PADi_ClearIrq</A></code></p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese word for &quot;interrupt&quot;<br /> 04/13/2004 Added description about DEBUG button.<BR> 02/19/2004 Added X and Y button description.<BR> 12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

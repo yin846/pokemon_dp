@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNS_FndMountArchive</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_FndMountArchive</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></PRE>
+<PRE><CODE>BOOL NNS_FndMountArchive(NNSFndArchive* archive, const char* arcName, void* arcBinary);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>archive</STRONG></EM></TD>
+<TD width="87%">The pointer to the <code>NNSFndArchive</code> structure.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>arcName</STRONG></EM></TD>
+<TD width="87%">The name for identifying the archive on the file  system.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>arcBinary</STRONG></EM></TD>
+<TD width="87%">The pointer to the archive binary loaded in memory.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>TRUE if the archive is mounted successfully.</P>
+
+<H2>Description</H2>
+<P>
+This fuctions mounts to the file system the archive binary specified by <code>arcBinary</code> and loaded in memory. To specify the archive with the Archive Manager's API after mounting, specify the NNSFndArchive structure that was set with <i>archive</i>.
+</P>
+<P>
+Once an archive has been mounted to the file system, you can use the file system's API to access the files and directories inside that archive. To specify an archive  on the file system, prefix the path name with the identifier  (specfied by arcName when the archive was mounted), followed by a colon.
+</P>
+<P>
+Note that the identifier &quot;rom&quot; is reserved by the system (NITRO-SDK). Further note that the identifier cannot be longer than three characters, and that there is no  distinction between uppercase and lowercase.
+</P>
+<PRE><CODE>
+<code><br>    extern void* archiveBinary;<br><br>
+
+NNSFndArchive archive;<br><br>
+
+if (NNS_FndMountArchive(&amp;archive, &quot;ARC&quot;, archiveBinary))<br>    {<br>
+    {
+FSFile         file;
+
+FS_InitFile(&amp;file);
+FS_Open(&amp;file, &quot;ARC:/Data/Scene1.dat&quot;);<br><br>
+
+        ......
+        ......
+    }
+</CODE></PRE>
+
+
+<H2>See Also</H2>
+<P><CODE><A href="NNS_FndUnmountArchive.html">NNS_FndUnmountArchive</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>05/14/2004 Initial version.</P>
+</BODY>
+
+</HTML>

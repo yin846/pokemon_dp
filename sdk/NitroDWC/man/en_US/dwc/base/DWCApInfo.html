@@ -1,0 +1,71 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWCApInfo</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWCApInfo</H1>
+
+		<H2>definition</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+typedef struct DWCstApInfo
+{
+	DWCApInfoType    aptype;
+	DWCApInfoArea    area;
+	char             spotinfo[DWC_SIZE_SPOTINFO+1];
+	char             essid[WM_SIZE_SSID+1];
+	u8          bssid[ WM_SIZE_BSSID ];
+} DWCApInfo;
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  The structure for storing access point information.
+		</P>
+		<TABLE border="1">
+		<TBODY>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>aptype</CODE></STRONG></EM></TD>
+			<TD>The types of access points<BR><BR> DWC_APINFO_TYPE_USER0      :&nbsp;&nbsp;The access point for connection target 1<BR> DWC_APINFO_TYPE_USER1      :&nbsp;&nbsp;The access point for connection target 2<BR> DWC_APINFO_TYPE_USER2      :&nbsp;&nbsp;The access point for connection target 3<BR> DWC_APINFO_TYPE_USB        :&nbsp;&nbsp;The Nintendo Wi-Fi USB Connector<BR> DWC_APINFO_TYPE_SHOP      :&nbsp;&nbsp;The Nintendo Wi-Fi Station<BR> DWC_APINFO_TYPE_FREESPOT      :&nbsp;&nbsp;A FreeSpot connection<BR> DWC_APINFO_TYPE_WAYPORT      :&nbsp;&nbsp;A Wayport connection (a North American hotspot)<BR> DWC_APINFO_TYPE_OTHER      :&nbsp;&nbsp;Other<BR>
+          </TR>
+          <TR>
+			<TD width="25%"><EM><STRONG><CODE>area</CODE></STRONG></EM></TD>
+			<TD>The Nintendo Wi-Fi Station region<BR> * Only valid when <CODE>aptype</CODE> is <CODE>DWC_APINFO_TYPE_SHOP</CODE>.<BR> * As of the NITRO-DWC 1.1 release, there is no location in North America.<BR> <BR> DWC_APINFO_AREA_JPN      :&nbsp;&nbsp;Japan<BR> DWC_APINFO_AREA_USA      :&nbsp;&nbsp;North America<BR> DWC_APINFO_AREA_EUR      :&nbsp;&nbsp;Europe<BR> DWC_APINFO_AREA_AUS       :&nbsp;&nbsp;Australia<BR><BR> DWC_APINFO_AREA_UNKNOWN  :&nbsp;&nbsp;(not a Nintendo Wi-Fi Station)</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>spotinfo</CODE></STRONG></EM></TD>
+			<TD>The Nintendo Wi-Fi Station location<BR> * Only valid when <CODE>aptype</CODE> is <CODE>DWC_APINFO_TYPE_SHOP</CODE>.<BR> <BR> A nine-digit string, in which the first seven are the postal code, and the last two the branch number.</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>essid</CODE></STRONG></EM></TD>
+			<TD>The access point's SSID<BR> * Only valid when <CODE>aptype</CODE> is <CODE>DWC_APINFO_TYPE_USER*</CODE>.</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>bssid</CODE></STRONG></EM></TD>
+			<TD>The access point's BSSID</TD>
+          </TR>
+		</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+		<code><a href="DWC_GetApInfo.html">DWC_GetApInfo</a></code>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			02/23/2006 Initial version<BR>
+		</P>
+
+	</BODY>
+</HTML>
+

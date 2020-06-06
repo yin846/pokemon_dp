@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>System State (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">System State (Overview)</H1>
+<H2>Description</H2>
+<P>The functions contained in this category are mainly used to handle the CPSR (Current Program Status Register) and state inside the co-processor 15 (CP15).</P>
+<P>Bits for enabling the FIQ interrupts and the IRQ interrupts exist inside the CPSR.</P>
+<BLOCKQUOTE><IMG src="image_cpsr.gif" border="0"></BLOCKQUOTE>
+<P>If the I bit has been set, the IRQ interrupt is disabled. If the F bit has been set, the FIQ interrupt is disabled.</P>
+<HR>
+<P><B>Interrupt State (IRQ)</B></P>
+<P><code><a href="OS_EnableInterrupts.html">OS_EnableInterrupts()</a></code> clears the I bit. In other words, it enables IRQ interrupts.</P>
+<P><code><a href="OS_DisableInterrupts.html">OS_DisableInterrupts()</a></code> sets the I bit. In other words, it disables IRQ interrupts.</P>
+<P><code><a href="OS_RestoreInterrupts.html">OS_RestoreInterrupts()</a></code> sets the I bit to a designated state. In other words, it restores the IRQ interrupts to a designated state.</P>
+<P>These functions return states before any changes were made, so after performing any sort of processing by changing the state with <code>OS_EnableInterrupts()</code> or <code>OS_DisableInterrupts()</code>, it it possible to go back to the original state with <code>OS_RestoreInterrupts()</code>. Actually, as in the following example, changes to an interrupt state and its recovery are normally used as a pair.</P>
+<BLOCKQUOTE><CODE>Example:<BR> OSIntrMode enabled = OS_EnableInterrups();<BR> :<BR>(void)OS_RestoreInterrupts( enabled );</CODE></BLOCKQUOTE>
+<HR>
+<P><B>Interrupt State (IRQ and FIQ)</B></P>
+<P><font color="#ff0033">Since FIQ interrupts are used with the debug tool, the application cannot normally use them. Also, applications have no need to use them.</font></P>
+<P>Similar to the IRQ interrupt functions, there are functions for configuring both the IRQ interrupts and the FIQ interrupts at the same time.</P>
+<P><nobr><code><a href="OS_EnableInterrupts_IrqAndFiq.html">OS_EnableInterrupts_IrqAndFiq()</a></code></nobr> clears the <code>I</code> and <code>F</code> bits. In other words, it enables IRQ interrupts and FIQ interrupts.</P>
+<P><nobr><code><a href="OS_DisableInterrupts_IrqAndFiq.html">OS_DisableInterrupts_IrqAndFiq()</a></code></nobr> sets the <code>I</code> and <code>F</code> bits. In other words, it enables IRQ interrupts and FIQ interrupts.</P>
+<P><nobr><code><a href="OS_RestoreInterrupts_IrqAndFiq.html">OS_RestoreInterrupts()_IrqAndFiq()</a></code></nobr> sets the <code>I</code> and <code>F</code> bits to designated states. In other words, it restores the IRQ interrupts and FIQ interrupts to designated states.</P>
+<P>The function groups related to these IRQ interrupts and FIQ interrupts use <nobr><code>OS_RestoreInterrupts_IrqAndFiq()</code></nobr> for state recovery, and Enable / Restore or Disable / Restore are normally used as a pair.</P>
+<HR>
+<P><B>Getting the State (IRQ, Processor Mode)</B></P>
+<P>Use <nobr><code><a href="OS_GetCpsrIrq.html">OS_GetCpsrIrq()</a></code></nobr> to get the current IRQ interrupt configuration.</P>
+<P>Use <nobr><code><a href="OS_GetProcMode.html">OS_GetProcMode()</a></code></nobr> to get the current processor mode. Operations are normally performed in system mode.</P>
+<P>For processor modes, there are seven ARM architecture CPU operation modes: user mode, FIQ mode, IRQ mode, supervisor mode, abort mode, undefined mode, and system mode.</P>
+<HR>
+<P><B>Stopping the Program</B></P>
+<P><nobr><code><a href="OS_Terminate.html">OS_Terminate()</a></code></nobr> has been prepared as a function for stopping the execution of the current processor. This function disables IRQ interrupts internally, and becomes a loop that calls <nobr><code>OS_Halt()</code></nobr>. There will be no transition to other threads from this point, and no interrupt handler will be called.</P>
+<HR>
+<P><B>Halting the CPU</B></P>
+<P>When the CPU is idle, you can reduce power consumption by halting the CPU. It can receive interrupts and recover even if it is in this halt state. The function for halting is <nobr><code><a href="OS_Halt.html">OS_Halt()</a></code></nobr> on both ARM9 and ARM7.</P>
+<P>It is not necessary for the application side to be aware of this, but the ARM9 processor goes into the HALT state with the CP15 function, while the ARM7 side uses a system call.</P>
+<HR>
+<P><B>Waiting</B></P>
+<P><a href="OS_SpinWait.html"><code>OS_SpinWait()</code></a> waits a designated period time with the loop from the CPU. However, since the CPU only loops, when an interrupt occurs it may not take longer than the designated time to return from the function. Interpret this as the &quot;lower-limit wait time&quot; for the designated time.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Cpsr">An Overview of OS Functions (System  State)</A></CODE></P>
+<H2>Revision History</H2>
+<P>12/14/2004 Corrected typos<br /> 11/09/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

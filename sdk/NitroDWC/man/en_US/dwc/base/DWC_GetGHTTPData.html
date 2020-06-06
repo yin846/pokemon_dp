@@ -1,0 +1,109 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GetGHTTPData</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GetGHTTPData</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+int DWC_GetGHTTPData(
+                     const char* url,
+                     <A href="DWCGHTTPCompletedCallback.html">DWCGHTTPCompletedCallback</A> completedCallback, 
+                     void* param );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Downloads data from the URL specified with <CODE>url.</CODE>
+		</P>
+		<P>
+		  This function behaves the same as the <A href="DWC_GetGHTTPDataEx.html"><CODE>DWC_GetGHTTPDataEx</CODE></A>  function with the arguments <EM><STRONG><CODE>bufferlen</CODE></STRONG></EM>=0, <EM><STRONG><CODE>buffer_clear</CODE></STRONG></EM>=TRUE, and <EM><STRONG><CODE>progressCallback</CODE></STRONG></EM>=NULL specified.
+		</P>
+		<P>
+		  If the <a href="DWC_ProcessGHTTP.html"><CODE>DWC_ProcessGHTTP</CODE></a> function is called continuously after calling this function, the download process proceeds, and once the download process is complete, a completion callback is called.
+		</P>
+		<P>
+		  To find the communication status when downloading, call the <A href="DWC_GetGHTTPState.html"><CODE>DWC_GetGHTTPState</CODE></A> function using the request identifier of the return value.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>url</CODE></STRONG></EM></TD>
+					<TD width="75%">URL of download destination</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>completedCallback</CODE></STRONG></EM></TD>
+					<TD>The pointer to the callback function called when the download is complete.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>param</CODE></STRONG></EM></TD>
+					<TD>Callback parameter.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>0 or higher</CODE></STRONG></EM></TD>
+					<TD width="75%">Request identifier.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_IN_ERROR</CODE></STRONG></EM></TD>
+					<TD>An error is being generated.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_FAILED_TO_OPEN_FILE</CODE></STRONG></EM></TD>
+					<TD>File open failed.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_INVALID_POST</CODE></STRONG></EM></TD>
+					<TD>Invalid transmission.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_INSUFFICIENT_MEMORY</CODE></STRONG></EM></TD>
+					<TD>Insufficient memory.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_INVALID_FILE_NAME</CODE></STRONG></EM></TD>
+					<TD>Invalid file name.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_INVALID_BUFFER_SIZE</CODE></STRONG></EM></TD>
+					<TD>Invalid buffer size.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_INVALID_URL</CODE></STRONG></EM></TD>
+					<TD>Invalid URL.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>DWC_GHTTP_UNSPECIFIED_ERROR</CODE></STRONG></EM></TD>
+					<TD>Unspecified error.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_GetGHTTPDataEx.html">DWC_GetGHTTPDataEx</A>, <A href="DWC_GetGHTTPState.html">DWC_GetGHTTPState</A>, <a href="DWC_ProcessGHTTP.html">DWC_ProcessGHTTP</a>, <A href="DWCGHTTPCompletedCallback.html">DWCGHTTPCompletedCallback</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			01/18/2006 Added <CODE>DWC_GHTTP_IN_ERROR</CODE> to the return values.<BR>10/27/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

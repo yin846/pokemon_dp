@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>SPI Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>ARM7 Processor Peripheral Sample Demos</H1>
+
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/spi</CODE></P>
+
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/spi</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (.<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/spi/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/spi/tp-1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Navigate to the <code>$NitroSDK/build/demos/spi/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and perform one of the following:</P>
+<UL>
+<LI>Execute <code>*.nef</code>, <code>*.srl</code> with ensata.
+<LI>Load a <code>*.nlf</code> file with IS-NITRO-DEBUGGER and execute it
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER
+</UL>
+
+<H2>Description</H2>
+<br>
+
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>tp-1</CODE></STRONG></EM></TD>
+<TD width="525">Displays touch panel input positions on the screen.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>tp-2</CODE></STRONG></EM></TD>
+<TD width="525">Displays the track of touch panel input positions on the screen.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>mic-1</CODE></STRONG></EM></TD>
+<TD width="525">Displays the microphone voice input status on the screen as a waveform.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>mic-2</CODE></STRONG></EM></TD>
+<TD width="525">Displays microphone voice input status on the screen as a waveform, and outputs text data. <br> The <a href="../../tools/mic2wav.html"><code>mic2wav.exe</code></a> tool can convert the obtained data into a <code>wav</code> file.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>spiMonkey</CODE></STRONG></EM></TD>
+<TD width="525">Displays touch panel and microphone input status on the screen while playing BGM.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>spiMonkey2</CODE></STRONG></EM></TD>
+<TD width="525">Displays touch panel and microphone input status on the screen while playing BGM. Unlike <em><strong><code>spiMonkey</code></strong></em>, it uses automatic sampling for microphone sampling.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>pm-1</CODE></STRONG></EM></TD>
+<TD width="525">Enters sleep mode or power save mode by pressing the power button or closing the cover.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Operation</H2>
+<P><CODE><code>mic-1</code>, <code>mic-2</code>, <code>spiMonkey</code>, <code>spiMonkey2</code>, and <code>pm-1</code> do not function properly with ensata.<BR> <code>tp-1</code>, <code>tp-2</code>, <code>spiMonkey</code>, and <code>spiMonkey2</code> attempt to read touch panel calibration values from the non-volatile memory (NVRAM) in the DS. If they do not succeed they will terminate with an exception. In this case, use the DS start menu that is built into the DS to store calibration results in NVRAM.</P>
+
+<H2>See Also</H2>
+<P><A href="../../spi/list_spi.html"><CODE>SPI Function List</CODE></A></P>
+
+<H2>Revision History</H2>
+<P>
+05/10/2005 Added information about <code>spiMonkey2</code><br /> 03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 08/17/2004 Standardized the notation of the IS-NITRO-EMULATOR.<br /> 08/03/2004 Added pm-1.<br /> 07/10/2004 Changed from <code>.bin</code> to <code>.srl.</code><br>06/18/2004 Initial Version</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_COMMAND_GETPATH</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_COMMAND_GETPATH</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<BR> <CODE>FSResult FS_ARCHIVE_PROC_FUNC(FSFile *p_file, FSCommandType command /* = FS_COMMAND_GETPATH */);<br></CODE><br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Operating specifications for the archive command <code>FS_COMMAND_GETPATH</code> are shown below: <BR> <BR>
+
+<HR>
+<B>Arguments passed to this command</B>
+<BLOCKQUOTE>
+<PRE>This command takes as a command argument the variable <code>arg.getpath</code> that is stored in <code>p_file</code>. 
+This variable is defined in <code>nitro/fs/file.h</code> as shown below:
+
+typedef struct
+{
+u8     *buf;
+u32    buf_len;
+u16    total_len;
+u16    dir_id;
+} FSGetPathInfo;</code> </PRE>
+</BLOCKQUOTE>
+<BLOCKQUOTE>Argument content is listed below:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1" width="50%">
+  <TBODY>
+    <TR>
+<TD style="text-align : center;" width="95">Arguments</TD>
+<TD style="text-align : center;" width="522">Content</TD>
+    </TR>
+    <TR>
+<TD width="95" style="text-align : center;"><code><EM><STRONG>buf</STRONG></EM></code></TD>
+<TD width="522">This indicates a pointer to the memory that stores the acquired absolute path name character string. If this value is <code>NULL</code>, there is no need to acquire an absolute path name character string.</TD>
+    </TR>
+    <TR>
+<TD style="text-align : center;"><code><EM><STRONG>buf_len</STRONG></EM></code></TD>
+<TD>This indicates the memory size of <code>buf</code> (bytes).</TD>
+    </TR>
+    <TR>
+<TD style="text-align : center;"><code><EM><STRONG>total_len</STRONG></EM></code></TD>
+<TD>This indicates the length of a valid absolute path name character string that has already been calculated. If this value is <code>0</code>, you must configure properly.</TD>
+    </TR>
+    <TR>
+<TD style="text-align : center;"><code><EM><STRONG>dir_id</STRONG></EM></code></TD>
+<TD>If the target is a directory, this indicates a position; if the target is a file, this indicates the position of the directory to which it belongs.<br />If <code>total_length</code> is <code>0</code>, you must correctly set the value.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<HR>
+<B>Actions required of this command</B>
+<BLOCKQUOTE>
+<PRE><code>p_file</code> holds either file information or directory position information.
+You can determine which it holds with the <code><a href="../file/FS_IsFile.html">FS_IsFile</a></code> function or the <code><a href="../file/FS_IsDir.html">FS_IsDir</a></code> function.
+The argument variables are set as shown below: 
+
+If the argument <code>total_len</code> is <code>0</code>, the length of the absolute path name character string indicated by <code>p_file</code>, including the terminating '<code>\0</code>', will be set in <code>total_len</code>.
+If <code>p_file</code> is a directory its value will be set in <code>dir_id</code>; if <code>p_file</code> is a file, the position of the directory that it belongs to will be set in <code>dir_id</code>.
+If <code>total_len</code> is not <code>0</code>, it is assured that this command has already made this setting.
+
+If the argument <code>buf</code> is not <code>NULL</code>, the absolute path name character string indicated by <code>p_file</code>, including the terminating '<code>\0</code>' will be stored in memory.
+However, if <code>buf_len</code> is less than <code>total_len</code>, <code>FS_RESULT_FAILURE</code> must be returned.
+At this time, it is possible to either store as much of the character string as possible, or store nothing.</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Default Implementation</B>
+<BLOCKQUOTE>Seek results from the provided arguments, using only the <code><a href="fs_command_seekdir_spec.html">FS_COMMAND_SEEKDIR</a></code> and <code><a href="fs_command_readdir_spec.html">FS_COMMAND_READDIR</a></code> commands.</BLOCKQUOTE>
+<HR>
+<B>Command Results</B><BR>
+
+<BLOCKQUOTE>
+<PRE>If <code>FS_RESULT_SUCCESS</code> is returned by the command, it is determined that a valid absolute path name character string length has been set in <code>total_len</code>.
+If buf is not NULL, the absolute path name character string, including the terminating '<code>\0</code>' has been stored. 
+Otherwise it will be determined that <code>buf</code> is not <code>NULL</code>, and that <code>buf_len</code> is less than <code>total_len</code>.</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Functions that use this command</B><BR>
+<BLOCKQUOTE><code>FS_GetPathLength</code> <BR><code>FS_GetPathName</code></BLOCKQUOTE>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a></code>, <code><a href="../fs_archive_proc_func_type.html">FS_ARCHIVE_PROC_FUNC</a></code>, <code><a href="../fs_command_type_const.html">FS_COMMAND_*</a></code>, <code><a href="../archive/FS_SetArchiveProc.html">FS_SetArchiveProc</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+08/25/2004 Corrected error: <code>FSIdFile</code> is changed to <code>FS_IsFile</code>.<br> 07/12/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_StartUtility</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_StartUtilityEx</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+int DWC_StartUtilityEx( int language, int param );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function starts the configuration utility using the buffer secured in the static region. For further details, see the reference for the <a href="DWC_StartUtility.html"><CODE>DWC_StartUtility</CODE></a> function.
+		</P>
+
+<H2>Arguments</H2>
+<table border="1">
+  <tbody>
+    <tr>
+<td width="25%"><em><strong><code>work</code></strong></em></td>
+<td width="75%">Pointer to a 32-byte aligned <CODE>DWC_UTILITY_WORK_SIZE</CODE> byte buffer. Can be deleted after the function completes.</td>
+    </tr>
+    <tr>
+<td><em><strong><code>language</code></strong></em></td>
+<td>Language used by the application <br> DWC_LANGUAGE_JAPANESE // Japanese<br> DWC_LANGUAGE_ENGLISH // English<br> DWC_LANGUAGE_FRENCH // French<br> DWC_LANGUAGE_GERMAN // German<br> DWC_LANGUAGE_ITALIAN // Italian<br> DWC_LANGUAGE_SPANISH // Spanish<br>
+      </td>
+    </tr>
+    <tr>
+<td><em><strong><code>param</code></strong></em></td>
+<td>Specifies the market region and configuration utility start position. The support phone number displayed in the configuration utility and whether easy wireless start is used will depend on the market region. <br>DWC_UTILITY_TOP_MENU_FOR_USA // For North America  Start from top menu<br> DWC_UTILITY_SETTING_FOR_USA&nbsp; //For North America   Start from connection target selection<br> DWC_UTILITY_TOP_MENU_FOR_EUR //For Europe    Start from top menu<br> DWC_UTILITY_SETTING_FOR_EUR // For Europe    Start from connection target selection<br> DWC_UTILITY_TOP_MENU_FOR_JPN //For Japan    Start from top menu<br> DWC_UTILITY_SETTING_FOR_JPN //For Japan    Start from connection target selection<br> DWC_UTILITY_TOP_MENU_COMMON //For Common    Start from top menu<br> DWC_UTILITY_SETTING_COMMON //For Common     Start from connection target selection<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<p><strong>Language and destination combination and support phone number, use of easy wireless start</strong></p>
+<table border="1">
+  <tbody>
+    <tr>
+<td style="text-align: center;" width="20%"><em><strong><code>Language</code></strong></em></td>
+<td style="text-align: center;" width="20%"><em><strong><code>Destination</code></strong></em></td>
+<td style="text-align: center;" width="20%"><em><strong><code>Support phone number</code></strong></em></td>
+<td style="text-align: center;" width="20%"><em><strong><code>Easy Wireless Start</code></strong></em></td>
+<td style="text-align: center;" width="20%"><em><strong><code>Comments</code></strong></em></td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Japan</td>
+<td style="text-align: center;">Japan</td>
+<td style="text-align: center;">None.</td>
+<td style="text-align: center;">Yes</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Japan</td>
+<td style="text-align: center;">Outside of Japan</td>
+      <td style="text-align: center;">---</td>
+      <td style="text-align: center;">---</td>
+<td style="text-align: center;">Error</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">English</td>
+<td style="text-align: center;">North America</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">None.</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">English</td>
+<td style="text-align: center;">Europe/Common</td>
+<td style="text-align: center;">None.</td>
+<td style="text-align: center;">None.</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">English</td>
+<td style="text-align: center;">Japan</td>
+      <td style="text-align: center;">---</td>
+      <td style="text-align: center;">---</td>
+<td style="text-align: center;">Error</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Not Japanese or English</td>
+<td style="text-align: center;">North America</td>
+<td style="text-align: center;">None.</td>
+<td style="text-align: center;">None.</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Not Japanese or English</td>
+<td style="text-align: center;">Europe/Common</td>
+<td style="text-align: center;">None.</td>
+<td style="text-align: center;">None.</td>
+      <td style="text-align: center;">---</td>
+    </tr>
+    <tr>
+<td style="text-align: center;">Not Japanese or English</td>
+<td style="text-align: center;">Japan</td>
+      <td style="text-align: center;">---</td>
+      <td style="text-align: center;">---</td>
+<td style="text-align: center;">Error</td>
+    </tr>
+  </tbody>
+</table>
+
+<H2>Return Values</H2>
+<table border="1">
+  <tbody>
+    <tr>
+      <td width="25%"><em><strong><code>0</code></strong></em></td>
+<td width="75%">Function completed normally.</td>
+    </tr>
+    <tr>
+<td><em><strong><code>Non-zero</code></strong></em></td>
+<td>Argument error.</td>
+    </tr>
+  </tbody>
+</table>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><a href="DWC_StartUtility.html">DWC_StartUtility</a> , <a href="DWC_SetAuthServer.html">DWC_SetAuthServer</a></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			12/16/2005 Revised so arguments and return value notations do not have omissions.<BR> 10/21/2005 Made revisions. <BR> 07/22/2005 Initial version.<BR>
+		</P>
+
+	</BODY>
+</HTML>

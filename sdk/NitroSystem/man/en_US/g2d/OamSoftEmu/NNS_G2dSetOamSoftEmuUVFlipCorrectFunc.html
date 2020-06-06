@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetOamSoftEmuUVFlipCorrectFunc</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetOamSoftEmuUVFlipCorrectFunc</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE><code>#include &lt;nnsys/g2d/g2d_OamSoftwareSpriteDraw.h&gt;</CODE></pre>
+  <pre><CODE>void    NNS_G2dSetOamSoftEmuUVFlipCorrectFunc( NNS_G2dOamSoftEmuUVFlipCorrectFunc pFunc );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pFunc</font></strong></em></td>
+<td width="87%">[IN] UV value-correction function pointer used in OAM software sprite emulation</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Sets the UV value-correction function pointer used in OAM software sprite emulation. To invalidate this function pointer, use <code>NNS_G2dResetOamSoftEmuUVFlipCorrectFunc</code>. In its arguments, the callback calls the pointer to the software 4-corner UV values and the horizontal and vertical flip-state flags. This function was designed in order to get around the fact that the texture sampling position skews by 1 texel when the software sprite flip process is performed. A typical implementation is shown below.
+
+<pre>void UVFlipCorrectFunc_
+(
+fx32*   pRetU0,
+fx32*   pRetV0,
+fx32*   pRetU1,
+fx32*   pRetV1,
+BOOL    bFilpH,
+BOOL    bFilpV
+)
+{
+if( bFilpH )
+    {
+*pRetU0 -= FX32_ONE;
+*pRetU1 -= FX32_ONE;
+    }
+
+if( bFilpV )
+    {
+*pRetV0 -= FX32_ONE;
+*pRetV1 -= FX32_ONE;
+    }
+}</pre>
+The correction function that can be set with this function does not support the sampling location correction of the sprite after the affine transformation.<BR> This is based on the assessment that the sampling location correction of affine transformation sprite should be processed with the material, considering the processing load and such. (Processes done with the material are countermeasures, such as placing transparent color on the pixels around the cell so that the result of the sample location shift will not be highly visible.)
+
+
+</p>
+
+<h2>See Also</h2>
+<p>
+<CODE><A href="NNS_G2dResetOamSoftEmuUVFlipCorrectFunc.html">NNS_G2dResetOamSoftEmuUVFlipCorrectFunc</A><br></CODE>
+</p>
+<H2>Revision History</H2>
+<P>
+11/10/2004 Added sample code.<br> 07/20/2004 Initial version.
+</P>
+</body>
+</html>

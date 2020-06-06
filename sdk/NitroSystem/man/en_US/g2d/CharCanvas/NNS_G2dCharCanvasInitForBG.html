@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNS_G2dCharCanvasInitForBG</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G2dCharCanvasInitForBG</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nnsys/g2d/g2d_CharCanvas.h&gt;
+
+void NNS_G2dCharCanvasInitForBG(
+	NNSG2dCharCanvas* pCC,
+	void* charBase,
+	int areaWidth,
+	int areaHeight,
+	NNSG2dColorMode colorMode
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pCC</STRONG></EM></TD>
+<TD width="87%"> [IN] Pointer to CharCanvas </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>charBase</STRONG></EM></TD>
+<TD width="87%"> [IN] Pointer to starting point of characters assigned to CharCanvas. Must have 4-byte alignment. </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>areaWidth</STRONG></EM></TD>
+<TD width="87%"> [IN] Number of characters in horizontal direction assigned to CharCanvas </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>areaHeight</STRONG></EM></TD>
+<TD width="87%"> [IN] Number of characters in vertical direction assigned to CharCanvas </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>colorMode</STRONG></EM></TD>
+<TD width="87%"> [IN] Color mode of target BG </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>
+	None.
+</P>
+
+<H2>Description</H2>
+<P>
+	Initializes the <CODE>NNSG2dCharCanvas</CODE> structure in order to build CharCanvas on Character BG screen.
+</P>
+<P>
+	With this function, the CharCanvas gets built with <i>n</i> number of characters, assigned starting from <em><strong>charBase</strong></em>, where <i>n</i> = <em><strong>areaWidth</strong></em> * <em><strong>areaHeight</strong></em>. Note that the maximum number of characters that can be assigned to CharCanvas is 256 for an Affine BG, and 1024 for Text BG and Affine Extended BG.
+</P>
+<P>
+	<img src="BG.png" alt="Conceptual Diagram">
+</P>
+<P>
+	<em><strong>colorMode</strong></em> takes either of these values:
+</P>
+	<TABLE border="1" width="100%">
+	  <TBODY>
+	    <TR>
+	      <TD width="13%">NNS_G2D_CHARA_COLORMODE_16</TD>
+	      <TD width="87%"> Use 16-color characters </TD>
+	    </TR>
+	    <TR>
+	      <TD width="13%">NNS_G2D_CHARA_COLORMODE_256</TD>
+	      <TD width="87%"> Use 256-color characters </TD>
+	    </TR>
+	  </TBODY>
+	</TABLE>
+
+
+<H2>Sample code</H2>
+<CODE><pre>
+const int width = 24;<br>
+const int height = 8;<br>
+const int offset = 0x40;<br>
+
+NNSG2dCharCanvas cc;<br>
+GXCharFmt16* pCharBase = (GXCharFmt16*)G2_GetBG0CharPtr();<br>
+
+
+// Build CharCanvas using main BG0 characters.<br>
+NNS_G2dCharCanvasInitForBG(<br>
+&amp;cc,                            // <br>
+pCharBase + offset              // Build CharCanvas using (width * height) number of <br>        width,                          // characters.
+The reference point is the character <br>
+height,                         // that is &quot;offset&quot; away from the character base.<br>
+NNS_G2D_CHARA_COLORMODE_16      // <br>
+    );
+</pre></CODE>
+
+<H2>See Also</H2>
+<P><CODE></CODE></P>
+
+<H2>Revision History</H2>
+<P>05/25/2005 Initial version.</P>
+</BODY>
+
+</HTML>

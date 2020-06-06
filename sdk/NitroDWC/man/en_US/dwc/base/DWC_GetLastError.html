@@ -1,0 +1,568 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_GetLastError*</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_GetLastError*</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+DWCError DWC_GetLastError( int* errorCode );
+
+DWCError DWC_GetLastErrorEx( int* errorCode, DWCErrorType* errorType );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Gets information about the last communication error. If this goes into an error status, the DWC library stops accepting most functions. In order to recover from an error status, call the <CODE><a href="DWC_ClearError.html">DWC_ClearError</a></CODE> function after executing the appropriate error handling process.
+		</P>
+		<p>
+		  The error code that should be displayed when the application generates an error is returned to the buffer indicated by the pointer to the error code storage destination. Because the error code is returned as a negative value, invert the sign to make it positive before displaying it onscreen.<BR>However, if the error code is 0 or the error process type is DWC_ETYPE_LIGHT, these are game-specific displays, so there is no need to display the error code. 
+		</p>
+		<p>
+		  We recommend that you use the <a href="DWC_GetLastError.html">DWC_GetLastErrorEx</a> function, which also obtains the error process type (errorType) at the same time.<BR>errorType stores the information about the recovery process after an error occurs and the information for displaying the error code, so a fixed error process can be created for each value.
+		</p>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>errorCode</CODE></STRONG></EM></TD>
+					<TD width="75%">Pointer to the error code storage location. If the error code is not required, specify NULL.</TD>
+				</TR>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>errorType</CODE></STRONG></EM></TD>
+					<TD width="75%">Pointer to location where the error processing type is stored. If the error code is not required, specify NULL.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		
+		<h3>Error Codes (errorCode)</h3>
+		
+		<h4>Associated with GameSpy SDK (-60000 to -99999)</h4>
+		<p>
+		Error codes relating to the GameSpy SDK (the library that uses the features of the GameSpy server) are expressed by summing the three following values:<BR>&quot;Sequence where an error process occurred&quot; + &quot;GameSpy SDK type where the error occurred&quot; + &quot;Detailed error information&quot;<BR>When the <a href="FriendsMatch.html">FriendsMatch Library</a> is not used, errors associated with the GameSpy SDK will not occur.
+		</p>
+		<h5>A sequence in which error processing occurred</h5>
+		<TABLE border="1">
+		  <TBODY>
+			<TR>
+			  <TD width="30%"><EM><STRONG><CODE>DWC_ECODE_SEQ_LOGIN</CODE></STRONG></EM></TD>
+			  <TD align="right" width="10%"><EM><STRONG><CODE>-60000</CODE></STRONG></EM></TD>
+			  <TD>Error during login processing</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_SEQ_FRIEND</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-70000</CODE></STRONG></EM></TD>
+			  <TD>Error during friend management processing</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_SEQ_MATCH</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-80000</CODE></STRONG></EM></TD>
+			  <TD>Error during the matchmaking process</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_SEQ_ETC</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-90000</CODE></STRONG></EM></TD>
+			  <TD>Error during processing that is not listed</TD>
+			</TR>  
+		  </TBODY>
+		</TABLE>
+		<h5>Errors that occur with GameSpySDK</h5>
+		<TABLE border="1">
+		  <TBODY>
+			<TR>
+			  <TD width="30%"><EM><STRONG><CODE>DWC_ECODE_GS_GP</CODE></STRONG></EM></TD>
+			  <TD width="10%"><EM><STRONG><CODE>-1000</CODE></STRONG></EM></TD>
+			  <TD>GameSpy GP error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_GS_PERS</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-2000</CODE></STRONG></EM></TD>
+			  <TD>GameSpy Persistent error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_GS_STATS</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-3000</CODE></STRONG></EM></TD>
+			  <TD>GameSpy Stats error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_GS_QR2</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-4000</CODE></STRONG></EM></TD>
+			  <TD>GameSpy QR2 error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_GS_SB</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-5000</CODE></STRONG></EM></TD>
+			  <TD>GameSpy ServerBrowsing error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_GS_NN</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-6000</CODE></STRONG></EM></TD>
+			  <TD>GameSpy NatNegotiation error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_GS_GT2</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-7000</CODE></STRONG></EM></TD>
+			  <TD>GameSpy gt2 error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_GS_HTTP</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-8000</CODE></STRONG></EM></TD>
+			  <TD>GameSpy HTTP error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_GS_ETC</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-9000</CODE></STRONG></EM></TD>
+			  <TD>Other GameSpy SDK error</TD>
+			</TR>
+		  </TBODY>
+		</TABLE>
+		<h5>Detailed error information</h5>
+		<TABLE border="1">
+		  <TBODY>
+			<TR>
+			  <TD width="30%"><EM><STRONG><CODE>DWC_ECODE_TYPE_NETWORK</CODE></STRONG></EM></TD>
+			  <TD width="10%"><EM><STRONG><CODE>-10</CODE></STRONG></EM></TD>
+			  <TD>Network failure</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_SERVER</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-20</CODE></STRONG></EM></TD>
+			  <TD>GameSpy server failure</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_DNS</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-30</CODE></STRONG></EM></TD>
+			  <TD>DNS failure</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_DATA</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-40</CODE></STRONG></EM></TD>
+			  <TD>Received invalid data</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_SOCKET</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-50</CODE></STRONG></EM></TD>
+			  <TD>Socket communication error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_BIND</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-60</CODE></STRONG></EM></TD>
+			  <TD>Socket bind error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_TIMEOUT</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-70</CODE></STRONG></EM></TD>
+			  <TD>Timeout occurred</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_PEER</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-80</CODE></STRONG></EM></TD>
+			  <TD>Problem with one-on-one communication</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_CONN_OVER</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-100</CODE></STRONG></EM></TD>
+			  <TD>Exceeded number of connections</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_STATS_AUTH</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-200</CODE></STRONG></EM></TD>
+			  <TD>STATS server login error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_STATS_LOAD</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-210</CODE></STRONG></EM></TD>
+			  <TD>STATS server data load error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_STATS_SAVE</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-220</CODE></STRONG></EM></TD>
+			  <TD>STATS server data save error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_NOT_FRIEND</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-400</CODE></STRONG></EM></TD>
+			  <TD>The specified partner is not a registered friend</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_OTHER</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-410</CODE></STRONG></EM></TD>
+			  <TD>The partner disconnected communications (usually occurs under server-client matchmaking)</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_MUCH_FAILUR</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-420</CODE></STRONG></EM></TD>
+			  <TD>Failed NAT negotiations for the specified number of times
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_SC_CL_FAIL</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-430</CODE></STRONG></EM></TD>
+			  <TD>The server-client matchmaking client DS failed to connect
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_CLOSE</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-600</CODE></STRONG></EM></TD>
+			  <TD>Closing connections error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_TRANS_HEADER</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-610</CODE></STRONG></EM></TD>
+			  <TD>Error which occurred when Reliable data was received in an impossible reception state</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_TRANS_BODY</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-620</CODE></STRONG></EM></TD>
+			  <TD>Error when the reception buffer overflows</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_AC_FATAL</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-700</CODE></STRONG></EM></TD>
+			  <TD>The error group on AC during the automatic connection process In this case, the lower order digits represent a dedicated state value.</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_OPEN_FILE</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-800</CODE></STRONG></EM></TD>
+			  <TD>Failed to open GHTTP file</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_INVALID_POST</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-810</CODE></STRONG></EM></TD>
+			  <TD>Invalid GHTTP transmission</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_REQ_INVALID</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-820</CODE></STRONG></EM></TD>
+			  <TD>GHTTP file names, etc. are invalid</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_UNSPECIFIED</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-830</CODE></STRONG></EM></TD>
+			  <TD>Unspecified GHTTP error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_BUFF_OVER</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-840</CODE></STRONG></EM></TD>
+			  <TD>GHTTP buffer overflow</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_PARSE_URL</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-850</CODE></STRONG></EM></TD>
+			  <TD>GHTTPURL analysis error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_BAD_RESPONSE</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-860</CODE></STRONG></EM></TD>
+			  <TD>Error analyzing the response from the GHTTP server</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_REJECTED</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-870</CODE></STRONG></EM></TD>
+			  <TD>Reject requests, etc. from a GHTTP server</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_FILE_RW</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-880</CODE></STRONG></EM></TD>
+			  <TD>GHTTP local file read/write error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_INCOMPLETE</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-890</CODE></STRONG></EM></TD>
+			  <TD>GHTTP download aborted</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_TO_BIG</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-900</CODE></STRONG></EM></TD>
+			  <TD>Download prohibited because the GHTTP file size is too large</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_ENCRYPTION</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-910</CODE></STRONG></EM></TD>
+			  <TD>GHTTP encryption error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_ALLOC</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-1</CODE></STRONG></EM></TD>
+			  <TD>Failed to allocate memory</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_PARAM</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-2</CODE></STRONG></EM></TD>
+			  <TD>Parameter error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_SO_SOCKET</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-3</CODE></STRONG></EM></TD>
+			  <TD>A GameSpy gt2 socket error was caused by an SO error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_NOT_INIT</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-4</CODE></STRONG></EM></TD>
+			  <TD>The Internet connection has not been initialized</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_DUP_INIT</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-5</CODE></STRONG></EM></TD>
+			  <TD>The library has been initialized twice</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_WM_INIT</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-6</CODE></STRONG></EM></TD>
+			  <TD>Failure to initialize WM</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_UNEXPECTED</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-9</CODE></STRONG></EM></TD>
+			  <TD>An unexpected state, or an unknown GameSpy error has occurred</TD>
+			</TR>
+		  </TBODY>
+		</TABLE>
+		
+		
+		
+		<h4>Error codes relating to the Download feature (-31000 to -31999)</h4>
+		<p>
+		Error codes relating to the Download features are expressed by summing the three following values:<BR>DWC_ECODE_SEQ_ADDINS(-30000) + DWC_ECODE_FUNC_ND(-1000) + (the error details)
+		</p>
+		<h5>Detailed error information</h5>
+		<TABLE border="1">
+		  <TBODY>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_ND_ALLOC</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-1</CODE></STRONG></EM></TD>
+			  <TD>Failed to allocate memory</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_ND_HTTP</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-20</CODE></STRONG></EM></TD>
+			  <TD>HTTP communications failure</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_ND_BUFFULL</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-30</CODE></STRONG></EM></TD>
+			  <TD>Received data was larger than the allocated receive buffer</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ECODE_TYPE_ND_FATAL</CODE></STRONG></EM></TD>
+			  <TD><EM><STRONG><CODE>-9</CODE></STRONG></EM></TD>
+			  <TD>Some other fatal error (not defined above) has occurred</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-101</CODE></STRONG></EM></TD>
+			  <TD>Illegal parameter</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-102</CODE></STRONG></EM></TD>
+			  <TD>Unregistered service</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-103</CODE></STRONG></EM></TD>
+			  <TD>Illegal token (service locator information)</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-104</CODE></STRONG></EM></TD>
+			  <TD>Expired token (service locator information)</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-105</CODE></STRONG></EM></TD>
+			  <TD>No content present</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-106</CODE></STRONG></EM></TD>
+			  <TD>Attribute does not match</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-107</CODE></STRONG></EM></TD>
+			  <TD>Expired content</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-108</CODE></STRONG></EM></TD>
+			  <TD>Access from an access point that is not a service target</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-109</CODE></STRONG></EM></TD>
+			  <TD>Cannot connect to database (problem with Download server)</TD>
+			</TR>
+			<TR>
+			  <TD><EM>(Undefined)</EM></TD>
+			  <TD><EM><STRONG><CODE>-110</CODE></STRONG></EM></TD>
+			  <TD>Password does not match</TD>
+			</TR>
+		  </TBODY>
+		</TABLE>
+		
+		
+		
+		<h4>Error codes relating to the Authentication server (-20000 to -29999)</h4>
+		<p>
+		These are errors codes relating to the processes of logging into to the Authentication server and getting the service locator information.
+		</p>
+		
+		
+		
+		<h4>Error codes relating to the Internet connection process (-50000 to -59999)</h4>
+		<p>
+		These are errors codes relating to the Internet auto-connect process.
+		</p>
+		
+		
+		
+		<h3>Error Process Type (errorType)</h3>
+		
+		<p>
+		When an error occurs, the error process type (DWCErrorType) returns a value telling when the library should be initialized.
+		</p>
+
+		<TABLE border="1">
+		  <TBODY>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ETYPE_NO_ERROR</CODE></STRONG></EM></TD>
+			  <TD>No error</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ETYPE_LIGHT</CODE></STRONG></EM></TD>
+			  <TD>Only a game-specific display. The error code display is not necessary. Recovery is possible by calling the <A>DWC_ClearError</A> function.</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ETYPE_SHOW_ERROR</CODE></STRONG></EM></TD>
+			  <TD>Display the error code.<A href="DWC_ClearError.html">Recovery is possible by calling the <A>DWC_ClearError</A> function.</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ETYPE_SHUTDOWN_FM</CODE></STRONG></EM></TD>
+			  <TD>The <A href="DWC_ShutdownFriendsMatch.html">DWC_ShutdownFriendsMatch</A> function must be called to terminate the <A href="FriendsMatch.html">FriendsMatch Library</A>. Display the error code.</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ETYPE_SHUTDOWN_GHTTP</CODE></STRONG></EM></TD>
+			  <TD>You must call the <A href="DWC_ShutdownGHTTP.html">DWC_ShutdownGHTTP</A> function and end the HTTP communcations (GameSpy HTTP) library. Display the error code.</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ETYPE_SHUTDOWN_ND</CODE></STRONG></EM></TD>
+			  <TD>You must call the <A href="DWC_NdCleanupAsync.html">DWC_NdCleanupAsync</A> function and end the Download library. Display the error code.</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ETYPE_DISCONNECT</CODE></STRONG></EM></TD>
+			  <TD>Call the following library release functions, as needed.<BR><A href="DWC_ShutdownFriendsMatch.html">DWC_ShutdownFriendsMatch</A> function (FriendsMatch library) <BR><A href="DWC_ShutdownGHTTP.html">DWC_ShutdownGHTTP</A> function (HTTP communications library)<BR><A href="DWC_NdCleanupAsync.html">DWC_NdCleanupAsync</A> function (Download library)<BR><A href="DWC_RnkShutdown.html">DWC_RnkShutdown</A> function (general-purpose ranking library)<BR>Communication must be ended using <A href="DWC_CleanupInet.html">DWC_CleanupInet</A> or <A href="DWC_CleanupInetAsync.html">DWC_CleanupInetAsync</A> afterwards. Display the error code.</TD>
+			</TR>
+			<TR>
+			  <TD><EM><STRONG><CODE>DWC_ETYPE_FATAL</CODE></STRONG></EM></TD>
+			  <TD>Since this is equivalent to a FatalError, it is necessary to prompt the user to turn power OFF. Display the error code.</TD>
+			</TR>
+		  </TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+		  <TBODY>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_NONE</CODE></STRONG></EM></TD>
+			  <TD width="75%">No error</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_DS_MEMORY_ANY</CODE></STRONG></EM></TD>
+			  <TD width="75%">Error related to system save data</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_AUTH_ANY</CODE></STRONG></EM></TD>
+			  <TD width="75%">Error related to authentication</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_AUTH_OUT_OF_SERVICE</CODE></STRONG></EM></TD>
+			  <TD width="75%">Service terminated</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_AUTH_STOP_SERVICE</CODE></STRONG></EM></TD>
+			  <TD width="75%">Service being halted temporarily</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_AC_ANY</CODE></STRONG></EM></TD>
+			  <TD width="75%">Error related to automatic connection</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_NETWORK</CODE></STRONG></EM></TD>
+			  <TD width="75%">Other network error</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_DISCONNECTED</CODE></STRONG></EM></TD>
+			  <TD width="75%">Disconnected</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_FATAL</CODE></STRONG></EM></TD>
+			  <TD width="75%">Fatal error</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_FRIENDS_SHORTAGE</CODE></STRONG></EM></TD>
+			  <TD width="75%">Tried to begin pair matchmaking by specifying friends without enough valid friends for the specified number.</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_NOT_FRIEND_SERVER</CODE></STRONG></EM></TD>
+			  <TD width="75%">With server-client matchmaking, either the friends specified in the server DS are not mutual friends or the server is down.</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_MO_SC_CONNECT_BLOCK</CODE></STRONG></EM></TD>
+			  <TD width="75%">The server DS has denied the connection based on the matchmaking options in server-client matchmaking.</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_SERVER_FULL</CODE></STRONG></EM></TD>
+			  <TD width="75%">The server-client matchmaking server DS has exceeded the maximum number of participants.</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_GHTTP_ANY</CODE></STRONG></EM></TD>
+			  <TD width="75%">HTTP communications (GameSpy HTTP) error</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_ND_HTTP</CODE></STRONG></EM></TD>
+			  <TD width="75%">Download library HTTP communications error</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_ND_ANY</CODE></STRONG></EM></TD>
+			  <TD width="75%">Some other error by the Download library</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_SVL_HTTP</CODE></STRONG></EM></TD>
+			  <TD width="75%">HTTP communications error while getting service locator information</TD>
+			</TR>
+			<TR>
+			  <TD width="25%"><EM><STRONG><CODE>DWC_ERROR_SVL_ANY</CODE></STRONG></EM></TD>
+			  <TD width="75%">Some other error while getting service locator information</TD>
+			</TR>
+		  </TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_ClearError.html">DWC_ClearError</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+		  8/02/2006 Changed the error code display conditions (From &quot;Display All&quot; to &quot;OK not to display when the error code is 0&quot;) <BR> 07/24/2006 Revised some erroneous entries<BR> 07/03/2006 Inserted an explanation about when the FriendsMatch Library is not in use<BR> 06/22/2006 Added the error code  -31030 <BR> 06/14/2006 Changed the error code display conditions (from &quot;OK not to display when the error is 0 to -9999&quot; to &quot;Display all&quot;)<BR> 06/05/2006 Integrated the function references for DWC_GetLastError and DWC_GetLastErrorEx<BR> 05/26/2006 Added error information about the Download functionality and similar features<BR>
+		</P>
+		<P>
+		  Revision history for the DWC_GetLastError function.<BR>12/16/2005 Revisions <BR>07/22/2005 Initial version
+		</P>
+		<P>
+		  Revision history for the DWC_GetLastErrorEx function<BR>01/31/2005 Set up a link to the FriendMatch Library<BR>12/16/2005 Revisions<BR>11/01/2005 Initial version<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

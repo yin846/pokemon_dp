@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNSSndStrmCallback</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNSSndStrmCallback</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">typedef void (*NNSSndStrmCallback)(
+NNSSndStrmCallbackStatus status,
+int numChannles,
+void* buffer[],
+u32 len,
+NNSSndStrmFormat format,
+void* arg );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAMMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code><code><EM><STRONG>status</STRONG></EM></code></code></strong></em></td>
+<td>The callback state.</td>
+</tr>
+<tr>
+<td><em><strong><code>numChannles</code></strong></em></td>
+<td>The number of channels.</td>
+</tr>
+<tr>
+<td><em><strong><code>buffer</code></strong></em></td>
+<td>The array of the top address of the buffer for every channel.</td>
+</tr>
+<tr>
+<td><em><strong><code><code><EM><STRONG>len</STRONG></EM></code></code></strong></em></td>
+<td>The byte length of the buffer for each channel.</td>
+</tr>
+<tr>
+<td><em><strong><code>format</code></strong></em></td>
+<td>The sample data format.</td>
+</tr>
+<tr>
+<td><em><strong><code><code><EM><STRONG>arg</STRONG></EM></code></code></strong></em></td>
+<td>The user argument.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDA4NWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAFOWT"></a>
+<h2>Description</h2>
+      <p>
+The callback function called when wave data must be supplied during stream play.
+</p>
+      <p>
+This callback function is registered by the <code><a href="NNS_SndStrmSetup.html">NNS_SndStrmSetup</a></code>, <code><a href="NNS_SndArcStrmStartEx2.html">NNS_SndArcStrmStartEx2</a></code>, and the <code><a href="NNS_SndArcStrmPrepareEx2.html">NNS_SndArcStrmPrepareEx2</a></code> functions.
+</p>
+      <p>
+The callback function registered with the <code><a href="NNS_SndStrmSetup.html">NNS_SndStrmSetup</a></code> function is responsible for supplying the wave data to/for the passed buffer. The callback function registered with the <code><a href="NNS_SndArcStrmStartEx2.html">NNS_SndArcStrmStartEx2</a></code> or <code><a href="NNS_SndArcStrmPrepareEx2.html">NNS_SndArcStrmPrepareEx2</a></code> function is called after wave data is supplied by the sound archive stream library. Therefore, it is not responsible for supplying wave data. However, processing of wave data is possible.
+</p>
+      <p>
+The callback function is called at two different times. First, it is called because it is necessary to pass wave data in advance to all stream buffers before starting stream play. At this time, <code>NNS_SND_STRM_CALLBACK_SETUP</code> is passed in the callback state <em><strong><code>status</code></strong></em>. The other time it is called is during stream play. Here it is called because it is necessary to supply continuous wave data to/in the buffer consumed by playing. At this time, <code>NNS_SND_STRM_CALLBACK_INTERVAL</code> is passed in the callback state <em><strong><code>status</code></strong></em>.
+</p>
+      <p>
+The number of channels used for stream play is passed for the number of channels <em><strong><code>numChannles</code></strong></em>. The number of elements of the array <em><strong><code>buffer</code></strong></em> of the top address of the buffer is the <em><strong><code>numChannles</code></strong></em> number. The buffer size for each channel is <em><strong><code>len</code></strong></em> bytes.
+</p>
+      <p>
+The sample data format <em><strong><code>format</code></strong></em> is one of the following values.
+</p>
+<div class="table"><a name="IDAEQWT"></a><p class="title"><b><b>Table: NNSSndStrmFormat</b><br /></b></p>
+<table summary="NNSSndStrmFormat" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_STRM_FORMAT_PCM8</td>
+<td>8-bit PCM</td>
+</tr>
+<tr>
+<td>NNS_SND_STRM_FORMAT_PCM16</td>
+<td>16-bit PCM</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+After supplying (processing) the wave data, call the <code>DC_FlushRange</code> function so that it is certain to be written to main memory.
+</p>
+<p>
+Note that the callback function registered with the <code><a href="NNS_SndStrmSetup.html">NNS_SndStrmSetup</a></code> function is not called while interrupts are prohibited. Also, note that the callback function registered with the <code><a href="NNS_SndArcStrmStartEx2.html">NNS_SndArcStrmStartEx2</a></code> or the <code><a href="NNS_SndArcStrmPrepareEx2.html">NNS_SndArcStrmPrepareEx2</a></code> function is called from the stream thread.
+</p>
+<p>
+It is not always necessary to complete supply of wave data with the callback function. However, by not completing supply until that region is played next, normal sound will not be output.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndStrmSetup.html">NNS_SndStrmSetup</a>, <a href="NNS_SndArcStrmStartEx2.html">NNS_SndArcStrmStartEx2</a>, <a href="NNS_SndArcStrmPrepareEx2.html">NNS_SndArcStrmPrepareEx2</a></code></p>
+<h2>Revision History</h2>
+<p>11/26/2004 Extracted from description of <code>NNS_SndStrmSetup</code> function.</p>
+</div>
+</body>
+</html>

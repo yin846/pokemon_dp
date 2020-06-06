@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_WriteAndVerifyFlash</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_WriteAndVerifyFlash</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>static inline BOOL	CARD_WriteAndVerifyFlash(u32 dst, const void *src, u32 len);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>dst</STRONG></EM></TD>
+<TD width="87%">The FLASH address of the transfer destination</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>src</STRONG></EM></TD>
+<TD width="87%">Transfer source memory address.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>len</STRONG></EM></TD>
+<TD width="87%">Byte length of data being written.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>TRUE if the process succeeds and the data are the same. FALSE otherwise.</p>
+
+<H2>Description</H2>
+<P>This function writes data to the FLASH device, and then performs a comparison on that written data. The function does not return control until it has finished processing. If the process succeeds and the data matches, the function returns TRUE. Otherwise, it returns FALSE. To get the detailed result value when the process fails, call the <A href="../common/CARD_GetResultCode.html"><CODE>CARD_GetResultCode</CODE></A> function. In order to use this function, you must first lock the access bus with the <A href="../backup/CARD_LockBackup.html"><CODE>CARD_LockBackup</CODE></A> function. <BR>
+</P>
+<h2>Internal Operation</h2>
+<p>
+<font color="#800000">This function communicates with the ARM7 processor internally via PXI.<br> The process will not end if PXI interrupts are not enabled.<br></font> <br>
+</p>
+<h2>See Also</h2>
+<p><a href="../common/CARD_GetResultCode.html"><code>CARD_GetResultCode</code></a> <A href="CARD_IsBackupFlash.html"><code>CARD_IsBackupFlash</code></A>, <A href="CARD_WriteAndVerifyFlashAsync.html"><code>CARD_WriteAndVerifyFlashAsync</code></A>, <A href="CARD_ReadFlash.html"><code>CARD_ReadFlash</code></A>, <A href="CARD_WriteFlash.html"><code>CARD_WriteFlash</code></A>, <A href="CARD_VerifyFlash.html"><code>CARD_VerifyFlash</code></A>, </p>
+
+<H2>Revision History</H2>
+<P>
+12/09/2004 Changed &quot;IO processor&quot; to &quot;ARM7 processor&quot;.<br> 08/31/2004 Added description for the <code>CARD_GetResultCode</code> function.<br> 08/23/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

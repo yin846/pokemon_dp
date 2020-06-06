@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcSetFileAddress</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcSetFileAddress</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndArcSetFileAddress( u32 fileId, void*   address );</code></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA0LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>fileId</code></strong></em></td>
+<td>The file ID</td>
+</tr>
+<tr>
+<td><em><strong><code>address</code></strong></em></td>
+<td>The file address</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAQMWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAXMWT"></a>
+<h2>Description</h2>
+      <p>
+Sets the file address of the file in the sound archive. To get the address value that was set, make the file ID <code><i><b>fileId</b></i></code> into a key and call the <code><a href="NNS_SndArcGetFileAddress.html">NNS_SndArcGetFileAddress</a></code> function.
+</p>
+      <p>
+The file ID <code><i><b>fileId</b></i></code> can be obtained from the sound data information structure obtained with the <code><a href="NNS_SndArcGetSeqInfo.html">NNS_SndArcGetSeqInfo</a></code> function.
+</p>
+      <p>
+This function is called in order to set the address of the sound data loaded with functions such as the <code><a href="NNS_SndArcLoadSeq.html">NNS_SndArcLoadSeq</a></code> function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndArcGetFileAddress.html">NNS_SndArcGetFileAddress</a>, <a href="NNS_SndArcGetSeqInfo.html">NNS_SndArcGetSeqInfo</a>, <a href="NNS_SndArcLoadSeq.html">NNS_SndArcLoadSeq</a></code></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

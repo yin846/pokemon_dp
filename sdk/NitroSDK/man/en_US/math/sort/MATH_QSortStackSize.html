@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATH_QSortStackSize</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATH_QSortStackSize</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/qsort.h&gt;
+
+</CODE><CODE>static inline u32 MATH_QSortStackSize(u32 num);
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    
+    
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">num</font></strong></em></TD>
+<TD width="670">Number of elements in the array to sort.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>Returns the size of the work buffer required for sorting with <a href="MATH_QSort.html"><code>MATH_QSort</code></a>.</p>
+<H2>Description</H2>
+<P>This function returns the maximum size of the work buffer needed for sorting with <a href="MATH_QSort.html"><code>MATH_QSort</code></a>. If no work buffer is passed as an argument to <code>MATH_QSort</code>, a work area of this size will be allocated from the stack.</P>
+<h2>See Also</h2>
+<P><A href="MATH_QSort.html">MATH_QSort</A></P>
+<H2>Revision History</H2>
+<P>04/12/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

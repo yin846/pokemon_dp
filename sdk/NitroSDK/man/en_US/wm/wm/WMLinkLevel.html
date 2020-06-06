@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WMLinkLevel</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WMLinkLevel</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wm.h&gt;</CODE><BR>
+<PRE><CODE>typedef enum WMLinkLevel
+{ 
+WM_LINK_LEVEL_0 = 0 ,
+WM_LINK_LEVEL_1 ,
+WM_LINK_LEVEL_2 ,
+WM_LINK_LEVEL_3
+
+} WMLinkLevel;</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_LINK_LEVEL_0</font></strong></em></TD>
+<TD width="800">The link strength is 0. This indicates that the radio state is noticeably bad, or is in an unlinked state.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_LINK_LEVEL_1</font></strong></em></TD>
+<TD width="800">The link strength is 1. This indicates that the radio state is comparatively bad.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_LINK_LEVEL_2</font></strong></em></TD>
+<TD width="800">The link strength is 2. This indicates that the radio state is comparatively good.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_LINK_LEVEL_3</font></strong></em></TD>
+<TD width="800">The link strength is 3. This indicates that the radio state is good.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>
+This is a list type that indicates the link strength during wireless communications. The link strength is displayed in four steps, from 0 to 3. 0 indicates the lowest strength, or an unlinked state, while 3 indicates the highest strength and a good radio state.
+</P>
+
+<H2>Revision History</H2>
+<P>
+08/25/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

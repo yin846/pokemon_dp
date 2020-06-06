@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndVisitAllocatedForExpHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_FndVisitAllocatedForExpHeap</h1>
+<h2>C Specification</h2>
+
+<dl> 
+	<dd> 
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+		<pre><CODE>void NNS_FndVisitAllocatedForExpHeap(
+NNSFndHeapHandle    heap,
+NNSFndHeapVisitor   visitor,
+u32                 userParam);</CODE></pre>
+	</dd>
+</dl>
+<h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">heap</font></strong></em></td>
+<td width="87%">Extended heap handle</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">visitor</font></strong></em></td>
+<td width="87%">Function called for each memory block</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">userParam</font></strong></em></td>
+<td width="87%">User-designated parameters passed to the <code>visitor</code> function</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p> None.</p>
+<H2>Description</H2>
+<p>Causes the user-specified <em><strong><code>visitor</code></strong></em> function to be called for all memory blocks allocated from the extended heap.</p>
+<p>The <em><strong><code>visitor</code></strong></em> type <code>NNSFndHeapVisitor</code> is defined in the following manner: </p>
+<BLOCKQUOTE><pre>typedef void (*NNSFndHeapVisitor)(
+void*               memBlock ,
+NNSFndHeapHandle    heap,
+u32                 userParam);</pre></BLOCKQUOTE>
+<p>
+The first argument (<em><strong><code>memBlock</code></strong></em>) is the pointer to the memory block. The second argument (<em><strong><code>heap</code></strong></em>) is the heap handle that allocated the memory block. The third argument (<em><strong><code>userParam</code></strong></em>) is the value set with <code>userParam</code> passed as&ndash;is, and an optional value can be passed.
+</p>
+<p>The order for the memory block called by the <code>visitor</code> function is the allocated order.</p>
+<h2>See Also</h2>
+<p><code><a href="NNS_FndAllocFromExpHeap.html">NNS_FndAllocFromExpHeap</a></code>, <code><a href="NNS_FndAllocFromExpHeapEx.html">NNS_FndAllocFromExpHeapEx</a></code>, <code><a href="NNS_FndCreateExpHeap.html">NNS_FndCreateExpHeap</a></code>, <code><a href="NNS_FndCreateExpHeapEx.html">NNS_FndCreateExpHeapEx</a></code></p>
+<H2>Revision History</H2>
+<P>10/15/2004 Corrected the heading of &quot;See Also&quot;<br />04/01/2004 Initial version.</P>
+</body>
+</html>

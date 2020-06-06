@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>NitroStartUp</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">NitroStartUp</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>void NitroStartUp( void );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function is  for  use with C++.</P>
+<P>It describes processes that you want to perform before C++ static constructor calls. In the default implementation nothing is processed. It is compiled as a function that has weak symbols. If a <CODE>NitroStartUp</CODE> function is newly defined in an application, the new function will have priority when linking.</P>
+
+<P>Generally speaking the Nitro runtime binary startup processes are as below.</P>
+<OL>
+<LI>Initialize the stack.
+<LI>Clear the BSS region.
+<LI>Initialize the floating point library.
+<LI><B><B>Call <CODE>NitroStartUp</CODE>.</B></B>
+<LI>Execute static constructor (static initializer).
+<LI>Call <CODE>NitroMain</CODE> entry.
+</OL>
+<P>As you can see from above, <CODE>NitroStartUp</CODE> is called before the static constructor. If you are creating NITRO applications and want to perform initialization processes before executing a static constructor, you can describe them in <CODE>NitroStartUp</CODE>.</P>
+<P>Because the static constructor is executed before <CODE>NitroMain</CODE>, if you dynamically secure memory in a static constructor, you must initialize (<CODE>new/delete</CODE>) a heap memory managing module, etc, in <CODE>NitroStartUp</CODE>.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="NitroStaticInit.html">NitroStaticInit</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>02/27/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

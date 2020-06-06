@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>certconv</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color  : #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">certconv</H1>
+<H2>Description</H2>
+<P> <CODE>certconv</CODE> is a tool that creates the root certificate given to the NITRO-WiFi <CODE>SOC_EnableSSL</CODE> function. It converts a general X.509 DER-format root certificate file to the SOCCaInfo structure type.</P>
+<H2>Using the Library</H2>
+<H3>Start Command</H3>
+<P><CODE>% certconv -n &lt;symbol_name&gt; [-o &lt;outfile&gt;] &lt;infile&gt;<BR></CODE></P>
+<P> Using the X.509 DER-format root certificate file specified in <CODE>infile</CODE> as its input, this outputs a C source file that defines the <CODE><A href="../soc/soc/SOCCaInfo.html">SCOCaInfo</A></CODE>-type data which holds the symbol name specified in <CODE>symbol_name</CODE>. If <CODE>outfile</CODE> is specified, this will write to <CODE>outfile</CODE>. If not, it will write to standard output.</P>
+<P>The certificate data for the X.509 DER format can be created with a standard SSL tool kit such as OpenSSL. For more information, refer to the general SSL documentation.</P>
+<P>For reference, the method using the <CODE>openssl</CODE> command to convert X.509 PEM-format certificate data to DER format is shown below:</P>
+<PRE><CODE> &gt; openssl x509 -inform pem -in &lt;Input PEM file&gt; -outform der -out &lt;output DER file&gt;</CODE></PRE>
+<P>In addition, the following command can be used to check whether or not the file is in DER format:</P>
+<PRE><CODE> &gt; openssl x509 -inform der -in &lt;input DER file&gt; -text</CODE></PRE>
+<H2>Location</H2>
+<P><CODE>$NitroWiFi/tools/bin/certconv.exe</CODE></P>
+<H2>See Also</H2>
+<P>
+<CODE><A href="../soc/soc/SOCCaInfo.html">SOCCaInfo</A></CODE>,
+<CODE><A href="../soc/soc/SOCSslConnection.html">SOCSslConnection</A></CODE>,
+<CODE><A href="../soc/soc/SOC_EnableSsl.html">SOC_EnableSsl</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+01/30/2006 Initial version.
+</P>
+</BODY>
+</HTML>

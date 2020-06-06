@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>RTCDate</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">RTCDate</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/rtc.h&gt;</CODE><BR>
+<PRE><CODE>typedef struct {
+u32		year;
+u32		month;
+u32		day;
+<A href="RTCWeek.html">RTCWeek</A>    week;
+} RTCDate;</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">year</font></strong></em></TD>
+<TD width="700">Numerical value 0 &ndash; 99 indicates the year.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">month</font></strong></em></TD>
+<TD>Numerical value 1 &ndash; 12 indicates the month.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">day</font></strong></em></TD>
+<TD>Numerical value 1 &ndash; 31 indicates the day.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">week</font></strong></em></TD>
+<TD>Value of the <a href="RTCWeek.html">RTCWeek</a> enumeration that indicates the day of the week.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>This structure indicates the real time clock's date. It includes year, month, day, and day of the week.  </P>
+
+<h2>See Also</h2>
+<P><CODE><A href="RTCWeek.html">RTCWeek</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>05/18/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

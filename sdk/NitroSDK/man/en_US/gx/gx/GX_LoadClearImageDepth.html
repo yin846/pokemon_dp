@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_LoadClearImageDepth</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_LoadClearImageDepth</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_load.h&gt;</CODE><BR> <BR> <CODE>void GX_LoadClearImageDepth(const void *pSrc, u32 szByte);</CODE></dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New">pSrc</font></strong></em></TD>
+<TD width="512">Pointer to transfer origin</TD>
+    </TR>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New">szByte</font></strong></em></TD>
+<TD width="512">Transfer size (in bytes)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function uses DMA to transfer the clear image (depth) to the clear image slot. The DMA channel that is used is <code>GX_DMAID</code> (defined in <code>gxcommon.h</code>). <em><strong><code>szByte</code></strong></em> must be a multiple of 4. Call between <code><a href="GX_BeginLoadClearImage.html">GX_BeginLoadClearImage</A></code> and <code><a href="GX_EndLoadClearImage.html">GX_EndLoadClearImage</A></code>.<BR> Notes: Because the DMA transfer is carried out internally, the transfer source data must be flushed to the main memory using a function such as <code><A href="../../os/cache/DC_FlushRange.html" target="_self">DC_FlushRange</A></code> prior to the process. If the regions for transfer source and transfer destination overlap, the operation result is undefined. Do not call <code><a href="GX_SetBankForClearImage.html">GX_SetBankForClearImage</A></code>, <code><a href="GX_ResetBankForClearImage.html">GX_ResetBankForClearImage</A></code>, or <code><a href="GX_DisableBankForClearImage.html">GX_DisableBankForClearImage</A></code> between <code><a href="GX_BeginLoadClearImage.html">GX_BeginLoadClearImage</A></code> and <code><a href="GX_EndLoadClearImage.html">GX_EndLoadClearImage</A></code>.</P>
+
+<h2>See Also</h2>
+<P><code><A href="GX_BeginLoadClearImage.html">GX_BeginLoadClearImage</A></code>, <code><A href="GX_LoadClearImageColor.html">GX_LoadClearImageColor</A></code>, <code><A href="GX_EndLoadClearImage.html">GX_EndLoadClearImage</A></code></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

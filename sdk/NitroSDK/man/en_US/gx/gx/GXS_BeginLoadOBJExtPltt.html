@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GXS_BeginLoadOBJExtPltt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GXS_BeginLoadOBJExtPltt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/gx/gx_load.h&gt;</CODE><BR>
+<CODE>void GXS_BeginLoadOBJExtPltt(void);</CODE></PRE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function is called before transmitting OBJ palette data to the sub 2D engine's OBJ Extended palette. Internally, it allocates banks allocated to the OBJ Extended palette to LCDC, and then prepares a DMA transfer of OBJ Extended palette data with <code><A href="GXS_LoadOBJExtPltt.html">GXS_LoadOBJExtPltt</A></code>.</P>
+<P>Note: </b> Before this function you must use <A href="GX_SetBankForSubOBJExtPltt.html"><code>GX_SetBankForSubOBJExtPltt</code></A> to allocate VRAM banks to the sub 2D engine's OBJ Extended palette.</P>
+
+<h2>See Also</h2>
+<P><code><A href="GXS_LoadOBJExtPltt.html">GXS_LoadOBJExtPltt</A></code>, <code><A href="GXS_EndLoadOBJExtPltt.html">GXS_EndLoadOBJExtPltt</A></code></P>
+<H2>Revision History</H2>
+<P>02/09/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

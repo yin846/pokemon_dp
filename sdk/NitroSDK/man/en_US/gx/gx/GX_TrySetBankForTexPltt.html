@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_TrySetBankForTexPltt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_TrySetBankForTexPltt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>BOOL GX_TrySetBankForTexPltt(GXVRamTexPltt texPltt);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">texPltt</font></strong></em></td>
+<td width="87%">Specifies a VRAM bank to allocate to the texture palette</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>
+Returns TRUE if the VRAM bank is allocated as normal. Returns FALSE if the VRAM bank to be allocated is locked by another library.
+</p>
+<H2>Description</H2>
+<P>Attempts to allocate a VRAM bank to TexturePalette. If the specified VRAM bank is either disabled or allocated to LCDC, this allocates the VRAM bank to the texture palette. The allocation will fail if the designated VRAM bank is exclusion-locked by another library.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>GX_VRAM_TEXPLTT_NONE</CODE></TD>
+<TD>A VRAM bank is not allocated to the texture palette.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEXPLTT_0_F</CODE></TD>
+<TD>Slot 0 of the texture palette is reserved. VRAM-F is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEXPLTT_0_G</CODE></TD>
+<TD>Slot 0 of the texture palette is reserved. VRAM-G is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEXPLTT_01_FG</CODE></TD>
+<TD>Slot 0.1 of the texture palette is reserved. VRAM-F and -G are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEXPLTT_0123_E</CODE></TD>
+<TD>Slots 0, 1, 2, and 3 of the texture palette are reserved. VRAM-E is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEXPLTT_01234_EF</CODE></TD>
+<TD>Slots 0, 1, 2, 3, and 4 of the texture palette are reserved. VRAM-E and -F are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEXPLTT_012345_EFG</CODE></TD>
+<TD>Slots 0, 1, 2, 3, 4, and 5 of the texture palette are reserved. VRAM-E, -F, and -G are allocated.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following is the type definition for <CODE>GXVRamTexPltt</CODE> types.</P>
+<PRE><CODE>typedef enum
+{
+GX_VRAM_TEXPLTT_NONE     = 0x0000,
+GX_VRAM_TEXPLTT_0_F      = GX_VRAM_F,              // TexturePltt 0
+GX_VRAM_TEXPLTT_0_G      = GX_VRAM_G,              // TexturePltt 0
+GX_VRAM_TEXPLTT_01_FG    = GX_VRAM_F | GX_VRAM_G,  // TexturePltt 01
+GX_VRAM_TEXPLTT_0123_E   = GX_VRAM_E,              // TexturePltt 0-3
+GX_VRAM_TEXPLTT_01234_EF = GX_VRAM_E | GX_VRAM_F,  // TexturePltt 0-3,4
+GX_VRAM_TEXPLTT_012345_EFG = GX_VRAM_E | GX_VRAM_F | GX_VRAM_G  // TexturePltt 0-3,45
+}
+GXVRamTexPltt;</CODE></PRE>
+<h2>See Also</h2>
+<P><code><A href="GX_SetBankForTexPltt.html">GX_SetBankForTexPltt</A>, <A href="GX_GetBankForTexPltt.html">GX_GetBankForTexPltt</A>, <A href="GX_ResetBankForTexPltt.html">GX_ResetBankForTexPltt</A>, <A href="GX_DisableBankForTexPltt.html">GX_DisableBankForTexPltt</A>, <A href="GX_GetSizeOfTexPltt.html">GX_GetSizeOfTexPltt</A></code></P>
+<H2>Revision History</H2>
+<P>02/15/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

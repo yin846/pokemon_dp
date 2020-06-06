@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndStrmAllocChannel</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAEMWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndStrmAllocChannel</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndStrmAllocChannel(
+NNSSndStrm* stream,
+int             numChannels,
+const u8        chNoList[] );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAYNWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>stream</code></strong></em></td>
+<td>Pointer to a stream structure.</td>
+</tr>
+<tr>
+<td><em><strong><code>numChannels</code></strong></em></td>
+<td>The number of channels to allocate. Takes a value between 1 and 16.</td>
+</tr>
+<tr>
+<td><em><strong><code>chNoList[]</code></strong></em></td>
+<td>An array of channel numbers.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAVOWT"></a>
+<h2>Return Values</h2>
+
+      <p>
+Returns a value to indicate if it was able to allocate the channels.
+</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA2OWT"></a>
+<h2>Description</h2>
+      <p>
+This function allocates the channels that are used when a stream is played. Before playing a stream, you must use this function to allocate channels.
+</p>
+      <p>
+The channel number array <em><strong><code>chNoList[]</code></strong></em> must contain as many elements as the number of channels, <em><strong><code>numChannels</code></strong></em>. Each element specifies a channel number. Although you can specify channel numbers from 0 - 15, different channel numbers are used for different features. Therefore you must consider cooperation with other uses when specifying. For example, the channel number 14 or 15 may not be the best choice if noise is going to be used for the sequence playback.
+</p>
+
+      
+<div class="table"><a name="IDALPWT"></a><p class="title"><b>Table: Use of each channel and its functionality</b></p>
+<table summary="ƒ`ƒƒƒ“ƒlƒ‹‚Ì”Ô†•Ê‹@”\" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Channel  Number</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0, 2</td>
+<td>Can playback PCM/ADPCM. Output from these channels can also be used for sound capture input.</td>
+</tr>
+<tr>
+<td>1, 3</td>
+<td>Can playback PCM/ADPCM. Because sound capture and the timer are shared, these channels can be used only for sound capture output when sound capture is used.</td>
+</tr>
+<tr>
+<td>4 ` 7</td>
+<td>Can playback PCM/ADPCM. These channels are used preferentially when playing back waveform data on sequence playback.</td>
+</tr>
+<tr>
+<td>8 ` 13</td>
+<td>Can playback PCM/ADPCM and PSG rectangular waveforms.</td>
+</tr>
+<tr>
+<td>14, 15</td>
+<td>Can playback PCM/ADPCM and white noise.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+      <p>
+To free an allocated channel, call <a href="NNS_SndStrmFreeChannel.html"><code>NNS_SndStrmFreeChannel</code></a>.
+</p>
+      
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndStrmFreeChannel.html">NNS_SndStrmFreeChannel</a></p>
+<h2>Revision History</h2>
+<p>08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

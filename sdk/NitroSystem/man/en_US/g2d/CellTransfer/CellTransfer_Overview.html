@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Cell Transfer Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">Cell VRAM Transfer State Manager Overview</h1>
+<H2>Conceptual Diagram</H2>
+<P><span lang=EN-US style='font-size:9.0pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r ‚o–¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"  coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"  filled="f" stroked="f">  <v:stroke joinstyle="miter"/>  <v:formulas>   <v:f eqn="if lineDrawn pixelLineWidth 0"/>   <v:f eqn="sum @0 1 0"/>   <v:f eqn="sum 0 0 @1"/>   <v:f eqn="prod @2 1 2"/>   <v:f eqn="prod @3 21600 pixelWidth"/>   <v:f eqn="prod @3 21600 pixelHeight"/>   <v:f eqn="sum @0 0 1"/>   <v:f eqn="prod @6 1 2"/>   <v:f eqn="prod @7 21600 pixelWidth"/>   <v:f eqn="sum @8 21600 0"/>   <v:f eqn="prod @7 21600 pixelHeight"/>   <v:f eqn="sum @10 21600 0"/>  </v:formulas>  <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>  <o:lock v:ext="edit" aspectratio="t"/> </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:412.2pt;  height:169.2pt'>  <v:imagedata src="file:///C:\DOCUME~1\KITANI~1\LOCALS~1\Temp\msohtml1\01\clip_image001.emz"   o:title="}3" croptop="-2913f" cropleft="-3966f" cropright="-854f"   grayscale="t"/> </v:shape><![endif]--><IMG width="550" height="226" src="clip_image002.gif" v:shapes="_x0000_i1025"></span><BR>
+<H2>Description</H2>
+The Cell VRAM Transfer State Object manages statuses such as: the information about the data of the VRAM transfer origin, information about the data of the VRAM transfer destination, if the Cell Animation itself is in a state requiring VRAM transfer, the type of image to be transferred, if the cell is being rendered, etc. The VRAM transfer format Cell Animation maintains the Cell VRAM Transfer State Object as a data member; more specifically, it maintains a handle obtained during initialization.<BR> The user carries out operations for the Cell VRAM Transfer State Object using this handle.<br /><BR> The Cell VRAM Transfer State Manager checks the state of the Cell VRAM Transfer State Object with each frame and determines if it is necessary to execute a VRAM transfer.<br /><BR> The Manager requests the required VRAM transfer task execution request by utilizing request functions. Be aware that the Manager only carries out requests. The actual execution of the VRAM transfer and management of the transfer tasks is left to an external module. For the actual VRAM transfer, the VRAM Transfer Manager in the <code>Gfd</code> (graphics foundation) Library in the Nitro System can be used. If the consistency of the API is maintained, it is possible to use the VRAM transfer module implemented by the user. <BR> <BR>
+
+<pre>
+The example below shows the processing flow until transfer cell animation is detected using the VRAM Transfer State Object.
+ 
+=========== Initialization Process ===========
+1. Initialize the Cell VRAM Transfer State Object Manager (NNS_G2dInitCellTransferStateManager()).
+2.  Obtain the Cell VRAM Transfer State Object Handle (NNS_G2dGetNewCellTransferStateHandle()),
+and initialize the VRAM Transfer Cell Animation (NNS_G2dInitCellAnimationVramTransfered()),
+   
+=========== Game Loop ===========
+3.Update the transfer state  (NNS_G2dSetCellTransferStateRequested()).
+4.Update the status of rendered or not  (NNSi_G2dSetCellTransferStateCellDrawnFlag()).
+5.Update the Cell VRAM Transfer State Object Manager  (NNS_G2dUpdateCellTransferStateManager()).
+At this point, transfer processing is carried out where necessary using the object.
+      
+=========== End Process ===========
+6.Cell VRAM Transfer State Object Handles that are no longer in use are returned to the Manager (NNS_G2dFreeCellTransferStateHandle() ).
+
+</pre>
+
+<BR>
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"--> <!--==========================================================================   Project:  NitroDWC - man   File:     main.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Revision: 1.36 $   $NoKeywords: $  ==========================================================================-->
+
+<html>
+
+	<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Style-Type" content="text/css">
+		<title>NITRO-DWC Function Reference Manual</title>
+		<link href="css/titles.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<h1 class="title">NITRO-DWC Function Reference Manual<br> (US Version)</h1>
+		<p align="right">
+		<span class="version">Supports NITRO-DWC 1.2 Release Version</span></br> <span class="version">Supports NITRO-DWC-DL 1.2 Release Version</span>
+		</p>
+		<p class="caution">[Note] This document contains proprietary information. Please take strict measures to keep this information confidential.</p>
+		<p class="copyright">&copy;2005, 2006 Nintendo Co.,Ltd. All rights reserved.</p>
+		<p class="recommend">Microsoft Internet Explorer 5.0/Netscape 6.0 or later versions are recommended.</p>
+		<h3>Revision History</h3>
+		<p>
+		<A href="changelog.html">Revision history up to NITRO-DWC 1.2 Release Version / NITRO-DWC-DL 1.2 Release Version</A>
+		</p>
+		<h3>Table of Contents</h3>
+		<p>
+		<A href="main.html#hajimeni">Introduction</A><BR> <A href="main.html#kousei">Structure of NITRO-DWC </A><BR> <A href="main.html#houhou">How to Use</A><BR> <A href="main.html#tyuui">Notes</A><BR> <A href="main.html#document">About this Document</A><BR> <A href="main.html#sample">About the Sample Demos</A><BR>
+		</p>
+
+		<A name="hajimeni"><h3>Introduction</h3></a>
+		<p>NITRO-DWC can be used to connect to the Internet through Nintendo DS wireless communications (infrastructure mode), register friends, reference friends' status, and to connect to other Nintendo DS units that meet set conditions.<BR>NOTE: NITRO-DWC-DL is NITRO-DWC with only the download feature extracted. Items marked with a <font color="#ff6600">&#x25CF;</font> in the features list cannot be used.</p>
+		<P>NITRO-DWC / NITRO-DWC-DL require the following libraries and compilers.</p>
+		<ul>
+		  <li>Supports NITRO-SDK 3.0 or later</li>
+		  <li>NITRO-System Version 09/01/2005 or later</li>
+<li>Supports NITRO-WiFi 1.0 or later</li>
+<li>CodeWarrior for NINTENDO DS Version 1.2 SP4 and later, as well as Version 2.0 and later</li>
+		</ul>
+		
+		<P><strong>Notes</strong></p>
+		<ul>
+		<li>This package includes binary without source.</li>
+		<li>When using CodeWarrior for NINTENDO DS Version 2.0, be sure to apply the patch2 patch or later.</li>
+		</ul>
+	  <a name="kousei"><h3>The Structure of NITRO-DWC / NITRO-DWC-DL</h3></a>
+	  <p>NITRO-DWC allows for the formulaic processing of the features below:</p>
+	  <UL>
+		<li>A feature for configuring the connection to a wireless access point.</li>
+		<li>Obtaining an IP address from a wireless access point.</li>
+		<li>Authentication using Nintendo's authentication server.</li>
+		<li>A user management system that does not require the game user to be aware of the user name or password.</li>
+		<li>A friend registration system that does not require the user to be aware of whether he or she has ever connected to the Internet.</li>
+		<li>Creation of an automatic mesh connection without any awareness of the connection order for a large number of unspecified partners.</li>
+		<li>Creation of an automatic mesh connection without any awareness of friend-exclusive connection order.</li>
+		<li>Creation of a semi-automatic mesh connection with a friend exclusive server-client method.</li>
+		<li>A feature for HTTP communications</li>
+		<li>A feature for general-purpose ranking</li>
+		<li>A feature for downloading (Wi-Fi download service)</li>
+	  </UL>
+	  <p>NITRO-DWC-DL can use only the following features:</p>
+	  <UL>
+		<li>A feature for configuring the connection to a wireless access point.</li>
+		<li>Obtaining an IP address from a wireless access point.</li>
+		<li>Authentication using Nintendo's authentication server.</li>
+		<li>Download functionality (Wi-Fi Download Service)</li>
+	  </UL>
+		<a name="houhou"><h3>Using the Library</h3></a>
+		<p>Set the path to <code>NitroDWC</code> in the environment variable <code>NITRODWC_ROOT</code>.</p>
+		<p>To use NITRO-DWC you must connect to Nintendo's Authentication server and to the GameSpy's server. Doing this requires an environment that can connect to the Internet.</p>
+		
+		<a name="tyuui"><h3>Notes</h3></a>
+		<h4>Maintenance information regarding each server:</h4>
+		<h5>Nintendo Server for Connection Tests</h5>
+		<p>This server is intended to check if the Nintendo DS is currently in an environment where it can connect to the Internet. It runs non-stop.</p>
+		<p>Refer to the following link to confirm the operation status of each server; if the character string &quot;This is test.html page&quot; appears, the server is running.</p>
+		<table width="80%" border="1" cellspacing="2" cellpadding="0" align="center">
+			<tr>
+				<td align="center" width="50%"><a href="http://conntest.nintendowifi.net/" target="_blank">Test Connection Server</a></td>
+				<td align="center" width="50%">&nbsp;</td>
+			</tr>
+		</table>
+		<h5>Nintendo Authentication Server</h5>
+		<p>This server authenticates the Nintendo Wi-Fi Connection ID that is set on the Nintendo DS, and issues information for connecting to the GameSpy server. </p>
+		<p>Two types of authentication servers are available: Use the development authentication server during development and debugging, and the product authentication server when creating the final ROM. Although both the development and the production authentication server are operating continuously, the development authentication server may go down because it does not have a redundant configuration. If the development authentication server goes down for any reason, the product authentication server may be used.
+</p>
+		<p>Refer to the following links to confirm the operation status of each authentication server; if the character string &quot;AuthServer is up&quot; appears, the server is running.</p>
+		<table width="80%" border="1" cellspacing="2" cellpadding="0" align="center">
+			<tr>
+				<td align="center" width="50%"><a href="https://nas.nintendowifi.net/nastest.jsp" target="_blank">Authentication Server for Production</a></td>
+				<td align="center"><a href="https://nas.test.nintendowifi.net/nastest.jsp" target="_blank">Authentication Server for Development</a></td>
+			</tr>
+		</table>
+<p><strong>IMPORTANT: By default, the authentication server for development is used. To switch the authentication server, you can use the <a href="dwc/base/DWC_SetAuthServer.html"><CODE>DWC_SetAuthServer</CODE></a> function. For more details, see the Function Reference.</strong></p>
+
+		<h5>GameSpy Server</h5>
+		<p>The GameSpy server is down every Tuesday from 16:00 to 18:00 Japan time (UTC/GMT +9). Sometimes the maintenance work will not be completed by 18:00 and the down time will last a little longer.</p>
+		<p>
+		<font color="red">Note: Presently, there is no method available for checking the operating state of a GameSpy server.</font></BR> Note: The general-purpose ranking feature also utilizes the GameSpy server.</BR>
+		</p>
+
+		<h5>Nintendo Download Server</h5>
+		<p>This is the server used for the Wi-Fi Download service. For details, read the <A href="main.html#document">Nintendo Wi-Fi Connection NITRO-DWC Programming Manual - Download Edition.</A></p>
+		<p>As with the Authentication server, there are two versions of the Nintendo Download server: one for development and one for production.  Switching between the servers matches the switching between Authentication servers.</p>
+		<p>
+		<font color="red">Note: Presently, there is no method available for checking the operating state of the download server.</BR></font>
+		</p>
+
+		<h5>Comments</h5>
+		<ul>
+			<li>Once a user ID has been created in the authentication server it cannot be changed or deleted.&nbsp;
+			<li>A server for local debug use will not be provided.
+		</ul>
+		<h4>Regarding licenses</h4>
+		 <p>Root certificates from VeriSign et al. are incorporated as part of the automatic connection process. For reasons related to licensing, do not modify or use it for other purposes.</p>
+	    <p>A font is included to verify the operation of sample demos. For reasons related to licensing, do not modify or use it for other purposes.</p>
+		<a name="tyuui_wep"><h4>About WEP Keys</h4></a>
+		<ul>
+
+			<li>Up to 4 WEP keys can usually be registered for access points. The first of the registered WEP keys gets entered for the DS connection target setting, and the access point side is configured to use that same WEP key.
+			<li>The WEP key can be entered using ASCII alphanumeric characters or hexadecimal 0-9 and a-f.
+			<li>The rules for the number of characters that can be entered for the WEP key are as follows:<BR>If entered using ASCII, enter either 5, 13 or 16 characters.  If entered using hexadecimal, enter 10, 26 or 32 characters.
+			<li>WEP keys are the only encryption method supported by the DS. If the access point is using some other encryption method it will need to be changed.
+		</ul>
+	  <a name="document"><h3>Documentation</h3></a>
+	  <p>The <code>$(NITRODWC_ROOT)/docs</code> directory contains the following programming-related documents:
+	  	<ul>
+	  	<li>Nintendo Wi-Fi Connection NITRO-DWC Programming Manual</li>
+	  	<li>Nintendo Wi-Fi Connection NITRO-DWC Programming Manual - General-Purpose Ranking Edition</li>
+	  	<li>Nintendo Wi-Fi Connection NITRO-DWC Programming Manual - Download Edition</li>
+	  	</ul>
+	  </p>
+	  <p>In addition, documents such as the &quot;Nintendo Wi-Fi Connection Programming Guidelines&quot; which contain cautions for when producing a game, or the newest versions of packaged documentation can be obtained from the Nintendo support website.<BR>NOTE: When using NITRO-DWC-DL, refer to the &quot;Nintendo Wi-Fi Connection NITRO-DWC Programming Guidelines - Download Edition -&quot;.</p>
+
+	  <a name="sample"><h3>About the Sample Demos</h3></a>
+	  <p>The implemented &quot;feature samples&quot; marked with a &#x25CB; are stored in <code>$(NITRODWC_ROOT)/build/demos</code>. The objective of each sample demo is explained below.</p>
+    <table border="1" align="center" class="hoge">
+	  <tr>
+<TD width="25%" class="hoge">Sample name</td>
+<td widht="55%" class="hoge">Overview</td>
+<td widht="10%" class="hoge">NITRO-DWC</td>
+<td widht="10%" class="hoge">NITRO-DWC-DL</td>
+      </tr>
+	  <tr>
+<td width="25%" class="hoge">dwc_sample</td>
+<td widht="55%" class="hoge">This sample demonstrates the comprehensive use of the DWC Library features.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+	  <tr>
+<td width="25%" class="hoge">dwc_connect_inet_sample</td>
+<td widht="55%" class="hoge">This simple demo shows the process up to connecting to the Internet.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">dwc_userdata_sample</td>
+<td widht="55%" class="hoge">This demo handles user data.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">dwc_frienddata_sample</td>
+<td widht="55%" class="hoge">This demo shows the handling of friend information.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">dwc_anybody_match_sample</td>
+<td widht="55%" class="hoge">This demo shows the creation of an automatic mesh connection, without any awareness of the connection order for a large number of unspecified partners.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">dwc_friend_match_sample</td>
+<td widht="55%" class="hoge">This demo shows the creation of an automatic mesh connection without any awareness of friend-exclusive connection order.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">dwc_sc_match_sample</td>
+<td widht="55%" class="hoge">This demo shows the creation of a semi-automatic mesh connection, with a friend exclusive server-client method.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">dwc_eval_callback_sample</td>
+<td widht="55%" class="hoge">This sample is about evaluating matchmaking candidate players during peer matchmaking.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">friend_match</td>
+<td widht="55%" class="hoge">This sample is about matchmaking.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">rank_sample</td>
+<td widht="55%" class="hoge">A sample of the general-purpose ranking feature</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">ghttp_sample</td>
+<td widht="55%" class="hoge">A sample demonstrating the HTTP networking features.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge"></td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">dwc_naslogin_sample</td>
+<td widht="55%" class="hoge">This is the Nintendo Authentication Server login sample.</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+      </tr>
+      <tr>
+<td width="25%" class="hoge">dwc_nd_sample</td>
+<td widht="55%" class="hoge">A sample demonstrating the download features (the Wi-Fi download service)</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+        <td width="10%" class="hoge">Ersaquo;</td>
+      </tr>
+	</table>
+	<HR>
+	<P>NTR-06-0404-001-C2<br>CONFIDENTIAL</P>
+</BODY>
+</HTML>

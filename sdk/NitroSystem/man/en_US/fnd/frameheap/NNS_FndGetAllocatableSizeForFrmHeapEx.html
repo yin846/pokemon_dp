@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndGetAllocatableSizeForFrmHeapEx</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_FndGetAllocatableSizeForFrmHeapEx</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+	  <pre><CODE>u32 NNS_FndGetAllocatableSizeForFrmHeapEx(
+NNSFndHeapHandle    heap,
+int                 alignment);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">heap</font></strong></em></td>
+<td width="87%">Frame heap handle.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">alignment</font></strong></em></td>
+<td width="87%">Memory block alignment. Can take any of the following values: 4, 8, 16, 32.</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>Returns the largest size (in bytes) of the memory block that can be allocated from the empty region of the frame heap.</p>
+<H2>Description</H2>
+<P>This function obtains the largest size (in bytes) of the memory block that can be allocated from the empty region of the frame heap.</p>
+<P>The alignment of the memory block is determined by <em><strong><code>alignment</code></strong></em>. The size of the memory block which can be allocated will change depending on the alignment value.</p>
+
+<h2>See Also</h2>
+<p><CODE><a href="NNS_FndGetAllocatableSizeForFrmHeap.html">NNS_FndGetAllocatableSizeForFrmHeap</a>, <A href="NNS_FndCreateFrmHeap.html">NNS_FndCreateFrmHeap</A>, <A href="NNS_FndCreateFrmHeapEx.html">NNS_FndCreateFrmHeapEx</A>, <a href="NNS_FndAllocFromFrmHeap.html">NNS_FndAllocFromFrmHeap</a>, <a href="NNS_FndAllocFromFrmHeapEx.html">NNS_FndAllocFromFrmHeapEx</a></CODE></p>
+<H2>Revision History</H2>
+<P>04/01/2004 Initial version.</P>
+</body>
+</html>

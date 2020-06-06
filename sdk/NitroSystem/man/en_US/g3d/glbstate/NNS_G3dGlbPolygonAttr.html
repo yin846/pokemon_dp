@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGlbPolygonAttr</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGlbPolygonAttr</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE>#include &lt;nnsys/g3d/glbstate.h&gt;</PRE>
+<PRE><CODE>void
+NNS_G3dGlbPolygonAttr(
+int light,
+GXPolygonMode polyMode,
+GXCull cullMode,
+int polygonID,
+int alpha,
+int misc
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>light</STRONG></EM></TD>
+<TD width="87%">4-bit mask designates which light to illuminate.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>polyMode</STRONG></EM></TD>
+<TD width="87%">The polygon mode.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>cullMode</STRONG></EM></TD>
+<TD width="87%">Designate which face to cull.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><em><strong><code>polygonID</code></strong></em>&nbsp;&nbsp;</STRONG></EM></TD>
+<TD width="87%">Polygon ID.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>alpha</STRONG></EM></TD>
+<TD width="87%">Designate the alpha value.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>misc</STRONG></EM></TD>
+<TD width="87%">Bit fields which designate other polygon attributes.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>
+Configures the polygon-related attribute values in the global state kept in the G3D library.
+
+<P><code>light</code> is the 4-bit flag that specifies, in order from the lower bit of the lower 4 bits, whether Light 0, Light 1, Light 2, and Light 3 are ON/OFF. <code>polyMode</code> is the argument that specifies the polygon mode in <CODE>GXPolygonMode</CODE> type. <code>cullMode</code> is the argument that specifies the polygon culling method in <CODE>GXCull</CODE> type. <code>polygonID</code> is the argument that specifies the polygon ID between 0 - 63. <code>alpha</code> is the argument that specifies the &alpha; value for a polygon between 0 - 31. <code>misc</code> is a bit field comprising the other attribute flags, and passes the logical sum of <CODE>GXPolygonAttrMisc</CODE> type values. By using the <code>NNS_G3dMdlUseGlbLightEnableFlag</code> function, the <code>NNS_G3dMdlUseGlbPolygonMode</code> function, the <code>NNS_G3dMdlUseGlbCullMode</code> function, the <code>NNS_G3dMdlUseGlbPolygonID</code> function, and the <code>NNS_G3dMdlUseGlbAlpha</code> function, several of the above attributes can be applied to the model. The configuration of this API will apply all other attributes to the model.</P>
+<H2>See Also</H2>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

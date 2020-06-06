@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndCaptureCreateThread</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndCaptureCreateThread</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndCaptureCreateThread( u32 threadPrio );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA5LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>threadPrio</code></strong></em></td>
+<td>The priority level of the capture thread.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAOMWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAVMWT"></a>
+<h2>Description</h2>
+      <p>
+This function starts the capture thread.</p>
+      <p>
+Once the capture thread is started, the capture process is handled by the capture thread, rather than the IRQ handler.
+</p>
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+When using a capture thread, the capture process may be delayed if the capture thread has a lower priority than other threads. If the capture process is not performed in time, normal playback will not be possible. Therefore, set the capture thread's priority level <var>threadPrio</var> as high as possible.
+</p>
+<p>
+For example, the priority must be set higher than that of threads that take time to process, such as stream or CARD asynchronous process threads. The priority level of the stream thread can be set with <CODE><a href="NNS_SndArcStrmInit.html">NNS_SndArcStrmInit</a></CODE>, and the priority level of the CARD asynchronous process thread can be set with <CODE>CARD_SetThreadPriority</CODE>.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndArcStrmInit.html">NNS_SndArcStrmInit</a></p>
+<h2>Revision History</h2>
+<p>07/22/2005 Revised notes about priority levels.</p><p>09/13/2004 Initial version.</p>
+</div>
+</body>
+</html>

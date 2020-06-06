@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndPlayerReadDriverPlayerInfo</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndPlayerReadDriverPlayerInfo</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndPlayerReadDriverPlayerInfo(
+NNSSndHandle*   handle,
+struct SNDPlayerInfo* info );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA0LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>The sound handle pointer.</td>
+</tr>
+<tr>
+<td><em><strong><code>info</code></strong></em></td>
+<td>The pointer to the player information structure to store the obtained information.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAQMWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns whether the attempt to obtain the information succeeded or failed.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAXMWT"></a>
+<h2>Description</h2>
+      <p>
+Gets the sound driver's player information.
+</p>
+      <p>
+This function gets the player information for the sequence linked to the sound handle <em><strong><code>handle</code></strong></em>. The process fails when the sound handle is invalid.
+</p>
+      <p>
+Information at the time the sound driver information was last updated successfully with <code><a href="NNS_SndUpdateDriverInfo.html">NNS_SndUpdateDriverInfo</a></code> can be obtained. This function fails if the sound driver has never been successfully updated.
+</p>
+      <p>
+If obtained successfully, the player information is written to <strong><em><code>info</code></em></strong>, the <code><a href="../snd_drv/SNDPlayerInfo.html">SNDPlayerInfo</a></code>-type structure for the player information.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndUpdateDriverInfo.html">NNS_SndUpdateDriverInfo</a>, <a href="../snd_drv/SNDPlayerInfo.html">SNDPlayerInfo</a></code></p>
+<h2>Revision History</h2>
+<p>02/17/2005 Initial version.</p>
+</div>
+</body>
+</html>

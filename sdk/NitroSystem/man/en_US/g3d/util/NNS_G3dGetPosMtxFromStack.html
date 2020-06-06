@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGetPosMtxFromStack</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGetPosMtxFromStack</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/util.h&gt;</CODE></PRE>
+<PRE><CODE>void
+NNS_G3dGetPosMtxFromStack(
+MtxFx43* m,
+u32 from,
+u32         num
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><em><strong><code>m</code></strong></em>&nbsp;&nbsp;</STRONG></EM></TD>
+<TD width="87%">Pointer to the buffer that stores the extracted matrix</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>from</STRONG></EM></TD>
+<TD width="87%">Position of the matrix buffer</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>num</STRONG></EM></TD>
+<TD width="87%">Number of matrices to extract</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>Extracts a number of clip coordinate matrices (<code>num</code>) from the position in the matrix stack designated by <code>from</code> to the buffer designated by <code>m</code>.</P>
+
+
+<H2>See Also</H2>
+<P><CODE><A href="NNS_G3dGetCurrentMtx.html">NNS_G3dGetCurrentMtx</A></CODE></P>
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

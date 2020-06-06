@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_SetThreadStackWarningOffset</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_SetThreadStackWarningOffset</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_SetThreadStackWarningOffset( OSThread* thread, u32 offset );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>thread</STRONG></EM></TD>
+<TD width="87%">The thread for which you want to set a warning level.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>offset</STRONG></EM></TD>
+<TD width="87%">The warning level offset</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Sets up the warning level for checking for stack overflow with the specified thread</P>
+<P>This check mechanism writes the magic number at the top and bottom positions of the stack by default. It checks by seeing if this was rewritten. <code>OS_SetThreadStackWarningOffset()</code> is added to the top and bottom positions and sets up a warning level in the middle. It writes the magic number for checking if this section was rewritten (The magic number of the stack top and bottom positions is already written when the thread is created.).)</P>
+<P>The reason for setting magic code in the middle of the stack is to detect if a stack overflow may occur before the stack is used up to its bottom position and operation becomes indeterminate.</P>
+<P><em><strong><code>offset</code></strong></em> is the number of bytes from the bottom position of the stack and needs to be a multiple of 4. Setting a 0 releases this setting.</P>
+<P>A magic number is written in the middle of the stack so operation can be suspended if it is currently being used. Therefore, always carry out settings for the portion of the stack that you are sure is not being used immediately after creating the thread.<br /></P>
+<BLOCKQUOTE>(Example)<br />OS_CreateThread( &amp;thread, ...); OS_SetThreadStackWarningOffset( &amp;thread, 0x100);<CODE>OS_CheckStack( &amp;thread );</code></CODE></BLOCKQUOTE>
+<H2>See Also</H2>
+<P><a href="../thread/OS_CreateThread.html"><code>OS_CreateThread</a></code>, <code><a href="OS_CheckStack.html">OS_CheckStack</a></code></P>
+<H2>Revision History</H2>
+<P>04/29/2004 Revised description<br /> 01/21/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

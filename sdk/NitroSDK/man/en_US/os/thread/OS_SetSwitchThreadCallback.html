@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_SwitchThreadCallback</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_SetSwitchThreadCallback</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<CODE>typedef void (*OSSwitchThreadCallback)(<BR> OSThread* from,<BR> OSThread* to );</CODE><BR>
+<DD><CODE>OSSwitchThreadCallback OS_SetSwitchThreadCallback(<BR> OSSwitchThreadCallback callback );</CODE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD width="87%">The callback used when threads are switched. Specify NULL to release callback. </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>The callback that was specified before this function was called. If none was set, returns NULL. </P>
+<H2>Description</H2>
+<P>This function registers the callback function that is used when a thread context switch is generated. </P>
+<P>Once this callback function is registered, unless it is modified or released, it will be called each time a context switch is generated. </P>
+<P><B><I>callback</I></B> takes 2 arguments. <B><I>from</I></B> is a pointer to the OSThread structure of the thread that was being executed before the switch. <B><I>to</I></B> is a pointer to the OSThread structure of the thread that will be executed next. If it is not prepared to execute, this will be NULL. </P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitThread.html">OS_InitThread</A>, <A href="OS_RescheduleThread.html">OS_RescheduleThread</A></CODE></P>
+<H2>Revision History</H2>
+<P>03/31/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MTX_OrthoW</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MTX_OrthoW</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/fx/fx_mtx44.h&gt;</CODE><BR>
+<CODE>void MTX_OrthoW(
+fx32 t,
+fx32 b,
+fx32 l,
+fx32 r,
+fx32 n,
+fx32 f,
+fx32 scaleW,
+MtxFx44 * mtx
+);</CODE></PRE></dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New">t</font></strong></em></TD>
+<TD width="512">Y coordinate at the top of the near clipping plane</TD>
+    </TR>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New"><em><strong><code>b</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD width="512">Y coordinate at the bottom of the near clipping plane</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">l</font></strong></em></TD>
+<TD>X coordinate at the left of the near clipping plane</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">r</font></strong></em></TD>
+<TD>X coordinate at the right of the near clipping plane</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">n</font></strong></em></TD>
+<TD>Distance from eyepoint to the <code>near</code> clip plane</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">f</font></strong></em></TD>
+<TD>Distance from eyepoint to the <code>far</code> clip plane</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">scaleW</font></strong></em></TD>
+<TD>Fine adjustment parameter for the view volume</TD>
+    </TR>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New">mtx</font></strong></em></TD>
+<TD width="512">The pointer to a 4x4 matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This sets an orthogonal projection matrix to matrix <em><strong><code>*mtx</code></strong></em>. It uses the Divider. The diagram shows the matrix that is set.</P>
+<P><strong>Note:</strong> When setting the matrix for an orthogonal projection, it will be necessary to select Z-buffering with the <code><A href="../../gx/g3/G3_SwapBuffers.html" target="_self">G3*_SwapBuffers</A></code>. The operation is not guaranteed if W-buffering is used, since the depth value is constant.</P>
+<P><span lang=EN-US style='font-size:10.5pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"MS ??";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><span style='mso-text-raise:-58.0pt'><IMG width="205" height="163" src="geo_ortho.gif" align="middle" v:shapes="_x0000_i1025"></span></span> &times; <I>scaleW</I></P>
+<h2>See Also</h2>
+<P><code><a href="../../gx/g3/G3_OrthoW.html">G3_OrthoW</a>, <a href="MTX_Ortho.html">MTX_Ortho</a>, <a href="../../gx/g3/G3_Ortho.html">G3_Ortho</a></code></P>
+<H2>Revision History</H2>
+
+<P>06/21/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

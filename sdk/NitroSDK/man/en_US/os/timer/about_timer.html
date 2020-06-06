@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Timer (Overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Timer (Overview)</H1>
+<H2>Description</H2>
+<P>There are four 16-bit hardware timers in the DS. Each can be used independently, or they can be combined to make 32-bit, 48-bit, or 64-bit timers.</P>
+<P>However, the user must abide by certain conditions when using these timers. When using a timer inside the NitroSDK OS, the user cannot directly use that timer.</P>
+<P>Inside the NitroSDK, there are two features that use the timer: the <A href="../time/about_Tick.html">tick system</A> and the <A href="../alarm/about_Alarm.html">alarm system</A>. By default, the tick system uses timer 0, while the alarm system uses timer 1. Also, the tick system is required when using the alarm system. These give rise to the following restrictions:</P>
+<P>When using the tick system but not the alarm system, timer 0 cannot be used.</P>
+<P>When using the alarm system (and in such a case, the tick system must be used), neither timer 0 nor 1 can be used.</P>
+<P> Both restrictions apply to the default configuration.</P>
+<P>When performing a DEBUG build with the NitroSDK, when trying to access the timer being used by the system by using the timer function, a warning appears and processing halts.</P>
+<HR>
+<P><B>Timer Operations</B></P>
+<P>By setting a value in the timer count register and setting the enable flag of the timer control register, a regular-interval count begins. It is possible to configure and choose a multiple of the system clock (1x, 64x, 256x, or 1024x) for the increment interval.</P>
+<P>A timer interrupt occurs when the counter wraps around from 0xFFFF to 0x0000. If the timer interrupt handler is set in advance with <CODE><A href="../irq/OS_SetIrqFunction.html">OS_SetIrqFunction()</A></CODE>, that handler will be called.</P>
+<P>According to the hardware specifications, unless you explicitly stop the timer, the count up and interrupt will repeat any number of times. However, interrupt handlers are only called when the first interrupt occurs. The timer continues to count up and interrupts continue to occur afterwards, but interrupt handlers are not called unless you reset.</P>
+<HR>
+<P><B>Timer Configuration and Startup</B></P>
+<P>The following functions set appropriate values to the timer count register and the timer control register, then start the timer.</P>
+<P><A href="OS_StartTimer.html"><CODE>OS_StartTimer()<BR> OS_StartTimer32()<BR> OS_StartTimer48()<BR> OS_StartTimer64()</CODE></A></P>
+<HR>
+<P><B>Stopping the Timer</B></P>
+<P>The functions below clear the enable flag of the timer control register and stop the timer.</P>
+<P><A href="OS_StopTimer.html"><CODE>OS_StopTimer()<BR> OS_StopTimer32()<BR> OS_StopTimer48()<BR> OS_StopTimer64()</CODE></A></P>
+<HR>
+<H2>See Also</H2>
+<P><A href="../list_os.html#Timer">An Overview of OS Functions (Timer)</A>, <A href="../list_os.html#Time">An Overview of OS Functions (Time)</A>, <A href="../list_os.html#Alarm">An Overview of OS Functions (Alarm)</A></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Unified the Japanese term for &quot;interrupt.&quot;<br>12/13/2004 Corrected terms and word endings.<BR>11/16/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

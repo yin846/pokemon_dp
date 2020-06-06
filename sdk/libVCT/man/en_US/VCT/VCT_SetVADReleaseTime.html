@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCT_SetVADReleaseTime</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCT_SetVADReleaseTime</h1>
+<h2>Syntax</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><code>void VCT_SetVADReleaseTime( int count );</code></PRE></dd> 
+</dl>
+
+<h2>Argument</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>count</STRONG></EM></TD>
+      <TD width="87%" height="17">Release time (number of packets).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Value</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<p>VCT_SetVADReleaseTime sets the duration of time where packets are not sent if VAD determines that the audio data is muted. </p>
+<p>A value of 500ms or longer is recommended to prevent false mute detection during short periods of silence, such as a short breath in between sentences.</p>
+
+<p>This function's setting defines the amount of time to wait before stopping transmission upon detecting silence. The time is counted using the number of packets in <em><strong>count</strong></em> as units. For example, setting to 10 packets defines the release time as 680ms (68 x 10). The default setting is 15 packets (68 x 15 = 1020ms). For example, setting to 10 packets defines the release time as 680ms (68 x 10). The default setting is 15 packets (68 x 15 = 1020ms).</p>
+
+<h2>See Also</h2>
+None.
+<H2>Revision History</H2>
+<P>
+2006/04/13 Description regarding transmitting interval change and default value were added.<br>
+2006/01/25 First release
+</P>
+</body>
+</html>

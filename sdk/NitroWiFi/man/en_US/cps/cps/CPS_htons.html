@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_htons, CPS_htonl</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_htons<BR>CPS_htonl</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>static inline u16
+CPS_htons (u16 data)
+{
+return (u16)((data &gt;&gt; 8) | (data &lt;&lt; 8));
+}
+
+static inline u32
+CPS_htonl(u32 data)
+{
+u32 tmp;
+
+tmp = ((data &gt;&gt; 8) &amp; 0x00ff00ff) | ((data &lt;&lt; 8) &amp; 0xff00ff00);
+return (tmp &gt;&gt; 16) | (tmp &lt;&lt; 16);
+}</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>data</strong></em></code></td>
+<td>Host byte order value.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>Network byte order value.</P>
+
+<h2>Description</h2>
+
+<p>Converts the host byte order value to a network byte order value.</p>
+
+<h2>See Also</h2>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

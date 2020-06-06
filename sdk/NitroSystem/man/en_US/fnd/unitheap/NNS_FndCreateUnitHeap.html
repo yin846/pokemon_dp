@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndCreateUnitHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_FndCreateUnitHeap</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+	  <pre><CODE>NNSFndHeapHandle    NNS_FndCreateUnitHeap(
+void*   startAddress ,
+u32     heapSize,
+u32     memBlockSize);</CODE></pre>
+	</dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">startAddress</font></strong></em></td>
+    
+<td width="87%">Starting address of the memory region allocated to the heap.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">heapSize</font></strong></em></td>
+    
+<td width="87%">Size (in bytes) of the memory region allocated to the heap.</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">memBlockSize</font></strong></em></td>
+<td width="87%">Memory block size (in bytes)</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>In the case that it was possible to create a heap, a value of  0 or greater will be returned, which is the handle to the heap. If the function fails, it returns <code>NNS_FND_HEAP_INVALID_HANDLE</code> (a NULL value).</p>
+<H2>Description</H2>
+<P>Creates the unit heap. The region for the heap is a memory region of a size designated by <code>heapSize</code> from the address designated with <code>startAddress</code>.</p>
+<p> The size of each memory block is a fixed size designated with <code>memBlockSize</code>. The memory block alignment is 4.</P>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_FndCreateUnitHeapEx.html">NNS_FndCreateUnitHeapEx</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>04/28/2004 The value for when it could not create a heap was incorrect. Revised. <br>04/01/2004 Initial version.</P>
+</body>
+</html>

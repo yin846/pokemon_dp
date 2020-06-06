@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBT_RequestSync</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBT_RequestSync</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR> <CODE>BOOL WBT_RequestSync(u16 target, WBTCallback callback);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>target</STRONG></EM></TD>
+<TD width="87%">The target AID bitmap that synchronizes the parent and child. For the child, only the parent &quot;1&quot; can be specified.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD width="87%">The <A href="../wbt_callback_type.html"><CODE>WBTCallback</CODE></A> format function that is notified when the command completes<br>This callback is called from inside the <a href="../child/WBT_MpChildRecvHook.html"><CODE>WBT_MpChildRecvHook</CODE></a> function.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>If no command is currently processing, the function issues the command and returns TRUE. Otherwise, the function does nothing and returns FALSE.</p>
+
+<H2>Description</H2>
+<p>Synchronizes communication between parent and child. The send/receive packet size set by the parent is copied to the child.<br> <font color="#800000">The call fails if a command is still processing.</font><br> <br> Each child device calculates the transfer unit size and bitmap buffer size based on the size setting. Therefore, this function must be called at least once before calling the <A href="../command/WBT_GetBlock.html"><CODE>WBT_GetBlock</CODE></A> function. <br>
+</p>
+<H2>See Also</H2>
+<code><A href="WBT_GetBlockInfo.html">WBT_GetBlockInfo</A>, <A href="WBT_GetBlock.html">WBT_GetBlock</A>, <A href="WBT_PutUserData.html">WBT_PutUserData</A></code>
+<H2>Revision History</H2>
+<P>
+06/01/2005 Added text indicating that the callback is called from the WBT_MpChildRecvHook function<br> 09/21/2004 Initial version<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

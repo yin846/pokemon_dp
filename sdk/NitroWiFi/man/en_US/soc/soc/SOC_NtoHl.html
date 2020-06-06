@@ -1,0 +1,61 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_NtoHl, SOC_HtoNs, SOC_NtoHl, SOC_NtoHs</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_HtoNl<br>SOC_HtoNs<br>SOC_NtoHl<br>SOC_NtoHs</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>u32 SOC_HtoNl ( u32 <strong><em>hostlong</em></strong> );
+u16 SOC_HtoNs ( u16 <strong><em>hostshort</em></strong> );
+u32 SOC_NtoHl ( u32 <strong><em>netlong</em></strong> );
+u16 SOC_NtoHs ( u16 <strong><em>netshort</em></strong> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><strong><em>netlong</em></strong></code></td>
+<td>32-bit integer in network byte order.</td>
+  </tr>
+  <tr>
+<td><code><strong><em>netshort</em></strong></code></td>
+<td>16-bit integer in network byte order.</td>
+  </tr>
+  <tr>
+<td><code><strong><em>hostlong</em></strong></code></td>
+<td>32-bit integer in host byte order.</td>
+  </tr>
+  <tr>
+<td><code><strong><em>hostshort</em></strong></code></td>
+<td>16-bit integer in host byte order.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<p> <code>SOCHtoNl()</code> and <code>SOCHtoNs()</code> return the values of the arguments converted from host byte order to network byte order.</p>
+<p> <code>SOCNtoHl()</code> and <code>SOCNtoHs()</code> return the values of the arguments converted from network byte order to host byte order.</p>
+
+<h2>Description</h2>
+
+<p>These functions convert 16- or 32-bit values between network byte order and host byte order. </p>
+
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

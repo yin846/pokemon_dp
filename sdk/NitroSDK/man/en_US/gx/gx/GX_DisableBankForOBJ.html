@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_DisableBankForOBJ</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_DisableBankForOBJ</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>GXVRamOBJ GX_DisableBankForOBJ(void);</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The VRAM bank that is allocated to the main 2D Engine's OBJ.</p>
+<H2>Description</H2>
+<P>This function disables the VRAM bank that is allocated to the Main 2D Engine OBJ. If disabled, VRAM cannot be accessed, but the VRAM bank contents are not lost. In addition, the VRAM banks that were allocated to each resource will not be disabled unless disabled with this function. Refer to <code><A href="GX_SetBankForOBJ.html">GX_SetBankForOBJ</A></code> for details on <CODE>GXVRamOBJ</CODE> format.</P>
+<h2>See Also</h2>
+<P><A href="GX_SetBankForOBJ.html"><code>GX_SetBankForOBJ</code></A>, <A href="GX_GetBankForOBJ.html"><code>GX_GetBankForOBJ</code></A>, <A href="GX_ResetBankForOBJ.html"><code>GX_ResetBankForOBJ</code></A></P>
+<H2>Revision History</H2>
+<P>02/09/2004</P>
+<UL>
+<LI>Added to description
+</UL>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

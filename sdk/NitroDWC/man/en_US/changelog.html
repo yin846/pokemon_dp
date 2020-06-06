@@ -1,0 +1,746 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--  ==========================================================================   Project:  NitroDWC - man   File:     outline_dwc.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Revision: 1.42 $   $Date: 2006/08/09 01:36:47 $    $NoKeywords: $  ========================================================================== -->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Nitro-DWC Revision History</TITLE>
+<BASE target="main">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFCC">
+<HR>
+<H1>NITRO-DWC Library Revision History</H1>
+<HR>
+
+<DL>
+<DT><A href="#sdkDL_1_02">- NITRO-DWC 1.2 Release Version plus3/NITRO-DWC-DL 1.2 Release Version</A> (2006/08/02)
+<DD><A href="#note7-01">Note 7-01: Improved security for the Download functionality</A>
+<DD><A href="#note7-02">Note 7-02: Set the new error code 540XX</A>
+<DD><A href="#note7-03">Note 7-03: Fixed a bug in the DWC_UpdateConnection function</A>
+<DD><A href="#note7-04">Note 7-04: Fixed a bug in the DWC_LoginToStorageServerAsync function</A>
+<DD><A href="#note7-05">Note 7-05: Corrected sample demos</A>
+<DD><A href="#note7-06">Note 7-06: Made revisions to the Programming Manual</A>
+<DD><A href="#note7-07">Note 7-07: Revised function reference</A>
+<DD><A href="#note7-08">Note 7-08: Fixed a bug in the general-purpose ranking management tool (DWCRankingAdmin.exe)</A>
+<DD><A href="#KnownIssuesDL_1_02">- Known issues in NITRO-DWC 1.2 Release Version plus3/NITRO-DWC-DL 1.2 Release Version (2006/08/02)</A>
+</DL>
+
+<DL>
+<DT><A href="#sdkDL_1_02rc">- NITRO-DWC-DL 1.2 RC</A> (2006/07/03)
+<DD><A href="#note6-01">Note 6-01: Added Nintendo Authentication Server verification process functions</A>
+<DD><A href="#note6-02">Note 6-02: Added functions to check the connection to an access point</A>
+<DD><A href="#note6-03">Note 6-03: Made changes to the game name in each sample demo/secret key/product ID</A>
+<DD><A href="#note6-04">Note 6-04: Fixed a bug related to the initialization of the Wi-Fi connection configuration</A>
+<DD><A href="#note6-05">Note 6-05: Revised function reference</A>
+<DD><A href="#KnownIssuesDL_1_02rc">Known issues in NITRO-DWC-DL Version 1.2 RC</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_1_02">NITRO-DWC 1.2 Release version</A> (06/22/2006)
+<DD><A href="#note5-01">Note 5-01: Changed the conditions under which the DWCBuddyFriendCallback function is called when a friend relationship is established</A>
+<DD><A href="#note5-02">Note 5-02: Made revisions to the access point authentication process when making an automatic connection to the Internet</A>
+<DD><A href="#note5-03">Note 5-03: Made revisions to the Programming Manual</A>
+<DD><A href="#note5-04">Note 5-04: Revised function reference</A>
+<DD><A href="#note5-05">Note 5-05: Changed the sample demo rank_sample</A>
+<DD><A href="#note5-06">Note 5-06: Made changes with consideration to when user-defined data is not used in general-purpose ranking</A>
+<DD><A href="#note5-07">Note 5-07: Fixed a bug when there is an error on the download server in the download library</A>
+<DD><A href="#KnownIssues_1_02">Known issues in Version 1.2 release version</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_1_02rc2">NITRO-DWC 1.2 RC2</A> (06/08/2006)
+<DD><A href="#note4-01">Note 4-01: Made changes to the internal operations of the service locator information acquisition process</A>
+<DD><A href="#KnownIssues_1_02rc2">Known issues in Version 1.2 RC2</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_1_02rc">NITRO-DWC 1.2 RC</A> (06/06/2006)
+<DD><A href="#note3-01">Note 3-01: Added a general-purpose ranking library</A>
+<DD><A href="#note3-02">Note 3-02: Added a download library</A>
+<DD><A href="#note3-03">Note 3-03: Added and changed the error information that can be obtained with the DWC_GetLastError and DWC_GetLastErrorEx functions</A>
+<DD><A href="#note3-04">Note 3-04: Fixed a bug that occurred when the SSID of connection destinations 1-3 were set as &quot;FREESPOT&quot; with the configuration utility</A> 
+<DD><A href="#note3-05">Note 3-05: Fixed a bug that occurred when the nickname included in the DS console owner information was 10 characters long</A>
+<DD><A href="#note3-06">Note 3-06: Fixed a bug where matchmaking would not end if it was started after disconnecting in the middle of a game</A>
+<DD><A href="#note3-07">Note 3-07: Fixed a bug where the reception timeout callback was not being called</A>
+<DD><A href="#note3-08">Note 3-08: Fixed a bug where it was not possible to connect to a portion of hotspots</A>
+<DD><A href="#note3-09">Note 3-09: Expanded the screen name that could be checked on the Authentication Server to a length of 25 characters</A>
+<DD><A href="#note3-10">Note 3-10: Fixed a bug in the arguments for the DWCFriendStatusCallback and DWCBuddyFriendCallback functions</A>
+<DD><A href="#note3-11">Note 3-11: Made additions and revisions to the Programming Manual</A>
+<DD><A href="#note3-12">Note 3-12: Made additions and revisions to the Function Reference</A>
+<DD><A href="#note3-13">Note 3-13: Made additions and revisions to the sample demo</A>
+<DD><A href="#note3-14">Note 3-14: Deleted the add-ins directory</A>
+<DD><A href="#KnownIssues_1_02rc">Known issues in Version 1.2 RC</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_1_01">NITRO-DWC 1.1 Release version</A> (03/10/2006)
+<DD><A href="#note2-01">Note 2-01: Added the DWC_StopScMatchingAsync function</A>
+<DD><A href="#note2-02">Note 2-02: Added the DWC_CancelGHTTPRequest function</A>
+<DD><A href="#note2-03">Note 2-03: Added the DWC_GetApInfo function</A>
+<DD><A href="#note2-04">Note 2-04: Added the DWC_GetDateTime function</A>
+<DD><A href="#note2-05">Note 2-05: Added the DWC_SetConnectApType function (for debugging)</A>
+<DD><A href="#note2-06">Note 2-06: Added the DWC_DebugConnectInetAsync function (for debugging)</A>
+<DD><A href="#note2-07">Note 2-07: Added the dwc_connect_inet_sample sample demo</A>
+<DD><A href="#note2-08">Note 2-08: Revised the DWC_SetSendSplitMax function</A>
+<DD><A href="#note2-09">Note 2-09: Changed the Wi-Fi Connection Configuration message</A>
+<DD><A href="#note2-10">Note 2-10: Upgraded the version of the child program for moving Wi-Fi user information included among Wi-Fi connection settings</A>
+<DD><A href="#note2-11">Note 2-11: Revised a bug in the Wi-Fi Connection Configuration</A>
+<DD><A href="#note2-12">Note 2-12: Fixed a bug in the automatic Internet connection process (1)</A>
+<DD><A href="#note2-13">Note 2-13: Fixed a bug in the automatic Internet connection process (2)</A>
+<DD><A href="#note2-14">Note 2-14: Fixed a bug in the DWC_GetInetStatus function</A>
+<DD><A href="#note2-15">Note 2-15: Fixed a bug in the DWC_ProcessInet function</A>
+<DD><A href="#note2-16">Note 2-16: Fixed a bug in the DWC_CleanupInet function</A>
+<DD><A href="#note2-17">Note 2-17: Revised the DWC_CreateUserData function</A>
+<DD><A href="#note2-18">Note 2-18: Corrected sample demos</A>
+<DD><A href="#note2-19">Note 2-19: Removed the document &quot;User Information Management/Friend Connection Overview&quot;</A>
+<DD><A href="#note2-20">Note 2-20: Reviewed the function reference and the document entitled &quot;NITRO-DWC Programming Manual&quot;</A>
+<DD><A href="#KnownIssues_1_01">Known Issues in 1.1 Release Version</A>
+</DL>
+
+<DL>
+<DT><A href="#sdk_1_00">NITRO-DWC 1.0 Release Version</A> (01/30/2006)
+<DD><A href="#note1-01">Note 1-01: Added DWC_SetFriendStatusCallback</A>
+<DD><A href="#note1-02">Note 1-02: Revised the conditions under which the DWC_IsSendableReliable function returns FALSE</A>
+<DD><A href="#note1-03">Note 1-03: Added a check for the maximum number of people connected</A>
+<DD><A href="#note1-04">Note 1-04: Added a check for the maximum length of the friends list</A>
+<DD><A href="#note1-05">Note 1-05: Revised the error handling in the debug configuration functions for sending and receiving data</A>
+<DD><A href="#note1-06">Note 1-06: Added return values for failures to the GHTTP library functions</A>
+<DD><A href="#note1-07">Note 1-07: Changed the return values of several functions from void to BOOL</A>
+<DD><A href="#note1-08">Note 1-08: Added functions for encoding and decoding Base64</A>
+<DD><A href="#note1-09">Note 1-09: Fixed a bug where the child DS was freezing up due to the parent DS becoming disconnected from the network</A>
+<DD><A href="#note1-10">Note 1-10: Fixed a bug in the DWC_CheckFriendKey function</A>
+<DD><A href="#note1-11">Note 1-11: Added a function for loading one's own data from a data storage server</A>
+<DD><A href="#note1-12">Note 1-12: Fixed a bug that prevented the prohibition of connecting to a friend of a friend in peer matchmaking with specified friends</A>
+<DD><A href="#note1-13">Note 1-13: Fixed a bug that was causing a Fatal Error 71002</A>
+<DD><A href="#note1-14">Note 1-14: Unified the sample source comments with the reference glossary</A>
+<DD><A href="#note1-15">Note 1-15: Revised the demos for dwc_frienddata_sample and dwc_friend_match_sample</A>
+<DD><A href="#note1-16">Note 1-16: Changed the receive buffer size for the dwc_sample demo</A>
+<DD><A href="#KnownIssues_1_00">Known Issues in 1.0 Release Version</A>
+</DL>
+
+<DL>
+  <!--<DT><A href="changelog-oldver.html">¨ ‰ß‹Ž‚Ì•ÏX—š—ð</A>-->
+<DT><A href="changelog_old.txt">- Revision history prior to the release</A>
+</DL>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdkDL_1_02" id="sdkDL_1_02">- NITRO-DWC 1.2 Release Version plus3/NITRO-DWC-DL 1.2 Release Version</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/08/02)</P>
+</DIV>
+<HR>
+<H3><A name="note7-01" id="note7-01">Note 7-01: Improved security for the Download functionality</A></H3>
+<P>
+Up until now, the security level had been lowered in order to connect to the temporary download server. However, the actual working server is up now, so the security has been improved.
+</P>
+<HR>
+<H3><A name="note7-02" id="note7-02">Note 7-02: Set the new error code 540XX</A></H3>
+<P>
+We added the error code 540XX (the final two digits indicate the type of access point connected to) when disconnecting from an access point.
+</P>
+<HR>
+<H3><A name="note7-03" id="note7-03">Note 7-03: Fixed a bug in the DWC_UpdateConnection function</A></H3>
+<P>
+We fixed a bug that was causing problems in the error code set when using the DWC_UpdateConnection function to detect a disconnection from an access point.
+</P>
+<HR>
+<H3><A name="note7-04" id="note7-04">Note 7-04: Fixed a bug in the DWC_LoginToStorageServerAsync function</A></H3>
+<P>
+We fixed a bug where the callback did not occur when an error occurred with the DWC_LoginToStorageServerAsync function.
+</P>
+<HR>
+<H3><A name="note7-05" id="note7-05">Note 7-05: Revised the sample demo</A></H3>
+<UL>
+<LI>We revised the product IDs used in each of the sample demos.</LI>
+<LI>We deleted the file &quot;ARM9-TS-inet.lsf&quot; that was not being used in rank_sample.</LI>
+<LI>We made changes to dwc_sample so that a text animation is displayed while running.</LI>
+<LI>We made changes to dwc_connect_inet so that the DWC_UpdateConnection function is used to confirm connections to access points.</LI>
+</UL>
+<HR>
+<H3><A name="note7-06" id="note7-06">Note 7-06: Made revisions to the Programming Manual</A></H3>
+<P>
+We revised the following documents contained in $NITRODWC_ROOT/docs. For details, see the revision history in the respective documents:<BR>&quot;Nintendo Wi-Fi Connection NITRO-DWC Programming Manual&quot;<BR>&quot;Nintendo Wi-Fi Connection NITRO-DWC Programming Manual -Download Edition-&quot;<BR>Nintendo Wi-Fi Connection NITRO-DWC Programming Manual - General-Purpose Ranking Edition-&quot;
+</P>
+<HR>
+<H3><A name="note7-07" id="note7-07">Note 7-07: Revised function reference</A></H3>
+We made revisions to the items below. For details, see the revision history for each item.<BR>NOTE: Some of the minor terminology revisions may not be reflected in the revision histories. 
+	<UL>
+		<LI><A href="main.html">TOP</A></LI>
+		<LI><A href="dwc/base/DWC_Base64Decode.html">DWC_Base64Decode function</A></LI>
+		<LI><A href="dwc/base/DWC_Base64Encode.html">DWC_Base64Encode function</A></LI>
+		<LI><A href="dwc/base/DWC_CheckUserData.html">DWC_CheckUserData function</A></LI>
+		<LI><A href="dwc/base/DWC_Debug_DWCInitError.html">DWC_Debug_DWCInitError function</A></LI>
+		<LI><A href="dwc/base/DWC_DebugConnectInetAsync.html">DWC_DebugConnectInetAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_GetLastError.html">DWC_GetLastError* function</A></LI>
+		<LI><A href="dwc/base/DWC_Init.html">DWC_Init function</A></LI>
+		<LI><A href="dwc/base/DWC_IsEqualFriendData.html">DWC_IsEqualFriendData function</A></LI>
+		<LI><A href="dwc/base/DWC_LoadOthersDataAsync.html">DWC_LoadOthersDataAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_LoginAsync.html">DWC_LoginAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_NASLoginAbort.html">DWC_NASLoginAbort function</A></LI>
+		<LI><A href="dwc/base/DWC_NASLoginAsync.html">DWC_NASLoginAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_NASLoginProcess.html">DWC_NASLoginProcess function</A></LI>
+		<LI><A href="dwc/base/DWC_NdCancelAsync.html">DWC_NdCancelAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_NdCleanupAsync.html">DWC_NdCleanupAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetFileAsync.html">DWC_NdGetFileAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetFileListAsync.html">DWC_NdGetFileListAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetFileListNumAsync.html">DWC_NdGetFileListNumAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetProgress.html">DWC_NdGetProgress function</A></LI>
+		<LI><A href="dwc/base/DWC_NdInitAsync.html">DWC_NdInitAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_NdSetAttr.html">DWC_NdSetAttr function</A></LI>
+		<LI><A href="dwc/base/DWCNasLoginState.html">DWCNasLoginState function</A></LI>
+		<LI><A href="dwc/base/DWCNdCallback.html">DWCNdCallback function</A></LI>
+		<LI><A href="dwc/base/DWCNdFileInfo.html">DWCNdFileInfo function</A></LI>
+		<LI><A href="dwc/base/DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch function</A></LI>
+		<LI><A href="dwc/base/DWC_ProcessGHTTP.html">DWC_ProcessGHTTP function</A></LI>
+		<LI><A href="dwc/base/DWC_RnkGetScoreAsync.html">DWC_RnkGetScoreAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_RnkInitialize.html">DWC_RnkInitialize function</A></LI>
+		<LI><A href="dwc/base/DWC_RnkPutScoreAsync.html">DWC_RnkPutScoreAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_RnkResGetOrder.html">DWC_RnkResGetOrder function</A></LI>
+		<LI><A href="dwc/base/DWC_RnkResGetRow.html">DWC_RnkResGetRow function</A></LI>
+		<LI><A href="dwc/base/DWC_RnkResGetRowCount.html">DWC_RnkResGetRowCount function</A></LI>
+		<LI><A href="dwc/base/DWC_RnkResGetTotal.html">DWC_RnkResGetTotal function</A></LI>
+		<LI><A href="dwc/base/DWCRnkData.html">DWCRnkData function</A></LI>
+		<LI><A href="dwc/base/DWCRnkError.html">DWCRnkError function</A></LI>
+		<LI><A href="dwc/base/DWCRnkGetMode.html">DWCRnkGetMode function</A></LI>
+		<LI><A href="dwc/base/DWCRnkGetParam.html">DWCRnkGetParam function</A></LI>
+		<LI><A href="dwc/base/DWC_SetReportLevel.html">DWC_SetReportLevel function</A></LI>
+		<LI><A href="dwc/base/DWC_UpdateConnection.html">DWC_UpdateConnection function</A></LI>
+	</UL>
+<HR>
+<H3><A name="note7-08" id="note7-08">Note 7-08: Fixed a bug in the general-purpose ranking management tool (DWCRankingAdmin.exe)</A></H3>
+<P>
+We fixed a bug where user-defined data was unable to be obtained normally.<BR>Version 1.00 --&gt; Version 1.01
+</P>
+<HR>
+<H3><A name="KnownIssuesDL_1_02" id="KnownIssuesDL_1_02">- Known issues in NITRO-DWC 1.2 Release Version plus3/NITRO-DWC-DL 1.2 Release Version (2006/08/02)</A></H3>
+<P>
+None.
+</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdkDL_1_02rc" id="sdkDL_1_02rc">- NITRO-DWC-DL 1.2 RC</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/07/03)</P>
+</DIV>
+<HR>
+<H3><A name="note6-01" id="note6-01">Note 6-01: Added Nintendo Authentication Server verification process functions</A></H3>
+<P>We added the function DWC_NASLogin*, which performs the verification process for Nintendo Authentication. Up until now, this process had been performed inside the DWC_LoginAsync function, but when FriendsMatch Library features such as friend management and matchmaking are not in use, this function performs the authentication process instead.<BR>We have added the dwc_naslogin_sample sample demo in accordance with these changes.<BR>NOTE: Since the FriendsMatch Library is not included in NITRO-DWC-DL, the authentication process must be performed with this function.  </P>
+<HR>
+<H3><A name="note6-02" id="note6-02">NOTE 6-02: Added functions to check the connection to an access point</A></H3>
+<P>We added a function to check that a connection to an access point is being maintained normally. Up until now, this process had been performed inside the DWC_ProcessFriendsMatch function, but when FriendsMatch Library features such as friend management and matchmaking are not in use, this function performs the connection check instead.<BR>NOTE: Since the FriendsMatch Library is not included in NITRO-DWC-DL, the connection check must be performed with this function.  </P>
+<HR>
+<H3><A name="note6-03" id="note6-03">NOTE 6-03: Made changes to the game name in each sample demo/secret key/product ID</A></H3>
+<P>Up until now, the game name &quot;gmtest&quot; has been used in the sample demo, but since developers who had been generally using  GameSpy used it as a shared name, there was the possibility that it would give a glimpse into the information about games in development, and that data on a back-end server could be maliciously altered. Because of this issue, we have changed the name exclusively for the NITRO-DWC sample demo to &quot;dwctest&quot;.</P>
+<HR>
+<H3><A name="note6-04" id="note6-04">Note 6-04: Fixed a bug related to the initialization of the Wi-Fi connection configuration</A></H3>
+<P>Since the functions GX_SetBGScrOffset and GX_SetBGCharOffset were not being called explicitly when initializing a Wi-Fi connection configuration, there was a bug where the screen display was becoming corrupted when changes were made to offsets with these functions. This bug has been fixed.</P>
+<HR>
+<H3><A name="note6-05" id="note6-05">Note 6-05: Revised function reference</A></H3>
+We made revisions to the items below. For details, see the revision history for each item.<BR>
+	<UL>
+		<LI><A href="main.html">TOP</A></LI>
+		<LI><A href="dwc/base/DWC_GetDateTime.html">DWC_GetDateTime function</A></LI>
+		<LI><A href="dwc/base/DWC_GetGHTTPState.html">DWC_GetGHTTPState function</A></LI>
+		<LI><A href="dwc/base/DWC_GetLastError.html">DWC_GetLastError* function</A></LI>
+		<LI><A href="dwc/base/DWC_LoginAsync.html">DWC_LoginAsync function</A></LI>
+		<LI><A href="dwc/base/DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch function</A></LI>
+		<LI><A href="dwc/base/DWC_SetConnectApType.html">DWC_SetConnectApType function</A></LI>
+		<LI><A href="dwc/base/DWC_SetReportLevel.html">DWC_SetReportLevel function</A></LI>
+		<LI><A href="dwc/base/DWC_UpdateConnection.html">DWC_UpdateConnection function</A></LI>
+	</UL>
+<HR>
+<H3><A name="KnownIssuesDL_1_02rc" id="KnownIssuesDL_1_02rc">Known issues in NITRO-DWC-DL Version 1.2 RC</A></H3>
+<P>
+None.
+</P>
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_1_02" id="sdk_1_02">NITRO-DWC Version 1.2 Release</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/06/22)</P>
+</DIV>
+<HR>
+<H3><A name="note5-01" id="note5-01">Note 5-01: Made changes to the call conditions for the DWCBuddyFriendCallback function called when a friend relationship is established.</A></H3>
+<P>
+The DWCBuddyFriendCallback function, which is called when a friend relationship is established, will now be called when the network communication used to establish the friend relationship is successful. This network communication used to establish the friend relationship may be performed twice, depending on the timing. Should that happen, the callback will have occurred each time.<BR>, We have made changes so that the the callback is not called when a friend relationship is already established.
+</P>
+<HR>
+<H3><A name="note5-02" id="note5-02">Note 5-02: Revised the access point authentication process when making an automatic connection to the Internet. </A></H3>
+<P>
+We have revised the process for making an automatic connection to the Internet for access point authentication processes in order to improve connectivity to access points that accept only open system authentications.
+</P>
+<HR>
+<H3><A name="note5-03" id="note5-03">Note 5-03: Made revisions to the Programming Manual</A></H3>
+<P>
+We made revisions to the following documents which are contained in $NITRODWC_ROOT/docs: For details, see the Revision History for each document.<BR>Nintendo Wi-Fi Connection NITRO-DWC Programming Manual<BR>Nintendo Wi-Fi Connection NITRO-DWC Programming Manual - General-Purpose Ranking Version -</P>
+<HR>
+<H3><A name="note5-04" id="note5-04">Note 5-04: Revised function reference</A></H3>
+Revisions were made to the items listed below: For details, see the Revision History for each item.<BR>
+	<UL>
+		<LI><A href="dwc/base/DWC_GetLastError.html">DWC_GetLastError*</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetFileAsync.html">DWC_NdGetFileAsync</A></LI>
+		<LI><A href="dwc/base/DWC_RnkGetScoreAsync.html">DWC_RnkGetScoreAsync</A></LI>
+		<LI><A href="dwc/base/DWC_RnkGetState.html">DWC_RnkGetState</A></LI>
+		<LI><A href="dwc/base/DWC_RnkPutScoreAsync.html">DWC_RnkPutScoreAsync</A></LI>
+		<LI><A href="dwc/base/DWC_SetupGameServer.html">The DWC_SetupGameServer function</A></LI>
+		<LI><A href="dwc/base/DWC_SetupGameServerAsync.html">The DWC_SetupGameServerAsync function</A></LI>
+		<LI><A href="dwc/base/DWCRnkError.html">The DWCRnkError function</A></LI>
+	</UL>
+<HR>
+<H3><A name="note5-05" id="note5-05">Note 5-05: Made changes to the sample demo rank_sample</A></H3>
+<P>
+We added user-defined data to the CRC, and made changes to check for falsification.
+</P>
+<HR>
+<H3><A name="note5-06" id="note5-06">Note 5-06: Made changes for when the user-defined data is not used in the general purpose ranking library.</A></H3>
+<P>
+We made changes for when user-defined data is not used in the general purpose ranking library. Users can now select NULL as the data argument and 0 for the size in the DWC_RnkPutScoreAsync function.
+</P>
+<HR>
+<H3><A name="note5-07" id="note5-07">Note 5-07: Fixed the problems with the download server error in the download library.</A></H3>
+<P>
+We fixed the issue where the program will stop due to an insufficient receive buffer when the download server returns an error.<BR>Along with this fix was an addition of error code 31030 for an insufficient receive buffer error. Also, the minimum buffer size passed to DWC_NdGetFileAsync was set to 128 bytes. A buffer of at least 128 bytes will need to be specified, even if the downloaded data is smaller than this size.
+</P>
+<HR>
+<H3><A name="KnownIssues_1_02" id="KnownIssues_1_02">Known issues in Version 1.2 release version</A></H3>
+<P>
+None.
+</P>
+<HR>
+<H2 style="line-height: 0"><A name="sdk_1_02rc2" id="sdk_1_02rc2">NITRO-DWC Version 1.2 RC2</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/06/08)</P>
+</DIV>
+<HR>
+<H3><A name="note4-01" id="note4-01">Note 4-01: Made changes to the internal operations of the handler for obtaining service locator information</A></H3>
+<P>
+We made changes to the internal operations of the process for obtaining service locator information that the download feature uses.
+</P>
+<HR>
+<H3><A name="KnownIssues_1_02rc2" id="KnownIssues_1_02rc2">Known issues in Version 1.2 RC2</A></H3>
+<P>
+None.
+</P>
+<HR>
+<H2 style="line-height: 0"><A name="sdk_1_02rc" id="sdk_1_02rc">NITRO-DWC Version 1.2 RC</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/06/06)</P>
+</DIV>
+<HR>
+<H3><A name="note3-01" id="note3-01">Note 3-01 Added 'General-Purpose Ranking Constants'</A></H3>
+<P>
+Added general-purpose ranking constants.<BR>For details, see the documentation in $NITRODWC_ROOT/docs.
+</P>
+<HR>
+<H3><A name="note3-02" id="note3-02">Note 3-02: Added Download library</A></H3>
+<P>
+Added the library for downloading content from the Download server provided by Nintendo.<BR>For details, see the documentation in $NITRODWC_ROOT/docs.
+</P>
+<HR>
+<H3><A name="note3-03" id="note3-03">Note 3-03: Made additions and changes to the error information that can be obtained with the DWC_GetLastError function and the DWC_GetLastErrorEx function.</A></H3>
+<P>
+Made the following additions and changes to the error information that can be obtained with DWC_GetLastError and  DWC_GetLastErrorEx:
+<UL>
+<LI>In accordance with the addition of the Download library, added the related error code, error type (DWCErrorType) and error kind (DWCError).</LI>
+<LI>Changed the error information that can be obtained in accordance with the addition of the error kind (DWC_ERROR_GHTTP_ANY) and error type (DWC_ETYPE_SHUTDOWN_GHTTP) for errors relating to HTTP communications (GameSpy HTTP).</LI>
+</UL>
+</P>
+<HR>
+<H3><A name="note3-04" id="note3-04">Note 3-04: Fixed the problem that occurred when FREESPOT was set for the SSID of connection targets 1 to 3 in the Settings Utility</A></H3>
+<P>
+When FREESPOT was  set for the SSID of connection targets 1 to 3 in the Settings Utility and a connection test was performed, the error that occurred had the error code is 5XX05, whereas it should have been some error code between 5XX00 and 5XX02.  That problem has been fixed.
+</P>
+<HR>
+<H3><A name="note3-05" id="note3-05">Note 3-05: Fixed the problem that occurred when the nickname in the DS owner information was 10 characters long</A></H3>
+<P>
+When the end user saved owner information to the DS and entered a nickname with 10 characters, an error code 20109 would be generated when connecting to Wi-Fi Connection.  That problem has been corrected.<BR>Note: This problem does not arise in NITRO-DWC 1.0 and later versions.<BR>Note: This is a problem that gets corrected by the NITRO-DWC 1.1 PLUS patch.
+</P>
+<HR>
+<H3><A name="note3-06" id="note3-06">Note 3-06: Fixed the problem that MatchMake would not end if started after disconnecting during a game.</A></H3>
+<P>
+When MatchMake was started after disconnecting during a game,  sometimes that MatchMake process would not end.  That problem has been fixed.<BR>This problem occurred when  the Reception state of Reliable transmission was to reset after peer-to-peer communications was disconnected.<BR>Note: This is a problem that gets corrected by the NITRO-DWC 1.1 PLUS patch.
+</P>
+<HR>
+<H3><A name="note3-07" id="note3-07">Note 3-07: Fixed problem of Reception timeout callback not being called</A></H3>
+<P>
+The Reception timeout callback specified by the DWC_SetUserRecvTimeoutCallback function was not being called.  This problem was corrected.<BR>Data sent using DWC_SendReliable* would accumulate in the Send buffer because there was no acknowledgment confirming reception by the receiver side.  While the Send buffer remained full in this way, there would be no call to the Reception timeout callback.<BR>Note: This is a problem that gets corrected by the NITRO-DWC 1.1 PLUS2 patch.
+</P>
+<HR>
+<H3><A name="note3-08" id="note3-08">Note 3-08: Fixed the problem that prevented connection to some hotspots</A></H3>
+<P>
+When connecting at a hotspot, the required information would not be sent to the Authentication server.  This problem has been fixed.<BR>This problem made it impossible to connect at some hotspots.<BR>Note: This problem does not arise in NITRO-DWC 1.0 and later versions.<BR>Note: This is a problem that gets corrected by the NITRO-DWC 1.1 PLUS2 patch.
+</P>
+<HR>
+<H3><A name="note3-09" id="note3-09">Note 3-09: Extended the screen name that the Authentication server can check to 25 characters</A></H3>
+<P>
+The screen name in the game that gets sent to the Authentication server using the DWC_LoginAsync function has been extended to 25 characters.  Before the maximum length was 10 characters. <BR>In accordance, made changes and additions to the explanation for the ingamesn argument of the DWC_LoginAsync function in the Reference Manual.<BR>Note: This change is made by the NITRO-DWC 1.1 PLUS2.
+</P>
+<HR>
+<H3><A name="note3-10" id="note3-10">Note 3-10: Fixed problem with arguments of DWCFriendStatusCallback function and DWCBuddyFriendCallback function</A></H3>
+<P>
+The following three functions:
+<UL>
+<LI>DWC_UpdateServerAsync function,</LI>
+<LI>DWC_SetFriendStatusCallback function, and</LI>
+<LI>DWC_SetFriendStatusCallback function</LI>
+</UL>
+allow the following two functions to be set as callbacks:
+<UL>
+<LI>DWCFriendStatusCallback function and</LI>
+<LI>DWCBuddyFriendCallback function.</LI>
+</UL>
+A problem occurred when the value -1 was unexpectedly entered for the 'index' argument of these callback functions.  That has now been corrected.<BR>The problem would occur in these two callback functions when a friendship was established with the friend registered last in the buddy list.<BR>In the case of the  DWCFriendStatusCallback function, when -1 was set for the value of the 'index' argument, the other arguments (status/statusString) would also be abnormal.<BR>Note: This is a problem that gets corrected by the NITRO-DWC 1.1 PLUS3.
+</P>
+<HR>
+<H3><A name="note3-11" id="note3-11">Note 3-11: Made additions and revisions to the Programming Manual</A></H3>
+<P>
+Revised the 'Nintendo Wi-Fi Connection NITRO-DWC Programming Manual' included in $NITRODWC_ROOT/docs.<BR>Also made additions to the Programming Manual for the general-purpose ranking feature and the download feature.
+</P>
+<HR>
+<H3><A name="note3-12" id="note3-12">Note 3-12: Made additions and revisions to the Function Reference</A></H3>
+<P>
+Additions and revisions were made to the items listed below. For details, see the Revision History for each item.<BR>Note: The Revision History does not show small revisions to terminology, etc.
+	<UL>
+		<LI><A href="main.html">TOP</A></LI>
+		<LI><A href="dwc/base/DWC_AddCommonKeyValueString.html">DWC_AddCommonKeyValueString</A></LI>
+		<LI><A href="dwc/base/DWC_AddMatchKey.html">DWC_AddMatchKey*</A></LI>
+		<LI><A href="dwc/base/DWC_Base64Encode.html">DWC_Base64Encode</A></LI>
+		<LI><A href="dwc/base/DWC_CleanupInet.html">DWC_CleanupInet</A></LI>
+		<LI><A href="dwc/base/DWC_CleanupInetAsync.html">DWC_CleanupInetAsync</A></LI>
+		<LI><A href="dwc/base/DWC_ClearBuddyFlagFriendData.html">DWC_ClearBuddyFlagFriendData</A></LI>
+		<LI><A href="dwc/base/DWC_ClearError.html">DWC_ClearError</A></LI>
+		<LI><A href="dwc/base/DWC_ConnectInetAsync.html">DWC_ConnectInetAsync</A></LI>
+		<LI><A href="dwc/base/DWC_ConnectToAnybodyAsync.html">DWC_ConnectToAnybodyAsync</A></LI>
+		<LI><A href="dwc/base/DWC_ConnectToFriendsAsync.html">DWC_ConnectToFriendsAsync</A></LI>
+		<LI><A href="dwc/base/DWC_DebugConnectInetAsync.html">DWC_DebugConnectInetAsync</A></LI>
+		<LI><A href="dwc/base/DWC_GetCommonValueString.html">DWC_GetCommonValueString</A></LI>
+		<LI><A href="dwc/base/DWC_GetFriendStatus.html">DWC_GetFriendStatus</A></LI>
+		<LI><A href="dwc/base/DWC_GetFriendStatusSC.html">DWC_GetFriendStatusSC</A></LI>
+		<LI><A href="dwc/base/DWC_GetInetStatus.html">DWC_GetInetStatus</A></LI>
+		<LI><A href="dwc/base/DWC_GetIngamesnCheckResult.html">DWC_GetIngamesnCheckResult</A></LI>
+		<LI><A href="dwc/base/DWC_GetLastError.html">DWC_GetLastError*</A></LI>
+		<LI><A href="dwc/base/DWC_GetMatch_Value.html">DWC_GetMatch*Value</A></LI>
+		<LI><A href="dwc/base/DWC_GetOwnStatusString.html">DWC_GetOwnStatusString</A></LI>
+		<LI><A href="dwc/base/DWC_GHTTPPostAddString.html">DWC_GHTTPPostAddString</A></LI>
+		<LI><A href="dwc/base/DWC_Init.html">DWC_Init</A></LI>
+		<LI><A href="dwc/base/DWC_InitFriendsMatch.html">DWC_InitFriendsMatch</A></LI>
+		<LI><A href="dwc/base/DWC_InitInet.html">DWC_InitInet</A></LI>
+		<LI><A href="dwc/base/DWC_LoadOthersDataAsync.html">DWC_LoadOthersDataAsync</A></LI>
+		<LI><A href="dwc/base/DWC_LoadOwnPrivateDataAsync.html">DWC_LoadOwnPrivateDataAsync</A></LI>
+		<LI><A href="dwc/base/DWC_LoadOwnPublicDataAsync.html">DWC_LoadOwnPublicDataAsync</A></LI>
+		<LI><A href="dwc/base/DWC_LoginAsync.html">DWC_LoginAsync</A></LI>
+		<LI><A href="dwc/base/DWC_NdCancelAsync.html">DWC_NdCancelAsync</A></LI>
+		<LI><A href="dwc/base/DWC_NdCleanupAsync.html">DWC_NdCleanupAsync</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetFileAsync.html">DWC_NdGetFileAsync</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetFileListAsync.html">DWC_NdGetFileListAsync</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetFileListNumAsync.html">DWC_NdGetFileListNumAsync</A></LI>
+		<LI><A href="dwc/base/DWC_NdGetProgress.html">DWC_NdGetProgress</A></LI>
+		<LI><A href="dwc/base/DWC_NdInitAsync.html">DWC_NdInitAsync</A></LI>
+		<LI><A href="dwc/base/DWC_NdSetAttr.html">DWC_NdSetAttr</A></LI>
+		<LI><A href="dwc/base/DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</A></LI>
+		<LI><A href="dwc/base/DWC_ProcessInet.html">DWC_ProcessInet</A></LI>
+		<LI><A href="dwc/base/DWC_Rnk_Constant_Number.html">DWC_Rnk_Constant_Number</A></LI>
+		<LI><A href="dwc/base/DWC_RnkCancelProcess.html">DWC_RnkCancelProcess</A></LI>
+		<LI><A href="dwc/base/DWC_RnkGetScoreAsync.html">DWC_RnkGetScoreAsync</A></LI>
+		<LI><A href="dwc/base/DWC_RnkGetState.html">DWC_RnkGetState</A></LI>
+		<LI><A href="dwc/base/DWC_RnkInitialize.html">DWC_RnkInitialize</A></LI>
+		<LI><A href="dwc/base/DWC_RnkProcess.html">DWC_RnkProcess</A></LI>
+		<LI><A href="dwc/base/DWC_RnkPutScoreAsync.html">DWC_RnkPutScoreAsync</A></LI>
+		<LI><A href="dwc/base/DWC_RnkResGetOrder.html">DWC_RnkResGetOrder</A></LI>
+		<LI><A href="dwc/base/DWC_RnkResGetRow.html">DWC_RnkResGetRow</A></LI>
+		<LI><A href="dwc/base/DWC_RnkResGetRowCount.html">DWC_RnkResGetRowCount</A></LI>
+		<LI><A href="dwc/base/DWC_RnkResGetTotal.html">DWC_RnkResGetTotal</A></LI>
+		<LI><A href="dwc/base/DWC_RnkShutdown.html">DWC_RnkShutdown</A></LI>
+		<LI><A href="dwc/base/DWC_SavePrivateDataAsync.html">DWC_SavePrivateDataAsync</A></LI>
+		<LI><A href="dwc/base/DWC_SavePublicDataAsync.html">DWC_SavePublicDataAsync</A></LI>
+		<LI><A href="dwc/base/DWC_SendReliable.html">DWC_SendReliable</A></LI>
+		<LI><A href="dwc/base/DWC_SendReliableBitmap.html">DWC_SendReliableBitmap</A></LI>
+		<LI><A href="dwc/base/DWC_SetCommonKeyValueString.html">DWC_SetCommonKeyValueString</A></LI>
+		<LI><A href="dwc/base/DWC_SetOwnStatusString.html">DWC_SetOwnStatusString</A></LI>
+		<LI><A href="dwc/base/DWCConnectionClosedCallback.html">DWCConnectionClosedCallback</A></LI>
+		<LI><A href="dwc/base/DWCEvalPlayerCallback.html">DWCEvalPlayerCallback</A></LI>
+		<LI><A href="dwc/base/DWCGHTTPCompletedCallback.html">DWCGHTTPCompletedCallback</A></LI>
+		<LI><A href="dwc/base/DWCLoginCallback.html">DWCLoginCallback</A></LI>
+		<LI><A href="dwc/base/DWCMatchedCallback.html">DWCMatchedCallback</A></LI>
+		<LI><A href="dwc/base/DWCMatchedSCCallback.html">DWCMatchedSCCallback</A></LI>
+		<LI><A href="dwc/base/DWCNdCallback.html">DWCNdCallback</A></LI>
+		<LI><A href="dwc/base/DWCNdCallbackReason.html">DWCNdCallbackReason</A></LI>
+		<LI><A href="dwc/base/DWCNdCleanupCallback.html">DWCNdCleanupCallback</A></LI>
+		<LI><A href="dwc/base/DWCNdError.html">DWCNdError</A></LI>
+		<LI><A href="dwc/base/DWCNdFileInfo.html">DWCNdFileInfo</A></LI>
+		<LI><A href="dwc/base/DWCRnkData.html">DWCRnkData</A></LI>
+		<LI><A href="dwc/base/DWCRnkError.html">DWCRnkError</A></LI>
+		<LI><A href="dwc/base/DWCRnkGetMode.html">DWCRnkGetMode</A></LI>
+		<LI><A href="dwc/base/DWCRnkGetParam.html">DWCRnkGetParam</A></LI>
+		<LI><A href="dwc/base/DWCRnkRegion.html">DWCRnkRegion</A></LI>
+		<LI><A href="dwc/base/DWCRnkState.html">DWCRnkState</A></LI>
+		<LI><A href="dwc/base/DWCStorageLoginCallback.html">DWCStorageLoginCallback</A></LI>
+		<LI><A href="dwc/base/DWCUpdateServersCallback.html">DWCUpdateServersCallback</A></LI>
+	</UL>
+</P>
+<HR>
+<H3><A name="note3-13" id="note3-13">Note 3-13: Made additions and revisions to the sample demos</A></H3>
+<P>
+	<UL>
+		<LI>Added a sample of the general-purpose ranking feature, rank_sample.</LI>
+		<LI>Added a sample of the download feature, dwc_nd_sample.</LI>
+		<LI>Changed SVC_WaitVBlankIntr to OS_WaitVBlankIntr in all of the samples.</LI>
+		<LI>Revised all the samples so the warning is not output at build time.</LI>
+		<LI>Deleted calls to unnecessary functions in dwc_connect_inet_sample.</LI>
+		<LI>Fixed dwc_sample and friend_match so no problem occurs when a value that is not a multiple of 4 is set for GAME_MAX_FRIEND_LIST.</LI>
+		<LI>Deleted &quot;ARM9-TS-inet.lsf&quot; from ghttp_sample.</LI>
+	</UL>
+</P>
+<HR>
+<H3><A name="note3-14" id="note3-14">Note 3-14: Deleted the 'add-ins' directory</A></H3>
+<P>
+Deleted the directory '$NITRODWC_ROOT/add-ins' from the package.
+</P>
+<HR>
+<H3><A name="KnownIssues_1_02rc" id="KnownIssues_1_02rc">Known issues in Version 1.2 RC</A></H3>
+<P>
+None.
+</P>
+<HR>
+<H2 style="line-height: 0"><A name="sdk_1_01" id="sdk_1_01">NITRO-DWC Version 1.1 Release</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/03/10)</P>
+</DIV>
+<HR>
+<H3><A name="note2-01" id="note2-01">Note 2-01: Added the DWC_StopScMatchingAsync function</A></H3>
+<P>
+Added DWC_StopScMatchingAsync as a function to cancel server-client matchmaking.
+</P>
+<HR>
+<H3><A name="note2-02" id="note2-02">Note 2-02: Added the DWC_CancelGHTTPRequest function</A></H3>
+<P>
+Added DWC_CancelGHTTPRequest as a function to cancel HTTP communication.
+</P>
+<HR>
+<H3><A name="note2-03" id="note2-03">Note 2-03: Added the DWC_GetApInfo function</A></H3>
+<P>
+Added DWC_GetApInfo as a function that gets data specific to the connected access point after completing an Internet connection. This function obtains the connection candidate (targets 1 through 3, the Nintendo Wi-Fi USB Connector, etc.) to which the access point is connected and the access point's SSID and BSSID. In addition, location information can also be obtained for Wi-Fi Station connections.
+</P>
+<HR>
+<H3><A name="note2-04" id="note2-04">Note 2-04: Added the DWC_GetDateTime function</A></H3>
+<P>
+Added the function DWC_GetDateTime for getting the current date and time in GMT based on the time information retreived from the authentication server during authentication processing. This function can also be used to get the GMT date and time after authentication. Be aware that there may be discrepancies in minute/second units.
+</P>
+<HR>
+<H3><A name="note2-05" id="note2-05">Note 2-05: Added the DWC_SetConnectApType function (for debugging)</A></H3>
+<P>
+The DWC_SetConnectApType function was added to explicitly set the target connection candidate (targets 1 through 3, the Nintendo Wi-Fi Station, etc.) before connecting to the Internet. The DWC_ConnectInetAsync function, which then runs, will only connect to the specifed candidate. Use this function for debugging. This specification will be ignored in the FINALROM version.
+</P>
+<HR>
+<H3><A name="note2-06" id="note2-06">Note 2-06: Added the DWC_DebugConnectInetAsync function (for debugging)</A></H3>
+<P>
+If this function is used instead of DWC_ConnectInetAsync when connecting to the Internet, you can explicitly specify the SSIP and WEP key for the access point. Use this function for debugging.
+</P>
+<HR>
+<H3><A name="note2-07" id="note2-07">Note 2-07: Added the dwc_connect_inet_sample sample demo</A></H3>
+<P>
+This simple demo shows the process for connecting to the Internet. It also includes a demo for the new functions DWC_SetConnectApType and DWC_DebugConnectInetAsync.
+</P>
+<HR>
+<H3><A name="note2-08" id="note2-08">Note 2-08: Revised the DWC_SetSendSplitMax function</A></H3>
+<P>
+If an attempt to set a value larger than that defined in DWC_TRANSPORT_SEND_MAX was made, the value was reset to DWC_TRANSPORT_SEND_MAX and TRUE was returned; this was changed to use assert processing.
+</P>
+<HR>
+<H3><A name="note2-09" id="note2-09">Note 2-09: Changed the Wi-Fi Connection Configuration message</A></H3>
+<P>
+Several revisions were made to the displayed message when the test fails during Wi-Fi connection settings.
+</P>
+<HR>
+<H3><A name="note2-10" id="note2-10">Note 2-10: Upgraded the version of the child program for moving Wi-Fi user information included among Wi-Fi connection settings</A></H3>
+<P>
+The Wi-Fi User Data Migration Device Program included in the Wi-Fi connection settings was updated with a NITRO-SDK 3.0 build version.
+</P>
+<HR>
+<H3><A name="note2-11" id="note2-11">Note 2-11: Revised a bug in the Wi-Fi Connection Configuration</A></H3>
+<P>
+Fixed an issue where the sound effect would loop while the B button was pressed when cancelling the AOSS settings in the Wi-Fi connection settings.
+</P>
+<HR>
+<H3><A name="note2-12" id="note2-12">Note 2-12: Fixed a bug in the automatic Internet connection process (1)</A></H3>
+<P>
+Fixed an issue where the connection test failure would stop for the Nintendo Wi-Fi USB Connector in the Wi-Fi Connection Settings.<BR>* The connection test used in the Wi-Fi connection settings is the same as the Internet auto-connect process used in games.
+</P>
+<HR>
+<H3><A name="note2-13" id="note2-13">Note 2-13: Fixed a bug in the automatic Internet connection process (2)</A></H3>
+<P>
+Fixed an issue where a very long URL for hotspot authentication would result in a connection stop, while connecting to a hotspot for an Internet connection.
+</P>
+<HR>
+<H3><A name="note2-14" id="note2-14">Note 2-14: Fixed a bug in the DWC_GetInetStatus function</A></H3>
+<P>
+Fixed an issue where a freeze would occur when the DWC_GetInetStatus function was called between the DWC_InitInet and DWC_ConnectInetAsync function calls.
+</P>
+<HR>
+<H3><A name="note2-15" id="note2-15">Note 2-15: Fixed a bug in the DWC_ProcessInet function</A></H3>
+<P>
+Fixed an issue where a freeze would occur if DWC_ProcessInet was called when the auto-connect control object for an Internet connection was still uninitialized (DWC_InitInet had not been called).
+</P>
+<HR>
+<H3><A name="note2-16" id="note2-16">Note 2-16: Fixed a bug in the DWC_CleanupInet function</A></H3>
+<P>
+Fixed an issue where a freeze would occur when the DWC_CleanupInet function was called between the DWC_InitInet and DWC_ConnectInetAsync function calls.
+</P>
+<HR>
+<H3><A name="note2-17" id="note2-17">Note 2-17: Revised the DWC_CreateUserData function</A></H3>
+<P>
+Revised the random number generation method used when creating user data. Because the tick value was used as the random seed, if the OS_InitTick function is called with the same timing as the DWC_CreateUserData function, the same login ID can be created. To fix this, the base value for the random seed was changed to use the OS_GetLowEntropyData function.
+</P>
+<HR>
+<H3><A name="note2-18" id="note2-18">Note 2-18: Corrected sample demos</A></H3>
+<P>
+Unused files and unnecessary notes were deleted.
+</P>
+<HR>
+<H3><A name="note2-19" id="note2-19">Note 2-19: Removed the document &quot;User Information Management/Friend Connection Overview&quot;</A></H3>
+<P>
+The content of the User Data Management and Friend Connection Overview documentation was moved to the Programming Guidelines and NITRO-DWC Programming Manual. The original document was removed.
+</P>
+<HR>
+<H3><A name="note2-20" id="note2-20">Note 2-20: Reviewed the function reference and the document entitled &quot;NITRO-DWC Programming Manual&quot;</A></H3>
+<P>
+Supplemental descriptions were added to the NITRO-DWC Programming Manual and Function Reference.
+</P>
+
+<HR>
+<H3><A name="KnownIssues_1_01" id="KnownIssues_1_01">Known Issues in 1.1 Release Version</A></H3>
+<P>
+None.
+</P>
+
+
+<HR>
+<H2 style="line-height: 0"><A name="sdk_1_00" id="sdk_1_00">NITRO-DWC Version 1.0 Release</A></H2>
+<DIV style="text-align: right">
+<P style="line-height: 0">(2006/01/30)</P>
+</DIV>
+
+
+<HR>
+<H3><A name="note1-01" id="note1-01">Note 1-01: Added the DWC_SetFriendStatusCallback function</A></H3>
+<P>
+	DWC_SetFriendStatusCallback was added to configure the callback functions that are called when a friend's communication state changes. <BR>The above callback functions are usually set as the arguments of the friend list synchronous process function DWC_UpdateServersAsync. But, even when no friend list synchronous process is needed and there is a need to know the friend's communication state in real-time, use this function to configure the callback functions.
+</P>
+<HR>
+<H3><A name="note1-02" id="note1-02">Note 1-02: Revised the condititions under which the DWC_IsSendableReliable function returns FALSE</A></H3>
+<P>
+	There was a bug where TRUE was returned when the DWC_IsSendableReliable function was called but FALSE was returned when the DWC_SendReliable* function was called during the generation of an error.<BR>This bug has been fixed so that the DWC_IsSendableReliable function will return FALSE in this kind of situation.
+</P>
+<HR>
+<H3><A name="note1-03" id="note1-03">Note 1-03: Added a check for the maximum number of people connected</A></H3>
+<P>
+	The maximum number of people that can connect with matchmaking in the DWC Library is 32, so an ASSERT was added that checks whether the arguments of the DWC_ConnectToAnybodyAsync, DWC_ConnectToFriendsAsync, and DWC_SetupGameServer functions exceed this number.
+</P>
+<HR>
+<H3><A name="note1-04" id="note1-04">Note 1-04: Added a check for the maximum length of the friends list</A></H3>
+<P>
+	The maximum number of friends that the DWC Library can handle is 64, so an ASSERT was added that checks whether the friend list length arguments of the DWC_InitFriendsMatch and DWC_ConnectToFriendsAsync functions exceed this number.
+</P>
+<HR>
+<H3><A name="note1-05" id="note1-05">Note 1-05: Revised the error handling in the debug configuration functions for sending and receiving data</A></H3>
+<P>
+	No DWC error was set when a memory allocation error occurred inside the DWC_SetSendDelay, DWC_SetRecvDelay, DWC_SetSendDrop, and DWC_SetRecvDrop functions.<BR>This is revised so the DWC_ECODE_TYPE_ALLOC  FATAL ERROR is properly set.
+</P>
+<HR>
+<H3><A name="note1-06" id="note1-06">Note 1-06: Added return values for failures to the GHTTP library functions</A></H3>
+<P>
+	Added return values for failures to the GHTTP library functions below:
+	<UL>
+		<LI>DWC_ProcessGHTTP: Previously, TRUE was always returned. It now returns FALSE when an error is generated.
+		<LI>DWC_GHTTPPostAddString: Previously, this had no return value. It now returns FALSE when there is a parameter error or a memory allocation error.
+		<LI>DWC_PostGHTTPData: Previously, if this function was called when an error was generated, it was allowed to process normally. It now does nothing and returns the new error DWC_GHTTP_IN_ERROR.
+		<LI>DWC_GetGHTTPData: Previously, if this function was called when an error was being generated, it was allowed to process normally. It now does nothing and returns the new error DWC_GHTTP_IN_ERROR.
+		<LI>DWC_GetGHTTPDataEx: Previously, if this function was called when an error was being generated, it was allowed to process normally.  It now does nothing and returns the new error DWC_GHTTP_IN_ERROR.
+	</UL>
+</P>
+<HR>
+<H3><A name="note1-07" id="note1-07">Note 1-07: Changed the return values of several functions from void to BOOL</A></H3>
+<P>
+	<UL>
+		<LI>DWC_SetBuddyFriendCallback
+		<LI>DWC_SetConnectionClosedCallback
+		<LI>DWC_SetStorageServerCallback
+		<LI>DWC_SetUserSendCallback
+		<LI>DWC_SetUserRecvCallback
+		<LI>DWC_SetUserRecvTimeoutCallback
+		<LI>DWC_SetUserPingCallback
+		<LI>DWC_SetSendSplitMax
+		<LI>DWC_SetRecvTimeoutTime
+		<LI>DWC_SetSendDrop
+		<LI>DWC_SetRecvDrop
+		<LI>DWC_SetSendDelay
+		<LI>DWC_SetRecvDelay
+		<LI>DWC_Ping
+	</UL>
+Previously, none of the above functions had return values. They now return FALSE if they fail.<BR>The primary reason for their failure is due to calling inactive functions in the FriendsMatch library. So, if these functions are used after the DWC_InitFriendsMatch function is called, they will not return FALSE.<BR>However, in the DWC_SetSendDrop, DWC_SetRecvDrop, DWC_SetSendDelay, DWC_SetRecvDelay, and DWC_Ping functions, failures to allocate memory and designations of invalid AIDs will cause the functions to fail.
+</P>
+<HR>
+<H3><A name="note1-08" id="note1-08">Note 1-08: Added functions for encoding and decoding Base64</A></H3>
+<P>
+	The function DWC_Base64Encode (used to encode Base 64) and the function DWC_Base64Decode (used to decode Base 64) were added.<BR>Previously, when status data was configured with the DWC_SetOwnStatusData function, the character string for the statusString argument of the friend state change notification callback DWCFriendStatusCallback could not be used. However, if the DWC_Base64Decode function is used, the statusString character string (a Base 64 character string) will be decoded and can be referenced.
+</P>
+<HR>
+<H3><A name="note1-09" id="note1-09">Note 1-09: Fixed a bug where the child DS was freezing up due to the parent DS becoming disconnected from the network</A></H3>
+<P>
+	During matchmaking, a temporary parent-child relationship is formed between connected DS devices.<BR>There was a bug where, if the network fails due to a reason such as the power being cut off on the parent DS, any connected child DS devices would freeze up (but matchmaking could be cancelled).<BR>This bug has been fixed so, that should this sort of situation occur and a child DS cannot communicate with its parent for a fixed amount of time, it will re-attempt matchmaking.<BR>
+</P>
+<HR>
+<H3><A name="note1-10" id="note1-10">Note 1-10: Fixed a bug in the DWC_CheckFriendly function</A></H3>
+<P>
+	The DWC_CheckFriendKey function was being used to check the validity of friend registration keys on the CRC. However, there was a bug that was generating parameter errors during the friend list synchronous process. This occurred even though this function returned TRUE when the GS profile ID included in the friend registration key was negative and a correct friend registration key was input into the CRC.<BR>This has been fixed so that a FALSE will return for friend registration keys whose GS profile ID is negative.
+</P>
+<HR>
+<H3><A name="note1-11" id="note1-11">Note 1-11: Added a function for loading one's own data from a data storage server</A></H3>
+<P>
+	The DWC_LoadOwnDataAsync function, which loaded your data from a data storage server, was unable to load anything except Private data.<BR>Therefore, the following functions have been added: the DWC_LoadOwnPublicDataAsync function, which loads Public data, and the DWC_LoadOwnPrivateDataAsync function, which loads Private data.
+</P>
+<HR>
+<H3><A name="note1-12" id="note1-12">Note 1-12: Fixed a bug that prevented the prohibition of connecting to a friend of a friend in peer matchmaking with specified friends</A></H3>
+<P>
+	There was a bug where, even though a FALSE was specified in the distantFriend argument of the DWC_ConnectToFriendsAsync function, a connection would be made with friends outside of what was specified in the friendIdxList argument.<BR>This bug was fixed so that if a FALSE is specified for distantFriend, there will only be connections made with those friends specified in friendIdxList (or all friends if friendIdxList=NULL).
+</P>
+<HR>
+<H3><A name="note1-13" id="note1-13">Note 1-13: Fixed a bug that was causing a Fatal Error 71002</A></H3>
+<P>
+	There was a bug where, after the networking state became unstable and a DWC error was generated, the internal process would continue and fatal error code 71002 would be generated.<BR>This was fixed so that the fatal error does not occur.
+</P>
+<HR>
+<H3><A name="note1-14" id="note1-14">Note 1-14: Unified the sample source comments with the reference glossary</A></H3>
+<P>
+	Changes were made so that the sample source comments and the terminology used in the reference are consistent.<BR>Specifically, &quot;matching&quot;, which was forbidden from being used in the glossary, was changed to &quot;matchmaking&quot;.
+</P>
+<HR>
+<H3><A name="note1-15" id="note1-15">Note 1-15: Revised the sample demos for dwc_frienddata_sample and dwc_friend_match_sample</A></H3>
+<P>
+	The following revisions were made to the $NITRODWC_ROOT/build/demos/dwc_frienddata_sample and the $NITRODWC_ROOT/build/demos/dwc_friend_match_sample sample demos.
+	<UL>
+		<LI>There were two locations mentioning s_logined=TRUE (the process that determines a completed connection to the Wi-Fi Connection). The description within the cb_login function was erroneous, so it was deleted.<BR>Once the friend list synchronous process completes, the connection is determined to be complete.
+	</UL>
+</P>
+<HR>
+<H3><A name="note1-16" id="note1-16">Note 1-16: Changed the receive buffer size for the dwc_sample sample demo</A></H3>
+<P>
+	The following revision was made to the $NITRODWC_ROOT/build/demos/dwc_sample sample demo:
+	<UL>
+		<LI>There was a bug where, if matchmaking was performed for more than five people after the connection completed, an access exception would stop the process due to the data reception buffer being prepared for only four people. This bug is fixed.
+	</UL>
+</P>
+
+<HR>
+<H3><A name="KnownIssues_1_00" id="KnownIssues_1_00">Known issues in Version 1.0 release version</A></H3>
+<P>
+None.
+</P>
+
+<HR>
+<P style="text-align: right">Nintendo Technical Support Center</P>
+<hr>
+<P>NTR-06-0404-001-C2<br>CONFIDENTIAL</P>
+</BODY>
+</HTML>

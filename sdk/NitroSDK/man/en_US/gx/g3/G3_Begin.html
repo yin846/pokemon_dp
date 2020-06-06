@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3_Begin</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_Begin</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+  <PRE>
+<CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;</CODE><BR>
+<CODE>void G3_Begin(GXBegin primitive);</CODE>
+
+// Below are APIs for creating the display list (command list)<BR><CODE>void G3B_Begin(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXBegin primitive);</CODE><BR><CODE>void G3C_Begin(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXBegin primitive);</CODE><BR><CODE>void G3BS_Begin(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXBegin primitive);</CODE><BR><CODE>void G3CS_Begin(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXBegin primitive);</CODE></PRE>
+</dd></dl><h2>Arguments</h2><table border="1" width="100%"><tr><td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td><td width="87%">Command List Information</td></tr><tr><td width="13%"><em><strong><font face="Courier New">primitive</font></strong></em></td><td width="87%">Primitive type</td></tr></table><h2>Return Values</h2><p>None.</p><H2>Description</H2><P>This function declares the start of the vertex list. <em><strong><code>primitive</code></strong></em> specifies the primitive type created by the vertex list.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_BEGIN_TRIANGLES</CODE></TD>
+<TD>Multiple triangle polygons</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BEGIN_QUADS</CODE></TD>
+<TD>Multiple quadrilateral polygons</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BEGIN_TRIANGLE_STRIP</CODE></TD>
+<TD>Triangle strip polygon</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>GX_BEGIN_QUAD_STRIP</CODE></TD>
+<TD>Quadrilateral strip polygon</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following indicates the type definition for <code>GXBegin</code> types.</P>
+<PRE><CODE>typedef enum
+{
+GX_BEGIN_TRIANGLES = 0,
+GX_BEGIN_QUADS = 1,
+GX_BEGIN_TRIANGLE_STRIP = 2,
+GX_BEGIN_QUAD_STRIP = 3
+}
+GXBegin;</CODE></PRE>
+<H2>See Also</H2>
+<P><A href="G3_End.html">G3*_End</A></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+</body></html> 

@@ -1,0 +1,494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>List of Wireless Manager (WM) API functions</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>List of Wireless Manager (WM) API functions</H1>
+<H3><A name="Init">Initialization</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wm/WM_Init.html" target="_self">WM_Init</A></TH>
+<TD>Initializes the wireless library.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_Finish.html" target="_self">WM_Finish</A></TH>
+<TD>Terminates the wireless library.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_Enable.html" target="_self">WM_Enable</A></TH>
+<TD>Enables wireless hardware.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_Disable.html" target="_self">WM_Disable</A></TH>
+<TD>Disables the wireless hardware.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_PowerOn.html" target="_self">WM_PowerOn</A></TH>
+<TD>Starts up the wireless hardware.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_PowerOff.html" target="_self">WM_PowerOff</A></TH>
+<TD>Shuts down the wireless hardware.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_Initialize.html" target="_self">WM_Initialize</A></TH>
+<TD>Initializes the wireless library and starts up the wireless hardware.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_End.html" target="_self">WM_End</A></TH>
+<TD>Shuts down the wireless hardware and terminates the wireless library.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Config">Initial Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetIndCallback.html" target="_self">WM_SetIndCallback</A></TH>
+<TD>Configures the callback function that is used for indication notification.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_Reset.html" target="_self">WM_Reset</A></TH>
+<TD>Resets the wireless library, initializes it, and returns the wireless hardware to the state immediately after initialization.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_ReadStatus.html" target="_self">WM_ReadStatus</A></TH>
+<TD>Obtains the structure that indicates the state of the wireless library.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetParentParameter.html" target="_self">WM_SetParentParameter</A></TH>
+<TD>Sets the parent parameters.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartParent.html" target="_self">WM_StartParent</A></TH>
+<TD>Starts communications as a parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_EndParent.html" target="_self">WM_EndParent</A></TH>
+<TD>Stops communications as a parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartScan.html" target="_self">WM_StartScan</A></TH>
+<TD>Starts, as a child, a scan for a parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartScanEx.html" target="_self">WM_StartScanEx</A></TH>
+<TD>Starts, as a child, a scan for a parent using detailed settings.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_EndScan.html" target="_self">WM_EndScan</A></TH>
+<TD>Stops the child scan process.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartConnect.html" target="_self">WM_StartConnect</A></TH>
+<TD>Starts, as a child, a connection to a parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartConnectEx.html" target="_self">WM_StartConnectEx</A></TH>
+<TD>Starts, as a child, a connection to a parent. Allows use of energy-saving mode after making connection and authentication mode during connection.</TD>
+    </TR>
+<!--<TR>       <TH width="25%"><A href="wm/WM_EndConnect.html" target="_self">WM_EndConnect</A></TH>       <TD>Šm—§‚³‚ê‚Ä‚¢‚éÚ‘±‚ðØ’f‚µ‚Ü‚·B</TD>     </TR>-->
+    <TR>
+<TH width="25%"><A href="wm/WM_Disconnect.html" target="_self">WM_Disconnect</A></TH>
+<TD>Disconnects an established connection.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_DisconnectChildren.html" target="_self">WM_DisconnectChildren</A></TH>
+<TD>Disconnects the established connection with all of the children.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetGameInfo.html" target="_self">WM_SetGameInfo</A></TH>
+<TD>Configures game information.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetEntry.html" target="_self">WM_SetEntry</A></TH>
+<TD>Changes the receive entry status of a parent.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="MP">MP Communication</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetMPReceiveBufferSize.html" target="_self">WM_GetMPReceiveBufferSize</A></TH>
+<TD>Obtains the size of the receive buffer that is required for MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetMPSendBufferSize.html" target="_self">WM_GetMPSendBufferSize</A></TH>
+<TD>Obtains the size of the send buffer that is required for MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartMP.html" target="_self">WM_StartMP</A></TH>
+<TD>Starts MP communications. This function is common to parent and child.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartMPEx.html" target="_self">WM_StartMPEx</A></TH>
+<TD>Starts MP communications by specifying a detailed operation mode. This function is common to parent and child.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_EndMP.html" target="_self">WM_EndMP</A></TH>
+<TD> Stops MP communications. This function is common to parent and child.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPDataToPort.html" target="_self">WM_SetMPDataToPort</A></TH>
+<TD>Reserves send data to be sent to the specific port by MP communication. This function is common to parent and child.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPDataToPortEx.html" target="_self">WM_SetMPDataToPortEx</A></TH>
+<TD>Reserves send data to be sent to the specific port by MP communication. This function is common to parent and child.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetPortCallback.html" target="_self">WM_SetPortCallback</A></TH>
+<TD>Specifies the callback function for receiving data at a specific port.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartDataSharing.html" target="_self">WM_StartDataSharing</A></TH>
+<TD>Starts data sharing with MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_EndDataSharing.html" target="_self">WM_EndDataSharing</A></TH>
+<TD>Stops data sharing.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StepDataSharing.html" target="_self">WM_StepDataSharing</A></TH>
+<TD>Proceeds with the synchronization of data sharing.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetSharedDataAddress.html" target="_self">WM_GetSharedDataAddress</A></TH>
+<TD>Extracts each terminal's data from the shared data.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartKeySharing.html" target="_self">WM_StartKeySharing</A></TH>
+<TD>Enables the key sharing feature.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_EndKeySharing.html" target="_self">WM_EndKeySharing</A></TH>
+<TD>Disables the key sharing feature.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetKeySet.html" target="_self">WM_GetKeySet</A></TH>
+<TD>Reads 1 key set that is key-shared.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SIZE_MP_PARENT_RECEIVE_BUFFER.html" target="_self">WM_SIZE_MP_PARENT_RECEIVE_BUFFER</A></TH>
+<TD>Specifies the receive buffer size that is required by the parent for MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SIZE_MP_PARENT_SEND_BUFFER.html" target="_self">WM_SIZE_MP_PARENT_SEND_BUFFER</A></TH>
+<TD>Specifies the send buffer size that is required by the parent for MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SIZE_MP_CHILD_RECEIVE_BUFFER.html" target="_self">WM_SIZE_MP_CHILD_RECEIVE_BUFFER</A></TH>
+<TD>Specifies the receive buffer size that is required by a child for MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SIZE_MP_CHILD_SEND_BUFFER.html" target="_self">WM_SIZE_MP_CHILD_SEND_BUFFER</A></TH>
+<TD>Specifies the send buffer size that is required by a child for MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPData.html" target="_self">WM_SetMPData</A></TH>
+<TD>Reserves data to be sent when using MP communications. This function is common to parent and child.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_ReadMPData.html" target="_self">WM_ReadMPData</A></TH>
+<TD>Extracts a specified child's data from overall received data.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetAID.html" target="_self">WM_GetAID</A></TH>
+<TD>Gets the current AID.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetConnectedAIDs.html" target="_self">WM_GetConnectedAIDs</A></TH>
+<TD>Gets the current connection partner in a bitmap format.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPParameter.html" target="_self">WM_SetMPParameter</A></TH>
+<TD>Sets various parameters used for MP communications.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPFrequency.html" target="_self">WM_SetMPFrequency</A></TH>
+<TD>Specifies the communication frequency of MP communication. This function is used only for the parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPChildSize.html" target="_self">WM_SetMPChildSize</A></TH>
+<TD>Sets the child send capacity.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPParentSize.html" target="_self">WM_SetMPParentSize</A></TH>
+<TD>Sets the parent send capacity.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPInterval.html" target="_self">WM_SetMPInterval</A></TH>
+<TD>Sets the interval during which MP communications may be performed continuously during a single frame.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetMPTiming.html" target="_self">WM_SetMPTiming</A></TH>
+<TD>Sets the timing at which preparations for MP communications should be started during frame synchronous communication mode.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="DCF">Infrastructure Mode Communications</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wm/WM_StartDCF.html" target="_self">WM_StartDCF</A></TH>
+<TD>Starts infrastructure mode communications.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetDCFData.html" target="_self">WM_SetDCFData</A></TH>
+<TD>Reserves data to be sent when using infrastructure mode communications.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_EndDCF.html" target="_self">WM_EndDCF</A></TH>
+<TD>Ends infrastructure mode communications.</TD>
+    </TR>
+ </TBODY>
+</TABLE>
+<H3><A name="Other">Other</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetWEPKey.html" target="_self">WM_SetWEPKey</A></TH>
+<TD>Configures the encryption feature and encryption keys.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetWEPKeyEx.html" target="_self">WM_SetWEPKeyEx</A></TH>
+<TD>Sets the encryption function and encryption key and selects the key to use.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetBeaconIndication.html" target="_self">WM_SetBeaconIndication</A></TH>
+<TD>Switches the beacon transmission indication between the enabled and the disabled state.</TD>
+    </TR>
+<!--    <TR>       <TH width="25%"><A href="wm/WM_SetBeaconPeriod.html" target="_self">WM_SetBeaconPeriod</A></TH>       <TD>e‹@“®ìŠJŽnŒã‚Éƒr[ƒRƒ“ŠÔŠu‚ð•ÏX‚µ‚Ü‚·B</TD>     </TR>-->
+    <TR>
+<TH width="25%"><A href="wm/WM_SetLifeTime.html" target="_self">WM_SetLifeTime</A></TH>
+<TD>Sets the lifetime for communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_MeasureChannel.html" target="_self">WM_MeasureChannel</A></TH>
+<TD>Measures the usage rate of radio waves.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_InitWirelessCounter.html" target="_self">WM_InitWirelessCounter</A></TH>
+<TD>Initializes the counter for the send/receive frame count.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetWirelessCounter.html" target="_self">WM_GetWirelessCounter</A></TH>
+<TD>Obtains the current value of the counter for the send/receive frame count.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetAllowedChannel.html" target="_self">WM_GetAllowedChannel</A></TH>
+<TD>Obtains a channel to be used for the wireless communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_IsExistAllowedChannel.html" target="_self">WM_IsExistAllowedChannel</A></TH>
+<TD>Confirms the existence of channels permitted for use during wireless communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_IsValidGameBeacon.html" target="_self">WM_IsValidGameBeacon</A></TH>
+<TD>Checks if the obtained beacon information is from a DS wireless play parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_IsValidGameInfo.html" target="_self">WM_IsValidGameInfo</A></TH>
+<TD>Check if the game information structure is of the corresponding format.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetLinkLevel.html" target="_self">WM_GetLinkLevel</A></TH>
+<TD>Obtains the link level of the communication with the other device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetDispersionBeaconPeriod.html" target="_self">WM_GetDispersionBeaconPeriod</A></TH>
+<TD>Obtains beacon period to be set when starting communication as parent device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetDispersionScanPeriod.html" target="_self">WM_GetDispersionScanPeriod</A></TH>
+<TD>Obtains maximum scan period to be set when searching for parent device as child device.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_GetNextTgid.html" target="_self">WM_GetNextTgid</A></TH>
+<TD>Automatically generates the TGID value and obtains it.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_ConvGgid.html" target="_self">WM_ConvGgid*</A></TH>
+<TD>Converts the game group ID.</TD>
+    </TR>
+    <TR>
+<TH><A href="wm/WM_IsBssidEqual.html" target="_self">WM_IsBssidEqual</A></TH>
+<TD>Determines if two BSSIDs are the same.</TD>
+    </TR>
+    <TR>
+<TH><A href="wm/WM_IsBssidEqual.html" target="_self">WM_IsBssidEqual16</A></TH>
+<TD>Compares two BSSIDs to determine if they match in units of 16 bits.</TD>
+    </TR>
+    <TR>
+<TH><A href="wm/WM_CopyBssid.html" target="_self">WM_CopyBssid</A></TH>
+<TD>Copies the BSSID.</TD>
+    </TR>
+    <TR>
+<TH><A href="wm/WM_CopyBssid.html" target="_self">WM_CopyBssid16</A></TH>
+<TD>Copies a BSSID in 16 bit units.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WM_SetPowerSaveMode.html" target="_self">WM_SetPowerSaveMode</A></TH>
+<TD>Sets the power saving mode during infrastructure communication.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="const">Constants</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wm/WMApiid.html" target="_self">WMApiid</A></TH>
+<TD>Enumerated type to indicate the ID of the API.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMStateCode.html" target="_self">WMStateCode</A></TH>
+<TD>Enumerated type to indicate the callback type.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMErrCode.html" target="_self">WMErrCode</A></TH>
+<TD>This enumerated type indicates process results that are common to WM operation functions.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMPort.html" target="_self">WMPort</A></TH>
+<TD>Enumerated type to indicate the data send/receive port for MP communication.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMLinkLevel.html" target="_self">WMLinkLevel</A></TH>
+<TD>Enumerated type to indicate the link level of the communication.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Type">Types, Structures</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wm/WMDataSet.html" target="_self">WMDataSet</A></TH>
+<TD>Structure for indicating the data that is shared by the data sharing feature.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMKeySet.html" target="_self">WMKeySet</A></TH>
+<TD>Structure for indicating the shared key information obtained with the key sharing function.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMKeySetBuf.html" target="_self">WMKeySetBuf</A></TH>
+<TD>Structure for indicating the ring buffer structure to keep the shared key information obtained with the key sharing function. </TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMParentParam.html" target="_self">WMParentParam</A></TH>
+<TD>Structure for gathering information to be set before starting activities as a parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMScanParam.html" target="_self">WMScanParam</A></TH>
+<TD>This structure is a collection of the information that must be set on a child machine when it begins scanning for a parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMScanExParam.html" target="_self">WMScanExParam</A></TH>
+<TD>Structure for information to be set when a child scans for a parent under detailed settings.</TD>
+    </TR>
+
+    <TR>
+<TH width="25%"><A href="wm/WMGameInfo.html" target="_self">WMGameInfo</A></TH>
+<TD>Structure that stores the parent scan information obtained with the <a href="wm/WM_StartScan.html"><code>WM_StartScan</code></a> function.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMBssDesc.html" target="_self">WMBssDesc</A></TH>
+<TD>Structure that stores the parent scan information obtained with the <a href="wm/WM_StartScan.html"><code>WM_StartScan</code></a> function.</TD>
+    </TR>
+
+    <TR>
+<TH width="25%"><A href="wm/WMCallbackFunc.html" target="_self">WMCallbackFunc</A></TH>
+<TD>User callback function type.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMStartParentCallback.html" target="_self">WMStartParentCallback</A></TH>
+<TD>The structure that is passed to the callback function that is related to <a href="wm/WM_StartParent.html"><code>WM_StartParent</code></a>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMStartScanCallback.html" target="_self">WMStartScanCallback</A></TH>
+<TD>The structure that is passed to the callback function that is related to <a href="wm/WM_StartScan.html"><code>WM_StartScan</code></a>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMStartScanExCallback.html" target="_self">WMStartScanExCallback</A></TH>
+<TD>This is a structure that is passed to the callback function for <code><A href="wm/WM_StartScanEx.html">WM_StartScanEx</A></code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMStartConnectCallback.html" target="_self">WMStartConnectCallback</A></TH>
+<TD>Structure to be passed to the callback function for <code><A href="wm/WM_StartConnect.html">WM_StartConnect</A></code> and <code><A href="wm/WM_StartConnectEx.html">WM_StartConnectEx</A></code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMDisconnectCallback.html" target="_self">WMDisconnectCallback</A></TH>
+<TD>This is the structure passed to the callback function for <a href="wm/WM_Disconnect.html"><code>WM_Disconnect</code></a> and <a href="wm/WM_DisconnectChildren.html"><code>WM_DisconnectChildren</code></a>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMStartMPCallback.html" target="_self">WMStartMPCallback</A></TH>
+<TD>The structure that is passed to the callback function that is called by <A href="wm/WM_StartMP.html"><CODE>WM_StartMP</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMPortSendCallback.html" target="_self">WMPortSendCallback</A></TH>
+<TD>Structure to be passed to the callback function set with <code><A href="wm/WM_SetMPDataToPort.html">WM_SetMPDataToPort</A></code>, <code><A href="wm/WM_SetMPDataToPortEx.html">WM_SetMPDataToPortEx</A></code>, and <code><A href="wm/WM_SetMPData.html">WM_SetMPData</A></code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMStartDCFCallback.html" target="_self">WMStartDCFCallback</A></TH>
+<TD>The structure that is passed to the callback function that is related to <A href="wm/WM_StartDCF.html"><CODE>WM_StartDCF</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMMeasureChannelCallback.html" target="_self">WMMeasureChannelCallback</A></TH>
+<TD>This is the structure that is passed to the callback function for <A href="wm/WM_MeasureChannel.html"><code>WM_MeasureChannel</code></A>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMGetWirelessCounterCallback.html" target="_self">WMGetWirelessCounterCallback</A></TH>
+<TD>The structure passed to the callback function for <A href="wm/WM_GetWirelessCounter.html"><code>WM_GetWirelessCounter</code></A>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMIndCallback.html" target="_self">WMIndCallback</A></TH>
+<TD>Structure to be passed to the callback function set with <code><A href="wm/WM_SetIndCallback.html">WM_SetIndCallback</A></code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMBeaconRecvIndCallback.html" target="_self">WMBeaconRecvIndCallback</A></TH>
+<TD>Structure to be passed to the callback function set with <code><A href="wm/WM_SetIndCallback.html">WM_SetIndCallback</A></code> when the beacon is received.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMPortRecvCallback.html" target="_self">WMPortRecvCallback</A></TH>
+<TD>This structure is passed to the callback function is set by the <a href="wm/WM_SetPortCallback.html"><code>WM_SetPortCallback</code></a> function.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMCallback.html" target="_self">WMCallback</A></TH>
+<TD>This structure is passed to the callback function of a normal WM asynchronous process function.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMMPParam.html" target="_self">WMMPParam</A></TH>
+<TD>Structure for gathering information to be set before starting activities as a parent.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/WMSetMPParameterCallback.html" target="_self">WMSetMPParameterCallback</A></TH>
+<TD>This structure is passed to the callback function for <A href="wm/WM_StartDCF.html"><CODE>WM_StartDCF</CODE></A>. </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Misc">Figures and information</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="wm/wm_state_diagram.html" target="_self">WM state diagram</A></TH>
+<TD>Table that shows the transition of the internal states of each API of WM.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="wm/wm_time_calc.html" target="_self">Wireless communication time calculation sheet</A></TH>
+<TD>Sheet that helps you calculate from the send size the time that is required for one communication.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<table border="0" height="100%"><tr><td style="background-color : white;"></td></tr></table>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

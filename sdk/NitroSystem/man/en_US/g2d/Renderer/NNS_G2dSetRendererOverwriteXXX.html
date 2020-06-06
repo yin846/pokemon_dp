@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRendererOverwrite*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRendererOverwrite*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Renderer.h&gt;</CODE></pre>
+<pre><CODE>NNS_G2D_INLINE void NNS_G2dSetRendererOverwritePriority
+    (
+        NNSG2dRendererInstance*     pRend,
+        u16                         Priority
+    );
+    
+        NNS_G2D_INLINE void NNS_G2dSetRendererOverwritePlttNo
+    (
+        NNSG2dRendererInstance*     pRend,
+        u16                         plttNo
+    );
+    
+        NNS_G2D_INLINE void NNS_G2dSetRendererOverwriteMosaicFlag
+    (
+        NNSG2dRendererInstance*     pRend,
+        BOOL                        overwriteMosaicFlag
+    );
+    
+        NNS_G2D_INLINE void NNS_G2dSetRendererOverwriteOBJMode
+    (
+        NNSG2dRendererInstance*     pRend,
+        GXOamMode                   overwriteObjMode
+    );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>pRend</code> </strong> </em> </font></strong></em></td>
+<td width="87%">[OUT] Renderer entity</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">priority</font></strong></em></td>
+<td width="87%">[IN] Drawing priority to overwrite (0-3)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">plttNo</font></strong></em></td>
+<td width="87%">[IN] Palette number to overwrite (0-15)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">overwriteMosaicFlag</font></strong></em></td>
+<td width="87%">[IN] Mosaic flag to overwrite</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">overwriteObjMode</font></strong></em></td>
+<td width="87%">[IN] Object mode to overwrite (GXOamMode)</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+This function sets the parameter values that are used for overwriting the OBJ that was drawn by the renderer.<BR><code>NNS_G2dSetRendererOverwritePriority</code> sets the drawing priority.<BR><code>NNS_G2dSetRendererOverwritePlttNo</code> sets the palette number.<BR><code>NNS_G2dSetRendererOverwriteMosaicFlag</code> obtains the mosaic flag.<BR><code>NNS_G2dSetRendererOverwriteOBJMode</code> obtains the object mode.<BR>To enable the parameter overwriting feature, use the <code>NNS_G2dSetRendererOverwriteEnable</code> function to enable the appropriate parameter overwriting feature. <BR>
+</p>
+
+<h2>See Also</h2>
+<p>
+<a href="NNS_G2dSetRendererOverwriteEnable.html"><code>NNS_G2dSetRendererOverwriteEnable/Disable</code></a>, <a href="NNS_G2dGetRendererOverwriteXXX.html"><code>NNS_G2dGetRendererOverwrite*</code></a>
+</p>
+<H2>Revision History</H2>
+<P>
+11/10/2004 Added <code>NNS_G2dGetRendererOverwriteMosaicFlag</code> and <code>NNS_G2dGetRendererOverwriteOBJMode</code>.<br />10/12/2004 Initial version.
+</P>
+</body>
+</html>

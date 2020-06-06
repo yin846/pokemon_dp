@@ -1,0 +1,56 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--==========================================================================   Project:  NitroWiFi - WCM - man   File:     WCM_LockApList.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Log: WCM_LockApList.html,v $   Revision 1.2  2005/07/22 13:00:24  terui   "ƒtƒF[ƒY"‚ð"ó‘Ô"‚É—pŒê“ˆê   —š—ð‚Ì‰”Å“ú‚ð“ˆê    Revision 1.1  2005/07/20 13:11:10  terui   Initial upload    $NoKeywords: $  ==========================================================================-->
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>WCM_LockApList</TITLE>
+		<LINK rel="stylesheet" href="../../css/nitro.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>WCM_LockApList</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;nitroWiFi/wcm.h&gt;
+
+s32   WCM_LockApList( s32 lock );
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+			A synchronous function that enables or disables writing to the internal list buffer that saves information about devices found during wireless access point auto-search. <BR>Because device discovery notifications from the WM library occur in an interrupt handler, the WCM internal list buffer may be updated at unexpected times. Considering this phenomenon, when reading information from the internal list buffer, the interrupts need to be disabled, or the list will not be updated even when an interrupt occurs. This function disables the updating of the list, even when an interrupt occurs. It also enables normal updating. <BR>Note that calling <A href="WCM_Init.html"><CODE>WCM_Init</CODE> function</A> will initialize the internal list buffer's update enable/disable setting to <CODE>WCM_APLIST_UNLOCK</CODE>. 
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>lock</CODE></STRONG></EM></TD>
+					<TD width="75%">Specifies the value that controls the enabling and disabling update of the internal list buffer.  <BR>If <CODE>WCM_APLIST_LOCK</CODE> is specified, the update feature of the internal list buffer will be disabled and information about found devices will be discarded. If <CODE>WCM_APLIST_UNLOCK</CODE> is specified, the update feature of the internal list buffer will be enabled and the list may be updated as needed with information about found devices. If any other value is specified, updating will be disabled as if <CODE>WCM_APLIST_LOCK</CODE> had been specified. <BR><B>&lt; The default is <CODE>WCM_APLIST_UNLOCK</CODE>.&gt;</FONT></B></TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<P>
+			Returns the update enable/disable setting prior to the calling of this function as <CODE>WCM_APLIST_LOCK</CODE> or <CODE>WCM_APLIST_UNLOCK</CODE>. If called before the WCM library is initialized, it returns <CODE>WCM_APLIST_UNLOCK</CODE>.
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="WCM_Init.html">WCM_Init</A>, <A href="WCMConfig.html">WCMConfig</A>, <A href="WCM_ClearApList.html">WCM_ClearApList</A>, <A href="WCM_CountApList.html">WCM_CountApList</A>, <A href="WCM_PointApList.html">WCM_PointApList</A>, <A href="WCM_PointApListLinkLevel.html">WCM_PointApListLinkLevel</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			07/22/2005 Initial version.<BR>
+		</P>
+
+	</BODY>
+</HTML>

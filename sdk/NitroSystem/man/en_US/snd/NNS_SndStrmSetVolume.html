@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndStrmSetVolume</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndStrmSetVolume</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">void NNS_SndStrmSetVolume( NNSSndStrm* stream, int volume );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA0LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>stream</code></strong></em></td>
+<td>Pointer to a stream structure.</td>
+</tr>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>Volume value. Units are 0.1dB. This becomes the maximum for 0dB.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAQMWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAXMWT"></a>
+<h2>Description</h2>
+      <p>
+This function changes the stream's volume. The default volume is 0dB.
+</p>
+      <p>
+This function changes the volume for all channels. To change the  volume for individual channels, call the <a href="NNS_SndStrmSetChannelVolume.html"><code>NNS_SndStrmSetChannelVolume</code></a> function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndStrmSetChannelVolume.html">NNS_SndStrmSetChannelVolume</a></p>
+<h2>Revision History</h2>
+<p>08/10/2004 Initial version.</p>
+</div>
+</body>
+</html>

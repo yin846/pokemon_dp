@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRC_AppendPoint</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRC_AppendPoint</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+void PRC_AppendPoint(
+<A href="PRCStrokes.html">PRCStrokes</A>* strokes,
+int         x,
+int         y );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">strokes</FONT></STRONG></EM></TD>
+<TD width="87%">Pointer to the input stroke structure.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">x</FONT></STRONG></EM></TD>
+<TD width="87%">X coordinate of the point to be appended to <CODE>strokes</CODE>.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><FONT face="Courier New">y</FONT></STRONG></EM></TD>
+<TD width="87%">Y coordinate of the point to be appended to <CODE>strokes</CODE>.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>None</p>
+
+<H2>Description</H2>
+<P>Appends a point (<code>x</code>, <code>y</code>) to <CODE><em><strong>strokes</strong></em></CODE>.</P>
+<h2>See Also</h2>
+<p><CODE><A href="PRC_InitStrokes.html">PRC_InitStrokes</a></code>, <code><a href="PRC_AppendPenUpMarker.html">PRC_AppendPenUpMarker</a></code>, <code><a href="PRC_Clear.html">PRC_Clear</a></code>, <code><a href="PRC_IsFull.html">PRC_IsFull</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>06/23/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

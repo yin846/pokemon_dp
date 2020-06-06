@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_Warning</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">SDK_WARNING*</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/misc.h&gt;</CODE><BR>
+<DD><CODE>SDK_WARNING(exp, fmt, ...);</CODE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="159"><B><I>exp</I></B></TD>
+<TD width="515">The condition parameter.</TD>
+    </TR>
+    <TR>
+<TD width="159"><B><I>fmt</I></B></TD>
+<TD width="515">The display character string (format character string).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This macro examines a condition, and outputs a character string if the condition is not fulfilled. Unlike <CODE>SDK_ASSERT()</CODE>, it does not force an application to terminate. In accordance with the format character string <CODE>fmt</CODE>, a variable number of arguments is allowed.</P>
+<P>Because this macro function is a debugging function, it will not perform the output operation in the RELEASE and the FINALROM builds.</P>
+<H2>See Also</H2>
+<P><CODE><A href="SDK_ASSERT.html">SDK_ASSERT*</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>09/01/2004 Added the description that the RELEASE and ROM builds do not output <BR>03/12/2004 Added description <BR>02/27/2004 Initial version </P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

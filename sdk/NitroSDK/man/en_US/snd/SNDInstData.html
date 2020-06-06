@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SNDInstData</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SNDInstData</h1>
+<h2>Definitions</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo"><code>typedef struct SNDInstData
+{
+u8 type;
+u8 padding_;
+
+struct SNDInstParam {
+u16 wave[2];
+u8 original_key;
+u8 attack;
+u8 decay;
+u8 sustain;
+u8 release;
+u8 pan;
+} param;
+} SNDInstData;
+</code></pre></dd>
+<dd><pre class="funcprototype"></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDATMWT"></a>
+<h2>Elements</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>type</code></strong></em></td>
+<td>The instrument type</td>
+</tr>
+<tr>
+<td><em><strong><code>wave</code></strong></em></td>
+<td>The waveform data information array</td>
+</tr>
+<tr>
+<td><em><strong><code>original_key</code></strong></em></td>
+<td>The original key. 60 is center node. </td>
+</tr>
+<tr>
+<td><em><strong><code>attack</code></strong></em></td>
+<td>The envelope's attack. Takes values in the range of 0 to 127. The larger the value, the faster the rise. </td>
+</tr>
+<tr>
+<td><em><strong><code>decay</code></strong></em></td>
+<td>The envelope's decay. Takes values in the range of 0 to 127. The larger the value, the faster the attenuation. </td>
+</tr>
+<tr>
+<td><em><strong><code>sustain</code></strong></em></td>
+<td>The envelope's sustain. Takes values in the range of 0 to 127. The larger the value, the higher the sustained gain. </td>
+</tr>
+<tr>
+<td><em><strong><code>release</code></strong></em></td>
+<td>The envelope's release. Takes values in the range of 0 to 127. The larger the value, the faster the faster the attenuation. <span class="note">(However, when the value is <code>SND_BANK_DISABLE_RELEASE(=255)</code>, it will not release, even when the note is off.)</span>j</td>
+</tr>
+<tr>
+<td><em><strong><code>pan</code></strong></em></td>
+<td>The pan. Takes values in the range of 0 (left) to 64 (center) to 127 (right).</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDATOWT"></a>
+<h2>Description</h2>
+      <p>
+The instrument data structure. This structure stores the parameters for each instrument inside the bank data.
+</p>
+      <p>
+Get this structure using <a href="SND_ReadInstData.html"><code>SND_ReadInstData</code></a>. Update the structure using the <a href="SND_WriteInstData.html"><code>SND_WriteInstData</code></a> function.
+</p>
+      <p>
+The instrument type takes the following values:
+</p>
+<div class="table"><a name="IDALPWT"></a><p class="title"><b><font size="-1">TABLE: SNDInstType</b></p>
+<table summary="SNDInstType" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SND_INST_PCM</td>
+<td>PCM waveform data</td>
+</tr>
+<tr>
+<td>SND_INST_PSG</td>
+<td>PSG rectangular wave</td>
+</tr>
+<tr>
+<td>SND_INST_NOISE</td>
+<td>Noise</td>
+</tr>
+<tr>
+<td>SND_INST_DIRECTPCM</td>
+<td>PCM waveform data (direct address specification)</td>
+</tr>
+<tr>
+<td>SND_INST_NULL</td>
+<td>Dummy instrument (Does not sound)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <p>
+The waveform information array <em><strong><code>wave</code></strong></em> holds information about the waveform data. The meaning of this data differs for each instrument <em><strong><code>type</code></strong></em>.
+</p>
+      
+<div class="table"><a name="IDAORWT"></a><p class="title"><b><font size="-1">TABLE: Waveform Information Array</b></p>
+<table summary="”gŒ`î•ñ”z—ñ" border="1">
+<colgroup><col><col><col></colgroup>
+<thead>
+<tr>
+<th>Inst Type</th>
+<th>wave[0]</th>
+<th>wave[1]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SND_INST_PCM</td>
+<td>Index number inside the Waveform Archive</td>
+<td>Waveform Archive number inside the bank</td>
+</tr>
+<tr>
+<td>SND_INST_PSG</td>
+<td>Duty ratio</td>
+<td>(Not Used)</td>
+</tr>
+<tr>
+<td>SND_INST_NOISE</td>
+<td>(Not Used)</td>
+<td>(Not Used)</td>
+</tr>
+<tr>
+<td>SND_INST_DIRECTPCM</td>
+<td>Lower 16 bits of <a href="SNDWaveData.html"><code>SNDWaveData</code></a> structure</td>
+<td>Upper 16 bits of SNDWaveData structure</td>
+</tr>
+<tr>
+<td>SND_INST_NULL</td>
+<td>(Not Used)</td>
+<td>(Not Used)</td>
+</tr>
+</tbody>
+</table>
+</div>
+      
+    </div>
+<h2>See Also</h2>
+<p><a href="SND_ReadInstData.html"><code>SND_ReadInstData</code></a>, <a href="SND_WriteInstData.html"><code>SND_WriteInstData</code></a>, <a href="SNDWaveData.html"><code>SNDWaveData</code></a></p>
+<h2>Revision History</h2>
+<p>05/10/2005 Added description of operation when release is 255<br /> 03/17/2005 Added <code>SND_INST_NULL</code> instrument type<br /> 01/19/2005 Added link to <code>SNDWaveData</code><br /> 10/21/2004 Made revision to required include file.<br /> 07/20/2004 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

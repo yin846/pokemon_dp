@@ -1,0 +1,53 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_ProcessInet</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_ProcessInet</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+void DWC_ProcessInet( void );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function carries out automatic connection processing. Be sure to call this function frequently (about once per game frame) after <CODE><A href="DWC_ConnectInetAsync.html">DWC_ConnectInetAsync</A></CODE> has been called. 
+		</P>
+		<P>
+		  To process errors that occur while connected, after calling the <a href="DWC_ProcessInet.html"><CODE>DWC_ProcessInet</CODE></a> function, obtain the error status using the <a href="DWC_GetLastError.html"><CODE>DWC_GetLastErrorEx</CODE></a> function; if necessary, display an error code in addition to an error message. For creating this error messages, refer to the Nintendo Wi-Fi Connection Programming Guideline.
+		</P>
+		<P>
+		  You can obtain connection status with the <CODE><a href="DWC_CheckInet.html">DWC_CheckInet</a></CODE> or <CODE><a href="DWC_GetInetStatus.html">DWC_GetInetStatus</a></CODE> function.
+		</P>
+
+		<H2>Arguments</H2>
+		<P>
+		  None.
+		</P>
+
+		<H2>Return Values</H2>
+		<P>
+		  None.
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_InitInet.html">DWC_InitInet</A>, <A href="DWC_SetAuthServer.html">DWC_SetAuthServer</A>, <A href="DWC_ConnectInetAsync.html">DWC_ConnectInetAsync</A>, <A href="DWC_CheckInet.html">DWC_CheckInet</A>, <A href="DWC_GetInetStatus.html">DWC_GetInetStatus</A>, <A href="DWC_CleanupInet.html">DWC_CleanupInet</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+		  02/24/2006 Changed name of referenced document<BR>12/16/2005 Added explanations<BR>10/26/2005 Revisions<BR>07/22/2005 Initial version<BR>
+		</P>
+
+	</BODY>
+</HTML>

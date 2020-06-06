@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Exception (Overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Exception (Overview)</H1>
+<H2>Introduction</H2>
+<P>This page explains the <em>exception display system</em> used by NitroSDK to show information about exceptions generated on ARM processors.</P>
+<HR>
+<P><B>Initialize for Display of Exceptions</B></P>
+<P>NitroSDK includes a system for displaying information when processor exceptions occur. The register and type of exception get displayed. The exception display system is enabled by initialization using <nobr><code><a href="OS_InitException.html">OS_InitException()</a></code></nobr>. But since this function gets called from <nobr><a href="../init/OS_Init.html"><code>OS_Init()</code></a></nobr>, it does not need to be called if <nobr><code><a href="../init/OS_Init.html">OS_Init()</a></code></nobr> has been called by the application.</P>
+<P>This initialization function sets the SDK exception vector (the address for transfer of control when an exception occurs) to the address of the function that displays exceptions. However, debug tool does not perform exception display since it runs part of the debug function using exceptions. The current operating environment is determined automatically, so nothing is required from the application.</P>
+<P>The exception display system is a debug feature, so it is disabled in the FINALROM build.</P>
+<HR>
+<P><B>Positioning the Exception Vector</B></P>
+<P>The ARM processor specifications allow you to set the exception vectors at either addresses <code>0x00000000</code> to <code>0x0000001C</code> or <code>0xFFFF0000</code> to <code>0xFFFF001C</code>. The former are called normal vectors, while the latter are called high vectors.</P>
+<P><nobr><code><a href="OS_SetExceptionVectorLower.html">OS_SetExceptionVectorLower()</a></code></nobr> sets the exception vectors to addresses <code>0x0000000</code> to <code>0x0000001C</code> (normal vectors).</P>
+<P><nobr><code><a href="OS_SetExceptionVectorUpper.html">OS_SetExceptionVectorUpper()</a></code></nobr> sets the exception vectors to addresses <code>0xFFFF0000</code> to <code>0xFFFF001C</code> (high vectors).</P>
+<P>NitroSDK uses the high vectors by default. Unless you have a special reason, use the high vectors and do not change the settings.</P>
+<HR>
+<P><B>Setting a User Handler</B></P>
+<P>When exceptions occur, control can be transferred to a user-specified exception handler. To do this, register the handler with <nobr><a href="OS_SetUserExceptionHandler.html" target="_self"><code>OS_SetUserExceptionHandler()</code></a></nobr>.</P>
+<HR>
+<P><B>Process Flow After an Exception Occurs</B></P>
+<P>The following exceptions exist for ARM:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR bgcolor="red">
+<TH>Exception type</TH>
+<TH>Normal vector address</TH>
+<TH>High vector address</TH>
+    </TR>
+    <TR>
+<TD>Reset</TD>
+<TD>0x00000000</TD>
+<TD>0xFFFF0000</TD>
+    </TR>
+    <TR>
+<TD>Undefined instruction</TD>
+<TD>0x00000004</TD>
+<TD>0xFFFF0004</TD>
+    </TR>
+    <TR>
+<TD>Software interrupt</TD>
+<TD>0x00000008</TD>
+<TD>0xFFFF0008</TD>
+    </TR>
+    <TR>
+<TD>Pre-fetch abort</TD>
+<TD>0x0000000C</TD>
+<TD>0xFFFF000C</TD>
+    </TR>
+    <TR>
+<TD>Data abort</TD>
+<TD>0x00000010</TD>
+<TD>0xFFFF0010</TD>
+    </TR>
+    <TR>
+<TD>IRQ</TD>
+<TD>0x00000018</TD>
+<TD>0xFFFF0018</TD>
+    </TR>
+    <TR>
+<TD>FIQ</TD>
+<TD>0x0000001C</TD>
+<TD>0xFFFF001C</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> Because IRQ exceptions are used as interrupts, they are excluded from the process flow described below.( (For more information, see <nobr><a href="../irq/about_irq.html">Interrupts (overview)</a></nobr>.)</P>
+<P>When an exception occurs, control is transferred to the pertinent vector address, as shown in the table above. This normally involves use of high vector addresses.</P>
+<P>After that, if the debug tool is being used, control is transferred to a special debugger process routine. This special routine performs debugger-related processing and returns control to program. The following describes instances when the debug tool is not used.</P>
+<P>Control then moves to the address stored in <nobr><code>HW_EXCP_VECTOR_MAIN</code></nobr> in the system area. (In the ARM7, this address takes position at the dedicated work RAM offset 0x7FDC.) Here, the address of the NitroSDK function for displaying exception information is set by <CODE><A href="OS_InitException.html">OS_InitException()</A></CODE>. &nbsp;</P>
+<P>The user handler is called within this routine (if a user handler was registered with <nobr><code><a href="OS_SetUserExceptionHandler.html">OS_SetUserExceptionHandler()</a></code></nobr>). The program then stops.</P>
+<HR>
+<P><B>Example</B></P>
+<P>In the example below, a data abort exception has occurred. The high vector fake address for a data abort exception is 0xFFFF0010, so the process jumps to 0xFFFF0010. This leads to the address stored in <nobr><code>HW_EXCP_VECTOR_BUF</code></nobr>, and control is transferred to the SDK's exception display routine. After the register information and other information about the exception are displayed, the user handler is called.</P>
+<P><IMG src="image_exception_flow.gif" border="0"></P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Exception">List of OS Functions (Exception)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Unified the Japanese term for &quot;interrupt.&quot;<br>12/14/2004 Corrected terms and word endings.<BR>11/16/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

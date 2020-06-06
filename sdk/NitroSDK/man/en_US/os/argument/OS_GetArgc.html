@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_GetArgc</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_GetArgc</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>int OS_GetArgc( void );
+ </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>The separate arguments including the program name are returned.</P>
+<P>However, if argument data is not stored in the argument buffer, zero is returned. If data is stored in the argument buffer and there are no arguments, one is returned.</P>
+<H2>Description</H2>
+<P>Returns each argument according to the argument data embedded in the ROM file.</P>
+<P>Arguments can be embedded in the ROM file as argument data using the <CODE><A href="../../tools/buryarg.html">buryarg</A></CODE> tool. Since the program name (the ROM file name specified when <CODE><A href="../../tools/buryarg.html">buryarg</A></CODE> executed) is included among the return values of this function, one is returned if there are no arguments.</P>
+<P>Zero is returned if no argument data has been embedded. </P>
+<P>Always returns zero when FINALROM builds.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_GetArgv.html">OS_GetArgv</A>, <A href="OS_GetOpt.html">OS_GetOpt</A>, <A href="../../tools/buryarg.html">buryarg tool</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>07/21/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

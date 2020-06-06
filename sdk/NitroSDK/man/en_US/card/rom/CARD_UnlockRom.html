@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_UnlockRom</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_UnlockRom</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>void	CARD_UnlockRom(u16 lock_id);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>lock_id</STRONG></EM></TD>
+<TD width="87%">ID used for locking a card</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function unlocks the access bus to a CARD ROM device. If another module (with another ID) is already waiting for the bus to unlock, access rights go to the waiting module. If the specified ID is not currently locked, nothing happens. The function will return control after locking the card. When the function executes, it checks for a device with ROM. The function automatically selects the game card or pak and releases that bus. <BR>
+</P>
+<H2>Caution</H2>
+<P>
+<FONT color="#800000">All functions that access a CARD ROM device must first lock the access bus.<BR> You cannot access a CARD ROM device and a backup device simultaneously.<BR> While one bus is locked, other bus locks are forced to wait.<BR></FONT>
+</P>
+<h2>See Also</h2>
+<p><code><a href="../../os/spinLock/OS_UnlockCard.html">OS_UnlockCard</a>, <a href="../../os/spinLock/OS_UnlockCartridge.html">OS_UnlockCartridge</a>, <a href="CARD_LockRom.html">CARD_LockRom</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+09/06/2004 Corrected the description of the prototype<br> 08/31/2004 Added description that indicates that this function will always succeed.<br> 08/04/2004 In the description, changed &quot;unlock&quot; to &quot;release.&quot;<br /> 07/23/2004 Changed lock ID type from <code>u32</code> to <code>u16</code>.<br> 07/10/2004 Added description concerning bus lock and exclusive control of access with backup device.<br> 07/05/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

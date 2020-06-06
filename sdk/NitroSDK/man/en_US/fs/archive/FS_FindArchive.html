@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_FindArchive</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_FindArchive</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>FSArchive*	FS_FindArchive(const char *name, int name_len);</CODE><br> <br>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>name</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Pointer to the character string storing the search target name</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>name_len</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">The string length of <em><code>name</code></em></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If there is already an archive registered with the specified name, the function returns the pointer to that archive. Otherwise, it returns <code>NULL</code>.</p>
+
+<H2>Description</H2>
+<P>Searches to determine whether or not an archive with the specified name has been registered in the file system. Returns the pointer to the archive if it exists. The pointer is returned even if the archive has not been loaded. <BR>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a></code>, <a href="../fs_archive_name_len_max_const.html">FS_ARCHIVE_NAME_LEN_MAX</a></code>, <a href="FS_RegisterArchiveName.html">FS_RegisterArchiveName</a></code>, <a href="FS_LoadArchive.html">FS_LoadArchive</a></code></P>
+<H2>Revision History</H2>
+<P>07/12/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

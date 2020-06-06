@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_GetNextInstData</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_GetNextInstData</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">BOOL SND_GetNextInstData(
+const SNDBankData* <var>bank</var>,
+SNDInstData* <var>inst</var>,
+SNDInstPos* <var>pos</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA4LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>bank</code></strong></em></td>
+<td>This is the bank data pointer.</td>
+</tr>
+<tr>
+<td><em><strong><code>inst</code></strong></em></td>
+<td>This is the pointer to the structure that stores the obtained instrument data.</td>
+</tr>
+<tr>
+<td><em><strong><code>pos</code></strong></em></td>
+<td>This is the instrument data positional information.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1MWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns TRUE if the instrument data is successfully obtained. Returns FALSE if the next instrument data does not exist.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDACNWT"></a>
+<h2>Description</h2>
+      <p>
+Gets the instrument data in the bank data in order.
+</p>
+      <p>
+If the instrument data is successfully obtained, the <code><a href="SNDInstData.html">SNDInstData</a></code> format instrument data is written to the memory region designated with <em><strong><code>inst</code></strong></em>. Furthermore, <em><strong><code>pos</code></strong></em>, which indicates the instrument data positional information, is updated so that it indicates the position of the next instrument data.
+</p>
+      <p>
+When first calling this function, the instrument data positional information obtained with the <code><a href="SND_GetFirstInstDataPos.html">SND_GetFirstInstDataPos</a></code> function must be passed to <em><strong><code>pos</code></strong></em>.
+</p>
+
+
+      <pre class="programlisting">
+SNDInstPos pos = SND_GetFirstInstDataPos( bank );
+SNDInstData inst;
+    
+while( SND_GetNextInstData( bank, &amp;inst, &amp;pos ) ) {
+// Process to perform for the instrument
+    }
+</pre>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="SNDInstData.html">SNDInstData</a></code>, <code><a href="SND_GetFirstInstDataPos.html">SND_GetFirstInstDataPos</a></code></p>
+<h2>Revision History</h2>
+<p>01/20/2005 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

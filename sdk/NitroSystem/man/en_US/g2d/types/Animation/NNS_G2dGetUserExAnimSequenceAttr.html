@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dGetUserExAnimSequenceAttr</title>
+<LINK rel="stylesheet" href="../../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dGetUserExAnimSequenceAttr</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<pre><CODE>#include &lt;nnsys/g2d/fmt/g2d_Anim_data.h&gt;</CODE></pre>
+<pre><CODE>static inline const NNSG2dUserExAnimSequenceAttr* 
+NNS_G2dGetUserExAnimSequenceAttr
+( 
+const NNSG2dUserExAnimAttrBank* pAnimAttrBank,
+u16                             idx 
+);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="13%"><em><strong><font face="Courier New">pAnimAttrBank</font></strong></em></td>
+<td width="87%">[IN] Animation user extended attribute bank</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">idx</font></strong></em></td>
+<td width="87%">[IN] Animation sequence number</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>The animation sequence user extended attribute 
+</p>
+<H2>Description</H2>
+<P>
+Obtains the sequence user extended attribute from the user extended attribute bank. Returns NULL when an invalid number is specified. Specify the -oua option to obtain the output data that contains the user extended attribute.
+
+<BR>
+</p>
+
+<h2>See Also</h2>
+<p>None.</p>
+<H2>Revision History</H2>
+<P>09/01/2005 Initial version.</P>
+</body>
+</html>

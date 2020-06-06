@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_ResumeArchive</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_ResumeArchive</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>BOOL	FS_ResumeArchive(FSArchive *p_arc);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p_arc</STRONG></EM></TD>
+<TD width="87%">Address of the <a href="../fs_archive_type.html"><code>FSArchive</code></a> structure</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p><code>FALSE</code> if archive is in the suspended state before the change. <code>TRUE</code> if not.</p>
+
+<H2>Description</H2>
+<P>Returns the archive from the halted state to the normal state after any <code><a href="FS_SuspendArchive.html">FS_SuspendArchive</a></code> call. The archive is in the normal state at the time of initialization, and gets put in the stopped state by calling the FS_SuspendArchive function. <BR>
+</P>
+<h2>See Also</h2>
+<p><CODE></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+07/12/2004 Changed the return value type<br /> 06/30/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

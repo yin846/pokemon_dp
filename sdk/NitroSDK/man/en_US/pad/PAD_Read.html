@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PAD_Read</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PAD_Read</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/pad.h&gt;</CODE><BR> <BR> u16<CODE> PAD_Read( void );</CODE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<P>None.</P>
+
+<h2>Return Values</h2>
+<p>Current key information</p>
+
+<H2>Description</H2>
+<P>Gets the information for pressed keys/buttons. The key/button information is the logical sum of the following values.
+
+</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_BUTTON_A</TD>
+<TD bgcolor="#eeeeee">The A Button is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_BUTTON_B</TD>
+<TD bgcolor="#eeeeee">The B Button is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_BUTTON_SELECT</TD>
+<TD bgcolor="#eeeeee">SELECT is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_BUTTON_START</TD>
+<TD bgcolor="#eeeeee">START is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_KEY_RIGHT</TD>
+<TD bgcolor="#eeeeee">+Control Pad Right key is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_KEY_LEFT</TD>
+<TD bgcolor="#eeeeee">+Control Pad Left key is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_KEY_UP</TD>
+<TD bgcolor="#eeeeee">+Control Pad Up key is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_KEY_DOWN</TD>
+<TD bgcolor="#eeeeee">+Control Pad Down key is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_BUTTON_R</TD>
+<TD bgcolor="#eeeeee">R Button is being pressed</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">PAD_BUTTON_L</TD>
+<TD bgcolor="#eeeeee">L Button is being pressed</TD>
+    </TR>
+    <TR>
+<TD>PAD_BUTTON_X</TD>
+<TD>X Button is being pressed</TD>
+    </TR>
+    <TR>
+<TD>PAD_BUTTON_Y</TD>
+<TD>Y Button is being pressed</TD>
+    </TR>
+    <TR>
+<TD>PAD_BUTTON_DEBUG</TD>
+<TD>DEBUG Button is being pressed</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The X and Y buttons can be read from ARM9 because ARM7 checks a general purpose port and writes in a shared region. Therefore, if the ARM7 read module is not operating, X and Y buttons cannot be read. <code>PAD_BUTTON_MASK</code> is defined as the logical sum of all buttons (<code>PAD_BUTTON_</code>...), and <code>PAD_PLUS_KEY_MASK</code> is defined as the logical sum of all keys (<code>PAD_KEY_</code>...). PAD_ALL_MASK is defined as the sum of all buttons and keys. <BR>Only the sum of X, Y, and <code>DEBUG</code> buttons read by ARM7 will be defined as <code>PAD_RCNTPORT_MASK</code>. Sums of other buttons are defined as <code>PAD_KEYPORT_MASK</code>.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD></TD>
+<TD>D<br />e<br />b<br />u<br />g</TD>
+<TD>N<br />/<br />A
+      </TD>
+<TD>Y
+      </TD>
+<TD>X
+      </TD>
+<TD>L
+      </TD>
+<TD>R
+      </TD>
+<TD>D<br />o<br />w<br />n
+      </TD>
+<TD>U<br />p
+      </TD>
+<TD>L<br />e<br />f<br />t</TD>
+<TD>R<br />i<br />g<br />h<br />t</TD>
+<TD>S<br />t<br />a<br />r<br />t</TD>
+<TD>S<br />e<br />l<br />e<br />c<br />t</TD>
+<TD>B
+      </TD>
+<TD>A
+      </TD>
+<TD>Value</TD>
+    </TR>
+    <TR>
+<TD>PAD_BUTTON_MASK</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD>0</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+<TD style="background-color : silver;" align="center">0x2F0F</TD>
+    </TR>
+    <TR>
+<TD>PAD_PLUS_KEY_MASK</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+<TD style="background-color : silver;" align="center">0x00F0</TD>
+    </TR>
+    <TR>
+<TD>PAD_ALL_MASK</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD>0</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+<TD style="background-color : silver;" align="center">0x2FFF</TD>
+    </TR>
+    <TR>
+<TD>PAD_RCNPORT_MASK</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD>0</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+<TD style="background-color : silver;" align="center">0x2C00</TD>
+    </TR>
+    <TR>
+<TD>PAD_KEYPORT_MASK</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+      <TD style="background-color : #ffc0c0;">1</TD>
+<TD style="background-color : silver;" align="center">0x03FF</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+<BLOCKQUOTE>Example:<br /> <code>u16 padData = PAD_Read(); if ( padData &amp; PAD_BUTTON_A ) OS_Printf( &quot;you're pushing the A-BUTTON\n&quot; ); if ( padData &amp; PAD_PLUS_KEY_MASK ) OS_Printf( &quot;you're pressing one of the +Control Pad Keys\n&quot; );</CODE></BLOCKQUOTE>
+<P><code>PAD_Read()</code> reads the <code>KEYINPUT IO</code> register internally, aligns with the value from the <code>RCNT</code> register of the generic port that ARM7 acquired, and returns a value with the Key/Button mask <code>PAD_ALL_MASK</code> applied.</P>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>08/06/2004 Deleted <code>PAD_SetIrq</code> and <code>PAD_ClearIrq</code> from See Also<br /> 04/13/2004 Added <code>DEBUG</code> button<br /> 02/19/2004 Added X, Y buttons<br /> 12/01/2003 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

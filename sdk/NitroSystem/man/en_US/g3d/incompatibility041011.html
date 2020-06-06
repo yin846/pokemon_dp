@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>Regarding the incompatibility with versions released on and before 09/16/2004</TITLE>
+	<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">Regarding incompatibility with versions released on and before 09/16/2004</H1>
+
+<H2>Callback Incompatibilities</H2>
+<P>With the version released on 10/11/2004, the <A href="sbc/NNS_G3dDraw.html" target="_self"><code>NNS_G3dDraw</code></A> function can set one callback function for one SBC instead of one callback for all SBCs. However, this change caused incompatibility issues with some of the previous versions.</P>
+<UL>
+<LI>From the <A href="sbc/NNSG3dRS.html"><code>NNSG3dRS</code></A> structure, the <B><I>cbFunc</I></B>, <B><I>cbCmdPtr</I></B>, <B><I>cbCmd</I></B>, and <B><I>cbTiming</I></B> members were eliminated. Therefore, if any code that handles these members are used in callbacks, it will not compile.
+<LI>The third argument of the <A href="kernel/NNS_G3dRenderObjSetCallBack.html"><code>NNS_G3dRenderObjSetCallBack</code></A> function was invalidated. The feature that starts up the callback by specifying the SBC address was eliminated.
+</UL>
+<H2>How to handle callback codes that cannot be compiled</H2>
+<H3>When the callback function and generation conditions were changed in the callback</H3>
+<P>When the <B><I>cbFunc</I></B>, <B><I>cbCmd</I></B>, and <B><I>cbTiming</I></B> members of the <A href="sbc/NNSG3dRS.html"><code>NNSG3dRS</code></A> structure are changed in the callback function, replace the code as shown below.</P>
+<OL>
+<LI>Use the <A href="sbc/NNSG3dRS.html#NNS_G3dRSResetCallBack" target="_self"><code>NNS_G3dRSResetCallBack</code></A> function in the callback function, and release the callback that is being used.
+<LI>Use the <A href="sbc/NNSG3dRS.html#NNS_G3dRSSetCallBack" target="_self"><code>NNS_G3dRSSetCallBack</code></A> function to specify new callback functions and generation conditions.
+</OL>
+<H3>When using multiple callbacks</H3>
+<P>The second and subsequent callbacks cannot be registered with the <A href="kernel/NNS_G3dRenderObjSetCallBack.html"><code>NNS_G3dRenderObjSetCallBack</code></A> function. To limit the size of <code>NNSG3dRenderObj</code>, the <A href="sbc/NNSG3dRS.html"><code>NNSG3dRS</code></A> structure is set in the <A href="sbc/NNS_G3dDraw.html" target="_self"><code>NNS_G3dDraw</code></A> function before drawing to register callbacks.</P>
+<OL>
+<LI>Use NNSG3dRenderObjSetInitFunc, at the time NNS_G3dDraw executes,  set/configure NNSG3dRenderObj structure.    By using the <A href="kernel/NNS_G3dRenderObjSetInitFunc.html" target="_self"><code>NNS_G3dRenderObjSetInitFunc</code></A> function, set the function that is executed when the <A href="sbc/NNS_G3dDraw.html" target="_self"><code>NNS_G3dDraw</code></A> function is executed before the drawing to the <code>NNSG3dRenderObj</code> structure.
+<LI>In the set function, specify the callback function and generation conditions by using <A href="sbc/NNSG3dRS.html#NNS_G3dRSSetCallBack" target="_self"><code>NNS_G3dRSSetCallBack</code></A>.
+</OL>
+<P>For details, see the sample callback5.</P>
+<H2>Revision History</H2>
+<P>10/11/2004 Initial version.</P>
+</BODY>
+
+</HTML>

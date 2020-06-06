@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetMCAnimationSpeed</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetMCAnimationSpeed</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<pre><CODE>#include &lt;nnsys/g2d/g2d_MultiCellAnimation.h&gt;</CODE></pre>
+<pre><CODE>void NNS_G2dSetMCAnimationSpeed
+(
+NNSG2dMultiCellAnimation*   pMultiCellAnim, 
+fx32                        speed  
+);</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pMultiCellAnim</font></strong></em></td>
+<td width="87%">[OUT] Multicell animation</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">speed</font></strong></em></td>
+<td width="87%">[IN] Animation speed</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Sets the animation speed of the multicell animation. Calls <a href="../CellAnimation/NNS_G2dSetCellAnimationSpeed.html"><code>NNS_G2dSetCellAnimationSpeed</code></a> internally for all component cell animations.
+
+This function replaces <a href="NNS_G2dSetMCAnimSpeed.html"><code>NNS_G2dSetMCAnimSpeed</code></a>. The previous function will remain to maintain compatibility.
+</p>
+
+<h2>See Also</h2>
+<p>
+<a href="NNS_G2dSetMCAnimSpeed.html"><code>NNS_G2dSetMCAnimSpeed</code></a>, <a href="../CellAnimation/NNS_G2dSetCellAnimationSpeed.html"><code>NNS_G2dSetCellAnimationSpeed</code></a></p>
+<H2>Revision History</H2>
+<P>08/02/2004 Renamed function<br></P><P>05/28/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_GetThreadPriority</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_GetThreadPriority</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>u32	CARD_GetThreadPriority(void);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>None.</p>
+
+<h2>Return Values</h2>
+<p>Returns the current CARD asynchronous process thread priority.</p>
+
+<H2>Description</H2>
+<P>Returns the priority of the current CARD asynchronous process thread. This thread is used internally when a CARD asynchronous function, such as <a href="../rom/CARD_ReadRomAsync.html"><code>CARD_ReadRomAsync</code></a>, cannot execute using only the IRQ handler because of contraints imposed by arguments and the operating environment. The initial priority of this thread is set to the value of the <CODE>CARD_THREAD_PRIORITY_DEFAULT</CODE> variable. Obtain the value of the current setting using the <a href="CARD_SetThreadPriority.html"><CODE>CARD_SetThreadPriority</CODE></a> function. <BR>
+</P>
+<h2>See Also</h2>
+<p><code><a href="CARD_SetThreadPriority.html">CARD_SetThreadPriority</a>, <a href="../rom/CARD_ReadRomAsync.html">CARD_ReadRomAsync</a>, <a href="../eeprom/CARD_ReadEepromAsync.html">CARD_ReadEepromAsync</a>, <a href="../eeprom/CARD_WriteEepromAsync.html">CARD_WriteEepromAsync</a>, <a href="../eeprom/CARD_VerifyEepromAsync.html">CARD_VerifyEepromAsync</a>, <a href="../eeprom/CARD_WriteAndVerifyEepromAsync.html">CARD_WriteAndVerifyEepromAsync</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+07/28/2004 Added descriptions and links.<br /> 07/19/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

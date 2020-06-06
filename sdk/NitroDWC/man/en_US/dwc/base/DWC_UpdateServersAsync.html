@@ -1,0 +1,110 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_UpdateServersAsync</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_UpdateServersAsync</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_UpdateServersAsync(
+               const char* reserved,
+               <A href="DWCUpdateServersCallback.html">DWCUpdateServersCallback</A> updateCallback,
+               void* updateParam,
+               <A href="DWCFriendStatusCallback.html">DWCFriendStatusCallback</A> statusCallback,
+               void* statusParam,
+               <A href="DWCDeleteFriendListCallback.html">DWCDeleteFriendListCallback</A> deleteCallback,
+               void* deleteParam);</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  Synchronizes the GameSpy server and local friend rosters. In order to perform this synchronization process, the <A href="DWC_LoginAsync.html">DWC_LoginAsync</A> function must first be used to complete everything up to the login.
+		</P>
+		<P>
+		  Set the friend roster in advance by using the <a href="DWC_InitFriendsMatch.html"><CODE>DWC_InitFriendsMatch</CODE></a> function. For information about cautions to take when editing friend rosters, see the <a href="DWC_CreateExchangeToken.html"><CODE>DWC_CreateExchangeToken</CODE></a> function description.
+		</P>
+		<P>
+		  The primary synchronization processes for the friend roster is to send friend relationship requests to friends on the local friend roster but not on the GameSpy server friend roster and to delete friend information on the GameSpy server friend roster that is not on the local friend roster. Even if the partner who is sent the friend relationship request is offline, the request is saved on the GameSpy server and is delivered after the partner logs in using the <A href="DWC_LoginAsync.html">DWC_LoginAsync</A> function. The friend relationship is established only when the partner also has this information on his local friend roster. However, this only registers the partner as a friend on the DS of the person sending the request. Partners that receive friend relationship requests automatically follow the same process to register the requesting party as a friend.
+		</P>
+
+		<P>
+		  Bear in mind that the friend roster synchronization process completion callback is called only after all the local and GameSpy server friend rosters are checked, the necessary friend relationship requests are sent, and the unnecessary friend information is deleted. Even though a callback has been returned, it does not mean that all friend relationships have been established.
+		</P>
+
+		<P>
+		  When the <CODE>isChanged</CODE> argument of the friend roster synchronization process completion callback is TRUE, this indicates that some of the friend information in the local friend roster has been updated and the local friend roster must be saved. If friend relationships are established outside of the friend roster synchronization process, the configured friend relationship establishment callback is called with the <A href="DWC_SetBuddyFriendCallback.html">DWC_SetBuddyFriendCallback</A> function.
+		</P>
+
+		<P>
+		  Also, if multiple friend information entries about the same friend are found in the roster during the friend roster synchronization process, all except one of them will be deleted. Indices inside the friend rosters in deleted friendship information and indices that are determined to be identical information are considered to be arguments, and each time they are deleted a callback is called.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>reserved</CODE></STRONG></EM></TD>
+					<TD>Specify NULL. Retained for compatibility with past versions.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>updateCallback</CODE></STRONG></EM></TD>
+					<TD>Pointer to the friend roster synchronization process completion callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>updateParam</CODE></STRONG></EM></TD>
+					<TD>Parameter for the friend roster synchronization process completion callback.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>statusCallback</CODE></STRONG></EM></TD>
+					<TD>Pointer to the callback function that notifies the user about changes to friend status. Even if the friend roster synchronization process has completed, this callback function is called each time there are changes to a friend's communication status.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>statusParam</CODE></STRONG></EM></TD>
+					<TD>Parameter for the callback that notifies the user about changes to friend status.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>deleteCallback</CODE></STRONG></EM></TD>
+					<TD>Pointer to the callback function that deletes information from the friend roster. Even if the friend roster synchronization process has completed, there is the possibility that this callback function may be called when a friend relationship is established. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>deleteParam</CODE></STRONG></EM></TD>
+					<TD>Parameter for friend roster deletion callback.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">Start the friend roster synchronization process. The results are indicated via the callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD>Not a good state for calling this function.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><a href="DWC_InitFriendsMatch.html">DWC_InitFriendsMatch</a>, <a href="DWC_CreateExchangeToken.html">DWC_CreateExchangeToken</a>, <A href="DWC_SetBuddyFriendCallback.html">DWC_SetBuddyFriendCallback</A>, <A href="DWCUpdateServersCallback.html">DWCUpdateServersCallback</A>, <A href="DWCFriendStatusCallback.html">DWCFriendStatusCallback</A>, <A href="DWCDeleteFriendListCallback.html">DWCDeleteFriendListCallback</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+		  2005/12/16 Added a detailed description of the friend roster synchronization process<BR>2005/11/01 Revisions<BR>2005/07/22 Initial version<BR>
+		</P>
+
+	</BODY>
+</HTML>

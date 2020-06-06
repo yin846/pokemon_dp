@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_RegisterOverlayToDebugger</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_RegisterOverlayToDebugger</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>static inline void FS_RegisterOverlayToDebugger(const FSOverlayInfo *p_ovi, const FSFile *p_file);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><font color="#808080"><EM><STRONG>p_ovi</STRONG></EM></font></TD>
+<TD width="87%"><font color="#808080">Ignored.</font></TD>
+    </TR>
+    <TR>
+<TD width="13%"><font color="#808080"><EM><STRONG>p_file</STRONG></EM></font></TD>
+<TD width="87%"><font color="#808080">Ignored.</font></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>
+This function was required through NITRO-SDK2.0 RC2 to register overlays to the debugger. However, since NITRO-SDK2.0 RC3, this function is no longer needed. It is here to assure backward compatibility. Calls are ignored.<br><br>This function's previous implementation is represented in the <a  href="FS_StartOverlay.html"><code>FS_StartOverlay</code></a> function <br>
+<h2>See Also</h2>
+<p><code><a href="../fs_overlay_info_type.html">FSOverlayInfo</a>, <a  href="FS_GetOverlayFileID.html">FS_GetOverlayFileID</a>, <a  href="FS_LoadOverlay.html">FS_LoadOverlay</a>, <a  href="FS_LoadOverlayImage.html">FS_LoadOverlayImage</a>, <a  href="FS_StartOverlay.html">FS_StartOverlay</a>, <a  href="../file/FS_OpenFileFast.html">FS_OpenFileFast</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+11/17/2004 Function eliminated.<br> 10/18/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

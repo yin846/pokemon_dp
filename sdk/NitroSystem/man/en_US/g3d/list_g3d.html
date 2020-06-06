@@ -1,0 +1,737 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+	<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>Graphics 3D Library API Function List</TITLE>
+	<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+
+<BODY>
+
+<H1>Graphics 3D Library (G3D) API Function List</H1>
+<H3><A href="incompatibility041011.html" target="_self">Regarding incompatibility with versions released on and before 09/16/2004</A></H3>
+<H3><A name="Overview">G3D Overview</A>?</H3>
+<P>The following is the schematic diagram of major structures and functions. However, G3D is implemented in the C language, and it is not implemented as class or member functions.</P>
+<P><IMG src="G3DOverview.png" width="821" height="545" border="0"></P>
+<H3><a name="GlobalState">Global State <strong><code>(NNSG3dGlb)</code></strong></a></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbInit.html" target="_self" >NNS_G3dGlbInit</A></TH>
+			<TD>Initializes the global state kept in the G3D library.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbFlush.html" target="_self" >NNS_G3dGlbFlushP</A></TH>
+			<TD>Sends the global state kept in the G3D library to the geometry engine.</TD>
+		</TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbFlushVP.html" target="_self">NNS_G3dGlbFlushVP</A></TH>
+<TD>Sends the global state kept in the G3D library to the geometry engine.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbFlushAlt.html" target="_self" >NNS_G3dGlbFlushWVP</A></TH>
+			<TD>Sends the global state kept in the G3D library to the geometry engine.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbSetBaseScale.html" target="_self" >NNS_G3dGlbSetBaseScale</A></TH>
+			<TD>Configures the value in the base scale of the global state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbSetBaseRot.html" target="_self" >NNS_G3dGlbSetBaseRot</A></TH>
+			<TD>Configures the value in the base rotation of the global state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbSetBaseTrans.html" target="_self" >NNS_G3dGlbSetBaseTrans</A></TH>
+			<TD>Configures the value in the base translation of the global state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbLightVector.html" target="_self" >NNS_G3dGlbLightVector</A></TH>
+			<TD>Configures the directional vector of the light in the global state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbLightColor.html" target="_self" >NNS_G3dGlbLightColor</A></TH>
+			<TD>Configures the light color in the global state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbMaterialColorDiffAmb.html" target="_self" >NNS_G3dGlbMaterialColorDiffAmb</A></TH>
+			<TD>Configures the diffuse color and the ambient color of the material in the global state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbMaterialColorSpecEmi.html" target="_self" >NNS_G3dGlbMaterialColorSpecEmi</A></TH>
+			<TD>Configures the specular color and the emission color of the material in the global state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbPolygonAttr.html" target="_self" >NNS_G3dGlbPolygonAttr</A></TH>
+			<TD>Configures the attribute value related to the polygon in the global state.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbSetViewPort.html" target="_self" >NNS_G3dGlbSetViewPort</A></TH>
+			<TD>Configures the viewport in the global state.</TD>
+		</TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbLookAt.html" target="_self">NNS_G3dGlbLookAt</A></TH>
+<TD>Sets the camera matrix in the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbPerspective.html" target="_self">NNS_G3dGlbPerspective</A></TH>
+<TD>Sets the transparency projection matrix in the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbFrustum.html" target="_self">NNS_G3dGlbFrustum</A></TH>
+<TD>Sets the transparency projection matrix in the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbOrtho.html" target="_self">NNS_G3dGlbOrtho</A></TH>
+<TD>Sets the orthographic projection matrix in the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbPerspectiveW.html" target="_self">NNS_G3dGlbPerspectiveW</A></TH>
+<TD>Sets the transparency projection matrix in the global state. (with scale W parameters)</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbFrustumW.html" target="_self">NNS_G3dGlbFrustumW</A></TH>
+<TD>Sets the transparency projection matrix in the global state. (with scale W parameters)</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbOrthoW.html" target="_self">NNS_G3dGlbOrthoW</A></TH>
+<TD>Sets the orthographic projection matrix in the global state. (with scale W parameters)</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbSetProjectionMtx.html" target="_self">NNS_G3dGlbSetProjectionMtx</A></TH>
+<TD>Sets the projective transformation matrix to the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetCameraMtx.html" target="_self">NNS_G3dGlbGetCameraMtx</A></TH>
+<TD>Returns a pointer to the camera matrix that is set to the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetProjectionMtx.html" target="_self">NNS_G3dGlbGetProjectionMtx</A></TH>
+<TD>Returns a pointer to the projection matrix that is set to the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetBaseRot.html" target="_self">NNS_G3dGlbGetBaseRot</A></TH>
+<TD>Returns a pointer to the object rotation matrix that is set to the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetBaseTrans.html" target="_self">NNS_G3dGlbGetBaseTrans</A></TH>
+<TD>Returns a pointer to the object translation vector that is set to the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetBaseScale.html" target="_self">NNS_G3dGlbGetBaseScale</A></TH>
+<TD>Returns a pointer of the object scale vector that is set to the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetCameraPos.html" target="_self">NNS_G3dGlbGetCameraPos</A></TH>
+<TD>Returns a pointer to the camera position vector that is set to the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetCameraUp.html" target="_self">NNS_G3dGlbGetCameraUp</A></TH>
+<TD>Returns a pointer to the upward vector for the camera.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetCameraTarget.html" target="_self">NNS_G3dGlbGetCameraTarget</A></TH>
+<TD>Returns a pointer to the camera's focal point vector that is set to the global state.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbGetInvCameraMtx.html" target="_self" >NNS_G3dGlbGetInvV</A></TH>
+			<TD>Returns a pointer to the inverse matrix of the camera matrix that is set to the global state.</TD>
+		</TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetInvW.html" target="_self">NNS_G3dGlbGetInvW</A></TH>
+<TD>Returns a pointer to the inverse matrix of the BaseSRT matrix that is set to the global state.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetInvP.html" target="_self">NNS_G3dGlbGetInvP</A></TH>
+<TD>Returns the pointer to the inverse matrix of the projection matrix that is set to the global state.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbGetSrtCameraMtx.html" target="_self" >NNS_G3dGlbGetWV</A></TH>
+			<TD>Returns the pointer to the matrix that is the BaseSRT matrix set to the global state multiplied by the camera matrix.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="glbstate/NNS_G3dGlbGetInvSrtCameraMtx.html" target="_self" >NNS_G3dGlbGetInvWV</A></TH>
+			<TD>Returns the pointer to the inverse matrix of the matrix that is the BaseSRT matrix set to the global state multiplied by the camera matrix.</TD>
+		</TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetInvVP.html" target="_self">NNS_G3dGlbGetInvVP</A></TH>
+<TD>Returns pointer to the inverse matrix of the matrix that is the camera matrix set to the global state multiplied by the projection matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="glbstate/NNS_G3dGlbGetViewPort.html" target="_self">NNS_G3dGlbGetViewPort</A></TH>
+<TD>Gets the view port that is set to the global state.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+
+
+
+<H3><a name="Kernel">Kernel <strong>(<code>NNSG3dRenderObj</code>, <code>NNSG3dAnmObj</code>, <code>NNSG3dRedMdl</code>, <code>NNSG3dResTex</code>, etc.)</strong></a></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+    <TR>
+<TH><A href="kernel/NNS_G3dAnmObjInit.html" target="_self">NNS_G3dAnmObjInit</A></TH>
+<TD>Initializes the <code>NNSG3dAnmObj</code>.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="kernel/NNS_G3dAnmObjSetFrame.html" target="_self" >NNS_G3dAnmObjSetFrame</A></TH>
+			<TD>Configures the animation play frame of the <code>AnmObj</code>.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dAnmObjSetBlendRatio.html" target="_self"	>NNS_G3dAnmObjSetBlendRatio</A></TH>
+			<TD>Configures the animation blend ratio of the <code>AnmObj</code>.</TD>
+		</TR>
+    <TR>
+<TH><A href="kernel/NNS_G3dAnmObjGetNumFrame.html">NNS_G3dAnmObjGetNumFrame</A></TH>
+<TD>Obtains the frame count of the animation that AnmObj references.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="kernel/NNS_G3dAnmObjCalcSizeRequired.html" target="_self" >NNS_G3dAnmObjCalcSizeRequired</A></TH>
+			<TD>Returns the memory size needed by the <code>NNSG3dAnmObj</code> that corresponds to the designated model resource.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dAnmObjEnableID.html" target="_self">NNS_G3dAnmObjEnableID</A></TH>
+			<TD>Enables the animation of the specified node ID/material ID.</TD>
+		</TR>
+    <TR>
+<TH><A href="kernel/NNS_G3dAnmObjDisableID.html" target="_self">NNS_G3dAnmObjDisableID</A></TH>
+<TD>Disables the animation of the specified node ID/material ID.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjInit.html" target="_self" >NNS_G3dRenderObjInit</A></TH>
+			<TD>Initializes the <code>NNSG3dRenderObj</code>.</TD>
+		</TR>
+    <TR>
+<TH><A href="kernel/NNS_G3dRenderObjGetResMdl.html" target="_self">NNS_G3dRenderObjGetResMdl</A></TH>
+<TD>Gets the pointer to the model resource from the rendering object.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjAddAnmObj.html" target="_self" >NNS_G3dRenderObjAddAnmObj</A></TH>
+			<TD>Appends the animation object (<code>AnmObj</code>) to the rendering object (<code>RenderObj</code>).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjRemoveAnmObj.html" target="_self" >NNS_G3dRenderObjRemoveAnmObj</A></TH>
+			<TD>Removes the animation object (<code>AnmObj</code>) from the rendering object (<code>RenderObj</code>).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjSetUserSbc.html" target="_self"			>NNS_G3dRenderObjSetUserSbc</A></TH>
+			<TD>Registers the SBC (Structure Byte Code) specified by the user to the rendering object (<code>RenderObj</code>).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjSetJntAnmBuffer.html" target="_self"	>NNS_G3dRenderObjSetJntAnmBuffer</A></TH>
+			<TD>Registers the buffer for the joint animation in the rendering object (<code>RenderObj</code>).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjSetMatAnmBuffer.html" target="_self"	>NNS_G3dRenderObjSetMatAnmBuffer</A></TH>
+			<TD>Registers the buffer for the material animation in the rendering object (<code>RenderObj</code>).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjReleaseJntAnmBuffer.html" target="_self">NNS_G3dRenderObjReleaseJntAnmBuffer</A></TH>
+			<TD>Deallocates the buffer for the joint animation registered in rendering object (<code>RenderObj</code>).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjReleaseMatAnmBuffer.html" target="_self">NNS_G3dRenderObjReleaseMatAnmBuffer</A></TH>
+			<TD>Deallocates the buffer for the material animation registered in the rendering object (<code>RenderObj</code>).</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjSetCallBack.html" target="_self" >NNS_G3dRenderObjSetCallBack</A></TH>
+			<TD>Registers the callback function that is called during the render process.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjResetCallBack.html" target="_self" >NNS_G3dRenderObjResetCallBack</A></TH>
+			<TD>Resets the callback function that is called during the render process.</TD>
+		</TR>
+    <TR>
+<TH><A href="kernel/NNS_G3dRenderObjSetInitFunc.html" target="_self">NNS_G3dRenderObjSetInitFunc</A></TH>
+<TD>Registers the callback function that is called before the render process.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjSetUserPtr.html" target="_self" >NNS_G3dRenderObjSetUserPtr</A></TH>
+			<TD>Configures the pointer to the region that can be used on the callback process performed during the render process.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjSetFlag.html" target="_self" >NNS_G3dRenderObjSetFlag</A></TH>
+			<TD>Sets what was designated by the execution control flag of the rendering object.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjResetFlag.html" target="_self" >NNS_G3dRenderObjResetFlag</A></TH>
+			<TD>Resets what was designated by the execution control flag of the rendering object.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dRenderObjTestFlag.html" target="_self" >NNS_G3dRenderObjTestFlag</A></TH>
+			<TD>Tests whether or not the execution control flag of the rendering object has been set.</TD>
+		</TR>
+    <TR>
+<TH><A href="kernel/NNS_G3dRenderObjSetBlendFuncJnt.html" target="_self">NNS_G3dRenderObjSetBlendFuncJnt</A></TH>
+<TD>Sets the joint blend function to the rendering object.</TD>
+    </TR>
+    <TR>
+<TH><A href="kernel/NNS_G3dRenderObjSetBlendFuncMat.html" target="_self">NNS_G3dRenderObjSetBlendFuncMat</A></TH>
+<TD>Sets the material blend function of the rendering object.</TD>
+    </TR>
+    <TR>
+<TH><A href="kernel/NNS_G3dRenderObjSetBlendFuncVis.html" target="_self">NNS_G3dRenderObjSetBlendFuncVis</A></TH>
+<TD>Sets the visibility blend function of the rendering object.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="kernel/NNS_G3dTexGetRequiredSize.html" target="_self" >NNS_G3dTexGetRequiredSize</A></TH>
+			<TD>Returns the size needed when storing the normal texture in VRAM.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dTex4x4GetRequiredSize.html" target="_self" >NNS_G3dTex4x4GetRequiredSize</A></TH>
+			<TD>Returns the size needed when storing the 4 x 4 texel compression texture in VRAM.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dTexSetTexKey.html" target="_self" >NNS_G3dTexSetTexKey</A></TH>
+			<TD>Configures the texture key that indicates the memory used for storing the texture in the texture resource.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dTexLoad.html" target="_self" >NNS_G3dTexLoad</A></TH>
+			<TD>Loads the texture to the VRAM region that the configured texture key indicates.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dTexReleaseTexKey.html" target="_self" >NNS_G3dTexReleaseTexKey</A></TH>
+			<TD>Releases the referenced texture.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dPlttGetRequiredSize.html" target="_self" >NNS_G3dPlttGetRequiredSize</A></TH>
+			<TD>Returns the size needed when storing the palette to the VRAM.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dPlttSetPlttKey.html" target="_self" >NNS_G3dPlttSetPlttKey</A></TH>
+			<TD>Configures the palette key that indicates the memory needed to store the palette in the texture resource.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dPlttLoad.html" target="_self" >NNS_G3dPlttLoad</A></TH>
+			<TD>Loads the palette to the VRAM region that the configured palette key indicates.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dPlttReleasePlttKey.html" target="_self" >NNS_G3dPlttReleasePlttKey</A></TH>
+			<TD>Releases the referenced palette.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dBindMdlTex.html" target="_self" >NNS_G3dBindMdlTex</A></TH>
+			<TD>Binds the texture to the model.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dBindMdlTexEx.html" target="_self" >NNS_G3dBindMdlTexEx</A></TH>
+			<TD>Binds the texture designated by the name to the model.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dForceBindMdlTex.html" target="_self" >NNS_G3dForceBindMdlTex</A></TH>
+			<TD>Forcibly binds the texture designated by the index to the model.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dReleaseMdlTex.html" target="_self" >NNS_G3dReleaseMdlTex</A></TH>
+			<TD>Releases the association to the texture entry of the material associated to the texture.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dReleaseMdlTexEx.html" target="_self" >NNS_G3dReleaseMdlTexEx</A></TH>
+			<TD>Releases the association to the texture entry of the material associated to the texture that has the designated name.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dBindMdlPltt.html" target="_self" >NNS_G3dBindMdlPltt</A></TH>
+			<TD>Binds the palette to the model.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dBindMdlPlttEx.html" target="_self" >NNS_G3dBindMdlPlttEx</A></TH>
+			<TD>Binds the palette designated by the name to the model.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dForceBindMdlPltt.html" target="_self" >NNS_G3dForceBindMdlPltt</A></TH>
+			<TD>Forcibly binds the palette designated by the index to the model.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dReleaseMdlPltt.html" target="_self" >NNS_G3dReleaseMdlPltt</A></TH>
+			<TD>Releases the association to the palette entry of the material associated to the palette.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dReleaseMdlPlttEx.html" target="_self" >NNS_G3dReleaseMdlPlttEx</A></TH>
+			<TD>Releases the association to the palette entry of the material associated to the palette.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dBindMdlSet.html" target="_self" >NNS_G3dBindMdlSet</A></TH>
+			<TD>Binds a texture and palette to each model in the model set.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="kernel/NNS_G3dReleaseMdlSet.html" target="_self" >NNS_G3dReleaseMdlSet</A></TH>
+			<TD>Releases the association of the texture and palette from each model in the model set.</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+
+
+
+<H3><a name="SBC">Rendering Engine <strong><code>(NNSG3dRS, NNSG3dRenderObj)</code></strong></a></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="sbc/NNS_G3dDraw.html" target="_self" >NNS_G3dDraw</A></TH>
+			<TD>Renders the model.</TD>
+		</TR>
+    <TR>
+<TH><A href="sbc/NNS_G3dDraw1Mat1Shp.html">NNS_G3dDraw1Mat1Shp</A></TH>
+<TD>Draws a simple model quickly.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="sbc/SBCGlobalVariables.html" target="_self" >Global Variables</A></TH>
+			<TD>The global variable used at the time of rendering.</TD>
+		</TR>
+    <TR>
+<TH><A href="sbc/SBCCallback.html">SBC and Callbacks</A></TH>
+<TD>A description of the SBC (Structure Byte Code) and the callback</TD>
+    </TR>
+    <TR>
+<TH><A href="sbc/NNSG3dRS.html">NNSG3dRS Structure and Access</A></TH>
+<TD>A description of the structure and accessor function that manages the state at the time of rendering.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+
+
+
+<H3><A name="Gecom">Geometry Engine</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeIsSendDLBusy.html" target="_self" >NNS_G3dGeIsSendDLBusy</A></TH>
+			<TD>Returns whether or not the GXDMA performed by the G3d library is transmitting.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeIsBufferExist.html" target="_self" >NNS_G3dGeIsBufferExist</A></TH>
+			<TD>Returns whether or not the command buffer exists.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeIsImmOK.html" target="_self" >NNS_G3dGeIsImmOK</A></TH>
+			<TD>Returns whether or not it is OK to send the command directly to FIFO.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeIsBufferOK.html" target="_self" >NNS_G3dGeIsBufferOK</A></TH>
+			<TD>Returns whether or not data can be appended to the command buffer.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeWaitSendDL.html" target="_self" >NNS_G3dGeWaitSendDL</A></TH>
+			<TD>Waits until the transmission of the <code>NNS_G3dGeSendDL()</code> function finishes.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeSetBuffer.html" target="_self" >NNS_G3dGeSetBuffer</A> </TH>
+			<TD>Sets the command buffer.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeReleaseBuffer.html" target="_self" >NNS_G3dGeReleaseBuffer</A></TH>
+			<TD>Safely releases the command buffer.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeFlushBuffer.html" target="_self" >NNS_G3dGeFlushBuffer</A></TH>
+			<TD>Safely writes the contents of the command buffer to the geometry engine.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeSendDL.html" target="_self" >NNS_G3dGeSendDL</A></TH>
+			<TD>Safely writes the designated display list to the geometry engine.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/NNS_G3dGeBufferOP_N.html" target="_self" >NNS_G3dGeBufferOP_N</A></TH>
+			<TD>Efficiently writes the geometry command that has N arguments to the geometry engine.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="gecom/GeometryCommand.html" target="_self" >Geometry Command Functions</A></TH>
+			<TD><CODE>The function group that issues the geometry commands via <code>NNS_G3dGeBufferOP_N()</code>.</CODE></TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+
+
+
+<H3><A name="Model">Model</H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+    <TR>
+<TH><A href="model/NNS_G3dMdlUseGlbXXXXX.html" target="_self">NNS_G3dMdlUseGlbXXXXX</A></TH>
+<TD>Sets so that the material setting set in the global state can be used for model rendering.</TD>
+    </TR>
+    <TR>
+<TH><A href="model/NNS_G3dMdlUseMdlXXXXX.html" target="_self">NNS_G3dMdlUseMdlXXXXX</A></TH>
+<TD>Sets so that the material setting in the model resource can be used for model rendering.</TD>
+    </TR>
+    <TR>
+<TH><A href="model/NNS_G3dMdlSetMdlXXXXX.html" target="_self">NNS_G3dMdlSetMdlXXXXX</A></TH>
+<TD>Sets the individual materials in the model resource.</TD>
+    </TR>
+    <TR>
+<TH><A href="model/NNS_G3dMdlGetMdlXXXXX.html" target="_self">NNS_G3dMdlGetMdlXXXXX</A></TH>
+<TD>Gets the individual material settings in the model resource.</TD>
+    </TR>
+    <TR>
+<TH><A href="model/NNS_G3dMdlSetMdlXXXXXAll.html" target="_self">NNS_G3dMdlSetMdlXXXXXAll</A></TH>
+<TD>Batch sets the materials in the model resource.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Animation">Animation</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+    <TR>
+<TH><A href="anm/NNS_G3dGetAnmByIdx.html">NNS_G3dGetAnmByIdx</A></TH>
+<TD>Obtains a pointer to the animation resource from the animation resource file by specifying an index.</TD>
+    </TR>
+    <TR>
+<TH><A href="anm/NNS_G3dGetAnmByName.html">NNS_G3dGetAnmByName</A></TH>
+<TD>Obtains a pointer to the animation resource from the animation resource file by specifying a resource name.</TD>
+    </TR>
+  </TBODY> 
+</TABLE>
+
+
+
+
+<H3><A name="Utility">Utilities</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="util/NNS_G3dInit.html"  target="_self" >NNS_G3dInit</A></TH>
+			<TD>Initializes the G3d library.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="util/NNS_G3dResDefaultSetup.html" target="_self" >NNS_G3dResDefaultSetup</A></TH>
+			<TD>Sets up the G3D resource.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="util/NNS_G3dResDefaultRelease.html" target="_self" >NNS_G3dResDefaultRelease</A></TH>
+			<TD>Performs the necessary management processing before releasing the G3Dresource.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="util/NNS_G3dGetResultMtx.html" target="_self" >NNS_G3dGetResultMtx</A></TH>
+			<TD>Takes out the matrix from the matrix stack if the designated matrix remains in the matrix stack.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="util/NNS_G3dSetResultMtx.html" target="_self" >NNS_G3dSetResultMtx</A></TH>
+			<TD>Substitutes the designated matrix to the applicable position of the matrix stack.</TD>
+		</TR>
+    <TR>
+			<TH width="25%"><A href="util/NNS_G3dGetSbcCmdLen.html" target="_self" >NNS_G3dGetSbcCmdLen</A></TH>
+			<TD>Returns the length of the designated SBC command string.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="util/NNS_G3dSearchSbcCmd.html" target="_self" >NNS_G3dSearchSbcCmd</A></TH>
+			<TD>Searches for the designated SBC command from inside the SBC code string.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="util/NNS_G3dGetParentNodeID.html" target="_self" >NNS_G3dGetParentNodeID</A></TH>
+			<TD>Gets the ID of the parent node of the designated node.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="util/NNS_G3dGetChildNodeIDList.html" target="_self" >NNS_G3dGetChildNodeIDList</A></TH>
+			<TD>Creates the list that stored the ID of the child node of the designated node. </TD>
+		</TR>
+    <TR>
+<TH><A href="util/NNS_G3dGetCurrentMtx.html" target="_self">NNS_G3dGetCurrentMtx</A></TH>
+<TD>Obtains the current location coordinate matrix and current directional vector matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="util/NNS_G3dLocalOriginToScrPos.html" target="_self">NNS_G3dLocalOriginToScrPos</A></TH>
+<TD>Returns the location on the screen of the origin of the local coordinate system.</TD>
+    </TR>
+    <TR>
+<TH><A href="util/NNS_G3dWorldPosToScrPos.html" target="_self">NNS_G3dWorldPosToScrPos</A></TH>
+<TD>Returns the location on the screen of the coordinate of the world coordinate system.</TD>
+    </TR>
+    <TR>
+<TH><A href="util/NNS_G3dScrPosToWorldLine.html" target="_self">NNS_G3dScrPosToWorldLine</A></TH>
+<TD>Returns with the world coordinate system the points on the Near clip surface and Far clip surface corresponding to the position on the screen.</TD>
+    </TR>
+    <TR>
+			<TH width="25%"><A href="util/ResourceNameMacro.html" target="_self">Resource Name Macro</A></TH>
+			<TD>This is the macro group for handling the resource names.</TD>
+		</TR>
+	</TBODY> 
+</TABLE>
+
+
+
+
+<H3><A name="BinaryResource">Binary Resources</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetResDataByName.html"  target="_self" >NNS_G3dGetResDataByName</A></TH>
+			<TD>Gets the pointer to the entry that corresponds to the resource name from the dictionary.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetResDictIdxByName.html"  target="_self" >NNS_G3dGetResDictIdxByName</A></TH>
+			<TD>Gets the index that corresponds to the resource name from the dictionary.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetDataBlockHeaderByIdx.html"  target="_self" >NNS_G3dGetDataBlockHeaderByIdx</A></TH>
+			<TD>Gets the block header from the resource file.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetMdlSet.html"  target="_self" >NNS_G3dGetMdlSet</A></TH>
+			<TD>Gets the model set from the resource file.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetTex.html"  target="_self" >NNS_G3dGetTex</A></TH>
+			<TD>Gets the texture resource from the resource file.</TD>
+		</TR>
+
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetMdlByIdx.html"  target="_self" >NNS_G3dGetMdlByIdx</A></TH>
+			<TD>Gets the model from the model set with the index.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetMdlByName.html"  target="_self" >NNS_G3dGetMdlByName</A></TH>
+			<TD>Gets the model from the model set with the resource name.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetMat.html"  target="_self" >NNS_G3dGetMat</A></TH>
+			<TD>Gets the material from the model.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetShp.html"  target="_self" >NNS_G3dGetShp</A></TH>
+			<TD>Gets the shape from the model.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="binres/NNS_G3dGetSbc.html"  target="_self" >NNS_G3dGetSbc</A></TH>
+			<TD>Gets the pointer to the SBC code string from the model.</TD>
+		</TR>
+	</TBODY> 
+</TABLE>
+
+
+
+
+<H3><A name="MemoryAllocate">Memory Allocation</A></H3>
+<TABLE border="1" width="100%">
+	<TBODY>
+		<TR>
+			<TH width="25%"><A href="mem/NNS_G3dAllocRenderObj.html"  target="_self" >NNS_G3dAllocRenderObj</A></TH>
+			<TD>Allocates the region for the rendering object from the heap region.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="mem/NNS_G3dFreeRenderObj.html"  target="_self" >NNS_G3dFreeRenderObj</A></TH>
+			<TD>Deallocates the region allocated by the <code>NNS_G3dAllocRenderObj</code> function.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="mem/NNS_G3dAllocAnmObj.html"  target="_self" >NNS_G3dAllocAnmObj</A></TH>
+			<TD>Allocates the region for the animation object from the heap region.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="mem/NNS_G3dFreeAnmObj.html"  target="_self" >NNS_G3dFreeAnmObj</A></TH>
+			<TD>Deallocates the region allocated by the <code>NNS_G3dAllocAnmObj</code> function.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="mem/NNS_G3dAllocRecBufferJnt.html"  target="_self" >NNS_G3dAllocRecBufferJnt</A></TH>
+			<TD>Allocates the region for the joint record buffer from the heap region.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="mem/NNS_G3dFreeRecBufferJnt.html"  target="_self" >NNS_G3dFreeRecBufferJnt</A></TH>
+			<TD>Deallocates the region allocated by the <code>NNS_G3dAllocRecBufferJnt</code> function.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="mem/NNS_G3dAllocRecBufferMat.html"  target="_self" >NNS_G3dAllocRecBufferMat</A></TH>
+			<TD>Allocates the region for the material record buffer from the heap region.</TD>
+		</TR>
+		<TR>
+			<TH width="25%"><A href="mem/NNS_G3dFreeRecBufferMat.html"  target="_self" >NNS_G3dFreeRecBufferMat</A></TH>
+			<TD>Deallocate the region allocated with the <code>NNS_G3dAllocRecBufferMat</code> function.</TD>
+		</TR>
+	</TBODY> 
+</TABLE>
+<H3><A name="Structure">Explanation of Main G3D Structure</A></H3>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="331"><A href="struct/NNSG3dGlb.html" target="_self">NNSG3dGlb</A></TD>
+<TD width="780">Structure for managing the color and direction of the camera matrix and light.</TD>
+    </TR>
+    <TR>
+<TD width="331"><A href="struct/NNSG3dRenderObj.html" target="_self">NNSG3dRenderObj</A></TD>
+<TD width="780">Structure for managing one model and multiple animations.</TD>
+    </TR>
+    <TR>
+<TD><A href="struct/NNSG3dAnmObj.html" target="_self">NNSG3dAnmObj</A></TD>
+<TD>Structure holding data necessary for getting the necessary animation data from the animation resource.</TD>
+    </TR>
+    <TR>
+<TD>NNSG3dRS</TD>
+<TD>Structure holding the state during rendering. Refer to <code><A href="sbc/NNSG3dRS.html">NNSG3dRS</a></code> structure and accessor.</TD>
+    </TR>
+    <TR>
+<TD><A href="struct/NNSG3dJntAnmResult.html" target="_self">NNSG3dJntAnmResult</A></TD>
+<TD>Structure for storing joint (animation) calculation results.</TD>
+    </TR>
+    <TR>
+<TD><A href="struct/NNSG3dMatAnmResult.html" target="_self">NNSG3dMatAnmResult</A></TD>
+<TD>Structure for storing material (animation) calculation results.</TD>
+    </TR>
+    <TR>
+<TD><A href="struct/NNSG3dVisAnmResult.html" target="_self">NNSG3dVisAnmResult</A></TD>
+<TD>Structure for storing visibility (animation) calculation results.</TD>
+    </TR>
+    <TR>
+<TD><A href="struct/NNSG3dResMdl.html" target="_self">NNSG3dResMdl</A></TD>
+<TD>Model resource structure in the <code>.nsbmd</code> file.</TD>
+    </TR>
+    <TR>
+<TD><A href="struct/NNSG3dResTex.html" target="_self">NNSG3dResTex</A></TD>
+<TD>Texture resource structure in the <code>.nsbmd</code> file or the <code>.nsbtx</code> file.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="PtrFunction">Explanation of G3D Function Pointer Types and Function Pointer Tables</A></H3>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="296"><A href="funcptr/NNSG3dSbcCallBackFunc.html" target="_self">NNSG3dSbcCallBackFunc</A></TD>
+<TD width="666">Type of callback function used when rendering.</TD>
+    </TR>
+    <TR>
+<TD width="296"><A href="funcptr/NNSG3dFuncAnmJnt.html" target="_self">NNSG3dFuncAnmJnt</A></TD>
+<TD width="666">Type of function that calculates joint animation.</TD>
+    </TR>
+    <TR>
+<TD><A href="funcptr/NNSG3dFuncAnmMat.html" target="_self">NNSG3dFuncAnmMat</A></TD>
+<TD>Type of function that calculates material animation.</TD>
+    </TR>
+    <TR>
+<TD width="296"><A href="funcptr/NNSG3dFuncAnmVis.html" target="_self">NNSG3dFuncAnmVis</A></TD>
+<TD width="666">Type of function that calculates visibility animation.</TD>
+    </TR>
+    <TR>
+<TD width="296"><A href="funcptr/NNSG3dFuncAnmBlendJnt.html" target="_self">NNSG3dFuncAnmBlendJnt</A></TD>
+<TD width="666">Type of function that that blends joint animation calculation results.</TD>
+    </TR>
+    <TR>
+<TD><A href="funcptr/NNSG3dFuncAnmBlendMat.html" target="_self">NNSG3dFuncAnmBlendMat</A></TD>
+<TD>Type of function that blends material animation calculation results.</TD>
+    </TR>
+    <TR>
+<TD width="296"><A href="funcptr/NNSG3dFuncAnmBlendVis.html" target="_self">NNSG3dFuncAnmBlendVis</A></TD>
+<TD width="666">Type of function that blends visibility animation calculation results.</TD>
+    </TR>
+    <TR>
+<TD width="296"><A href="funcptr/NNS_G3dFuncSbcTable.html" target="_self">NNS_G3dFuncSbcTable</A></TD>
+<TD width="666">Table of function that processes SBC.</TD>
+    </TR>
+    <TR>
+<TD width="296"><A href="funcptr/NNS_G3dFuncSbcMatTable.html" target="_self">NNS_G3dFuncSbcMatTable</A></TD>
+<TD width="666">Function table for processing the <code><A href="sbc/SBC_MAT.html">NNS_G3D_SBC_MAT</A></code> command for every data format.</TD>
+    </TR>
+    <TR>
+<TD width="296"><A href="funcptr/NNS_G3dFuncSbcShpTable.html" target="_self">NNS_G3dFuncSbcShpTable</A></TD>
+<TD width="666">Function table for processing the <code><A href="sbc/SBC_SHP.html">NNS_G3D_SBC_SHP</A></code> command for every data format.</TD>
+    </TR>
+    <TR>
+<TD width="296"><A href="funcptr/NNS_G3dAnmObjInitFuncArray.html" target="_self">NNS_G3dAnmObjInitFuncArray</A></TD>
+<TD width="666">Function table where initialization function of the <code><A href="struct/NNSG3dAnmObj.html" target="_self">NNSG3dAnmObj</A></code> structure corresponding to each animation format is stored.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR>
+</BODY>
+</HTML>

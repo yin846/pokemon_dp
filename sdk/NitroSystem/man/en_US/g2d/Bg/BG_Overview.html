@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>BG Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+
+<h1 align="left">BG Overview</h1>
+<H2>Description</H2>
+<p>
+The G2D runtime screen data inherits information that is required for BG display from NITRO-CHARACTER binary data. The G2D BG module offers features to use this information to automatically control the BG screen and to load graphics data to VRAM. In addition to common initialization, the programmer can display the BG by simply allocating VRAM and configuring the BG visibility state.<BR>The G2D BG module can only display static BGs; it has no scrolling functionality. However, the BG screen can be scrolled using the SDK functions. <br>
+</p>
+
+<pre>
+The process for displaying a BG display using the BG module is shown below.
+ 
+=========== Initialization Process ===========
+1.  Configure each of the BG parameters (using the SDK functions).
+
+	- Required
+		- VRAM allocation
+		- Base offset
+	- Optional
+		- BG visibility state
+		- BG priority
+		- BG mosaic
+		- BG scroll
+		- BG affine
+		- Color special effects
+
+2.  Load the resources (NCRL, NSCR, and NCGR) to main memory.
+3.  Transfer the resource data to VRAM and initialize the BG mode (NNS_G2dBGSetup()).
+4.  Release the resource data from main memory (optional).
+ 
+=========== Game Loop ===========
+5.  Change the settings for the BG screen to display with an arbitrary timing. (GX_SetVisiblePlane(), GXS_SetVisiblePlane())
+    
+=========== End Process ===========
+There is no particular process required.
+
+</pre>
+
+<BR>
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>01/31/2005 Initial version.</P>
+</body>
+</html>

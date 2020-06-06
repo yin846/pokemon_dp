@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dDraw1Mat1Shp</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dDraw1Mat1Shp</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/1mat1shp.h&gt;</CODE></PRE>
+<PRE><CODE>void
+NNS_G3dDraw1Mat1Shp(
+const NNSG3dResMdl*     pResMdl,
+u32 matID,
+u32 shpID,
+BOOL sendMat
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pResMdl</STRONG></EM></TD>
+<TD width="87%">Pointer to the model resource</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>matID</STRONG></EM></TD>
+<TD>Index to the material to be rendered</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>shpID</STRONG></EM></TD>
+<TD>Index to the shape to be rendered</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>sendMat</STRONG></EM></TD>
+<TD>Whether to send material information to the geometry engine</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+
+<H2>Description</H2>
+<P>This function is good for rendering very simple objects. It renders the material specified by <code>matID</code> and the shape specified by <code>shpID</code> that belong to a model. If <code>sendMat</code> is FALSE, it does not send material information. When using this function, note that some general operations are not performed, enabling this function to do the same rendering more quickly than the <a href="NNS_G3dDraw.html"><code>NNS_G3dDraw</code></a> function. Operations not performed include the initial setup required to render a model and the data copying that accompanies animation calculations. However, this function has the following limitations.</P>
+<UL>
+<LI>Animation resources cannot be replayed.
+<LI>It cannot contain a callback process.
+<LI>It is not possible to compose with a material's global state. The model's material information is sent to the geometry engine as-is.
+<LI>It is not possible to render shapes that have envelopes.
+</UL>
+<H2>See Also</H2>
+<P><A href="NNS_G3dDraw.html">NNS_G3dDraw</A></P>
+<H2>Revision History</H2>
+<P>08/31/2004 Initial version.</P>
+</BODY>
+
+</HTML>

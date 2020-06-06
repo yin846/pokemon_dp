@@ -1,0 +1,2146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>Graphics (GX/G2/G3/G3X) API Function List</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>Graphics (GX/G2/G3/G3X) API Function List</H1>
+<H1><A name="gx"></A>General 2D/3D Graphics (GX)</H1>
+<H2>Common to the 2D Graphics Engines</H2>
+<H3><A name="Power">Power Control</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetPower.html">GX_SetPower</A></TH>
+<TD width="70%">Collectively sets each type of power control.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetPower.html">GX_GetPower</A></TH>
+<TD>This function acquires the status of each type of power control.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_Power2D.html">GX_Power2D</A></TH>
+<TD>Sets the main and sub 2D graphics engines ON/OFF.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_Power3D.html">GX_Power3D</A></TH>
+<TD>Sets the geometry and rendering engines ON/OFF.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_Power2DMain.html">GX_Power2DMain</A></TH>
+<TD>Sets the main 2D graphics engine ON/OFF.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_Power2DSub.html">GX_Power2DSub</A></TH>
+<TD>Sets the sub 2D graphics engine ON/OFF.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_PowerGeometry.html">GX_PowerGeometry</A></TH>
+<TD>Sets geometry engine ON/OFF.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_PowerRender.html">GX_PowerRender</A></TH>
+<TD>Sets rendering engine ON/OFF.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_SetDispSelect.html">GX_SetDispSelect</A></TH>
+<TD>Sets the LCD output destination.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetDispSelect.html">GX_GetDispSelect</A></TH>
+<TD>Gets the LCD output destination.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Init2D">Initialization</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_Init.html">GX_Init</A></TH>
+<TD width="70%">Initializes the graphics system.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_InitEx.html">GX_InitEx</A></TH>
+<TD>Initializes the graphics system. Also changes the default DMA number for GX.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetDefaultDMA.html">GX_SetDefaultDMA</A></TH>
+<TD width="70%">Changes the DMA number setting used by GX.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetDefaultDMA.html">GX_GetDefaultDMA</A></TH>
+<TD>Obtains the DMA number setting used by GX.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="VRAM1">Allocating VRAM Banks To Resources</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForBG.html">GX_SetBankForBG</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the Main 2D Engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForBGEx.html">GX_SetBankForBGEx</A></TH>
+<TD width="70%">Specifies the VRAM bank with the combination that cannot be allocated to the contiguous addresses, and allocates it to the Main 2D Engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForOBJ.html">GX_SetBankForOBJ</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the Main 2D Engine OBJ.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForBGExtPltt.html">GX_SetBankForBGExtPltt</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the Main 2D Engine BG expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForOBJExtPltt.html">GX_SetBankForOBJExtPltt</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the Main 2D Engine OBJ expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForTex.html">GX_SetBankForTex</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the texture image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForTexPltt.html">GX_SetBankForTexPltt</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the texture palette slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForClearImage.html">GX_SetBankForClearImage</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to clear image.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForSubBG.html">GX_SetBankForSubBG</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the Sub 2D Engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForSubOBJ.html">GX_SetBankForSubOBJ</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the Sub 2D Engine OBJ.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForSubBGExtPltt.html">GX_SetBankForSubBGExtPltt</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the Sub 2D Engine BG expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForSubOBJExtPltt.html">GX_SetBankForSubOBJExtPltt</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to the Sub 2D Engine OBJ expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForARM7.html">GX_SetBankForARM7</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to ARM7 memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBankForLCDC.html">GX_SetBankForLCDC</A></TH>
+<TD width="70%">Specifies VRAM bank, and allocates it to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForBG.html">GX_TrySetBankForBG</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the main 2D engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForBGEx.html">GX_TrySetBankForBGEx</A></TH>
+<TD width="70%">Tries to allocate VRAM banks in a combination that cannot be allocated to contiguous addresses to the main 2D engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForOBJ.html">GX_TrySetBankForOBJ</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the main 2D engine OBJ.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForBGExtPltt.html">GX_TrySetBankForBGExtPltt</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the main 2D engine BG extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForOBJExtPltt.html">GX_TrySetBankForOBJExtPltt</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the main 2D engine OBJ extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForTex.html">GX_TrySetBankForTex</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the texture image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForTexPltt.html">GX_TrySetBankForTexPltt</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the texture palette slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForClearImage.html">GX_TrySetBankForClearImage</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to clear image.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForSubBG.html">GX_TrySetBankForSubBG</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the sub 2D engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForSubOBJ.html">GX_TrySetBankForSubOBJ</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the sub 2D engine OBJ.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForSubBGExtPltt.html">GX_TrySetBankForSubBGExtPltt</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the sub 2D engine BG extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForSubOBJExtPltt.html">GX_TrySetBankForSubOBJExtPltt</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the main 2D engine OBJ extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForARM7.html">GX_TrySetBankForARM7</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the ARM7 memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_TrySetBankForLCDC.html">GX_TrySetBankForLCDC</A></TH>
+<TD width="70%">Tries to allocate a VRAM bank to the LCDC memory space.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="VRAM1_1">Obtaining Information on VRAM Banks Allocated to Resources</A></H3>
+<TABLE border="1" width="100%">
+  <COL span="1" width="30%">
+  <COL span="1" width="70%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_GetBankForBG.html">GX_GetBankForBG</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the Main 2D Engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="200"><A href="gx/GX_GetBankForOBJ.html">GX_GetBankForOBJ</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the Main 2D Engine OBJ.</TD>
+    </TR>
+    <TR>
+<TH width="200"><A href="gx/GX_GetBankForBGExtPltt.html">GX_GetBankForBGExtPltt</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the Main 2D Engine BG expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="200"><A href="gx/GX_GetBankForOBJExtPltt.html">GX_GetBankForOBJExtPltt</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the Main 2D Engine OBJ expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="200"><A href="gx/GX_GetBankForTex.html">GX_GetBankForTex</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the texture image slot.</TD>
+    </TR>
+    <TR>
+<TH width="200"><A href="gx/GX_GetBankForTexPltt.html">GX_GetBankForTexPltt</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the texture palette slot.</TD>
+    </TR>
+    <TR>
+<TH width="200"><A href="gx/GX_GetBankForClearImage.html">GX_GetBankForClearImage</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to clear image.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetBankForSubBG.html">GX_GetBankForSubBG</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the Sub 2D Engine BG.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetBankForSubOBJ.html">GX_GetBankForSubOBJ</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the Sub 2D Engine OBJ.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetBankForSubBGExtPltt.html">GX_GetBankForSubBGExtPltt</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the Sub 2D Engine BG expanded palette.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetBankForSubOBJExtPltt.html">GX_GetBankForSubOBJExtPltt</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to the Sub 2D Engine OBJ expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="200"><A href="gx/GX_GetBankForARM7.html">GX_GetBankForARM7</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to ARM7 memory space.</TD>
+    </TR>
+    <TR>
+<TH width="200"><A href="gx/GX_GetBankForLCDC.html">GX_GetBankForLCDC</A></TH>
+<TD width="70%">Gets information on VRAM bank allocated to LCDC.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="VRAM2">Switching VRAM Banks That Were Allocated To ResourcesTo LCDC Memory Space</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForBG.html">GX_ResetBankForBG</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to the Main 2D Engine BG to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForOBJ.html">GX_ResetBankForOBJ</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to the Main 2D Engine OBJ to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForBGExtPltt.html">GX_ResetBankForBGExtPltt</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to the Main 2D Engine BG expanded palette to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForOBJExtPltt.html">GX_ResetBankForOBJExtPltt</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to the Main 2D Engine OBJ expanded palette to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForTex.html">GX_ResetBankForTex</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to texture image slot to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForTexPltt.html">GX_ResetBankForTexPltt</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to texture palette slot to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForClearImage.html">GX_ResetBankForClearImage</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to clear image to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForSubBG.html">GX_ResetBankForSubBG</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to the Sub 2D Engine BG to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForSubOBJ.html">GX_ResetBankForSubOBJ</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to the Sub 2D Engine OBJ to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForSubBGExtPltt.html">GX_ResetBankForSubBGExtPltt</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to the Sub 2D Engine BG expanded palette to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForSubOBJExtPltt.html">GX_ResetBankForSubOBJExtPltt</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to the Sub 2D Engine OBJ expanded palette to LCDC memory space.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_ResetBankForARM7.html">GX_ResetBankForARM7</A></TH>
+<TD width="70%">Allocates VRAM bank that was allocated to ARM7 to LCDC memory space.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="VRAM3">Releasing VRAM Banks That Were Allocated To Resources</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForBG.html">GX_DisableBankForBG</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to the Main 2D Engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForOBJ.html">GX_DisableBankForOBJ</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to the Main 2D Engine OBJ.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForBGExtPltt.html">GX_DisableBankForBGExtPltt</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to the Main 2D Engine BG expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForOBJExtPltt.html">GX_DisableBankForOBJExtPltt</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to the Main 2D Engine OBJ expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForTex.html">GX_DisableBankForTex</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to texture image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForTexPltt.html">GX_DisableBankForTexPltt</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to texture palette slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForClearImage.html">GX_DisableBankForClearImage</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to clear image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForSubBG.html">GX_DisableBankForSubBG</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to the Sub 2D Engine BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForSubOBJ.html">GX_DisableBankForSubOBJ</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to the Sub 2D Engine OBJ.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForSubBGExtPltt.html">GX_DisableBankForSubBGExtPltt</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to the Sub 2D Engine BG expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForSubOBJExtPltt.html">GX_DisableBankForSubOBJExtPltt</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to the Sub 2D Engine OBJ expanded palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForARM7.html">GX_DisableBankForARM7</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to ARM7.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DisableBankForLCDC.html">GX_DisableBankForLCDC</A></TH>
+<TD width="70%">Disables VRAM bank that was allocated to LCDC.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3>Getting Resource Sizes</H3>
+<TABLE border="0" width="100%">
+  <TBODY>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfBG.html">GX_GetSizeOfBG</A></TD>
+<TD width="70%">Returns the Main 2D Engine BG size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfOBJ.html">GX_GetSizeOfOBJ</A></TD>
+<TD width="70%">Returns the Main 2D Engine OBJ size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfBGExtPltt.html">GX_GetSizeOfBGExtPltt</A></TD>
+<TD width="70%">Returns the Main 2D Engine BG expanded palette size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfOBJExtPltt.html">GX_GetSizeOfOBJExtPltt</A></TD>
+<TD width="70%">Returns the Main 2D Engine OBJ expanded palette size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfTex.html">GX_GetSizeOfTex</A></TD>
+<TD width="70%">Returns the texture image size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfTexPltt.html">GX_GetSizeOfTexPltt</A></TD>
+<TD width="70%">Returns the texture palette size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfClearImage.html">GX_GetSizeOfClearImage</A></TD>
+<TD width="70%">Returns the clear image size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfSubBG.html">GX_GetSizeOfSubBG</A></TD>
+<TD width="70%">Returns the Sub 2D Engine BG size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfSubOBJ.html">GX_GetSizeOfSubOBJ</A></TD>
+<TD width="70%">Returns the Sub 2D Engine OBJ size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfSubBGExtPltt.html">GX_GetSizeOfSubBGExtPltt</A></TD>
+<TD width="70%">Returns the Sub 2D Engine BG expanded palette size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfSubOBJExtPltt.html">GX_GetSizeOfSubOBJExtPltt</A></TD>
+<TD width="70%">Returns the Sub 2D Engine OBJ expanded palette size in bytes.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><A href="gx/GX_GetSizeOfARM7.html">GX_GetSizeOfARM7</A></TD>
+<TD width="70%">Returns the size of VRAM allocated to ARM7 in bytes.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Interrupt">Interrupts and Miscellaneous</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_GetVCount.html">GX_GetVCount</A></TH>
+<TD width="70%">Reads the V-Counter value.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetVCount.html">GX_SetVCount</A></TH>
+<TD width="70%">Writes the V-Counter value.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_IsHBlank.html">GX_IsHBlank</A></TH>
+<TD width="70%">Tests whether in H-Blank period.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_IsVBlank.html">GX_IsVBlank</A></TH>
+<TD width="70%">Tests whether in V-Blank period.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_IsVCountEq.html">GX_IsVCountEq</A></TH>
+<TD width="70%">Tests whether in V-Counter matching period.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_VCountEqIntr.html">GX_VCountEqIntr</A></TH>
+<TD width="70%">Sets V-Counter matching interrupts to enable/disable.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetVCountEqVal.html">GX_SetVCountEqVal</A></TH>
+<TD width="70%">This function configures the parity value that will be equal to the V-counter.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_GetVCountEqVal.html">GX_GetVCountEqVal</A></TH>
+<TD width="70%">Acquires V-Counter matching set value.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_HBlankIntr.html">GX_HBlankIntr</A></TH>
+<TD width="70%">Sets H-Blank interrupts to enable/disable.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_VBlankIntr.html">GX_VBlankIntr</A></TH>
+<TD width="70%">Sets V-Blank interrupts to enable/disable.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Main 2D Graphics Engine</H2>
+<H3><A name="GraphicsMode">Display Mode Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetGraphicsMode.html">GX_SetGraphicsMode</A></TH>
+<TD width="70%">Sets display mode and BG mode.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetDispCnt.html">GX_GetDispCnt</A></TH>
+<TD>Gets the value of the display control register</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Visibility">Hide/Show Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetVisiblePlane.html">GX_SetVisiblePlane</A></TH>
+<TD width="70%">Hide/Show settings for BG and OBJ.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetVisiblePlane.html">GX_GetVisiblePlane</A></TH>
+<TD>Obtains the Hide/Show settings for BG and OBJ</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetVisibleWnd.html">GX_SetVisibleWnd</A></TH>
+<TD width="70%">Hide/Show settings for windows.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetVisibleWnd.html">GX_GetVisibleWnd</A></TH>
+<TD>Obtains the Hide/Show settings for the window</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DispOn.html">GX_DispOn</A></TH>
+<TD width="70%">Turns ON output to the LCD.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_DispOff.html">GX_DispOff</A></TH>
+<TD width="70%">Turns OFF output to the LCD.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_BlankScr.html">GX_BlankScr</A></TH>
+<TD width="70%"><I>This function will be deleted from future releases.</I></TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_HBlankOBJProc.html">GX_HBlankOBJProc</A></TH>
+<TD width="70%">Sets whether OBJ processing occurs during H-Blanks.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="OffsetMem">Offset Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBGScrOffset.html">GX_SetBGScrOffset</A></TH>
+<TD width="70%">Sets screen offset.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetBGCharOffset.html">GX_SetBGCharOffset</A></TH>
+<TD width="70%">Sets character offset.</TD>
+    </TR>
+
+  </TBODY>
+</TABLE>
+<H3><A name="MappingMode">OBJ Mapping Mode Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetOBJVRamModeChar.html">GX_SetOBJVRamModeChar</A></TH>
+<TD width="70%">Sets character OBJ mapping mode.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetOBJVRamModeChar.html">GX_GetOBJVRamModeChar</A></TH>
+<TD>Gets character OBJ mapping mode</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetOBJVRamModeBmp.html">GX_SetOBJVRamModeBmp</A></TH>
+<TD width="70%">Sets bitmap OBJ mapping mode.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetOBJVRamModeBmp.html">GX_GetOBJVRamModeBmp</A></TH>
+<TD>Gets bitmap OBJ mapping mode</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="ResLoadG2Util">Loading Resources (2D)</A></H3>
+<TABLE border="1" width="475">
+  <TBODY>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadOBJ.html">GX_LoadOBJ</A></TH>
+<TD width="70%">Transfers OBJ data to OBJ-VRAM</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadOAM.html">GX_LoadOAM</A></TH>
+<TD width="70%">Transfers OAM data to OAM.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBGPltt.html">GX_LoadBGPltt</A></TH>
+<TD width="70%">Transfers standard BG palette data to standard BG palette RAM.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadOBJPltt.html">GX_LoadOBJPltt</A></TH>
+<TD width="70%">Transfers standard OBJ palette data to standard OBJ palette RAM.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBG0Scr.html">GX_LoadBG0Scr</A></TH>
+<TD width="70%">Transfers data to the BG0 screen.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBG1Scr.html">GX_LoadBG1Scr</A></TH>
+<TD width="70%">Transfers data to the BG1 screen..</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBG2Scr.html">GX_LoadBG2Scr</A></TH>
+<TD width="70%">Transfers data to the BG2 screen.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBG3Scr.html">GX_LoadBG3Scr</A></TH>
+<TD width="70%">Transfers data to the BG3 screen.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_LoadBG2Bmp.html">GX_LoadBG2Bmp</A></TH>
+<TD>Transfers bit map data to BG2.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_LoadBG3Bmp.html">GX_LoadBG3Bmp</A></TH>
+<TD>Transfers bit map data to BG3.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBG0Char.html">GX_LoadBG0Char</A></TH>
+<TD width="70%">Transfers data to BG0 character.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBG1Char.html">GX_LoadBG1Char</A></TH>
+<TD width="70%">Transfers data to BG1 character.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBG2Char.html">GX_LoadBG2Char</A></TH>
+<TD width="70%">Transfers data to BG2 character.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBG3Char.html">GX_LoadBG3Char</A></TH>
+<TD width="70%">Transfers data to BG3 character.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_BeginLoadBGExtPltt.html">GX_BeginLoadBGExtPltt</A></TH>
+<TD width="70%">Call before transferring data to BG extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadBGExtPltt.html">GX_LoadBGExtPltt</A></TH>
+<TD width="70%">Transfers data to BG extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_EndLoadBGExtPltt.html">GX_EndLoadBGExtPltt</A></TH>
+<TD width="70%">Call after all data transfer to BG extended palette is finished.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_BeginLoadOBJExtPltt.html">GX_BeginLoadOBJExtPltt</A></TH>
+<TD width="70%">Call before transferring data to OBJ extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_LoadOBJExtPltt.html">GX_LoadOBJExtPltt</A></TH>
+<TD width="70%">Transfers data to OBJ extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="166"><A href="gx/GX_EndLoadOBJExtPltt.html">GX_EndLoadOBJExtPltt</A></TH>
+<TD width="70%">Call after data transfer to OBJ extended palette is complete.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="ResLoadG3Util">Loading Resources (3D)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_BeginLoadTex.html">GX_BeginLoadTex</A></TH>
+<TD width="70%">Call before transferring to texture image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_LoadTex.html">GX_LoadTex</A></TH>
+<TD width="70%">Transfers data to texture image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_EndLoadTex.html">GX_EndLoadTex</A></TH>
+<TD width="70%">Call after all data has been transferred to texture image slot.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_LoadTexEx.html">GX_LoadTexEx</A></TH>
+<TD>Transfers data to the VRAM bank that can be allocated to the texture image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_BeginLoadTexPltt.html">GX_BeginLoadTexPltt</A></TH>
+<TD width="70%">Call before transferring to texture palette slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_LoadTexPltt.html">GX_LoadTexPltt</A></TH>
+<TD width="70%">Transfers data to texture palette slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_EndLoadTexPltt.html">GX_EndLoadTexPltt</A></TH>
+<TD width="70%">Call after all data has been transferred to texture palette slot.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_LoadTexPlttEx.html">GX_LoadTexPlttEx</A></TH>
+<TD>Transfers data to the VRAM bank that can be allocated to the texture palette slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_BeginLoadClearImage.html">GX_BeginLoadClearImage</A></TH>
+<TD width="70%">Call before transferring to clear image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_LoadClearImageColor.html">GX_LoadClearImageColor</A></TH>
+<TD width="70%">Transfers color data to clear image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_LoadClearImageDepth.html">GX_LoadClearImageDepth</A></TH>
+<TD width="70%">Transfers depth data to clear image slot.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_EndLoadClearImage.html">GX_EndLoadClearImage</A></TH>
+<TD width="70%">Call after all data has been transferred to clear image slot.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="MiscA">Other</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetCapture.html">GX_SetCapture</A></TH>
+<TD width="70%">Sets screen capture.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_ResetCapture.html">GX_ResetCapture</A></TH>
+<TD>Resets screen capture. Normally, it is reset automatically after each capture.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GX_SetMasterBrightness.html">GX_SetMasterBrightness</A></TH>
+<TD width="70%">Sets master brightness.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetMasterBrightness.html">GX_GetMasterBrightness</A> </TH>
+<TD>Gets master brightness.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Sub 2D Graphics Engine</H2>
+<H3><A name="GraphicsModeB">Display Mode Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GXS_SetGraphicsMode.html">GXS_SetGraphicsMode</A></TH>
+<TD width="70%">Sets BG mode.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GXS_GetDispCnt.html">GXS_GetDispCnt</A></TH>
+<TD>Gets the display control register settings.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="VisibilityB">Hide/Show Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GXS_SetVisiblePlane.html">GXS_SetVisiblePlane</A></TH>
+<TD width="70%">Hide/Show settings for BG and OBJ.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetVisiblePlane.html">GXS_GetVisiblePlane</A></TH>
+<TD>Obtains the Hide/Show settings for BG and OBJ</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_SetVisibleWnd.html">GXS_SetVisibleWnd</A></TH>
+<TD width="70%">Hide/Show settings for windows.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetVisibleWnd.html">GXS_GetVisibleWnd</A></TH>
+<TD>Obtains the Hide/Show settings for the window</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_DispOn.html">GXS_DispOn</A></TH>
+<TD width="70%">Turns ON output to the LCD.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_DispOff.html">GXS_DispOff</A></TH>
+<TD width="70%">Turns OFF output to the LCD.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_HBlankOBJProc.html">GXS_HBlankOBJProc</A></TH>
+<TD width="70%">Sets whether OBJ processing occurs during H-Blanks.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="MappingModeB">OBJ Mapping Mode Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GXS_SetOBJVRamModeChar.html">GXS_SetOBJVRamModeChar</A></TH>
+<TD width="70%">Sets character OBJ mapping mode.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetOBJVRamModeChar.html">GXS_GetOBJVRamModeChar</A></TH>
+<TD>Gets character OBJ mapping mode</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_SetOBJVRamModeBmp.html">GXS_SetOBJVRamModeBmp</A></TH>
+<TD width="70%">Sets bitmap OBJ mapping mode.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetOBJVRamModeBmp.html">GXS_GetOBJVRamModeBmp</A></TH>
+<TD>Gets bitmap OBJ mapping mode</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="ResLoadB">Loading Resources</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadOBJ.html">GXS_LoadOBJ</A></TH>
+<TD width="70%">Transfers OBJ data to OBJ-VRAM</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadOAM.html">GXS_LoadOAM</A></TH>
+<TD width="70%">Transfers OAM data to OAM.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBGPltt.html">GXS_LoadBGPltt</A></TH>
+<TD width="70%">Transfers standard BG palette data to standard BG palette RAM.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadOBJPltt.html">GXS_LoadOBJPltt</A></TH>
+<TD width="70%">Transfers standard OBJ palette data to standard OBJ palette RAM.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG0Scr.html">GXS_LoadBG0Scr</A></TH>
+<TD width="70%">Transfers data to the BG0 screen.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG1Scr.html">GXS_LoadBG1Scr</A></TH>
+<TD width="70%">Transfers data to the BG1 screen..</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG2Scr.html">GXS_LoadBG2Scr</A></TH>
+<TD width="70%">Transfers data to the BG2 screen.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG3Scr.html">GXS_LoadBG3Scr</A></TH>
+<TD width="70%">Transfers data to the BG3 screen.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG2Bmp.html">GXS_LoadBG2Bmp</A></TH>
+<TD width="70%">Transfers bit map data to BG2.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG3Bmp.html">GXS_LoadBG3Bmp</A></TH>
+<TD width="70%">Transfers bit map data to BG3.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG0Char.html">GXS_LoadBG0Char</A></TH>
+<TD width="70%">Transfers data to BG0 character.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG1Char.html">GXS_LoadBG1Char</A></TH>
+<TD width="70%">Transfers data to BG1 character.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG2Char.html">GXS_LoadBG2Char</A></TH>
+<TD width="70%">Transfers data to BG2 character.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBG3Char.html">GXS_LoadBG3Char</A></TH>
+<TD width="70%">Transfers data to BG3 character.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_BeginLoadBGExtPltt.html">GXS_BeginLoadBGExtPltt</A></TH>
+<TD width="70%">Call before transferring data to BG extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadBGExtPltt.html">GXS_LoadBGExtPltt</A></TH>
+<TD width="70%">Transfers data to BG extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_EndLoadBGExtPltt.html">GXS_EndLoadBGExtPltt</A></TH>
+<TD width="70%">Call after all data transfer to BG extended palette is finished.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_BeginLoadOBJExtPltt.html">GXS_BeginLoadOBJExtPltt</A></TH>
+<TD width="70%">Call before transferring data to OBJ extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_LoadOBJExtPltt.html">GXS_LoadOBJExtPltt</A></TH>
+<TD width="70%">Transfers data to OBJ extended palette.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXS_EndLoadOBJExtPltt.html">GXS_EndLoadOBJExtPltt</A></TH>
+<TD width="70%">Call after data transfer to OBJ extended palette is complete.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="MiscB">Other</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="gx/GXS_SetMasterBrightness.html">GXS_SetMasterBrightness</A></TH>
+<TD width="70%">Sets master brightness.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GX_GetMasterBrightness.html">GXS_GetMasterBrightness</A></TH>
+<TD>Gets the master brightness.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H1><A name="g2"></A>2D Graphics (G2)</H1>
+<H2>Common to the 2D Graphics Engines</H2>
+<H3><A name="OAM">OAM</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJAttr.html">G2_SetOBJAttr</A></TH>
+<TD width="70%">Sets each object attribute.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJAffine.html">G2_SetOBJAffine</A></TH>
+<TD width="70%">Sets object affine conversion.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJPosition.html">G2_SetOBJPosition</A></TH>
+<TD width="70%">Sets object XY coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJPriority.html">G2_SetOBJPriority</A></TH>
+<TD width="70%">Sets object display priority level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJMode.html">G2_SetOBJMode</A></TH>
+<TD width="70%">Sets object OBJ mode.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJEffect.html">G2_SetOBJEffect</A></TH>
+<TD width="70%">Sets object flip/affine conversion parameters.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJShape.html">G2_SetOBJShape</A></TH>
+<TD width="70%">Sets object shape.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJCharName.html">G2_SetOBJCharName</A></TH>
+<TD width="70%">Sets the name of first character in the object.</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_SetOBJColorMode.html">G2_SetOBJColorMode</A></TH>
+<TD>Sets color mode for the object.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_OBJMosaic.html">G2_OBJMosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to OBJ.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetOBJPosition.html">G2_GetOBJPosition</A></TH>
+<TD width="70%">Obtains the x,y coordinates of the object.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetOBJPriority.html">G2_GetOBJPriority</A></TH>
+<TD width="70%">Obtains the display priority of the object.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetOBJMode.html">G2_GetOBJMode</A></TH>
+<TD width="70%">Obtains the OBJ mode of the object.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetOBJColorParam.html">G2_GetOBJColorParam</A></TH>
+<TD width="70%">Obtains the color parameters of the object.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetOBJEffect.html">G2_GetOBJEffect</A></TH>
+<TD width="70%">Obtains the flip/affine mode of the object.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetOBJShape.html">G2_GetOBJShape</A></TH>
+<TD width="70%">Obtains the shape of the object.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetOBJCharName.html">G2_GetOBJCharName</A></TH>
+<TD width="70%">Obtains the name of first character in the object.</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetOBJColorMode.html">G2_GetOBJColorMode</A></TH>
+<TD>Obtains the color mode of the object.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Main 2D Graphics Engine</H2>
+<H3><A name="BGCNT">BG Control</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG0Control.html">G2_SetBG0Control</A></TH>
+<TD width="70%">Sets each type of BG0 control.</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG0Control.html">G2_GetBG0Control</A></TH>
+<TD>Gets settings for each type of BG0 control.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG1Control.html">G2_SetBG1Control</A></TH>
+<TD width="70%">Sets each type of BG1 control.</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG1Control.html">G2_GetBG1Control</A></TH>
+<TD>Gets settings for each type of BG1 control.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2ControlText.html">G2_SetBG2ControlText</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of text mode).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG2ControlText.html">G2_GetBG2ControlText</A></TH>
+<TD>Gets the settings for all BG2 controls (when in text mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2ControlAffine.html">G2_SetBG2ControlAffine</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of affine mode).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG2ControlAffine.html">G2_GetBG2ControlAffine</A></TH>
+<TD>Gets the settings for all BG2 controls (when in affine mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2Control256x16Pltt.html">G2_SetBG2Control256x16Pltt</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of 256x16 palette character BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG2Control256x16Pltt.html">G2_GetBG2Control256x16Pltt</A></TH>
+<TD>Gets settings for all BG2 controls (for 256x16 palette character BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2Control256Bmp.html">G2_SetBG2Control256Bmp</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of 256 bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG2Control256Bmp.html">G2_GetBG2Control256Bmp</A></TH>
+<TD>Gets settings for all BG2 controls (for 256 bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2ControlDCBmp.html">G2_SetBG2ControlDCBmp</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of direct color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG2ControlDCBmp.html">G2_GetBG2ControlDCBmp</A></TH>
+<TD>Gets settings for all BG2 controls (for direct color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2ControlLargeBmp.html">G2_SetBG2ControlLargeBmp</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of large screen 256-color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG2ControlLargeBmp.html">G2_GetBG2ControlLargeBmp</A></TH>
+<TD>Gets settings for all BG2 controls (for large screen 256-color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG3ControlText.html">G2_SetBG3ControlText</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of text mode).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG3ControlText.html">G2_GetBG3ControlText</A></TH>
+<TD>Gets settings for all BG3 controls (when in text mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG3ControlAffine.html">G2_SetBG3ControlAffine</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of affine mode).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG3ControlAffine.html">G2_GetBG3ControlAffine</A></TH>
+<TD>Gets settings for all BG3 controls (when in affine mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG3Control256x16Pltt.html">G2_SetBG3Control256x16Pltt</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of 256x16 palette character BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG3Control256x16Pltt.html">G2_GetBG3Control256x16Pltt</A></TH>
+<TD>Gets settings for all BG3 controls (for 256x16 palette character BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG3Control256Bmp.html">G2_SetBG3Control256Bmp</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of 256 bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG3Control256Bmp.html">G2_GetBG3Control256Bmp</A></TH>
+<TD>Gets settings for all BG3 controls (for 256 bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG3ControlDCBmp.html">G2_SetBG3ControlDCBmp</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of direct color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG3ControlDCBmp.html">G2_GetBG3ControlDCBmp</A></TH>
+<TD>Gets settings for all BG3 controls (for direct color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG2ExtMode.html">G2_GetBG2ExtMode</A></TH>
+<TD>Gets the BG2 affine extended BG type.</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG3ExtMode.html">G2_GetBG3ExtMode</A></TH>
+<TD>Gets the BG3 affine extended BG type.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BGPriority">Setting BG Display Priority Levels</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG0Priority.html">G2_SetBG0Priority</A></TH>
+<TD width="70%">Sets the BG0 display priority level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG1Priority.html">G2_SetBG1Priority</A></TH>
+<TD width="70%">Sets the BG1 display priority level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2Priority.html">G2_SetBG2Priority</A></TH>
+<TD width="70%">Sets the BG2 display priority level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG3Priority.html">G2_SetBG3Priority</A></TH>
+<TD width="70%">Sets the BG3 display priority level.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BGMosaicApply">Setting To Apply Or Not Apply Mosaic To BG</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_BG0Mosaic.html">G2_BG0Mosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to BG0.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_BG1Mosaic.html">G2_BG1Mosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to BG1.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_BG2Mosaic.html">G2_BG2Mosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to BG2.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_BG3Mosaic.html">G2_BG3Mosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to BG3.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="GetPointer">Acquiring Pointers</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG0ScrPtr.html">G2_GetBG0ScrPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG0 screen base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG1ScrPtr.html">G2_GetBG1ScrPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG1 screen base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG2ScrPtr.html">G2_GetBG2ScrPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG2 screen base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG3ScrPtr.html">G2_GetBG3ScrPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG3 screen base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG0CharPtr.html">G2_GetBG0CharPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG0 character base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG1CharPtr.html">G2_GetBG1CharPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG1 character base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG2CharPtr.html">G2_GetBG2CharPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG2 character base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG3CharPtr.html">G2_GetBG3CharPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG3 character base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetOBJCharPtr.html">G2_GetOBJCharPtr</A></TH>
+<TD width="70%">Returns a pointer to the OBJ character base.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Offset2D">Setting BG Plane Offsets</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR bgcolor="#ffffff">
+<TH width="30%"><A href="g2/G2_SetBG0Offset.html">G2_SetBG0Offset</A></TH>
+<TD width="70%">Sets the BG0 plane offset.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG1Offset.html">G2_SetBG1Offset</A></TH>
+<TD width="70%">Sets the BG1 plane offset.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2Offset.html">G2_SetBG2Offset</A></TH>
+<TD width="70%">Sets the BG2 plane offset.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG3Offset.html">G2_SetBG3Offset</A></TH>
+<TD width="70%">Sets the BG3 plane offset.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BGAffine">Setting BG Plane Affine Conversions</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG2Affine.html">G2_SetBG2Affine</A></TH>
+<TD width="70%">Sets affine conversions applied to the BG2 plane.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBG3Affine.html">G2_SetBG3Affine</A></TH>
+<TD width="70%">Sets affine conversions applied to the BG3 plane.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Window">Setting Windows</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetWnd0InsidePlane.html">G2_SetWnd0InsidePlane</A></TH>
+<TD width="70%">Sets a plane that comes inside window0.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetWnd0InsidePlane.html">G2_GetWnd0InsidePlane</A></TH>
+<TD width="70%">Gets settings for plane inside window0.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetWnd1InsidePlane.html">G2_SetWnd1InsidePlane</A></TH>
+<TD width="70%">Sets a plane that comes inside window1.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetWnd1InsidePlane.html">G2_GetWnd1InsidePlane</A></TH>
+<TD width="70%">Gets settings for plane inside window1.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetWndOutsidePlane.html">G2_SetWndOutsidePlane</A></TH>
+<TD width="70%">Sets a plane that comes outside the window.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetWndOutsidePlane.html">G2_GetWndOutsidePlane</A></TH>
+<TD width="70%">Gets settings for plane outside the window.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetWndOBJInsidePlane.html">G2_SetWndOBJInsidePlane</A></TH>
+<TD width="70%">Sets a plane that comes inside the OBJ window.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetWndOBJInsidePlane.html">G2_GetWndOBJInsidePlane</A></TH>
+<TD width="70%">Gets settings for plane inside the OBJ window.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetWnd0Position.html">G2_SetWnd0Position</A></TH>
+<TD width="70%">Sets window0 position.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetWnd1Position.html">G2_SetWnd1Position</A></TH>
+<TD width="70%">Sets window1 position.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BGMosaic">Mosaic</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBGMosaicSize.html">G2_SetBGMosaicSize</A></TH>
+<TD width="70%">Sets the size of the mosaic that is applied to BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetOBJMosaicSize.html">G2_SetOBJMosaicSize</A></TH>
+<TD width="70%">Sets the size of the mosaic that is applied to OBJ.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Effect">Color Special Effects</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2_BlendNone.html">G2_BlendNone</A></TH>
+<TD width="70%">Sets to not perform color special effects.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBlendAlpha.html">G2_SetBlendAlpha</A></TH>
+<TD width="70%">Performs alpha-blending.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBlendBrightness.html">G2_SetBlendBrightness</A></TH>
+<TD width="70%">Controls brightness.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_SetBlendBrightnessExt.html">G2_SetBlendBrightnessExt</A></TH>
+<TD width="70%">Controls brightness, and performs alpha-blending only on OBJ and 3D.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_ChangeBlendAlpha.html">G2_ChangeBlendAlpha</A></TH>
+<TD width="70%">Sets the alpha-blending coefficient.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_ChangeBlendBrightness.html">G2_ChangeBlendBrightness</A></TH>
+<TD width="70%">Sets the brightness update coefficient.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Sub 2D Graphics Engine</H2>
+<H3><A name="BGCNTB">BG Control</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG0Control.html">G2S_SetBG0Control</A></TH>
+<TD width="70%">Sets each type of BG0 control.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG0Control.html">G2S_GetBG0Control</A></TH>
+<TD width="70%">Gets settings for each type of BG0 control.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG1Control.html">G2S_SetBG1Control</A></TH>
+<TD width="70%">Sets each type of BG1 control.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG1Control.html">G2S_GetBG1Control</A></TH>
+<TD width="70%">Gets settings for each type of BG1 control.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG2ControlText.html">G2S_SetBG2ControlText</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of text mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG2ControlText.html">G2S_GetBG2ControlText</A></TH>
+<TD width="70%">Gets the settings for all BG2 controls (when in text mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG2ControlAffine.html">G2S_SetBG2ControlAffine</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of affine mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG2ControlAffine.html">G2S_GetBG2ControlAffine</A></TH>
+<TD width="70%">Gets the settings for all BG2 controls (when in affine mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG2Control256x16Pltt.html">G2S_SetBG2Control256x16Pltt</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of 256x16 palette character BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG2Control256x16Pltt.html">G2S_GetBG2Control256x16Pltt</A></TH>
+<TD width="70%">Gets settings for all BG2 controls (for 256x16 palette character BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG2Control256Bmp.html">G2S_SetBG2Control256Bmp</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of 256 bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG2Control256Bmp.html">G2S_GetBG2Control256Bmp</A></TH>
+<TD width="70%">Gets settings for all BG2 controls (for 256 bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG2ControlDCBmp.html">G2S_SetBG2ControlDCBmp</A></TH>
+<TD width="70%">Sets each type of BG2 control (in the case of direct color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG2ControlDCBmp.html">G2S_GetBG2ControlDCBmp</A></TH>
+<TD width="70%">Gets settings for all BG2 controls (for direct color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG3ControlText.html">G2S_SetBG3ControlText</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of text mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG3ControlText.html">G2S_GetBG3ControlText</A></TH>
+<TD width="70%">Gets settings for all BG3 controls (when in text mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG3ControlAffine.html">G2S_SetBG3ControlAffine</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of affine mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG3ControlAffine.html">G2S_GetBG3ControlAffine</A></TH>
+<TD width="70%">Gets settings for all BG3 controls (when in affine mode).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG3Control256x16Pltt.html">G2S_SetBG3Control256x16Pltt</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of 256x16 palette character BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG3Control256x16Pltt.html">G2S_GetBG3Control256x16Pltt</A></TH>
+<TD width="70%">Gets settings for all BG3 controls (for 256x16 palette character BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG3Control256Bmp.html">G2S_SetBG3Control256Bmp</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of 256 bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG3Control256Bmp.html">G2S_GetBG3Control256Bmp</A></TH>
+<TD width="70%">Gets settings for all BG3 controls (for 256 bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG3ControlDCBmp.html">G2S_SetBG3ControlDCBmp</A></TH>
+<TD width="70%">Sets each type of BG3 control (in the case of direct color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetBG3ControlDCBmp.html">G2S_GetBG3ControlDCBmp</A></TH>
+<TD width="70%">Gets settings for all BG3 controls (for direct color bitmap BG).</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG2ExtMode.html">G2S_GetBG2ExtMode</A></TH>
+<TD>Gets the BG2 affine extended BG type.</TD>
+    </TR>
+    <TR>
+<TH><A href="g2/G2_GetBG3ExtMode.html">G2S_GetBG3ExtMode</A></TH>
+<TD>Gets the BG3 affine extended BG type.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BGPriorityB">Setting BG Display Priority Levels</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG0Priority.html">G2S_SetBG0Priority</A></TH>
+<TD width="70%">Sets the BG0 display priority level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG1Priority.html">G2S_SetBG1Priority</A></TH>
+<TD width="70%">Sets the BG1 display priority level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG2Priority.html">G2S_SetBG2Priority</A></TH>
+<TD width="70%">Sets the BG2 display priority level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG3Priority.html">G2S_SetBG3Priority</A></TH>
+<TD width="70%">Sets the BG3 display priority level.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BGMosaicApplyB">Setting To Apply Or Not Apply Mosaic To BG</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2S_BG0Mosaic.html">G2S_BG0Mosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to BG0.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_BG1Mosaic.html">G2S_BG1Mosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to BG1.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_BG2Mosaic.html">G2S_BG2Mosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to BG2.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_BG3Mosaic.html">G2S_BG3Mosaic</A></TH>
+<TD width="70%">Sets whether or not to apply mosaic to BG3.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="GetPointerB">Acquiring Pointers</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetBG0ScrPtr.html">G2S_GetBG0ScrPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG0 screen base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetBG1ScrPtr.html">G2S_GetBG1ScrPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG1 screen base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetBG2ScrPtr.html">G2S_GetBG2ScrPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG2 screen base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetBG3ScrPtr.html">G2S_GetBG3ScrPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG3 screen base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetBG0CharPtr.html">G2S_GetBG0CharPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG0 character base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetBG1CharPtr.html">G2S_GetBG1CharPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG1 character base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetBG2CharPtr.html">G2S_GetBG2CharPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG2 character base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetBG3CharPtr.html">G2S_GetBG3CharPtr</A></TH>
+<TD width="70%">Returns a pointer to the BG3 character base.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_GetOBJCharPtr.html">G2S_GetOBJCharPtr</A></TH>
+<TD width="70%">Returns a pointer to the OBJ character base.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Offset2DB">Setting BG Plane Offsets</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR bgcolor="#ffffff">
+<TH width="30%"><A href="g2/G2S_SetBG0Offset.html">G2S_SetBG0Offset</A></TH>
+<TD width="70%">Sets the BG0 plane offset.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG1Offset.html">G2S_SetBG1Offset</A></TH>
+<TD width="70%">Sets the BG1 plane offset.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG2Offset.html">G2S_SetBG2Offset</A></TH>
+<TD width="70%">Sets the BG2 plane offset.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG3Offset.html">G2S_SetBG3Offset</A></TH>
+<TD width="70%">Sets the BG3 plane offset.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BGAffineB">Setting BG Plane Affine Conversions</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG2Affine.html">G2S_SetBG2Affine</A></TH>
+<TD width="70%">Sets affine conversions applied to the BG2 plane.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBG3Affine.html">G2S_SetBG3Affine</A></TH>
+<TD width="70%">Sets affine conversions applied to the BG3 plane.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="WindowB">Setting Windows</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetWnd0InsidePlane.html">G2S_SetWnd0InsidePlane</A></TH>
+<TD width="70%">Sets a plane that comes inside window0.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetWnd0InsidePlane.html">G2S_GetWnd0InsidePlane</A></TH>
+<TD width="70%">Gets settings for plane inside window0.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetWnd1InsidePlane.html">G2S_SetWnd1InsidePlane</A></TH>
+<TD width="70%">Sets a plane that comes inside window1.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetWnd1InsidePlane.html">G2S_GetWnd1InsidePlane</A></TH>
+<TD width="70%">Gets settings for plane inside window1.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetWndOutsidePlane.html">G2S_SetWndOutsidePlane</A></TH>
+<TD width="70%">Sets a plane that comes outside the window.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetWndOutsidePlane.html">G2S_GetWndOutsidePlane</A></TH>
+<TD width="70%">Gets settings for plane outside the window.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetWndOBJInsidePlane.html">G2S_SetWndOBJInsidePlane</A></TH>
+<TD width="70%">Sets a plane that comes inside the OBJ window.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2_GetWndOBJInsidePlane.html">G2S_GetWndOBJInsidePlane</A></TH>
+<TD width="70%">Gets settings for plane inside the OBJ window.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetWnd0Position.html">G2S_SetWnd0Position</A></TH>
+<TD width="70%">Sets window0 position.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetWnd1Position.html">G2S_SetWnd1Position</A></TH>
+<TD width="70%">Sets window1 position.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BGMosaicB">Mosaic</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBGMosaicSize.html">G2S_SetBGMosaicSize</A></TH>
+<TD width="70%">Sets the size of the mosaic that is applied to BG.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetOBJMosaicSize.html">G2S_SetOBJMosaicSize</A></TH>
+<TD width="70%">Sets the size of the mosaic that is applied to OBJ.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="EffectB">Color Special Effects</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g2/G2S_BlendNone.html">G2S_BlendNone</A></TH>
+<TD width="70%">Sets to not perform color special effects.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBlendAlpha.html">G2S_SetBlendAlpha</A></TH>
+<TD width="70%">Performs alpha-blending.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBlendBrightness.html">G2S_SetBlendBrightness</A></TH>
+<TD width="70%">Controls brightness.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_SetBlendBrightnessExt.html">G2S_SetBlendBrightnessExt</A></TH>
+<TD width="70%">Controls brightness, and performs alpha-blending only on OBJ and 3D.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_ChangeBlendAlpha.html">G2S_ChangeBlendAlpha</A></TH>
+<TD width="70%">Sets the alpha-blending coefficient.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g2/G2S_ChangeBlendBrightness.html">G2S_ChangeBlendBrightness</A></TH>
+<TD width="70%">Sets the brightness update coefficient.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H1><A name="g3"></A>3D Geometry (G3*)</H1>
+<P><A href="Cycle.html" name="GeometryCommandCycle">Geometry Command Cycle List</A></P>
+<H3><A name="GeometryAndVertices">Geometry And Vertices</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH nowrap width="30%"><A href="g3/G3_Begin.html" target="_self">G3*_Begin</A></TH>
+<TD width="70%">This function declares the start of the vertex list.</TD>
+    </TR>
+    <TR>
+<TH nowrap width="30%"><A href="g3/G3_End.html" target="_self">G3*_End</A></TH>
+<TD width="70%">This function declares the end of the vertex list.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Vtx.html" target="_self">G3*_Vtx</A></TH>
+<TD width="70%">This function sets vertex coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Vtx10.html" target="_self">G3*_Vtx10</A></TH>
+<TD width="70%">This function sets vertex coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_VtxXY.html" target="_self">G3*_VtxXY</A></TH>
+<TD width="70%">Sets vertex XY coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_VtxXZ.html" target="_self">G3*_VtxXZ</A></TH>
+<TD width="70%">Sets vertex XZ coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_VtxYZ.html" target="_self">G3*_VtxYZ</A></TH>
+<TD width="70%">Sets vertex YZ coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_VtxDiff.html" target="_self">G3*_VtxDiff</A></TH>
+<TD width="70%">This function specifies the difference value from the data of the last-set vertex coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Normal.html" target="_self">G3*_Normal</A></TH>
+<TD width="70%">This function sets the normal vector.</TD>
+    </TR>
+    <TR>
+<TH nowrap width="30%"><A href="g3/G3_Color.html" target="_self">G3*_Color</A></TH>
+<TD width="70%">This function sets vertex color directly.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_TexCoord.html" target="_self">G3*_TexCoord</A></TH>
+<TD width="70%">Sets texture coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_PolygonAttr.html" target="_self">G3*_PolygonAttr</A></TH>
+<TD width="70%">Sets polygon related attributes.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="MatrixAndViewport">MatrixAndViewport</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3_MtxMode.html" target="_self">G3*_MtxMode</A></TH>
+<TD width="70%">This function sets matrix mode.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Identity.html" target="_self">G3*_Identity</A></TH>
+<TD width="70%">Initializes current matrix to a unit matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_LoadMtx43.html" target="_self">G3*_LoadMtx43</A></TH>
+<TD width="70%">Sets a 4x3 matrix to the current matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_LoadMtx44.html" target="_self">G3*_LoadMtx44</A></TH>
+<TD width="70%">Sets a 4x4 matrix to the current matrix..</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_MultMtx43.html" target="_self">G3*_MultMtx43</A></TH>
+<TD width="70%">Multiplies current matrix with a 4x3 matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_MultMtx44.html" target="_self">G3*_MultMtx44</A></TH>
+<TD width="70%">Multiplies current matrix with a 4x4 matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_MultMtx33.html" target="_self">G3*_MultMtx33</A></TH>
+<TD width="70%">Multiplies current matrix with a 3x3 matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="g3/G3_MultTransMtx33.html" target="_self">G3*_MultTransMtx33</A></TH>
+<TD>Multiplies current matrix with a translation matrix and a 3x3 matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_PushMtx.html" target="_self">G3*_PushMtx</A></TH>
+<TD width="70%">This function pushes the current matrix onto the stack.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_PopMtx.html" target="_self">G3*_PopMtx</A></TH>
+<TD width="70%">This function pops the current matrix from the stack.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_StoreMtx.html" target="_self">G3*_StoreMtx</A></TH>
+<TD width="70%">This stores the current matrix in the specified position in the stack.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_RestoreMtx.html" target="_self">G3*_RestoreMtx</A></TH>
+<TD width="70%">This reads the matrix from the specified position of the stack.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Scale.html" target="_self">G3*_Scale</A></TH>
+<TD width="70%">Multiplies the current matrix with a scaling (enlarge, reduce) matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Translate.html" target="_self">G3*_Translate</A></TH>
+<TD width="70%">Multiplies the current matrix with a translation matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_ViewPort.html" target="_self">G3*_ViewPort</A></TH>
+<TD width="70%">This function sets the viewport.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Lighting">Lighting</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3_LightColor.html" target="_self">G3*_LightColor</A></TH>
+<TD width="70%">This function sets the light color.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_LightVector.html" target="_self">G3*_LightVector</A></TH>
+<TD width="70%">This function sets the direction vector for light.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_MaterialColorDiffAmb.html" target="_self">G3*_MaterialColorDiffAmb</A></TH>
+<TD width="70%">Sets material diffuse reflection color and ambient reflection color.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_MaterialColorSpecEmi.html" target="_self">G3*_MaterialColorSpecEmi</A></TH>
+<TD width="70%">Sets material specular reflection color and emitted light color.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Shininess.html" target="_self">G3*_Shininess</A></TH>
+<TD width="70%">This function sets the specular reflection shininess table.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><STRONG><A name="Texture">Texture</A></STRONG></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3_TexImageParam.html" target="_self">G3*_TexImageParam</A></TH>
+<TD width="70%">Specifies texture parameters.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_TexPlttBase.html" target="_self">G3*_TexPlttBase</A></TH>
+<TD width="70%">This function sets the base address for the texture palette.</TD>
+    </TR>
+    <TR>
+<TH><A href="g3/G3_MakeTexPlttBaseParam.html">G3_MakeTexPlttBaseParam</A></TH>
+<TD>Calculates texture palette base address.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="GeometryEngine">Control</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3_SwapBuffers.html" target="_self">G3*_SwapBuffers</A></TH>
+<TD width="70%">This function swaps the data group referenced by the rendering engine.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Nop.html" target="_self">G3*_Nop</A></TH>
+<TD width="70%">Does nothing.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="ViewingTest">Geometry Visibility Determination</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH nowrap width="30%"><A href="g3/G3_BoxTest.html">G3*_BoxTest</A></TH>
+<TD width="70%">Tests whether the results of applying the current matrix to the Box argument are contained in the viewing volume.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_PositionTest.html">G3*_PositionTest</A></TH>
+<TD width="70%">Uses the current clip coordinate matrix to transform position coordinates.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_VectorTest.html">G3*_VectorTest</A></TH>
+<TD width="70%">This function performs coordinate conversion on the directional vector according to the current directional vector matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="DirectWrite">Direct Write</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3_Direct0.html">G3*_Direct0</A></TH>
+<TD width="70%">This function is used to directly write commands and parameters. Use it when there is 0 argument.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Direct1.html">G3*_Direct1</A></TH>
+<TD width="70%">This function is used to directly write commands and parameters. Use it when there is 1 argument.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Direct2.html">G3*_Direct2</A></TH>
+<TD width="70%">This function is used to directly write commands and parameters. Use it when there is 2 argument.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Direct3.html">G3*_Direct3</A></TH>
+<TD width="70%">This function is used to directly write commands and parameters. Use it when there is 3 argument.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="MatrixG3Util">Utilities</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3_Frustum.html">G3_Frustum</A></TH>
+<TD width="70%">Sets in the current Projection matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Perspective.html">G3_Perspective</A></TH>
+<TD width="70%">Sets in the current Projection matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_Ortho.html">G3_Ortho</A></TH>
+<TD width="70%">Sets in the current Projection matrix.</TD>
+    </TR>
+    <TR>
+<TH><A href="g3/G3_FrustumW.html">G3_FrustumW</A></TH>
+<TD>Sets in the current Projection matrix. (with scale W parameters)</TD>
+    </TR>
+    <TR>
+<TH><A href="g3/G3_PerspectiveW.html">G3_PerspectiveW</A></TH>
+<TD>Sets in the current Projection matrix. (with scale W parameters)</TD>
+    </TR>
+    <TR>
+<TH><A href="g3/G3_OrthoW.html">G3_OrthoW</A></TH>
+<TD>Sets in the current Projection matrix. (with scale W parameters)</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_LookAt.html">G3_LookAt</A></TH>
+<TD width="70%">Sets in the current Position/Vector matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_RotX.html">G3_RotX</A></TH>
+<TD width="70%">Multiplies the current Position/Vector matrix by the rotation matrix for the x-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_RotY.html">G3_RotY</A></TH>
+<TD width="70%">Multiplies the current Position/Vector matrix by the rotation matrix for the y-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_RotZ.html">G3_RotZ</A></TH>
+<TD width="70%">Multiplies the current Position/Vector matrix by the rotation matrix for the z-axis.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_LoadTexMtxTexCoord.html">G3*_LoadTexMtxTexCoord</A></TH>
+<TD width="70%">Sets a maxtrix corrected for the TexCoord source into the current Texture matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_LoadTexMtxEnv.html">G3*_LoadTexMtxEnv</A></TH>
+<TD width="70%">Sets a matrix correct for theNormal source/Vertex source into the current Texture matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="DL">Creating Dynamic Display Lists (Command Lists)</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3_BeginMakeDL.html">G3_BeginMakeDL</A></TH>
+<TD width="70%">Call before creating the command list.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_EndMakeDL.html">G3_EndMakeDL</A></TH>
+<TD width="70%">Call after creating the command list.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_GetDLStart.html">G3_GetDLStart</A></TH>
+<TD width="70%">Gets the pointer to the command list.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_GetDLLength.html">G3_GetDLLength</A></TH>
+<TD width="70%">Gets the size of the command list buffer.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3_GetDLSize.html">G3_GetDLSize</A></TH>
+<TD width="70%">Gets the size of the command list.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H1><A name="g3x"></A>3D Graphics Control (G3X)</H1>
+<H3><A name="Init3D">Initialization</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH nowrap width="30%"><A href="g3/G3X_Init.html">G3X_Init</A></TH>
+<TD width="70%">Initializes each 3D related item.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_InitTable.html">G3X_InitTable</A></TH>
+<TD width="70%">Initializes the Fog table, etc.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_InitMtxStack.html">G3X_InitMtxStack</A></TH>
+<TD width="70%">Initializes the matrix stack.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_Reset.html">G3X_Reset</A></TH>
+<TD width="70%">Resets overflow, etc. Normally executed at the beginning of each frame draw process.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_ResetMtxStack.html">G3X_ResetMtxStack</A></TH>
+<TD width="70%">Initializes the matrix stack. However it will not substitute a unit matrix in the projection matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Funcs3D">Enabling and Disabling Each Function</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3X_AlphaTest.html">G3X_AlphaTest</A></TH>
+<TD width="70%">Performs alpha test setting.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_AlphaBlend.html">G3X_AlphaBlend</A></TH>
+<TD width="70%">Selects enable/disable for alpha-blending.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_AntiAlias.html">G3X_AntiAlias</A></TH>
+<TD width="70%">Selects antialias enable/disable.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Toon">Tone/Highlight/Shading</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetShading.html">G3X_SetShading</A></TH>
+<TD width="70%">Selects toon/highlight shading.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetToonTable.html">G3X_SetToonTable</A></TH>
+<TD width="70%">Sets toon/highlight table.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="EdgeColor">Edge Color</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3X_EdgeMarking.html">G3X_EdgeMarking</A></TH>
+<TD width="70%">Selects enable/disable for edge marking.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetEdgeColorTable.html">G3X_SetEdgeColorTable</A></TH>
+<TD width="70%">Sets edge color table.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Fog">Fog</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetFog.html">G3X_SetFog</A></TH>
+<TD width="70%">Sets fog.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetFogColor.html">G3X_SetFogColor</A></TH>
+<TD width="70%">Sets fog color.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetFogTable.html">G3X_SetFogTable</A></TH>
+<TD width="70%">Set fog table.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Offset3D">Offset Settings</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetHOffset.html">G3X_SetHOffset</A></TH>
+<TD width="70%">Sets the BG0 plane offset.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetClearImageOffset.html">G3X_SetClearImageOffset</A></TH>
+<TD width="70%">Sets the offset when using clear image.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="ClearColor">Clear ColorAnd Clear Depth</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetClearColor.html">G3X_SetClearColor</A></TH>
+<TD width="70%">This function sets clear color.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Test3D">Acquiring Test Results And Calculated Results</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetBoxTestResult.html">G3X_GetBoxTestResult</A></TH>
+<TD width="70%">Acquires box test results.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetPositionTestResult.html">G3X_GetPositionTestResult</A></TH>
+<TD width="70%">Acquires position test results.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetVectorTestResult.html">G3X_GetVectorTestResult</A></TH>
+<TD width="70%">Acquires vector test results.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetClipMtx.html">G3X_GetClipMtx</A></TH>
+<TD width="70%">Acquires current clip coordinate matrix.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetVectorMtx.html">G3X_GetVectorMtx</A></TH>
+<TD width="70%">Acquires current direction vector matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Misc3D">Other</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetMtxStackLevelPV.html">G3X_GetMtxStackLevelPV</A></TH>
+<TD width="70%">Acquires thePositionVector matrix stack level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetMtxStackLevelPJ.html">G3X_GetMtxStackLevelPJ</A></TH>
+<TD width="70%">Acquires the Projection matrix stack level.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_IsGeometryBusy.html">G3X_IsGeometryBusy</A></TH>
+<TD width="70%">Tests to see if geometry engine is busy.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_IsMtxStackOverflow.html">G3X_IsMtxStackOverflow</A></TH>
+<TD width="70%">Tests the Matrix stack's overflow flag.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_IsLineBufferUnderflow.html">G3X_IsLineBufferUnderflow</A></TH>
+<TD width="70%">Rendering engine tests the lines over flag.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_IsListRamOverflow.html">G3X_IsListRamOverflow</A></TH>
+<TD width="70%">Tests the overflow flag of the polygon list RAM and vertex list RAM.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_ResetMtxStackOverflow.html">G3X_ResetMtxStackOverflow</A></TH>
+<TD width="70%">Clears the matrix stack overflow flag.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_ResetLineBufferUnderflow.html">G3X_ResetLineBufferUnderflow</A></TH>
+<TD width="70%">Clears the rendering engine lines over flag.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_ResetListRamOverflow.html">G3X_ResetListRamOverflow</A></TH>
+<TD width="70%">Clears the overflow flag for the polygon list RAM and vertex list RAM.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_ClearFifo.html">G3X_ClearFifo</A></TH>
+<TD width="70%">Clears entire command FIFO.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetPolygonListRamCount.html">G3X_GetPolygonListRamCount</A></TH>
+<TD width="70%">Gets value of polygon list RAM counter.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetVtxListRamCount.html">G3X_GetVtxListRamCount</A></TH>
+<TD width="70%">Gets value of vertex list RAM counter.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetRenderedLineCount.html">G3X_GetRenderedLineCount</A></TH>
+<TD width="70%">Gets minimum number of rendered lines.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetCommandFifoCount.html">G3X_GetCommandFifoCount</A></TH>
+<TD width="70%">References the number of commands/data currently stored in the command FIFO.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_GetCommandFifoStatus.html">G3X_GetCommandFifoStatus</A></TH>
+<TD width="70%">Gets the command FIFO status.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetFifoIntrCond.html">G3X_SetFifoIntrCond</A></TH>
+<TD width="70%">Sets command FIFO interrupt request generating conditions.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="g3/G3X_SetDisp1DotDepth.html">G3X_SetDisp1DotDepth</A></TH>
+<TD width="70%">Sets 1 pixel polygon display boundary depth value register value.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Type">Main Types And Macros</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="30%"><A href="Type.html">GXRgb</A></TH>
+<TD width="70%">A type that shows a color with each of RGB is 5 bits.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="Type.html">GXRgba</A></TH>
+<TD width="70%">A type that shows a color with each of RGB is 5 bits and alpha flag.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="Type.html">VexVtx10</A></TH>
+<TD width="70%">Packs the s3.6 type 3D vector.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="Type.html">VecVtxDiff</A></TH>
+<TD width="70%">Shows the command parameter of <CODE>G3_VtxDiff</CODE>.</TD>
+    </TR>
+    <TR>
+<TH width="30%"><A href="gx/GXBoxTestParam.html">GXBoxTestParam</A></TH>
+<TD width="70%">Structure used as an argument of <CODE>G3_BoxTest</CODE>.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GXDLInfo.html">GXDLInfo</A></TH>
+<TD>Structure that is used as a parameter for the display list creation function.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GXOamAttr.html">GXOamAttr</A></TH>
+<TD>Structure that indicates OAM attribute.</TD>
+    </TR>
+    <TR>
+<TH><A href="gx/GXOamAffine.html">GXOamAffine</A></TH>
+<TD>Structure that indicates OAM affine transformation parameter.</TD>
+    </TR>
+    <TR>
+<TH><A href="Macro.html">Macros</A></TH>
+<TD>Macros such as the GX type conversion.</TD>
+    </TR>
+    <TR>
+<TH><A href="DLMacro.html">Display List Descriptive Macros</A></TH>
+<TD>These macros pack the geometry command parameters.</TD>
+    </TR>
+    <TR>
+<TH><A href="Screen2D.html">2D Screen Macros and Structures</A></TH>
+<TD>Structures and macros for storing screen data and character data in 2D screen.</TD>
+    </TR>
+    <TR>
+<TH><A href="g3/MakeDL.html">MakeDL</A></TH>
+<TD>Description of the prefixes for the API that creates the display list.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<table border="0" height="100%"><tr><td style="background-color : white;"></td></tr></table>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

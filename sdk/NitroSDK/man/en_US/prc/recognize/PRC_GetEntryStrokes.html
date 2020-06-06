@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRC_GetEntryStrokes</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRC_GetEntryStrokes</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+void* PRC_GetEntryStrokes(
+<A href="../stroke/PRCStrokes.html">PRCStrokes</A>* strokes,
+const <A href="PRCPrototypeList.html">PRCPrototypeList</A>* prototypeList,
+const <A href="PRCPrototypeEntry.html">PRCPrototypeEntry</A>* entry );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">strokes</font></strong></em></td>
+<td width="87%">Pointer to the <code><A href="../stroke/PRCStrokes.html">PRCStrokes</A></code> structure that stores stroke data.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">prototypeList</font></strong></em></td>
+<td width="87%">Pointer to the sample pattern list.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">entry</font></strong></em></td>
+<td width="87%">Pointer to a sample DB entry.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Return Values</h2>
+<p>None</p>
+
+<H2>Description</H2>
+<P>Obtains sample DB entry stroke information. A pointer from the resultant <code>strokes</code> is mapped to the stroke information that constitutes the sample DB entry. You must not change the stroke data in <code>strokes</code>.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="PRC_GetRecognizedEntry.html">PRC_GetRecognizedEntry*</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>06/23/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

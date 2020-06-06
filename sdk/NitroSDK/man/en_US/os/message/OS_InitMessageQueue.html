@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_InitMessageQueue</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_InitMessageQueue</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_InitMessageQueue(
+OSMessageQueue*   mq,
+OSMessage*        msgArray,
+s32               msgCount);
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>mq</STRONG></EM></TD>
+<TD width="87%">Pointer to the message queue</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>msgArray</STRONG></EM></TD>
+<TD width="87%">Pointer to the array maintaining the messages</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>msgCount</STRONG></EM></TD>
+<TD>Number of messages maintained in the array
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function initializes the <em><strong><code>mq</code></strong></em> message queue structure. The <em><strong><code>msgArray</code></strong></em> argument  points to the array maintaining the queue messages, and <em><strong><code>msgCount</code></strong></em> is the number of messages maintained in the queue (i.e., the array size).</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_JamMessage.html">OS_JamMessage</A>, <A href="OS_SendMessage.html">OS_SendMessage</A>, <A href="OS_ReceiveMessage.html">OS_ReceiveMessage</A>, <A href="OS_ReadMessage.html">OS_ReadMessage()</A></CODE></P>
+<H2>Revision History</H2>
+<P>03/12/2004 Added <CODE>OS_ReadMessage</CODE> to See Also.<BR>12/05/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

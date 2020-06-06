@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGlbGetInvWV</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGlbGetInvWV</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE><code>#include &lt;nnsys/g3d/glbstate.h&gt;</CODE></PRE>
+<PRE>const MtxFx43* NNS_G3dGlbGetInvSrtCameraMtx( void );
+const MtxFx43* NNS_G3dGlbGetInvWV(void);</code></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<P>None.</P>
+
+<H2>Return Values</H2>
+<P>Returns the pointer to the inverse matrix of the matrix multiplied by the <code>BaseSRT</code> matrix in the camera matrix.</P>
+
+
+<H2>Description</H2>
+<P>
+This function gets the pointer to the inverse matrix of the matrix multiplied by the <code>BaseSRT</code> matrix in the camera matrix that is set to the global state kept in the G3D library. If the matrix multiplied by the <code>BaseSRT</code> matrix has not been calculated, this function requests the matrix and its inverse and returns a pointer to that inverse matrix.
+</P>
+
+
+<H2>See Also</H2>
+<P><CODE><A href="NNS_G3dGlbGetSrtCameraMtx.html">NNS_G3dGlbGetWV</A></CODE></P>
+
+
+<H2>Revision History</H2>
+<P>10/13/2004 Removed <code>NNS_G3dGlbGetInvSrtCameraMtx</code> from the title but left it in the C Specification section.<br /> 08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

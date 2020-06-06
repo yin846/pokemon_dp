@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_DisableScheduler</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_DisableScheduler</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>u32 OS_DisableScheduler( void );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+
+<H2>Return Values</H2>
+<P>The internal counter value after canceling the suppression of the scheduler operation. </P>
+<P>When this value is larger than 0, the scheduler operation is suppressed. (It is suppressed, since a value greater than 0 is always returned.))</P>
+
+<H2>Description</H2>
+<P>Suppresses the operation of the thread system scheduler. In other words, this stops rescheduling temporarily.</P>
+<P><CODE>Even when the functions such as <code><a href="OS_WakeupThread.html">OS_WakeupThread</a></code> and <code><a href="OS_SetThreadPriority.html">OS_SetThreadPriority</a></code> that have the possibility of generating the rescheduling of thread are called, this prevents the rescheduling of thread.</P>
+<P>The function that cancels the suppression of the scheduler operation of <code>OS_DisableScheduler</code> is <code><a href="OS_EnableScheduler.html">OS_EnableScheduler</a></code>. Normally, these two functions should be used as a pair.</P>
+<P>Call <code>OS_DisableScheduler</code> and <code><a href="OS_EnableScheduler.html">OS_EnableScheduler</a></code> while the interrupts are prohibited.</P>
+<P>The scheduler has the internal counter. That counter, which is normally set to 0, increments by one with <code>OS_DisableScheduler</code> and decrements by one with <code><a href="OS_EnableScheduler.html">OS_EnableScheduler</a></code>. In addition, if it is larger than 0, this prevents rescheduling. The return value from this function is the value after the counter has changed. Therefore, after calling this function, the value that is larger than 0 is always returned.</P>
+<P>A set of <code>OS_DisableScheduler</code> and <code><a href="OS_EnableScheduler.html">OS_EnableScheduler</a></code> as a pair can be nested.</P>
+<BLOCKQUOTE>Example:<br /><CODE>(void)OS_DisableRescheduler();<BR> :// Rescheduling prohibited<BR> (void)OS_DisableRescheduler();<BR> :<BR>(void)OS_EnableRescheduler();<BR> :// Rescheduling still prohibited<BR> (void)OS_DisableRescheduler();<BR> : <BR>Rescheduling is allowed</CODE></BLOCKQUOTE>
+<P><B>Caution:</B> Depending on the situation, the program may stop because there is no thread to operate. For example, if <code>OS_DisableScheduler</code> was set to prevent rescheduling and <code><a href="OS_ExitThread.html">OS_ExitThread</a></code> was called, the execution right cannot be given to other threads even after completing the current thread. It requires special attention to avoid such a situation.</P>
+<H2>See Also</H2>
+<P><code><a href="OS_SelectThread.html">OS_SelectThread</a>, <a href="OS_RescheduleThread.html">OS_RescheduleThread</a>, <a href="OS_EnableScheduler.html">OS_EnableScheduler</a></code></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;<br> 01/21/2005 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

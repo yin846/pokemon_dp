@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndCalcHeapSizeForUnitHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_FndCalcHeapSizeForUnitHeap</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+	  <pre>u32 NNS_FndCalcHeapSizeForUnitHeap(
+u32     memBlockSize,
+u32     memBlockNum,
+int     alignment);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">memBlockSize</font></strong></em></td>
+    
+<td width="87%">Memory block size (in bytes)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">memBlockNum</font></strong></em></td>
+    
+<td width="87%">Total Number of Memory Blocks to be allocated</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">alignment</font></strong></em></td>
+    
+<td width="87%">Memory block alignment. Can take any of the following values: 4, 8, 16, 32.</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>This returns the unit heap size calculated from the memory block size and the number of blocks.</p>
+<H2>Description</H2>
+<P>Obtains the size of the required unit heap by taking the size and quantity of the memory block. When creating a unit heap, the number of memory blocks specified in <code>memBlockNum</code> can be allocated from the unit heap by specifying the value obtained using this function as the size of the memory area allocated to the heap.</p>
+<P>This function does not take into consideration the starting address of the unit heap that is actually created. For this reason, if a value greater than 4 is specified for the alignment, the size may be a few bytes larger than actually necessary.</p>
+<h2>See Also</h2>
+<p><code><a href="NNS_FndCreateUnitHeap.html">NNS_FndCreateUnitHeap</a>, <a href="NNS_FndCreateUnitHeapEx.html">NNS_FndCreateUnitHeapEx</a></code></p>
+<H2>Revision History</H2>
+<P>06/22/2004 Initial version.</P>
+</body>
+</html>

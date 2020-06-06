@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_SetAgbCartridgeFastestRomCycle</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_SetAgbCartridgeFastestRomCycle</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>void MI_SetAgbCartridgeFastestRomCycle( </CODE><BR> <CODE>MICartridgeRomCycle1st *prev1st,</CODE><BR> <CODE>MICartridgeRomCycle2nd *prev2nd );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><EM><B>prev1st</B></EM></TD>
+<TD>Pointer to the region that stores the previous ROM first access cycle settings value.</TD>
+    </TR>
+    <TR>
+<TD><EM><B>prev2nd</B></EM></TD>
+<TD>Pointer to the region that stores the previous ROM second access cycle settings value.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None. However, the previous settings values are stored where <EM><B>prev1st</B></EM> and <EM><B>prev2nd</B></EM> are shown.</p>
+
+<H2>Description</H2>
+<P>Configures the first and second access cycles to the cartridge ROM region. Configures the high-speed ROM access cycle for the AGB cartridge ROM.</P>
+<P>The first access cycle is set to 8, while the second access cycle is set to 4. This configuration is equivalent to performing the following:</P>
+<BLOCKQUOTE>
+<P><CODE>MI_SetCartridgeRomCycle1st( MI_CTRDG_ROMCYCLE1_8 );<BR> MI_SetCartridgeRomCycle2nd( MI_CTRDG_ROMCYCLE2_4 );</CODE></P>
+</BLOCKQUOTE>
+<P> </P>
+<P>If <B><I><CODE>prev1st</CODE></I></B> is not NULL, the previous first access cycle settings value will be stored ahead of the pointer shown in <B><I><CODE>prev1st</CODE></I></B>. If <B><I><CODE>prev2nd</CODE></I></B> is not NULL, the previous second access cycle settings value will be stored ahead of the pointer shown in <B><I><CODE>prev2nd</CODE></I></B>.</P>
+<P><BR>
+</P>
+<BLOCKQUOTE><B>Note: </B><BR> The system clock of the DS is double that of the AGB, so the method for calculating the access cycle is as follows:</BLOCKQUOTE>
+<BLOCKQUOTE><BLOCKQUOTE>(Number of AGB wait cycles + 1 &lt;actual access&gt;) x 2</BLOCKQUOTE></BLOCKQUOTE>
+<BLOCKQUOTE>Therefore, a 3-1 wait on the AGB will be an 8-4 access notation on the DS. Converting this to a wait cycle will result in an entirely odd-numbered expression such as 7-3.</BLOCKQUOTE>
+<BLOCKQUOTE>Fast settings can be performed on all AGB mask ROMs up to 3-1 wait (8-4 access notation on the DS), but the slower sections will not cause any problems. Only setting the first access to 6 is forbidden.</BLOCKQUOTE>
+<BLOCKQUOTE>However, since there is the possibility that there is a device on board the cartridge that cannot access at the same speed as the AGB mask ROM, and since there is only one address space where access speeds different from that of the AGB can be configured, it is recommended that the slowest access configurations possible be used.<FONT color="#ff0033">Be careful not to access a slow device with high-speed mask ROM configured.</FONT></BLOCKQUOTE>
+<BLOCKQUOTE>Also, use functions such as <CODE><A href="../../ctrdg/CTRDG_GetAgbGameCode.html">CTRDG_GetAgbGameCode()</A></CODE> / <CODE><A href="../../ctrdg/CTRDG_IsBitID.html">CTRDG_IsBitID()</A></CODE> / <CODE><A href="../../ctrdg/CTRDG_IsNumberID.html">CTRDG_IsNumberID()</A></CODE> before the access, and perform the access after comfirming that that cartridge is in fact the correct one.</BLOCKQUOTE>
+<h2>Internal Operation</h2>
+<P>Accesses the <code>EXMEMCNT</code> I/O register <code>(0x4000204)</code>.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="MI_SetCartridgeRomCycle1st.html">MI_SetCartridgeRomCycle1st</A>, <A href="MI_SetCartridgeRomCycle2nd.html">MI_SetCartridgeRomCycle2nd</A>, <A href="../../ctrdg/CTRDG_GetAgbGameCode.html">CTRDG_GetAgbGameCode</A>, <A href="../../ctrdg/CTRDG_IsBitID.html">CTRDG_IsBitID</A>, <A href="../../ctrdg/CTRDG_IsNumberID.html">CTRDG_IsNumberID</A></CODE></p>
+<H2>Revision History</H2>
+<P>02/08/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

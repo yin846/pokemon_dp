@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Runtime Binary File Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">Runtime Binary File Overview</h1>
+<H2>Conceptual Diagram</H2>
+<P><BR> <IMG src="image3.gif" border="0" width="746" height="368"></P>
+<H2>Description</H2>
+The types and organization of the binary data used by the G2D Library are described on this page. The data shown in the conceptual diagram is stored in ROM as a binary file. When it is required, the user reads it to the main memory and sets it up in the G2D Library.
+
+
+
+
+<h2>Character Data (<font face="Courier New">.ncgr</font> and <font face="Courier New">.ncbr</font> files)</h2>
+Character data stores the image information stored in the VRAM. This data is created by the binary converter from the NITRO-CHARACTER binary <code>.ncg</code> file. There are two runtime binary formats, <code>.ncgr</code> and <code>.ncbr</code>. When using character data for rendering with the 2D graphics engine, it needs to be output in the character format (<code>.ncg</code>) where the pixels are aligned every 8 x 8 pixels. When using character data for rendering with the 3D graphics engine, it needs to be output in the bitmap format (<code>.ncbr</code>) where the pixels are aligned along the same line as the original image pixels. The OBJ character data has two types of mapping format, 1D mapping and 2D mapping. The manner in which characters are aligned varies depending on the mapping format. Be aware of the fact that in order for the converter to obtain information about the mapping format, the <code>.nce</code> file is required. BG character data has only 2D mapping and does not require an <code>.nce</code> file. However, the converter has no way of determining if the character data is for OBJ or BG so you need to specify the <code>-bg</code> option before conversion. During <code>.nsc</code> file conversion the <code>-bg</code> option is specified automatically.
+
+
+<h2>Color Palette Data (<font face="Courier New">.nclr</font> files)</h2>
+Color palette data stores the color palette information read into the graphics engine. It is created from the <code>.ncl</code> file of the NITRO-CHARACTER binary file by the binary converter.
+
+<h2>Animation Data (<font face="Courier New">.nanr</font> and <font face="Courier New">.nmar</font> files)</h2>
+Animation data is the data storing the cell animation or multicell animation. It is created from the animation sequence data of the NITRO-CHARACTER binary file's <code>.nce</code> file or <code>.nmc</code> file. It is output as a binary file with the extension <code>.nanr</code> or <code>.nmar</code>.<BR> Animation data has multiple types of formats based on the types of parameters changed.<BR> Currently there are three types supported: cell (multicell) number only, cell (multicell) number + SRT (scale, rotation, parallel movement) value, and cell (multicell) number + T (parallel movement).<BR>
+
+
+<h2>Cell Data (<font face="Courier New">.ncer</font> files)</h2>
+Cell data stores the cell data list. It is created from the cell list in the <code>.nce</code> file of the NITRO-CHARACTER binary file by the binary converter. It is output as a binary file with the extension <code>.ncer</code>. The information required during VRAM transfer animation is also stored in this file (if the <code>-vta</code> option is specified during conversion).
+
+<h2>Multicell Data (<font face="Courier New">.nmcr</font> files)</h2>
+Multicell data stores the multicell data list. It is created from the multicell list in the <code>.nmc</code> file of the NITRO-CHARACTER binary file by the binary converter. It is output as a binary file with the extension <code>.nmcr</code>. <BR>
+
+<h2>Entity Data (<font face="Courier New">.nenr</font> files)</h2>
+Entity data is data that stores multiple animation sequence numbers. It breaks up large amounts of animation data into groups for easier management. Entity data is converted from Entity defined text information by <code>BuildNENR.exe</code>, and is output as a binary file with the extension <code>.nenr</code> or <code>.nmar</code>.
+<h2>Screen Data (<font face="Courier New">.nscr</font> files) </h2>
+<P><IMG src="image.gif" border="0" width="526" height="271"><BR>
+</P>
+<P>
+Screen data stores the screen information used in BG display. It is created from the <code>.nsc</code> file of the NITRO-CHARACTER binary file by the binary converter.</P>
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--==========================================================================   Project:  NitroWiFi - WCM - man   File:     WCM_UpdateOption.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Log: WCM_UpdateOption.html,v $   Revision 1.2  2005/07/22 13:00:24  terui   "ƒtƒF[ƒY"‚ð"ó‘Ô"‚É—pŒê“ˆê   —š—ð‚Ì‰”Å“ú‚ð“ˆê    Revision 1.1  2005/07/20 13:11:10  terui   Initial upload    $NoKeywords: $  ==========================================================================-->
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>WCM_UpdateOption</TITLE>
+		<LINK rel="stylesheet" href="../../css/nitro.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>WCM_UpdateOption</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;nitroWiFi/wcm.h&gt;
+
+u32   WCM_UpdateOption( u32 option );
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+			This is a synchronous function that updates option items that configure precise operation during wireless access point auto-search and during connection with wireless access points. If no fixed value is set using this function, when the <CODE>WCM_Init</CODE> function is called, the default values from initialization will be used. Calls made before initialization will be ignored. 
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>option</CODE></STRONG></EM></TD>
+					<TD width="75%">Specifies 32-bit option update settings in accordance with the option-setting format. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<P>
+			There are five categories of options and each category has its own update setting bit. The detailed settings for a category are updated only if the corresponding update setting bit in the argument is set to <CODE>1</CODE> when updating. In other words, if an argument of <CODE>0</CODE> is specified, settings for none of the categories will be updated.<BR>The following constant definitions are defined by taking the logical <CODE>OR</CODE> of the update setting bits in each category and the detail settings. Multiple categories can be updated at one time by specifying the logical OR value of the constant definitions for each category. 
+		</P>
+		<H3>Channel list to search during wireless access point auto-search</H3>
+		<TABLE>
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_OPTION_CHANNEL_RDC</CODE></STRONG></EM></TD>
+					<TD width="75%">Setting to auto-search channels 1, 7 and, 13.<B><FONT color="green">(default)</FONT><B></TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_OPTION_CHANNEL_ALL</CODE></STRONG></EM></TD>
+					<TD>Setting to auto-search all channels, from 1 though 13. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_OPTION_CHANNEL_1</CODE></STRONG></EM> to <EM><STRONG><CODE>WCM_OPTION_CHANNEL_13</CODE></STRONG></EM></TD>
+					<TD>Setting to auto-search channels individually, from 1 though 13. More than one channel can be specified by using a logical <CODE>OR</CODE>. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3>Indicates whether notification is sent after going through the channel list once during wireless access point auto-search</H3>
+		<TABLE>
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_OPTION_ROUNDSCAN_IGNORE</CODE></STRONG></EM></TD>
+					<TD width="75%">No notification after going through the channel list once.<B><FONT color="green">(default)</FONT><B></TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_OPTION_ROUNDSCAN_NOTIFY</CODE></STRONG></EM></TD>
+					<TD>After going through the channel list once, the callback function specified by <A href="WCM_StartupAsync.html"><CODE>WCM_StartupAsync</CODE> function</A> is called as notification type <CODE>WCM_NOTIFY_SEARCH_AROUND</CODE>.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3>Scan process type during wireless access point auto-search</H3>
+		<TABLE>
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_OPTION_SCANTYPE_PASSIVE</CODE></STRONG></EM></TD>
+					<TD width="75%">Passive scanning method. A passive scanning method that waits to receive beacons sent by wireless access points.<BR>Note that beacons from some wireless access points may not include ESS-ID information.<B><FONT color="green">(default)</FONT><B></TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_OPTION_SCANTYPE_ACTIVE</CODE></STRONG></EM></TD>
+					<TD>Active scanning method. A scanning method that actively searches for communication partners by issuing probe requests for a response from wireless access points.<BR>Note that some wireless access points may not respond to probe requests that do not include ESS-IDs.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3>802.11 authentication method used when connecting to wireless access point</H3>
+		<TABLE>
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_OPTION_AUTH_OPENSYSTEM</CODE></STRONG></EM></TD>
+					<TD width="75%">Open system authentication method.<B><FONT color="green">(default)</FONT><B></TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_OPTION_AUTH_SHAREDKEY</CODE></STRONG></EM></TD>
+					<TD>Shared key authentication method. Uses the data array and encryption method specified by the <A href="WCMWepDesc.html"><CODE>WCMWepDesc</CODE></A> structure when <A href="WCM_ConnectAsync.html"><CODE>WCM_ConnectAsync</CODE></A> was called.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3>Power save method for DCF communication after connection with wireless access point</H3>
+		<TABLE>
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>WCM_OPTION_POWER_SAVE</CODE></STRONG></EM></TD>
+					<TD width="75%">A power conservation method that synchronizes the DCF data reception with the beacon transmission timing of the wireless access point. The interval between data receptions will depend on the beacon transmission interval of the wireless access point, but this method can minimize power consumption.<B><FONT color="green">(default)</FONT><B></TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>WCM_OPTION_POWER_ACTIVE</CODE></STRONG></EM></TD>
+					<TD>Full-time powering method. The interval between DCF data receptions does not depend on the interval between beacon transmissions, so this method is effective in minimizing data reception delays. But because it steadily supplies power to the wireless hardware, power consumption is higher.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<P>
+			Returns the option setting value before the update. If called before initialization, returns <CODE>0</CODE>.
+		</P>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="WCM_Init.html">WCM_Init</A>, <A href="WCM_StartupAsync.html">WCM_StartupAsync</A>, <A href="WCM_BeginSearchAsync.html">WCM_BeginSearchAsync</A>, <A href="WCM_ConnectAsync.html">WCM_ConnectAsync</A>, <A href="WCM_SetChannelScanTime.html">WCM_SetChannelScanTime</A>, <A href="WCMConfig.html">WCMConfig</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			07/22/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

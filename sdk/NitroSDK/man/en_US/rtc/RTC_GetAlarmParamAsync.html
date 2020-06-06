@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>RTC_GetAlarmParamAsync</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">RTC_GetAlarmParamAsync</h1>
+
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/rtc.h&gt;</CODE><BR>
+<PRE><CODE><A href="RTCResult.html">RTCResult</A> RTC_GetAlarmParamAsync( 
+<A href="RTCAlarmChan.html">RTCAlarmChan</A>        chan,
+<A href="RTCAlarmParam.html">RTCAlarmParam</A>*     param,
+<A href="RTCCallback.html">RTCCallback</A>		callback,
+void*		arg );</CODE></PRE>
+  </dd>
+
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">chan</font></strong></em></TD>
+<TD width="700">Uses <code><a href="RTCAlarmChan.html">RTCAlarmChan</a></code> enum type to specify the alarm channel. </TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">param</font></strong></em></TD>
+<TD>Pointer to <code><a href="RTCAlarmParam.html">RTCAlarmParam</a></code>. </TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">callback</font></strong></em></TD>
+<TD>Pointer to the callback function<br> This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">arg</font></strong></em></TD>
+<TD>Argument passed to the callback function. </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>If the request succeeds, it returns 0. If the request fails, it returns some numeric value other than 0. </p>
+
+<H2>Description</H2>
+<P>This function asynchronously reads the alarm interrupt parameter values from the real time clock. It queries ARM7 for the values of the alarm interrupt parameters and returns those values without waiting for a response from the processor. To get the result from the processor, you must use the <em><strong><code>result</code></strong></em> argument. If this function fails, no operation is performed and no user callback function is called. </P>
+
+<h2>Caution</h2>
+<P><FONT color=red>If the RTC alarm interrupt permission status is not &quot;permit,&quot; the function will not be able to read the parameter values from the real-time clock. Therefore, even if this function succeeds, a &quot;process failed&quot; result will be passed to the user callback function. Also, the value is written asynchronously to the buffer specified with the <B><I><CODE>param</code></I></B> argument, so do not use this for other purpose until the completion of the asynchronous process is confirmed with the user callback function.</P>
+
+<h2>See Also</h2>
+<P><code><a href="RTC_GetAlarmParamAsync.html">RTC_GetAlarmParamAsync</a>, <a href="RTC_SetAlarmParam.html">RTC_SetAlarmParam</a>, <a href="RTC_SetAlarmParamAsync.html">RTC_SetAlarmParamAsync</a>, <a href="RTCResult.html">RTCResult</a>, <a href="RTCAlarmChan.html">RTCAlarmChan</a>, <a href="RTCAlarmParam.html">RTCAlarmParam</a>, <a href="RTCCallback.html">RTCCallback</a></code></P>
+
+<H2>Revision History</H2>
+<P>
+06/27/2005 Added statement about callback being called from the interrupt handler.<br>03/08/2005 Standardized the use of the term 'interrupt' in Japanese.<br>05/18/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

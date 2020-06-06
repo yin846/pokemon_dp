@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MB_CommSetParentStateCallback</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MB_CommSetParentStateCallback</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR> <CODE>void MB_CommSetParentStateCallback(MBCommPStateCallback callback);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD width="87%">Pointer to the callback function that notifies the parent state<br>This callback is called from the interrupt handler.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function sets the callback function for communicating the parent state. This callback is called each time an automatically occurring internal parent process enters a specific state. <BR>
+<h2>See Also</h2>
+<p><A href="../mb_comm_pstate_callback_type.html"><code>MBCommPStateCallback</code></A>, <A href="../mb_comm_pstate_const.html"><code>MBCommPState</code></A>, <A href="MB_StartParent.html"><code>MB_StartParent</code></A>, <A href="../common/MB_End.html"><code>MB_End</code></A> </P>
+<H2>Revision History</H2>
+<P>
+06/01/2005 Added text indicating that the callback is called from the interrupt handler. <br> 08/09/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

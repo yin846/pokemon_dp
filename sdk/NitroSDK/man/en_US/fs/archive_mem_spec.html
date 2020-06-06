@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Memory File Archive</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">Memory File Archive</h1>
+<h2>Overview</h2>
+<p>
+This section explains the Memory File Archive that is prepared by default in the file system.
+</p>
+<H2>Specifications</H2>
+<P>
+The basic operations of the Memory File Archive are outlined below: It gets loaded automatically the first time the <a href="file/FS_CreateFileFromMemory.html">FS_CreateFileFromMemory<a> function is called. It gets accessed at the specified memory location by the <a href="../mi/memory/MI_CpuCopy.html">MI_CpuCopy8</a> function and gets manipulated like a file. Cache disabling and cleaning are not performed internally. Other than file reading/writing, it does not support any manipulations (general directory and path-related commands). Also, the archive name is registered in the file system.<br> Operations are always conducted synchronously, even when the asynchronous versions of functions are called.<br> <br> <BR>
+</p>
+<H2>Implementation</H2>
+<P>
+The Memory File Archive gets implemented as follows: <STRONG>Read Callback:</STRONG> Data is read from memory by the <a href="../mi/memory/MI_CpuCopy.html"><CODE>MI_CpuCopy8</CODE></a> function. The response is always <CODE>FS_RESULT_SUCCESS</CODE>. <STRONG>Write Callback:</STRONG> Data is written to memory by the <a href="../mi/memory/MI_CpuCopy.html"><CODE>MI_CpuCopy8</CODE></a> function. The response is always <CODE>FS_RESULT_SUCCESS</CODE>.<br> <STRONG>User Procedures:</STRONG><br>
+<TABLE border="0" height="310">
+  <TBODY>
+    <TR>
+      <TD width="207" height="10">
+	  <CODE><A href="command/fs_command_seekdir_spec.html">FS_COMMAND_SEEKDIR</A><br> <A href="command/fs_command_readdir_spec.html">FS_COMMAND_READDIR</A><br> <A href="command/fs_command_findpath_spec.html">FS_COMMAND_FINDPATH</A><br> <A href="command/fs_command_getpath_spec.html">FS_COMMAND_GETPATH</A><br> <A href="command/fs_command_openfilefast_spec.html">FS_COMMAND_OPENFILEFAST</A></CODE>
+	  </TD>
+<TD height="5">These commands are not supported. Issuing any of them always returns <CODE>FS_RESULT_UNSUPPORTED</CODE>.</TD>
+    </TR>
+    <TR>
+<TD width="207" height="15" style="background-color : white;">Other</TD>
+<TD height="15">Returns <code>FS_RESULT_PROC_UNKNOWN</code> and defaults to default commands.</TD>
+    </TR>
+
+  </TBODY>
+</TABLE>
+
+</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="fs_archive_type.html">FSArchive</A>, <A href="fs_archive_proc_func_type.html">FS_ARCHIVE_PROC_FUNC</A>, <A href="archive/FS_SetArchiveProc.html">FS_SetArchiveProc</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+06/28/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

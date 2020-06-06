@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Thread (Overview)</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Thread (Overview)</H1>
+<H2>Description</H2>
+<P>A thread system is provided in the NitroSDK. Thread has independent context and allows parallel operation using one CPU operation on multiple modules by dividing the tasks and processing of data into smaller chunks.</P>
+<P><IMG src="threadParallel.gif" border="0"></P>
+<P>The number of threads is limited only by whether their is enough memory for  the thread structures and stacks. </P>
+<P>Call <code><a href="OS_InitThread.html">OS_InitThread()</a></code> to initialize the thread system. Since calling <code><a href="../init/OS_Init.html">OS_Init()</a></code> will initialize the thread system by default, there is no need to call it in the application.</P>
+<P>Use <code><a href="OS_IsThreadAvailable.html">OS_IsThreadAvailable()</a></code> to check whether or not the thread system has been initialized.</P>
+<P>When the thread system is initialized, two threads are created: the thread for the program that called <nobr><code><a href="OS_InitThread.html">OS_InitThread()</a></code></nobr> and an idle thread. The number of threads can be obtained with <CODE><A href="OS_GetNumberOfThread.html">OS_GetNumberOfThread()</A></CODE>. </P>
+<HR>
+<P><B>Thread State</B></P>
+<P>The threads created with <nobr><code><a href="OS_CreateThread.html">OS_CreateThread()</a></code></nobr> cannot immediately be executed. These threads are still in a &quot;<font color="#ff0033">pause state</font>&quot;. Calling <nobr><code><a href="OS_WakeupThreadDirect.html">OS_WakeupThreadDirect()</a></code></nobr> puts them into an &quot;<font color="#ff0033">executable state</font>&quot;. (There are some cases where they enter an executable state as-is.)j</P>
+<P>Priorities are set in the thread. Among the threads in an executable state, the one with the highest priority enters an executable state. The priority is set when the thread is created, but it can be changed during processing by using <nobr><code><a href="OS_SetThreadPriority.html">OS_SetThreadPriority()</a></code></nobr>. Priority is from 0 to 31. <FONT color="#ff0033">The lower the value, the higher the thread's priority. </FONT>Threads that have a priority level of 0 have the highest priority. When two threads have the same level of priority, the order depends on their internal states. (See the section on Explicit Rescheduling in this document.))</P>
+<P>Also, an idle thread with a special priority of <code>32</code> is created. This thread does nothing. (This is sometimes called an idle thread.)) </P>
+<P>Thread priorities can be obtained with <nobr><code><a href="OS_GetThreadPriority.html">OS_GetThreadPriority()</a></code></nobr>.</P>
+<P>If a thread is ended with <nobr><code><a href="OS_ExitThread.html">OS_ExitThread()</a></code></nobr>, it will transition to the &quot;<font color="#ff0033">end state</font>&quot;. This thread releases the block that it placed on Mutex, and threads that were waiting in the pause state for this thread to complete are put into an executable state. Then, rescheduling is performed and different thread enters the executable state.</P>
+<P>In the case where a thread completes execution of a function task, processing is identical to when <CODE><A href="OS_ExitThread.html">OS_ExitThread()</A></CODE> is called. </P>
+<P>The functions <CODE><A href="OS_DestroyThread.html">OS_DestroyThread()</A></CODE> and <CODE><A href="OS_KillThread.html">OS_KillThread*()</A></CODE> are provided to terminate other threads. For information on the differences between the two, see the Thread Destructor section. </P>
+<HR>
+<P><B>Switching Threads</B></P>
+<P>Below is a list of events that can cause thread switching (rescheduling).</P>
+<P>A thread was put in an executable state. In other words, either <nobr><code><a href="OS_WakeupThread.html">OS_WakeupThread()</a></code></nobr> or <nobr><code><a href="OS_WakeupThreadDirect.html">OS_WakeupThreadDirect()</a></code></nobr> was called. A thread was put in the pause state. In other words, <nobr><code><a href="OS_SleepThread.html">OS_SleepThread()</a></code></nobr> was called. The wait for another thread to end has started. In other words, <code><a href="OS_JoinThread.html">OS_JoinThread()</a></code></nobr> was called. A thread has ended. The function operating in the thread has reached its final position and <nobr><code><a href="OS_ExitThread.html">OS_ExitThread()</a></code></nobr> was called. A thread re-scheduling has been explicitly carried out. In other words, <code><a href="OS_RescheduleThread.html">OS_RescheduleThread()</a></code> was called. A thread thought to be the same level of priority has been explicitly rescheduled. In other words, <CODE><A href="OS_YieldThread.html">OS_YieldThread()</A></CODE> was called. A thread priority has changed. In other words, <code><A href="OS_SetThreadPriority.html">OS_SetThreadPriority()</A></code></nobr> was called. - The thread was terminated by another thread. In other words, either <nobr><code><a href="OS_WakeupThread.html">OS_KillThread*()</a></code></nobr> or <nobr><code><a href="OS_WakeupThreadDirect.html">OS_DestroyThread()</a></code></nobr> was called.</P>
+<P>Thread switching also occurs if the message functions <nobr><code><a href="../message/OS_SendMessage.html">OS_SendMessage()</a></code></nobr> or <nobr><code><a href="../message/OS_ReceiveMessage.html">OS_ReceiveMessage()</a></code></nobr> are blocked when called in block mode or if a higher priority thread is waiting for a message to be sent or received.</P>
+<P>There are also times when thread switching occurs due to thread exclusion control via mutex. This switching occurs when a thread is locked with <nobr><code><a href="../mutex/OS_LockMutex.html">OS_LockMutex()</a></code></nobr> or when a thread with a higher priority is unlocked with <nobr><code><a href="../mutex/OS_UnlockMutex.html">OS_UnlockMutex()</a></code></nobr>.((Rescheduling does not occur with <CODE><A href="../mutex/OS_TryLockMutex.html">OS_TryLockMutex()</A></CODE>.)</P>
+<P>Rescheduling threads can be paused with <CODE><A href="OS_DisableScheduler.html">OS_DisableScheduler()</A></CODE> and resumed with <CODE><A href="OS_EnableScheduler.html">OS_EnableScheduler()</A></CODE>. For details, see the section on Pausing Rescheduling in this document.</P>
+<P><IMG src="threadStatus.gif" border="0"></P>
+<HR>
+<P><B>Interrupts and Switching Threads</B></P>
+<P>Even if the function that causes thread switching is called inside the interrupt handler, the thread is not switched immediately. Such event occurences are remembered, and control moves to the highest priority executable thread when exiting from the handler. </P>
+<P>In the example below, a function has been called that can switch between threads <code>thread1</code>, <code>thread2</code>, and <code>thread3</code> three times, but the function does nothing when called. After exiting from the interrupt handle, all threads are examined and a thread is selected to be executed from among the executable threads. Note that switching does not occur immediately even if a thread with a higher priority has been started inside the interrupt handler.  </P>
+<P><IMG src="threadWithInterrupt.gif" border="0"></P>
+<P>In this way, threads may be switched with interrupts, so you must prohibit interrupts in places that perform processing where you do not want thread switching to occur. (It is not necessary to disable interrupts if the logic to allow thread switching in interrupt handlers does not exist. However, because it is difficult to keep perfect track of the operation of all interrupt handlers in the system and the application, disabling interrupts in these cases is a good a general rule.)</P>
+<HR>
+<P><B>Waking Up All Threads</B></P>
+<P>Until control moves to a location where there is a separate thread, there may be cases where that thread wants to stop its execution. There may also be cases where multiple threads are to be awakened at the same time. In such cases, the thread queue is convenient.</P>
+<P>By initializing the thread queue with <nobr><code><a href="OS_InitThreadQueue.html">OS_InitThreadQueue()</a></code></nobr> and registering the thread for that queue with <nobr><code><a href="OS_SleepThread.html">OS_SleepThread()</a></code></nobr>, that registered thread will use that thread queue as an argument and will go to sleep until <nobr><code>OS_WakeupThread()</code></nobr> is called. If <nobr><code><a href="OS_WakeupThread.html">OS_WakeupThread()</a></code></nobr> is called, the threads registered in the designated thread queue will all go into an executable state, and thread re-scheduling will occur. (As a result, the thread priority of the executable threads will determine whether or not thread switching will occur.)</P>
+<P><IMG src="threadQueue.gif" border="0"></P>
+<HR>
+<P><B>Thread Joining</B></P>
+<P>It it possible to pause the currently running thread until another thread has completed. This operation makes it appear as if the completed thread and the waiting thread were joined, so this is known as &quot;thread joining&quot; throughout the reference materials. Thread joining is performed by using the thread queue in which all threads wait.</P>
+<P>Consider the combination of <code>thread1</code> and <code>thread2</code> (<code>thread2</code> becomes executable when <code>thread1</code> completes). Use <nobr><code><a href="OS_JoinThread.html">OS_JoinThread()</a></code></nobr> to register <code>thread 2</code> in <code>thread1</code>'s thread queue. When thread1 completes, it references the thread queue and makes all items registered there (if any) executable. thread2 is registered, so thread2 becomes executable.</P>
+<P>While multiple threads can be joined to one thread, it is not possible to join one thread to multiple threads.  The following is an example of joining multiple threads to one thread.</P>
+
+<P><IMG src="threadJoin.gif" border="0"></P>
+<HR>
+<P><B>Wait by sleeping</B></P>
+<P>It is possible to designate a time and use <nobr><a href="OS_Sleep.html"><code>OS_Sleep()</code></a></nobr> to go into a sleep mode for waiting. However, in order to do so, <nobr><code><a href="../time/OS_InitTick.html">OS_InitTick()</a></code></nobr> and <nobr><code><a href="../alarm/OS_InitAlarm.html">OS_InitAlarm()</a></code></nobr> must be called to initialize the check system and the alarm system.</P>
+<HR>
+<P><B>Pausing Rescheduling</B></P>
+<P>A function for pausing rescheduling and a function for resuming rescheduling are provided.</P>
+<P>When rescheduling has been paused, rescheduling will not be performed even when functions like <code><a href="OS_WakeupThread.html">OS_WakeupThread</a></code> and <code><a href="OS_SetThreadPriority.html">OS_SetThreadPriority</a></code> that can cause thread rescheduling are called. Also, rescheduling will not occur even in situations where rescheduling can occur, such as when the thread ends. Use caution because it is possible to run out of threads and stop the program, depending on the conditions when called. </FONT></P>
+<P>The function to pause rescheduling is <CODE><A href="OS_DisableScheduler.html">OS_DisableScheduler()</A></CODE>.</P>
+<P>The function for resuming rescheduling is <CODE><A href="OS_EnableScheduler.html">OS_EnableScheduler()</A></CODE>.</P>
+<P>These functions must be called while the interrupts are prohibited.</P>
+<HR>
+<P><B>Explicit Rescheduling</B></P>
+<P>The functions for conducting explicit scheduling are <CODE><A href="OS_RescheduleThread.html">OS_RescheduleThread()</A></CODE> and <CODE><A href="OS_YieldThread.html">OS_YieldThread()</A></CODE>.</P>
+<P>If scheduling has not been prohibited, <CODE><A href="OS_RescheduleThread.html">OS_RescheduleThread()</A></CODE> will transfer CPU execution rights to the executable thread with the highest priority. (However, if the function has been called from the interrupt handler, the actual rescheduling process will be conducted later.))</P>
+<P>If two or more of the executable threads have the same highest level of priority, the thread is selected based on the order of the internally maintained thread information. The threads are managed as a list, sorted according to the order of priority with the highest-priority thread placed at the top of the list. <CODE><A href="OS_RescheduleThread.html">OS_RescheduleThread()</A></CODE> goes down the list from the beginning and transfers execution rights to the first executable thread it finds. Thus, even if two threads have the same level of priority, the function always selects the one that is placed higher on the list.</P>
+<P>In contrast, if there is another executable thread that has the same level of priority as the current thread, <CODE><A href="OS_YieldThread.html">OS_YieldThread()</A></CODE> will reattach the current thread to the bottom of the list (i.e., to the bottom of the part if the list where threads of the same priority sit; not to the very bottom of the list) and then call <CODE><A href="OS_RescheduleThread.html">OS_RescheduleThread()</A></CODE>. &nbsp;)A &nbsp;This process is performed to give other threads with the same level of priority a chance to execute.</P>
+<P>Note that the thread may not always switch with <CODE><A href="OS_RescheduleThread.html">OS_RescheduleThread()</A></CODE> and <CODE><A href="OS_YieldThread.html">OS_YieldThread()</A></CODE>. If the currently executing thread is selected to run after searching for the next thread based on the priority and list order, the currently executing thread will continue. If there is no other thread to run,iIt will also continue to run. </P>
+<HR>
+<P><B>Thread destructor</B></P>
+<P>A thread destructor can be set to a thread. The thread destructor is a function that is called when the thread ends, and is a void type function that takes a single void* argument. However, it is called in the following situations. A</P>
+<BLOCKQUOTE>-When the thread finishes executing its task <BR> -When it ended with <CODE><A href="OS_ExitThread.html">OS_ExitThread()</A></CODE><BR>-When it was terminated from another thread with <CODE><A href="OS_KillThread.html">OS_KillThread*()</A></CODE><BR>- When it terminated itself with <CODE><A href="OS_KillThread.html">OS_KillThread*()</A></CODE></BLOCKQUOTE>
+<P>A destructor function is not called in the following situations. </P>
+<BLOCKQUOTE>EWhen the thread was terminated by another thread using <CODE><A href="OS_DestroyThread.html">OS_DestroyThread()</A></CODE> <BR> -When the thread terminated itself using <CODE><A href="OS_DestroyThread.html">OS_DestroyThread()</A></CODE></BLOCKQUOTE>
+<P>When the destructor function is executed, execution switches to the context of the thread that ends. When killed by another thread, it changes to the highest stack (excluding code for checking) or to the separately prepared stack used exclusively for the execution of the destructor function. When a thread kills itself, the stack is unchanged, or it changes to the separately prepared stack used exclusively for the execution of the destructor function. This specification is done using <A href="OS_SetThreadDestructorStack.html"><CODE>OS_SetThreadDestructorStack()</CODE></A>.</P>
+<P>When the destructor function is executed, thread priority is not changed with <CODE><A href="OS_KillThread.html">OS_KillThread()</A></CODE>; but with <CODE><A href="OS_KillThread.html">OS_KillThreadWithPriority()</A></CODE>, the thread priority is changed to the specified value. </P>
+<P>With <CODE><A href="OS_KillThread.html">OS_KillThread*()</A></CODE>, the user can provide an optional void* value. This value is the argument is used when the destructor function is called. If a thread's task finishes execution or when terminating with <CODE><A href="OS_ExitThread.html">OS_ExitThread()</A></CODE>, NULL is passed. </P>
+<P>The function that sets a thread destructor for a thread is <CODE><A href="OS_SetThreadDestructor.html">OS_SetThreadDestructor()</A></CODE>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#Thread">List of OS Functions (Thread)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>08/09/2005 Fixed stack during execution of thread destructor.<BR> 07/07/2005 Added text about thread destructor.<BR>07/06/2005 Removed restrictions on number of threads.<BR>06/20/2005 Added explicit rescheduling.<BR>03/08/2005 Standardized Japanese spelling of &quot;interrupt.&quot;<br>01/21/2005 Added text about pausing and resuming rescheduling.<BR> 12/14/2004 Revised terms and word endings.<BR>11/09/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

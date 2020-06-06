@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>WBT Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>WM Block Transfer Library (WBT) Sample Demo</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/wbt</CODE></P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/wbt</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (.<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/wbt/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/wbt/wbt-1/bin/ARM9-TEG/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+
+<H2>Execution</H2>
+<P>Navigate to the $NitroSDK/build/demos/wbt/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/ directory and perform one of the following:</P>
+<UL>
+<LI>Load a <code>*.nlf</code> file with IS-NITRO-DEBUGGER and execute it
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER
+</UL>
+<H2>Description</H2>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>wbt-1</CODE></STRONG></EM></TD>
+<TD width="525">A simple sample demonstrating the basic functions of WBT library.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>wbt-fs</CODE></STRONG></EM></TD>
+<TD width="525">A sample that uses the WBT library function to feed file system from parent to child.<br />When started as child, switches the <a href="../../fs/archive_rom_spec.html">ROM archive</a> loaded by default in own file system to wireless format and reloads.<br />This makes it possible to use the file in the same way as normal interface except during read time.<br />In this sample, the entire wireless file system features are gathered as WFS library format.<br /><br /> This program is a sample demo that assumes a multiboot child. However, the following processing is omitted in order to shorten the contents of the demonstration.<br />Refer to the separate sample demos regarding the following: Refer to the sample in <code>demos/fs/arc-1</code> when changing so that wireless child's own file system is offered, not the parents own file system. Refer to the sample in <code>demos/mb/multiboot-model</code> when changing so that communication is with a downloaded program, not among same program.
+	  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Emulator</H2>
+<P><CODE>The WBT library does not work in ensata.</CODE></P>
+<H2>See Also</H2>
+<P><A href="../../wbt/list_wbt.html"><CODE>WBT Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+10/06/2004 Added a part of the description regarding <code>wbt-fs</code> sample<br /> 09/29/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

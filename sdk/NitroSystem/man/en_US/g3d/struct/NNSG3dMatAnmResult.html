@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNSG3dMatAnmResult</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG3dMatAnmResult</H1>
+<H2>C Specification</H2>
+<PRE>#include &lt;nnsys/g3d/anm.h&gt;
+
+typedef enum
+{
+NNS_G3D_MATANM_RESULTFLAG_TEXMTX_SCALEONE   = 0x00000001,
+NNS_G3D_MATANM_RESULTFLAG_TEXMTX_ROTZERO    = 0x00000002,
+NNS_G3D_MATANM_RESULTFLAG_TEXMTX_TRANSZERO  = 0x00000004,
+
+NNS_G3D_MATANM_RESULTFLAG_TEXMTX_SET        = 0x00000008,
+NNS_G3D_MATANM_RESULTFLAG_TEXMTX_MULT       = 0x00000010,
+NNS_G3D_MATANM_RESULTFLAG_WIREFRAME         = 0x00000020
+}
+NNSG3dMatAnmResultFlag;
+
+typedef struct NNSG3dMatAnmResult_
+{
+NNSG3dMatAnmResultFlag  flag;
+u32                     prmMatColor0;
+u32                     prmMatColor1;
+u32                     prmPolygonAttr;
+u32                     prmTexImage;
+u32                     prmTexPltt;
+
+fx32                    scaleS, scaleT;
+fx16                    sinR, cosR;
+fx32                    transS, transT;
+
+u16                     origWidth, origHeight;
+fx32                    magW, magH;
+}
+NNSG3dMatAnmResult;</PRE>
+<H2>Description</H2>
+<P>The <code>NNSG3dMatAnmResult</code> structure stores material information. GD3 uses the information stored in this structure to send commands to the Geometry Engine. The structure is created and used during the execution of the <code>NNSi_G3dFuncSbc_MAT</code> function (i.e., when it is called during the SBC's MAT command process). To implement material animation, the <code>NNSi_G3dFuncSbc_MAT</code> function acts internally to set the data stored in this structure in accordance with the animation data. By setting a callback in <code><a href="../sbc/SBC_MAT.html">NNS_G3D_SBC_MAT</a></code>, the material's settings can be controlled from the user program.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="252">Data Member</TH>
+<TH width="770">Description</TH>
+    </TR>
+    <TR>
+<TD width="252"><B><I>flag</I></B></TD>
+<TD width="770">The flag of type <code>NNSG3dMatAnmResultFlag</code>.</TD>
+    </TR>
+    <TR>
+<TD width="252"><I><B>prmMatColor0</B></I></TD>
+<TD width="770">Stores diffuse and ambient. Equivalent to the parameter of the <code>MaterialColor0</code> geometry command.</TD>
+    </TR>
+    <TR>
+<TD width="252"><I><B>prmMatColor1</B></I></TD>
+<TD width="770">Stores specular and emission. Equivalent to the parameter of the <code>MaterialColor1</code> geometry command.</TD>
+    </TR>
+    <TR>
+<TD width="252"><I><B>prmPolygonAttr</B></I></TD>
+<TD width="770">Stores the polygon attribute value. Equivalent to the parameter of the <code>PolygonAttr</code> geometry command.</TD>
+    </TR>
+    <TR>
+<TD width="252"><I><B>prmTexImage</B></I></TD>
+<TD width="770">Stores the texture parameter. Equivalent to the parameter of the <code>TexImageParam</code> geometry command.</TD>
+    </TR>
+    <TR>
+<TD width="252"><B><I>prmTexPltt</I></B></TD>
+<TD width="770">Stores the texture palette's base address. Equivalent to the parameter of the <code>TexPlttBase</code> geometry command.</TD>
+    </TR>
+    <TR>
+<TD width="252"><I><B>scaleS</B></I></TD>
+<TD width="770">The texture's scale value in the <code>S</code> direction.</TD>
+    </TR>
+    <TR>
+<TD width="252"><B><I>scaleT</I></B></TD>
+<TD width="770">The texture's scale value in the <code>T</code> direction.</TD>
+    </TR>
+    <TR>
+<TD width="252"><B><I>sinR</I></B></TD>
+<TD width="770">The sine of the texture's rotation angle.</TD>
+    </TR>
+    <TR>
+<TD width="252"><B><I>cosR</I></B></TD>
+<TD width="770">The cosine of the texture's rotation angle.</TD>
+    </TR>
+    <TR>
+<TD width="252"><B><I>transS</I></B></TD>
+<TD width="770">The parallel transform component in the <code>S</code> direction for the texture.</TD>
+    </TR>
+    <TR>
+<TD width="252"><B><I>transT</I></B></TD>
+<TD width="770">The parallel transform component in the <code>T</code> direction for the texture.</TD>
+    </TR>
+    <TR>
+<TD width="252"><B><I>origWidth</I></B></TD>
+<TD width="770">The width of the texture corresponding to the material at time of <code>g3dcvtr</code> output.</TD>
+    </TR>
+    <TR>
+<TD width="252"><B><I>origHeight</I></B></TD>
+<TD width="770">The height of the texture corresponding to the material at time of <code>g3dcvtr</code> output.</TD>
+    </TR>
+    <TR>
+<TD width="252"><I><B>magW</B></I></TD>
+<TD width="770">The magnification determined when binding model and texture. Normally this is FX32_ONE.</TD>
+    </TR>
+    <TR>
+<TD width="252"><I><B>magH</B></I></TD>
+<TD width="770">The magnification determined when binding model and texture. Normally this is FX32_ONE.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="300"><code>NNSG3dMatAnmResultFlag</code> Values</TH>
+<TH width="722">Description</TH>
+    </TR>
+    <TR>
+<TD width="300"><CODE>NNS_G3D_MATANM_RESULTFLAG_TEXMTX_SCALEONE</CODE></TD>
+<TD width="722">When this flag is set, the values stored in <em><strong><code>scaleS</code></strong></em> and <em><strong><code>scaleT</code></strong></em> are disabled. Both are treated as if <code>FX32_ONE</code> has been entered.</TD>
+    </TR>
+    <TR>
+<TD width="300"><CODE>NNS_G3D_MATANM_RESULTFLAG_TEXMTX_ROTZERO</CODE></TD>
+<TD width="722">When this flag is set, the values stored in <em><strong><code>sinR</code></strong></em> and <em><strong><code>cosR</code></strong></em> are disabled. <em><strong><code>sinR</code></strong></em> is <code>0</code>, but <em><strong><code>cosR</code></strong></em> is treated as if <code>FX32_ONE</code> has been entered.</TD>
+    </TR>
+    <TR>
+<TD width="300"><CODE>NNS_G3D_MATANM_RESULTFLAG_TEXMTX_TRANSZERO</CODE></TD>
+<TD width="722">When this flag is set, the values stored in <em><strong><code>transS</code></strong></em> and <em><strong><code>transT</code></strong></em> are disabled. Both are treated as if <code>0</code> has been entered.</TD>
+    </TR>
+    <TR>
+<TD width="300"><CODE>NNS_G3D_MATANM_RESULTFLAG_TEXMTX_SET</CODE></TD>
+<TD width="722">When this flag is set, the texture matrix corresponding to this structure's setting gets set as the current texture matrix.</TD>
+    </TR>
+    <TR>
+<TD width="300"><CODE>NNS_G3D_MATANM_RESULTFLAG_TEXMTX_MULT</CODE></TD>
+<TD width="722">When this flag is set, the texture matrix corresponding to this structure's setting gets multiplied to the current texture matrix.</TD>
+    </TR>
+    <TR>
+<TD width="300"><CODE>NNS_G3D_MATANM_RESULTFLAG_WIREFRAME</CODE></TD>
+<TD width="722">When this flag is set, the polygons belonging to the material are drawn as wireframes.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+<P><a href="../list_g3d.html#Kernel">Kernel</a>, <a href="../list_g3d.html#SBC">Rendering Engine</a></P>
+<H2>Revision History</H2>
+<P>10/13/2004 Initial version.</P>
+</BODY>
+
+</HTML>

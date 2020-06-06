@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3D_SBC_POSSCALE</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css"   type="text/css">
+</HEAD>
+
+<BODY>
+
+<h1 align="left">NNS_G3D_SBC_POSSCALE</h1>
+<H2>Command Format</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="157">Offset (bytes)</TH>
+<TH width="801">Description for <CODE>NNS_G3D_SBCFLG_000</CODE></TH>
+    </TR>
+    <TR>
+      <TD width="157">0</TD>
+<TD width="801"><CODE>NNS_G3D_SBC_POSSCALE | NNS_G3D_SBCFLG_000</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="157">Offset (bytes)</TH>
+<TH width="801">Description for <CODE>NNS_G3D_SBCFLG_001</CODE></TH>
+    </TR>
+    <TR>
+      <TD width="157">0</TD>
+<TD width="801"><CODE>NNS_G3D_SBC_POSSCALE | NNS_G3D_SBCFLG_001</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Description</h2>
+<P>The <code>NNS_G3D_SBC_POSSCALE</code> command is used to process the <code>&lt;model_info&gt;::pos_scale</code> designated by the <code>.imd</code> format of the NITRO intermediate file. By multiplying the scale matrix <code>&lt;model_info&gt;::pos_scale</code> and its inverse matrix by the current matrix, the vertices will be correctly scaled. However, a callback point does not exist.</P>
+<P><BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="315">Option Flag</TH>
+<TH width="721">Operation</TH>
+    </TR>
+    <TR>
+<TD width="315"><CODE>NNS_G3D_SBCFLG_000</CODE></TD>
+<TD width="721">Applies the scale matrix that is specified in the imd file to the current matrix.</TD>
+    </TR>
+    <TR>
+<TD><CODE>NNS_G3D_SBCFLG_001</CODE></TD>
+<TD>Applies the inverse of the scale matrix that is specified in the imd file to the current matrix.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="256">Timing for Calling a Callback Function</TH>
+<TH width="588">Usage</TH>
+    </TR>
+    <TR>
+<TD width="256"><S><CODE>NNS_G3D_SBC_CALLBACK_TIMING_A</CODE></S></TD>
+<TD width="588">You cannot use this timing.</TD>
+    </TR>
+    <TR>
+<TD width="256"><S><CODE>NNS_G3D_SBC_CALLBACK_TIMING_B</CODE></S></TD>
+<TD width="588">You cannot use this timing.</TD>
+    </TR>
+    <TR>
+<TD width="256"><S><CODE>NNS_G3D_SBC_CALLBACK_TIMING_C</CODE></S></TD>
+<TD width="588">You cannot use this timing.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+
+
+<H2>Revision History</H2>
+<P>10/14/2004 Revised description.</P><P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

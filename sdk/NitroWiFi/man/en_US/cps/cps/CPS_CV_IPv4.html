@@ -1,0 +1,45 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_CV_IPv4</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_CV_IPv4</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define CPS_CV_IPv4(ip) (u8)((ip) &gt;&gt; 24), (u8)((ip) &gt;&gt; 16), (u8)((ip) &gt;&gt; 8), (u8)(ip)</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>ip</strong></em></code></td>
+<td>IP address</td>
+  </tr>
+</table>
+
+<h2>Description</h2>
+
+<p>This enables u32 IPv4 addresses to be used as printf parameters in order to convert them to character string expressions.</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_MK_IPv4.html">CPS_MK_IPv4</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

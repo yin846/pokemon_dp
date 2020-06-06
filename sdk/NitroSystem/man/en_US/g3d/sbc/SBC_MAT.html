@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3D_SBC_MAT</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css"   type="text/css">
+</HEAD>
+
+<BODY>
+
+<h1 align="left">NNS_G3D_SBC_MAT</h1>
+<H2>Command Format</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="157">Offset (bytes)</TH>
+<TH width="801">Description</TH>
+    </TR>
+    <TR>
+<TD width="157">0 (when upper 3 bits are 000)</TD>
+<TD width="801"><CODE>NNS_G3D_SBC_MAT | NNS_G3D_SBCFLG_000</CODE></TD>
+    </TR>
+    <TR>
+<TD>0 (when upper 3 bits are 001)</TD>
+<TD><CODE>NNS_G3D_SBC_MAT | NNS_G3D_SBCFLG_001</CODE></TD>
+    </TR>
+    <TR>
+<TD>0 (when upper 3 bits are 010)</TD>
+<TD><CODE>NNS_G3D_SBC_MAT | NNS_G3D_SBCFLG_010</CODE></TD>
+    </TR>
+    <TR>
+      <TD width="157">1</TD>
+<TD width="801">The material ID.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Description</h2>
+<P>The <code>NNS_G3D_SBC_MAT</code> command gets the material information from the model and animation resources, then sends it to the geometry engine. By default, this command calls the <code>sbc.c</code> <code>NNSi_G3dFuncSbc_MAT</code> function. The following processes are performed inside this function:</P>
+<OL>
+<LI>Sets the <code>NNS_G3dMatAnmResult</code> pointer in <code>pMatAnmResult</code> member in the <code>NNS_G3dRS</code> structure.
+<LI>Checks the timing <code>A</code> callback. The callback in this position is convenient when substituting the material calculation in the callback function. You can skip processing until the next callback by setting the <code>NNS_G3D_RSFLAG_SKIP</code> flag in the <code>NNS_G3dRS</code> structure in the callback function.
+<LI>Sets the material information in <code>*pMatAnmResult</code> when the material information is static image / animation.
+<LI>Checks the timing <code>B</code> callback. The callback in this position is convenient when processing the results of the material calculation in the callback function.
+<LI>Sends the material information to the geometry engine.
+<LI>Checks the timing <code>C</code> callback. The callback in this position is used when performing some sort of operation after this command finishes.
+</OL>
+<P><BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="256">Timing for Calling a Callback Function</TH>
+<TH width="588">Usage</TH>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_A</CODE></TD>
+<TD width="588">When you want a user program to do the material calculation.</TD>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_B</CODE></TD>
+<TD width="588">When you want a user program to manipulate material calculation results.</TD>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_C</CODE></TD>
+<TD width="588">When you want to enter some process after this command ends.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="315">Option Flag</TH>
+<TH width="721">Operation</TH>
+    </TR>
+    <TR>
+<TD width="315"><CODE>NNS_G3D_SBCFLG_000</CODE></TD>
+<TD width="721">Does not check the buffer that holds material calculation results. Does not buffer calculation results.</TD>
+    </TR>
+    <TR>
+<TD><CODE>NNS_G3D_SBCFLG_001</CODE></TD>
+<TD>Uses material calculation results if they are being buffered. If there is no buffer, calculates, but does not buffer the results.</TD>
+    </TR>
+    <TR>
+<TD width="315"><CODE>NNS_G3D_SBCFLG_010</CODE></TD>
+<TD width="721">Uses material calculation results if they are being buffered. If there is no buffer, calculates, and buffers the results.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+
+
+<H2>Revision History</H2>
+<P>10/14/2004 Revised description.</P><P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

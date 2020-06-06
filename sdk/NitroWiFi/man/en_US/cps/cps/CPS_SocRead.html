@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SocRead</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SocRead</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>u8 *CPS_SocRead (u32 *len);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>len</strong></em></code></td>
+<td>Data length in the receive buffer.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>Pointer to the data in the receive buffer.</P>
+
+<h2>Description</h2>
+
+<p>Performs PING/UDP/TCP reception. Returns the pointer to and length of the data in the reception buffer. When using TCP communication, <EM><STRONG>len</STRONG></EM> is set to 0 if the buffer is empty and disconnected. Be aware that this pointer points to the inside of <CODE>rcvbuf</CODE>. Executing <CODE>CPS_SocRead()</CODE> alone does not change the data and the data pointer. If <CODE>CPS_SocRead()</CODE> is executed continuously, the same data is returned continuously (the data length may increase). To proceed to the next data set, execute  <CODE>CPS_SocConsume()</CODE>. Because the number of data sets to process can be specified with <CODE>CPS_SocConsume()</CODE>, in extreme case, <CODE>CPS_SocConsume()</CODE> can be used to segment data into bytes, which can then be processed one byte at a time using <CODE>CPS_SocRead()</CODE>. This is precisely how <CODE>CPS_GetChar()</CODE> is implemented. However, in the current implementation, <CODE>CPS_SocConsume()</CODE> involves the actual  <CODE>memmove</CODE>; therefore, when <CODE>rcvbuf</CODE> is large, calling <CODE>CPS_SocConsume()</CODE> to process small segments individually is inefficient. Therefore, it may be best to prepare a sufficiently large buffer in the application, transfer data in the same segmemt size returned by <CODE>CPS_SocRead()</CODE>, and use tha entire data segment with <CODE>CPS_SocConsume()</CODE>. Does not block if the receive buffer is not empty. Blocks if it is empty.</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SocConsume.html">CPS_SocConsume</A></CODE>, <CODE><A href="CPS_SocGetChar.html">CPS_SocGetChar</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3_LightColor</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_LightColor</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+</CODE>
+<CODE>void G3_LightColor(GXLightId lightID, GXRgb rgb);</CODE>
+
+// Below are APIs for creating the display list (command list)<BR><CODE>void G3B_LightColor(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXLightId lightID, GXRgb rgb);</CODE><BR><CODE>void G3C_LightColor(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXLightId lightID, GXRgb rgb);</CODE><BR><CODE>void G3BS_LightColor(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXLightId lightID, GXRgb rgb);</CODE><BR><CODE>void G3CS_LightColor(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXLightId lightID, GXRgb rgb);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">lightID</font></strong></em></td>
+<td width="87%">Light ID</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New"><em><strong><code>rgb</code></strong></em>&nbsp;&nbsp;</font></strong></em></td>
+<td width="87%">Light color</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the light color. <em><strong><code>lightID</code></strong></em> selects one of 4 lights and <em><strong><code>rgb</code></strong></em> sets the light color.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_LIGHTID_0</CODE></TD>
+<TD>Specifies Light 0</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_LIGHTID_1</CODE></TD>
+<TD>Specifies Light 1</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_LIGHTID_2</CODE></TD>
+<TD>Specifies Light 2</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_LIGHTID_3</CODE></TD>
+<TD>Specifies Light 3</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following indicates the type definition for <CODE>GXLightId</CODE> types.</P>
+<PRE><CODE>typedef enum
+{
+GX_LIGHTID_0 = 0,
+GX_LIGHTID_1 = 1,
+GX_LIGHTID_2 = 2,
+GX_LIGHTID_3 = 3
+}
+GXLightId;</CODE></PRE>
+<H2>See Also</H2>
+<P><A href="G3_LightVector.html">G3_LightVector</A></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<PRE>
+</PRE>
+</body></html> 

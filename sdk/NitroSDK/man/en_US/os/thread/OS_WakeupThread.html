@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_WakeupThread</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_WakeupThread</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_WakeupThread( OSThreadQueue*  queue );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>queue</STRONG></EM></TD>
+<TD width="87%">Pointer to the thread queue where the thread to be recovered is registered.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Recovers all threads in the&nbsp;specified thread queue.<BR>This function recovers all threads from within the thread queue designated with <B><I>queue</I></B> that were paused by <CODE><A href="OS_SleepThread.html">OS_SleepThread()</A></CODE>. After this the threads are scheduled based on priority. Priorities are assigned when the thread is created with <A href="OS_CreateThread.html"><CODE>OS_CreateThread</CODE></A>, so if threads have the same priority, the priority depends on the status in the internal list and the user cannot assign priorities. The order that threads are registered in the thread queue is not related to the priorities.</P>
+<P>The following is an example of using <CODE>OS_WakeupThread()</CODE>.</P>
+<BLOCKQUOTE>(Example)<BR> <CODE>#define THREAD1_PRIO 1<BR> #define THREAD2_PRIO 2<BR> #define STACK_SIZE 1024<BR> void proc1( void );<BR> void proc2( void );<BR> OSThread thread1;<BR> OSThread thread2;<BR> OSThreadQueue queue;<BR> u64 stack1[ STACK_SIZE / sizeof(u64) ];<BR> u64 stack2[ STACK_SIZE / sizeof(u64) ];<BR> <BR> void nitroMain()<BR> {<BR> :<BR>OS_InitThread();<BR> <FONT color="#ff0000">&#x3000;OS_InitThreadQueue( &amp;queue );</FONT><BR> OS_CreateThread( &amp;thread1, proc1, stack1+STACK_SIZE/sizeof(u64), <BR> STACK_SIZE, THREAD1_PRIO );<BR> OS_CreateThread( &amp;thread2, proc2, stack2+STACK_SIZE/sizeof(u64),<BR> STACK_SIZE, THREAD2_PRIO );<BR> OS_WakeupThreadDirect( &amp;thread1 );<BR> OS_WakeupThreadDirect( &amp;thread2 );<BR> :<BR>while(1)<BR> {<BR> :<BR><FONT color="#ff0000">OS_WakeupThread( &amp;queue );</FONT><BR> :<BR>}<BR> }<BR> <BR> void proc1( void )<BR> {<BR> while(1)<BR> {<BR> :<BR><FONT color="#ff0000">OS_SleepThread( &amp;queue );</FONT><BR> :<BR>}<BR> }<BR> <BR> void proc2( void )<BR> {<BR> while(1)<BR> {<BR> :<BR><FONT color="#ff0000">OS_SleepThread( &amp;queue );</FONT><BR> :<BR> }<BR> }</CODE></BLOCKQUOTE>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitThread.html">OS_InitThread</A>, <A href="OS_CreateThread.html">OS_CreateThread</A>, <A href="OS_SleepThread.html">OS_SleepThread</A>, <A href="OS_WakeupThreadDirect.html">OS_WakeupThreadDirect</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>03/12/2004 Changed the description of what happens when there are identical priorities <BR>12/01/2003 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWCMatchOptMinComplete</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWCMatchOptMinComplete</H1>
+
+		<H2>Definitions</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+typedef struct DWCstMatchOptMinComplete
+{
+    u8  valid;
+    u8  minEntry;
+    u8  pad[2];
+    u32 timeout;
+}
+DWCMatchOptMinComplete;
+
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This structure is used to configure the option to complete matchmaking with fewer than the specified number of players.
+		</P>
+		<P>
+		  During peer matchmaking, if matchmaking is not completed within a specified time, this matchmaking option allows matchmaking to complete with less than the specified number of players set by the <A href="DWC_ConnectToAnybodyAsync.html">DWC_ConnectToAnybodyAsync</A> or <A href="DWC_ConnectToFriendsAsync.html">DWC_ConnectToFriendsAsync</A> functions. This can be set by calling the <A href="DWC_SetMatchingOption.html">DWC_SetMatchingOption</A> function with <CODE>DWC_MATCH_OPTION_MIN_COMPLETE</CODE> specified in the <CODE>opttype</CODE> argument and a pointer to this structure, which has a value set in the member variable, in the <CODE>optval</CODE> argument.
+		</P>
+		<P>
+		  Matchmaking does not end immediately when the time from the beginning of matchmaking reaches the timeout value. Matchmaking will not complete until after all hosts on that connection have also timed out in the same way.
+		</P>
+
+		<TABLE border="1">
+		<TBODY>
+          <TR>
+			<TD width="25%"><EM><STRONG><CODE>valid</CODE></STRONG></EM></TD>
+			<TD>TRUE : These matchmaking options are valid.<BR>FALSE: These matchmaking options are invalid.</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>minEntry</CODE></STRONG></EM></TD>
+			<TD>The minimum number of connected parties, including yourself, to allow matchmaking to complete.</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>pad</CODE></STRONG></EM></TD>
+			<TD>Padding. It's okay not to set anything.</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>timeout</CODE></STRONG></EM></TD>
+			<TD>The amount of time that must pass before allowing matchmaking to complete even with fewer than the specified number of players. (units: msec.)</TD>
+          </TR>
+		</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+		  <code><A href="DWC_SetMatchingOption.html">DWC_SetMatchingOption</A>, <A href="DWC_GetMOMinCompState.html">DWC_GetMOMinCompState</A>, <A href="DWC_ConnectToAnybodyAsync.html">DWC_ConnectToAnybodyAsync</A>, <A href="DWC_ConnectToFriendsAsync.html">DWC_ConnectToFriendsAsync</A></code>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+		  12/16/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>
+

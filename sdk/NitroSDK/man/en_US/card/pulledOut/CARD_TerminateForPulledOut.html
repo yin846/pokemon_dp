@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CARD_TerminateForPulledOut</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CARD_TerminateForPulledOut</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/card.h&gt;</CODE></PRE>
+<PRE><CODE>void CARD_TerminateForPulledOut( void );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None</P>
+<H2>Return Values</H2>
+<P>None</P>
+<H2>Description</H2>
+<P>This function stops the ARM7 processor and the program. This function is called after a card removal is detected. However, if the cover is closed when this function is called, it turns off power to the device.</P>
+<P>Use the callback that is set by <a href="CARD_SetPulledOutCallback.html"><code>CARD_SetPulledOutCallback</code></a> and <a href="CARD_IsPulledOut.html"><code>CARD_IsPulledOut</code></a> to detect a game card removal.</P>
+<P>The stop notification that is sent to ARM7 is sent internally by a PXI signal. Do not call this function when PXI interrupts are prohibited.</P>
+<H2>See Also</H2>
+<P><code><a href="CARD_SetPulledOutCallback.html">CARD_SetPulledOutCallback</a>, <a href="CARD_IsPulledOut.html">CARD_IsPulledOut</a></code></P>
+<H2>Revision History</H2>
+<P>11/10/2004 Added that it turns the power off if the cover is closed.<br> 09/16/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

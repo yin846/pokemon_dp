@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3D_SBC_BBY</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css"   type="text/css">
+</HEAD>
+
+<BODY>
+
+<h1 align="left">NNS_G3D_SBC_BBY</h1>
+<H2>Command Format</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="164">Offset (bytes)</TH>
+<TH width="672">Description for <CODE>NNS_G3D_SBCFLG_000</CODE></TH>
+    </TR>
+    <TR>
+      <TD width="164">0</TD>
+<TD width="672"><CODE>NNS_G3D_SBC_BBY | NNS_G3D_SBCFLG_000</CODE></TD>
+    </TR>
+    <TR>
+      <TD width="164">1</TD>
+<TD width="672">The node ID of a node that is targeted for Y-axis billboard transformation.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="164">Offset (bytes)</TH>
+<TH width="672">Description for <CODE>NNS_G3D_SBCFLG_001</CODE></TH>
+    </TR>
+    <TR>
+      <TD width="164">0</TD>
+<TD width="672"><CODE>NNS_G3D_SBC_BBY | NNS_G3D_SBCFLG_001</CODE></TD>
+    </TR>
+    <TR>
+      <TD width="164">1</TD>
+<TD width="672">The node ID of a node that is targeted for Y-axis billboard transformation.</TD>
+    </TR>
+    <TR>
+      <TD>2</TD>
+<TD>The ID of the matrix stack where calculation results are stored.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="164">Offset (bytes)</TH>
+<TH width="672">Description for <CODE>NNS_G3D_SBCFLG_010</CODE></TH>
+    </TR>
+    <TR>
+      <TD width="164">0</TD>
+<TD width="672"><CODE>NNS_G3D_SBC_BBY | NNS_G3D_SBCFLG_010</CODE></TD>
+    </TR>
+    <TR>
+      <TD width="164">1</TD>
+<TD width="672">The node ID of a node that is targeted for Y-axis billboard transformation.</TD>
+    </TR>
+    <TR>
+      <TD>2</TD>
+<TD>The ID of the matrix stack from which restoration is done before calculation.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="164">Offset (bytes)</TH>
+<TH width="672">Description for <CODE>NNS_G3D_SBCFLG_011</CODE></TH>
+    </TR>
+    <TR>
+      <TD width="164">0</TD>
+<TD width="672"><CODE>NNS_G3D_SBC_BBY | NNS_G3D_SBCFLG_011</CODE></TD>
+    </TR>
+    <TR>
+      <TD width="164">1</TD>
+<TD width="672">The node ID of a node that is targeted for Y-axis billboard transformation.</TD>
+    </TR>
+    <TR>
+      <TD>2</TD>
+<TD>The ID of the matrix stack where calculation results are stored.</TD>
+    </TR>
+    <TR>
+      <TD>3</TD>
+<TD>The ID of the matrix stack from which restoration is done before calculation.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Description</h2>
+<P>The <code>NNS_G3D_SBC_BBY</code> command performs Y&ndash;axis billboard conversion in the <code>position</code> / <code>vector</code> matrix. By default, this command calls the <code>sbc.c</code> <code>NNSi_G3dFuncSbc_BBY</code> function. The following processes are performed inside this function:</P>
+<OL>
+<LI>Restores the <code>position</code> / <code>vector</code> matrix to the current matrix stack from the matrix stack (depending on command variations).
+<LI>Checks the timing <code>A</code> callback. The callback in this position is convenient when substituting the Y&ndash;axis billboard conversion calculations in the callback function. You can skip processing until the next callback by setting the <code>NNS_G3D_RSFLAG_SKIP</code> flag in the <code>NNS_G3dRS</code> structure in the callback function.
+<LI>Performs the Y&ndash;axis billboard conversion calculation and setting the calculation results in the current matrix of the <code>position</code> / <code>vector</code> matrix.
+<LI>Checks the timing <code>C</code> callback. The callback in this position is used when performing some sort of operation after this command finishes.
+<LI>Stores the <code>position</code> / <code>vector</code> matrix from the current matrix to the matrix stack (depending on command variations).
+</OL>
+<P><BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="256">Timing for Calling a Callback Function</TH>
+<TH width="588">Usage</TH>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_A</CODE></TD>
+<TD width="588">When you want a user program to do the material calculation.</TD>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_B</CODE></TD>
+<TD width="588">When you want a user program to manipulate material calculation results.</TD>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_C</CODE></TD>
+<TD width="588">When you want to enter some process after this command ends.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="315">Option Flag</TH>
+<TH width="721">Operation</TH>
+    </TR>
+    <TR>
+<TD width="315"><CODE>NNS_G3D_SBCFLG_000</CODE></TD>
+<TD width="721">Y-axis billboard-transforms the current matrix. Does not store calculation results in the matrix stack.</TD>
+    </TR>
+    <TR>
+<TD><CODE>NNS_G3D_SBCFLG_001</CODE></TD>
+<TD>Y-axis billboard-transforms the current matrix. Then stores calculation results in the matrix stack.</TD>
+    </TR>
+    <TR>
+<TD width="315"><CODE>NNS_G3D_SBCFLG_010</CODE></TD>
+<TD width="721">Restores from a matrix stack and then Y-axis billboard-transforms. Does not store calculation results in the matrix stack.</TD>
+    </TR>
+    <TR>
+<TD><CODE>NNS_G3D_SBCFLG_011</CODE></TD>
+<TD>Restores from a matrix stack and then Y-axis billboard-transforms. Then stores the calculation results in a matrix stack.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+
+
+<H2>Revision History</H2>
+<P>10/14/2004 Revised description.</P><P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

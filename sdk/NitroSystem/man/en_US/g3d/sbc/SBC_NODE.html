@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3D_SBC_NODE</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css"   type="text/css">
+</HEAD>
+
+<BODY>
+
+<h1 align="left">NNS_G3D_SBC_NODE</h1>
+<H2>Command Format</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="157">Offset (bytes)</TH>
+<TH width="801">Description</TH>
+    </TR>
+    <TR>
+      <TD width="157">0</TD>
+<TD width="801"><CODE>NNS_G3D_SBC_NODEMIX</CODE></TD>
+    </TR>
+    <TR>
+      <TD width="157">1</TD>
+<TD width="801">Node ID.</TD>
+    </TR>
+    <TR>
+      <TD>2</TD>
+<TD>If the lower order bit is 1, the node will be displayed. If the bit is 0 the node will not be displayed.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Description</h2>
+<P>The <code>NNS_G3D_SBC_NODE</code> command determines the node to which the materials and shapes sent after this command belong. By default, this command calls the <code>sbc.c</code> function <code>NNSi_G3dFuncSbc_NODE</code>. The following processes are performed inside this function:</P>
+<OL>
+<LI>Sets the <code>NNSG3dVisAnmResult</code> structure's pointer to the <code>pVisAnmResult</code> member in the <code>NNS_G3dRS</code> structure.
+<LI>Checks the timing <code>A</code> callback. The callback in this position is convenient when substituting the visibility calculation in the callback function. You can skip processing until the next callback by setting the <code>NNS_G3D_RSFLAG_SKIP</code> flag in the <code>NNS_G3dRS</code> structure in the callback function.
+<LI>Sets the visibility information in <code>*pMatAnmResult</code> when the visibility information is static <code>image</code> / <code>animation</code>
+<LI>Checks the timing <code>B</code> callback. The callback in this position is convenient when processing the results of the visibility calculation in the callback function.
+<LI>Sets the <code>NNS_G3dRS</code> in response to the results of <code>*pVisAnmResult</code>. As subsequent commands use this flag, the polygon in the node displays or not, depending on the settings (visibility animation).
+<LI>Checks the timing <code>C</code> callback. The callback in this position is used when performing some sort of operation after this command finishes.
+</OL>
+<P><BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="256">Timing for Calling a Callback Function</TH>
+<TH width="588">Usage</TH>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_A</CODE></TD>
+<TD width="588">When you want to use a user callback to override the visibility calculations.</TD>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_B</CODE></TD>
+<TD width="588">When you want to extract the visibility calculation results. Or when you want to manipulate the visibility calculation results.</TD>
+    </TR>
+    <TR>
+<TD width="256"><CODE>NNS_G3D_SBC_CALLBACK_TIMING_C</CODE></TD>
+<TD width="588">When you want to enter some process after this command ends.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+
+
+<H2>Revision History</H2>
+<P>10/14/2004 Revised description.</P><P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>makelcf</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">makelcf</H1>
+<H2>Description</H2>
+<P>  In order to execute application programs that are too big to fit in memory, the NITRO-SDK has tools that support overlay techniques to divide the program into files and store them as   ROM  images, to load     code into memory from given ROM images, as needed,   on instruction from the program, and to initialize and execute the  code.</P>
+<P><CODE>makelcf</CODE> is a tool that automatically creates a Linker Command file (<CODE>LCF</CODE>) that gives NITRO execution files support for these overlay techniques. Based on the description in the Linker Spec file (<CODE>LSF</CODE>), <CODE>makelcf</CODE> creates Linker Command files for each application from an <CODE>LCF</CODE> template file.</P>
+<P>  The following corrections were made in SDK 2.0 and later versions:</P>
+<UL>
+<LI>Added a support system called AUTOLOAD to load the program into several regions.
+<LI>Made changes to use <code>makelcf</code> to generate the linker response file (command line option passed to a linker is described in a file).
+</UL>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% makelcf [-DNAME=VALUE...] [-MDEFINES_FILE] <!-- CW VER2.0[-V1|-V2] !--> SPECFILE LCF-TEMPLATE [LCFILE]</CODE></P>
+<P>  This creates a Linker Command file from the <CODE>LCF</CODE> template file specified by <CODE>LCF-TEMPLATE</CODE> in accordance with the description in the Linker Spec file specified by <CODE>SPECFILE</CODE>, naming it as specified by <CODE>LCFILE</CODE>. <CODE>LCFILE</CODE> can be omitted. If you omit it, a file will be used that has the same name as those specified by <code>SPECFILE</code> with the extension <code>.lcf</code> appended.</P>
+<P>The <CODE>-D</CODE> option lets you define a variable and its value. The value of this variable can be referenced at the time of the Linker Spec file  description.</P>
+<P>The <CODE>-M</CODE> option lets you define a variable and its value just like the <CODE>-D</CODE> option. The text file that consists of the <CODE>[NAME=VALUE]</CODE> line is received as an argument. By using this option, the variables and their values that exceed the command line length restriction can be described in the definition.</P>
+<!-- CW VER2.0 <P><FONT color="#ff0000">CodeWarrior for NINTENDO DS(ˆÈ‰º CodeWarrior) ‚Ìƒo[ƒWƒ‡ƒ“ 2.0 ˆÈ~‚É‚¨‚¢‚ÄŠg’£‚³‚ê‚½ <CODE>LCF</CODE> ƒtƒ@ƒCƒ‹‚É‚æ‚éƒI[ƒo[ƒŒƒCŽg—pŽž‚É‚¨‚¯‚éƒŠƒ“ƒNƒVƒ“ƒ{ƒ‹‚ðŽw’è‚·‚é‹@”\i<CODE>SEARCH_SYMBOL ‹Lq</CODE>j‚É‘Î‰ž‚·‚é‚½‚ßA lsf ƒtƒ@ƒCƒ‹‘Ž®‚ªŠg’£‚³‚ê‚Ä‚¢‚Ü‚·B</FONT><CODE>-V1</CODE> ‚¨‚æ‚Ñ <CODE>-V2</CODE> ƒIƒvƒVƒ‡ƒ“‚ÍA<CODE>makelcf</CODE> ‚ª CodeWarrior ‚Ì 1.x ‚Ü‚½‚Í 2.x ‚Ì‚Ç‚¿‚ç‚Ì‘Ž®‚É]‚Á‚½ <CODE>LCF</CODE> ƒtƒ@ƒCƒ‹‚ðo—Í‚·‚é‚©‚ðŽw’è‚·‚é‚½‚ß‚Ì‚à‚Ì‚Å‚·B<CODE>-V1</CODE> ‚ªŽw’è‚³‚ê‚éA‚ ‚é‚¢‚ÍŽw’è‚È‚µ‚Ìê‡‚Í 1.x —p‚Ì‘Ž®‚ªA<CODE>-V2</CODE> ‚ªŽw’è‚³‚ê‚é‚Æ 2.x —p‚Ì‘Ž®‚ªÌ—p‚³‚ê‚Ü‚·B</P> !-->
+<H3>Linker Spec File Format</H3>
+<P>  The ARM9 and ARM7 processors both can have only one Resident Module, but they can have numerous Overlay Modules if there is a need,  memory and other resources  permitting. The ARM9 and ARM7 processors both can have only one Resident Module, but they can have numerous Overlay Modules if there is a need,  memory and other resources  permitting.</P>
+<P>  The Linker Spec file (<CODE>LSF</CODE>) describes the various settings regarding these overlay tasks. The <CODE>LSF</CODE> defines how to divide up and create files from object files of the code that comprises the application program.</P>
+<P>The <CODE>LSF</CODE> is a text file constructed from the three kinds of section definitions shown below. Each section definition has a declaration at the beginning, followed by section-related parameters enclosed in curly brackets.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH>Subject of section definition</TH>
+<TH>Format for section definition</TH>
+<TH>Example definition</TH>
+    </TR>
+    <TR>
+<TD>Resident<BR>module<BR> <CODE>(Static)</CODE></TD>
+      <TD>
+<PRE>Static [section name]
+{
+<I>[section parameter description part]</I>
+  ....
+}</CODE></PRE>
+      </TD>
+      <TD>
+<PRE>Static  main
+{
+Address   0x02000000
+Object    $(OBJS_STATIC)
+Library   $(LLIBS) $(GLIBS)  $(CW_LIBS)
+StackSize 1024
+}</CODE></PRE>
+      </TD>
+    </TR>
+    <TR>
+<TD>Autoload<BR> module<BR> <CODE>(autoload)</CODE></TD>
+      <TD>
+<PRE><CODE>Autoload <em>[section name]</em>
+{
+<I>[section parameter description part]</I>
+  ....
+}</CODE></PRE>
+      </TD>
+      <TD>
+<PRE>Autoload ITCM
+{
+Address   0x01ff8000
+Object    *                (.itcm)
+Object    $(OBJS_AUTOLOAD) (.text)
+}</CODE></PRE>
+      </TD>
+    </TR>
+    <TR>
+<TD>Overlay<BR> module<BR> <CODE>(Overlay)</CODE></TD>
+      <TD>
+<PRE><CODE>Overlay <em>[section name]</em>
+{
+<I>[section parameter description part]</I>
+  ....
+}</CODE></PRE>
+      </TD>
+      <TD>
+<PRE>Overlay  overlay_1
+{
+After     main
+Object    $(OBJDIR)/overlay.o
+}</CODE></PRE>
+      </TD>
+    </TR>
+    <TR>
+<TD>Incidental<BR>information<BR> <CODE>(Property)</CODE></TD>
+      <TD>
+<PRE><CODE>Property<BR>{
+{
+<I>[Incidental information parameter description part]</I>
+  ....
+}</CODE></PRE>
+      </TD>
+      <TD>
+<PRE><CODE>Property<BR>{
+{
+{<BR>OverlayDefs  %_defs<BR>
+OverlayTable %_table<BR>
+Suffix       .sbin
+}</CODE></PRE>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> This section name can be used to obtain the Overlay <CODE>ID</CODE> and other information. This section name can be used to obtain the Overlay <CODE>ID</CODE> and other information. For details about the method, see  <A href="../fs/fs_overlay_id_types.html">An Explanation About the FS Library's Overlay ID</A>.</P>
+<P>  Each <CODE>LSF</CODE> must have  a Resident Module section, even if overlays are not being used. If more than  one Overlay Module has been allocated, there must be as many Overlay Module  sections as there are Overlay Modules. If overlays are not being used, then there  is no need for an Overlay Module section. The Incidental Information section can be omitted. In that case all incidental information parameters take their default values.</P>
+<P>The following are explanations of the parameters set in each section.</P>
+<H3>Section Parameters</H3>
+<H4>Static section (Resident Module definitions section)</H4>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item"><CODE>Address</CODE><em>[address]</em>
+<DD class="command_desc">  The section gets placed at the specified address. In addition to decimal, the address can also be specified in hexadecimal or octal by prefixing the value with <CODE>&quot;0x&quot;</CODE> or <CODE>&quot;0&quot;</CODE> (in the C-language fashion).
+<DT class="command_item">Object [object name...]
+<DD class="command_desc">  This specifies the object files and library files that are included in the Resident Module. Because SDK 2.0 and later versions require the generation of the linker response files, it is necessary to specify the file name and path name to designate an object file. It is no longer valid by specifying with GROUP (<code>*</code>). When using the make system of SDK, the path to the object is given to <code>makelcf</code>, and the path name for the object can be specified in the following format.
+<BLOCKQUOTE><CODE>Object $(OBJDIR)/main.o</CODE></BLOCKQUOTE>
+    After the source file which was specified in the makefile as the variable <em><strong><code>SRCS</code></strong></em> was compiled, the generated object file is given to <code>makelcf</code> as <code>$(OBJS_STATIC)</code> with paths. When it is not necessary to specify the object file every time, it can be expressed as the following.
+<BLOCKQUOTE><CODE>Object    $(OBJS_STATIC)</CODE></BLOCKQUOTE>
+The object file described in object is passed with path to the response file (<code>*.response</code>). Like the execution binaries, <code>makelcf</code> generates response files in the <code>$(BINDIR)</code> directory.<BR> <BR> The library should not be described in the object statement but in the newly added library statement.<BR> Additionally, you can use an asterisk (<code>*</code>) to utilize the special section to support loading into ITCM/DTCM/VRAM.
+<BLOCKQUOTE><CODE>Object    *                (.itcm)</CODE></BLOCKQUOTE>
+    This indicates all files defined in the <code>.itcm</code> section. This description is commonly used in the autoload section.
+<DT class="command_item">Library [library module name...]
+<DD class="command_desc">  Specify the library file in the resident module.<BR> SDK 2.0 and later versions require generation of the linker response files, it is necessary to specify the file name and path name to designate an object file.<BR> When using the SDK <code>make</code> system, library groups specified with the variable <em><strong><code>LLIBRARIES</code></strong></em> in the makefile, SDK library groups, and CodeWarrior library groups are given as <code>$(LLIBS)</code>, <code>$(GLIBS)</code> and <code>$(CW_LIBS)</code>, respectively. Therefore, the following format can be used to specify the library:
+<BLOCKQUOTE><CODE>Library   $(LLIBS) $(GLIBS)  $(CW_LIBS)</CODE></BLOCKQUOTE>
+Library file described in Library will be passed to the response file along with the -1 options.
+<DT class="command_item"><CODE>StackSize</CODE><em>[stack size (in bytes)]<BR></em> or<BR> <CODE>StackSize</CODE><em>[stack size (in bytes)]</em><em>[IRQ stack    size  (in bytes)]]       </em>
+<DD class="command_desc">  Specifies the stack size of the <CODE>NitroMain()</CODE> function  when it is first executed in the Resident Module and the IRQ stack  size. Both of these sizes can be  specified in base 8, base 10 or base 16. The stack size depends on the size of the numeral:
+  <TABLE class="blockquoted_table">
+    <TBODY>
+      <TR>
+<TD width="66">When positive</TD>
+<TD width="356">The number of bytes specified by the value gets assigned to the stack.</TD>
+      </TR>
+      <TR>
+<TD width="66">When 0</TD>
+<TD width="356">The maximum possible size gets assigned to the stack.</TD>
+      </TR>
+      <TR>
+<TD width="66">When negative</TD>
+<TD width="356">The absolute value gets subtracted from the maximum possible   size, and the resulting size gets assigned to the stack.</TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+<BR> For the IRQ stack size, the value itself gets assigned as the stack size used for IRQ. These specifications for stack size and IRQ stack size can be omitted. In that case the stack size setting is 0 (i.e., the maximum possible size is assigned) and the IRQ stack size is 0x400 bytes.
+</DL>
+</BLOCKQUOTE>
+<H4>Autoload section (Autoload module definitions section)</H4>
+<P>Autoload is a system that transfers the module to several regions at the program startup. The transfer process will be done before calling the common libraries in crt0.o, so it is possible to transfer the system libraries such as OS and FS to ITCM/DTCM. <CODE>ITCM</CODE> of <CODE>DTCM</CODE> is reserved as section names to be auto-loaded to ITCM/DTCM. Specify one of these.</P>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item"><CODE>Address</CODE><em>[address]</em>
+<DD class="command_desc">  The same as the Address parameter in the Static section.
+<DT class="command_item">After [other section name...]
+<DD class="command_desc">  The current section is placed immediately after the other specified section. When more than one section is specified in <CODE>After</CODE>, the current section is placed immediately after the section with the largest final address. (This is done so there is no overlapping region with all of the sections.) Address and After are not enabled within the same section. The first one in the description has the priority.
+<DT class="command_item">Object [object name...]
+<DD class="command_desc">Same as the Object parameter in the Static section. For autoload, the description of Object &quot;*&quot; (section name) is commonly used.
+<DT class="command_item">Library [library module name...]
+<DD class="command_desc">  Same as the Library parameter in the Static section.
+</DL>
+</BLOCKQUOTE>
+<H4>Overlay section (Overlay Module definitions section)</H4>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item"><CODE>Address</CODE><em>[address]</em>
+<DD class="command_desc">The same as the Address parameter in the Static section.
+<DT class="command_item">After [other section name...]
+<DD class="command_desc">  The current section is placed immediately after the other specified section. When more than one section is specified in <CODE>After</CODE>, the current section is placed immediately after the section with the largest final address. (This is done so there is no overlapping region with all of the sections.) Address and After are not enabled within the same section. The first one in the description has the priority.
+<DT class="command_item">Object [object name...]
+<DD class="command_desc">  Same as the <CODE>Static</CODE> section's <CODE>Object</CODE> parameter.
+<DT class="command_item">Library [library module name...]
+<DD class="command_desc">  Same as the Library parameter in the Static section.
+<DT class="command_item"><CODE>Group</CODE> <I>[overlay_group_name]</I>
+<DD class="command_desc">  Specifies the overlay group to which the current section belongs.<BR>The linker assumes that overlays belonging to the same group are located in the same memory region.<br>By specifying mutually exclusive overlay modules as belonging to the same group, you can detect function calls between the overlays as errors during linking. In addition, the overlay group setting for each overlay module is referenced to determine whether the compiler should treat functions with inline declarations as inline code. If problems related to calling inline functions occur during the DEBUG build, try o resolve the problem using the overlay group setting. <BR><BR> <FONT color="#ff0000">  This overlay group specification is supported with versions including and after SDK 3.0RC1.</FONT>The group with the same name as the current section name is set if the overlay group specification is omitted to maintain compatibility.<BR><BR> <!-- CW VER2.0   <DT class="command_item"><CODE>SearchSymbol</CODE> <I>[‘¼‚ÌƒZƒNƒVƒ‡ƒ“–¼‚Ü‚½‚ÍƒI[ƒo[ƒŒƒCƒOƒ‹[ƒv–¼...]</I>   <DD class="command_desc">  “¯ˆê–¼‚ÌƒVƒ“ƒ{ƒ‹‚ª•¡”‚ÌƒZƒNƒVƒ‡ƒ“‚É“n‚Á‚Ä‘¶Ý‚µ‚Ä‚¢‚éê‡‚ÉA‚»‚Ì’†‚Ì‚Ç‚ÌƒVƒ“ƒ{ƒ‹‚ÆƒŠƒ“ƒN‚·‚é‚Ì‚©‚ðŽw’è‚·‚éˆ×‚ÉÝ’è‚µ‚Ü‚·B‚±‚ÌŽw’è‚ÍƒZƒNƒVƒ‡ƒ“–ˆ‚ÉÝ’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B<BR> <BR>     ƒŠƒ“ƒJ‚ÍŒ»Ý‚ÌƒZƒNƒVƒ‡ƒ“‚©‚çŽQÆ‚·‚éƒVƒ“ƒ{ƒ‹‚ð’T‚·‚Ì‚ÉA‚Ü‚¸Ž©g‚ÌƒZƒNƒVƒ‡ƒ“‚Ì’†‚ðŒŸõ‚µAŽŸ‚ÉA‚±‚ÌŽw’è‚Å‹Lq‚³‚ê‚½ƒZƒNƒVƒ‡ƒ“‚ ‚é‚¢‚ÍƒI[ƒo[ƒŒƒCƒOƒ‹[ƒv‚ð‡‚ÉŒŸõ‚µ‚Ä‚¢‚«‚Ü‚·B‚à‚µA‚±‚±‚É‹Lq‚³‚ê‚½ƒZƒNƒVƒ‡ƒ“‚ ‚é‚¢‚ÍƒI[ƒo[ƒŒƒCƒOƒ‹[ƒv‚©‚ç‚ÍŒ©‚Â‚©‚ç‚È‚©‚Á‚½ê‡AƒŠƒ“ƒNƒGƒ‰[‚Æ‚È‚è‚Ü‚·B<BR> <BR>     È—ªŽž‚ÍA‘S‚Ä‚ÌƒZƒNƒVƒ‡ƒ“‚ªƒVƒ“ƒ{ƒ‹ŒŸõ‘ÎÛ‚É‚È‚è‚Ü‚·B‚±‚Ìê‡A‘S‘Ì‚Æ‚µ‚ÄŠY“–‚·‚é–¼‘O‚ÌƒVƒ“ƒ{ƒ‹‚ª‚P‚Â‚µ‚©‘¶Ý‚µ‚Ä‚¢‚È‚¢ê‡‚Í‚»‚ÌƒVƒ“ƒ{ƒ‹‚ªƒŠƒ“ƒN‚³‚ê‚Ü‚·‚ªA‘S‘Ì‚Æ‚µ‚ÄŠY“–‚·‚é–¼‘O‚ÌƒVƒ“ƒ{ƒ‹‚ª•¡”‘¶Ý‚µ‚Ä‚¢‚éê‡‚ÍƒŠƒ“ƒJ‚ª‚Ç‚ÌƒVƒ“ƒ{ƒ‹‚ðŽg—p‚·‚ê‚Î—Ç‚¢‚Ì‚©”»’fo—ˆ‚È‚¢‚Ì‚ÅƒŠƒ“ƒNƒGƒ‰[‚Æ‚È‚è‚Ü‚·B<BR>   <BR>     <FONT color="#ff0000">–{‹@”\‚ðŽg—p‚·‚éê‡‚É‚Í <CODE>makelcf</CODE> ‚ð CodeWarrior for NINTENDO DS ƒo[ƒWƒ‡ƒ“ 2.0 ‘Î‰žƒ‚[ƒh(ËƒIƒvƒVƒ‡ƒ“   <CODE>-V2</CODE>) ‚Å‹N“®‚³‚¹‚é•K—v‚ª‚ ‚è‚Ü‚·B</FONT> !-->
+</DL>
+</BLOCKQUOTE>
+<H4>Property section (Incidental Information definitions section)</H4>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item"><CODE>OverlayDefs</CODE><em>[Overlay Name Filename (without extension)]</em>
+<DD class="command_desc">  This specifies the filename (excluding an extension) for the Overlay Name file  that gets created at the time of linking. If the filename starts with <CODE>&quot;%&quot;</CODE>, that <CODE>&quot;%&quot;</CODE> part gets replaced with the <em>[name of the resident part section]</em> specified at the start of the <CODE>Static</CODE> section. It can be omitted, in which case <CODE>&quot;%_defs&quot;</CODE> gets used.
+<DT class="command_item"><CODE>OverlayTable</CODE><em>[OverlayTable filename]</em>
+<DD class="command_desc">  This specifies the filename (excluding an extension) for the Overlay Table file that gets created at the time of linking. If the filename starts with <CODE>&quot;%&quot;</CODE>, that <CODE>&quot;%&quot;</CODE> part gets replaced with the <em>[name of the resident part section]</em> specified at the start of the <CODE>Static</CODE> section. It can be omitted, in which case <CODE>&quot;%_table&quot;</CODE> gets used.
+<DT class="command_item"><CODE>Suffix</CODE><em>[File extension for application binary files]</em>
+<DD class="command_desc">  This specifies the filename extension for the binary files that get created  at the time of linking. It can be omitted, in which case <CODE>&quot;.sbin&quot;</CODE> gets used.
+</DL>
+</BLOCKQUOTE>
+<H3>Variable References and Modifier Options</H3>
+<P>  You can reference the value of a variable that is defined outside of the Linker Spec file by specifying the variable in the format: <CODE>$(<em>[variable name</em>])</CODE>. The variable's value can be set with the command line option like this: <CODE>-D</CODE><em>[variable name]</em>=<em>[value]</em>. Alternately, you can set the value using an environment variable. If the  same variable is defined with both the <CODE>-D</CODE> option and an environment  variable, the <CODE>-D</CODE> option value takes priority. Following is an  example of a description for a variable reference:</P>
+<BLOCKQUOTE>
+<PRE class="sample_source"><CODE>Static $(TARGET_NAME)<BR>
+{
+Address    $(START_ADDRESS)<BR>
+Object     *<BR>
+}</CODE></PRE>
+</BLOCKQUOTE>
+<P>  If the variable value takes the form of a file path, you can reference the value by attaching a modifier option  immediately after the variable name. The following values can be referenced with the modifier options <CODE>:h,</CODE> <CODE>:t,</CODE> <CODE>:r</CODE> and <CODE>:e</CODE></P>
+<BLOCKQUOTE>For <CODE>$(FILE)=C:/home/Nitro/readme.txt</CODE>:
+<TABLE class="blockquoted_table">
+  <TBODY>
+    <TR>
+<TD><CODE>:h</CODE></TD>
+<TD>The portion of the path before the final path delimiter</TD>
+<TD><CODE>$(FILE:h)=C:/home/Nitro/</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>:t</CODE></TD>
+<TD>The portion of the path after the final path delimiter</TD>
+<TD><CODE>$(FILE:t)=readme.txt</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>:r</CODE></TD>
+<TD>The portion of the path excluding the file extension</TD>
+<TD><CODE>$(FILE:r)=C:/home/Nitro/readme</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>:e</CODE></TD>
+<TD>The path file-extension portion</TD>
+<TD><CODE>$(FILE:e)=txt</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BLOCKQUOTE>
+<H3>Other formats</H3>
+<P>  Keywords like <CODE>&quot;Static&quot;</CODE> used in section definitions can be written this way, or all in uppercase like <CODE>&quot;STATIC&quot;</CODE>, or all in lowercase like <CODE>&quot;static&quot;</CODE>. Anything than follows the pound sign (<CODE>#</CODE>) is treated as a comment.</P>
+<BLOCKQUOTE>
+<PRE class="sample_source"><CODE>#
+# Lines that begin with <CODE>#</CODE> are comments<BR>
+#
+STATIC my_app  # Uppercase is also OK<BR>{<BR>....<BR>}</CODE>
+{
+   ....
+}</CODE></PRE>
+</BLOCKQUOTE>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/makelcf.exe</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="makerom.html">makerom</A>, <A href="../fs/fs_overlay_id_types.html">FSOverlayID</A></CODE></P>
+<H2>Revision History</H2>
+<P>09/02/2005 Made revisions in line with overlay group support.<BR> 07/20/2004 Made revisions in line with changes to overlay operations under SDK2.0.<BR> 05/25/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

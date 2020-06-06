@@ -1,0 +1,60 @@
+<HTML lang="ja">
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_CheckValidConsole</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_CheckValidConsole</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_CheckValidConsole( const <A href="DWCUserData.html">DWCUserData</A>* userdata );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  The Wi-Fi Connection treats the DS card and DS console as a set. This function checks if the user data is the user data being used by the DS console and the set. 
+		</P>
+		<P>
+		  Use this function in the application to check if there was a problem at login. Refer to the programming manual for more information on the specific uses of this function.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>userdata</CODE></STRONG></EM></TD>
+					<TD width="75%">Pointer to the <CODE><A href="DWCUserData.html">DWCUserData</A></CODE> structure where user data is stored.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">DS console matches the specified user data. </TD>
+				</TR>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD width="75%">DS console differs from the specified user data. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<code><a href="DWC_CreateUserData.html">DWC_CreateUserData</a>, <a href="DWC_ClearDirtyFlag.html">DWC_ClearDirtyFlag</a>, <a href="DWC_LoginAsync.html">DWC_LoginAsync</a></code>
+		<H2>Revision History</H2>
+		<P>
+		  02/24/2006 Changed name of referenced document<BR>12/16/2005 Revised descriptions of arguments and return values<BR>10/20/2005 Initial version<BR>
+		</P>
+	</BODY>
+</HTML>

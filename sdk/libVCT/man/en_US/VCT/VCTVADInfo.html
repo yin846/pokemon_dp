@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCTVADInfo</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCTVADInfo</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>
+typedef struct _VCTVADInfo
+{
+    BOOL        activity;
+    int         scale;
+    int         releaseCount;
+    int         releaseTime;
+} VCTVADInfo;
+</CODE></PRE>
+  </dd>
+</dl>
+<H2>Definition</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD><B><I>activity</I></B></TD>
+      <TD>Returns TRUE if VAD detects audio; otherwise, FALSE.</TD>
+    </TR>
+    <TR>
+      <TD><B><I>scale</I></B></TD>
+      <TD>A scale value of current volume detected by VAD (0-127).</TD>
+    </TR>
+    <TR>
+      <TD><B><I>releaseCount</I></B></TD>
+      <TD>Current release time after detecting mute condition (the value set by the <code><a href="VCT_SetVADReleaseTime.html">VCT_SetVADReleaseTime</a></code> function).</TD>
+    </TR>
+    <TR>
+      <TD><B><I>releaseTime</I></B></TD>
+      <TD>Current release time after detecting mute condition (the value set by <code><a href="VCT_SetVADReleaseTime.html">VCT_SetVADReleaseTime</a></code> * frame time).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Description</H2>
+<P>VCTVADInfo is a structure used to store the VAD's internal information.</P>
+<P>This <B><I>scale</I></B> is filled with the current volume scale value detected by the VAD algorithm. The output value is available in a range of 0 - 127 as calculated by the SND_CalcDecibel function of NITRO-SDK.</P>
+
+<h2>See Also</h2>
+<P><code>
+<A href="VCT_GetVADInfo.html">VCT_GetVADInfo</A>,
+<A href="VCT_SetVADReleaseTime.html">VCT_VADReleaseTime</A>
+</code></P>
+<H2>Revision History</H2>
+<P>
+2006/04/25 A description of the VAD detection level was removed.<BR>
+2006/01/25 First release
+</P>
+</body>
+</html>

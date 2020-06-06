@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dForceBindMdlTex</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dForceBindMdlTex</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/kernel.h&gt;</CODE></PRE>
+<PRE>BOOL
+NNS_G3dForceBindMdlTex(
+NNSG3dResMdl*           pMdl,
+const NNSG3dResTex*     pTex,
+u32                     texToMatListIdx,
+u32                     texIdx</code>
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pMdl</STRONG></EM></TD>
+<TD width="87%">Pointer to the model resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>pTex</STRONG></EM></TD>
+<TD width="87%">Pointer to the texture resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>texToMatListIdx</STRONG></EM></TD>
+<TD width="87%">Texture index for the material list directory contained within the model resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>texIdx</STRONG></EM></TD>
+<TD width="87%">Texture index</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>Returns <code>TRUE</code> if the bind succeeds</P>
+
+<H2>Description</H2>
+<P>There is a dictionary in the model resource that references the material list that uses the texture corresponding the texture name. The material group is referenced with the <B><I>texToMatListIdx</I></B> index when the dictionary is using index referencing; that material group is forced to associate with the number <B><I>texIdx</I></B> texture in the texture block. This can be used to bind material to a texture that does not match the specified texture name.</P>
+
+
+<H2>See Also</H2>
+<P><code><a href="NNS_G3dBindMdlTex.html">NNS_G3dBindMdlTex</a></code>, <code><a href="NNS_G3dBindMdlTexEx.html">NNS_G3dBindMdlTexEx</a></code>, <code><a href="NNS_G3dReleaseMdlTex.html">NNS_G3dReleaseMdlTex</a></code>, <code><a href="NNS_G3dReleaseMdlTexEx.html">NNS_G3dReleaseMdlTexEx</a></code></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

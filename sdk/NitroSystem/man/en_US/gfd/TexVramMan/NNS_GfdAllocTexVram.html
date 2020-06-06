@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNS_GfdAllocTexVram</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_GfdAllocTexVram</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/gfd.h&gt;</CODE></PRE>
+<PRE><CODE>NNSGfdTexKey NNS_GfdAllocTexVram(u32 szByte, BOOL is4x4comp, u32 opt);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>szByte</STRONG></EM></TD>
+<TD width="87%">The size of texture-use memory you want to allocate (16 to 524272 bytes)</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>is4x4comp</STRONG></EM></TD>
+<TD width="87%">TRUE if a 4x4 texel compressed texture-use region is being allocated</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>opt</STRONG></EM></TD>
+<TD width="87%">Options for the VRAM Memory Manager</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>The key data showing the texture-use memory.</P>
+
+<H2>Description</H2>
+<P>
+Allocates texture-use memory of the size specified by <code>szByte</code> from VRAM. The NITRO-System library uses this function to allocate texture-use memory from VRAM.
+</P>
+<P>
+The  <code>NNS_GfdAllocTexVram</code> function is defined as shown below. The only process this function conducts internally is to call the function set in the global function pointer <code>NNS_GfdDefaultFuncAllocTexVram</code>.
+</P>
+<PRE>
+static inline NNSGfdTexKey
+NNS_GfdAllocTexVram(u32 szByte, BOOL is4x4comp, u32 opt)
+{
+return (*NNS_GfdDefaultFuncAllocTexVram)(szByte, is4x4comp, opt );
+}
+</PRE>
+<P>
+<code>NNS_GfdAllocTexVram</code> functions by registering the appropriate function for allocating texture-use memory in this function pointer. With this setup, the user can control the acquisition of texture-use memory from the library. In the initial state, the function that is set in <code>NNS_GfdDefaultFuncAllocTexVram</code> does nothing and returns an error. If an error occurs when texture-use memory is being allocated, the key <code> NNS_GFD_ALLOC_ERROR_TEXKEY</code> is returned, indicating an error.
+</P>
+<P>
+The <code>opt</code> parameter enables you to freely select how to use the function set in <code>NNS_GfdDefaultFuncAllocTexVram</code> for allocating texture-use memory.
+</P>
+There is a restriction for the size that can be specified due to the specification of the bit expression inside the palette key.
+
+
+
+<H2>See Also</H2>
+<P><CODE><A href="NNS_GfdFreeTexVram.html">NNS_GfdFreeTexVram</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>01/31/2005 Added a cautionary statement regarding the size range.</P>
+<P>07/16/2004 Initial version.</P>
+</BODY>
+
+</HTML>

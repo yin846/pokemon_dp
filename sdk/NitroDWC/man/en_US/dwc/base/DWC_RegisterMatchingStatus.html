@@ -1,0 +1,69 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_RegisterMatchingStatus</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_RegisterMatchingStatus</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>#include &lt;dwc.h&gt;
+
+BOOL DWC_RegisterMatchingStatus( void );</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function registers one's own matchmaking information (henceforth known as the &quot;matchmaking status&quot;) in the matchmaking server. For at least 15 seconds after calling this function, the status of one's own host can be seen by other hosts, and matchmaking can proceed.
+		</P>
+		<P>
+		  It is not necessary to call this function in peer matchmaking, since this matchmaking status registration process is carried out inside the matchmaking start functions (<A href="DWC_ConnectToAnybodyAsync.html">DWC_ConnectToAnybodyAsync</A> and <A href="DWC_ConnectToFriendsAsync.html">DWC_ConnectToFriendsAsync</A>). However, since this matchmaking status is erased from the matchmaking server when the matchmaking ends or is canceled, another wait time of at least 15 seconds occurs when restarting matchmaking. To decrease this wait time as much as possible, call this function at an appropriate time before starting matchmaking.
+		</P>
+		<P>
+		  For example, call this function after peer matchmaking has completed, one game has been played, and the selection is made to continue the game.
+		</P>
+		<P>
+The matchmaking status is also erased when <A href="DWC_ShutdownFriendsMatch.html">DWC_ShutdownFriendsMatch</A> is called. Also, after establishing a Wi-Fi connection, the library registers the matchmaking status when the Wi-Fi connection completes in order to complete the first matchmaking quickly.
+        </P>
+		<P>
+		  For server-client matchmaking, the matchmaking status registration process is conducted inside the matchmaking start functions (<A href="DWC_SetupGameServer.html">DWC_SetupGameServer</A> and <A href="DWC_ConnectToGameServerAsync.html">DWC_ConnectToGameServerAsync</A>) in the same way as in peer matchmaking. However, the matchmaking status is not deleted until the <A href="DWC_ShutdownFriendsMatch.html">DWC_ShutdownFriendsMatch</A> function is called. Therefore, there is no need to call this function.
+		</P>
+
+		<H2>Arguments</H2>
+		<P>
+None.
+		</P>
+
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">The matchmaking status is registered in the matchmaking server.</TD>
+				</TR>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD width="75%">Not registered because not logged in or error occurred.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_ConnectToAnybodyAsync.html">DWC_ConnectToAnybodyAsync</A>, <A href="DWC_ConnectToFriendsAsync.html">DWC_ConnectToFriendsAsync</A>, <A href="DWC_SetupGameServer.html">DWC_SetupGameServer</A>, <A href="DWC_ConnectToGameServerAsync.html">DWC_ConnectToGameServerAsync</A>, <A href="DWC_ShutdownFriendsMatch.html">DWC_ShutdownFriendsMatch</A></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			12/16/2005 Added a detailed function description. <BR> 11/01/2005 Initial version.<BR>
+		</P>
+
+	</BODY>
+</HTML>

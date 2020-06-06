@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_COMMAND_OPENFILEDIRECT</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_COMMAND_OPENFILEDIRECT</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<BR> <CODE>FSResult FS_ARCHIVE_PROC_FUNC(FSFile *p_file, FSCommandType command /* = FS_COMMAND_OPENFILEDIRECT */);<br></CODE><br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Operating specifications for the archive command <code>FS_COMMAND_OPENFILEDIRECT</code> are shown below: <BR> <BR>
+
+<HR>
+<B>Arguments passed to this command</B>
+<BLOCKQUOTE>
+<PRE>This command takes as a command argument the variable <code>arg.openfiledirect</code> that is stored at <code>p_file</code>. 
+This variable is defined in <code>nitro/fs/file.h</code> as shown below:
+
+typedef struct
+{
+u32     top;
+u32     bottom;
+u32     index;
+} FSOpenFileDirectInfo;</code></PRE>
+</BLOCKQUOTE>
+<BLOCKQUOTE>Argument content is listed below:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1" width="50%">
+  <TBODY>
+    <TR>
+<TD style="text-align : center;" width="95">Arguments</TD>
+<TD style="text-align : center;" width="522">Content</TD>
+    </TR>
+    <TR>
+<TD width="95" style="text-align : center;">top</TD>
+<TD width="522">An archive base offset that indicates the top of the file image area.<br />This value is used for area determination in the <code><a href="../file/FS_SeekFile.html">FS_SeekFile</a></code> function.</TD>
+    </TR>
+    <TR>
+<TD style="text-align : center;">bottom</TD>
+<TD>An archive base offset that indicates the bottom of the file image area.<br />This value is used for area determination in the <code><a href="../file/FS_SeekFile.html">FS_SeekFile</a></code> function.</TD>
+    </TR>
+    <TR>
+<TD style="text-align : center;">index</TD>
+<TD>Indicates a file's index.<br />This value is used by the <code><a href="fs_command_getpath_spec.html">FS_COMMAND_GETPATH</a></code> command.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<HR>
+<B>Actions required of this command</B>
+<BLOCKQUOTE>
+<PRE>It sets the <code>p_file</code> variable prop.file as shown below:
+
+Each of the <code>prop.file</code> variables is appropriately set based on the arguments <code>top</code>, <code>bottom</code>, and <code>index</code>.
+The set values are used by subsequent <code><a href="fs_command_readfile_spec.html">FS_COMMAND_READFILE</a></code> and <code><a href="fs_command_writefile_spec.html">FS_COMMAND_WRITEFILE</a></code> commands.
+You may determine your own meanings for the <code>prop.file</code> variables as long as they are appropriate arguments for these commands.
+However, <code>prop.file.pos</code> must be within the range <code>prop.file.top</code> - <code>prop.file.bottom</code>.</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Default Implementation</B>
+<BLOCKQUOTE>The command sets values based on the following determinants:
+</BLOCKQUOTE>
+<CENTER>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="185">prop.file.top</TD>
+<TD width="432">Sets the argument <code>top</code> as-is.</TD>
+    </TR>
+    <TR>
+<TD width="185">prop.file.bottom</TD>
+<TD width="432">Sets the argument <code>bottom</code> as-is.</TD>
+    </TR>
+    <TR>
+<TD width="185">prop.file.pos</TD>
+<TD width="432">Sets the same value as <code>prop.file.top</code></TD>
+    </TR>
+    <TR>
+<TD width="185">prop.file.own_id</TD>
+<TD width="432">Sets the arguments <code>index</code> and <code>p_file-&gt;arc</code>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<HR>
+<B>Command Results</B><BR>
+
+<BLOCKQUOTE>
+<PRE>If this command returns FS_RESULT_SUCCESS, p_file becomes a handle that contains directory position information.
+Subsequently the <code>FS_IsDir</code> function returns TRUE.
+It can also be used in arguments in functions that operate on files.</PRE>
+</BLOCKQUOTE>
+<HR>
+<B>Functions that use this command</B><BR>
+<BLOCKQUOTE><code><a href="../file/FS_OpenFileDirect.html">FS_OpenFileDirect</a></code> (indirectly from the default <code><a href="../file/FS_OpenFileFast.html">FS_OPENFILEFAST</a></code> command) <BR><code>FS_OpenFile</code> <BR><code>FS_OpenFileFast</code>
+</BLOCKQUOTE>
+<h2>See Also</h2>
+<p><code><a href="../fs_archive_type.html">FSArchive</a></code>, <code><a href="../fs_archive_proc_func_type.html">FS_ARCHIVE_PROC_FUNC</a></code>, <code><a href="../fs_command_type_const.html">FS_COMMAND_*</a></code>, <code><a href="../archive/FS_SetArchiveProc.html">FS_SetArchiveProc</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+08/25/2004 Fixed error: <code>FS_COMMAND_WRITE</code> changed to <code>FS_COMMAND_WRITEFILE</code>.<br> 07/12/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

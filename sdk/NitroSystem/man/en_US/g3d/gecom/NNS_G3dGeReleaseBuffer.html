@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dGeReleaseBuffer</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dGeReleaseBuffer</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE><code>#include &lt;nnsys/g3d/gecom.h&gt;</CODE></PRE>
+<PRE><CODE>NNSG3dGeBuffer* NNS_G3dGeReleaseBuffer(void);</code></CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<P>None.</P>
+
+<H2>Return Values</H2>
+<P>Returns the pointer to the command buffer that was deleted.</P>
+
+<H2>Description</H2>
+<P>
+Writes any left-over commands in the command buffer to the geometry engine and then deletes the command buffer.
+</P>
+
+<H2>See Also</H2>
+<P><code><a href="NNS_G3dGeIsBufferExist.html">NNS_G3dGeIsBufferExist</a></code>, <code><a href="NNS_G3dGeSetBuffer.html">NNS_G3dGeSetBuffer</a></code></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

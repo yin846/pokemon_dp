@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>CTRDG Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Game Pak Sample Demo</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/ctrdg</CODE></P>
+<H2>Compilation Method</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/card</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;This will generate executable (.<CODE>.nef</CODE>, <CODE>.srl</CODE>) files under</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/ctrdg/<B><I>sample_name</I></B>/bin/<B><I>platform</I></B>/<B><I>target</I></B>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/ctrdg/pullout-1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution Method</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/ctrdg/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and do one of the following:</P>
+<UL>
+<LI>Load a <code>*.nlf</code> file with IS-NITRO-DEBUGGER and execute it
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER
+</UL>
+
+<H2>Description</H2>
+<BR>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>pullout-1</CODE></STRONG></EM></TD>
+<TD width="525">Detects removal of Game Pak and Game Card, displays warning message, and stops.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>backup-1</CODE></STRONG></EM></TD>
+<TD width="525">The CTRDG library can be used to access the AGB backup device.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Operation</H2>
+<P><CODE>This function does not work properly with ensata.</CODE></P>
+<H2>See Also</H2>
+<P><A href="../../ctrdg/list_ctrdg.html"><CODE>CTRDG List of Functions</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+04/06/2006 Added the <CODE>backup-1</CODE> sample demo<br /> 03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 09/21/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

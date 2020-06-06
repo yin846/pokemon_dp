@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dAllocAnmObj</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dAllocAnmObj</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/mem.h&gt;</CODE></PRE>
+<PRE>NNSG3dAnmObj*
+NNS_G3dAllocAnmObj
+NNSFndAllocator* pAlloc,
+const void*             pAnm,
+const NNSG3dResMdl* pMdl
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pAlloc</STRONG></EM></TD>
+<TD width="87%">Pointer to the memory allocator</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>pAnm</STRONG></EM></TD>
+<TD width="87%">Pointer to the animation resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>pMdl</STRONG></EM></TD>
+<TD width="87%">Pointer to the model resource</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>
+Returns the pointer to the allocated heap region. Returns a <code>NULL</code> if the region allocation fails.
+</P>
+
+<H2>Description</H2>
+<P>Allocates the region for the animation object from the heap region. The region size to reserve is calculated using <STRONG><EM>pAnm</EM></STRONG> and <STRONG><EM>pMdl</EM></STRONG> in <CODE>NNS_G3dAnmObjCalcSizeRequired</CODE>. Use the separate function <CODE>NNS_G3dAnmObjInit</CODE> to initialize.</P>
+
+
+<H2>See Also</H2>
+<P><code><a href="../kernel/NNS_G3dAnmObjCalcSizeRequired.html">NNS_G3dAnmObjCalcSizeRequired</a></code>, <code><a href="../kernel/NNS_G3dAnmObjInit.html">NNS_G3dAnmObjInit</a></code>, <code><a href="NNS_G3dFreeAnmObj.html">NNS_G3dFreeAnmObj</a></code></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

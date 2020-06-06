@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dAnmObjInit</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dAnmObjInit</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/kernel.h&gt;</CODE></PRE>
+<PRE><CODE>void
+NNS_G3dAnmObjInit(
+NNSG3dAnmObj*   pAnmObj,
+void*                   pResAnm,
+const NNSG3dResMdl*     pResMdl,
+const NNSG3dResTex* pResTex
+);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pAnmObj</STRONG></EM></TD>
+<TD width="87%">Pointer to the <code>AnmObj</code> structure</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>pResAnm</STRONG></EM></TD>
+<TD width="87%">Pointer to the animation resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>pResMdl</STRONG></EM></TD>
+<TD width="87%">Pointer to the model resource</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>pResTex</STRONG></EM></TD>
+<TD width="87%">Pointer to the texture resource</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>
+Initializes the <code>NNSG3dAnmObj</code> structure. The animation object designated by <code>pAnmObj</code> must be at least as large as the size obtained by the <code><a href="NNS_G3dAnmObjCalcSizeRequired.html">NNS_G3dAnmObjCalcSizeRequired</a></code> function. It is OK if <code>pResTex</code> is <code>NULL</code>, except when initializing animation object for texture pattern animation.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="NNS_G3dAnmObjCalcSizeRequired.html">NNS_G3dAnmObjCalcSizeRequired</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

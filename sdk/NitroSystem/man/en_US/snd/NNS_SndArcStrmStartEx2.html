@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcStrmStartEx2</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcStrmStartEx2</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">BOOL NNS_SndArcStrmStartEx2(
+NNSSndStrmHandle* handle,
+int playerNo,
+int playerPrio,
+int strmNo,
+u32 offset,
+NNSSndStrmCallback strmCallback,
+void* strmCallbackArg,
+NNSSndArcStrmCallback sndArcStrmCallback,
+void* sndArcStrmCallbackArg );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAWMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>Pointer to a stream handle</td>
+</tr>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The Player number</td>
+</tr>
+<tr>
+<td><em><strong><code>playerPrio</code></strong></em></td>
+<td>This is the player priority A greater value denotes a higher priority</td>
+</tr>
+<tr>
+<td><em><strong><code>strmNo</code></strong></em></td>
+<td>This is the stream number</td>
+</tr>
+<tr>
+<td><em><strong><code>offset</code></strong></em></td>
+<td>This is the starting offset position It is in msec</td>
+</tr>
+<tr>
+<td><em><strong><code>strmCallback</code></strong></em></td>
+<td>Pointer to a stream callback function</td>
+</tr>
+<tr>
+<td><em><strong><code>strmCallbackArg</code></strong></em></td>
+<td>User argument for the stream callback function</td>
+</tr>
+<tr>
+<td><em><strong><code>sndArcStrmCallback</code></strong></em></td>
+<td>This is the sound archive stream callback function pointer</td>
+</tr>
+<tr>
+<td><em><strong><code>sndArcStrmCallbackArg</code></strong></em></td>
+<td>This is the sound archive stream callback function user argument</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDA3OWT"></a>
+<h2>Return Values</h2>
+
+      <p>
+If playback succeeds TRUE. If it fails FALSE. 
+</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAEPWT"></a>
+<h2>Description</h2>
+      <p>
+This function registers the callback functions and plays back the stream.
+</p>
+      <p>
+The sound archive stream library must be initialized in advance using the <code><a href="NNS_SndArcStrmInit.html">NNS_SndArcStrmInit</a></code> function.
+</p>
+      <p>
+The stream handle <em><strong><code>handle</code></strong></em> needs to be initialized only once in advance using the <code><a href="NNS_SndStrmHandleInit.html">NNS_SndStrmHandleInit</a></code> function. Calling this function releases the stream already attached to the stream handle (this does not mean it is stopped). If playback succeeds, the stream is attached to the stream handle.
+</p>
+      <p>
+If -1 is specified for the player number <em><strong><code>playerNo</code></strong></em> and player priority <em><strong><code>playerPrio</code></strong></em>, the parameters specified with the sound data are used.
+</p>
+      <p>
+If a non-zero value is set for the start offset position <em><strong><code>offset</code></strong></em>, it is possible to play from the middle of the stream data.
+</p>
+       <p>
+The stream callback function <em><strong><code>strmCallback</code></strong></em> is periodically called during playback. Playback waveform data can be processed in this callback function. The user argument, <em><strong><code>strmCallbackArg</code></strong></em>, of the stream callback function is passed without any changes to the argument of the stream callback function <em><strong><code>strmCallback</code></strong></em>. If registration of the stream callback function is not required, NULL is entered. Refer to the description of <code><a href="NNSSndStrmCallback.html">NNSSndStrmCallback</a></code> for information on the stream callback function.
+</p>
+       <p>
+The sound archive stream callback function <em><strong><code>sndArcStrmCallback</code></strong></em>is called at a specified time. You can connect multiple stream data in real time and play them. The user argument <em><strong><code>sndArcStrmCallbackArg</code></strong></em> of the sound archive stream callback function is passed without any changes to the argument of the sound archive stream callback function <em><strong><code>sndArcStrmCallback</code></strong></em>. If registration of the sound archive stream callback function is not required, NULL is entered. Refer to the description of <code><a href="NNSSndArcStrmCallback.html">NNSSndArcStrmCallback</a></code> for information on the sound archive stream callback function.
+</p>
+      <p>
+Prior to stream playback, the starting data needs to be loaded into the stream buffer so the beginning of the actual sound production is delayed a few frames. If you want to start playback immediately, the data load to the stream buffer needs to be completed in advance. The <code><a href="NNS_SndArcStrmPrepare.html">NNS_SndArcStrmPrepare</a></code> function is used for this.
+</p>
+      <p>
+The channels used for stream playback are set aside in this function. If the channels set aside were being used by sequence playback, the sound being produced is automatically stopped. To control the timing of the channel set aside the <code><a href="NNS_SndArcStrmAllocChannel.html">NNS_SndArcStrmAllocChannel</a></code> function needs to be called in advance.
+</p>
+      <p>
+If the stream data is in stereo, channel 0 is output from the left and channel 1 from the right. These settings can be changed with the <code><a href="NNS_SndArcStrmSetChannelPan.html">NNS_SndArcStrmSetChannelPan</a></code> function.
+</p>
+      <p>
+Playback failure may be the result of the following factors: 
+</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>The stream number is invalid.</li>
+<li>The priority is lower than the stream already being played.</li>
+<li>The priority is lower than the stream already being played.</li>
+</ul>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndArcStrmInit.html">NNS_SndArcStrmInit</a>, <a href="NNS_SndStrmHandleInit.html">NNS_SndStrmHandleInit</a>, <a href="NNSSndStrmCallback.html">NNSSndStrmCallback</a>, <a href="NNSSndArcStrmCallback.html">NNSSndArcStrmCallback</a>, <a href="NNS_SndArcStrmPrepare.html">NNS_SndArcStrmPrepare</a>, <a href="NNS_SndArcStrmAllocChannel.html">NNS_SndArcStrmAllocChannel</a>, <a href="NNS_SndArcStrmSetChannelPan.html">NNS_SndArcStrmSetChannelPan</a></code></p>
+<h2>Revision History</h2>
+<p>11/26/2004 Initial version.</p>
+</div>
+</body>
+</html>

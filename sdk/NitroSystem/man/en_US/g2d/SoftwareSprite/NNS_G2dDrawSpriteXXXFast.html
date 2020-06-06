@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dDrawSprite*Fast</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dDrawSprite*Fast</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_Softsprite.h&gt;</CODE></pre>
+  <pre><CODE>void NNS_G2dDrawSpriteFast  
+    ( 
+s16 px, s16 py, int pz, 
+int sx, int sy, 
+int U0, int V0, int U1, int V1
+    );
+void NNS_G2dDrawSpriteSimpleFast  ( const NNSG2dSimpleSprite* pS );
+void NNS_G2dDrawSpriteBasicFast   ( const NNSG2dBasicSprite* pB );
+void NNS_G2dDrawSpriteExtendedFast( const NNSG2dExtendedSprite* pE );</CODE></pre>
+  </dd>
+</dl>
+<H2>Description</H2>
+<P>
+Renders each type of sprite. The contents of the current matrix of the geometry engine will not be saved before and after rendering with the <code>NNS_G2dDrawSpriteXXXFast()</code> function. Since the Push and Pop processes of the current matrix stack are not performed, only that part will operate at a high speed. In particular, if it is not necessary to save each time the current matrix is rendered, more efficient processing becomes possible (Code Example 1). <BR>
+<pre>
+Code Example 1:
+
+G3_PushMtx();
+for( i = 0; i &lt; N; i++ )
+{
+G3_Identity();// Or G3_LoadMtx43( &amp;mtx ), etc.
+NNS_G2dDrawSpriteXXXFast();
+}
+G3_PopMtx(1);
+</pre>
+<BR> As indicated in the code example below, <code>NNS_G2dDrawSpriteXXX()</code> is implemented via <code>NNS_G2dDrawSpriteXXXFast()</code> (Code Example 2).<BR> <BR>
+<pre>
+Code Example 2:
+
+NNS_G2dDrawSpriteXXX();
+{
+G3_PushMtx();
+NNS_G2dDrawSpriteXXXFast();
+G3_PopMtx(1);
+}
+</pre>
+
+<BR>
+</p>
+
+<h2>See Also</h2>
+<p>
+<code><a href="NNS_G2dDrawSprite.html">NNS_G2dDrawSprite</a></code>, <code><a href="NNS_G2dDrawSpriteXXX.html">NNS_G2dDrawSprite*</a></code>
+
+
+</p>
+<H2>Revision History</H2>
+<P>11/10/2004 Initial version.</P>
+</body>
+</html>

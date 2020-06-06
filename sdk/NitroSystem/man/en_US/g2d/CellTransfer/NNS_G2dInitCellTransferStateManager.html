@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dInitCellTransferStateManager</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dInitCellTransferStateManager</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_CellTransferManager.h&gt;</CODE></pre>
+<pre><CODE>void
+NNS_G2dInitCellTransferStateManager(
+NNSG2dCellTransferState*            pCellStateArray,
+u32                                 numCellState,
+VramTransferTaskRegisterFuncPtr     pTaskRegisterFunc );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCellStateArray</font></strong></em></td>
+<td width="87%">[IN] Cell VRAM transfer state object buffer</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">numCellState</font></strong></em></td>
+<td width="87%">[IN] Cell VRAM transfer state object buffer length</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pTaskRegisterFunc</font></strong></em></td>
+<td width="87%">[IN] Pointer to the VRAM transfer registration function</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.
+</p>
+<H2>Description</H2>
+<P>
+Initializes the cell VRAM transfer state object manager. It hands over the cell VRAM transfer state object buffer as an argument. The <code>pTaskRegisterFunc</code> is a pointer to the function that requests the VRAM transfer task registration. The cell VRAM transfer state object manager determines the state of the cell VRAM transfer state object and issues a VRAM transfer task if necessary. Actually, it generates a VRAM transfer task and the administration and execution processes are delegated to an external module. <BR> <BR>
+</p>
+
+<h2>See Also</h2>
+<p>None.</p>
+<H2>Revision History</H2>
+<P>07/20/2004 Initial version.</P>
+</body>
+</html>

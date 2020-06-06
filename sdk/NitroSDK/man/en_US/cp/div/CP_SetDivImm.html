@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CP_SetDivImm*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CP_SetDivImm*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/cp.h&gt;</CODE><BR> <BR> <CODE>void CP_SetDivImm32_32( u32 numer, u32 denom );<br> void CP_SetDivImm64_32( u64 numer, u32 denom );<br> void CP_SetDivImm64_64( u64 numer, u64 denom ); </CODE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>numer</STRONG></EM></TD>
+<TD width="87%">Numerator of fraction. Represents dividend of division here.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>denom</STRONG></EM></TD>
+<TD width="87%">Denominator of fraction. Represents divisor of division here.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None</p>
+
+<H2>Description</H2>
+<P>Sets parameters for division. It does not set the division mode but  merely stores the dividend and the divisor in  registers. The three division modes are shown below.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD>Division Mode</TD>
+<TD>Calculation</TD>
+<TD>Results</TD>
+    </TR>
+    <TR>
+<TD>CP_DIV_32_32BIT_MODE</TD>
+<TD>32-bit divided by 32-bit</TD>
+<TD>Quotient 32-bit, remainder 32-bit</TD>
+    </TR>
+    <TR>
+<TD>CP_DIV_64_32BIT_MODE</TD>
+<TD>64-bit divided by 32-bit</TD>
+<TD>Quotient 64-bit, remainder 32-bit</TD>
+    </TR>
+    <TR>
+<TD>CP_DIV_64_64BIT_MODE</TD>
+<TD>64-bit divided by 64-bit</TD>
+<TD>Quotient 64-bit, remainder 64-bit</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Internal Operation</h2>
+<p><CODE>Stores values in <CODE>DIV_NUMER(0x4000290)</CODE> and <CODE>DIV_DENOM(0x4000298)</CODE> of the IO register.<br></CODE></p>
+
+<h2>See Also</h2>
+<p><CODE><A href="CP_SetDiv.html">CP_SetDiv*</A>, <A href="CP_IsDivBusy.html">CP_IsDivBusy</A>, <A href="CP_WaitDiv.html">CP_WaitDiv</A>, <A href="CP_GetDivResult.html">CP_GetDivResult*</A>, <A href="CP_GetDivRemainder.html">CP_GetDivRemainder*</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>11/02/2004 Corrected IO register address in Internal Operation.<BR> 01/09/2004 Added content.<br /> 12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

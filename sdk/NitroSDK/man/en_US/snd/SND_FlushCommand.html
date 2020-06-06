@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_FlushCommand</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_FlushCommand</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">BOOL SND_FlushCommand( u32 <var>flags</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAIMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>flags</code></strong></em></td>
+<td>The flags</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAXMWT"></a>
+<h2>Return Values</h2>
+
+<p><code>TRUE</code> if command flush has succeeded. <code>FALSE</code> if it has failed.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA4MWT"></a>
+<h2>Description</h2>
+      <p>
+This function issues reserved commands. ARM7 commands are not processed by the ARM7 until this function is called.
+</p>
+      <p>
+<code>SND_COMMAND_BLOCK</code> or <code>SND_COMMAND_NOBLOCK</code> can be specified in <em><strong><code>flags</code></strong></em>. When <code>SND_COMMAND_BLOCK</code> is specified, a block inside the function persists until the command issues successfully. When <code>SND_COMMAND_NOBLOCK</code> is specified, then <code>FALSE</code> is returned if the command fails to be issued.
+</p>
+      <p>
+<code>SND_COMMAND_IMMEDIATE</code> can also be by specified for the <strong><em><code>flags</code></em></strong> flag by including it with a logical OR operation. When <code>SND_COMMAND_IMMEDIATE</code> is specified, the issued command is processed immediately when the command issues successfully. When it is not specified, the command is processed when the next sound frame starts.
+</p>
+      <div class="note">
+<h3 class="title">Caution</h3>
+<p>
+If there are no reserved commands, this function immediately returns <code>TRUE</code>, but note that there is no command process response.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p>None.</p>
+<h2>Revision History</h2>
+<p>03/01/2005 Added the <code>SND_COMMAND_IMMEDIATE</code> flag<br /> 02/17/2005  Changed &quot;flush&quot; to &quot;issue&quot; in <strong>Description</strong><br /> 07/20/2004 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Connect</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Connect</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Connect ( int <em><strong>s</strong></em>, const void* <em><strong>sockAddr</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>s</strong></em></code></td>
+<td>Socket descriptor. </td>
+  </tr>
+  <tr>
+<td><code><em><strong>sockAddr</strong></em></code></td>
+<td>The pointer to the socket address structures (<code><a href="SOCSockAddr.html">SOCSockAddr</a> and <a href="SOCSockAddrIn.html">SOCSockAddrIn</a></code>) that keep the partner addresses. </td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>0 or higher</td>
+<td>Successful.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINPROGRESS</code></td>
+<td>Connection is not completed yet. (<code>SOC_NONBLOCK</code> is set to the socket descriptor, and the connection is established asynchronously.)</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINVAL</code></td>
+<td>Invalid processing.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EISCONN</code></td>
+<td>The socket is already connected.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EMFILE</code></td>
+<td>Cannot create any more socket descriptors.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket is not initialized.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENOBUFS</code></td>
+<td>Insufficient resources.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ETIMEDOUT</code></td>
+<td>TCP connection timeout.</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Please treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p>This function uses the configuration value saved in the socket structure by <code><a href="SOC_Bind.html">SOC_Bind()</a></code> to attempt a connection to the specified socket. If the socket is not yet bound to a local address, the socket is bound to an unused local address by <code>SOC_Connect()</code>.</p>
+
+<p> For <code>SOC_SOCK_STREAM</code>(TCP) sockets, <code>SOC_Connect()</code> always blocks until a connection is established. If the socket was set to non-blocked mode with <code><a href="SOC_Fcntl.html">SOC_Fcntl()</a></code>, <code>SOC_Connect()</code> returns as soon as possible.</p>
+
+<p> With <code>SOC_SOCK_DGRAM</code> sockets, <code>SOC_Connect()</code> sets the socket partner's address. No connection is made. Datagrams sent with subsequent <code><a href="SOC_Send.html">SOC_Send()</a></code> all go to the specified partner's address. Also subsequent <code><a href="SOC_Recv.html">SOC_Recv()</a></code> functions receive only datagrams from the specified partner's address. If <code><em><strong>sockAddr</strong></em></code> is that protocol's null address, the socket partner address is reset.</p>
+
+<h2>See Also</h2>
+<p>
+<code><a href="SOC_Socket.html">SOC_Socket</a></code> <code><a href="SOC_Bind.html">SOC_Bind</a></code>, <code><a href="SOC_Recv.html">SOC_Recv</a></code>, <code><a href="SOC_Send.html">SOC_Send</a></code>, <code><a href="SOC_Fcntl.html">SOC_Fcntl</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.<BR> 01/13/2006 Edited return values.</P>
+</body>
+</html>

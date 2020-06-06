@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>mic2wav</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color  : #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">mic2wav</H1>
+<H2>Description</H2>
+<P><code>mic2wav</code> is a tool that takes text format recording data obtained by executing Mic Sample Demo mic-2 and converts them into .wav audio files in PCM format.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% mic2wav TEXTFILE [OUTPUT_DIRECTORY]</CODE></P>
+<P>This tool interprets the text data that is written in the file specified in TEXTFILE and outputs the individual data samples as .wav files which are output to the directory specified in OUTPUT_DIRECTORY. OUTPUT_DIRECTORY can be omitted. When omitting it, it will be generated at the same location as the file specified in TEXTFILE.</P>
+<P>The file names are numbers generated in ascending order 00000000.wav, 00000001.wav... When there is an existing file with the same name, it is written over.</P>
+<H3>Audio Text Data Formats</H3>
+<P><code>mic2wav</code> interprets the text data based on the following formats.</P>
+<P>All formats are interpreted on a per-line basis, with decisions based on the text strings at the head of the row.</P>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH>Format</TH>
+<TH>Description</TH>
+<TH>Details</TH>
+    </TR>
+    <TR>
+<TD>$rate=<em>RATE</em></TD>
+<TD>Specification of Frequency</TD>
+<TD>Sampling frequencies in Hz units are specified in the RATE section as integers. The following values can be accommodated as .wav file PCM formats. 8000 Hz  11025 Hz  16000 Hz  22050 Hz  32000 Hz  44100 Hz With the exception of 44100 Hz, the Mike Sampling Demo <a href="../demos/spi/spidemos.html">mic-2</a> can record all of these values.
+      </TD>
+    </TR>
+    <TR>
+<TD>$bits=<em>BITS</em></TD>
+<TD>Specification of Bit Count</TD>
+<TD>The quantization bit rate is specified in integers in the BITS section. The following values can be accommodated as .wav file PCM formats. 8 bit  16 bit The Mic Sample Demo <a href="../demos/spi/spidemos.html">mic-2</a> can record all of these values.
+      </TD>
+    </TR>
+    <TR>
+<TD>$end</TD>
+<TD>Specification of Data Termination</TD>
+<TD>The series of settings and sampling data so far will be output individual .wav files. The output files will be generated automatically according to the rules described above. After being output, the sampling data is all discarded and the system returns to the pre-input analytical state.
+      </TD>
+    </TR>
+    <TR>
+<TD>||DATA,DATA, ...</TD>
+<TD>Specification of Sampling</TD>
+<TD>Based on the settings, the DATA section is read in as sampling data  in unsigned, 16-bit whole numbers. If the quantization bit rate is 8 bits, then the data will be 00 ~ FF, if 16 bits, then 0000 ~FFFF. If the number of digits do not match exactly, they will be simply ignored. The Mic Sample Demo <a href="../demos/spi/spidemos.html">mic-2</a> will output 16 samples per row. If more than one format appears, the subsequent <em><strong><code>$rate</code></strong></em> and <em><strong><code>$bits</code></strong></em> setting changes will be ignored unless data end has been specified using a Send.
+      </TD>
+    </TR>
+    <TR>
+      <TD># ...</TD>
+<TD>Comment</TD>
+<TD>This is interpreted as an explicit comment row and it reads it and discards it without doing anything.
+      </TD>
+    </TR>
+    <TR>
+<TD>Other</TD>
+<TD>Illegal Formats</TD>
+<TD>Unrecognizable, illegal formats are read and discarded without doing anything.
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>Based on the above formats, the text data output by the Mic Sample Demo mic-2  is generated as audio files. For the text, text strings need to be copied from the debug log output window and prepared as arbitrary text files. Additionally, when using the TEG version of IS-NITRO-EMULATOR, a function that writes out the debug log output to a file may be used. For a method of how to specify that, please refer to an easy-to-follow example of a batch file that has been prepared at <code>build/demos/spi/mic-2/sampling.bat</code>.
+</P>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/mic2wav.exe</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="../demos/spi/spidemos.html">Mic Sample Demo mic-2</A></CODE></P>
+<H2>Revision History</H2>
+<P>08/17/2004 Standardized the notation of IS-NITRO-EMULATOR<br> 06/18/2004 Initial Version</P><BR>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

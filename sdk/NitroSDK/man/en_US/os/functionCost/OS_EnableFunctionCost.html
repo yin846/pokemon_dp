@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_EnableFunctionCost</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_EnableFunctionCost</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>BOOL OS_EnableFunctionCost( void );</CODE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>The status before this function was called. TRUE indicates that it was enabled. FALSE indicates that it was disabled.</P>
+<H2>Description</H2>
+<P>This function enables the function cost calculation feature.</P>
+<P>This switch decides  whether the function entry and exit (<CODE>__PROFILE_ENTRY</CODE>, <CODE>__PROFILE_EXIT</CODE>) that are inserted by the <CODE>profile</CODE> feature will become enabled. Therefore take note of how you time enable/disable switching. For example, if you call a function called <CODE>test()</CODE> when in disabled status, and then enable from within the <CODE>test()</CODE> function, consistency will not be possible because it will only store information at <CODE>__PROFILE_EXIT</CODE>, even though nothing was done at the function entry (<CODE>__PROFILE_ENTRY</CODE>).</P>
+<P>Enable/disable switches are set for each call calculation buffer. Therefore one will not disable all.</P>
+<P>If this function is compiled for debugging, it will function properly. However, if compiled for the final ROM version (<CODE>FINALROM</CODE>) library, it will not do anything.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitFunctionCost.html">OS_InitFunctionCost</A>, <A href="OS_DisableFunctionCost.html">OS_DisableFunctionCost</A>, <A href="OS_RestoreFunctionCost.html">OS_RestoreFunctionCost</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>05/18/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

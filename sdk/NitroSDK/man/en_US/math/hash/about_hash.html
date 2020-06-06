@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Hash Message Digest (Overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Hash Message Digest (Overview) </H1>
+<H2>Introduction</H2>
+<P><B>What is a Hash Function?</B></P>
+<P>
+A hash function uses a specific calculation to convert a piece of data of any size to a numerical value with a fixed number of bits. The value calculated by a hash function is called a <em>Hash Value</em>. The hash function is designed to always return the same hash value for the same data.
+</P>
+<P><B>Uses of Hashing</B></P>
+<P>
+If there are many large pieces of data to be compared, it will take a long time to compare them all individually. In this situation, it would be effective to find and compare the hash values of each piece of data. <strong>If the hash values are different, the data they refer to is also different</strong>, so mismatches can be found in a short period of time and with a high rate of probability. When the hash values are the same, the original data must be compared. <strong>Even when the hash values are the same, the data might be different.</strong>) However, overall, the time required for comparison can be greatly reduced.
+</P>
+<P>
+You can also use a hash value to confirm that data has not been corrupted. For example, when saving data to a backup device, a hash value for all the saved data can be appended to the data string. When the data is loaded, the hash value for the loaded data is obtained and compared with the value stored at the end of the data string to confirm that the data is not corrupted. Similarly, this method can be used to confirm the integrity of data sent over a network.
+</P>
+<P><B>The Message Digest</B></P>
+<P>
+There are cases in which a cryptographic hash function is desired. A cryptographic hash function makes it impossible to restore the original data from the hash value. The hash value has a minimum size of 80 bits, and might be around 512 bits, depending on how it is to used. A cryptographic hash function is designed so that it is impossible to determine the original data from a given hash value. By impossible, we mean that it would take an extremely long period of time to compute the original data using current technology and thus is computationally infeasible. When a cryptographic hash function is used to detect tampering, the hash function is called a <em>Message Digest Function</em> and the hash value is called a <em>Message Digest Value</em>.
+</P>
+<P><B>Using Message Digests to Detect Tampering</B></P>
+<P>
+It is possible to use the message digest value to prevent data tampering by malicious third parties. Since a message digest value is short and has a fixed length, it is easy to distribute safely. Assuming a message digest value can be distributed safely, if the message digest for a large data set that is sent separately matches the original message digest value, we know that the data sent or received is authentic. This is because the one-way nature of the function makes it impossible to create false data that generates the same message digest value.
+</P>
+<P><B>Using HMAC for Detection of Tampering</B></P>
+<P>
+What do you do if you need to send the message digest value with the data? The message digest function will always return the same message digest value for the same data no matter who uses it. Accordingly, if you send the message digest value with the data, a malicious third party can substitute falsified data along with a falsified message digest value. In this case, you can use HMAC (Keyed Hashing for Message Authentication Code).  In simple terms, HMAC is a mechanism that provides additional encryption of the hash value. If you provide an HMAC function with the data to hash, the data size, and the encrypted key data and key size, the function can produce a hash value encrypted with the key. Since this value cannot be generated as long as the encrypted key data is not known, if the keyed hash values match when the data is received, one can be sure that the data was sent by someone who knows the key. However, with HMAC, both the sender and the receiver use the same key (the shared-key system), so that a recipient program could analyze and determine the key, and then falsify the data. To prevent this, an electronic signature system that uses public-key encryption is needed. This library is not included in the NITRO-SDK.
+</P>
+<P><B>Hash Functions Included in the SDK</B></P>
+<P>
+NITRO-SDK includes the following hash functions (non-cryptographic).
+</P>
+<TABLE border="1">
+  <TR>
+<TH>8-bit Checksum</TH>
+<TD>MATH_Checksum8*</TD>
+<TD>Computes the one's complement of the one's complement sum in 8-bit units.</TD>
+    <TD></TD>
+  </TR>
+  <TR>
+<TH>16-bit Checksum</TH>
+<TD>MATH_Checksum16*</TD>
+<TD>Computes the one's complement of the one's complement sum in 16-bit units.</TD>
+<TD>Used in IP, TCP, and UDP protocols.</TD>
+  </TR>
+  <TR>
+<TH>CRC-8</TH>
+<TD>MATH_CRC8*</TD>
+<TD>Computes the 8-bit CRC. The generator polynomial is <nobr><code>x<sup>8</sup>+x<sup>2</sup>+x<sup>1</sup>+1</code></nobr>. There is no bit inversion. The initial value is <code>0</code> and NOT is not applied to the output.</TD>
+    <TD></TD>
+  </TR>
+  <TR>
+<TH>CRC-16</TH>
+<TD>MATH_CRC16*</TD>
+<TD>Computes the 16-bit CRC. The generator polynomial is <nobr><code>x<sup>16</sup>+x<sup>15</sup>+x<sup>2</sup>+1</code></nobr>. There is bit inversion. The initial value is <code>0</code> and NOT is not applied to the output.</TD>
+<TD>This is used in ARC, LHA, and other tools.</TD>
+  </TR>
+  <TR>
+<TH>CRC-16 / CCITT</TH>
+<TD>MATH_CRC16CCITT*</TD>
+<TD>Computes the 16-bit CRC. The generator polynomial is <nobr><code>x<sup>16</sup>+x<sup>12</sup>+x<sup>5</sup>+1</code></nobr>. There is no bit inversion. The initial value is <nobr><code>0xffff</code></nobr>. NOT is not applied to the output.</TD>
+<TD>Defined in CCITT X.25, and used in communication frames of various standards.</TD>
+  </TR>
+  <TR>
+<TH>CRC-32</TH>
+<TD>MATH_CRC32*</TD>
+<TD>Computes the 32-bit CRC. The generator polynomial is <nobr><code>x<sup>32</sup>+x<sup>26</sup>+x<sup>23</sup>+x<sup>22</sup>+x<sup>16</sup>+x<sup>12</sup>+x<sup>11</sup>+x<sup>10</sup>+x<sup>8</sup>+x<sup>7</sup>+x<sup>5</sup>+x<sup>4</sup>+x<sup>2</sup>+x<sup>1</sup>+1</code></nobr>. There is bit inversion. The initial value is <nobr><code>0xffffffff</code></nobr>. NOT is applied to output.</TD>
+<TD>Used in PKZIP, PNG and Ethernet. See ISO 3309, RFC 2083 etc.</TD>
+  </TR>
+  <TR>
+<TH>CRC-32 / POSIX</TH>
+<TD>MATH_CRC32POSIX*</TD>
+<TD>Computes the 32-bit CRC. The generator polynomial is <nobr><code>x<sup>32</sup>+x<sup>26</sup>+x<sup>23</sup>+x<sup>22</sup>+x<sup>16</sup>+x<sup>12</sup>+x<sup>11</sup>+x<sup>10</sup>+x<sup>8</sup>+x<sup>7</sup>+x<sup>5</sup>+x<sup>4</sup>+x<sup>2</sup>+x<sup>1</sup>+1</code></nobr>. There is no bit inversion. The initial value is <code>0</code>. NOT is applied to output.</TD>
+<TD>Used in the POSIX-compliant Unix <code>cksum</code> command. Defined in POSIX 1003.2 (IEEE Std 1003.2-1992).</TD>
+  </TR>
+</TABLE>
+<P>
+<code>checksum</code> is about twice as fast as CRC, but it generates the same value even when the data order is changed. This makes it a poor hash function. The checksum function included in the SDK will result in a value of <code>0</code> if the original data is added to the checksum value to obtain the checksum for all the data. Also, in the one's complement world, <code>0xffff</code> and <code>0</code> express the same value. Therefore, when a checksum value is <code>0</code>, it can be replaced by <code>0xffff</code> and the original data plus the checksum value will still be <code>0</code>. Based on this fact, you can prevent <code>0</code> from being used for normal checksum values and use it for a null value (such as uncalculated). For details, see the general UDP Checksum description.
+</P>
+<P>
+When the data length is below a certain value, CRC is mathematically designed so that it is guaranteed to find errors up to a certain number of bits. For example, with CRC-16 and CRC-16/CCITT, when the data length (including the CRC) is up to 32,767 bits, the CRC will find errors in up to any 3 bits or an error of contiguous 16 bits or less. Of course, even when these conditions are not met, it can find errors with a high probability. CRC has error correction functionality but in many cases, CRC is used only for error detection and not for correction. The SDK includes <a href="../../svc/SVC_GetCRC16.html"><code>SVC_GetCRC16</code></a>, which returns the same results as <a href="MATH_CalcCRC.html"><code>MATH_CalcCRC16</code></a>. But the MATH CRC function creates the calculation tables in advance, which speeds up operation.
+</P>
+<P>
+Note that these are not cryptographic hash functions so it is easy to falsify data so that it returns the same hash value.
+</P>
+<P>
+The following cryptographic hash functions are included.
+</P>
+<TABLE border="1">
+  <TR>
+<TH>MD5</TH>
+<TD>MATH_MD5*</TD>
+<TD>The message digest value length is 128 bits.</TD>
+<TD>Used widely on the Internet. See RFC 1321.</TD>
+  </TR>
+  <TR>
+<TH>SHA-1</TH>
+<TD>MATH_SHA1*</TD>
+<TD>The message digest value length is 160 bits.</TD>
+<TD>Used widely as a successor to MD5. See RFC 3174.</TD>
+  </TR>
+  <TR>
+<TH>HMAC-MD5</TH>
+<TD><A href="../dgt/MATH_CalcHMACMD5.html">MATH_CalcHMACMD5</A></TD>
+<TD>HMAC that uses MD5. The message digest value length is 128 bits.</TD>
+<TD>See RFC 2104.</TD>
+  </TR>
+  <TR>
+<TH>HMAC-SHA-1</TH>
+<TD><A href="../dgt/MATH_CalcHMACSHA1.html">MATH_CalcHMACSHA1</A></TD>
+<TD>HMAC that uses SHA-1. The message digest value length is 160 bits.</TD>
+<TD>See RFC 2104.</TD>
+  </TR>
+</TABLE>
+<P>
+MD5 is the most widely-used cryptographic hash function, but research has found that it is vulnerable under certain conditions and that it may not be secure with bit lengths of 128 bits. As a result, there is currently a shift to SHA-1.
+</P>
+<P>
+These cryptographic hash functions will still provide sufficient utility as hash functions if bits that are computed partway through computation are used. (Saving and using the first 80 bits in <nobr><code>HMAC-SHA-1</code></nobr>, etc.) Of course, the more the result is truncated, the less useful it will be as a hash.
+</P>
+<P><B>Speed Comparison of the Hash Functions</B></P>
+<P>
+In the SDK, the <nobr><code>dgt-2</code></nobr> demo measures the time required to process 1 MB of random data in the various hash functions. For reference, the following is a sample output. Note that these times do not include the time needed to generate the CRC tables.
+</P>
+<P>
+<PRE>
+Checksum8: 80201 us/MB
+Checksum16: 80174 us/MB
+CRC-8: 182277 us/MB
+CRC-16: 225972 us/MB
+CRC-16/CCITT: 227036 us/MB
+CRC-32: 196804 us/MB
+CRC-32/POSIX: 196690 us/MB
+MD5: 299266 us/MB
+SHA-1: 591120 us/MB
+HMAC-MD5: 299839 us/MB
+HMAC-SHA-1: 591214 us/MB
+CRC-16(SVC): 862306 us/MB
+</PRE>
+</P>
+
+<H2>See Also</H2>
+<P><a href="../list_math.html#Hash">MATH Function List (Hash Value)</a>, <a href="../list_math.html#Digest">MATH Function List (Message Digest)</a></P>
+<H2>Revision History</H2>
+<P>
+07/08/2005 Updated the output sample for the dgt-2 demo in conjunction with the implementation updates for SHA-1.<BR>06/24/2005 Updated the output sample for the dgt-2 demo in conjunction with the implementation updates for MD5.<BR>04/28/2005 Initial version.<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FX_AtanIdx</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FX_AtanIdx</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/fx/fx_trig.h&gt;
+
+u16 FX_AtanIdx( fx32   x );</code></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    <tr>
+<TD width="109"><em><strong><font face="Courier New">x</font></strong></em></TD>
+<TD width="593">An <code><A href="fx32.html">fx32</A></code> format fixed-point decimal</TD>
+    </tr>
+  </table>
+<h2>Return Values</h2>
+<p>Arctangent of <em><strong><code>x</code></strong></em></p>
+<H2>Description</H2>
+<P>This determines the arctangent of <em><strong><code>x</code></strong></em>. The results are returned in a <code>u16</code> format. The units of the result are equal to 1/65536 of a circle (2 &pi; radians). (Example: A right angle would be 16384.) Internally, a table is referenced.</P>
+
+<h2>See Also</h2>
+<P><code><a href="FX_Atan.html">FX_Atan</a>, <a href="FX_Atan2.html">FX_Atan2</a>, <a href="FX_Atan2Idx.html">FX_Atan2Idx</a></code></P>
+<H2>Revision History</H2>
+<P>06/16/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

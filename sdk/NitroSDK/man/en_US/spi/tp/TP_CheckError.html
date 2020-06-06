@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>TP_CheckError</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">TP_CheckError</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/spi.h&gt;</CODE><BR>
+<PRE><CODE>u32 TP_CheckError( TPRequestCommandFlag command_flgs );</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300"><em><strong><font face="Courier New">command_flgs</font></strong></em></TD>
+<TD width="700">Specifies on which command to perform an error check</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>Returns 0 if no error has been generated. Returns non-zero value if an error has been generated.</p>
+<H2>Description</H2>
+<P>Checks to see if a touch panel request that has been transmitted to ARM7 was terminated with an error You can check more than one request simultaneously if you provide the argument with the bitwise OR of multiple flags. <BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>TP_REQUEST_COMMAND_FLAG_SAMPLING</CODE></TD>
+<TD width="70%">Requests sampling one time. Send with <A href="TP_RequestSamplingAsync.html"><CODE>TP_RequestSampling*</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>TP_REQUEST_COMMAND_FLAG_AUTO_ON</CODE></TD>
+<TD width="70%">Requests to start autosampling. Send with <A href="TP_RequestAutoSamplingStart.html"><CODE>TP_RequestAutoSamplingStart</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>TP_REQUEST_COMMAND_FLAG_AUTO_OFF</CODE></TD>
+<TD width="70%">Requests to stop autosampling. Send with <A href="TP_RequestAutoSamplingStop.html"><CODE>TP_RequestAutoSamplingStop</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TD width="30%"><CODE>TP_REQUEST_COMMAND_FLAG_SET_STABILITY</CODE></TD>
+<TD width="70%">Requests to set chattering provision parameters. Send with <A href="TP_RequestSetStability.html"><CODE>TP_RequestSetStability</CODE></A>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following describes the enumerated type definitions of the arguments.</P>
+<PRE><CODE>// Type of instruction issued to the touch panel
+typedef enum {
+TP_REQUEST_COMMAND_FLAG_SAMPLING      =  1 &lt;&lt; TP_REQUEST_COMMAND_SAMPLING ,
+TP_REQUEST_COMMAND_FLAG_AUTO_ON       =  1 &lt;&lt; TP_REQUEST_COMMAND_AUTO_ON ,
+TP_REQUEST_COMMAND_FLAG_AUTO_OFF      =  1 &lt;&lt; TP_REQUEST_COMMAND_AUTO_OFF ,
+TP_REQUEST_COMMAND_FLAG_SET_STABILITY =  1 &lt;&lt; TP_REQUEST_COMMAND_SET_STABILITY
+} TPRequestCommandFlag;</code>
+</CODE></PRE>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>04/19/2004 Changed argument types <BR>04/16/2004 Initial version </P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

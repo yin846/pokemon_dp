@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_SetBankForTex</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_SetBankForTex</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>void GX_SetBankForTex(GXVRamTex tex);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">tex</font></strong></em></td>
+<td width="87%">Specifies a VRAM bank to allocate to the texture image slot</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function allocates the specified VRAM bank to the texture image slot. If the specified VRAM bank is either disabled or allocated to LCDC, this allocates the VRAM bank to the texture image slot.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_NONE</CODE></TD>
+<TD>The VRAM bank is not allocated to the texture image.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_0_A</CODE></TD>
+<TD>Slot 0 of the texture image is reserved. VRAM-A is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_0_B</CODE></TD>
+<TD>Slot 0 of the texture image is reserved. VRAM-B is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_0_C</CODE></TD>
+<TD>Slot 0 of the texture image is reserved. VRAM-C is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_0_D</CODE></TD>
+<TD>Slot 0 of the texture image is reserved. VRAM-D is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_01_AB</CODE></TD>
+<TD>Slot 0.1 of the texture image is reserved. VRAM-A and -B are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_01_BC</CODE></TD>
+<TD>Slot 0.1 of the texture image is reserved. VRAM-B and -C are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_01_CD</CODE></TD>
+<TD>Slot 0.1 of the texture image is reserved. VRAM-C and -D are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_012_ABC</CODE></TD>
+<TD>Slots 0, 1, and 2 of the texture image are reserved. VRAM-A, -B, and -C are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_012_BCD</CODE></TD>
+<TD>Slots 0, 1, and 2 of the texture image are reserved. VRAM-B, -C, and -D are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_0123_ABCD</CODE></TD>
+<TD>Slots 0, 1, 2, and 3 of the texture image are reserved. VRAM-A, -B, -C, and -D are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_01_AC</CODE></TD>
+<TD>Slot 0.1 of the texture image is reserved. VRAM-A and -C are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_01_AD</CODE></TD>
+<TD>Slot 0.1 of the texture image is reserved. VRAM-A and -D are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_01_BD</CODE></TD>
+<TD>Slot 0.1 of the texture image is reserved. VRAM-B and -D are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_012_ABD</CODE></TD>
+<TD>Slots 0, 1, and 2 of the texture image are reserved. VRAM-A, -B, and -D are allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_TEX_012_ACD</CODE></TD>
+<TD>Slots 0, 1, and 2 of the texture image are reserved. VRAM-A, -C, and -D are allocated.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following is the type definition for <CODE>GXVRamTex</CODE> types.</P>
+<PRE>typedef enum
+{
+GX_VRAM_TEX_NONE  = 0x0000,                               // none
+GX_VRAM_TEX_0_A   = GX_VRAM_A,                            // TextureImageSlot 0
+GX_VRAM_TEX_0_B   = GX_VRAM_B,                            // TextureImageSlot 0
+GX_VRAM_TEX_0_C   = GX_VRAM_C,                            // TextureImageSlot 0
+GX_VRAM_TEX_0_D   = GX_VRAM_D,                            // TextureImageSlot 0
+GX_VRAM_TEX_01_AB = GX_VRAM_A | GX_VRAM_B,                // TextureImageSlot 01
+GX_VRAM_TEX_01_BC = GX_VRAM_B | GX_VRAM_C,                // TextureImageSlot 01
+GX_VRAM_TEX_01_CD = GX_VRAM_C | GX_VRAM_D,                // TextureImageSlot 01
+GX_VRAM_TEX_012_ABC = GX_VRAM_A | GX_VRAM_B | GX_VRAM_C,  // TextureImageSlot 012
+GX_VRAM_TEX_012_BCD = GX_VRAM_B | GX_VRAM_C | GX_VRAM_D,  // TextureImageSlot 012
+GX_VRAM_TEX_0123_ABCD = GX_VRAM_A | GX_VRAM_B | GX_VRAM_C | GX_VRAM_D,  // TextureImageSlot 0123
+
+// The following settings are discontinuous on LCDC
+GX_VRAM_TEX_01_AC = GX_VRAM_A | GX_VRAM_C,                // TextureImageSlot 01
+GX_VRAM_TEX_01_AD = GX_VRAM_A | GX_VRAM_D,                // TextureImageSlot 01
+GX_VRAM_TEX_01_BD = GX_VRAM_B | GX_VRAM_D,                // TextureImageSlot 01
+GX_VRAM_TEX_012_ABD = GX_VRAM_A | GX_VRAM_B | GX_VRAM_D,  // TextureImageSlot 012
+GX_VRAM_TEX_012_ACD = GX_VRAM_A | GX_VRAM_C | GX_VRAM_D   // TextureImageSlot 012
+}
+GXVRamTex;</CODE></PRE>
+<h2>See Also</h2>
+<P><A href="GX_GetBankForTex.html"><code>GX_GetBankForTex</code></A>, <A href="GX_ResetBankForTex.html"><code>GX_ResetBankForTex</code></A>, <A href="GX_DisableBankForTex.html"><code>GX_DisableBankForTex</code></A>, <a href="GX_GetSizeOfTex.html"><code>GX_GetSizeOfTex</code></a></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

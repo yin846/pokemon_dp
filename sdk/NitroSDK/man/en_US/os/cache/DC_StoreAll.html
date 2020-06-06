@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>DC_StoreAll</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">DC_StoreAll</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void DC_StoreAll( void );
+
+void DC_CleanAll( void );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Stores all data from data cache regions to memory.</P>
+<P>This function performs a cache writeback in a dirty state (state when a write to data cache is not reflected in main memory), and places it in an clean state (state where all stored values in cache match memory contents).</P>
+<P>Call this function when completing data transmission data blocks that use the main memory of other devices, such as when performing DMA transfers or creating graphics commands.</P>
+<P><CODE>DC_CleanAll()</CODE> is another name for <CODE>DC_StoreAll()</CODE> and operates exactly the same way.   <code>DC_Clean*/DC_CleanAndInvalidate*</code> were prepared for porting from the prototype SDK version. In most cases, use <code>DC_Store*/DC_Flush*</code>.</P>
+<P>The official documentation for the ARM processor sometimes describes <strong>Flush</strong> as the operation that invalidates the data cache, <strong>Clean</strong> as the operation that writes back the data cache and puts it into a clean state, and <strong>Clean and Flush</strong> as the operation that writes back and then invalidates. However, this SDK follows the conventions of the Nintendo&nbsp;GameCube and Nintendo64 by using <strong>Invalidate</strong> for invalidation, <strong>Store</strong> for writeback, and <strong>Flush</strong> for writeback and invalidate operations. &nbsp;</P>
+<H2>Internal Operation</H2>
+<P>Operates register 7 of the system control coprocessor.</P>
+<H2>See Also</H2>
+<P><CODE><A href="IC_InvalidateAll.html">IC_InvalidateAll</A> <A href="IC_InvalidateRange.html">IC_InvalidateRange</A><BR> <A href="DC_InvalidateAll.html">DC_InvalidateAll</A> <A href="DC_InvalidateRange.html">DC_InvalidateRange</A><BR> <A href="DC_StoreRange.html">DC_StoreRange</A><BR> <A href="DC_FlushAll.html">DC_FlushAll</A> <A href="DC_FlushRange.html">DC_FlushRange</A></CODE></P>
+<H2>Revision History</H2>
+<P>12/22/2003 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

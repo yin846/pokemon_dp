@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCT_ReceiveMixedAudio</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCT_ReceiveMixedAudio</h1>
+<h2>Syntax</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><code>BOOL VCT_ReceiveMixedAudio( void* audio_data, u32 length );</code></PRE></dd> 
+</dl>
+
+<h2>Argument</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>audio_data</STRONG></EM></TD>
+      <TD width="87%" height="17">A pointer to buffer.</TD>
+    </TR>
+    <TR>
+      <TD width="13%" height="17"><EM><STRONG>length</STRONG></EM></TD>
+      <TD width="87%" height="17">Size of buffer.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Value</h2>
+<TABLE border="1" id="table1">
+  <TBODY>
+    <TR>
+      <TD width="30%"><CODE>TRUE</CODE></TD>
+      <TD width="70%">The audio data was written in a buffer.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><CODE>FALSE</CODE></TD>
+      <TD width="70%">The audio data does not exist, streaming has not started, or the Library is not initialized.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<p>This retrieves audio data from a receiving buffer. Unlike the <CODE><A href="VCT_ReceiveAudio.html">VCT_ReceiveAudio</A></CODE> function, VCT_ReceiveMixedAudio outputs the audio data of all channels after software mixing.</p>
+
+<p>For further information, see the <CODE><A href="VCT_ReceiveAudio.html">VCT_ReceiveAudio</A></CODE> manual.</P>
+
+<h2>See Also</h2>
+<p><code>
+<a href="VCT_ReceiveAudio.html">VCT_ReceiveAudio</a>
+</code></p>
+<H2>Revision History</H2>
+<P>
+2006/04/25 First release
+</P>
+</body>
+</html>

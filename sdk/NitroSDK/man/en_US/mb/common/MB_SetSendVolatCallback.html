@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>MB_SetSendVolatCallback</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MB_SetSendVolatCallback</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/mb/mb_gameinfo.h&gt;</CODE><BR>
+<CODE>void
+MB_SetSendVolatCallback( MBSendVolatCallbackFunc callback, u32 timming );<BR>
+</CODE>
+  <br></PRE>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD colspan="2">Configures the callback function called when sending the <code>MBGameInfoVolatile</code> inside the parent device game information with a beacon.</TD>
+    </TR>
+    <TR>
+<TD width="13%" rowspan="3"><EM><STRONG>timming</STRONG></EM></TD>
+<TD colspan="2">Configures the timing called by the callback function.</TD>
+    </TR>
+    <TR>
+<TD width="286"><I>MB_SEND_VOLAT_CALLBACK_TIMMING_BEFORE</I></TD>
+<TD width="245">The callback is called immediately before the send configuration of the beacon stored in <code><A href="MBGameInfo.html">MBGameInfoVolatile</A></code>.</TD>
+    </TR>
+    <TR>
+<TD width="286"><I>MB_SEND_VOLAT_CALLBACK_TIMMING_AFTER</I></TD>
+<TD width="245">The callback is called immediately after the send configuration of the beacon stored in <code><A href="MBGameInfo.html">MBGameInfoVolatile</A></code>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function can configure the callback when sending the volatile <code><A href="MBGameInfo.html">MBGameInfoVolatile</A></code> from within the MB parent device game information by a beacon. The user data configured with <CODE><A href="MB_SetUserVolatData.html">MB_SetUserVolatData</A></CODE> is also included here, and the next data to be sent can be configured by calling <CODE><A href="MB_SetUserVolatData.html">MB_SetUserVolatData</A></CODE> in this callback.
+</p>
+<PRE>/*  callback  function  */
+typedef void (*MBSendVolatCallbackFunc)( u32 ggid );</PRE>
+<PRE>/*  callback  timing  */
+enum
+{
+MB_SEND_VOLAT_CALLBACK_TIMMING_BEFORE,
+MB_SEND_VOLAT_CALLBACK_TIMMING_AFTER
+};
+</PRE>
+<h2>See Also</h2>
+<p><CODE><A href="MB_SetUserVolatData.html">MB_SetUserVolatData</A>, <A href="MBGameInfo.html">MBGameInfo</A></CODE></P>
+<H2>Revision History</H2>
+<P>01/18/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

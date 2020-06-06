@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_SaveContext</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_SaveContext</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>BOOL OS_SaveContext( OSContext* context );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><em><strong><code>context</code></strong></em>&nbsp;&nbsp;</STRONG></EM></TD>
+<TD width="87%">Context</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>A value of &quot;0&quot; indicates that it will return after the context is stored. A value of &quot;1&quot; indicates that it will return to this function after the context is swapped.</p>
+
+<H2>Description</H2>
+<P>This function stores the current context in the specified context structure, and is used for swapping context in the thread system. &nbsp;</P>
+<P>When the current thread switches to the previously stored context, the execution location is directly after when the context was stored. However, it is unclear in this case whether it is returning from this function  after restarting or is returning after only being saving.</P>
+<P>For this reason, the return value has been modified for this function. The function returns with &quot;0,&quot; but &quot;1&quot; is stored as <code>R0</code>. By doing so, when the context is swapped, the return value (R0) becomes &quot;1&quot; and this can be distinguished from a function call that only stores.</P>
+<P>Refer to <A href="OS_InitContext.html"><code>OS_InitContext()</code></A> for details.</P>
+<h2>See Also</h2>
+<p><CODE><A href="OS_InitContext.html">OS_InitContext</A>, <A href="OS_LoadContext.html">OS_LoadContext</A>, <A href="OS_DumpContext.html">OS_DumpContext</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>12/01/2003 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

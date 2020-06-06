@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_TexImageParam</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_TexImageParam</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;</CODE><BR><BR><CODE>void G3_TexImageParam(<BR>    GXTexFmt texFmt,<BR>    GXTexGen texGen,<BR>    GXTexSizeS s,<BR>    GXTexSizeT t,<BR>    GXTexRepeat repeat,<BR>    GXTexFlip flip,<BR>    GXTexPlttColor0 pltt0,
+u32 addr
+);</CODE><BR>
+// Below are APIs for creating the display list (command list):
+<CODE>void G3B_TexImageParam(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, ...);</CODE><BR><CODE>void G3C_TexImageParam(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, ...);</CODE><BR><CODE>void G3BS_TexImageParam(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, ...);</CODE><BR><CODE>void G3CS_TexImageParam(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, ...);</CODE></PRE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">texFmt</font></strong></em></td>
+<td width="87%">Texture format</td>
+  </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">texGen</font></strong></em></TD>
+<TD>Texture coordinate conversion mode</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">s</font></strong></em></TD>
+<TD>Texture size <code>s</code></TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">t</font></strong></em></TD>
+<TD>Texture size <code>t</code></TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">repeat</font></strong></em></TD>
+<TD>Repeat settings</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">flip</font></strong></em></TD>
+<TD>Flip settings (valid only when <code>repeat</code> is enabled.)</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">pltt0</font></strong></em></TD>
+<TD>Flag for selecting whether to use color 0 in the palette or use it as a transparent color</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">addr</font></strong></em></TD>
+<TD>Specifies the start offset address of the texture in the texture slot.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>Specifies texture parameters. The <code>G3*_TexImageParam</code> command is normally issued before <a href="G3_Begin.html" target="_self"><code>G3*_Begin</code></a> but can be issued between <a href="G3_Begin.html" target="_self"><code>G3*_Begin</code></a> and <a href="G3_End.html" target="_self"><code>G3*_End</code></a>. If it is issued during this interval, a different texture parameter can be set for each polygon in <a href="G3_Begin.html" target="_self"><code>G3*_Begin</code></a> and <a href="G3_End.html" target="_self"><code>G3*_End</code></a>.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_TEXFMT_NONE</CODE></TD>
+<TD width="70%">No texture</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFMT_A3I5</CODE></TD>
+<TD>Translucent texture (3-bit alpha, 5-bit palette color number)</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFMT_PLTT4</CODE></TD>
+<TD>4-color palette texture</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFMT_PLTT16</CODE></TD>
+<TD>16-color palette texture</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFMT_PLTT256</CODE></TD>
+<TD>256-color palette texture</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFMT_COMP4x4</CODE></TD>
+<TD>4x4 text compressed texture</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFMT_A5I3</CODE></TD>
+<TD>Translucent texture (5-bit alpha,  3-bit palette color number)</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFMT_DIRECT</CODE></TD>
+<TD>Direct texture</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_TEXGEN_NONE</CODE></TD>
+<TD width="70%">No texture coordinate conversion  xyxyxy</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXGEN_TEXCOORD</CODE></TD>
+<TD>TexCoord source</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXGEN_NORMAL</CODE></TD>
+<TD>Normal source</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXGEN_VERTEX</CODE></TD>
+<TD>Vertex source</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_TEXSIZE_S8</CODE></TD>
+<TD width="70%">8 texels along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_S16</CODE></TD>
+<TD>16 texels along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_S32</CODE></TD>
+<TD>32 texels along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_S64</CODE></TD>
+<TD>64 texels along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_S128</CODE></TD>
+<TD>128 texels along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_S256</CODE></TD>
+<TD>256 texels along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_S512</CODE></TD>
+<TD>512 texels along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_S1024</CODE></TD>
+<TD>1024 texels along S-axis</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_TEXSIZE_T8</CODE></TD>
+<TD width="70%">8 texels along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_T16</CODE></TD>
+<TD>16 texels along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_T32</CODE></TD>
+<TD>32 texels along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_T64</CODE></TD>
+<TD>64 texels along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_T128</CODE></TD>
+<TD>128 texels along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_T256</CODE></TD>
+<TD>256 texels along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_T512</CODE></TD>
+<TD>512 texels along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXSIZE_T1024</CODE></TD>
+<TD>1024 texels along T-axis</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_TEXREPEAT_NONE</CODE></TD>
+<TD width="70%">No repeat</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXREPEAT_S</CODE></TD>
+<TD>Repeat along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXREPEAT_T</CODE></TD>
+<TD>Repeat along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXREPEAT_ST</CODE></TD>
+<TD>Repeat along both S- and T-axes</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_TEXFLIP_NONE</CODE></TD>
+<TD width="70%">No flip</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFLIP_S</CODE></TD>
+<TD>Flip along S-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFLIP_T</CODE></TD>
+<TD>Flip along T-axis</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXFLIP_ST</CODE></TD>
+<TD>Flip along both S- and T-axes</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P></P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_TEXPLTTCOLOR0_TRNS</CODE></TD>
+<TD width="70%">Regard <code>Color0</code> as transparent</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_TEXPLTTCOLOR0_USE</CODE></TD>
+<TD>Enable palette color 0 set value</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following is the type definition for the list types.</P>
+<PRE><CODE>typedef enum
+{
+GX_TEXFMT_NONE = 0,
+GX_TEXFMT_A3I5 = 1,
+GX_TEXFMT_PLTT4 = 2,
+GX_TEXFMT_PLTT16 = 3,
+GX_TEXFMT_PLTT256 = 4,
+GX_TEXFMT_COMP4x4 = 5,
+GX_TEXFMT_A513 = 6,
+GX_TEXFMT_DIRECT = 7
+}
+GXTexFmt;
+
+#define GX_TEXFMT_ALPHA ((GXTexFmt)GX_TEXFMT_A5I3) // Obsolete name
+
+typedef enum
+{
+GX_TEXGEN_NONE = 0,
+GX_TEXGEN_TEXCOORD = 1,
+GX_TEXGEN_NORMAL = 2,
+GX_TEXGEN_VERTEX = 3
+}
+GXTexGen;
+
+typedef enum
+{
+GX_TEXSIZE_S8 = 0,
+GX_TEXSIZE_S16 = 1,
+GX_TEXSIZE_S32 = 2,
+GX_TEXSIZE_S64 = 3,
+GX_TEXSIZE_S128 = 4,
+GX_TEXSIZE_S256 = 5,
+GX_TEXSIZE_S512 = 6,
+GX_TEXSIZE_S1024 = 7
+}
+GXTexSizeS;
+
+typedef enum
+{
+GX_TEXSIZE_T8 = 0,
+GX_TEXSIZE_T16 = 1,
+GX_TEXSIZE_T32 = 2,
+GX_TEXSIZE_T64 = 3,
+GX_TEXSIZE_T128 = 4,
+GX_TEXSIZE_T256 = 5,
+GX_TEXSIZE_T512 = 6,
+GX_TEXSIZE_T1024 = 7
+}
+GXTexSizeT;
+
+typedef enum
+{
+GX_TEXREPEAT_NONE = 0,
+GX_TEXREPEAT_S = 1,
+GX_TEXREPEAT_T = 2,
+GX_TEXREPEAT_ST = 3
+}
+GXTexRepeat;
+
+typedef enum
+{
+GX_TEXFLIP_NONE = 0,
+GX_TEXFLIP_S = 1,
+GX_TEXFLIP_T = 2,
+GX_TEXFLIP_ST = 3
+}
+GXTexFlip;
+
+typedef enum
+{
+GX_TEXPLTTCOLOR0_USE = 0,
+GX_TEXPLTTCOLOR0_TRNS = 1
+}
+GXTexPlttColor0;</code></PRE>
+
+<h2>See Also</h2>
+<P><a href="G3_TexPlttBase.html"><code>G3*_TexPlttBase</a></code>, <code><a href="G3_TexCoord.html">G3*_TexCoord</a></code></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

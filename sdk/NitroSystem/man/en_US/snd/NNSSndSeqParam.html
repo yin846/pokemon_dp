@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNSSndSeqParam</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNSSndSeqParam</h1>
+<h2>Definition</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef struct NNSSndSeqParam
+{
+u16 bankNo;
+u8 volume;
+u8  channelPrio;
+u8  playerPrio;
+u8  playerNo;
+u16 reserved;
+} NNSSndSeqParam;
+</code></pre></dd>
+<dd><pre class="funcprototype"></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAPLWT"></a>
+<h2>Elements</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>bankNo</code></strong></em></td>
+<td>Bank number.</td>
+</tr>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>The initial volume setting.</td>
+</tr>
+<tr>
+<td><em><strong><code>channelPrio</code></strong></em></td>
+<td>The sound priority.</td>
+</tr>
+<tr>
+<td><em><strong><code>playerPrio</code></strong></em></td>
+<td>This is the player priority.</td>
+</tr>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The Player number.</td>
+</tr>
+<tr>
+<td><em><strong><code>reserved</code></strong></em></td>
+<td>The reserved region.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDABNWT"></a>
+<h2>Description</h2>
+      <p>
+The sequence parameter structure. This stores the parameter to be set when the sequence is played.
+</p>
+      <p>
+This structure can be obtained by using either the <code><a href="NNS_SndArcGetSeqParam.html">NNS_SndArcGetSeqParam</a></code> function or the <code><a href="NNS_SndArcGetSeqArcParam.html">NNS_SndArcGetSeqArcParam</a></code> function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndArcGetSeqParam.html">NNS_SndArcGetSeqParam</a>, <a href="NNS_SndArcGetSeqArcParam.html">NNS_SndArcGetSeqArcParam</a></code></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

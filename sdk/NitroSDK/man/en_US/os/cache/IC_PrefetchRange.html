@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>IC_PrefetchRange</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">IC_PrefetchRange</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void IC_PrefetchRange( const void* startAddr, u32 nBytes );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>startAddr</STRONG></EM></TD>
+<TD width="87%">Lowest address in the prefetch region</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>nBytes</STRONG></EM></TD>
+<TD width="87%">Number of bytes in the prefetch region</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function prefetches the instruction code of the specified region into the instruction cache.</P>
+<P><em><strong><code>startAddr</code></strong></em> is rounded down to the closest 32-byte boundary. <em><strong><code>startAddr</code></strong></em> + <em><strong><code>nBytes</code></strong></em> is rounded up to the closest 32-byte boundary.</P>
+<H2>Internal Operation</H2>
+<P>Operates register 7 of the system control coprocessor. This function divides the specified range into cache-line units and repeats its operation. Thus the amount of time it takes is proportional to the size of the range.
+</P>
+<H2>See Also</H2>
+<P><CODE><A href="IC_InvalidateRange.html">IC_InvalidateRange</A>, <A href="IC_LockdownRange.html">IC_LockdownRange</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+11/14/2005 Changed the type of <em><strong><code>startAddr</code></strong></em> to <code>const void*</code>.<br> 04/19/2005 Added a description of the reason why processing time is proportional to the size of the memory region. <br>12/22/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

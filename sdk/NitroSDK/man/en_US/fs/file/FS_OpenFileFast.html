@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_OpenFileFast</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_OpenFileFast</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>BOOL FS_OpenFileFast( FSFile *p_file, FSFileID file_id );</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>p_file</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">Address of the <code><a href="../fs_file_type.html">FSFile</a></code> structure</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><code><EM><STRONG>file_id</STRONG></EM></code></STRONG></EM></TD>
+<TD width="87%">File ID that is specified by <CODE>file_id</CODE> in the <CODE>FSDirEntry</CODE> structure.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>TRUE if the file opens properly. FALSE otherwise.</p>
+
+<H2>Description</H2>
+<P>This function uses the specified ID to open a file. Use the <CODE>FS_ReadDir</CODE> function to obtain the ID. <BR>
+</P>
+<h2>Note</h2>
+<P>In the application, the <CODE>NITRO_MAKEROM</CODE> flag must be enabled so that the ROM file system is included.<br> <font color="#800000">This function cannot be called from the interrupt handler (IRQ mode).<br> Also note that in some cases processing may not end if interrupts are left prohibited.<br></font>
+</P>
+<h2>See Also</h2>
+<p><code><A href="../fs_file_id_type.html">FSFileID</A>, <A href="../fs_file_type.html">FSFile</A>, <A href="FS_OpenFile.html">FS_OpenFile</A>, <A href="FS_CloseFile.html">FS_CloseFile</A>, <A href="FS_GetLength.html">FS_GetLength</A>, <A href="FS_ReadFile.html">FS_ReadFile</A>, <A href="FS_SeekFile.html">FS_SeekFile</A>, <A href="FS_SeekFileToBegin.html">FS_SeekFileToBegin</A>, <A href="FS_SeekFileToEnd.html">FS_SeekFileToEnd</A>, <A href="FS_ReadDir.html">FS_ReadDir</A>, <A href="../fs_dir_entry_type.html">FSDirEntry</A></code></p>
+
+<H2>Revision History</H2>
+<P>
+11/02/2004 Changed the argument name.<br> 09/24/2004 Added text under Caution regarding the conditions for calling this function.<br> 05/14/2004 ID type changed from <CODE>u32</CODE> to <CODE>FSFileID</CODE>.<BR> 04/02/2004 File system -&gt; ROM file system.<BR> 04/01/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

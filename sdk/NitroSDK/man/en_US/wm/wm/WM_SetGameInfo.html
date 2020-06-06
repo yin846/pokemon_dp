@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_SetGameInfo</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_SetGameInfo</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_SetGameInfo(
+<A href="WMCallbackFunc.html">WMCallbackFunc</A>  callback ,
+const u16*      userGameInfo ,
+u16             userGameInfoSize ,
+u32             ggid,
+u16             tgid,
+u8              attr
+);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">callback</FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">userGameInfo</FONT></STRONG></EM></TD>
+<TD width="800">Specifies a pointer to user game information. Note that the data entity will be forcibly cached.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">userGameInfoSize</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the size of user game information. A maximum of 112 bytes can be specified.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">ggid</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the game group ID.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">tgid</FONT></STRONG></EM></TD>
+<TD width="800">Specifies a temporary group ID.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">attr</FONT></STRONG></EM></TD>
+<TD width="800">Specifies attributes such as: receiving entry and DS download play permitted.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>Reconfigures the game-specific information sent out by the beacon. This function can be executed only if the WM is in the <A href="wm_state_diagram.html"><code>PARENT</code></A> or <A href="wm_state_diagram.html"><code>MP_PARENT</code></A> state. If the return value is <CODE>WM_ERRCODE_OPERATING</CODE>, a callback is generated after the information reconfiguration process is complete. While <a href="WM_SetParentParameter.html"><code>WM_SetParentParameter</code></a> sets initial values, you can use this function to modify the values.</P>
+<P>The argument <em><strong><code>attr</code></strong></em> is expressed as the logical sum of the following:</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee">WM_ATTR_FLAG_ENTRY</TD>
+<TD bgcolor="#eeeeee">&quot;Receiving entry&quot; flag</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee">WM_ATTR_FLAG_MB</TD>
+<TD bgcolor="#eeeeee">&quot;Download play possible&quot; flag</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><DEL>WM_ATTR_FLAG_KS</DEL></TD>
+<TD bgcolor="#eeeeee"><DEL>Key sharing.</DEL>Not currently used. (Note: Be sure to disable this bit.)</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><DEL>WM_ATTR_FLAG_CS</DEL></TD>
+<TD bgcolor="#eeeeee"><DEL>Continuation communication mode. </DEL>Not currently used.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>See Also</h2>
+<p><a href="WM_SetParentParameter.html"><code>WM_SetParentParameter</code></a>, <a href="WM_StartParent.html"><code>WM_StartParent</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+02/20/2006 Changed argument name.<BR>12/08/2005 Deleted the description about key sharing.<BR>06/08/2005 Added statement about callbacks being called from the interrupt handler.<br>10/22/2004 Changed return value type.<BR>09/24/2004 Added to and revised Description.<BR>08/02/2004 Standardized structure names.<BR> 07/29/2004 Added to Description.<br>07/23/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_DisableBankForSubBGExtPltt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_DisableBankForSubBGExtPltt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>GXVRamSubBGExtPltt GX_DisableBankForSubBGExtPltt(void);</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>VRAM bank allocated to the sub 2D Engine's BG Extended palette.</p>
+<H2>Description</H2>
+<P>This function disables the VRAM bank allocated to the sub 2D Engine BG Extended palette. If disabled, VRAM cannot be accessed, but the VRAM bank contents are not lost. In addition, the VRAM banks that were allocated to each resource will not be disabled unless disabled with this function. Refer to <code><A href="GX_SetBankForSubBGExtPltt.html">GX_SetBankForSubBGExtPltt</A></code> for details on <CODE>GXVRamSubBGExtPltt</CODE> format.</P>
+<h2>See Also</h2>
+<P><A href="GX_SetBankForSubBGExtPltt.html"><code>GX_SetBankForSubBGExtPltt</code></A>, <A href="GX_GetBankForSubBGExtPltt.html"><code>GX_GetBankForSubBGExtPltt</code></A>, <A href="GX_ResetBankForSubBGExtPltt.html"><code>GX_ResetBankForSubBGExtPltt</code></A></P>
+<H2>Revision History</H2>
+<P>02/09/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

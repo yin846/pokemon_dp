@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>MB_Init</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MB_Init</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mb.h&gt;</CODE><BR> <BR> <CODE>int MB_Init(void *work, const MBUserInfo *user, u32 ggid, u32 tgid, u32 dma);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>work</STRONG></EM></TD>
+<TD width="87%">Pointer to memory allocated for the internal state management of the MB library.<br />This size must equal or exceed the byte size in <code>MB_SYSTEM_BUF_SIZE</code>. (If you can ensure that <code><a href="../parent/MB_StartParentFromIdle.html">MB_StartParentFromIdle</a></code> is called after <code>MB_Init</code>, you can reduce the size by <code>WM_SYSTEM_BUF_SIZE</code> bytes.) The allocated memory is used internally until <a href="MB_End.html"><code>MB_End</code></a> is called.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>user</STRONG></EM></TD>
+<TD width="87%">Pointer to the structure in which user data is saved.<br /> The content specified by this pointer is referenced only in the <code>MB_Init</code> function.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>ggid</STRONG></EM></TD>
+<TD width="87%">Specifies a 4-byte game group ID.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>tgid</STRONG></EM></TD>
+<TD width="87%">A 16-bit value from 0x0000 to 0xFFFF that indicates the TGID value. When <code><a href="../mb_tgid_auto_const.html">MB_TGID_AUTO</a></code> is assigned to this value, the TGID will be automatically obtained by internally calling <code><a href="../../wm/wm/WM_GetNextTgid.html">WM_GetNextTgid</a></code>. At the initial program launch (IPL), the display information is not updated when the <code>tgid</code>, <code>ggid</code>, and MAC address are the same (a single parent is assumed). After a parent terminates, the user information displayed in the child IPL may not be updated if the user name was updated and restarted as an MB parent.<br>When not specifying MB_TGID_AUTO, use <a href="../../os/irq/OS_GetVBlankCount.html"><code>OS_GetVBlankCount</code></a> or RTC like a random number generator to set a different value whenever a restart occurs.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>dma</STRONG></EM></TD>
+<TD width="87%">The DMA channel allocated for MB internal processing.<br /> The DMA channel is used internally until the <code><a href="MB_End.html">MB_End</a></code> function is called.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>Returns MB_SUCCESS if the initialization completes successfully.</p>
+
+<H2>Description</H2>
+<P>This function initializes the multi-boot (MB) library. The <code>MB_Init</code> function must be called once before any MB function is called. However, if you call <code>MB_Init</code> more than once, nothing happens. After calling this function, but before calling <a href="../parent/MB_StartParent.html"><code>MB_StartParent</code></a>, use <a href="../parent/MB_SetParentCommParam.html"><code>MB_SetParentCommParam</code></a> to set the maximum number of connected children.
+</p>
+<h2>See Also</h2>
+<p><code><a href="../mb_user_info_type.html">MBUserInfo</a>, <a href="../parent/MB_StartParent.html">MB_StartParent</a>, <a href="../parent/MB_StartParentFromIdle.html">MB_StartParentFromIdle</a>, <a href="../parent/MB_SetParentCommParam.html">MB_SetParentCommParam</a>, <a href="MB_End.html">MB_End</a>, <a href="../../os/irq/OS_GetVBlankCount.html">OS_GetVBlankCount</a></code></P>
+<H2>Revision History</H2>
+<P>
+04/11/2005 Expanded the type of the <code>tgid</code> argument to u32 and added description for <code>MB_TGID_AUTO</code>.<br /> 11/24/2004 Changed name: <code>MB_StartParentEx</code> to <code>MB_StartParentFromIdle</code>.<br /> 10/18/2004 Added a description of <code>MB_StartParentEx</code> and several links.<br /> 10/05/2004 Corrected an error in the description of internal operation.<br /> 09/30/2004 Added argument.<br /> 08/09/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

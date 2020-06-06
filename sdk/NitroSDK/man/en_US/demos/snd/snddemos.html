@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>SND Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Sound Demos</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/snd</CODE></P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/snd</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (.<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE><CODE>$NitroSDK/build/demos/snd/<strong><em>sample_name</em></strong>/bin/<strong><em>platform</em></strong>/<strong><em>target</em></strong>/</CODE></CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/snd/channel/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+<H2>Execution</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/snd/<strong><em>sample_name</em></strong>/bin/<strong><em>platform</em></strong>/<strong><em>target</em></strong>/</CODE> directory and do one of the following.</P>
+<UL>
+<LI>Load a <code>*.nlf</code> file with IS-NITRO-DEBUGGER and execute it
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER
+</UL>
+<H2>Description</H2>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>channel</CODE></STRONG></EM></TD>
+<TD width="525">This is a simple demo that uses a channel for playback.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>stream</CODE></STRONG></EM></TD>
+<TD width="525">Uses a channel to play a stream while loading the waveform data in real time.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>synth</CODE></STRONG></EM></TD>
+<TD width="525">Creates and plays waveform data in real time without using waveform data.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>capture</CODE></STRONG></EM></TD>
+<TD width="525">Uses sound capture to add effects to the output sound.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>seq</CODE></STRONG></EM></TD>
+<TD width="525">Plays a sequence using a standard MIDI file (SMF). The sequence is processed on the ARM9 side.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Emulator</H2>
+<P><CODE>They will not work properly with ensata.</CODE></P>
+<H2>See Also</H2>
+<P><A href="../../snd/list_snd.html"><CODE>SND function list</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+04/12/2005 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FX_Mul</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FX_Mul</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/fx/fx.h&gt;
+
+fx32 FX_Mul(fx32 v1, fx32 v2);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    <tr>
+<TD width="109"><em><strong><font face="Courier New"><em><strong><code>v1</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD width="593"><code><A href="fx32.html">fx32</A></code> format fixed-point decimal</TD>
+    </tr>
+    <TR>
+<TD><em><strong><font face="Courier New"><em><strong><code>v2</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD><code><A href="fx32.html">fx32</A></code> format fixed-point decimal</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>Result of multiplying <EM><STRONG><CODE>v1</CODE></STRONG></EM> and <EM><STRONG><CODE>v2</CODE></STRONG></EM>.</p>
+<H2>Description</H2>
+<P>This function multiplies two <A href="fx32.html">fx32</A> types. It returns the result as an <CODE><A href="fx32.html">fx32</A></CODE> type. The calculations are performed internally using <CODE><A href="fx64.html">fx64</A></CODE> types. Values that are less than 1/4096 are rounded off. The section that contains this function was developed as a function to be called for THUMB code or as an inline function for ARM code.</P>
+<P><A href="../os/debug/SDK_WARNING.html">SDK_WARNING()</A> displays a warning message when the number of digits overflows during calculations. </P>
+
+<h2>See Also</h2>
+<P><code><A href="FX_Div.html">FX_Div</A>, <A href="FX_Sqrt.html">FX_Sqrt</A>, <A href="FX_Inv.html">FX_Inv</A></code></P>
+<H2>Revision History</H2>
+<P>2006/04/28 Added digit overflow check<br> 2004/01/19 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

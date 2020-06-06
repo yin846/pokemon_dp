@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_InitIrqTable</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_InitIrqTable</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_InitIrqTable( void );</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function initializes the IRQ interrupt table.</P>
+<P>This IRQ interrupt table is to register the functions to jump to when an IRE interrupt occurs. Functions that do nothing are set for the IRQ interrupt, but <CODE>DMA</CODE> and <CODE>TIMER</CODE> interrupts register the interrupt handler provided by OS. This interrupt is only called by the OS handler when a user has registered the handler, but nothing is registered at first. A user does not need to distinguish this difference. So to the user, it appears that nothing is done with all the interrupts (or a function that does nothing is called) after <A href="OS_InitIrqTable.html"><code>OS_InitIrqTable</code></A> is called.</P>
+<P>Since <CODE>OS_InitIrqTable()</CODE> is called from within <CODE><A href="../init/OS_Init.html">OS_Init()</A></CODE>, there is no need to call it if <CODE><A href="../init/OS_Init.html">OS_Init()</A></CODE> is called.</P>
+<h2>See Also</h2>
+<p><A href="OS_SetIrqFunction.html"><code>OS_SetIrqFunction</code></A>, <A href="OS_GetIrqFunction.html"><code>OS_GetIrqFunction</code></A></p>
+<H2>Revision History</H2>
+<P>2005/07/19 Added description of calling from <CODE><A href="../init/OS_Init.html">OS_Init()</A></CODE>.<br />03/08/2005 Standardized the Japanese word for &quot;interrupt&quot;<br /> 03/01/2004 Updated description of operation at initialization.<br /> 12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

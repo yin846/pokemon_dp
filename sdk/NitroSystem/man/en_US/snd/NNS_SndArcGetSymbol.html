@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcGet*Symbol</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcGet*Symbol</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">const char* NNS_SndArcGetSeqSymbol( int seqNo ); <br>const char* NNS_SndArcGetSeqArcSymbol( int seqArcNo ); <br>const char* NNS_SndArcGetSeqArcIdxSymbol(
+int seqArcNo,
+int index ); <br>const char* NNS_SndArcGetBankSymbol( int bankNo ); <br>const char* NNS_SndArcGetWaveArcSymbol( int waveArcNo ); <br>const char* NNS_SndArcGetStrmSymbol( int strmNo ); <br>const char* NNS_SndArcGetGroupSymbol( int groupNo );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAOOWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>seqNo</code></strong></em></td>
+<td>Sequence number</td>
+</tr>
+<tr>
+<td><em><strong><code>seqArcNo</code></strong></em></td>
+<td>Sequence archive number</td>
+</tr>
+<tr>
+<td><em><strong><code>index</code></strong></em></td>
+<td>The index number of the sequence archive</td>
+</tr>
+<tr>
+<td><em><strong><code>bankNo</code></strong></em></td>
+<td>Bank number</td>
+</tr>
+<tr>
+<td><em><strong><code>waveArcNo</code></strong></em></td>
+<td>The waveform archive</td>
+</tr>
+<tr>
+<td><em><strong><code>strmNo</code></strong></em></td>
+<td>This is the stream number.</td>
+</tr>
+<tr>
+<td><em><strong><code>groupNo</code></strong></em></td>
+<td>The group number</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAKQWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns a symbol character string. Returns an empty character string when the assigned number is invalid or when the symbols have not been set.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDARQWT"></a>
+<h2>Description</h2>
+      <p>
+Gets the symbol name of the sound data inside the sound archive. This function is used mainly for the creation of tools and for debugging. 
+</p>
+      <p>
+In order to get the symbol name, the sound archive must be assigned to load the symbol data with the <a href="NNS_SndArcInit.html"><code>NNS_SndArcInit</code></a> function or initialized with the <a href="NNS_SndArcInitOnMemory.html"><code>NNS_SndArcInitOnMemory</code></a> function.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndArcInit.html"><code>NNS_SndArcInit</code></a>, <a href="NNS_SndArcInitOnMemory.html"><code>NNS_SndArcInitOnMemory</code></a></p>
+<h2>Revision History</h2>
+<p>10/19/2004 Added description of <code>NNS_SndArcGetGroupSymbol</code>.<br> 08/10/2004 Added description for <code>NNS_SndArcGetStrmCount</code>.<br> 06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

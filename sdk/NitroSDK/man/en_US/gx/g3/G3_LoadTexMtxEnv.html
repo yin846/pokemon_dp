@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3_LoadTexMtxEnv</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_LoadTexMtxEnv</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3_util.h&gt;
+
+void G3_LoadTexMtxEnv(const MtxFx44 * mtx);
+
+// Below are APIs for creating the display list (command list):
+void G3B_LoadTexMtxEnv(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, const MtxFx44 * mtx);
+void G3C_LoadTexMtxEnv(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, const MtxFx44 * mtx);
+void G3BS_LoadTexMtxEnv(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, const MtxFx44 * mtx);
+void G3CS_LoadTexMtxEnv(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, const MtxFx44 * mtx);</CODE>
+</PRE></dd>
+</dl><h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="190"><em><strong><font face="Courier New">mtx</font></strong></em></TD>
+<TD width="512">Pointer to matrix to load in the texture matrix</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the matrix mode to <code>Texture</code> mode and sets the texture matrix. At this time, corrections are performed that are necessary when set in <code>Normal</code> source and <code>Vertex</code> source. The result is a new current texture matrix <code>C<sub>new</sub></code>, shown below.</P>
+<P><span lang=EN-US style='font-size:10.5pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r –¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><span style='mso-text-raise:-33.0pt'><IMG width="351" height="96" src="geo_texmtx_env.gif" v:shapes="_x0000_i1025"></span></span></P>
+<h2>See Also</h2>
+<P><A href="G3_LoadTexMtxTexCoord.html"><code>G3*_LoadTexMtxTexCoord</code></A>, <A href="G3_MtxMode.html" target="_self"><code>G3*_MtxMode</code></A></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

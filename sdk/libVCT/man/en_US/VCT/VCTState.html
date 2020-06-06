@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>VCTState</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">VCTState</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+  <PRE><CODE>#include &lt;vct.h&gt;</CODE></PRE>
+  <PRE><CODE>
+typedef enum {
+    VCT_STATE_INIT,
+    VCT_STATE_OUTGOING,
+    VCT_STATE_TALKING,
+    VCT_STATE_CONNECTED,
+    VCT_STATE_INCOMING,
+    VCT_STATE_DISCONNECTING
+} VCTState;</CODE></PRE>
+  </dd>
+</dl>
+<H2>Definition</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+      <TD width="30%"><B><I>VCT_STATE_INIT</I></B></TD>
+      <TD width="70%">Initial condition.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_STATE_OUTGOING</I></B></TD>
+      <TD width="70%">INVITE/CONTACT has been already issued.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_STATE_TALKING</I></B></TD>
+      <TD width="70%">Connected and in conversation.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_STATE_CONNECTED</I></B></TD>
+      <TD width="70%">Connected and another player is talking (Transceiver Mode only).</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_STATE_INCOMING</I></B></TD>
+      <TD width="70%">An external request is received.</TD>
+    </TR>
+    <TR>
+      <TD width="30%"><B><I>VCT_STATE_DISCONNECTING</I></B></TD>
+      <TD width="70%">Processing disconnection.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Description</H2>
+<P>These are enumeration codes to show the SSP's internal condition.</P>
+
+<h2>See Also</h2>
+<P><code>
+<A href="VCTSession.html">VCTSession</A>
+</code></P>
+<H2>Revision History</H2>
+<P>
+2006/04/13 Description regarding VCT_STATE_CONNECTED was modified.<BR>
+2006/01/25 First release
+</P>
+</body>
+</html>

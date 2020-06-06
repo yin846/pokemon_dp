@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------
+NITRO-SDK:
+	Making it possible for the NITRO-SDK environment and the AGBSDK environment to coexist.
+
+					02/24/2004
+					Nintendo Co., Ltd. Environment Development Group
+------------------------------------------------------------------------------
+
+You can use mount in Cygwin to map any directory to the top of a single directory tree and use it as a virtual path.
+
+When you use this virtual path in the AGBGNUPro environment that comes with the AGBSDK, if you install Cygwin, it is possible that a new installation of Cygwin will overwrite the mount position of the root directory of the virtual path in the AGBGNUPro environment, which will cause a problem.
+
+We have confirmed that if the path descriptions to the AGB libraries (in the AGB development environment PATH settings, Makefile, etc) are formatted so that they do not use virtual paths, a new Cygwin will run properly, and coexistence with the NITRO-SDK will be possible.
+
+If a new installation of Cygwin causes problems with a build in the AGB environment, first, confirm that the environment variable settings for AGBDIR and PATH (found in AgbGNUProBash.bat, AgbGNUProDos.bat, Makefile, etc.) match directory names to the AGB environment.
+
+(Supplemental) Concerning setting NITROSDK_ROOT in the .bashrc and other environment setting files:
+
+If you set NITROSDK_ROOT with a virtual path from where Cygwin is installed, there will be times that the path that is passed to the compiler, etc as an option, will not be passed properly.
+
+Therefore, always set an absolute path from the drive name, as shown below.
+
+	"C:/(path to NitroSDK)"
+
+  or
+
+	"C:\(path to NitroSDK)"

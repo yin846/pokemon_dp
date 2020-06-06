@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_StartConnectEx</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_StartConnectEx</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_StartConnectEx(
+<A href="WMCallbackFunc.html">WMCallbackFunc</A>  callback ,
+const <A href="WMBssDesc.html">WMBssDesc</A>*  pInfo ,
+const u8*         ssid ,
+BOOL              powerSave ,
+u16               authMode
+);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Specifies the callback function to be called when the notification of the status for the asynchronous process is sent or when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">pInfo</FONT></STRONG></EM></TD>
+<TD width="800">Specifies Information on the parent to be connected. <BR> Be sure to designate the structure obtained in <code><A href="WM_StartScan.html">WM_StartScan</A></code> or <code><A href="WM_StartScanEx.html">WM_StartScanEx</A></code> as is. Note that this structure entity will be forcibly cached.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">ssid</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the child information (fixed at 24 bytes (<code>WM_SIZE_CHILD_SSID</code>)) to be sent to the parent.<br />The specified data will be sent to the parent by the callback of <code>WM_StartParent</code>. If NULL, the 24 bytes of data will be set to all zeros.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">powerSave</FONT></STRONG></EM></TD>
+<TD width="800">Designate TRUE if the power-saving mode is being used, or FALSE if the full-time response mode is being used. <BR> Normally, TRUE should be designated. FALSE should be assigned only when there is a need to perform relatively frequent data sending and receiving in infrastructure mode. If FALSE is designated, significantly more power will be consumed then in power-saving mode.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">authMode</FONT></STRONG></EM></TD>
+<TD width="800">Designates the authentication mode. Normally, open system authentication (<code>WM_AUTHMODE_OPEN_SYSTEM</code>) should be designated. <BR> When designating shared key authentication (<code>WM_AUTHMODE_SHARED_KEY</code>), an authentication that performs WEP encryption will be performed, so a WEP key that is the same as that of the communication partner must be configured in advance using a function such as <code><A href="WM_SetWEPKeyEx.html">WM_SetWEPKeyEx</A></code>. No other values than these two can be designated.</TD>
+    </TR>
+   </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>This function initiates a connection process to a parent. When using infrastructure mode, etc., this function allows a finer degree of control over the connection operations than does <code><A href="WM_StartConnect.html">WM_StartConnect</A></code>, but normally there is no need to use this. This function is executable only when the WM is in the <code>IDLE</code> state. If the return value for API is <code>WM_ERRCODE_OPERATING</code>, a callback is triggered when the connection process starts, when the request is approved by the parent, and AID was allocated. The callback is also generated when the normal connection state could not be achieved after starting the connection process. When the connection is complete, the WM changes to the <code>CHILD</code> state. After the connection is established, the callback specified by this function is generated when the device is disconnected from the parent. The callback that was specified with this function is also generated if the beacon that was transmitted by the parent on a periodic basis was not received after a set period of time. If the connection process fails along the way and the callback is returned, this indicates that there is an error in the internal state, so try to call <code><A href="WM_Reset.html">WM_Reset</A></code> before retrying <code>WM_StartConnectEx</code>.</P>
+
+<h2>Note</h2>
+<P>
+After calling this function, a callback will be generated when the connection as a child device completes as expected, but sometimes before the callback is generated a notification will be generated  that shows that  there was a beacon receive notification or a disconnect from the parent device. When performing an initialization process, etc., as the child device, perform it before this function is called rather than when the callback has been generated.
+</P>
+
+<h2>See Also</h2>
+<P><code><A href="WM_StartConnect.html">WM_StartConnect</A>, <A href="WM_StartScan.html">WM_StartScan</A>, <A href="WM_EndScan.html">WM_EndScan</A>, <A href="WM_Disconnect.html">WM_Disconnect</A></code></P>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callbacks being called from the interrupt handler.<br>03/02/2005 Added to Description.<br>02/14/2005 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

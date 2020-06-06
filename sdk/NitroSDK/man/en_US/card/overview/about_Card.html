@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Card Access Overview</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Card Access Overview</H1>
+<H2>Description</H2>
+<P>The CARD library is the lowest level interface library to manage the Nintendo DS Game Card (below: DS Card), and provides exclusive control of the DS card itself and mechanisms for ROM access, backup memory access, and card removal detection. Higher level libraries that use the DS Card, such as the file system library (FS), use the CARD Library internally.<br> You must call the <CODE><A href="../common/CARD_Init.html">CARD_Init</A></CODE> function before using any CARD library functions. However, this function is called internally if the <CODE><A href="../../os/init/OS_Init.html">OS_Init</A></CODE> function has been called, so there is no special need to call it on the application side.<br>
+</P>
+<HR>
+<P><B>DS card structure</B></P>
+<P>This is a description of the internal hardware structure of a DS card.</P>
+<BLOCKQUOTE><IMG src="image_CardAccess.gif" border="0"></BLOCKQUOTE>
+<P>
+The DS card has an internal read-only ROM device and may have one type of backup memory device according to what is specified. Neither device is mapped to memory space, so their data cannot be accessed directly by the CPU and must be accessed by generating transfer commands in fixed size units through a data bus.<br> <br> ROM and backup both use a shared data bus. The data bus can only be used by one device at a time and is exclusively owned while the device is processing commands. If an owned data bus is released or there are ownership conflicts, device operation becomes inconsistent. However, because this is exclusively controlled at the software level by the CARD library, a card access conflict will not be a problem between processes or modules. <br>
+</P>
+<H2>See Also</H2>
+<P><CODE><A href="../list_card.html">CARD Function List</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>
+01/06/2006 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

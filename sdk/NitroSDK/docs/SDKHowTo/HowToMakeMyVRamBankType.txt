@@ -1,0 +1,85 @@
+------------------------------------------------------------------------------
+NITRO-SDK:
+	Adding VRAM bank combinations that have not been prepared in the SDK.
+
+					03/08/2004
+					Nintendo Co., Ltd. Environment Development Group
+------------------------------------------------------------------------------
+
+If you use VRAM banks in combinations that are not supported the SDK, 
+change the SDK source code as shown here.
+
+Related files
+
+build/libraries/gx/src/gx_vramcnt.c
+build/libraries/gx/src/gxstate.c
+include/nitro/gx/gx_vramcnt.h
+
+
+* Adding BG bank combinations
+
+1. Changes to gx_vramcnt.h
+
+- Add the BG entry (GX_VRAM_BG_nnn_xxx) to GXVRamBG.
+
+    Validity flags are, in order from the bottom bit, ABCDEFG.
+    Set the appropriate flags.
+
+     The format is GX_VRAM_BG_(size)_(bank) = (validity flag for bank)
+    
+- Use GX_VRAM_BG_ASSERT(x) to add the BG entry to the criteria.
+
+    Check whether the bank combination is valid.
+
+    Add in this format: (x) == GX_VRAM_BG_nnn_xxx || \
+
+
+2. Changes to gx_vramcnt.c
+
+- Add the BG entry to GX_VRAMCNT_SetBG_()
+
+    Add a description for each bank control register that you will use.
+    Set so that the banks you use are mapped to consecutive VRAM addresses.
+
+
+3. Changes to gxstat.c
+
+- Add the BG entry to GX_RegionCheck_BG_()
+
+    This describes a check of whether the VRAM addresses you are using are valid.
+    Pass the BG_VRAM start address and end address respectively to the first and second arguments of SDK_REGION_ASSERT.
+
+
+* Add OBJ bank combinations
+
+1. Changes to gx_vramcnt.h
+
+- Add the OBJ entry (GX_VRAM_OBJ_nnn_xxx) to GXVRamOBJ.
+
+    Validity flags are, in order from the bottom bit, ABCDEFG.
+    Set the appropriate flags. However you cannot set CD.
+
+     The format is GX_VRAM_OBJ_(size)_(bank) = (validity flag for bank)
+
+    
+- Use GX_VRAM_OBJ_ASSERT(x) to add the OBJ entry to the criteria.
+
+    Check whether the bank combination is valid.
+
+    Add in this format: (x) == GX_VRAM_OBJ_nnn_xxx || \
+
+
+2. Changes to gx_vramcnt.c
+
+- Add the OBJ entry to GX_VRAMCNT_SetOBJ_().
+
+    Add a description for each bank control register that you will use.
+    Set so that the banks you use are mapped to consecutive VRAM addresses.
+
+
+3. Changes to gxstat.c
+
+- Add the OBJ entry to GX_RegionCheck_OBJ_().
+
+    This describes a check of whether the VRAM addresses you are using are valid.
+    Pass the BG_VRAM start address and end address respectively to the first and second arguments of SDK_REGION_ASSERT.

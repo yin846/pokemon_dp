@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_GetCartridgeRomCycle2nd</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_GetCartridgeRomCycle2nd</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>MICartridgeRomCycle2nd MI_GetCartridgeRomCycle2nd( void );</CODE></dd>
+</dl>
+<h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The setting for the 2nd access cycle to access the Game Pak's ROM region.</p>
+
+<H2>Description</H2>
+<P>Gets the setting for the 2nd access cycle to access the Game Pak's ROM region.</P>
+<P>The returned values are in the form of <code>MICartridgeRomCycle2nd</code>. The meanings are shown below.
+</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_CTRDG_ROMCYCLE2_4</CODE></TD>
+<TD bgcolor="#eeeeee">4 cycles</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#eeeeee"><CODE>MI_CTRDG_ROMCYCLE2_6</CODE></TD>
+<TD bgcolor="#eeeeee">6 cycles</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><code><A href="MI_SetAgbCartridgeFastestRomCycle.html">MI_SetAgbCartridgeFastestRomCycle</A></code> is used for settings when accessing an AGB Game Pak.</P>
+<h2>Internal Operation</h2>
+<P>Accesses the <code>EXMEMCNT</code> I/O register <code>(0x4000204)</code>.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="MI_SetCartridgeRomCycle1st.html">MI_SetCartridgeRomCycle1st</A>,<BR> <A href="MI_SetCartridgeRomCycle2nd.html">MI_SetCartridgeRomCycle2nd</A>, <A href="MI_SetCartridgeRomCycle2nd.html">MI_SetCartridgeRomCycle2nd</A><br> <A href="MI_SetAgbCartridgeFastestRomCycle.html">MI_SetAgbCartridgeFastestRomCycle</A> </CODE></p>
+
+<H2>Revision History</H2>
+<P>2005/02/10 Added description of <CODE>MI_SetAgbCartridgeFastestRomCycle.</CODE> <BR>07/01/2004 Name changed from &quot;2&quot; to &quot;2nd&quot; 05/25/2004 Added &quot;cartridge&quot; to &quot;name.&quot;<BR> 12/18/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

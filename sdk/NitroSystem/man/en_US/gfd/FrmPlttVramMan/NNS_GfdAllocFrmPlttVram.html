@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNS_GfdAllocFrmPlttVram</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_GfdAllocFrmPlttVram</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/gfd.h&gt;</CODE></PRE>
+<PRE><CODE>NNSGfdTexKey NNS_GfdAllocFrmPlttVram(u32 szByte, BOOL b4Pltt, u32 allocFrom);</CODE></PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>szByte</STRONG></EM></TD>
+<TD width="87%">The size of palette-use memory you want to allocate (8 to 524280 bytes)</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>b4Pltt</STRONG></EM></TD>
+<TD width="87%">TRUE if memory for 4-color palette is being allocated</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>allocFrom</STRONG></EM></TD>
+<TD width="87%">Where palette-use memory is being allocated from.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>The key data indicating the palette-use memory.</P>
+
+<H2>Description</H2>
+<P>
+This function allocates palette-use memory of the size specified by <code>szByte</code> from Palette RAM,  and returns the key indicating that palette-use memory. If an error occurs when the palette-use memory is being allocated, the function  returns <code>NNS_GFD_ALLOC_ERROR_PLTTKEY</code>, which is a key indicating that an error  has occurred.
+</P>
+<P>
+The Frame Palette VRAM Manager can allocate palette memory from both the upper part and the lower part of Palette RAM. If <code>NNS_GFD_ALLOC_FROM_LOW</code> is specified in <code>allocFrom</code>, then palette memory is allocated from the lower part of Palette RAM. Conversely, if <code>NNS_GFD_ALLOC_FROM_HIGH</code> is specified in <code>allocFrom</code>, then palette memory is allocated from the upper part of Palette RAM.
+</P>
+<p>
+If an allocation request is made for a size below the minimum that can be expressed for the key, the request size is rounded up to the minimum. If an allocation request is made for a size above the maximum that can be expressed for the key, the allocation process will not be performed and an error key will be returned.
+</p>
+
+<P>
+If <code>TRUE</code> is specified in <code>b4Pltt</code>, then memory is allocated for a 4-color palette. The location where the 4-color palette can be placed serves as the basis for determining whether or not the palette-use memory has been allocated. (The 4-color palette cannot be placed beyond 0x10000.)
+</P>
+
+
+<H2>See Also</H2>
+<P><code><a href="NNS_GfdInitFrmPlttVramManager.html">NNS_GfdInitFrmPlttVramManager</a>, <a href="NNS_GfdFreeFrmPlttVram.html">NNS_GfdFreeFrmPlttVram</a></code></P>
+
+<H2>Revision History</H2>
+<P>01/31/2005 Added a cautionary statement regarding the size range.<BR>
+07/16/2004 Initial version.</P>
+</BODY>
+
+</HTML>

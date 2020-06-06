@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3X_GetCommandFifoStatus</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3X_GetCommandFifoStatus</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3x.h&gt;
+
+GXFifoStat G3X_GetCommandFifoStatus(void);<BR></CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>General status of the Command FIFO.</p>
+<H2>Description</H2>
+<P>This function returns the Command FIFO status as one of four states: Empty, Less than half full, More than half full, or Full.<BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_FIFOSTAT_EMPTY</CODE></TD>
+<TD>Command FIFO is empty.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FIFOSTAT_UNDERHALF</CODE></TD>
+<TD>Command FIFO is less than half full but it is not empty.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FIFOSTAT_OVERHALF</CODE></TD>
+<TD>Command FIFO is more than half full but it is not full.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_FIFOSTAT_FULL</CODE></TD>
+<TD>Command FIFO is full.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following describes the type definition for the <code>GXFifoStat</code> format.</P>
+<PRE><CODE>typedef enum
+{
+GX_FIFOSTAT_EMPTY = 6,
+GX_FIFOSTAT_UNDERHALF = 2,
+GX_FIFOSTAT_OVERHALF = 0,
+GX_FIFOSTAT_FULL = 1
+}
+GXFifoStat;</CODE></PRE>
+<h2>See Also</h2>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

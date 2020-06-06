@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_InitContext</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_InitContext</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;
+
+void OS_InitContext( OSContext* context,
+u32         newpc,
+u32         newsp );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG><em><strong><code>context</code></strong></em>&nbsp;&nbsp;</STRONG></EM></TD>
+<TD width="87%">Context</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><em><strong><code>newpc</code></strong></em>&nbsp;&nbsp;</STRONG></EM></TD>
+<TD width="87%">Start address</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG><em><strong><code>newsp</code></strong></em>&nbsp;&nbsp;</STRONG></EM></TD>
+<TD width="87%">Stack</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function initializes context.</P>
+<P>The context structure <code>OSContext</code> has the following members:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD bgcolor="#ffeeee"><CODE>u32 cpsr</CODE></TD>
+<TD bgcolor="#ffeeee">CPSR (Current Program Status Register)</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#ffeeee"><CODE>u32 r[13]</CODE></TD>
+<TD bgcolor="#ffeeee">Registers R0 - R12</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#ffeeee"><CODE>u32 sp</CODE></TD>
+<TD bgcolor="#ffeeee">Stack pointer (R13 register)</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#ffeeee"><CODE>u32 lr</CODE></TD>
+<TD bgcolor="#ffeeee">Link register (R14 register)</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#ffeeee"><CODE>u32 pc_plus4</CODE></TD>
+<TD bgcolor="#ffeeee">Program counter + 4 (R15 register+4)</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#ffeeee"><CODE>u32 sp_svc</CODE></TD>
+<TD bgcolor="#ffeeee">Used to save to stack in Supervisor mode (see note 1)</TD>
+    </TR>
+    <TR>
+<TD><CODE>CPContext cp_context</CODE></TD>
+<TD>Context for the divider / square root calculator (see note 2)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><B>Note 1:</B> May not exist according to compile options. <B>Note 2:</B> Exists only in ARM9.</P>
+<P>With <code>OS_InitContext()</code>, the stack for SVC is secured downward from newsp. (Depending on the compile option, this process may not occur.))<CODE>cpsr</CODE> is set appropriately by checking the processor mode (distinguishing ARM and THUMB) from the CPSR register. <CODE>r[0] &ndash; r[12]</CODE> (registers R0 - R12) and <CODE>lr</CODE> (register R14) are zero-cleared. <CODE>pc_plus4</CODE> takes a value 4 more than the specified value of <CODE><B><I>newpc</I></B></CODE>.</P>
+<P><code>cp_context</code> exists only in ARM9, and is a context for divider / square root calculator. CPContext structure contains the following members.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>u64 div_numer</CODE></TD>
+<TD>Parameter of the divider (divisor)</TD>
+    </TR>
+    <TR>
+<TD><CODE>u64 div_denom</CODE></TD>
+<TD>Parameter for the divider (dividend)</TD>
+    </TR>
+    <TR>
+<TD><CODE>u64 sqrt</CODE></TD>
+<TD>Parameter for the square root calculator</TD>
+    </TR>
+    <TR>
+<TD><CODE>u16 div_mode</CODE></TD>
+<TD>Divider mode</TD>
+    </TR>
+    <TR>
+<TD><CODE>u16 sqrt_mode</CODE></TD>
+<TD>Square root calculator mode</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><code>OS_InitContext()</code> does not change the content of <code>cp_context</code>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_SaveContext.html">OS_SaveContext</A>, <A href="OS_LoadContext.html">OS_LoadContext</A>, <A href="OS_DumpContext.html">OS_DumpContext</A><br></CODE></P>
+<H2>Revision History</H2>
+<P>06/30/2004 Described <CODE>cp_context</CODE> .<BR>12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

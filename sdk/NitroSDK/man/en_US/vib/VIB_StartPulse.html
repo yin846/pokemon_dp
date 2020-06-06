@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>VIB_StartPulse</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">VIB_StartPulse</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nitro/vib.h&gt;</CODE></PRE>
+  <PRE><CODE>void VIB_StartPulse(const <a href="VIBPulseState.html">VIBPulseState</a>* state);
+ </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>state</STRONG></EM></TD>
+      <TD width="87%">Pulse vibration status</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<p>Start pulse vibration using the given status.<br> If the previous pulse vibration has not ended, terminate it first and then start.<br> Since status is copied by the library, memory does not need to be allocated ahead of time.
+</p>
+<p>Before vibration starts, a check is made whetehr or not status is observing hardware restrictions. For details on restrictions, see <a href="VIBPulseState.html">VIBPulseState</a>.<br> If restrictions are not observed under the DEGUB or RELEASE build, the <a href="../os/debug/OS_Panic.html">OS_Panic</a> function displays a message and stops the program. Pulse vibration does not start in the case of a FINALROM built.
+</p>
+</p>
+<H2>See Also</H2>
+<P><CODE><a href="VIBPulseState.html">VIBPulseState</a>, <a href="VIB_StopPulse.html">VIB_StopPulse</a></CODE></P>
+<H2>Revision History</H2>
+<P>08/16/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

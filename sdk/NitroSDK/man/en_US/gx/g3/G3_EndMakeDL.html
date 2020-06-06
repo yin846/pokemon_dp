@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>G3_EndMakeDL</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">G3_EndMakeDL</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/gx/g3.h&gt;<BR>
+u32 G3_EndMakeDL(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info);</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="208"><EM><STRONG><FONT face="Courier New">info</FONT></STRONG></EM></TD>
+<TD width="945">Pointer to <code><A href="../gx/GXDLInfo.html">GXDLInfo</A></code> structure</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>Size of the created display list (in bytes).</P>
+<H2>Description</H2>
+<P>This function is called after creating the display list. It performs padding operations internally and returns the display list size.  Since this function does not flush the cache, execute <A href="../../os/cache/DC_FlushRange.html" target="_self">DC_FlushRange</A> after executing this function to store the region of cache where the display list is stored into main memory.</P>
+<H2>See Also</H2>
+<P><A href="G3_BeginMakeDL.html">G3_BeginMakeDL</A>, <A href="../../os/cache/DC_FlushRange.html" target="_self">DC_FlushRange</A>, <A href="../../mi/dma/MI_SendGXCommand.html" target="_self">MI_SendGXCommand</A></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

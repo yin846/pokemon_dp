@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_IsValidGameBeacon</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_IsValidGameBeacon</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+static inline BOOL WM_IsValidGameBeacon( const <A href="WMBssDesc.html">WMBssDesc</A>* bssDesc )
+{
+    return WM_IsValidGameInfo( &amp;bssDesc-&gt;gameInfo, bssDesc-&gt;gameInfoLength );
+}
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">bssDesc</FONT></STRONG></EM></TD>
+      <TD width="800">Specifies a pointer to beacon information.
+      </TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>
+Returns TRUE if the beacon information stored in the WMBssDesc structure is from the parent connected for DS wireless play.
+</p>
+
+<H2>Description</H2>
+<P>
+Checks if the beacon information obtained using <A href="WM_StartScan.html">WM_StartScan</A> or <A href="WM_StartScanEx.html">WM_StartScanEx</A> is from a DS wireless play parent. <A href="WM_IsValidGameInfo.html">WM_IsValidGameInfo</A> is called internally.
+</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="WM_IsValidGameInfo.html">WM_IsValidGameInfo</A>, <A href="WM_StartScan.html">WM_StartScan</A>, <A href="WM_StartScanEx.html">WM_StartScanEx</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+02/20/2006 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

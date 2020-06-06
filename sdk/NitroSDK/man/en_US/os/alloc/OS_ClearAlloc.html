@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_ClearAlloc</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_ClearAlloc</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_ClearAlloc( OSArenaId id );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>id</STRONG></EM></TD>
+<TD width="87%">The arena ID of the arena for which all of the memory allocation system information will be cleared.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function clears memory allocation system information.</P>
+<P>It destroys all heaps that are created in the arena that is specified by the arena ID <em><strong><code>id</code></strong></em>. To use a memory allocation system on that arena again, set it up by calling the <A href="OS_InitAlloc.html"><CODE>OS_InitAlloc</CODE></A> function.
+</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitAlloc.html">OS_InitAlloc</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>08/30/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

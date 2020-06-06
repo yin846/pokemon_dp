@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WBT_InitParent</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WBT_InitParent</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wbt.h&gt;</CODE><BR> <BR> <CODE>void WBT_InitParent(int send_packet_size, int recv_packet_size, WBTCallback callback);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<p>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>send_packet_size</STRONG></EM></TD>
+<TD width="87%">The parent device packet size of the MP communication that can be used for WBT. This value must be larger than <code>WBT_PACKET_SIZE_MIN</code>.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>recv_packet_size</STRONG></EM></TD>
+<TD width="87%">The child device packet size of the MP communication that can be used for WBT. This value must be larger than <code>WBT_PACKET_SIZE_MIN</code>.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>callback</STRONG></EM></TD>
+<TD width="87%">A <A href="../wbt_callback_type.html"><CODE>WBTCallback</CODE></A> type function that notifies an event generated separately from any particular command. In this function, the callback is notified as a <A href="../wbt_command_type_const.html"> <CODE>WBT_CMD_SYSTEM_CALLBACK</CODE> </A> command. This callback is called from inside the <a href="../parent/WBT_MpParentRecvHook.html"><CODE>WBT_MpParentRecvHook</CODE></a> function.
+	  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>Initializes the WBT library as a parent. This function can be used only by a wireless parent.<br> There are no special conditions, such as wireless library status, related to calling this function.<br> <br>
+</p>
+<h2>See Also</h2>
+<p>
+<A href="WBT_InitChild.html">WBT_InitChild <A href="WBT_End.html">WBT_End <a href="../parent/WBT_MpParentRecvHook.html">WBT_MpParentRecvHook</a> <BR> <A href="../wbt_callback_type.html">WBTCallback</A>
+</P>
+<H2>Revision History</H2>
+<P>
+06/01/2005 Added text indicating that the callback is called from the WBT_MpParentRecvHook function<br> 09/21/2004 Initial version<BR>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

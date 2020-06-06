@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_SetEntry</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_SetEntry</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_SetEntry( <A href="WMCallbackFunc.html">WMCallbackFunc</A>  callback , BOOL enabled );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">enabled</FONT></STRONG></EM></TD>
+<TD width="800">Designates whether to permit the reception of entries, or whether to terminate it.<BR>A value of TRUE indicates the permission to receive. A value of FALSE indicates that reception is not allowed (it has been terminated).</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>
+Changes the parent device's entry reception state for transmissions from the child device If the state change is prohibited, all subsequent connections requests from the child device will be denied. If the state change is permitted, connections will be accepted from child devices as long as the maximum number of connected child devices is not exceeded. This function can be executed only if the WM is in the <A href="wm_state_diagram.html"><code>PARENT</code></A> or <A href="wm_state_diagram.html"><code>MP_PARENT</code></A> state. If the return value is <code>WM_ERRCODE_OPERATING</code>, a callback will occur after the changes to the entry reception state have completed. The initial state is set by <A href="WM_SetParentParameter.html"><code>WM_SetParentParameter</code></A>. Use this function to modify the values.
+</P>
+
+<h2>See Also</h2>
+<p><a href="WM_SetParentParameter.html"><code>WM_SetParentParameter</code></a>, <a href="WM_StartParent.html"><code>WM_StartParent</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callbacks being called from the interrupt handler.<br>10/22/2004 Changed return value type.<br>08/20/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

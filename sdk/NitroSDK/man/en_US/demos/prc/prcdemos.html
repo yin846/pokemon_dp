@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>PRC Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Pattern Recognition Demo</H1>
+
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/prc</CODE></P>
+
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/prc</CODE> directory and enter:</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (.<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE><code>$NitroSDK/build/demos/prc/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code>.</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/prc/characterRecognition-1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+<H2>Execution</H2>
+<P>Navigate to the <code>$NitroSDK/build/demos/prc/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and perform one of the following:</P>
+<UL>
+<LI>Execute <code>*.nef</code>, <code>*.srl</code> with ensata.
+<LI>Load and execute <code>*.nlf</code> with IS-NITRO-DEBUGGER.
+<LI>Execute <code>*.srl</code> with IS-NITRO-DEBUGGER.
+</UL>
+
+<H2>Description</H2>
+<br>
+
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>characterRecognition-1</CODE></STRONG></EM></TD>
+<TD width="525">Recognizes input from the touch panel as characters. <br /> This sample program illustrates a procedure for running a time-consuming recognition API in the background with another thread.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>characterRecognition-2</CODE></STRONG></EM></TD>
+<TD width="525">Recognizes input from the touch panel as characters. It is possible to compare various recognition engines and parameters, and confirm recognition results and calculation times. <br /> It also has a simple tool that creates a pattern sample list.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Operation</H2>
+<P>The demos <code>characterRecognition-1</code> and <code>characterRecognition-2</code> attempt to read touch panel calibration values from the non-volatile memory (NVRAM) in the retail product. If they cannot properly read, they will terminate in error. In this case, use the DS startup menu to store calibration results in NVRAM.</P>
+<P>When using <code>characterRecognition-2</code> as a simple tool for creating pattern sample lists, refer to the demo tool <code><a href="../../tools/pdic2c.html">pdic2c.pl</a></code>.</P>
+<H2>See Also</H2>
+<P><A href="../../prc/list_prc.html"><CODE>PRC Function List</CODE></A></P>
+
+<H2>Revision History</H2>
+<P>
+03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 08/17/2004 Standardized the notation of the IS-NITRO-EMULATOR.<br /> 07/10/2004 Change from <code>.bin</code> to <code>.srl.</code><br />06/30/2004 Initial Version</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

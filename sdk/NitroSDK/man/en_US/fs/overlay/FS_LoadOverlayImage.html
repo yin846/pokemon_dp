@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FS_LoadOverlayImage</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FS_LoadOverlayImage</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>BOOL FS_LoadOverlayImage(FSOverlayInfo *p_ovi);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>p_ovi</STRONG></EM></TD>
+<TD width="87%"><code>FSOverlayInfo</code> structure that holds overlay module information.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>Returns a value of TRUE if the overlay module's image is loaded properly. Otherwise, a value of FALSE is returned.</p>
+
+<H2>Description</H2>
+<P>This function loads the image of an overlay module to memory. It will construct the &quot;raw initial state&quot; of the overlay module in memory. The subsequent running of the static initializer using the <A href="FS_StartOverlay.html"><code>FS_StartOverlay</code></A> function enables the overlay module.<br> When loading an overlay whose area conflicts with an existing loaded overlay, you must unload the previous overlay using the <A href="FS_UnloadOverlay.html"><code>FS_UnloadOverlay</code></A> function.<br> This process is equivalent to calling the <A href="FS_LoadOverlayImageAsync.html"><code>FS_LoadOverlayImageAsync</code></A> function and waiting for the load process to finish. For information about the relationship with other overlay functions that perform equivalent processes see the example stated in the reference for the <a href="FS_LoadOverlay.html"><code>FS_LoadOverlay</code></a> function. <BR>
+<h2>See Also</h2>
+<p><code><A href="../fs_overlay_info_type.html">FSOverlayInfo</A>, <A href="FS_LoadOverlay.html"><code>FS_LoadOverlay</code></A>, <A href="FS_LoadOverlayInfo.html">FS_LoadOverlayInfo</A>, <A href="FS_LoadOverlayImageAsync.html"><code>FS_LoadOverlayImageAsync</code></A>, <A href="FS_GetOverlayTotalSize.html">FS_GetOverlayTotalSize</A>, <A href="FS_GetOverlayAddress.html">FS_GetOverlayAddress</A>, <A href="FS_GetOverlayFileID.html">FS_GetOverlayFileID</A>, <A href="FS_StartOverlay.html">FS_StartOverlay</A>, <A href="FS_UnloadOverlayImage.html">FS_UnloadOverlayImage</A></code></p>
+
+<H2>Revision History</H2>
+<P>
+11/16/2004 Added comparison to <code>FS_LoadOverlayImageAsync</code>, revised description of the process.<br> 10/19/2004 Added description regarding the process contents.<br> 09/24/2004 Added description concerning the relationship with each type of overlay function.<br> 06/11/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

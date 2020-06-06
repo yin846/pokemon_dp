@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SslAddRandomSeed</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SslAddRandomSeed</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/ssl.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_SslAddRandomSeed(void *random_seed, u32 len);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>random_seed</strong></em></code></td>
+<td>Random number pool.</td>
+  </tr>
+  <tr>
+<td><code><em><strong>len</strong></em></code></td>
+<td>Random number pool size</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>Sets the random number pool to be used by the SSL random number generator. The setting is set by adding entropy to the existing random number pool.<BR>When SSL first needs a random number, it checks to see if a random number pool has been set. If not, it sets the random number pool internally. However, since this random number is not good for encryption purposes, CPS_SslAddRandomSeed() should be used to set the random number if at all possible.<BR>This does not block.<BR>This can be called even when the CPS library cannot be used.</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SetSsl.html">CPS_SetSsl</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

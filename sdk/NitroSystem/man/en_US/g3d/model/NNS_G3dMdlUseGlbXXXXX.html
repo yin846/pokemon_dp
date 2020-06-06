@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>NNS_G3dMdlUseGlbXXXXX</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNS_G3dMdlUseGlbXXXXX</H1>
+
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nnsys/g3d/model.h&gt;</CODE></PRE>
+<PRE>void NNS_G3dMdlUseGlbDiff( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbAmb( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbSpec( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbEmi( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbLightEnableFlag( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbPolygonMode( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbCullMode( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbPolygonID( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbAlpha( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbFogEnableFlag( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbDepthTestCond( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlb1Dot( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbFarClip( NNSG3dResMdl* pMdl);
+void NNS_G3dMdlUseGlbXLDepthUpdate( NNSG3dResMdl* pMdl);</PRE>
+</DL>
+
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>pMdl</STRONG></EM></TD>
+<TD width="87%">Pointer to the model resource</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Return Values</H2>
+<P>None.</P>
+
+<H2>Description</H2>
+<P>These functions makes sure the model specified by <em><code>pMdl</code></em> is rendered using the values set as the global state values.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbDiff</CODE></TD>
+<TD width="1078"> Specify use of <em>diffuse</em> color as set by the <code>NNS_G3dGlbMaterialColorDiffAmb</code> function.</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbAmb</CODE></TD>
+<TD width="1078"> Specify use of <em>ambient</em> color as set by the <code>NNS_G3dGlbMaterialColorDiffAmb</code> function.
+</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbSpec</CODE></TD>
+<TD width="1078"> Specify use of <em>specular</em> color as set by the <code>NNS_G3dGlbMaterialColorSpecEmi</code> function.
+</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbEmi</CODE></TD>
+<TD width="1078">Specify use of <em>emission</em> color as set by the <code>NNS_G3dGlbMaterialColorSpecEmi</code> function.
+</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbLightEnableFlag</CODE></TD>
+<TD width="1078">Specify use of <em>light-enable flag</em> as set by the <code>NNS_G3dGlbPolygonAttr</code> function.
+</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbPolygonMode</CODE></TD>
+<TD width="1078">Specify use of <em>polygon mode</em> as set by the <code>NNS_G3dGlbPolygonAttr</code> function.
+</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbCullMode</CODE></TD>
+<TD width="1078">Specify use of <em>cull mode</em> as set by the <code>NNS_G3dGlbPolygonAttr</code> function.
+</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbPolygonID</CODE></TD>
+<TD width="1078">Specify use of <em>polygon ID</em> as set by the <code>NNS_G3dGlbPolygonAttr</code> function.
+</TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbAlpha</CODE></TD>
+<TD width="1078">Specify use of <em>alpha</em> value as set by the <code>NNS_G3dGlbPolygonAttr</code> function. </TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbFogEnableFlag</CODE></TD>
+<TD width="1078">Specify use of <em>fog-enable flag</em> as set by the <code>NNS_G3dGlbPolygonAttr</code> function. </TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbDepthTestCond</CODE></TD>
+<TD width="1078">Specify use of <em>depth-test condition</em> as set by the <code>NNS_G3dGlbPolygonAttr</code> function. </TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlb1Dot</CODE></TD>
+<TD width="1078">Specify use of the specification for displaying <em>1-dot</em> polygons as set by the <code>NNS_G3dGlbPolygonAttr</code> function. </TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbFarClip</CODE></TD>
+<TD width="1078">Specify use of the specification for displaying polygons that intersect with the <em>FAR clip</em> plane as set by the <code>NNS_G3dGlbPolygonAttr</code> function. </TD>
+    </TR>
+    <TR>
+<TD width="262"><CODE>NNS_G3dMdlUseGlbXLDepthUpdate</CODE></TD>
+<TD width="1078">Specify use of the enable flag for updating the <em>depth</em> value of translucent polygons as set by the <code>NNS_G3dGlbPolygonAttr</code> function.
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>See Also</H2>
+<P><CODE><A href="NNS_G3dMdlUseMdlXXXXX.html">NNS_G3dMdlUseMdlXXXXX</A></CODE></P>
+
+<H2>Revision History</H2>
+<P>10/12/2004 Initial version.</P>
+</BODY>
+
+</HTML>

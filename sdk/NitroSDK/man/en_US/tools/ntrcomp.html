@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>ntrcomp</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color  : #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">ntrcomp</H1>
+<H2>Description</H2>
+<P><code>ntrcomp</code> is a tool that creates compressed data in a format that can be handled by the <code>NITRO-SDK MI_Uncompress*()</code> command.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% ntrcomp &lt;-d|r|l|h [option]&gt; [-s] [-t[width]] [-H] [-A4] [-o outputFile] &lt;inputFile&gt;<BR></CODE></P>
+<P>Compresses and converts the input file that is designated by <code>inputFile</code> into a designated format. Run-length compression, LZ77 compression, Huffman compression, and difference filter conversion are all possible.</P>
+<P>With the <code>-s</code> option, the message indicating successful compression will not be displayed.</P>
+<P>With the <code>-H</code> option, the data size is also appended to the data after expansion occurs. This is because header information is added to the data and compressed.<BR> With the <code>-A4</code> option, the size of the output file will be aligned with final zeros so that it is a multiple of four.<BR> With the <code>-o</code> option, the file name of the output file can be designated. If nothing is designated, the output file is created with the name (<em>input file name console part</em>)<code>_</code>(<em>compression method</em>)<code>.bin.</code><BR> With the <code>-t</code> option, the output file can be output as a C format text file. By adding options (1|2|4), you can choose between types u8, u16, and u32. (The default is u8.)</P>
+<H3>The formats for the designation of the compression method</H3>
+<P>The following formats can be designated for the compression method:
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH height="20">Option</TH>
+<TH height="20" width="101">Conversion Method</TH>
+<TH height="20" width="244">Parameter</TH>
+    </TR>
+    <TR>
+<TD><code>-d</code></TD>
+<TD width="101">Difference filter</TD>
+<TD width="244">Designates the bit size of the comparison unit  <I>{ 8 | 16 </I>}</TD>
+    </TR>
+    <TR>
+<TD><code>-r</code></TD>
+<TD width="101">Run length compression</TD>
+<TD width="244">None.</TD>
+    </TR>
+    <TR>
+<TD><code>-h</code></TD>
+<TD width="101">Huffman compression</TD>
+<TD width="244">Designates the bit size to encode  <I>{ 4 | 8 }</I></TD>
+    </TR>
+    <TR>
+<TD><code>-l</code></TD>
+<TD width="101">LZ77 compression</TD>
+<TD width="244">Designates the search position of the corresponding character strings  <I>{2 or greater}</I></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/ntrcomp.exe</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="../mi/uncompress/MI_UncompressHuffman.html">MI_UncompressHuffman</A>, <A href="../mi/uncompress/MI_UncompressRL.html">MI_UncompressRL*</A>, <A href="../mi/uncompress/MI_UncompressLZ.html">MI_UncompressLZ*</A></CODE></P>
+<H2>Revision History</H2>
+<P>03/03/2005 Added descriptions for new options.<br /> 08/20/2004 Initial version</P><BR>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

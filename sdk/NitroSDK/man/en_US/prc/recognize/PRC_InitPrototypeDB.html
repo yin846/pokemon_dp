@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PRC_InitPrototypeDB*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">PRC_InitPrototypeDB*</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/prc.h&gt;
+
+BOOL PRC_InitPrototypeDB(
+<A href="PRCPrototypeDB.html">PRCPrototypeDB</A>*             protoDB,
+void*                       buffer,
+const <A href="PRCPrototypeList.html">PRCPrototypeList</A>*     prototypeList );
+
+BOOL PRC_InitPrototypeDBEx(
+<A href="PRCPrototypeDB.html">PRCPrototypeDB</A>*             protoDB,
+void*                       buffer,
+const <A href="PRCPrototypeList.html">PRCPrototypeList</A>* prototypeList,
+u32                         kindMask,
+BOOL                        ignoreDisabledEntries,
+const <A href="PRCPrototypeDBParam.html">PRCPrototypeDBParam</A>*  param );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">protoDB</font></strong></em></td>
+<td width="87%">Pointer to the sample DB structure to be created.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">buffer</font></strong></em></td>
+<td width="87%">Pointer to the memory area that will be used in <code>protoDB</code>.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">prototypeList</font></strong></em></td>
+<td width="87%">Pointer to the sample pattern list.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">kindMask</font></strong></em></td>
+<td width="87%">Bit field used to select the pattern type of the sample DB entry that will be taken into the sample DB.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">ignoreDisabledEntries</font></strong></em></td>
+<td width="87%">Designates whether or not a sample entry whose <code>enabled</code> flag is FALSE should be ignored.</td>
+    </tr>
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">param</font></strong></em></td>
+<td width="87%">Other parameter values that are dependent on the recognition algorithm (use NULL as the default).</td>
+    </tr>
+  </table>
+
+<h2>Return Values</h2>
+<p>Returns TRUE if input pattern data is created successfully.</p>
+
+<H2>Description</H2>
+<P>Converts the <code><A href="PRCPrototypeList.html">PRCPrototypeList</A></code> type sample pattern list into the <code><A href="PRCPrototypeDB.html">PRCPrototypeDB</A></code> type sample DB that is used for recognition. This function precalculates length, angle, bounding box, and other values used for recognition from a sample pattern list that contains only strokes, and stores them as a sample DB. Depending on the size of the sample DB, the cost of the process can be extremely high.</P>
+<P><code><em><strong>buffer</strong></em></code> specifies the memory region used internally by <code><em><strong>protoDB</strong></em></code>. Beforehand obtain the amount of memory required using <code><A href="PRC_GetPrototypeDBBufferSize.html">PRC_GetPrototypeDBBufferSize*</A></code>, and allocate at least that amount. Do not free <code><em><strong>buffer</strong></em></code> while <code><em><strong>protoDB</strong></em></code> is in use.</P>
+<P>The logical AND of the <em><strong><code>kindMask</code></strong></em> value and the value of <em><strong><code>kind</code></strong></em> for each sample DB entry in the <em><strong><code>prototypeList</code></strong></em> is performed. The entry will be brought into the sample DB if the result is non-0. Specifying <code>PRC_KIND_ALL</code> in <em><strong><code>kindMask</code></strong></em> will select all <em><strong><code>kinds</code></strong></em>. If <em><strong><code>ignoreDisabledEntries</code></strong></em> is TRUE, sample DB entries whose <em><strong><code>enabled</code></strong></em> flag is FALSE will not be imported, even if their <em><strong><code>kind</code></strong></em> values match.</P>
+<P><code>PRC_InitPrototypeDB(protoDB, buffer, bufferSize, prototypeList)</code> is the same as <code>PRC_InitPrototypeDBEx(protoDB, buffer, bufferSize, prototypeList, PRC_KIND_ALL, FALSE, NULL)</code>.</P>
+<h2>See Also</h2>
+<p><code><A href="PRC_GetPrototypeDBBufferSize.html">PRC_GetPrototypeDBBufferSize</a></code>, <code><a href="PRC_GetPrototypeDBBufferSize.html">PRC_GetPrototypeDBBufferSizeEx</a></code>, <code><a href="PRC_GetRecognizedEntry.html">PRC_GetRecognizedEntry*</A></code></p>
+
+<H2>Revision History</H2>
+<P>03/04/2005 Changed return value of BOOL</P>
+<P>06/23/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWC_ConnectToFriendsAsync</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWC_ConnectToFriendsAsync</H1>
+
+		<H2>C Specification</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+BOOL DWC_ConnectToFriendsAsync(
+                  const u8 friendIdxList[],
+                  int friendIdxListLen,
+                  u8  numEntry,
+                  BOOL distantFriend,
+                  <A href="DWCMatchedCallback.html">DWCMatchedCallback</A> matchedCallback,
+                  void* matchedParam,
+                  <A href="DWCEvalPlayerCallback.html">DWCEvalPlayerCallback</A> evalCallback,
+                  void* evalParam);
+
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This function specifies friends, makes connections, and creates a mesh-type network. This is known as peer matchmaking by specifying friends.
+		</P>
+		<P>
+		  The argument <CODE>friendIdxList</CODE> specifies a pointer to the array of indices collected in the friend roster of the friend with whom matchmaking is intended. If <CODE>NULL</CODE> is specified in the index list, all friends in the friends roster are candidates for matchmaking. The friend roster that is referenced during peer matchmaking by specifying friends is specified with the <A href="DWC_InitFriendsMatch.html">DWC_InitFriendsMatch</A> function.
+		</P>
+		<P>
+		  If FALSE is specified in the <CODE>distantFriend</CODE> argument, only players who have mutual friend relationships remain in the mesh-type network after matchmaking completes. If TRUE is specified, one player has a mutual player relationships with all the other players, but the other players do not have a mutual friend relationship but are friends of friends.   Since each of the players is likely to have a different friend list or friend index list, the rate of successful matchmaking will drop sharply when FALSE is specified.
+		</P>
+		<P>
+		  Also, if the argument <CODE>evalCallback</CODE> is specified, each time a matchmaking candidate player is found, the designated evaluation callback function is called. The matchmaking index key can be referenced by using the <CODE><A href="DWC_GetMatchIntValue.html">DWC_GetMatchIntValue</A></CODE> or <CODE><A href="DWC_GetMatchStringValue.html">DWC_GetMatchStringValue</A></CODE> function inside the evaluation callback function. Be sure to evaluate the player based on that value, and return the evaluation value as the return value. Players with an evaluation value of 0 or less are excluded from matchmaking. 
+		</P>
+		<P>
+		  When connecting to specified friends through peer matchmaking, exactly one person is found as a candidate player at a time. If the evaluation value is greater than 0, matchmaking will commence. If the value is 0 or lower, no matchmaking will take place.
+		</P>
+		<P>
+		  If the <a href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</a> function is continually called after calling this function, the matchmaking process will continue. The matchmaking completion callback will be called if the matchmaking results in a success, an error, or a cancellation.
+		</P>
+
+		<H2>Arguments</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>friendIdxList</CODE></STRONG></EM></TD>
+					<TD width="75%">Pointer to the friend index list used for requesting connections. If NULL, then the entire friend roster becomes the connection request target. </TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>friendIdxListLen</CODE></STRONG></EM></TD>
+					<TD>The length of the friend index list used for requesting connections. The maximum value is 64, just like the length of the friend roster.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>numEntry</CODE></STRONG></EM></TD>
+					<TD>The number of people (including oneself) to make up the requested network. A value from 2 to 32 can be set in this argument.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>distantFriend</CODE></STRONG></EM></TD>
+					<TD>TRUE: Connections to friends of friends permitted.  FALSE: Not permitted.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>matchedCallback</CODE></STRONG></EM></TD>
+					<TD>The pointer to the matchmaking completion callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>matchedParam</CODE></STRONG></EM></TD>
+					<TD>The parameter for the matchmaking completion callback.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>evalCallback</CODE></STRONG></EM></TD>
+					<TD>The pointer to the player evaluation callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>evalParam</CODE></STRONG></EM></TD>
+					<TD>Parameter for player evaluation callback.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Return Values</H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>TRUE</CODE></STRONG></EM></TD>
+					<TD width="75%">The process starts. The results are indicated via the callback function.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>FALSE</CODE></STRONG></EM></TD>
+					<TD>Not a good state for calling this function.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<CODE><A href="DWC_ConnectToAnybodyAsync.html">DWC_ConnectToAnybodyAsync</A>, <A href="DWC_AddMatchKey.html">DWC_AddMatchKey*</A>, <A href="DWC_GetMatch_Value.html">DWC_GetMatch*Value</A>, <A href="DWCMatchedCallback.html">DWCMatchedCallback</A>, <A href="DWCEvalPlayerCallback.html">DWCEvalPlayerCallback</A>, <a href="DWC_ProcessFriendsMatch.html">DWC_ProcessFriendsMatch</a></CODE>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			01/18/2006 Revised the description of the function description arguments friendIdxList and distantFriend.<BR>12/16/2005 Added a detailed description of the function. Corrected errors in Return Values.<BR>07/22/2005 Initial version.
+		</P>
+
+	</BODY>
+</HTML>

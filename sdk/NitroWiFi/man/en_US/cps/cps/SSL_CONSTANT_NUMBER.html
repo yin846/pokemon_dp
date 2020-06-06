@@ -1,0 +1,83 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>SSL Constants</TITLE>
+		<LINK rel="stylesheet" href="../../css/nitro.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>SSL Constants</H1>
+
+		<H2>Definitions</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;nitroWiFi/cps.h&gt;
+
+#define CPS_MAX_DN_LEN 255
+#define CPS_MAX_CN_LEN 79
+#define CPS_MAX_RSA_LEN (2048/8)
+#define CPS_MAX_RSA_PUBLICEXPONENT_LEN (64/8)
+
+
+#define SESSION_LIFETIME CPS_MilliSecondsToLTicks(30*1000)	// 30 sec
+
+#define MAX_SESSION 4
+
+#define ssl_blklen (2*1460 - MAX_BLOAT)		// can be as long as 16384
+
+static ushort pairlist[] = {
+	TLS_RSA_WITH_RC4_128_MD5,
+	TLS_RSA_WITH_RC4_128_SHA,
+};</CODE></PRE>
+			</DD>
+		</DL>
+
+
+		<H2><A name="SSL definitions">Description</A></H2>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>CPS_MAX_DN_LEN</CODE></STRONG></EM></TD>
+					<TD width="75%">Maximum length of Distinguished Name.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>CPS_MAX_CN_LEN</CODE></STRONG></EM></TD>
+					<TD>Maximum length of Common Name.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>CPS_MAX_RSA_LEN</CODE></STRONG></EM></TD>
+					<TD>Maximum length (in bytes) of RSA key. The example above supports RSA key lengths that are up to 2048 bits.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>CPS_MAX_RSA_PUBLICEXPONENT_LEN</CODE></STRONG></EM></TD>
+					<TD>Maximum length (in bytes) of the exponent portion of the RSA public key. The example above supports exponents that are up to 64 bits.</TD>
+				</TR>
+				<TR>
+					<TD width="25%"><EM><STRONG><CODE>SESSION_LIFETIME</CODE></STRONG></EM></TD>
+					<TD width="75%">Lifetime of SSL session cache.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>MAX_SESSION</CODE></STRONG></EM></TD>
+					<TD>Number of entries in SSL session cache.</TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>ssl_blklen</CODE></STRONG></EM></TD>
+					<TD>Maximum length of plaintext to send. This is the maximum unit of text that is converted to ciphertext and sent. <!--¬‚³‚­‚·‚ê‚Îƒƒ‚ƒŠŽg—p—Ê‚ð—}‚¦‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·‚ªA‘¬“x‚ª’á‰º‚µ‚Ü‚·B<BR>                                             ‚µ‚©‚µA—]‚è‘å‚«‚­‚µ‚Ä‚à‚»‚ê’ö‚Í‘¬‚­‚È‚è‚Ü‚¹‚ñB--></TD>
+				</TR>
+				<TR>
+					<TD><EM><STRONG><CODE>ushort pairlist[]</CODE></STRONG></EM></TD>
+					<TD>This list determines the order for supported encryption suites. Presents this order to the server when operating as a client. When operating as a server, checks to see if the list provided by the client exists; if the list exists, it is selected.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<H2>Revision History</H2>
+		<P>
+			10/24/2005 Initial version.
+		</P>
+
+		<TABLE border="0" height="100%"><TR><TD style="background-color : white;"></TD></TR></TABLE>
+	</BODY>
+</HTML>

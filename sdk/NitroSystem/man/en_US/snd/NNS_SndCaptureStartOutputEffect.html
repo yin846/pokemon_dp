@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndCaptureStartOutputEffect</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndCaptureStartOutputEffect</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndCaptureStartOutputEffect(
+void* buffer_p,
+u32 bufSize,
+NNSSndCaptureOutputEffectType type );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAQMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>buffer_p</code></strong></em></td>
+<td>The pointer to the effect buffer. Must have 32-byte alignment.</td>
+</tr>
+<tr>
+<td><em><strong><code>bufSize</code></strong></em></td>
+<td>The effect buffer size. It must be a multiple of 128.</td>
+</tr>
+<tr>
+<td><em><strong><code><code><EM><STRONG>type</STRONG></EM></code></code></strong></em></td>
+<td>The output effect process type.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDANNWT"></a>
+<h2>Return Values</h2>
+
+<p>The function returns whether the output effect process started successfully.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAUNWT"></a>
+<h2>Description</h2>
+      <p>
+Starts the output effect process.
+</p>
+      <p>
+After capturing the mixer output using the capture feature and applying the effect process with the callback function, this function outputs the final sound. While the effects are being used, they consume 2 of 16 channels (channels 1 and 3). If channel 1 or channel 3 is being used by a sequence, the sounds from that channel are forcibly stopped.
+</p>
+      <p>
+To use effects, an effect buffer is required. The  starting address <code>buffer_p</code> must have a 32-byte alignment. The buffer size is specified with <code><i><b>bufSize</b></i></code> and must be a multiple of 128. The smaller the effect buffer, the more frequently the effect process is executed. Conversely, the larger the effect buffer, the longer it takes to process the contents. When the effect buffer is 4 KB, the effect process is executed once per video frame.
+</p>
+      
+      <p>
+Select an output effect <em><strong> <code>type</code></strong></em> from the following:
+</p>
+<div class="table"><a name="IDAIOWT"></a><p class="title"><b>A List of NNSSndCaptureOutputEffectType</b></p>
+<table summary="NNSSndCaptureOutputEffectType" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_CAPTURE_OUTPUT_EFFECT_NORMAL</td>
+<td>Normal stereo mode (no effects are processed).</td>
+</tr>
+<tr>
+<td>NNS_SND_CAPTURE_OUTPUT_EFFECT_MONO</td>
+<td>Mono mode.</td>
+</tr>
+<tr>
+<td>NNS_SND_CAPTURE_OUTPUT_EFFECT_SURROUND</td>
+<td>Surround mode.</td>
+</tr>
+<tr>
+<td>NNS_SND_CAPTURE_OUTPUT_EFFECT_HEADPHONE</td>
+<td>Headphone mode.</td>
+</tr>
+</tbody>
+</table>
+</div>
+      
+      <p>
+In Surround mode, an effect is applied so that sound seems to expand from the DS stereo speakers. In Headphone mode, an effect is applied to reduce fatigue when listening to headphones.
+</p>
+
+        <p>
+When the <a href="NNS_SndCaptureCreateThread.html"><code>NNS_SndCaptureCreateThread</code></a> function starts the capture thread, the effect process is executed in the capture thread. If the capture thread is not started, it is executed with the IRQ handler.
+</p>
+      <p>
+The output effect may fail to start for one of the following reasons. 
+</p>
+      <div class="itemizedlist">
+<ul type="disc">
+<li>Capture is being used for something other than an effect</li>
+<li>Channel 1 or Channel 3 is being used for something other than playing an effect or sequence </li>
+</ul>
+</div>
+
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+</strong> If the effect process cannot run normally because interrupts are prohibited for a long time, the proper sound cannot be output.
+</p>
+<p>
+If this function is called while sound is being played, the sound is interrupted.
+</p>
+<p>
+In Surround mode, the sound quality may be less clear than other modes.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndCaptureCreateThread.html">NNS_SndCaptureCreateThread</a></p>
+<h2>Revision History</h2>
+<p>06/27/2005 Added reasons for function failure.</P><P>11/19/2004 Added a note about sound distortion issues in Surround mode.</P><P>10/04/2004 Initial version.</p>
+</div>
+</body>
+</html>

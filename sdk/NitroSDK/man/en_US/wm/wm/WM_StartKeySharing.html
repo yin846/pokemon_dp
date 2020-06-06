@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_StartKeySharing</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_StartKeySharing</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_StartKeySharing( <A href="WMKeySetBuf.html">WMKeySetBuf</A>* buf, u16 port );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><code><EM><STRONG>buf</STRONG></EM></code></FONT></STRONG></EM></TD>
+<TD width="800">Pointer to the buffer that stores key information. The entity is the pointer to the <CODE>WMDataSharingInfo</CODE> structure.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">port</FONT></STRONG></EM></TD>
+<TD width="800">Sets the port number to use. Select a port number between 12 and 15 that is not being used elsewhere.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>Enables the key sharing feature. This function is executable when the WM is in either the <a href="wm_state_diagram.html"><code>MP_PARENT</code></a> state or the <a href="wm_state_diagram.html"><code>MP_CHILD</code></a> state. This function was changed from asynchronous to synchronous. <A href="WM_StartKeySharing.html">WM_StartKeySharing</A>, <A href="WM_EndKeySharing.html">WM_EndKeySharing</A>, and <A href="WM_GetKeySet.html">WM_GetKeySet</A> remain for backward compatibility, but they will be removed in the future. Use the Data Sharing functions instead.</P>
+
+<h2>See Also</h2>
+<p><A href="WM_EndKeySharing.html"><code>WM_EndKeySharing</code></A>, <A href="WM_GetKeySet.html"><code>WM_GetKeySet</code></A></p>
+
+<H2>Revision History</H2>
+<P>
+06/07/2005 Changed argument and made into synchronized function<br /> 10/22/2004 Changed return value types<BR> 08/02/2004 Standardized structure names.<br /> 07/29/2004 Added to Description<br /> 07/23/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

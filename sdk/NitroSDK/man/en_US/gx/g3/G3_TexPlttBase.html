@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_TexPlttBase</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_TexPlttBase</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_TexPlttBase(u32 addrCGXTexFmt texFmt);</CODE>
+
+// Below are APIs for creating the display list (command list)<BR><CODE>void G3B_TexPlttBase(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+u32 addrC
+GXTexFmt texFmt);</CODE>
+<BR><CODE>void G3C_TexPlttBase(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+u32 addrC
+GXTexFmt texFmt);</CODE>
+<BR><CODE>void G3BS_TexPlttBase(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+u32 addrC
+GXTexFmt texFmt);</CODE>
+<BR><CODE>void G3CS_TexPlttBase(
+<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info,
+u32 addrC
+GXTexFmt texFmt);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">addr</font></strong></em></td>
+<td width="87%">Specifies the palette base address</td>
+  </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">texFmt</font></strong></em></TD>
+<TD>Texture format applying the palette</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the base address for the texture palette. The <code><A href="G3_TexPlttBase.html" target="_self">G3*_TexPlttBase</A></code> command is normally issued before <code><A href="G3_Begin.html" target="_self">G3*_Begin</A></code>, but can be issued also between <code><A href="G3_Begin.html" target="_self">G3*_Begin</A></code> and <code><A href="G3_End.html" target="_self">G3*_End</A></code>. In that case, the base address of a different texture palette can be set for each polygon between <code><A href="G3_Begin.html" target="_self">G3*_Begin</A></code> and <code><A href="G3_End.html" target="_self">G3*_End</A></code>.<BR><BR> <em><strong><code>texFmt</code></strong></em> must be in a texture format supporting palettes. See <code><A href="G3_TexImageParam.html" target="_self">G3*_TexImageParam</A></code> for details on the <CODE>GXTexFmt</CODE> type.</P>
+<h2>See Also</h2>
+<P><CODE><A href="G3_TexImageParam.html" target="_self">G3*_TexImageParam</A>, <A href="G3_TexCoord.html" target="_self">G3*_TexCoord</A></CODE></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version.</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

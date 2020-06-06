@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_EnableScheduler</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_EnableScheduler</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>u32 OS_EnableScheduler( void );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+
+<H2>Return Values</H2>
+<P>The internal counter value after canceling the suppression of the scheduler operation.</P>
+<P>When this value is larger than 0, the scheduler operation is suppressed. </P>
+
+<H2>Description</H2>
+<P>Cancels the suppressed operation of the thread system scheduler. In other words, rescheduling will be resumed.</P>
+<P>If the operation of the thread system scheduler is suppressed, the rescheduling of the thread will not occur, even when the functions such as <code><a href="OS_WakeupThread.html">OS_WakeupThread</a></code> and <code><a href="OS_SetThreadPriority.html">OS_SetThreadPriority</a></code> that have the possibility of generating the rescheduling of threads are called.</P>
+<P>Normally, this <CODE>OS_EnableScheduler</CODE> is called with <CODE><A href="OS_DisableScheduler.html">OS_DisableScheduler()</A></CODE> as a pair.</P>
+<P>Call <code>OS_DisableScheduler</code> and <code><a href="OS_EnableScheduler.html">OS_EnableScheduler</a></code> while the interrupts are prohibited.</P>
+<P>The scheduler has the internal counter. That counter, which is normally set to 0, increments by one with <code>OS_DisableScheduler</code> and decrements by one with <code><a href="OS_EnableScheduler.html">OS_EnableScheduler</a></code>. In addition, if it is larger than 0, this prevents rescheduling. The return value from this function is the value after the counter has changed. If it is larger than 0, it is the state that has not yet rescheduled. </P>
+<P>A set of <code>OS_DisableScheduler</code> and <code><a href="OS_EnableScheduler.html">OS_EnableScheduler</a></code> as a pair can be nested. For an example see the reference for <CODE><A href="OS_DisableScheduler.html">OS_DisableScheduler()</A></CODE>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_SelectThread.html">OS_SelectThread</A>, <A href="OS_RescheduleThread.html">OS_RescheduleThread</A>, <A href="OS_DisableScheduler.html">OS_DisableScheduler</A></CODE></P>
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;<br> 01/21/2005 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

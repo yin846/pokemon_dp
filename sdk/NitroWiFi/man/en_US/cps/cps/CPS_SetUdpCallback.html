@@ -1,0 +1,47 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_SetUdpCallback</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_SetUdpCallback</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_SetUdpCallback(int (*callback)(u8 *, u32, CPSSoc *));</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>callback</strong></em></code></td>
+<td>Callback function</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>Sets the callback function to call when UDP packets are received. The callback function is called only if the thread is waiting for UDP reception and is not blocking. In the callback function, the first parameter is the pointer to the packet data, the second parameter is the packet data length, and the third parameter is a pointer to<CODE><A href="CPSSoc.html">CPSSoc</A></CODE>. If the callback function returns 0, data is stored in the buffer; if the return value is non-zero, no data is stored in the buffer. This does not block. </p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPSSoc.html">CPSSoc</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

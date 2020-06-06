@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CP_IsDivBusy</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CP_IsDivBusy</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/cp.h&gt;</CODE><BR> <BR> <CODE>s32 CP_IsDivBusy( void );</CODE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>None.</p>
+
+<h2>Return Values</h2>
+<p>Whether the divider is busy or not. 0 means ready state and non-0 means busy state.</p>
+
+<H2>Description</H2>
+<P>Determines whether the divider is busy or not. After writing to a divider register, it will be in busy status for a fixed cycle period. To get the result of division, you need to read when it is no longer busy. The calculation cycle is as follows. (The calculation cycle is a cycle number based on 33.514 MHz. The CPU cycle conversion is a cycle number based on 67.028 MHz.))</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD>Division Mode</TD>
+<TD>Calculation</TD>
+<TD>Calculation Cycles</TD>
+<TD>CPU Cycle Conversion</TD>
+    </TR>
+    <TR>
+<TD>CP_DIV_32_32BIT_MODE</TD>
+<TD>32-bit divided by 32-bit</TD>
+<TD>18 cycles</TD>
+<TD>36 cycles</TD>
+    </TR>
+    <TR>
+<TD>CP_DIV_64_32BIT_MODE</TD>
+<TD>64-bit divided by 32-bit</TD>
+<TD>34 cycles</TD>
+<TD>68 cycles</TD>
+    </TR>
+    <TR>
+<TD>CP_DIV_64_64BIT_MODE</TD>
+<TD>64-bit divided by 64-bit</TD>
+<TD>34 cycles</TD>
+<TD>68 cycles</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Internal Operation</h2>
+<p><CODE>Reference DIVCNT(0x4000280) of the IO register.<br></CODE></p>
+
+<h2>See Also</h2>
+<p><A href="CP_SetDivImm.html">CP_SetDivImm*</A>, <A href="CP_SetDiv.html">CP_SetDiv*</A>, <A href="CP_WaitDiv.html">CP_WaitDiv</A>, <A href="CP_GetDivResult.html">CP_GetDivResult*</A>, <A href="CP_GetDivRemainder.html">CP_GetDivRemainder*</A></p>
+
+<H2>Revision History</H2>
+<P>11/02/2004 Changed the function type of C Specification from u32 to s32.<BR> 06/16/2004 Added description of cycle number.<BR> 01/09/2004 Added content.<BR> 12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FSResult</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FSResult</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>
+
+typedef	enum<br> {<br> <br> FS_RESULT_SUCCESS = 0,<br> FS_RESULT_FAILURE,<br> FS_RESULT_BUSY,<br> FS_RESULT_CANCELED,<br> FS_RESULT_UNSUPPORTED,<br> FS_RESULT_ERROR,<br> <br> FS_RESULT_PROC_ASYNC,<br> FS_RESULT_PROC_DEFAULT,<br> FS_RESULT_PROC_UNKNOWN<br> <br> } FSResult;<br></CODE>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>These are the enumerator types representing the results of the file system API and the user procedures of the archive.<br />They are defined as follows.
+<TABLE border="0">
+  <TBODY>
+    <TR>
+<TD colspan="2">The following are used both for execution results of API and for user procedure return values.</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_SUCCESS</TD>
+<TD>Indicates success in correctly processing results.<br /><br />Example: <code>FS_ReadFile</code> attempts to read file, <code>foo.dat</code>, which contains <code>100 BYTE</code>s of data&hellip; but reached the end after only being able to read <code>50 BYTE</code>s, this is normal behavior and so is treated as a &quot;success&quot;.</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_FAILURE</TD>
+<TD>Indicates failure to correctly process results.<br />Example: This indicates a failure in the expected return value for the process when you have read to the end using <code>FS_ReadDir</code> function.</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_ERROR</TD>
+<TD>Indicates failure in the results where a detectable error occurred during processing.<br />Indicates an unrecognized error, such as a problem in the argument range, or the occurrence of a <code>NULL</code> pointer during processing.</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_UNSUPPORTED</TD>
+<TD>Indicates that the archive is not supported by the specified command.<br />This error occurs when an unsupported archive is explicitly returned as a return value of a user procedure.<br />The user must understand the particular specifications of the target archive.</TD>
+    </TR>
+    <TR>
+<TD colspan="2"><br />The following are only returned as the results of API execution.</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_BUSY</TD>
+<TD>Indicates that the current command is busy.<br />Strictly speaking, this is not an error because the operation is incomplete. However, we have included this with the errors for the sake of convenience.</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_CANCELED</TD>
+<TD>Indicates that the command was canceled.<br /><br />There are two types of cancels: explicit command cancel by the user forced cancel during archive unload</TD>
+    </TR>
+    <TR>
+<TD colspan="2"><br />The following are used only as user procedure return values:</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_PROC_ASYNC</TD>
+<TD>Return value when the user procedure returns a temporary control for asynchronous processing.<br />When this value is returned, you must notify the read/write callback as well as the process completion using the <code>FS_NotifyArchiveAsyncEnd</code> function.</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_PROC_DEFAULT</TD>
+<TD>The default return value passed to a user procedure. This is the value passed unless a different value/type is called expicitly. The user procedure for the corresponding command will be called the next time as well. If you simply want to hook a command, this value is returned every time.</TD>
+    </TR>
+    <TR>
+<TD>FS_RESULT_PROC_UNKNOWN</TD>
+<TD>The default return value passed to a user procedure when the procedure call flag to the associated command is canceled. The command will not be called again.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="fs_archive_type.html">FSArchive</A> <A href="fs_archive_proc_func_type.html">FS_ARCHIVE_PROC_FUNC</A> <BR> <A href="archive/FS_SetArchiveProc.html">FS_SetArchiveProc</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+07/12/2004 Added enumerators and their descriptions<br /> 07/01/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOCSockAddrIn</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOCSockAddrIn</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define SOC_PF_INET   2          // ARPA Internet protocols</code></pre>
+  </dd>
+<dd><pre><code>typedef struct SOCSockAddrIn
+{
+u8          len;            // size of socket address structure
+u8          family;         // the address family
+u16         port;           // the port number
+SOCInAddr   addr;           // the Internet address
+} SOCSockAddrIn;</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p><code>SOCSockAddrIn</code> is a data type that expresses Internet socket addresses. When passing the socket address structure to a function as an argument, set the <code>len</code> element to <code>sizeof(SOCSockAddrIn)</code>.</p>
+
+<p><strong>Note: </strong> In the DS socket library, the size of the socket address structure is not used as a function argument. </p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_Bind.html">SOC_Bind</a></code>, <code><a href="SOC_Connect.html">SOC_Connect</a></code>, <code><a href="SOC_Accept.html">SOC_Accept</a></code>, <code><a href="SOC_GetSockName.html">SOC_GetSockName</a></code>, <code><a href="SOCInAddr.html">SOCInAddr</a></code>, <code><a href="SOCSockAddr.html">SOCSockAddr</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

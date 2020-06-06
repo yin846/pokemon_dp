@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>CTRDG_CheckPulledOut</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">CTRDG_CheckPulledOut</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/ctrdg.h&gt;</CODE></PRE>
+  <PRE><CODE>void CTRDG_CheckPulledOut( void );
+  </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>
+Directly executes Game Pak removal detection from the ARM9. Normally the ARM9 does not need this detection process, since the ARM7 periodically performs the detection process and posts notification of detection via the PXI. However, by calling this function you can immediately determine if the Game Card has been removed without the delay inherent in waiting for notification. When Game Pak removal has been detected, this function internally calls the user callback function and the <A href="CTRDG_TerminateForPulledOut.html">CTRDG_TerminateForPulledOut</A> function. This is the same process that occurs as when receiving notification from ARM7. <BR> In order to use this function, you must have already called the <CODE><A href="CTRDG_Init.html">CTRDG_Init</A></CODE> function.
+</P>
+<H2>See Also</H2>
+<P>
+<CODE><A href="CTRDG_Init.html">CTRDG_Init</A>, <A href="CTRDG_IsPulledOut.html">CTRDG_IsPulledOut</A>, <A href="CTRDG_SetPulledOutCallback.html">CTRDG_SetPulledOutCallback</A>, <A href="CTRDG_TerminateForPulledOut.html">CTRDG_TerminateForPulledOut</A></CODE></P>
+<H2>Revision History</H2>
+<P>
+02/07/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

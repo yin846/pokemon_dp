@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_SetWramBank</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_SetWramBank</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>void MI_SetWramBank( MIWram cnt );</CODE><br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>cnt</STRONG></EM></TD>
+<TD width="87%">Work RAM allocation setting</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function allocates the work RAM that is shared between ARM9 and ARM7. The argument <EM><STRONG><code>cnt</code></STRONG></EM> is in the <CODE>MI_WRAM</CODE> enum format and has the following meanings.</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TD bgcolor="#e0e0e0"><CODE>MI_WRAM_ARM9_ALL</CODE></TD>
+<TD bgcolor="#e0e0e0">Allocates all blocks (32KB) to ARM9.</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#e0e0e0"><CODE>MI_WRAM_1616_1</CODE></TD>
+<TD bgcolor="#e0e0e0">Allocates block1 (16KB) to ARM9, and block0 (16KB) to ARM7.</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#e0e0e0"><CODE>MI_WRAM_1616_2</CODE></TD>
+<TD bgcolor="#e0e0e0">Allocates block0 (16KB) to ARM9, and block1 (16KB) to ARM7.</TD>
+    </TR>
+    <TR>
+<TD bgcolor="#e0e0e0"><CODE>MI_WRAM_ARM7_ALL</CODE></TD>
+<TD bgcolor="#e0e0e0">Allocates all blocks (32KB) to ARM7.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<h2>Internal Operation</h2>
+<p>Accesses the WVRAMCNT I/O register (0x4000244) and WRAM BANK (d24 - d25).</p>
+
+<h2>See Also</h2>
+<p>None.</p>
+
+<H2>Revision History</H2>
+<P>03/12/2004 Corrected <CODE>MI_SetWRAMBank()</CODE> to <CODE>MI_SetWramBank()</CODE>.<BR> 12/24/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

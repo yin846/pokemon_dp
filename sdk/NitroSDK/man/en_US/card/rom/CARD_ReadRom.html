@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARD_ReadRom</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARD_ReadRom</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><BR> <BR> <CODE>void	CARD_ReadRom(u32 dma, const void *src, void *dst, u32 len);</CODE><br> <br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>dma</STRONG></EM></TD>
+<TD width="87%">The DMA channel to be used for transfer.<br /> If it is out of range, CPU transfer will be used.<FONT color="#800000">If a valid DMA channel is specified, that DMA channel will not be available for any other task until transfer is complete.</FONT><br> <font color="#800000"></strong><br /> The card access transfer source is an IO register, so DMA Channel 0 cannot be specified.</font>
+	  </TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>src</STRONG></EM></TD>
+<TD width="87%">The transfer source CARD ROM address.</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>dst</STRONG></EM></TD>
+<TD width="87%">Transfer destination memory address</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>len</STRONG></EM></TD>
+<TD width="87%">Byte length of data being read</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>None</p>
+
+<H2>Description</H2>
+<P>This function synchronously reads data from a device that has ROM. The access bus must be locked before using this function. This function is equivalent to calling the <a href="CARD_ReadRomAsync.html"><code>CARD_ReadRomAsync</code></a> function with no callback specification and unconditionally waiting for it to complete.<BR> For details on the internal operation of this function, see the description of the <a href="CARD_ReadRomAsync.html"><code>CARD_ReadRomAsync</code></a> function.<BR> <BR>
+</P>
+<H2>Caution</H2>
+<P>
+<FONT color="#800000">If a valid DMA channel is specified by this function, that DMA channel will not be available until transfer is complete.<BR> Note that because this function uses interrupts internally, the process will not complete if it attempts to run while interrupts are prohibited.<BR></FONT>
+</P>
+<h2>See Also</h2>
+<p><code><a href="CARD_LockRom.html">CARD_LockRom</a>, <a href="CARD_ReadRomAsync.html">CARD_ReadRomAsync</a></code></p>
+
+<H2>Revision History</H2>
+<P>
+04/28/2005 Added explanation that DMA channel 0 cannot be specified<br /> 11/02/2004 Corrected an argument name.<br> 07/13/2004 Added caution concerning use with DMA.<br> 07/09/2004 Revised description due to change in function format.<br> 07/05/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

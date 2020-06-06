@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WMGameInfo</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WMGameInfo</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wm.h&gt;</CODE><BR>
+  <PRE><CODE>
+typedef struct WMGameInfo
+{
+u16 magicNumber;
+u8 ver;
+u8            reserved[1];
+u32 ggid;
+u16         tgid;
+u8 userGameInfoLength;
+u8 attribute;
+u16 parentMaxSize;
+u16 childMaxSize;
+union {
+u16 userGameInfo[WM_SIZE_USER_GAMEINFO/sizeof(u16)];
+struct {
+u16 userName[WM_SIZE_USERNAME/sizeof(u16)];
+u16 gameName[WM_SIZE_GAMENAME/sizeof(u16)];
+u16 padd1[44];
+} old_type;
+  };
+} WMGameInfo;
+</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">magicNumber</font></strong></em></TD>
+<TD width="800">Magic number of this structure.<br>Fixed at WM_GAMEINFO_MAGIC_NUMBER (== 0x0001). </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">ver</font></strong></em></TD>
+<TD width="800">Version number of this structure.<br>It is managed in the library and the user does not need to be concerned with it.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">ggid</font></strong></em></TD>
+<TD width="800">Game group ID. This is a unique value for identifying game applications with compatible communication.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">tgid</font></strong></em></TD>
+<TD width="800">Temporary group ID. This is a dynamic value set on the parent side to allow uniqueness when the same device and same game application establish multiple communication.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">userGameInfoLength</font></strong></em></TD>
+<TD width="800">Size, in byte units, of available data stored in <em><strong><code>userGameInfo</code></strong></em>. Maximum is 112 bytes.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">userGameInfo</font></strong></em></TD>
+<TD width="800">Array in which any information characteristic to the application is stored.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New"><STRONG><EM><CODE>attribute</CODE></EM></STRONG></font></strong></em></TD>
+<TD width="800">The value showing parent attributes, such as &quot;download play possible while receiving entry&quot;.</TD>
+    </TR>
+
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">parentMaxSize</font></strong></em></TD>
+<TD width="800">Maximum size of parent send data in MP communication.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">childMaxSize</font></strong></em></TD>
+<TD width="800">Maximum size of child send data in MP communication.</TD>
+    </TR>
+
+    <TR>
+<TD width="200"><font color="#808080">reserved</font></TD>
+<TD width="800" rowspan="1"><font color="#808080">The reserved region.<br> The user does not need to use this argument.</font></font></TD>
+    </TR>
+    <TR>
+<TD width="200"><font color="#808080">old_type</font></TD>
+<TD width="800" rowspan="1"><font color="#808080"><font color="#808080">Provided for compatibility with old format.<br> The user does not need to use this argument.</font></font></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>
+The structure stores information of parent discovered by result of search by <a href="WM_StartScan.html"><code>WM_StartScan</code></a> function.
+</P>
+<P><em><strong><code>attribute</code></strong></em> field consists of the following logical sums.</P>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="300">WM_ATTR_FLAG_ENTRY</TD>
+<TD width="700">&quot;Receiving entry&quot; flag</TD>
+    </TR>
+    <TR>
+<TD width="300">WM_ATTR_FLAG_MB</TD>
+<TD width="700">&quot;Download play possible&quot; flag</TD>
+    </TR>
+    <TR>
+<TD width="300"><DEL>WM_ATTR_FLAG_KS</DEL></TD>
+<TD width="700"><DEL>&quot;Key sharing&quot; flag</DEL>Not currently used.</TD>
+    </TR>
+    <TR>
+<TD width="300"><DEL>WM_ATTR_FLAG_CS</DEL></TD>
+<TD width="700"><DEL>Continuation communication mode. </DEL>Not currently used</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>Before any fields of the WMGameInfo structure can be accessed, it is necessary to check that the magicNumber field equals WM-GAMEINFO_MAGIC_NUMBER (== 0x0001). The <A href="WM_IsValidGameInfo.html">WM_IsValidGameInfo</A> or <A href="WM_IsValidGameBeacon.html">WM_IsValidGameBeacon</A> functions can be used to check the magicNumber field. In addition, since the WMGameInfo structure is extended for backward compatibility as long as the magicNumber is equal, if the ver field contains an unknown value, be sure to assume this version has the same functions as the current one.</P>
+
+<H2>Revision History</H2>
+<P>
+02/20/2006 Deleted version and added magicNumber and ver. Added descriptions.<BR>12/08/2005 Deleted a description related to key sharing.<BR>03/02/2005 Added statement regarding the range for <code>userGameInfoLength</code> member.<br />12/20/2004 Added explanation of <code>gameNameCount_attribute</code>.<BR>11/12/2004 Corrected the unit of <code>userGameInfoLength</code>.<br>10/06/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

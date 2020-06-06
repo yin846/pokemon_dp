@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_GetProtectionRegion*</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_GetProtectionRegion*</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>OS_GetProtectionRegionParam( regionNo );</CODE>
+<CODE>OS_GetProtectionRegionAddress( regionNo );</CODE>
+<CODE>OS_GetProtectionRegionSize( regionNo );</CODE>
+(These functions are macros)</PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>regionNo</I></B></TD>
+<TD>The Protection Region number. Specify a value between 0 and 7.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>All return values are type <code>u32</code>. The values provide information about the specified Protection Region.</P>
+<H2>Description</H2>
+<P>Gets the settings relating to the Protection Region's base address and size</P>
+<P><font color="red">The Protection Region's settings are closely related to system behavior. When making these settings, be sure you understand the design of the Protection Region and how each area is utilized.</font></P>
+<P><CODE>OS_GetProtectionRegionParam()</CODE> returns the raw values obtained from CP15, which provide information about the base address and area size of the Protection Region specified by <CODE>regionNo</CODE>.</P>
+<P><CODE>OS_GetProtectionRegionAddress()</CODE> returns the base address of the Protection Region specified by <CODE>regionNo</CODE>.</P>
+<P><CODE>OS_GetProtectionRegionSize()</CODE> returns area size information for the Protection Region specified by <CODE>regionNo</CODE>. Area size information is a value defined as HW_C6_PR_xxx, where xxx indicates the size. The following sizes can be returned:<br /></P>
+<BLOCKQUOTE>
+<P>4KB 8KB 16KB 32KB 64KB 128KB 256KB 512KB<br> 1MB 2MB 4MB 8MB 16MB 32MB 64MB 128MB 256MB 512MB<br> 1GB 2GB 4GB</P>
+</BLOCKQUOTE>
+<P>These are macro functions. For <CODE>regionNo</CODE> specify a value between 0 and 7. The character string itself is used as the argument, so you cannot use the value to specify a variable. You should specify a number between 0 and 7.</P>
+<H2>Internal Operation</H2>
+<P>The function itself is a macro, but it ultimately operates register 6 of the CP15 system control co-processor.</P>
+
+<H2>See Also</H2>
+<P><A href="OS_EnableProtectionUnit.html"><CODE>OS_EnableProtectionUnit</CODE>, <A href="OS_DisableProtectionUnit.html"><CODE>OS_DisableProtectionUnit</CODE></A>, <A href="OS_SetProtectionRegion.html"><CODE>OS_SetProtectionRegion*</CODE></A></A></P>
+<H2>Revision History</H2>
+<P>05/28/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

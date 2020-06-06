@@ -1,0 +1,99 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Shutdown</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Shutdown</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>#define SOC_SHUT_RD       0
+#define SOC_SHUT_WR       1
+#define SOC_SHUT_RDWR     2</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Shutdown ( int <em><strong>s</strong></em>, int <em><strong>how</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td valign="top"><code><em><strong>s</strong></em></code></td>
+<td>Socket descriptor. </td>
+  </tr>
+  <tr>
+<td valign="top"><code><em><strong>how</strong></em></code></td>
+<td>Specifies the type of shutdown process. 
+      <table width="100%">
+        <tr>
+<td><code>SOC_SHUT_RD</code></td>
+<td>Disables further reception processing. </td>
+        </tr>
+        <tr>
+<td><code>SOC_SHUT_WR</code></td>
+<td>Disables further transmission processing. </td>
+        </tr>
+        <tr>
+<td><code>SOC_SHUT_RDWR</code></td>
+<td>Disables further transmission and reception processing. </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p><strong>Note: </strong> Only <code>SOC_SHUT_RDWR</code> is supported. </p>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>0 or higher</td>
+<td>Successful.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINVAL</code></td>
+<td>Invalid processing.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EMFILE</code></td>
+<td>Cannot create any more socket descriptors.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket library is not initialized. </td>
+  </tr>
+  <tr>
+<td><code>SOC_ENOBUFS</code></td>
+<td>Insufficient resources.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENOTCONN</code></td>
+<td>Not connected.</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Please treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p>This function shuts down socket send and receive processes. </p>
+
+<h2>See Also</h2>
+
+<p><code><a href="SOC_Close.html">SOC_Close</a></code></p>
+<H2>Revision History</H2>
+<P>
+12/12/2005 Modified Description<BR>9/13/2005 Initial version.</P>
+</body>
+</html>

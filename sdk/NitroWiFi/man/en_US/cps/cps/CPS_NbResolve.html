@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_NbResolve</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_NbResolve</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>CPSInAddr CPS_NbResolve(char *name);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>name</strong></em></code></td>
+<td>NetBios name</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>IP address</P>
+
+<h2>Description</h2>
+
+<p>Changes NetBios names in the same network to IP addresses. The other precautions for this function and <CODE>CPS_Resolve</CODE> are the same. This blocks. </p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_Resolve.html">CPS_Resolve</A></CODE>, <CODE><A href="CPS_EncodeNbName.html">CPS_EncodeNbName</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

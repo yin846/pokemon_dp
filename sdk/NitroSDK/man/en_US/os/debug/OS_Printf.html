@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_Printf</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_Printf</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_Printf( const char *fmt, ...
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I><CODE>fmt</CODE></I></B></TD>
+<TD>Output formatted string (formatted string)</TD>
+    </TR>
+    <TR>
+      <TD><B><I>...</I></B></TD>
+<TD>Variable number of arguments</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>Displays the character string. A variable number of arguments can be given in accordance to the format character string (output format character string).</P>
+<P>This function is compiled with weak symbols. Therefore you can overwrite them with your own function definitions.</P>
+<P>This function is used for debugging. It will not be generated in the final ROM version (<code>FINALROM</code>).</P>
+<BLOCKQUOTE>Example:<br /> OS_Printf( &quot;variable test = %d\n&quot;, test );</BLOCKQUOTE>
+<H2>Note</H2>
+<P><code>OS_Printf</code> consumes a lot of stack. The IRQ stack used during interrupt and callback execution is not that big. Therefore, use the lightest possible version of <a href="OS_TPrintf.html"><code>OS_TPrintf</code></a> in the the deep nest in IRQ interrupt. If the print operation freezes during debug generation, switching to <code>OS_TPrintf</code> may prevent freezes from occurring. However, floating decimal output is not supported by <code>OS_TPrintf</code>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_PutString.html">OS_PutString</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>11/25/2004 Added description of weak symbols. <BR>12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

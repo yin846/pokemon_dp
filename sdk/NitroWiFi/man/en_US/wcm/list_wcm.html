@@ -1,0 +1,146 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--==========================================================================   Project:  NitroWiFi - man   File:     list_wcm.html    Copyright 2005 Nintendo.  All rights reserved.    These coded instructions, statements, and computer programs contain   proprietary information of Nintendo of America Inc. and/or Nintendo   Company Ltd., and are protected by Federal copyright law.  They may   not be disclosed to third parties or copied or duplicated in any form,   in whole or in part, without the prior written consent of Nintendo.    $Log: list_wcm.html,v $   Revision 1.3  2005/09/10 03:11:47  terui   WCM_GetLinkLevelへの参照を追加。    Revision 1.2  2005/07/22 12:59:39  terui   "フェーズ"を"状態"に用語統一    Revision 1.1  2005/07/20 13:11:10  terui   Initial upload    $NoKeywords: $  ==========================================================================-->
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>[WCM] Wireless Connection Management Library Function List</TITLE>
+		<LINK rel="stylesheet" href="../css/apilist.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>[WCM] Wireless Connection Management Library Function List</H1>
+		<H3><A name="init">Initialization/Termination</A></H3>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><A href="wcm/WCM_Init.html" target="_self">WCM_Init</A></TD>
+					<TD widht="75%">Initializes the wireless connection management library. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_Finish.html" target="_self">WCM_Finish</A></TD>
+					<TD>Terminates the wireless connection management library and returns to the pre-initialization state. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3><A name="async">Asynchronous State Transition</A></H3>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><A href="wcm/WCM_StartupAsync.html" target="_self">WCM_StartupAsync</A></TD>
+					<TD width="75%">Initiates the startup sequence for the wireless communications feature. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_CleanupAsync.html" target="_self">WCM_CleanupAsync</A></TD>
+					<TD>Initiates the stop sequence for the wireless communications feature. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_SearchAsync.html" target="_self">WCM_SearchAsync</A></TD>
+					<TD>Starts or stops the wireless access point auto-search. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_BeginSearchAsync.html" target="_self">WCM_BeginSearchAsync</A></TD>
+					<TD>Initiates the startup sequence for wireless access point auto-search. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_EndSearchAsync.html" target="_self">WCM_EndSearchAsync</A></TD>
+					<TD>Initiates the stop sequence for wireless access point auto-search. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_ConnectAsync.html" target="_self">WCM_ConnectAsync</A></TD>
+					<TD>Initiates the sequence for connection to a wireless access point. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_DisconnectAsync.html" target="_self">WCM_DisconnectAsync</A></TD>
+					<TD>Initiates the sequence for disconnection from a connected wireless access point. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_TerminateAsync.html" target="_self">WCM_TerminateAsync</A></TD>
+					<TD>Initiates the sequence to forcibly stop the WCM library. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3><A name="util">Operation Settings</A></H3>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><A href="wcm/WCM_GetPhase.html" target="_self">WCM_GetPhase</A></TD>
+					<TD width="75%">Gets the current internal status of the WCM library. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_UpdateOption.html" target="_self">WCM_UpdateOption</A></TD>
+					<TD>Updates the option items.</TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_SetChannelScanTime.html" target="_self">WCM_SetChannelScanTime</A></TD>
+					<TD>Sets the time limit for scanning a single channel. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3><A name="aplist">Wireless Access Point Auto-Search </A></H3>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><A href="wcm/WCM_LockApList.html" target="_self">WCM_LockApList</A></TD>
+					<TD width="75%">Enables or disables updating of the internal list buffer. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_ClearApList.html" target="_self">WCM_ClearApList</A></TD>
+					<TD>Erases the contents of the internal list buffer. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_CountApList.html" target="_self">WCM_CountApList</A></TD>
+					<TD>Gets the number of the listed device information items. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_PointApList.html" target="_self">WCM_PointApList</A></TD>
+					<TD>Gets one of the listed device information items. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCM_PointApListLinkLevel.html" target="_self">WCM_PointApListLinkLevel</A></TD>
+					<TD>Gets the signal strength when one of the listed device information items is found. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3><A name="others">Other</A></H3>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><A href="wcm/WCM_GetLinkLevel.html" target="_self">WCM_GetLinkLevel</A></TD>
+					<TD width="75%">Obtains the link level of the connection with the wireless access point. </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3><A name="struct">Types</A></H3>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><A href="wcm/WCMConfig.html" target="_self">WCMConfig</A></TD>
+					<TD width="75%">Structure that defines the WCM library internal operation settings. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCMNotify.html" target="_self">WCMNotify</A></TD>
+					<TD>Type of the callback function for receiving the asynchronous process result and irregular notifications from the WCM library.</TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCMNotice.html" target="_self">WCMNotice</A></TD>
+					<TD>Structure that stores the details of the notification that is passed from the WCM library to the notification function. </TD>
+				</TR>
+				<TR>
+					<TD><A href="wcm/WCMWepDesc.html" target="_self">WCMWepDesc</A></TD>
+					<TD>Structure that defines the WEP encryption settings.</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<H3><A name="const">Constants</A></H3>
+		<TABLE border="1">
+			<TBODY>
+				<TR>
+					<TD width="25%"><A href="wcm/WCM_CONSTANT_NUMBER.html" target="_self">WCM library constants</A></TD>
+					<TD width="75%">Explanation of constants used with the WCM library.  </TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<TABLE border="0" height="100%"><TR><TD style="background-color : white;"></TD></TR></TABLE>
+	</BODY>
+</HTML>

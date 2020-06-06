@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_FndGetAllocDirForMBlockExpHeap</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">NNS_FndGetAllocDirForMBlockExpHeap</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/fnd.h&gt;</CODE></pre>
+	  <pre><CODE>u16 NNS_FndGetAllocDirForMBlockExpHeap(const void* memBlock);</CODE></pre>
+	</dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+	<tr> 
+		<td width="13%"><em><strong><font face="Courier New">memBlock</font></strong></em></td>
+		<td width="87%">Pointer to the memory block that obtains the allocation direction. &nbsp;</td>
+	</tr>
+</table>
+<h2>Return Values</h2>
+<p>Returns the designated memory block allocation direction.</p>
+<H2>Description</H2>
+<P>This function obtains the allocation direction of the allocated memory block from the extended heap.</P>
+    
+<p>The allocation direction takes one of the following values:</P>
+<table>
+	<tr>
+		<td><em><strong><font face="Courier New">NNS_FND_EXPHEAP_ALLOC_DIR_FRONT</font></strong></em></td>
+		<td>Allocates from the front of the empty region of the extended heap when the memory block is allocated.</td>
+	</tr>
+	<tr>
+		<td><em><strong><font face="Courier New">NNS_FND_EXPHEAP_ALLOC_DIR_REAR</font></strong></em></td>
+		<td>Allocates from the rear of the empty region of the extended heap when the memory block is allocated.</td>
+	</tr>
+</table>
+<h2>See Also</h2>
+<p><CODE><A href="NNS_FndGetSizeForMBlockExpHeap.html">NNS_FndGetSizeForMBlockExpHeap</A>, <A href="NNS_FndGetGroupIDForMBlockExpHeap.html">NNS_FndGetGroupIDForMBlockExpHeap</A><br></CODE></p>
+<H2>Revision History</H2>
+<P>04/01/2004 Initial version.</P>
+</body>
+</html>

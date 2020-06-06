@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_TrySetBankForARM7</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_TrySetBankForARM7</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>BOOL GX_TrySetBankForARM7(GXVRamARM7 arm7);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">arm7</font></strong></em></td>
+<td width="87%">&nbsp;&nbsp;Specifies a VRAM bank to allocate to ARM7 memory space.</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>
+Returns TRUE if the VRAM bank is allocated as normal. Returns FALSE if the VRAM bank to be allocated is locked by another library.
+</p>
+<H2>Description</H2>
+<P>Attempts to allocate a designated VRAM bank to the ARM7 memory space. If the specified VRAM bank is either disabled or allocated to LCDC, this allocates the VRAM bank to ARM7 memory space. The allocation will fail if the designated VRAM bank is exclusion-locked by another library.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><CODE>GX_VRAM_ARM7_NONE</CODE></TD>
+<TD>The VRAM bank is not allocated in the ARM7 memory space.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_ARM7_128_C</CODE></TD>
+<TD>128 kilobytes are reserved in the ARM7 memory space. VRAM-C is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_ARM7_128_D</CODE></TD>
+<TD>128 kilobytes are reserved in the ARM7 memory space. VRAM-D is allocated.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_VRAM_ARM7_256_CD</CODE></TD>
+<TD>256 kilobytes are reserved in the ARM7 memory space. VRAM-C and -D are allocated.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following is the type definition for GXVRamARM7 types.</P>
+<PRE><CODE>typedef enum
+{
+GX_VRAM_ARM7_NONE = 0x0000,
+GX_VRAM_ARM7_128_C  = GX_VRAM_C, // ARM7: 0x06000000   --&gt;   0x06020000
+GX_VRAM_ARM7_128_D  = GX_VRAM_D, // ARM7: 0x06000000   --&gt;   0x06020000
+GX VRAM_ARM7_256_CD = GX_VRAM_C | GX_VRAM_D // ARM7: 0x06000000   --&gt;   0x06040000
+}
+GXVRamARM7;</PRE>
+<h2>See Also</h2>
+<P><code><A href="GX_SetBankForARM7.html">GX_SetBankForARM7</A>, <A href="GX_GetBankForARM7.html">GX_GetBankForARM7</A>, <A href="GX_ResetBankForARM7.html">GX_ResetBankForARM7</A>, <A href="GX_DisableBankForARM7.html">GX_DisableBankForARM7</A>, <A href="GX_GetSizeOfARM7.html">GX_GetSizeOfARM7</A></code></P>
+<H2>Revision History</H2>
+<P>02/15/2005 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

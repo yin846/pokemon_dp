@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>OS_GetRequestIrqMask</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">OS_GetRequestIrqMask</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>OSIrqMask OS_GetRequestIrqMask( void );</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The value of the current IRQ interrupt request register.</p>
+<H2>Description</H2>
+<P>This function obtains the value of the current IRQ interrupt request register. If an IRQ interrupt occurs, the bit is set for the IRQ interrupt cause that corresponds to the source of the interrupt. To reset the bit you need, use the <A href="OS_ResetRequestIrqMask.html"><code>OS_ResetRequestIrqMask</code></A> function.</P>
+
+<h2>Internal Operation</h2>
+<p>Reads the IF register (interrupt request register) that is in the IO register.</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="OS_ResetRequestIrqMask.html">OS_ResetRequestIrqMask</A><br></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+03/08/2005 Standardized the Japanese term for &quot;interrupt.&quot;<br> 12/01/2003 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

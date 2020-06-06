@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_Resolve</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_Resolve</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>CPSInAddr CPS_Resolve(const char *name);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>name</strong></em></code></td>
+<td>Name.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>IP address</P>
+
+<h2>Description</h2>
+
+<p>Queries the DNS server, and changes the name to IP address. Because the name will not be cached, cache the name in the application if necessary. Because this function uses UDP, it cannot be used if the state is already <CODE>CPS_SocUse</CODE>. <CODE>CPS_SocRegister</CODE> must be executing. This blocks. </p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_SocRegister.html">CPS_SocRegister</A></CODE>, <CODE><A href="CPS_SocUse.html">CPS_SocUse</A></CODE>, <CODE><A href="CPS_RevResolve.html">CPS_RevResolve</A></CODE>
+</P>
+
+<H2>Revision History</H2>
+<P>
+11/09/2005 Added 'const' to 'name.'<BR> 10/21/2005 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_IsExistAllowedChannel</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_IsExistAllowedChannel</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+BOOL WM_IsExistAllowedChannel( void );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>None.</p>
+
+<h2>Return Values</h2>
+<p>
+Returns TRUE if at least one wireless channel exists that can be used.<br />Returns FALSE if use is prohibited for all wireless channels.
+</p>
+
+<H2>Description</H2>
+<P>
+Checks whether a channel exists that can be used for wireless communications.<br />This function can be executed even before initialization, and regardless of the WM state.
+</P>
+
+<h2>Note</h2>
+<p>
+If this function returns FALSE, that means there are no usable channels and <font color="red">wireless communications are not possible.</font>Be aware that FALSE can sometimes be returned when a unit is being used in a special environment where wireless communications are prohibited.
+</p>
+
+<h2>See Also</h2>
+<p><CODE><A href="WM_GetAllowedChannel.html">WM_GetAllowedChannel</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+12/21/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

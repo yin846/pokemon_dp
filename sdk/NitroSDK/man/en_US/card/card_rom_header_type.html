@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CARDRomHeader</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CARDRomHeader</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/card.h&gt;</CODE><br> <br>
+  <pre>
+/* ROM header structure */
+typedef struct
+{
+
+/* 0x000-0x020 [System reserved area] */
+char            game_name[12];      /* Software title name */
+u32             game_code;          /* Initial code */
+u16             maker_code;         /* Maker code */
+u8              product_id;         /* Main unit code */
+u8              device_type;        /* Device type */
+u8              device_size;        /* Device capacity */
+u8              reserved_A[9];      /* System reserved A */
+u8              game_version;       /* Software version */
+u8              property;           /* Internal use flag */
+
+/* 0x020-0x040 [Parameters for resident modulel use] */
+void*           main_rom_offset;    /* ARM9 transfer source ROM offset */
+void*           main_entry_address; /* ARM9 execution start address (Not implemented) */
+void*           main_ram_address;   /* ARM9 transfer destination RAM offset */
+u32             main_size;          /* ARM9 transfer size */
+void*           sub_rom_offset;     /* ARM7 transfer source ROM offset */
+void*           sub_entry_address;  /* ARM7 execution start address (Not implemented) */
+void*           sub_ram_address;    /* ARM7 transfer destination RAM offset */
+u32             sub_size;           /* ARM7 transfer size */
+
+/* 0x040-0x050 [File table parameters] */
+<A href="card_rom_region_type.html">CARDRomRegion</a>   fnt;                /* File name table */
+<A href="card_rom_region_type.html">CARDRomRegion</a>   fat;                /* File allocation table */
+
+/* 0x050-0x060 [Overlay header table parameters ] */
+<A href="card_rom_region_type.html">CARDRomRegion</a>   main_ovt;           /* ARM9 overlay header table */
+<A href="card_rom_region_type.html">CARDRomRegion</a>   sub_ovt;            /* ARM7 overlay header table */
+
+/* 0x060-0x070 [System reserved area] */
+u8              rom_param_A[8];     /* Mask ROM control parameters A */
+u32             banner_offset;      /* Banner file ROM offset */
+u16             secure_crc;         /* Secure area CRC */
+u8              rom_param_B[2];     /* Mask ROM control parameters B */
+
+/* 0x070-0x078 [Autoload parameters] */
+void*           main_autoload_done; /* ARM9 Autoload hook address */
+void*           sub_autoload_done;  /* ARM7 Autoload hook address */
+
+/* 0x078-0x0C0 [System reserved area] */
+u8              rom_param_C[8];     /*  Mask ROM control parameters C */
+u32             rom_size;           /* Application final ROM offset */
+u32             header_size;        /* ROM header size */
+u8              reserved_B[0x38];   /* System reserved B */
+
+/* 0x0C0-0x160 [System reserved area] */
+u8              logo_data[0x9C];    /* NINTENDO Logo image data */
+u16             logo_crc;           /* NINTENDO logo CRC */
+u16             header_crc;         /* ROM header data CRC */
+
+} CARDRomHeader;
+</pre><br> <br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>This is the structure that stores information about the data stored in ROM. For information on each member, see the strict definitions in the programming manual. <br>
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="rom/CARD_GetRomRegionFNT.html">CARD_GetRomRegionFNT</A>, <A href="rom/CARD_GetRomRegionFAT.html">CARD_GetRomRegionFAT</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+03/18/2005 Initial version<br>
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

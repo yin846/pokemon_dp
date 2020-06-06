@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>Fnd Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Foundation Library Sample Demo</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSystem/build/demos/fnd</CODE></P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSystem/build/demos/fnd</CODE> and enter</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSystem/build/demos/fnd/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em></CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSystem/build/demos/fnd/archive/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Move to the <code>$NitroSystem/build/demos/fnd/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</code> directory and do one of the following:</P>
+<UL>
+<LI>Execute <code>*.srl</code> with ensata.
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER.
+</UL>
+
+<H2>Description</H2>
+<BR>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/fnd/archive/src/main.c">archive</A></CODE></STRONG></EM></TD>
+<TD width="525">Reads in the BG data from the archive and displays it on the screen.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/fnd/archive2/src/main.c">archive2</A></CODE></STRONG></EM></TD>
+<TD width="525">Reads in the BG data from the compressed archive and displays it on the screen.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE><A href="../../../../build/demos/fnd/heap/src/main.c">heap</A></CODE></STRONG></EM></TD>
+<TD width="525">This sample shows simple uses for expanded, frame, and unit heap. Nothing will be displayed on the screen, but the heap status will be displayed in the debug output.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Operating Environment</H2>
+<P>Normal operation for all of the samples using the IS-NITRO-EMULATOR and ensata have been confirmed.</P>
+<H2>See Also</H2>
+<P><A href="../../fnd/list_fnd.html"><CODE>Fnd Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>01/21/2005 Deleted the description of IS-NITRO-EMULATOR in the Execution section, deleted the description of TEG in the Operating Environment section, and changed TS to IS-NITRO-EMULATOR.<br>08/02/2004 Initial version.</P>
+</BODY>
+</HTML>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3*_Shininess</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_Shininess</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_Shininess(const u32* table);
+
+// Below are APIs for creating the display list (command list)<BR>void G3B_Shininess(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, const u32* table);<BR>void G3C_Shininess(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, const u32* table);<BR>void G3BS_Shininess(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, const u32* table);<BR>void G3CS_Shininess(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, const u32* table);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">table</font></strong></em></td>
+<td width="87%">Pointer to the specular reflection shininess table</td>
+  </tr>
+</table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the specular reflection shininess table. Sets an 8-bit x 128 table to change the specular reflection shininess. Each element is a fixed decimal with 8-bit decimal portions. The arguments are pointers to <code>u32</code> and must be 4-byte aligned. When the specular reflection shininess table enable flag is set to <code>TRUE</code> with <code><A href="G3_MaterialColorSpecEmi.html" target="_self">G3*_MaterialColorSpecEmi</A></code>, the geometry engine will look up in the table based on the results of the specular calculation and change the specular reflection brightness. The lighting from specular reflection can be adjusted with this table. In addition, polygons with multiple specular reflection results can be displayed in a single frame by overwriting the specular reflection shininess table. By setting irregular values as the specular reflection shininess table, special lighting effects can be achieved.<BR> <b>Note</b>:&nbsp; Normally, intended specular reflection effects can be obtained by setting the brightness table value to specular raised to the power of <i>n</i>. The upper 7 bits of the specular value become the index to the table.</P>
+<h2>See Also</h2>
+<P><A href="G3_MaterialColorSpecEmi.html">G3_MaterialColorSpecEmi</A></P>
+<H2>Revision History</H2>
+<P>02/09/2004</P>
+<UL>
+<LI>Added to description
+</UL>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

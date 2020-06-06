@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Protection Units (overview) </TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">Protection Units (Overview)</H1>
+<H2>Introduction</H2>
+<P>Protection units are a feature used for setting the usage status of the memory read/write attributes and the cache/write back, and for protecting the memory. Eight regions can be mapped in the memory space, and different attributes can be configured for each.</P>
+<P>Protection units can only be used on the ARM9 processor.</P>
+<HR>
+<P><B>Enabling and Disabling Protection Units</B></P>
+<P>The functions below enable or disable the protection units.</P>
+<P><a href="OS_EnableProtectionUnit.html"><code>OS_EnableProtectionUnit()</code></a><br /> <a href="OS_DisableProtectionUnit.html"><code>OS_DisableProtectionUnit()</code></a></P>
+<HR>
+<P><B>Settings for Each Region</B></P>
+<P>The following functions perform each of the protection region settings:<br /></P>
+<P><a href="OS_SetProtectionRegion.html"><code>OS_SetProtectionRegion()</code></a><br /> <a href="OS_SetProtectionRegion.html"><code>OS_SetProtectionRegionParam()</code></a></P>
+<P>The following functions get the settings:<br /></P>
+<P><a href="OS_GetProtectionRegion.html"><code>OS_GetProtectionRegionAddress()</code></a><br /> <a href="OS_GetProtectionRegion.html"><code>OS_GetProtectionRegionSize()</code></a><br /> <a href="OS_GetProtectionRegion.html"><code>OS_GetProtectionRegionParam()</code></a></P>
+<HR>
+<P><B>Default Mapping</B></P>
+<P>By default, each region is mapped as indicated below.<br />When the regions overlap, the higher region number has priority. <BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH width="55">Region Number</TH>
+<TH width="172">Usage</TH>
+<TH width="107">base address</TH>
+<TH width="142">Size</TH>
+<TH width="45">Cache</TH>
+<TH width="45">Write Buffer</TH>
+
+<TH width="45">User Attribute (Command)</TH>
+<TH width="45">User Attribute (Data)</TH>
+    </TR>
+    <TR>
+      <TD width="55">-</TD>
+<TD width="172">Background</TD>
+<TD width="107">0x00000000</TD>
+<TD width="142">4GByte<br /> ( <code>0x100000000</code> )</TD>
+      <TD align="center" width="47">~</TD>
+      <TD>~</TD>
+<TD width="63">NA</TD>
+<TD width="45">NA</TD>
+    </TR>
+    <TR>
+      <TD width="55">0</TD>
+<TD width="172">I/O register , VRAM, etc.</TD>
+<TD width="107"><code>HW_IOREG<br /> ( 0x04000000 )</code></TD>
+<TD width="142">64MByte<br /> ( <code>0x400000</code> )</TD>
+      <TD align="center" width="47">~</TD>
+      <TD>~</TD>
+<TD width="63">R/W</TD>
+<TD width="45">R/W</TD>
+    </TR>
+    <TR>
+      <TD width="55">1</TD>
+<TD width="172">Main Memory</TD>
+<TD width="107">HW_MAIN_MEM_MAIN<BR> ( 0x02000000 )</TD>
+<TD width="142">4M / 8MByte <B><FONT color="#ff0033">(Caution 1)</FONT></B><BR> ( 0x400000/0x800000 )</TD>
+      <TD width="47">Ersaquo;</TD>
+      <TD>Ersaquo;</TD>
+<TD width="63">R/W</TD>
+<TD width="45">R/W</TD>
+    </TR>
+    <TR>
+      <TD width="55">2</TD>
+<TD width="172">ARM&amp;-Exclusive</TD>
+<TD width="107">HW_MAIN_MEM_MAIN_END/HW_MAIN_MEM_SUB<BR> ( 0x23E0000/0x27E0000 )<BR> <FONT color="#ff0033"><B>(Caution 2)</B></FONT></TD>
+<TD width="142">128KByte<BR> ( 0x20000 )</TD>
+      <TD align="center" width="47">~</TD>
+      <TD>~</TD>
+<TD width="63">NA</TD>
+<TD width="45">NA</TD>
+    </TR>
+    <TR>
+      <TD width="55">3</TD>
+<TD width="172">Game Pak</TD>
+<TD width="107">HW_CTRDG_ROM<BR> ( 0x08000000 )</TD>
+<TD width="142">128MByte<BR> ( 0x8000000 )</TD>
+      <TD align="center" width="47">~</TD>
+      <TD>~</TD>
+<TD width="63">NA</TD>
+<TD width="45">R/W</TD>
+    </TR>
+    <TR>
+      <TD width="55">4</TD>
+<TD width="172">DTCM</TD>
+<TD width="107">HW_DTCM<BR> ( 0x027E0000 ) <B><FONT color="#ff0033">(Caution 3)</FONT></B></TD>
+<TD width="142">16KByte<BR> ( 0x4000 )</TD>
+      <TD align="center" width="47">~</TD>
+      <TD>~</TD>
+<TD width="63">NA</TD>
+<TD width="45">R/W</TD>
+    </TR>
+    <TR>
+      <TD width="55">5</TD>
+<TD width="172">ITCM</TD>
+<TD width="107">HW_ITCM_IMAGE<BR> ( 0x01000000 ) <FONT color="#ff0033"><B>(Caution 4)</B></FONT></TD>
+<TD width="142">16MByte<BR> ( 0x100000 )</TD>
+      <TD align="center" width="47">~</TD>
+      <TD>~</TD>
+<TD width="63">R/W</TD>
+<TD width="45">R/W</TD>
+    </TR>
+    <TR>
+      <TD width="55">6</TD>
+<TD width="172">BIOS Reserved</TD>
+<TD width="107">HW_BIOS<BR> ( 0xFFFF0000 )</TD>
+<TD width="142">32KByte<BR> ( 0x8000 )</TD>
+      <TD align="center" width="47">Ersaquo;</TD>
+      <TD>~</TD>
+<TD width="63">R</TD>
+<TD width="45">R</TD>
+    </TR>
+    <TR>
+      <TD width="55">7</TD>
+<TD width="172">Shared Main Memory</TD>
+<TD width="107">HW_MAIN_MEM_SHARED<BR> ( 0x027FF000 )</TD>
+<TD width="142">4KByte <BR> ( 0x1000 )</TD>
+      <TD align="center" width="47">~</TD>
+      <TD>~</TD>
+<TD width="63">NA</TD>
+<TD width="45">R/W</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> <font color="red"><strong>(CAUTION 1)</strong></font><br /> When operating on debugger, the size of protection region 1 (used to protect the main memory) becomes 8MByte by calling <a href="../arena/OS_EnableMainExArena.html"><code>OS_EnableMainExArena()</code></a> before <a href="../arena/OS_InitArena.html"><code>OS_InitArena()</code></a> and <a href="../init/OS_Init.html"><code>OS_Init()</code></a>. For the actual device, it will always be 4MByte regardless of the setting described above.<br /></P>
+<P>For compatibility with previous versions, the size of protection region 1 will be 8MByte (when operating on debugger) instead of the above specification if you compile OS library set to <code>NITRO_MEMSIZE=8M</code>.</P>
+<P><font color="red"><strong>(CAUTION 2)</strong></font><br /> If the size of Protection Region 1 is 4MB, then the starting address of protection region 2 that protects the ARM7 region will be <code>0x23E0000</code>. If it is 8MB, then the starting address will be <code>0x27E0000</code>.</P>
+<P><font color="red"><strong>(CAUTION 3)</strong></font><br /> The starting position of the DTCM is specified by the <code>lsf</code> file. The default value is <code>0x027E0000</code>.</P>
+<P><font color="red"><strong>(CAUTION 4)</strong></font><br /> Since accessing a NULL pointer will cause an exception, do not start from <code>0x00000000</code>.</P>
+<P><font color="red"><strong>(CAUTION)</strong></font><br /> For TEG, the start address <code>HW_MAIN_MEM_SUB</code> of protection region 2 is <code>0x2780000</code>, and the size is 512Kbytes. The DTCM start location defaults to <code>0x02780000</code>, and the start address of protection region 4 is <code>0x0280000</code>.
+</P>
+<P><BR>
+</P>
+<P>A graphical representation of the default mapping follows:</P>
+<BLOCKQUOTE><IMG src="image_protectionUnit_region1.gif" border="0"></BLOCKQUOTE>
+<P>An enlarged representation of the main memory and expanded memory regions is shown below. The default region setting for this area can be toggled between main memory size settings of 8 MB and 4 MB.</P>
+<BLOCKQUOTE><IMG src="image_protectionUnit_region2.gif" border="0"><IMG src="image_protectionUnit_region3.gif"></BLOCKQUOTE>
+<H2>See Also</H2>
+<P><CODE><A href="../list_os.html#ProtectionUnit">An Overview of OS Functions (Protection Units)</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>04/13/2005 Changed ARM7 reserved/DTCM region addresses<br /> 12/14/2004 Revised wording<br /> 11/17/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

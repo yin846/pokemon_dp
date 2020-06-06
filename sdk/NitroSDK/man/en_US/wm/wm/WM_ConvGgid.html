@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_ConvGgid*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_ConvGgid*</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+void WM_ConvGgid32to16( u32* src , u16* dst );
+void WM_ConvGgid16to32( u16* src , u32* dst );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE><CODE>src</CODE></CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the pointer to the conversion source variable of GGID.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>dst</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the pointer to the buffer that stores the post-conversion data.</TD>
+    </TR>
+  </tbody>
+</table>
+</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>
+The 32-bit Game Group ID (GGID) can be expressed as u32 type or as an array of the u16 type. This function converts the GGID from one format to another.<BR> <code>WM_ConvGgid32to16</code> converts the <code>u32</code> type GGID to a <code>u16</code> type array. <code>WM_ConvGgid16to32</code> converts the <code>u16</code> type array GGID to a <code>u32</code> type.
+</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="WM_SetParentParameter.html"><code>WM_SetParentParameter</code></A>, <A href="WM_SetGameInfo.html"><code>WM_SetGameInfo</code></A>, <A href="WMParentParam.html"><code>WMParentParam</code></A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+08/25/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

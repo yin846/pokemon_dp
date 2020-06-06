@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NNS_G2dSetRndCoreCellCloneSource3D</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">NNS_G2dSetRndCoreCellCloneSource3D</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+		<pre><CODE>#include &lt;nnsys/g2d/g2d_RendererCore.h&gt;</CODE></pre>
+<pre><CODE>void NNS_G2dSetRndCoreCellCloneSource3D( const NNSG2dCellData* pCell );</CODE></pre>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">pCell</font></strong></em></td>
+<td width="87%">[IN] Cell data</td>    
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>
+None.
+</p>
+<H2>Description</H2>
+<p>Referenced by <a href="NNS_G2dRndCoreDrawCellClone3D.html"><code>NNS_G2dRndCoreDrawCellClone3D()</code></a>, this computes the UV parameters in advance and stores them in UV parameter cache. On the assumption that the entered cell is composed of OBJ having the same image data, this function computes UV values for the <code>0</code>th OBJ in the index and saves it as cache.</P>
+
+<p>Note: </strong></font> The UV parameters of flipped sprites are different from the normal UV parameters.<BR> As a result, the OBJ will not be recognized as having the same image data. This is a special process for 3D surfaces. Any kind of surface other than <code>NNS_G2D_SURFACETYPE_MAIN3D</code> will cause fail on assertion.<BR> This function must be called inside of the <code>BeginRendering</code> &mdash; <code>EndRendering</code> block.</P>
+
+<h2>See Also</h2>
+<p><CODE>None.</CODE></p>
+
+<H2>Revision History</H2>
+<P>11/10/2004 Initial version.</P>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndPlayerReadVariable</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndPlayerReadVariable</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndPlayerReadVariable(
+NNSSndHandle*   handle,
+int varNo,
+s16* var );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA4LWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>The sound handle pointer.</td>
+</tr>
+<tr>
+<td><em><strong><code>varNo</code></strong></em></td>
+<td>The variable number. Takes a value between 0 and 15.</td>
+</tr>
+<tr>
+<td><em><strong><code>var</code></strong></em></td>
+<td>The pointer to where the value of the variable is stored.</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDA1MWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns whether or not the read was successful.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDACNWT"></a>
+<h2>Description</h2>
+      <p>
+Reads the sequence local variables. If the read is successful, the variable values are written to the address that is assigned with <code><i><b>var</b></i></code>. 
+</p>
+      <p>
+This function gets the sequence local variable value of the sequence that is bound to the sound handle <code><i><b>handle</b></i></code>. If the sound handle is invalid, the read fails and a <code>FALSE</code> will be returned. 
+</p>
+    </div>
+<h2>See Also</h2>
+<p>None.</p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

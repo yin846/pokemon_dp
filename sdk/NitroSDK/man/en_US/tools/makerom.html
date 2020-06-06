@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>makerom</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">makerom</H1>
+<H2>Description</H2>
+<P><code>makerom</code> is a tool for creating NITRO application ROM images. It creates the ROM image based on the entries in the ROM Spec file.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<H4>(1) Normal Start</H4>
+<P><CODE><code>% makerom <nobr>[-d]</nobr> <nobr>[-DNAME=VALUE...]</nobr> <nobr>[-MDEFINES_FILE]</nobr> <nobr>[-A]</nobr> <nobr>[-F]</nobr> <nobr>[-WWARNING_TYPE]</nobr> SPECFILE [ROMFILE] [LISTFILE]</code></CODE></P>
+<P>This links files and creates a ROM image file named <code>ROMFILE</code> in accordance with the description in the ROM Spec file (described below) specified by <code>SPECFILE</code>. The ROM structure information is output to the file specified by <code>LISTFILE</code>.</P>
+<P><CODE>ROMFILE</CODE> and <CODE>LISTFILE</CODE> can be omitted. If you omit them, the two files use the same name as that specified by <CODE>SPECFILE</CODE> but with the extension changed to <CODE>.rom</CODE> and <CODE>.nlf</CODE>, respectively. Also, the <code>-D</code> option can be used to define a variable and its values. The value of this variable can be referenced when writing the ROM Spec file.</P>
+<P>The <CODE>-M</CODE> option lets you define a variable and its value just like the <CODE>-D</CODE> option. The text file that consists of the <CODE>[NAME=VALUE]</CODE> line is received as an argument. By using this option, the variables and their values that exceed the command line length restriction can be described in the definition.</P>
+<P>When the <code>-F</code> option is specified, a ROM image file will be created even if the ROM file exceeds the size limitation value (refer to <code>RomSize</code> in the Property section).</P>
+<P>Specifying the <code>-A</code> option determines whether or not the ROM size restriction value (refer to <code>RomSize</code> in the Property section) is exceeded when adding digital signature with the <a href="attachsign.html"><code>attachsign</code></a> command. When the value has been exceeded, an error occurs. However when the above-mentioned <code>-F</code> option has been set, processing continues.</P>
+<P>The <code>-W</code> option will output the warnings that are normally suppressed. <code>-Wrom_speedtype_undefined</code> will appear when <code>RomSpeedType</code> in the <CODE>Property</CODE> section is not explicitly defined and left in the SDK default setting. With <code>-Wall</code>, all warnings will be output.</P>
+<P>The <code>-d</code> option is for outputting messages when debugging <code>makerom</code>. This is usually unnecessary.</P>
+<H4>(2) The <code>-l</code> option</H4>
+<P><CODE><code>% makerom <nobr>[-d]</nobr> <nobr>[-DNAME=VALUE...]</nobr> <nobr>[-MDEFINES_FILE]-l</nobr> SPECFILE [LISTFILE]</code></CODE></P>
+<P>This operates the same as the Normal Start method (1) except that a ROM image is not output. The file specified by <code>SPECFILE</code> is read, and the ROM structure information is output to the file named <code>LISTFILE</code>.</P>
+<P><CODE>LISTFILE</CODE> can be omitted. If you omit it, the filename takes the same name as that specified by <CODE>SPECFILE</CODE>, but with the extension <CODE>.nlf</CODE>. The <code>-D</code> option can be used to define a variable and its values. The value of this variable can be referenced when writing the ROM Spec file.</P>
+<H4>(3) The <code>-r</code> option</H4>
+<P><CODE><code>% makerom <nobr>[-d]</nobr> <nobr>[-F]</nobr> <nobr>[-A]</nobr> <nobr>-r</nobr> LISTFILE [ROMFILE]</code></CODE></P>
+<P>A ROM image is constructed from the ROM structure information specified by <code>LISTFILE</code> and output as a file with the name specified by <code>ROMFILE</code>.</P>
+<P><CODE>ROMFILE</CODE> can be omitted. If you omit it, the filename takes the same name as that specified by <CODE>SPECFILE</CODE>, but with the extension <CODE>.rom</CODE>.</P>
+<P>The <code>-F</code> and <code>-A</code> options behave the same as described above in (1) Normal Start.</P>
+<H3>ROM Spec File Format</H3>
+<P>The contents of the NITRO ROM image can be managed using a simple file system. The ROM Spec file is a text file that describes the structure of this file system and is divided into four sections. ARM9, ARM7, and incidental information sections should be defined before the ROM image section. The format for the section definitions have a declaration for the start of the section definition that is followed by section-related parameters enclosed in curly brackets.
+</P>
+<TABLE>
+  <TBODY>
+    <TR>
+<TH>Section definition target</TH>
+<TH>Section definition format</TH>
+<TH>Example definition</TH>
+    </TR>
+    <TR>
+<TD>ARM9<br /> Executable binary</TD>
+      <TD>
+<PRE>Arm9
+{
+<I><em>[ARM9 parameter description part]</em></I>
+  ....
+}</CODE></PRE>
+      </TD>
+      <TD>
+<PRE>Arm9
+{
+Static        main.sbin
+OverlayDefs   main_defs.sbin
+OverlayTable  main_table.sbin
+Nef           main.nef
+}</CODE></PRE>
+      </TD>
+    </TR>
+    <TR>
+<TD>ARM7<br /> Executable binary</TD>
+      <TD>
+<PRE>Arm7
+{
+<I><em>[ARM7 parameter description part]</em></I>
+  ....
+}</CODE></PRE>
+      </TD>
+      <TD>
+<PRE>Arm7
+{
+Static        sub.sbin
+OverlayDefs   sub_defs.sbin
+OverlayTable  sub_table.sbin
+Nef           sub.nef
+}</CODE></PRE>
+      </TD>
+    </TR>
+    <TR>
+<TD>Incidental<BR>information<BR> <CODE>(Property)</CODE></TD>
+      <TD>
+<PRE><CODE>Property
+{
+<I>[Incidental information parameter description part]</I>
+  ....
+}</CODE></PRE>
+      </TD>
+      <TD>
+<PRE><CODE>Property
+{
+RomHeader  rom_header.sbin
+}</CODE></PRE>
+      </TD>
+    </TR>
+    <TR>
+<TD>ROM Image</TD>
+      <TD>
+<PRE>RomSpec
+{
+<I><em>[ROM image parameter description part]</em></I>
+  ....
+}</CODE></PRE>
+      </TD>
+      <TD>
+<PRE>RomSpec
+{
+Offset   0x00000000
+Segment  All
+File     data.bin
+}</CODE></PRE>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3>Section Parameters</H3>
+<H4>Arm9 section (ARM9 execution file definitions section)</H4>
+<P>This configures settings related to the executable file on the ARM9 side.</P>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item"><code>Static <em>[ARM9's Resident Module filename]</em></code>
+<DD class="command_desc">Specifies the filename of the Resident Module of the ARM9's execution file.
+<DT class="command_item"><code>OverlayDefs <em>[Name of the ARM9's Overlay Name file]</em></code>
+<DD class="command_desc">Specifies the ARM9's OverlayDefs filename.
+<DT class="command_item"><code>OverlayTable <em>[ARM9's OverlayTable filename]</em></code>
+<DD>Specifies the ARM9's OverlayTable filename. This file is not needed if overlays are not being used. If this is the case, the <code>OverlayTable</code> definition can be omitted.
+<DT class="command_item"><code>Nef <em>[Name of the ARM9's nef file (debug information file)]</em></code>
+<DD class="command_desc">Specifies the <code>nef</code> file where ARM9 debug information will be retained.
+<DD class="command_desc">If debugging is executed, this <CODE>Nef</CODE> definition is not needed, and the description can be omitted. &nbsp;Instead of <code>Nef</code>, you can use the alternative keyword <code>Elf</code>.
+</DL>
+</BLOCKQUOTE>
+<H4>Arm7 section (ARM7 execution file definitions section)</H4>
+<P>This is for settings related to the execution file on the ARM7 side.</P>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item"><code>Static <em>[ARM7's Resident Module filename]</em></code><br /> <code>OverlayDefs<em>[Name of the ARM7's Overlay Name file]</em></code><br /> <code>OverlayTable <em>[ARM7's OverlayTable filename]</em></code><br /> <code>Nef <em>[Name of the ARM7's nef file (debug information file)]</em></code>
+<DD class="command_desc">Same as the ARM9's parameters.
+</DL>
+</BLOCKQUOTE>
+<H4>Property section (Incidental Information definitions section)</H4>
+<P>Items with the symbol &quot;&#x25CE;&quot; after the name are items that must be configured when creating the master ROM.</P>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item"><code>RomHeaderTemplate </CODE> <I>[Template file name of ROM header]</I> &#x25CE;
+<DD class="command_desc">Specifies the template file in the header section of the Rom image. When this not specified, the default is <code>rom_header.template.sbin</code>, which is in the same directory as <code>makerom.exe</code>. For the file name, specify the name of the master ROM template file that our company distibutes for each game application when the master ROM is being created. <FONT color="#FF0000">We recommend that you do not perform binary correction on the contents of the ROM header template file.</FONT>Set the incidental information in each master ROM by describing parameters such as <CODE>TitleName</CODE> in a ROM spec file.
+<DT class="command_item"><code>TitleName </CODE> <I>[Title name]</I> &#x25CE;
+<DD class="command_desc">Specifies the title name. Up to 12 characters of ASCII code. When it is shorter than 12 characters, 0 will be stored in the unused area. When this is not specified, the value that is embedded in RomHeaderTemplate is used.
+<DT class="command_item"><code>MakerCode </CODE> <I>[Manufacturer code]</I> &#x25CE;
+<DD class="command_desc">Specifies a manufacturer code that was determined when signing licensing agreement with our company. Two ASCII characters are used.
+<DD class="command_desc">When this is not specified, the value that is embedded in RomHeaderTemplate is used.
+<DT class="command_item"><CODE>RemasterVersion</CODE> <I>[Remaster version]</I> &#x25CE;
+<DD class="command_desc">Specifies the remaster version number of the ROM being manufactured for retail products. Hexadecimal notation, decimal notation, and octal notation can be used. When this is not specified, the value that is embedded in RomHeaderTemplate is used. <FONT color="#FF0000">This is equivalent to the ROM versions used in earlier versions. In previous versions of the <CODE>makerom</CODE> tool, the definition for the term &quot;ROM version&quot; differed from our company's standard definition, so a change was made so the names match. For compatibility with previous ROM spec files, the keyword <CODE>&quot;RomVersion&quot;</CODE> can be used as a separate name.</FONT>
+<DT class="command_item"><code>RomSpeedType </CODE> <I>[1TROM|MROM|UNDEFINED]</I> &#x25CE;
+<DD class="command_desc">Defines the ROM type and selects the proper access speed. &quot;1TROM&quot; specifies one-time PROM  and &quot;MROM&quot; specifies mask ROM. Because the one-time PROM setting is slower, if one-time PROM is selected, it can also work with mask ROM. But it is not possible to operate the other way around.
+<DD><FONT color="#ff0000">If this parameter is not specified, it is treated as if <CODE>&quot;UNDEFINED&quot;</CODE> has been specified. <CODE>&quot;UNDEFINED&quot;</CODE> takes the same setting for access speed as <CODE>&quot;1TROM&quot;</CODE>. However, when set to <CODE>&quot;UNDEFINED&quot;</CODE>, a warning flag is set in the ROM registration data when the ROM binary is being created, so it cannot be submitted as the final master ROM. This is to done in order to prevent the human-induced mistake of shipping the master ROM with the access speed unintentionally set. When creating the final master ROM, be sure to check that you are using either <CODE>&quot;1TROM&quot;</CODE> or <CODE>&quot;MROM&quot;</CODE>, and clearly specify this in the ROM spec file.</FONT>
+<DT class="command_item"><code>RomSize </CODE> <I>[ 64M | 128M | 256M | 512M | 1G | 2G ]</I> &#x25CE;
+<DD class="command_desc">Specifies the ROM size in bits. Under the current circumstances, select from 64M/128M/256M/512M/1G/2G character strings. When the ROM image exceeds the specified value, an error or a warning (when the -F option is specified) is output. When this is not specified, the value that is embedded in RomHeaderTemplate (current one is &quot;2G&quot;) is used.
+<DT class="command_item"><code>RomFootPadding </CODE> <I>[TRUE|FALSE]</I> &#x25CE;
+<DD class="command_desc">Specify <CODE>TRUE</CODE> if you want the unused region above the program storage area in ROM to be filled with data, and create the binary that matches the ROM size specified by RomSize. The data stored in the unused region is the value specified with the <CODE>Padding</CODE> parameter in the <CODE>RomSpec</CODE> section. To enable this feature, it is necessary to specify <CODE>RomSize</CODE>. If it is not specified, the values is <CODE>FALSE</CODE>.
+<DT class="command_item"><code>RomHeader <em>[file name of ROM header]</em></code>
+<DD>Name of the image file in the header section of the ROM image. This file is generated by embedding the information from ROM spec files to the copy of the template that is explained in the above section.
+<DD>Normally it is not necessary to specify the name. When it is not specified, the file name is made by taking out the file extension from the file name of ARM9 resident module and then adding header.sbin.
+<DT class="command_item"><code>FileName <em>[FileNameTable file name]</em></code>
+<DD>Name of the image file in the file name table section of the ROM file system. This file is generated from the RomSpec item in the ROM spec file. Normally it is not necessary to specify the name. When it is not specified, the file name is made by taking out the file extension from the file name of ARM9 resident module and then adding files.sbin.
+<DT class="command_item"><code>BannerFile </CODE> <I>[banner file name]</I> &#x25CE;
+<DD class="command_desc">Specifies the banner file, that consists of the application identification image information that is displayed at the startup of NITRO.
+<DT class="command_item"><code>ForChina <em>[TRUE|FALSE]</em></code>
+<DD class="command_desc">Specifies whether this application is designed to run on the Chinese version of the DS system. If this property is set to TRUE, the application will run only on a Chinese version of the DS system. Also, in order to determine if the Chinese language was selected on a Chinese version of the DS system's settings menu, this property must be set to TRUE. If nothing is specified, the setting will be FALSE and the English language code is obtained. Note that the value embedded in RomHeaderTemplate is not used.
+</DL>
+</BLOCKQUOTE>
+<H4>RomSpec section (ROM image definitions section)</H4>
+<P><FONT color="#ff0000">This section needs to be defined after other sections.</FONT></P>
+<BLOCKQUOTE>
+<DL class="command_list">
+<DT class="command_item"><code>Offset <em>[offset value]</em></code>
+<DD>Specifies the offset value for the location of the ROM image file (or data). To prevent the overlap of ROM image regions, the offset value that can be set must be larger than the final position where all files (or data) are set at that time. If it is not, then an error will occur.
+<DT class="command_item"><code>OffsetMin <em>[offset value]</em></code>
+<DD>The same as <code>Offset</code>, except that an error will not occur even if the offset value is not larger than the final position where files are set. (Instead, the setting will be ignored.)
+<DT class="command_item"><CODE>Segment All</CODE>
+<DD>Sets all data for file system management. This management data must precede other files and be placed at the start of ROM.
+<DT class="command_item"><code>Padding <em>[Character codes 0 - 255]</em></code>
+<DD class="command_desc">Specifies the value to assign for padding when aligning ROM images. Specify a value between 0 and 255. The initial value is 0.
+<DT class="command_item"><code>Align <em>[alignment value]</em></code>
+<DD class="command_desc">Matches the ROM image starting position of the next file or data-set to store to the specified memory boundary. Empty space is filled using the value specified by <code>Padding</code>. The alignment value must be an exponent of 2. Because the <code>Align</code> statement is only used to temporarily manipulate the memory boundary of the file, it affects the file placed immediately after this description. To specify a permanent memory boundary, use the <code>AlignAll</code> statement.
+<DT class="command_item"><code>AlignAll <em>[alignment value]</em></code>
+<DD class="command_desc">Matches the ROM image starting position of all subsequent files and data-sets being stored to the specified memory boundary. Empty space is filled using the value specified by <code>Padding</code>. If <code>Align</code> and <code>AlignAll</code> are both defined, the larger value is used for the alignment value. The initial value of <code>AlignAll</code> is 512.<FONT color="#ff0000">Note: </strong> Access to the NITRO Software NITRO CARD is limited to the units of 512-byte blocks when the boundary for the file allocation is set to less than 512.</FONT>
+<DT class="command_item"><CODE>Segment RomHeader</CODE><BR> <CODE>Segment Static Arm9</CODE><BR> <CODE>Segment OverlayTable Arm9</CODE><BR> <CODE>Segment Overlays Arm9</CODE><BR> <CODE>Segment Static Arm7</CODE><BR> <CODE>Segment OverlayTable Arm7</CODE><BR> <CODE>Segment Overlays Arm7</CODE><BR> <CODE>Segment FileName</CODE><BR> <CODE>Segment FileAlloc</CODE><BR> <CODE>Segment Banner</CODE>
+<DD class="command_desc">Sets the data used for file system management. Starting from the top:
+  <UL>
+<LI>ROM header
+<LI>ARM9 Resident Module
+<LI>ARM9 Overlay Table
+<LI>ARM9 Overlay Module
+<LI>ARM7 Resident Module
+<LI>ARM7 Overlay Table
+<LI>ARM7 Overlay Module
+<LI>Filename Table
+<LI>File Allocation Table
+<LI>Banner File
+  </UL>
+&nbsp;&nbsp;This is used only when you want total control over the position of each set of data. The ROM header precedes the other data and must be located at the start of the ROM image.
+<DD class="command_desc">Normally, the use of <code>Segment All</code> is sufficient and there is no need to use these definitions to individually specify the locations of the file system management data. <code>Segment All</code> has the following definitions and equivalencies:
+<PRE>    Segment RomHeader
+Align       512
+Segment     Static          Arm9
+OffsetMin   0x8000
+Segment     OverlayTable    Arm9
+Segment     Overlays        Arm9
+Align       512
+Segment     Static          Arm7
+Segment     OverlayTable    Arm7
+Segment     Overlays        Arm7
+Segment     FileName
+Segment     FileAlloc
+Align       512
+Segment     Banner</code></PRE>
+<DT class="command_item"><code>HostRoot <em>[Root directory name of PC]</em></code>
+<DD class="command_desc">This is the standard directory on the PC for the files stored in the ROM image. <code>HostRoot</code> can be omitted, in which case the current directory (<code>.</code>) is used as the default value.
+<DT class="command_item"><code>Root <em>[Root directory name of NITRO]</em></code>
+<DD class="command_desc">This is the standard directory on NITRO for the files stored in the ROM image. The directory indicated by <code>HostRoot</code> on the PC gets mapped to the NITRO directory indicated by <code>Root</code>. <code>Root</code> can be omitted, in which case the root directory (<code>/</code>) is used as the default value.
+<DT class="command_item"><code>File <em>[filename ...]</em></code>
+<DD class="command_desc">Specifies files to store in the ROM image. If the specified filename is a directory, all files in all sub-directories get stored in the ROM image. However, any files or subdirectories that match the pattern specified by <code>Reject</code> will be excluded. You can use the symbols &quot;<CODE>*</CODE>&quot; and &quot;<CODE>?</CODE>&quot; as wildcards when specifying files. &nbsp; *The symbol &quot;<CODE>*</CODE>&quot; represents any number of characters, while &quot;<CODE>?</CODE>&quot; represents a single character (single-byte). &nbsp; 
+<DT class="command_item"><code>Reject <em>[filename pattern ...]</em></code>
+<DD class="command_desc">These are the names of the files not to store in the ROM image. <code>makerom</code> internally requests a list of the files to expand and store in ROM. This list is built from the description of directories and files in <code>File</code>. Using the <code>Reject</code> definition you can specify certain files that you do not want placed on that list.<br /><BR> <br /> You can specify more than one filename pattern in the <code>Reject</code> statement by using blank spaces, and you can also employ the <code>*</code> and <code>?</code> wildcards. The specifications made in <code>Reject</code> remain effective until the next <code>Reject</code> description. The initial values set as the <code>Reject</code> filename pattern are <code>CVS</code> or <code>vssver.scc</code>.
+<DT class="command_item"><code>Fixed <em>[Default | True | False]</em></code>
+<DD>This is for fixing nlf file parameters; it controls the flag that determines whether subsequently-placed data can be moved. There is normally no need for this. The initial value is <code>Default</code> (auto-configuration according to type of data installed).
+<DT class="command_item"><code>TagType <em>[Default | Name | Id | None ]</em></code>
+<DD>This is for fixing nlf file parameters; it specifies how to access subsequently-placed data (auto-configuration / filename/ file ID / no access method). There is normally no need for this. The initial value is <code>Default</code> (auto-configuration according to type of data installed).
+</DL>
+</BLOCKQUOTE>
+<H3>Variable References and Modifier Options</H3>
+<P>You can reference the value of a variable that is defined outside of the ROM Spec file by describing the variable in the format: <nobr><code> $(<em>[variable name</em>])</code></nobr>. The variable's value can be set with the command line option like this: <CODE>-D</CODE><em>[variable name]</em>=<em>[value]</em>. Alternately, you can set the value using an environment variable. If the  same variable is defined with both the <CODE>-D</CODE> option and an environment  variable, the <CODE>-D</CODE> option value takes priority. Following is an  example of a description for a variable reference:</P>
+<BLOCKQUOTE>
+<PRE class="sample_source">RomSpec
+{
+Offset     0x00000000
+Segment    All
+File       $(FILENAME)
+}</CODE></PRE>
+</BLOCKQUOTE>
+<P>If the variable value takes the form of a file path, you can reference the value by attaching a modifier option  immediately after the variable name. The following values can be referenced with the modifier options <CODE>:h,</CODE> <CODE>:t,</CODE> <CODE>:r</CODE> and <CODE>:e</CODE></P>
+<BLOCKQUOTE>For <CODE>$(FILE)=C:/home/Nitro/readme.txt</CODE>:
+<TABLE class="blockquoted_table">
+  <TBODY>
+    <TR>
+<TD><CODE>:h</CODE></TD>
+<TD>The portion of the path before the final path delimiter</TD>
+<TD><CODE>$(FILE:h)=C:/home/Nitro/</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>:t</CODE></TD>
+<TD>The portion of the path after the final path delimiter</TD>
+<TD><CODE>$(FILE:t)=readme.txt</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>:r</CODE></TD>
+<TD>The portion of the path excluding the file extension</TD>
+<TD><CODE>$(FILE:r)=C:/home/Nitro/readme</CODE></TD>
+    </TR>
+    <TR>
+<TD><CODE>:e</CODE></TD>
+<TD>The path file-extension portion</TD>
+<TD><CODE>$(FILE:e)=txt</CODE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BLOCKQUOTE>
+<P><BR>
+</P>
+<H3>Other formats</H3>
+<P>Keywords like <code>RomSpec</code> used in section definitions can be written either in uppercase (<code>ROMSPEC</code>) or in lowercase (<code>romspec</code>). Anything than follows the pound sign (<CODE>#</CODE>) is treated as a comment.</P>
+<P>To specify multiple items in <code>File</code> and <code>Reject</code>, separate them with blank spaces. Use double quotes (<code>&quot; &quot;</code>) to specify filenames that include blank spaces.</P>
+<BLOCKQUOTE>
+<PRE class="sample_source"><CODE>#
+# Lines that begin with <CODE>#</CODE> are comments<BR>
+#
+Arm9
+{
+Static      &quot;c:/Program Files/myApps/lib/main.sbin&quot;
+OverlayDefs &quot;c:/Program Files/myApps/lib/overlaydefs.sbin&quot;
+}
+
+Property
+{
+RomSpeedType    1TROM
+BannerFile      ./etc/default.bnr
+}
+
+ROMSPEC # Uppercase is also OK
+{
+Segment  ALL
+File     boo.dat foo.dat woo.dat
+}</CODE></PRE>
+</BLOCKQUOTE>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/makerom.exe</CODE><BR> <CODE>$NitroSDK/tools/bin/rom_header.template.sbin</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="makelcf.html">makelcf</A>, <A href="makebanner.html">makebanner</A></CODE></P>
+<H2>Revision History</H2>
+<P>04/26/2005  - Changed term from &quot;1-time ROM&quot; to &quot;One-time PROM&quot;<br /> 04/11/2005  - Added explanation relating to ForChina <br /> 04/05/2005  - Added explanation relating to &quot;UNDEFINED&quot; for RomSpeedType<br /> 03/28/2005  - Added explanations for RomSpeedType and the -W  option <br /> 09/22/2004  - Added explanation about the order of appearance of sections <br /> 07/23/2004 - Added explanations regarding Align/AlignAll <br /> 06/08/2004 - Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

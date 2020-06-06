@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WMApiid</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WMApiid</h1>
+
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/wm.h&gt;</CODE><BR>
+<PRE><CODE>typedef enum WMApiid
+{
+WM_APIID_INITIALIZE         = 0 ,
+WM_APIID_RESET              = 1 ,
+WM_APIID_END                = 2 ,
+WM_APIID_ENABLE             = 3 ,
+WM_APIID_DISABLE            = 4 ,
+WM_APIID_POWER_ON           = 5 ,
+WM_APIID_POWER_OFF          = 6 ,
+WM_APIID_SET_P_PARAM        = 7 ,
+WM_APIID_START_PARENT       = 8 ,
+WM_APIID_END_PARENT         = 9 ,
+WM_APIID_START_SCAN         = 10 ,
+WM_APIID_END_SCAN           = 11 ,
+WM_APIID_START_CONNECT      = 12 ,
+WM_APIID_DISCONNECT         = 13 ,
+WM_APIID_START_MP           = 14 ,
+WM_APIID_SET_MP_DATA        = 15 ,
+WM_APIID_END_MP             = 16 ,
+WM_APIID_START_DCF          = 17 ,
+WM_APIID_SET_DCF_DATA       = 18 ,
+WM_APIID_END_DCF            = 19 ,
+WM_APIID_SET_WEPKEY         = 20 ,
+WM_APIID_START_KS           = 21 ,
+WM_APIID_END_KS             = 22 ,
+WM_APIID_GET_KEYSET         = 23 ,
+WM_APIID_SET_GAMEINFO       = 24 ,
+WM_APIID_SET_BEACON_IND     = 25 ,
+WM_APIID_START_TESTMODE     = 26 ,
+WM_APIID_STOP_TESTMODE      = 27 ,
+WM_APIID_VALARM_MP          = 28 ,
+WM_APIID_SET_LIFETIME       = 29 ,
+WM_APIID_MEASURE_CHANNEL    = 30 ,
+WM_APIID_INIT_W_COUNTER     = 31 ,
+WM_APIID_GET_W_COUNTER      = 32 ,
+WM_APIID_SET_ENTRY          = 33 ,
+WM_APIID_AUTO_DEAUTH        = 34 ,
+WM_APIID_SET_MP_FREQ        = 35 ,
+WM_APIID_SET_BEACON_PERIOD  = 36 ,
+WM_APIID_AUTO_DISCONNECT    = 37 ,
+WM_APIID_START_SCAN_EX      = 38 ,
+WM_APIID_KICK_MP_PARENT     = 39 ,
+WM_APIID_KICK_MP_CHILD      = 40 ,
+WM_APIID_KICK_MP_RESUME     = 41 ,
+WM_APIID_ASYNC_KIND_MAX     = 42 ,
+
+WM_APIID_INDICATION         = 128 ,
+WM_APIID_PORT_SEND ,        = 129 ,
+WM_APIID_PORT_RECV ,        = 130 ,
+WM_APIID_READ_STATUS ,      = 131 ,
+
+WM_APIID_UNKNOWN            = 255
+
+} WMApiid;</CODE></PRE>
+  </dd>
+
+</dl><h2>Elements</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_INITIALIZE</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_Initialize.html"><CODE>WM_Initialize</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_RESET</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_Reset.html"><CODE>WM_Reset</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_END</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_End.html"><CODE>WM_End</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_ENABLE</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_Enable.html"><code>WM_Enable</code></a>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_DISABLE</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_Disable.html"><code>WM_Disable</code></a>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_POWER_ON</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_PowerOn.html"><code>WM_PowerOn</code></a>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_POWER_OFF</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_PowerOff.html"><code>WM_PowerOff</code></a>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_P_PARAM</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_SetParentParameter.html"><CODE>WM_SetParentParameter</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_START_PARENT</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_StartParent.html"><CODE>WM_StartParent</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_END_PARENT</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_EndParent.html"><CODE>WM_EndParent</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_START_SCAN</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_StartScan.html"><CODE>WM_StartScan</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_END_SCAN</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_EndScan.html"><CODE>WM_EndScan</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_START_CONNECT</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_StartConnect.html"><CODE>WM_StartConnect</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_DISCONNECT</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_Disconnect.html"><CODE>WM_Disconnect</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_START_MP</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_StartMP.html"><CODE>WM_StartMP</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_MP_DATA</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_SetMPData.html"><CODE>WM_SetMPData</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_END_MP</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_EndMP.html"><CODE>WM_EndMP</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_START_DCF</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_StartDCF.html"><CODE>WM_StartDCF</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_DCF_DATA</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_SetDCFData.html"><CODE>WM_SetDCFData</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_END_DCF</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_EndDCF.html"><CODE>WM_EndDCF</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_WEPKEY</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_SetWEPKey.html"><CODE>WM_SetWEPKey</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_START_KS</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_StartKeySharing.html"><CODE>WM_StartKeySharing</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_END_KS</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_EndKeySharing.html"><CODE>WM_EndKeySharing</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_GET_KEYSET</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_GetKeySet.html"><CODE>WM_GetKeySet</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_GAMEINFO</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_SetGameInfo.html"><CODE>WM_SetGameInfo</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_BEACON_IND</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_SetBeaconIndication.html"><CODE>WM_SetBeaconIndication</CODE></A></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_START_TESTMODE</font></strong></em></TD>
+<TD width="800">The ID for test mode -- Used internally only</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_STOP_TESTMODE</font></strong></em></TD>
+<TD width="800">The ID for test mode -- Used internally only</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_VALARM_MP</font></strong></em></TD>
+<TD width="800">The ID allocated to the command that the ARM7 side Valarm issues for timing control</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_LIFETIME</font></strong></em></TD>
+<TD width="800">The ID allocated to <a href="WM_SetLifeTime.html"><code>WM_SetLifeTime</code></a></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_MEASURE_CHANNEL</font></strong></em></TD>
+<TD width="800">The ID allocated to <a href="WM_MeasureChannel.html"><code>WM_MeasureChannel</code></a></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_INIT_W_COUNTER</font></strong></em></TD>
+<TD width="800">The ID allocated to <a href="WM_InitWirelessCounter.html"><code>WM_InitWirelessCounter</code></a></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_GET_W_COUNTER</font></strong></em></TD>
+<TD width="800">The ID allocated to <a href="WM_GetWirelessCounter.html"><code>WM_GetWirelessCounter</code></a></TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_ENTRY</font></strong></em></TD>
+<TD width="800">The ID allocated to <a href="WM_SetEntry.html"><code>WM_SetEntry</code></a>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_AUTO_DEAUTH</font></strong></em></TD>
+<TD width="800">The ID allocated to the automatic disconnection command that is used when the connection is made at the time when the ARM7 terminates the entries.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_SET_BEACON_PERIOD</font></strong></em></TD>
+<TD width="800">The ID allocated to <code>WMi_SetBeaconPeriod</code>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_AUTO_DISCONNECT</font></strong></em></TD>
+<TD width="800">The ID allocated to the command for automatically disconnecting when connected from a different GGID child device.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_START_SCAN_EX</font></strong></em></TD>
+<TD width="800">The ID allocated to <code>WMi_StartScanEx</code>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><code>WM_APIID_KICK_MP_PARENT<br /> WM_APIID_KICK_MP_CHILD<br /> WM_APIID_KICK_MP_RESUME</code></strong></em></TD>
+<TD width="800">The IDs allocated to the command for controlling the timing of MP communication on the ARM7 side.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_ASYNC_KIND_MAX</font></strong></em></TD>
+<TD width="800">Total number of IDs allocated to the group of asynchronous functions</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_INDICATION</font></strong></em></TD>
+<TD width="800">The common ID for four causes of <CODE>indicate</CODE>, which is called back by <A href="WM_SetIndCallback.html"><CODE>WM_SetIndCallback</CODE></A>.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_PORT_SEND</font></strong></em></TD>
+<TD width="800">The ID allocated to indicate when data is successfully sent to a port.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_PORT_RECV</font></strong></em></TD>
+<TD width="800">The ID allocated to indicate when data, which is to be sent to a port, is received.</TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_READ_STATUS</font></strong></em></TD>
+<TD width="800">The ID allocated to <A href="WM_ReadStatus.html"><CODE>WM_ReadStatus</CODE></A>. <CODE>WM_ReadStatus</CODE> is a synchronous function, so no callback is generated.
+      </TD>
+    </TR>
+    <TR>
+<TD width="200"><em><strong><font face="Courier New">WM_APIID_UNKNOWN</font></strong></em></TD>
+<TD width="800">Unknown API ID.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Description</H2>
+<P>
+This enumerated type indicates the API IDs that are allocated to WM asynchronous process functions.
+</P>
+
+<H2>Revision History</H2>
+<P>
+11/02/2004 Made changes to incorporate newly added functions<br /> 08/20/2004 Added the description for entry control specifications<br /> 08/11/2004 Added description on the addition of VM specifications<br /> 07/29/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

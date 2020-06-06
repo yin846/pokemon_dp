@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_InitVAlarm</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_InitVAlarm</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>void OS_InitVAlarm( void );
+ </CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function initializes a V-Count alarm system. Unlike <CODE>OS_InitAlarm()</CODE>, this system does not use ticks.</P>
+<P>Call <code>OS_InitVAlarm()</code> before using V-count alarm related functions. Calling it once is sufficient. Calling it more than once has no effect.</P>
+<P>Call <a href="OS_EndVAlarm.html"><code>OS_EndVAlarm()</code></a> when ending V-Count alarm systems. Perform initialization when using V-Count alarms again after that function ends.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_EndVAlarm.html">OS_EndVAlarm</A>, <A href="OS_CreateVAlarm.html">OS_CreateVAlarm</A>, <A href="OS_SetVAlarm.html">OS_SetVAlarm</A>, <A href="../alarm/OS_InitAlarm.html">OS_InitAlarm</A></CODE></P>
+<H2>Revision History</H2>
+<P>10/25/2004 Spun off details relating to VAlarm into a separate file<br /> 10/22/2004 Documented details of VAlarm in an illustration<br /> 02/24/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

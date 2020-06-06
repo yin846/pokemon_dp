@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndCaptureStartEffect</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndCaptureStartEffect</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcsynopsisinfo">typedef void (*NNSSndCaptureEffectCallback)(
+void* bufferL,
+void* bufferR,
+u32 len,
+NNSSndCaptureFormat format,
+void* arg
+);</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndCaptureStartEffect(
+void* buffer_p,
+u32 bufSize,
+NNSSndCaptureFormat format,
+int sampleRate,
+int interval,
+NNSSndCaptureEffectCallback callback,
+void* arg );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDAIOWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>buffer_p</code></strong></em></td>
+<td>The pointer to the effect buffer. Must have 32-byte alignment.</td>
+</tr>
+<tr>
+<td><em><strong><code>bufSize</code></strong></em></td>
+<td>Size of the effect buffer. Must be a multiple of <code>interval * 64</code>. The maximum value is 0x7fff8.</td>
+</tr>
+<tr>
+<td><em><strong><code>format</code></strong></em></td>
+<td>The format of the sample data.</td>
+</tr>
+<tr>
+<td><em><strong><code>sampleRate</code></strong></em></td>
+<td>This is the sampling rate.</td>
+</tr>
+<tr>
+<td><em><strong><code>interval</code></strong></em></td>
+<td>Callback interval. This specifies a value of 2 or more.</td>
+</tr>
+<tr>
+<td><em><strong><code>callback</code></strong></em></td>
+<td>Pointer to the effect callback function.</td>
+</tr>
+<tr>
+<td><em><strong><code><code><EM><STRONG>arg</STRONG></EM></code></code></strong></em></td>
+<td>Parameter for the argument of the effect callback function.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAHQWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns if the effect has started properly.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAOQWT"></a>
+<h2>Description</h2>
+      <p>
+Starts the sound capture effect.
+</p>
+      <p>
+After capturing the mixer output using the capture feature and applying the effect process with the callback function, this function outputs the final sound. While the effects are being used, they consume 2 of 16 channels (channels 1 and 3). If channel 1 or channel 3 is being used by a sequence, the sounds from that channel are forcibly stopped.
+</p>
+      <p>
+To use effects, an effect buffer is required. With the smaller effect buffer, the callback function is called frequently. The  starting address <code>buffer_p</code> must have a 32-byte alignment. The buffer size <code>bufSize</code> must be a multiple of <code>interval * 64</code>.
+</p>
+      <p>
+<code>format</code> takes one of the two values shown in the following table for the sample data format. The 16-bit format provides better sound quality, but the callback function is called twice as often as with the 8-bit format.
+</p>
+<div class="table"><a name="IDAERWT"></a><p class="title"><b><strong>Table: <code>SNDCapture</code> Format</strong></b></p>
+<table summary="NNSSndCaptureFormat" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_CAPTURE_FORMAT_PCM8</td>
+<td>8-bit PCM</td>
+</tr>
+<tr>
+<td>NNS_SND_CAPTURE_FORMAT_PCM16</td>
+<td>16-bit PCM</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <p>
+The higher the sampling rate <code>sampleRate</code>, the better the sound quality of the captured data, but the more frequently the callback function is called.
+</p>
+      <p>
+The callback interval <code>interval</code> specifies how often the callback function is called while the entire contents of the effect buffer is being captured. Normally, this should be specified as &quot;2&quot; so that half of the buffer can used for rewriting while the other half is used for playback.
+</p>
+      <p>
+The callback function <code>callback</code> is called every time the effect buffer is captured, at the interval specified with the callback interval <code>interval</code>. The arguments of this callback function are pointers to the starting addresses of the L and R mixer components <code>bufferL</code> and <code>bufferR</code> and the buffer size <code>len</code>. For the format <code>format</code> and the user argument <code>arg</code>, the same as the ones used with the <code>NNS_SndCaptureStartEffect</code> function is passed. The buffer passed to the argument indicates the region where the capture ended. To correct this area, the actual output sound can be changed.
+</p>
+        <p>
+When the capture thread is started by the <a  href="NNS_SndCaptureCreateThread.html"><code>NNS_SndCaptureCreateThread</code></a> function, the callback function is called from the capture thread. If the capture thread has not been started, the callback function is called from the IRQ handler.
+</p>
+      <p>
+The effect may fail to start for one of the following reasons. 
+</p>
+      <div class="itemizedlist">
+<ul type="disc">
+<li>Capture is being used for something other than an effect</li>
+<li>Channel 1 or Channel 3 is being used for something other than playing an effect or sequence </li>
+</ul>
+</div>
+
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+After processing the capture buffer, call the <code>DC_FlushRange</code> function or a similar function to ensure that the capture buffer is written to the main memory.</p>
+<p>
+It is not necessary to finish processing the captured area within the callback functions. However, the processing must be complete before the area is used for playback. Otherwise the proper sound may not be output.
+</p>
+<p>
+If this function is called while sound is being played, the sound is interrupted.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndCaptureCreateThread.html">NNS_SndCaptureCreateThread</a></p>
+<h2>Revision History</h2>
+<p>06/27/2005 Added reasons for function failure.</P><P>01/06/2005 Deleted the description regarding TEG.</P><P>09/14/2004 Added a note about interrupting the sound.</P><P>09/13/2004 Added explanation of operation for creating a capture thread.</P><P>08/10/2004 Added a note that the callback function is called with the interrupt prohibited.</P><P>07/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

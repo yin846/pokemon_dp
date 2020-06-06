@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_SetBGScrOffset</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_SetBGScrOffset</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx.h&gt;</CODE><BR> <BR> <CODE>void GX_SetBGScrOffset(GXBGScrOffset offset);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">offset</font></strong></em></td>
+<td width="87%">BG screen data offset value</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function selects an offset to apply to the address where the Main 2D Engine BG screen data is stored. The sum of the BG screen base offset set with this function and the screen base block set for each BG is the base address in the BG-VRAM space.<BR>
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_BGSCROFFSET_0x00000</CODE></TD>
+<TD>Sets <code>0x00000</code> as the offset.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGSCROFFSET_0x10000</CODE></TD>
+<TD>Sets <code>0x10000</code> as the offset.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGSCROFFSET_0x20000</CODE></TD>
+<TD>Sets <code>0x20000</code> as the offset.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGSCROFFSET_0x30000</CODE></TD>
+<TD>Sets <code>0x30000</code> as the offset.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGSCROFFSET_0x40000</CODE></TD>
+<TD>Sets <code>0x40000</code> as the offset.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGSCROFFSET_0x50000</CODE></TD>
+<TD>Sets <code>0x50000</code> as the offset.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGSCROFFSET_0x60000</CODE></TD>
+<TD>Sets <code>0x60000</code> as the offset.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_BGSCROFFSET_0x70000</CODE></TD>
+<TD>Sets <code>0x70000</code> as the offset.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The following indicates the type definition for <code>GXBGScrOffset</code> format.</P>
+<PRE><CODE>typedef enum
+{
+GX_BGSCROFFSET_0x00000 = 0x00,
+GX_BGSCROFFSET_0x10000 = 0x01,
+GX_BGSCROFFSET_0x20000 = 0x02,
+GX_BGSCROFFSET_0x30000 = 0x03,
+GX_BGSCROFFSET_0x40000 = 0x04,
+GX_BGSCROFFSET_0x50000 = 0x05,
+GX_BGSCROFFSET_0x60000 = 0x06,
+GX_BGSCROFFSET_0x70000 = 0x07
+}
+GXBGScrOffset;</CODE></PRE>
+<h2>See Also</h2>
+<P><code><A href="../g2/G2_SetBG0Control.html">G2_SetBG0Control</A></code>, <code><A href="../g2/G2_SetBG1Control.html">G2_SetBG1Control</A></code>, <code><A href="../g2/G2_SetBG2ControlText.html">G2_SetBG2ControlText</A></code>, <code><A href="../g2/G2_SetBG2ControlAffine.html">G2_SetBG2ControlAffine</A></code>, <code><A href="../g2/G2_SetBG2Control256x16Pltt.html">G2_SetBG2Control256x16Pltt</A></code>, <code><A href="../g2/G2_SetBG2Control256Bmp.html">G2_SetBG2Control256Bmp</A></code>, <code><A href="../g2/G2_SetBG2ControlDCBmp.html">G2_SetBG2ControlDCBmp</A></code>, <code><A href="../g2/G2_SetBG2ControlText.html">G2_SetBG2ControlText</A></code>, <code><A href="../g2/G2_SetBG2ControlAffine.html">G2_SetBG2ControlAffine</A></code>, <code><A href="../g2/G2_SetBG2Control256x16Pltt.html">G2_SetBG2Control256x16Pltt</A></code>, <code><A href="../g2/G2_SetBG2Control256Bmp.html">G2_SetBG2Control256Bmp</A></code>, <code><A href="../g2/G2_SetBG2ControlDCBmp.html">G2_SetBG2ControlDCBmp</A></code> <code><a href="../g2/G2_SetBG3ControlText.html">G2_SetBG3ControlText</a></code>, <code><a href="../g2/G2_SetBG3ControlAffine.html">G2_SetBG3ControlAffine</a></code>, <code><a href="../g2/G2_SetBG3Control256x16Pltt.html">G2_SetBG3Control256x16Pltt</a></code>, <code><a href="../g2/G2_SetBG3Control256Bmp.html">G2_SetBG3Control256Bmp</a></code>, <code><a href="../g2/G2_SetBG3ControlDCBmp.html">G2_SetBG3ControlDCBmp</a></code></P>
+<H2>Revision History</H2>
+<P>02/09/2004</P>
+<UL>
+<LI>Revised See Also.
+</UL>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

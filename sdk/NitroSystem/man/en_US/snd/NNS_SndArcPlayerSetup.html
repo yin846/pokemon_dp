@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcPlayerSetup</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcPlayerSetup</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndArcPlayerSetup( NNSSndHeapHandle heap );</code></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA5LWT"></a>
+<h2>Arguments</h2>
+
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>heap</code></strong></em></td>
+<td>The sound heap handle</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAOMWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns a boolean value to indicate if the setup is successful.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAVMWT"></a>
+<h2>Description</h2>
+      <p>
+Sets up the player based on the player settings defined with the sound archive. If not needed, it is OK to not call this function and use the initial settings as they are. It is also possible to modify the settings after calling this function.
+</p>
+      <p>
+The sound archive must first be initialized with <code>NNS_SndArcInit</code> or <code>NNS_SndArcInitOnMemory</code>.
+</p>
+      <p>
+The memory needed to create the player heap is allocated from the sound archive designated with heap. Enter a <code>NULL</code> when not creating the player heap. The function will fail if not enough memory can be allocated from the designated heap.
+</p>
+      <p>
+Inside the function, the <code><a href="NNS_SndPlayerSetPlayableSeqCount.html">NNS_SndPlayerSetPlayableSeqCount</a></code> function, the <code><a href="NNS_SndPlayerSetAllocatableChannel.html">NNS_SndPlayerSetAllocatableChannel</a></code> function, and the <code><a href="NNS_SndPlayerCreateHeap.html">NNS_SndPlayerCreateHeap</a></code> function are called in accordance with the player information stored in the sound archive.
+</p>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndArcInit.html">NNS_SndArcInit</a>, <a href="NNS_SndArcInitOnMemory.html">NNS_SndArcInitOnMemory</a>, <a href="NNS_SndPlayerSetPlayableSeqCount.html">NNS_SndPlayerSetPlayableSeqCount</a>, <a href="NNS_SndPlayerSetAllocatableChannel.html">NNS_SndPlayerSetAllocatableChannel</a>, <a href="NNS_SndPlayerCreateHeap.html">NNS_SndPlayerCreateHeap</a></code></p>
+<h2>Revision History</h2>
+<p>01/05/2005 Added the <code>NNS_SndPlayerSetAllocatableChannel</code> call. </p><p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

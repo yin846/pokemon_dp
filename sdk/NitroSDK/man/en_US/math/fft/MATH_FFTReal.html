@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATH_FFTReal</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATH_FFTReal</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/fft.h&gt;
+
+void MATH_FFTReal( fx32* data, u32 nShift, const fx16* sinTable, const fx16* sinTable2 );
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">data</font></strong></em></TD>
+<TD width="670">Pointer to the data to transform. Data after the transform is overwritten.</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">nShift</font></strong></em></TD>
+<TD width="670">The value obtained by taking the base-2 logarithm of the number of input real numbers.</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">sinTable</font></strong></em></TD>
+<TD width="670">Pointer to the table of sine values.</TD>
+    </TR>
+    <TR>
+<TD width="176"><em><strong><font face="Courier New">sinTable2</font></strong></em></TD>
+<TD width="670">Pointer to the sine value table that omits every other value in sinTable.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>
+This takes a real number series as input and performs a discrete Fourier transform that outputs a complex number series using the fast Fourier transform algorithm.<BR>This performs the same transform as the <A href="MATH_FFT.html">MATH_FFT</A> function with the imaginary number parts filled with 0, but it uses only half the amount of memory and the calculation takes only around half as much time.<BR>
+</P>
+<P>
+In the explanation below, the value 2<sup>nShift</sup> (2 to the nShift power) is represented as N. <I>data</I> is a type fx32 array of length N. These are the data in real numbers you want to transform.<BR><I>sinTable </I> is the pointer to the array of N*3/4 length that has fx16 type sine values assigned that satisfy <CODE>sinTable[k] = <i>sin</i>( (2&#x3C0;/N) * k )  (k = 0, 1,..., N*3/4-1)</CODE>. This can be created using the <A href="MATH_MakeFFTSinTable.html">MATH_MakeFFTSinTable</A> function.<BR>sinTable2 is the pointer to the array of length (N/2)*3/4, where fx16 type sine values are assigned that satisfy <CODE>sinTable2[k] = <i>sin</i>( (2&#x3C0;/(N/2)) * k )  (k = 0, 1,..., (N/2)*3/4-1)</CODE>. This can be created by passing a value smaller by 1 to the nShift argument with the  <A href="MATH_MakeFFTSinTable.html">MATH_MakeFFTSinTable</A> function. <BR>
+</P>
+<P>
+The result of the discrete Fourier transform is a complex number series, but because a real number series is passed, only half the values are the independent numeric values. For this reason, this function extracts only the independent part, overwrites it as N/2+1 sets of complex number series (with the first and last imaginary components always 0) in <I>data </I>and then returns. The resulting size of the array that gets used is N, or the same as the input data. The return value is in a format that stores real and imaginary numbers alternately. However, the N/2th value (always a real number) gets stored in the imaginary part of the 0th value (always a real number) and returned. In other words, the transform result is N/2+1 sets of complex number sequence, expressed as <CODE>{data[0], data[2]+<i>i</i>*data[3], ..., data[N-2]+<i>i</i>*data[N-1], data[1]}</CODE>, where <i>i</i> is the unit for imaginary numbers. As for the latter half that was omitted because it was not independent, the values take the complex conjugate of the reverse order of the complex number series (from the first number to the N/2-1th number).<BR>
+</P>
+<P>
+The discrete Fourier transform is a calculation for obtaining <CODE><i>F</i><sub>m</sub> (m = 0, 1, ... N-1)</CODE> to satisfy the expression: <BR><CODE><i>f</i><sub>n</sub> = &#x3A3;<sub>k = 0</sub><sup>N-1</sup> <i>F</i><sub>k</sub><i>e</i><sup><i>i</i>2&#x3C0;kn/N</sup></CODE>, <BR>where the sampling value in complex numbers taken along the time axis expressed as <CODE><i>f</i><sub>n</sub> (n = 0, 1, ... N-1)</CODE>.<BR><CODE><i>F</i><sub>m</sub></CODE> can be viewed as a coefficient of each frequency when the input signals are decomposed into a superposition of sine waves.<BR>The fast Fourier transform is an algorithm that performs the discrete Fourier transform with the time complexity in the order of <CODE>N*log(N)</CODE>.<BR>
+</P>
+<P>
+The calculations are performed using fixed-decimal numbers, so if a large value is given as the input, there is a risk of overflow. When the input value is viewed as type s32, the absolute value should not be greater than or equal to <CODE>0x80000000/N</CODE>. Also note that the maximum error when performing both the forward transform and inverse transform is around several times FX32_ONE.
+</P>
+<h2>See Also</h2>
+<P><A href="MATH_MakeFFTSinTable.html">MATH_MakeFFTSinTable</A>, <A href="MATH_FFT.html">MATH_FFT</A>, <A href="MATH_IFFT.html">MATH_IFFT</A>, <A href="MATH_IFFTReal.html">MATH_IFFTReal</A></P>
+<H2>Revision History</H2>
+<P>
+07/21/2005 Corrected the explanation for <em><strong><CODE>sinTable</CODE></strong></em>.<BR>07/11/2005 Corrected the explanation.<BR> 05/13/2005 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

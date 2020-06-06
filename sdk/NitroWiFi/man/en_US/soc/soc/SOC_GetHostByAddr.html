@@ -1,0 +1,60 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_GetHostByAddr</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_GetHostByAddr</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>SOCHostEnt* SOC_GetHostByAddr( const void* <em><strong>addr</strong></em>, int <em><strong>len</strong></em>, int <em><strong>type</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>addr</strong></em></code></td>
+<td>Pointer to address in network byte order.</td>
+  </tr>
+  <tr>
+<td><code><em><strong>len</strong></em></code></td>
+<td>Length of the address pointed to by <code><em><strong>addr</strong></em></code>.</td>
+  </tr>
+  <tr>
+<td><code><em><strong>type</strong></em></code></td>
+<td>Address family type (<code>SOC_PF_INET</code> in IPv4 address)</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<p>Returns pointer to <code><a href="SOCHostEnt.html">SOCHostEnt</a></code> structure when requested entry is discovered.</p>
+
+<h2>Description</h2>
+
+<p>This function returns information about the host for address <code><em><strong>addr</strong></em></code>.</p>
+
+<p><strong>Note:</strong>:<code>SOC_GetHostByAddr()</code> is neither reentrant nor thread-safe.</p>
+
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_GetHostByName.html">SOC_GetHostByName</a></code>, <code><a href="SOCConfig.html">SOCConfig</a></code>, <code><a href="SOCHostEnt.html">SOCHostEnt</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+09/13/2005 Initial version.</P>
+</body>
+</html>

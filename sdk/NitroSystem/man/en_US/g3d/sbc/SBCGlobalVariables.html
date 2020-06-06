@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+	<TITLE>Global Variables</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css"   type="text/css">
+	<LINK rel="stylesheet" href="../../css/apilist.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<h1 align="left">Global Variables</h1>
+
+<h2>Description</h2>
+<TABLE border="0" width="100%">
+  <TBODY>
+    <TR>
+<TD width="249" align="left">NNS_G3dRS</TD>
+<TD width="573">Pointer to the structure that holds the state (of the state machine) that the program has during rendering. The region for the structure is allocated by the stack region (the DTCM) in the <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code> function. <br /> The <code>NNS_G3dRS</code> structure is cleaned up to <code>NULL</code> when the <code><a href="../sbc/NNS_G3dDraw.html">NNS_G3dDraw</a></code> function finishes.</TD>
+    </TR>
+    <TR>
+<TD width="249">NNS_G3dRSOnGlb</TD>
+<TD width="573">Data that was not put on the stack region of the state (the state of the state machine) due to the large size. </TD>
+    </TR>
+    <TR>
+<TD width="249">NNS_G3dFuncSbcTable</TD>
+<TD width="573">Table containing individual SBC command handlers You can overwrite the handlers and customize the processes.</TD>
+    </TR>
+    <TR>
+<TD width="249">NNS_G3dFuncSbcShpTable</TD>
+<TD width="573">The tags at the start of each shape data are indices to this table. Register the shape data by handler type in this table.</TD>
+    </TR>
+    <TR>
+<TD width="249">NNS_G3dFuncSbcMatTable</TD>
+      <TD width="573">
+			The tags at the start of each material data are indices to this table. Register the material data by handler type in this table.
+	  </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+
+<H2>See Also</H2>
+
+
+<H2>Revision History</H2>
+<P>08/02/2004 Initial version.</P>
+</BODY>
+
+</HTML>

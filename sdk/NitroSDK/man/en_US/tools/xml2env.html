@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>xml2env</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">xml2env</H1>
+<H2>Description</H2>
+<P><CODE>xml2env</CODE> is a tool to convert the resource data for the ENV library written in XML format to the source file format in C.</P>
+<H2>Using the Library</H2>
+<H3>Start Command</H3>
+<PRE><CODE>% perl init2env.pl RESOURCE_FILE
+[-o OUTPUT_FILE]</CODE></PRE>
+<P>The resource data written in the INIT format specified by <CODE>RESOURCE_FILE</CODE> is changed to the C source file format and is output with the name <CODE>RESOURCE_FILE.result.c</CODE>.<br>However, it is necessary to put in the absolute path of files you want to change in <CODE>RESOURCE_FILE</CODE>.</P>
+<P>With the <CODE>-o</CODE> option, the output file name can be changed from <CODE>RESOURCE_FILE.result.c</CODE> to <CODE>OUTPUT_FILE</CODE>.</P>
+<P>Note: If in an environment where XML::Parser cannot be used, it is necessary to include the latest version of perl and the expat library in the cygwin setup.</P>
+
+<BR>
+<P><B>Description example of the resource data for the ENV library in XML format.</B></P>
+<BR>
+<P>XML formatted resource data before being changed.</P>
+<BLOCKQUOTE><CODE>&amp;ltenvlist&gt;<BR> &amp;ltresource name=&quot;environment1&quot;&gt;<BR> &amp;ltclass name=&quot;myClass11&quot;&gt;<BR> &amp;ltstring name=&quot;str1&quot;&amp;gtmario&lt;/string&gt;<BR> &amp;lthexbinary name=&quot;bin1&quot;&amp;gt12345678&lt;/hexbinary&gt;<BR> &lt;/class&gt;<BR> &lt;/resource&gt;<BR> &amp;ltresource name=&quot;environment2&quot;&gt;<BR> &amp;ltclass name=&quot;myClass21&quot;&gt;<BR> &amp;ltstring name=&quot;str1&quot;&amp;gtmario&lt;/string&gt;<BR> &amp;lthexbinary name=&quot;bin1&quot;&amp;gtabcd123&lt;/hexbinary&gt;<BR> &amp;lthexbinary name=&quot;bin2&quot; src=&quot;../test/test.txt&quot;/&gt;<BR> &lt;/class&gt;<BR> &amp;ltclass name=&quot;myClass22&quot;&gt;<BR> &amp;lts32 name=&quot;data1&quot;&amp;gt-500&lt;/s32&gt;<BR> &amp;ltu16 name=&quot;data2&quot;&amp;gt0x8000&lt;/u16&gt;<BR> &lt;/class&gt;<BR> &lt;/resource&gt;<BR> &lt;/envlist&gt;</CODE></BLOCKQUOTE>
+<BR>
+<P>C Source File formatted Resource Data after being changed.</P>
+<BLOCKQUOTE><CODE>ENVResource myResource1[] = {<BR> &quot;myClass11.str1&quot;,    ENV_STRING( &quot;mario&quot; ),<BR> &quot;myClass11.bin1&quot;,    ENV_BINARY( &quot;\x31\x32\x33\x34\x35\x36\x37\x38&quot; ),<BR> ENV_RESOUCE_END<BR> };<BR> <BR> ENVResource myResource2[] = {<BR> &quot;myClass21.str1&quot;,    ENV_STRING( &quot;mario&quot; ),<BR> &quot;myClass21.bin1&quot;,    ENV_BINARY( &quot;file contents&quot; ),<BR> &quot;myClass21.bin2&quot;,    ENV_BINARY( &quot;test.txt file contents&quot; ),<BR> &quot;myClass22.data1&quot;,   ENV_S32( -500 ),<BR> &quot;myClass22.data2&quot;,   ENV_U16( 0x8000 ),<BR> ENV_RESOUCE_END<BR> };<BR> <BR> ENVResource* resourceArray[]={ myResource1, myResource2, NULL };</CODE></BLOCKQUOTE>
+
+<P>When the resource type is BINARY, it is possible to make the file contents into element data automatically by surrounding the reletive file path within the src attribute inside the element with<CODE> &quot;&quot; </CODE>.</P>
+
+<P>Resource data can be used as is by compiling the generated C source file and the program using ENV together.</P><BR>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/xml2env.pl</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="../env/about_env.html">ENV</A></CODE></P>
+<H2>Revision History</H2>
+<P>10/20/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

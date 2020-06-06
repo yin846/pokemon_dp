@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>Screen2D</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">Macros and Structures for 2D Screens</h1>
+<h2>Description</h2>
+<P>The structures, macros, and <code>typedef</code>s to store 2D screen screen data and character data are defined in <code>NitroSDK/include/nitro/gx/struct_2d.h</code>.</P>
+<H2>typedefs</H2>
+<TABLE border="0" width="100%">
+  <TBODY>
+    <TR>
+<TD width="249" align="left">GXScrFmtText</TD>
+<TD width="573">u16 typedef of screen data for text BG screen</TD>
+    </TR>
+    <TR>
+<TD width="249">GXScrFmtAffine</TD>
+<TD width="573">u8 typedef of screen data for affine BG screen</TD>
+    </TR>
+    <TR>
+<TD width="249">GXScrFmt256Bmp</TD>
+<TD width="573">u8 typedef of screen data for bitmap BG screen</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Macros</H2>
+<TABLE border="0" width="100%">
+  <TBODY>
+    <TR>
+<TD width="249" align="left">GX_SCRFMT_TEXT(pltt, vf, hf, name)</TD>
+<TD width="573">Gets text BG screen screen data from the color palette, HV flip, and character name.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Structure</H2>
+<TABLE border="0" width="100%">
+  <TBODY>
+    <TR>
+<TD width="249" align="left">GXCharFmt16</TD>
+<TD width="573">8x8 dot character in 16-color mode</TD>
+    </TR>
+    <TR>
+<TD width="249">GXCharFmt256</TD>
+<TD width="573">8x8 dot character in 256-color mode</TD>
+    </TR>
+    <TR>
+<TD width="249">GXBGPltt16/GXOBJPltt16</TD>
+<TD width="573">16-color palette</TD>
+    </TR>
+    <TR>
+<TD>GXBGPltt256/GXOBJPltt256</TD>
+<TD>256-color palette</TD>
+    </TR>
+    <TR>
+<TD>GXScrText32x32</TD>
+<TD>256x256 dot text BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrText64x32</TD>
+<TD>512x256 dot text BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrText32x64</TD>
+<TD>256x512 dot text BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrText64x64</TD>
+<TD>512x512 dot text BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrAffine16x16</TD>
+<TD>128x128 dot affine BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrAffine32x32</TD>
+<TD>256x256 dot affine BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrAffine64x64</TD>
+<TD>512x512 dot affine BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrAffine128x128</TD>
+<TD>1024x1024 dot affine BG</TD>
+    </TR>
+    <TR>
+<TD>GXScr256Bmp128x128</TD>
+<TD>128x128 dot bitmap BG</TD>
+    </TR>
+    <TR>
+<TD>GXScr256Bmp256x256</TD>
+<TD>256x256 dot bitmap BG</TD>
+    </TR>
+    <TR>
+<TD>GXScr256Bmp512x256</TD>
+<TD>512x256 dot bitmap BG</TD>
+    </TR>
+    <TR>
+<TD>GXScr256Bmp512x512</TD>
+<TD>512x512 dot bitmap BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrDCBmp128x128</TD>
+<TD>128x128 dot direct color bitmap BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrDCBmp256x256</TD>
+<TD>256x256 dot direct color bitmap BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrDCBmp512x256</TD>
+<TD>512x256 dot direct color bitmap BG</TD>
+    </TR>
+    <TR>
+<TD>GXScrDCBmp512x512</TD>
+<TD>512x512 dot direct color bitmap BG</TD>
+    </TR>
+    <TR>
+<TD>GXCharBGText16</TD>
+<TD>16-color mode character BG</TD>
+    </TR>
+    <TR>
+<TD>GXCharBGText256</TD>
+<TD>256-color mode character BG</TD>
+    </TR>
+    <TR>
+<TD>GXCharBGAffine256</TD>
+<TD>256-color mode affine BG</TD>
+    </TR>
+    <TR>
+<TD>GXBGStdPlttData</TD>
+<TD>Standard BG palette data</TD>
+    </TR>
+    <TR>
+<TD>GXOBJStdPlttData</TD>
+<TD>Standard OBJ palette data</TD>
+    </TR>
+    <TR>
+<TD>GXStdPlttData</TD>
+<TD>Standard palette data</TD>
+    </TR>
+    <TR>
+<TD>GXBGExtPlttData</TD>
+<TD>Extended BG palette data</TD>
+    </TR>
+    <TR>
+<TD>GXOBJExtPlttData</TD>
+<TD>Extended OBJ palette data</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Revision History</H2>
+<P>02/23/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

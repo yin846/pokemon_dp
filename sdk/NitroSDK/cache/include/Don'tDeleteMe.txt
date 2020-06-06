@@ -1,0 +1,2 @@
+This folder is a cache for a pre-compiled header.
+Don't delete this file or this folder. Thanks.

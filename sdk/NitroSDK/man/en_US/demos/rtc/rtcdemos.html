@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>RTC Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>Real Time Clock Sample Demo</H1>
+
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/rtc</CODE></P>
+
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/rtc</CODE> directory and enter:</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/rtc/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/rtc/rtc-1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Navigate to the $NitroSDK/build/demos/rtc/<em><strong>sample_name</strong></em>/bin/<em><strong>platform</strong></em>/<em><strong>target</strong></em>/ directory and perform one of the following:</P>
+<UL>
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER.
+</UL>
+
+<H2>Description</H2>
+<br>
+
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>rtc-1</CODE></STRONG></EM></TD>
+<TD width="525">This function tests the real time clock operation features: <BR><BR>· Read and change date and time<BR>· Read and change alarm setting values<BR>· Interrupt functions when alarms are generated
+      </TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG><CODE>convert-1</CODE></STRONG></EM></TD>
+<TD>Tests the conversion function for date and time. It outputs the result to debug output.
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<H2>Operation</H2>
+<P><CODE><code>rtc-1</code> does not work properly with ensata. If <code>rtc-1</code> is used on the IS-NITRO-EMULATOR hardware, the interrupt function does not operate properly when the alarm is generated unless the IS-NITRO-DEBUGGER software is version 1.11 or newer. This phenomenon is caused by the conflict problem between the RTC hardware and the IS-NITRO-EMULATOR hardware.</P>
+
+<H2>See Also</H2>
+<P><A href="../../rtc/list_rtc.html"><CODE>RTC Function List</CODE></A></P>
+
+<H2>Revision History</H2>
+<P>
+05/17/2005 Added convert-1 demo<BR>03/08/2005 Standardized the Japanese term for &quot;interrupt&quot;.<br /> 03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 10/06/2004 Changed description regarding the alarm interrupt feature of <code>rtc-1</code> demo.<br /> 09/16/2004 Added description on the alarm interrupt feature of <code>rtc-1</code> demo.<br /> 08/17/2004 Standardized the notation of the IS-NITRO-EMULATOR.<br /> 07/10/2004 Changed from <code>.bin</code> to <code>.srl</code>.<br>06/18/2004 Initial Version</P>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

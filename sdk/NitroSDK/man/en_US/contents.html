@@ -1,0 +1,552 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Programming Guide</TITLE>
+<BASE target="main">
+<LINK rel="stylesheet" href="css/titles.css">
+</HEAD>
+<BODY>
+
+<P class="toc">
+</P>
+
+<H3><A target=_self name="OS">Operating System (OS)</A></H3>
+<DL>
+<DD>[<A href="os/os.html" target="_self">Full List</A>/<A href="os/list_os.html">Function List</A> /<A href="os/overview_os.html">Overview</A>]
+</DL>
+<DL>
+<DD><A href="os/list_os.html#Init" target="main">Initialization</A>
+<DD><A href="os/list_os.html#Reset" target="main">Reset</A>
+<DD><A href="os/list_os.html#Cpsr" target="main">System State</A>
+<DD><A href="os/list_os.html#Tcm" target="main">TCM</A>
+<DD><A href="os/list_os.html#ProtectionUnit" target="main">Protection Unit</A>
+<DD><A href="os/list_os.html#Exception" target="main">Exceptions</A>
+<DD><A href="os/list_os.html#Irq" target="main">Interrupts</A>
+<DD><A href="os/list_os.html#Timer" target="main">Timer</A>
+<DD><A href="os/list_os.html#Alarm" target="main">Alarms</A>
+<DD><A href="os/list_os.html#VAlarm" target="main">V-Count Alarms</A>
+<DD><A href="os/list_os.html#Time" target="main">Time</A>
+<DD><A href="os/list_os.html#Thread" target="main">Thread</A>
+<DD><A href="os/list_os.html#Mutex" target="main">Exclusion Control</A>
+<DD><A href="os/list_os.html#Context" target="main">Context</A>
+<DD><A href="os/list_os.html#Message" target="main">Message</A>
+<DD><A href="os/list_os.html#Cache" target="main">Cache</A>
+<DD><A href="os/list_os.html#Arena" target="main">Arena</A>
+<DD><A href="os/list_os.html#Alloc" target="main">Memory Allocation</A>
+<DD><A href="os/list_os.html#Owner">System Information</A>
+</DL>
+<DL>
+<DT><A target=_self>Debug</A>
+<DD><A href="os/list_os.html#Debug-Environment" target="main">Operating Environment</A>
+<DD><A href="os/list_os.html#Debug-Print" target="main">character string  display</A>
+<DD><A href="os/list_os.html#Debug-Assert" target="main">Assert</A>
+<DD><A href="os/list_os.html#Debug-CallTrace" target="main">Function Call Trace</A>
+<DD><A href="os/list_os.html#Debug-FunctionCost" target="main">Function Cost Measurement</A>
+<DD><A href="os/list_os.html#Debug-Stack" target="main">Stack Overflow Check</A>
+<DD><A href="os/list_os.html#Debug-Argument" target="main">Arguments</A>
+</DL>
+
+<H3>Graphics (GX/G2/G3/G3X)</H3>
+<DL>
+<DD>[[<A href="gx/gx.html" target="_self">Full List</A>/<A href="gx/list_gx.html">Function List</A>]
+</DL>
+<DL>
+<DT><A target=_self name="GX">General 2D/3D Graphics (GX)</A>
+  <DD>
+  <DL>
+<DT>Common to the 2D Graphics Engines
+<DD><A href="gx/list_gx.html#Power">Power Control</A>
+<DD><A href="gx/list_gx.html#Init2D">Initialization</A>
+<DD><A href="gx/list_gx.html#VRAM1">VRAM Bank Acquisition</A>
+<DD><A href="gx/list_gx.html#VRAM1_1">VRAM Bank Allocation</A>
+<DD><A href="gx/list_gx.html#VRAM2">Switching to LCDC</A>
+<DD><A href="gx/list_gx.html#VRAM3">Releasing Allocation</A>
+<DD><A href="gx/list_gx.html#Interrupt">Interrupts and Miscellaneous</A>
+  </DL>
+  <DL>
+<DT>Main 2D Graphics Engine
+<DD><A href="gx/list_gx.html#GraphicsMode">Display Mode</A>
+<DD><A href="gx/list_gx.html#Visibility">Display/Hide</A>
+<DD><A href="gx/list_gx.html#OffsetMem">Offset</A>
+<DD><A href="gx/list_gx.html#MappingMode">OBJ Mapping Mode</A>
+<DD><A href="gx/list_gx.html#ResLoadG2Util">Loading Resources (2D)</A>
+<DD><A href="gx/list_gx.html#ResLoadG3Util">Loading Resources (3D)</A>
+<DD><A href="gx/list_gx.html#MiscA">Other</A>
+  </DL>
+  <DL>
+<DT>Sub 2D Graphics Engine
+<DD><A href="gx/list_gx.html#GraphicsModeB">Display Mode</A>
+<DD><A href="gx/list_gx.html#VisibilityB">Display/Hide</A>
+<DD><A href="gx/list_gx.html#MappingModeB">OBJ Mapping Mode</A>
+<DD><A href="gx/list_gx.html#ResLoadB">Loading Resources</A>
+<DD><A href="gx/list_gx.html#MiscB">Other</A>
+  </DL>
+</DL>
+<DL>
+<DT><A target=_self name="G2">2D Graphics (G2)</A>
+<DD><BR>[<A href="gx/gx.html#g2" target="_self">Full List</A>/<A href="gx/list_gx.html#g2">Function List</A>]
+</DL>
+<DL>
+<DT>Common to the 2D Graphics Engines
+<DD><A href="gx/list_gx.html#OAM">OAM</A>
+<DT>Main 2D Graphics Engine
+<DD><A href="gx/list_gx.html#BGCNT">BG Control</A>
+<DD><A href="gx/list_gx.html#BGPriority">Setting BG Display Priority Levels</A>
+<DD><A href="gx/list_gx.html#BGMosaicApply">BG Mosaic</A>
+<DD><A href="gx/list_gx.html#GetPointer">Acquiring Pointers</A>
+<DD><A href="gx/list_gx.html#Offset2D">BG Plane Offset</A>
+<DD><A href="gx/list_gx.html#BGAffine">BG Plane Affine Conversion</A>
+<DD><A href="gx/list_gx.html#Window">Setting Windows</A>
+<DD><A href="gx/list_gx.html#BGMosaic">Mosaic</A>
+<DD><A href="gx/list_gx.html#Effect">Color Special Effects</A>
+<DT>Sub 2D Graphics Engine
+<DD><A href="gx/list_gx.html#BGCNTB">BG Control</A>
+<DD><A href="gx/list_gx.html#BGPriorityB">Setting BG Display Priority Levels</A>
+<DD><A href="gx/list_gx.html#BGMosaicApplyB">BG Mosaic</A>
+<DD><A href="gx/list_gx.html#GetPointerB">Acquiring Pointers</A>
+<DD><A href="gx/list_gx.html#Offset2DB">BG Plane Offset</A>
+<DD><A href="gx/list_gx.html#BGAffineB">BG Plane Affine Conversion</A>
+<DD><A href="gx/list_gx.html#WindowB">Setting Windows</A>
+<DD><A href="gx/list_gx.html#BGMosaicB">Mosaic</A>
+<DD><A href="gx/list_gx.html#EffectB">Color Special Effects</A>
+</DL>
+<DL>
+<DT><A target=_self name="G3">3D Geometry (G3*)</A>
+<DD><BR>[<A href="gx/gx.html#g3" target="_self">Full List</A>/<A href="gx/list_gx.html#g3">Function List</A>]
+</DL>
+<DL>
+<DD><A href="gx/list_gx.html#GeometryCommandCycle">Geometry Command Cycle List</A>
+<DD><A href="gx/list_gx.html#GeometryAndVertices" target="main">Geometry And Vertices</A>
+<DD><A href="gx/list_gx.html#MatrixAndViewport" target="main">MatrixAndViewport</A>
+<DD><A href="gx/list_gx.html#Lighting" target="main">Lighting</A>
+<DD><A href="gx/list_gx.html#Texture" target="main">Texture</A>
+<DD><A href="gx/list_gx.html#GeometryEngine" target="main">Control</A>
+<DD><A href="gx/list_gx.html#ViewingTest" target="main">Geometry Visibility Determination</A>
+<DD><A href="gx/list_gx.html#DirectWrite">Direct Write</A>
+<DD><A href="gx/list_gx.html#MatrixG3Util">Utilities</A>
+<DD><A href="gx/list_gx.html#DL">Dynamic Creation of Display Lists</A>
+</DL>
+<DL>
+<DT><A target=_self name="G3X">3D Graphics Control (G3X)</A>
+<DD><BR>[<A href="gx/gx.html#g3x" target="_self">Full List</A>/<A href="gx/list_gx.html#g3x">Function List</A>]
+</DL>
+<DL>
+<DD><A href="gx/list_gx.html#Init3D">Initialization</A>
+<DD><A href="gx/list_gx.html#Funcs3D">Enabling and Disabling Each Function</A>
+<DD><A href="gx/list_gx.html#Toon">Toon/Highlighting</A>
+<DD><A href="gx/list_gx.html#EdgeColor">Edge Color</A>
+<DD><A href="gx/list_gx.html#Fog">Fog</A>
+<DD><A href="gx/list_gx.html#Offset3D">Offset Settings</A>
+<DD><A href="gx/list_gx.html#ClearColor">Clear color</A>
+<DD><A href="gx/list_gx.html#Test3D">Test Results and Calculation Results</A>
+<DD><A href="gx/list_gx.html#Misc3D">Other</A>
+<DD><A href="gx/list_gx.html#Type">Main Types And Macros</A>
+</DL>
+<H3><A target=_self name="MI">Memory Interface (MI)</A></H3>
+<DL>
+<DD>[[<A href="mi/mi.html" target="_self">Full List</A>/<A href="mi/list_mi.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="mi/list_mi.html#memory" target="main">Memory operations by the CPU</A>
+<DD><A href="mi/list_mi.html#dma" target="main">Memory operations by the DMA</A>
+<DD><A href="mi/list_mi.html#exMemory" target="main">External Memory Control</A>
+<DD><A href="mi/list_mi.html#wram" target="main">Work RAM Settings</A>
+<DD><A href="mi/list_mi.html#swap" target="main">Memory Swap</A>
+<DD><A href="mi/list_mi.html#uncompress" target="main">Expanding compressed data</A>
+
+<DD><A href="mi/list_mi.html#byteAccess" target="main">Byte Access</A>
+<DD><A href="mi/list_mi.html#struct" target="main">Types, Structures</A>
+</DL>
+<H3><A target=_self name="FX">Fixed Decimal (FX)</A></H3>
+<DL>
+<DD>[[<A href="fx/fx.html" target="_self">Full List</A>/<A href="fx/list_fx.html">Function List</A>]
+</DL>
+<DL>
+<DT>Data Type
+<DD><A href="fx/list_fx.html#TypeFixed">Fixed decimal type</A>
+  </DL>
+
+<DL>
+<DT>Initialization
+<DD><A href="fx/list_fx.html#Init">Initialization</A>
+</DL>
+<DL>
+<DT>Calculation
+<DD><A href="fx/list_fx.html#CalcSync">Calculation of Fixed Decimal</A>
+<DD><A href="fx/list_fx.html#CalcAsync">Calculation of Fixed Decimal (Asynchronous)</A>
+</DL>
+<DL>
+<DT>Macro
+<DD><A href="fx/fx16_macros.html">fx16 Type Macros</A>
+<DD><A href="fx/fx32_macros.html">fx32 Type Macros</A>
+<DD><A href="fx/fx64_macros.html">fx64 Type Macros</A>
+<DD><A href="fx/fx64c_macros.html">fx64c Type Macros</A>
+</DL>
+<DL>
+<DT>Constant
+<DD><A href="fx/fx16_const.html">fx16 Type Constant Macros</A>
+<DD><A href="fx/fx32_const.html">fx32 Type Constant Macros</A>
+<DD><A href="fx/fx64c_const.html">fx64c Type Constant Macros</A>
+</DL>
+<P><B><A target="_self" name="MTX">Matrix (MTX)</A></B></P>
+<DL>
+<DD><B>&lt;Data Type&gt;</B>
+<DD><A href="fx/list_fx.html#TypeMtxVec">Matrix Type</A>
+  <DD>
+<B>&lt;Matrix Calculation&gt;</B>
+<DD><A href="fx/list_fx.html#Calc2x2Mtx">2x2 Matrix Calculation</A>
+<DD><A href="fx/list_fx.html#Calc3x3Mtx">3x3 Matrix Calculation</A>
+<DD><A href="fx/list_fx.html#Calc4x3Mtx">4x3 Matrix Calculation</A>
+<DD><A href="fx/list_fx.html#Calc4x4Mtx">4x4 Matrix Calculation</A>
+</DL>
+<P><B><A target="_self" name="VEC">Vector (VEC)</A></B></P>
+<DL>
+<DD><B>&lt;Data Type&gt;</B>
+<DD><A href="fx/list_fx.html#TypeMtxVec">Vector Type</A>
+<DD><B>&lt;Vector Calculation&gt;</B>
+<DD><A href="fx/list_fx.html#CalcVec">Vector Calculation</A>
+</DL>
+<P>
+<BR>
+</P>
+<H3><A target=_self name="CP">Co-Processor (CP)</A></H3>
+<DL>
+<DD>[<A href="cp/cp.html" target="_self">Full List</A>/<A href="cp/list_cp.html">Function List</A> /<A href="cp/overview_cp.html">Overview</A>]
+</DL>
+<DL>
+<DD><A href="cp/list_cp.html#divider">Divider</A>
+<DD><A href="cp/list_cp.html#sqrt">Square Root Calculator</A>
+<DD><A href="cp/list_cp.html#context">Context Operations</A>
+</DL>
+<H3><A target=_self name="MATH">Mathematical Functions (MATH)</A></H3>
+<DL>
+<DD>[<A href="math/math.html" target="_self">Full List</A>/<A href="math/list_math.html">Function List</A> /<A href="math/overview_math.html">Overview</A>]
+</DL>
+<DL>
+<DD><A href="math/list_math.html#Utility">Utility Functions</A>
+<DD><A href="math/list_math.html#IntegerOperation">Integer Operations</A>
+<DD><A href="math/list_math.html#BitOperation">Bit Operations</A>
+<DD><A href="math/list_math.html#Random">Random Number-Related Features</A>
+<DD><A href="math/list_math.html#FFT">Fast Fourier Transforms</A>
+<DD><A href="math/list_math.html#Hash">Hash Value-Related Functions</A>
+<DD><A href="math/list_math.html#Digest">Message Digest Functions</A>
+</DL>
+<H3><A target=_self name="PAD">Controller (PAD)</A></H3>
+<DL>
+<DD>[[<A href="pad/pad.html" target="_self">Full List</A>/<A href="pad/list_pad.html">Function List</A>]
+</DL>
+
+<H3>ARM7 Processor Peripheral Device (SPI)</H3>
+<DL>
+<DD>[[<A href="spi/spi.html" target="_self">Full List</A>/<A href="spi/list_spi.html">Function List</A>]
+</DL>
+<DL>
+<DT><A target=_self name="TP">Touch Panel (TP)</A>
+</DL>
+<DL>
+<DD><A href="spi/list_spi.html#TP_Init">Initialization</A>
+<DD><A href="spi/list_spi.html#TP_SamplingNow">Sampling with Request</A>
+<DD><A href="spi/list_spi.html#TP_SamplingAuto">Auto-Sampling</A>
+<DD><A href="spi/list_spi.html#TP_Calibration">Calibration</A>
+<DD><A href="spi/list_spi.html#TP_Check">Pass/Fail Determination</A>
+<DD><A href="spi/list_spi.html#TP_Struct">Type/Structures</A>
+</DL>
+<DL>
+<DT><A target=_self name="NVRAM">Nonvolatile Memory (NVRAM)</A>
+</DL>
+
+<DL>
+</DL>
+<DL>
+<DT><A target=_self name="MIC">Microphone (MIC)</A>
+</DL>
+<DL>
+<DD><A href="spi/list_spi.html#MIC_Init">Initialization</A>
+<DD><A href="spi/list_spi.html#MIC_Sampling">Sampling</A>
+<DD><A href="spi/list_spi.html#MIC_Auto">Auto-Sampling</A>
+<DD><A href="spi/list_spi.html#MIC_Type">Type/Structures</A>
+</DL>
+
+<DL>
+<DT><A target=_self name="PM">Power Management (PM)</A>
+</DL>
+<DL>
+<DD><A href="spi/list_spi.html#PM_Init">Initialization</A>
+<DD><A href="spi/list_spi.html#PM_Utility">PMIC Operation</A>
+<DD><A href="spi/list_spi.html#PM_GetPMIC">PMIC Status</A>
+<DD><A href="spi/list_spi.html#PM_Sleep">Sleep</A>
+</DL>
+
+
+
+<H3><A target=_self name="PRC">Pattern Recognition (PRC)</A></H3>
+<DL>
+<DD>[[<A href="prc/prc.html" target="_self">Full List</A>/<A href="prc/list_prc.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="prc/list_prc.html#Init" target="main">Initialization</A>
+<DD><A href="prc/list_prc.html#Stroke" target="main">Input Point Processing</A>
+<DD><A href="prc/list_prc.html#PrototypeList" target="main">Sample Pattern DB Operations</A>
+<DD><A href="prc/list_prc.html#Input" target="main">Input Pattern Operations</A>
+<DD><A href="prc/list_prc.html#Recognize" target="main">Pattern Recognition</A>
+<DD><A href="prc/list_prc.html#type" target="main">Type/Structures</A>
+</DL>
+
+<H3><A target=_self name="RTC">Real Time Clock (RTC)</A></H3>
+<DL>
+<DD>[[<A href="rtc/rtc.html" target="_self">Full List</A>/<A href="rtc/list_rtc.html" target="main">Function List</A>]
+</DL>
+<DL>
+<DD><A href="rtc/list_rtc.html#Init" target="main">Initialization</A>
+<DD><A href="rtc/list_rtc.html#Time" target="main">Date, Time</A>
+<DD><A href="rtc/list_rtc.html#Alarm" target="main">Alarms</A>
+<DD><A href="rtc/list_rtc.html#Convert" target="main">Conversions</A>
+<DD><A href="rtc/list_rtc.html#Type" target="main">Type/Structures</A>
+</DL>
+
+<H3><A target=_self name="SND">Sound (SND)</A></H3>
+<DL>
+<DD>[[<A href="snd/snd.html" target="_self">Full List</A>/<A href="snd/list_snd.html">Function List</A>]
+</DL>
+<DL>
+
+<DD><A href="snd/list_snd.html#Init" target="main">Initialization</A>
+<DD><A href="snd/list_snd.html#Command" target="main">ARM7 Command Processes</A>
+<DD><A href="snd/list_snd.html#Seq_Command" target="main">Sequence Commands</A>
+<DD><A href="snd/list_snd.html#Channel_Command" target="main">Channel Commands</A>
+<DD><A href="snd/list_snd.html#Capture_Command" target="main">Capture Commands</A>
+<DD><A href="snd/list_snd.html#Alarm_Command" target="main">Alarm Commands</A>
+<DD><A href="snd/list_snd.html#Timer_Command" target="main">Timer Commands</A>
+<DD><A href="snd/list_snd.html#Global_Command" target="main">Global Settings Commands</A>
+<DD><A href="snd/list_snd.html#Invalidate_Command" target="main">Data Invalidation Commands</A>
+<DD><A href="snd/list_snd.html#DriverInfo_Command" target="main">Driver Information Commands</A>
+<DD><A href="snd/list_snd.html#Bank" target="main">Banks</A>
+<DD><A href="snd/list_snd.html#GetInfo" target="main">Get Information</A>
+<DD><A href="snd/list_snd.html#Utility" target="main">Utilities</A>
+</DL>
+
+<H3><A target=_self name="FS">ROM File System (FS)</A></H3>
+<DL>
+<DD>[[<A href="fs/fs.html" target="_self">Full List</A>/<A href="fs/list_fs.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="fs/list_fs.html#Init" target="main">Initialization</A>
+<DD><A href="fs/list_fs.html#File" target="main">File Access</A>
+<DD><A href="fs/list_fs.html#Directory" target="main">Directory Access</A>
+<DD><A href="fs/list_fs.html#Overlay" target="main">Overlay</A>
+<DD><A href="fs/list_fs.html#Archive" target="main">Archive</A>
+<DD><A href="fs/list_fs.html#const" target="main">Constants</A>
+<DD><A href="fs/list_fs.html#type" target="main">Type/Structures</A>
+</DL>
+
+<H3><A target=_self name="SVC">Supervisor Call (SVC)</A></H3>
+<DL>
+<DD>[[<A href="svc/svc.html" target="_self">Full List</A>/<A href="svc/list_svc.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="svc/list_svc.html#IntrWait" target="main">Wait for Interrupt</A>
+<DD><A href="svc/list_svc.html#Wait" target="main">Waiting</A>
+<DD><A href="svc/list_svc.html#Memory" target="main">Memory Operations</A>
+<DD><A href="svc/list_svc.html#Uncompress" target="main">Expanding compressed data</A>
+<DD><A href="svc/list_svc.html#Calc" target="main">Arithmetic Operation</A>
+<DD><A href="svc/list_svc.html#Other" target="main">Other</A>
+</DL>
+<H3><A target=_self name="CARD">CARD Module (CARD)</A></H3>
+<DL>
+<DD>[<A href="card/card.html" target="_self">Full List</A>/<A href="card/list_card.html">Function List</A> /<A href="card/overview_card.html">Overview</A>]
+</DL>
+<DL>
+<DD><A href="card/list_card.html#Init" target="main">Initialization</A>
+<DD><A href="card/list_card.html#Common" target="main">Common</A>
+<DD><A href="card/list_card.html#Backup" target="main">General Backup</A>
+<DD><A href="card/list_card.html#Eeprom" target="main">EEPROM Device</A>
+<DD><A href="card/list_card.html#FLASH" target="main">FLASH Device</A>
+<DD><A href="card/list_card.html#FRAM" target="main">FRAM Device</A>
+<DD><A href="card/list_card.html#Rom" target="main">ROM Access</A>
+<DD><A href="card/list_card.html#pulledOut" target="main">Removal Detection</A>
+<DD><A href="card/list_card.html#const" target="main">Constants</A>
+<DD><A href="card/list_card.html#struct" target="main">Structure</A>
+</DL>
+
+<H3><A target=_self name="CTRDG">Game Pak Module (CTRDG)</A></H3>
+<DL>
+<DD>[[<A href="ctrdg/ctrdg.html" target="_self">Full List</A>/<A href="ctrdg/list_ctrdg.html">Function List</A>]
+
+</DL>
+<DL>
+<DD><A href="ctrdg/list_ctrdg.html#Init" target="main">Initialization</A>
+<DD><A href="ctrdg/list_ctrdg.html#PulledOut" target="main">Removal Detection</A>
+<DD><A href="ctrdg/list_ctrdg.html#Cart" target="main">Classes of Game Paks</A>
+<DD><A href="ctrdg/list_ctrdg.html#AgbInfo" target="main">AGB Cartridge Information</A>
+<DD><A href="ctrdg/list_ctrdg.html#Copy" target="main">Data Transfer</A>
+<DD><A href="ctrdg/list_ctrdg.html#Backup" target="main">AGB Backup Overview</A>
+<DD><A href="ctrdg/list_ctrdg.html#Flash" target="main">FLASH Device</A>
+<DD><A href="ctrdg/list_ctrdg.html#Sram" target="main">SRAM Device</A>
+<DD><A href="ctrdg/list_ctrdg.html#Phi" target="main">PHI Output Terminal</A>
+</DL>
+
+<H3><A target=_self name="VIB">Rumble Pak (VIB)</A></H3>
+<DL>
+<DD>[<A href="vib/vib.html" target="_self">Full List</A>/<A href="vib/list_vib.html">Function List</A> /<A href="vib/about_vib.html">Overview</A>]
+</DL>
+<DL>
+<DD><A href="vib/list_vib.html#function" target="main">Function</A>
+<DD><A href="vib/list_vib.html#struct" target="main">Structures</A>
+<DD><A href="vib/list_vib.html#macro" target="main">Constants</A>
+</DL>
+
+<H3><A target=_self name="WVR">Wireless  Driver Operation Control  Library (WVR)</A></H3>
+<DL>
+
+<DD>[[<A href="wvr/wvr.html" target="_self">Full List</A>/<A href="wvr/list_wvr.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="wvr/list_wvr.html#Drive" target="main">Driver Operation Control</A>
+<DD><A href="wvr/list_wvr.html#const" target="main">Constants and Types</A>
+</DL>
+
+<H3><A target=_self name="WM">Wireless Manager (WM)</A></H3>
+<DL>
+
+<DD>[[<A href="wm/wm.html" target="_self">Full List</A>/<A href="wm/list_wm.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="wm/list_wm.html#Init" target="main">Initialization</A>
+<DD><A href="wm/list_wm.html#Config" target="main">Initial Settings</A>
+<DD><A href="wm/list_wm.html#MP" target="main">MP Communication</A>
+<DD><A href="wm/list_wm.html#DCF" target="main">Infrastructure Mode Communications</A>
+<DD><A href="wm/list_wm.html#Other" target="main">Other</A>
+<DD><A href="wm/list_wm.html#const" target="main">Constants</A>
+<DD><A href="wm/list_wm.html#Type" target="main">Types, Structures</A>
+<DD><A href="wm/list_wm.html#Misc" target="main">Figures and information</A>
+</DL>
+
+<H3><A target=_self name="WBT">WM Block Transfer Library (WBT)</A></H3>
+<DL>
+
+<DD>[<A href="wbt/wbt.html" target="_self">Full List</A>/<A href="wbt/list_wbt.html">Function List</A> /<A href="wbt/overview_wbt.html">Overview</A>]
+</DL>
+<DL>
+<DD><A href="wbt/list_wbt.html#Init" target="main">Initialization</A>
+<DD><A href="wbt/list_wbt.html#Common" target="main">Common</A>
+<DD><A href="wbt/list_wbt.html#Parent" target="main">Parent Device Settings</A>
+<DD><A href="wbt/list_wbt.html#Child" target="main">Child Device Settings</A>
+<DD><A href="wbt/list_wbt.html#Command" target="main">Commands</A>
+<DD><A href="wbt/list_wbt.html#const" target="main">Constants and Macros</A>
+<DD><A href="wbt/list_wbt.html#struct" target="main">Structure</A>
+</DL>
+
+<H3><A target=_self name="MB">Multiboot Library (MB)</A></H3>
+<DL>
+
+<DD>[[<A href="mb/mb.html" target="_self">Full List</A>/<A href="mb/list_mb.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="mb/list_mb.html#Init" target="main">Initialization</A>
+<DD><A href="mb/list_mb.html#Child" target="main">Child (after multi-boot)</A>
+<DD><A href="mb/list_mb.html#Parent" target="main">Parent</A>
+<DD><A href="mb/list_mb.html#FakeChild" target="main">Pseudo Multiboot Child</A>
+<DD><A href="mb/list_mb.html#const" target="main">Constants and Structures</A>
+</DL>
+
+<H3><A target=_self name="CHT">PictoChat Library (CHT)</A></H3>
+<DL>
+<DD>[[<A href="cht/cht.html" target="_self">Full List</A>/<A href="cht/list_cht.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="cht/list_cht.html#catch" target="main">PictoChat Search</A>
+</DL>
+
+<H3><A target=_self name="EXT">Other Libraries (EXT)</A></H3>
+<DL>
+<DD>[[<A href="ext/ext.html" target="_self">Full List</A>/<A href="ext/list_ext2.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="ext/list_ext2.html" target="main">Auto-Test</A>
+</DL>
+
+<H3><A target=_self name="ENV">Environment resource management library (ENV)</A></H3>
+<DL>
+<DD>[<A href="env/env.html" target="_self">Full List</A>/<A href="env/list_env.html">Function List</A> /<A href="env/about_env.html">Overview</A>]
+</DL>
+<DL>
+<DD><A href="env/list_env.html#Init" target="main">Initialization</A>
+<DD><A href="env/list_env.html#ResSet" target="main">Resource Set Configuration</A>
+<DD><A href="env/list_env.html#Res" target="main">Obtaining Resources</A>
+<DD><A href="env/list_env.html#Class" target="main">Class Configuration</A>
+<DD><A href="env/list_env.html#Iter" target="main">Conditional Searches</A>
+</DL>
+
+<H3><A target=_self name="STD">Standard Library (STD)</A></H3>
+<DL>
+<DD>[[<A href="std/std.html" target="_self">Full List</A>/<A href="std/list_std.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="std/list_std.html#String" target="main">Charstring Functions</A>
+</DL>
+
+<H3><A target=_self name="HOSTIO">Host I/O Library</A></H3>
+<DL>
+<DD>Support in the MCS library of the NITRO-SYSTEM package
+</DL>
+<H3><A target=_self name="SAMPLE">Sample Demos</A></H3>
+<DL>
+<DD><A href="demos/os/osdemos.html">OS Sample Demo</A>
+<DD><A href="demos/gx/gxdemos.html">Graphics Sample Demos</A>
+<DD><A href="demos/mi/midemos.html">MI Sample Demo</A>
+<DD><A href="demos/fx/fxdemos.html">FX Sample Demo</A>
+<DD><A href="demos/cp/cpdemos.html">CP Sample Demo</A>
+<DD><A href="demos/math/mathdemos.html">MATH Sample Demo</A>
+<DD><A href="demos/pad/paddemos.html">PAD Sample Demo</A>
+<DD><A href="demos/spi/spidemos.html">SPI Sample Demo</A>
+<DD><A href="demos/prc/prcdemos.html">PRC Sample Demo</A>
+<DD><A href="demos/rtc/rtcdemos.html">RTC Sample Demo</A>
+<DD><A href="demos/snd/snddemos.html">SND Sample Demo</A>
+<DD><A href="demos/fs/fsdemos.html">FS Sample Demo</A>
+<DD><A href="demos/card/carddemos.html">Card Sample Demo</A>
+<DD><A href="demos/ctrdg/ctrdgdemos.html">CTRDG Sample Demo</A>
+<DD><A href="demos/vib/vibdemos.html">VIB Sample Demo</A>
+<DD><A href="demos/wvr/wvrdemos.html">WVR Sample Demo</A>
+<DD><A href="demos/wm/wmdemos.html">WM Sample Demo</A>
+<DD><A href="demos/wbt/wbtdemos.html">WBT Sample Demo</A>
+<DD><A href="demos/mb/mbdemos.html">MB Sample Demo</A>
+<DD><A href="demos/cht/chtdemos.html">CHT Demo</A>
+<DD><A href="demos/env/envdemos.html">ENV sample demo</A>
+<DD><A href="demos/tips/tipsdemos.html">Miscellaneous Sample Demos</A>
+</DL>
+<H3><A target=_self name="TOOL">Tools / Commands</A></H3>
+<DL>
+<DD>[[<A href="tools/tools.html" target="_self">Full List</A>/<A href="tools/list_tools.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="tools/list_tools.html#Rom"  target="main">Features related to ROM images</A>
+<DD><A href="tools/list_tools.html#Conv" target="main">Data Conversion Tools</A>
+<DD><A href="tools/list_tools.html#Demo" target="main">Demo Tools</A>
+</DL>
+
+<H3><A target=_self name="ROMFILES">Compiled Program</A></H3>
+<DL>
+<DD>[[<A href="romfiles/romfiles.html" target="_self">Full List</A>/<A href="romfiles/list_romfiles.html">Function List</A>]
+</DL>
+<DL>
+<DD><A href="romfiles/list_romfiles.html#Wireless"  target="main">Wireless-Related</A>
+</DL>
+
+<H3><A target=_self name="HAEADERFILES">Related Information</A></H3>
+<DL>
+<DD><A href="information/list_information.html#HeaderFiles" target="main">Description of Header Files</A>
+<DD><A href="information/list_information.html#CompileTarget" target="main">Description of Compile Target</A>
+</DL>
+
+NTR-06-0023-001-A16
+<BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR>
+
+<BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR>
+
+<BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR> <BR>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

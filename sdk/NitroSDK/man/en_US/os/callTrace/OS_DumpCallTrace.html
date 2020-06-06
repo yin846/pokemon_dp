@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_DumpCallTrace</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_DumpCallTrace</H1>
+<H2>C Specification</H2>
+<DL>
+<DD><CODE>#include &lt;nitro/os.h&gt;</CODE><BR> <BR> <CODE>void OS_DumpCallTrace( void ); </CODE>
+</DL>
+<H2>Arguments</H2>
+<P>None.</P>
+<H2>Return Values</H2>
+<P>None.</P>
+<H2>Description</H2>
+<P>This function displays function call trace information.</P>
+<P>It displays the trace information that is present at the time it is called. If you are using a thread system, it will display information for the current thread. To display information for a particular thread, use <CODE>OS_DumpThreadCallTrace()</CODE>.</P>
+<P>The following is a description of trace information in the case of stack mode:</P>
+<BLOCKQUOTE>(Display Example)<br>
+<BLOCKQUOTE><CODE>OS_DumpCallTrace: lr=0x02004438<br> &nbsp;&nbsp;&nbsp;&nbsp;    test3: lr=0x0200447c, r0=0x000000cb<br> &nbsp;&nbsp;  test2: lr=0x020044b0, r0=0x000000c9<br> test1: lr=0x0200426c, r0=0x000000c8<br></CODE></BLOCKQUOTE>
+The example indicates that currently, <CODE>OS_DumpCallTrace()</CODE> is called, trace information is displayed, and the function returns the address 0x2004438. Prior to that test3() was called and the address 0x2004447c was returned. Prior to that <CODE>test2()</CODE> was called and the address 0x20044b0 was returned. Prior to that <CODE>test1()</CODE> was called and the address 0x200426c was returned.  (The display of r0 is optional.)<BR> <IMG src="img02.jpg" border="0" width="560" height="322"></BLOCKQUOTE>
+<P>The following is a description of trace information in the case of log mode.  </P>
+<BLOCKQUOTE>(Display Example)<br>
+<BLOCKQUOTE><CODE>OS_DumpCallTrace: lr=0x02004438<br> &nbsp;&nbsp;&nbsp;&nbsp;    test3: lr=0x0200447c, r0=0x000000cb<br> &nbsp;&nbsp;  test2: lr=0x020044b0, r0=0x000000c9<br> test1: lr=0x0200426c, r0=0x000000c8<BR> test3: lr=0x0200447c, r0=0x000000cb<br> &nbsp;&nbsp;  test2: lr=0x020044b0, r0=0x000000c9<br> test1: lr=0x0200426c, r0=0x000000c8<br></CODE></BLOCKQUOTE>
+The example indicates that currently, <CODE>OS_DumpCallTrace()</CODE> is called, trace information is displayed, and the function returns the address 0x2004438.  Additionally we can see that before this function was called, of the functions that were compiled with the <CODE>profile</CODE> feature on, <CODE>test1</CODE>, <CODE>test2</CODE>, <CODE>test3</CODE>, <CODE>test1</CODE>, <CODE>test2</CODE>, <CODE>test3</CODE>, were entered in this order. We cannot tell which function called what function.</BLOCKQUOTE>
+
+<P>Concerning R0 &ndash; R3 register display: Including this information in the function call trace buffer is optional. Including one register will cost 4 additional bytes in the buffer for each function call. Including the 4 registers R0 &ndash; R3 will cost 16 additional bytes for each function call. The R0 that is displayed is the value at the time that the function is called. In the case of C function arguments, it will be the first argument. R1 will be the second argument, R2 will be the third argument, and R3 will be the fourth argument. In the case of functions that do not take these arguments, they will be indeterminate values that have no special meaning. Concerning calling <CODE>OS_DumpCallTrace()</CODE>, <CODE>OS_DumpThreadCallTrace()</CODE> themselves, information other than R0 will not be displayed.</P>
+<P>If this function is compiled for debugging, it will function properly. However, if compiled for the final ROM version (<CODE>FINALROM</CODE>) library, it will not do anything.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitCallTrace.html">OS_InitCallTrace</A>, <A href="OS_DumpThreadCallTrace.html">OS_DumpThreadCallTrace</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>04/22/2004 Added a description of stack mode and log mode.<BR>04/13/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

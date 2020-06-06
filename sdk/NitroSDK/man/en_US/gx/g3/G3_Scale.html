@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3_Scale</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_Scale</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_Scale(fx32 x, fx32 y, fx32 z);</CODE>
+
+// Below are APIs for creating the display list (command list)<BR><CODE>void G3B_Scale(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, fx32 x, fx32 y, fx32 z);</CODE><BR><CODE>void G3C_Scale(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, fx32 x, fx32 y, fx32 z);</CODE><BR><CODE>void G3BS_Scale(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, fx32 x, fx32 y, fx32 z);</CODE><BR><CODE>void G3CS_Scale(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, fx32 x, fx32 y, fx32 z);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">x</font></strong></em></td>
+<td width="87%">The scale factor along the x-axis.</td>
+  </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">y</font></strong></em></TD>
+<TD>The scale factor along the y-axis.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">z</font></strong></em></TD>
+<TD>The scale factor along the z-axis.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function premultiplies the current matrix by the scale matrix. Each element of the matrix is a signed fixed-point number (sign + 19-bit integer + 12-bit decimal). If the current matrix is <code>C</code>, then the new current matrix, <code>C<sub>new</sub></code> is in the following format.<BR> <span lang=EN-US style='font-size:10.5pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r –¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><span style='mso-text-raise:-33.0pt'><IMG width="153" height="96" src="geo_scale.gif" v:shapes="_x0000_i1025"></span></span><BR> <BR> Even when <code>Position-Vector simultaneous set</code> mode is specified by the matrix mode command, the <code><A href="G3_Scale.html">G3_Scale</A></code> command multiplication applies only to the position coordinate matrix. This is to prevent changing the lighting effect by changing the direction or length of vector if applied to the directional vector matrix.</P>
+<h2>See Also</h2>
+<P><code><A href="G3_MtxMode.html">G3*_MtxMode</A>, <A href="G3_Identity.html">G3*_Identity</A>, <A href="G3_LoadMtx43.html">G3*_LoadMtx43</A>, <A href="G3_LoadMtx44.html">G3*_LoadMtx44</A>, <A href="G3_MultMtx43.html">G3*_MultMtx43</A>, <A href="G3_MultMtx44.html">G3*_MultMtx44</A>, <A href="G3_MultMtx33.html">G3*_MultMtx33</A>, <A href="G3_PushMtx.html">G3*_PushMtx</A>, <A href="G3_PopMtx.html">G3*_PopMtx</A>, <A href="G3_StoreMtx.html">G3*_StoreMtx</A>, <A href="G3_RestoreMtx.html">G3*_RestoreMtx</A>, <A href="G3_Translate.html">G3*_Translate</A></code></P>
+<H2>Revision History</H2>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

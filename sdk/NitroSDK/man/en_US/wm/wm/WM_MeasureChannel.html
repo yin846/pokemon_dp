@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_MeasureChannel</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_MeasureChannel</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_MeasureChannel(
+<A href="WMCallbackFunc.html">WMCallbackFunc</A>  callback
+u16             ccaMode ,
+u16             edThreshold ,
+u16             channel ,
+u16             measureTime
+);
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">ccaMode</FONT></STRONG></EM></TD>
+<TD width="800">Select the measure mode by using a value below (0-3).<br />
+<UL><LI>0 : carrier sense mode. Measures only signals that are strong enough to affect Nintendo DS Wireless Communications.<br />
+<LI>1 : ED threshold specification mode. Measures signals that exceed the value specified by <em><strong><code>edThreshold</code></strong></em>.<br />
+<LI>2 : Measures signals meeting both carrier sense AND ED threshold strength requirements.<br />
+<LI>3 : Measures signals meeting either carrier sense OR ED threshold strength requirements.
+      </UL></TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">edThreshold</FONT></STRONG></EM></TD>
+<TD width="800">If not in carrier sense mode, specifies the lower limit of signal strength to measure. The value should be from 0 through 61 (-60 dBm to -80 dBm).</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">channel</FONT></STRONG></EM></TD>
+<TD width="800">Specifies channel to measure. Use a value in the range of 1-14.</TD>
+    </TR>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New">measureTime</FONT></STRONG></EM></TD>
+<TD width="800">Specifies the measure period in units of 1 ms. The value should be 1 or higher.</TD>
+    </TR>
+   </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>
+This measures the electrical usage rate of the specified channel The function is only executable when the WM is in the <code>IDLE</code> state. If the API return value is <code>WM_ERRCODE_OPERATING</code>, a callback occurs after the measurement of the electrical usage rate is complete.
+</P>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callbacks being called from the interrupt handler.<br>03/02/2005 Added to Description.<br>10/22/2004 Changed return value type.<br>08/11/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

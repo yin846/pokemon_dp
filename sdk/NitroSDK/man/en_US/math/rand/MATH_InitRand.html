@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MATH_InitRand*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MATH_InitRand*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>#include &lt;nitro/math/rand.h&gt;
+
+static inline void MATH_InitRand32( <A href="MATHRandContext.html">MATHRandContext32</A> *context, u64 seed );</CODE></PRE>
+<PRE><CODE>static inline void MATH_InitRand16( <A href="MATHRandContext.html">MATHRandContext16</A> *context, u32 seed );<BR>
+</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    
+    
+    <TR>
+<TD width="176"><em><strong><font face="Courier New"><em><strong><code>context</code></strong></em>&nbsp;&nbsp;</font></strong></em></TD>
+<TD width="670">Pointer to the random-number context being initialized.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">seed</font></strong></em></TD>
+<TD>The Seed value for initialization.</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function initializes the context of a random number generated using the linear congruential method. For a 32-bit random number, initialization is done using a multiplier of <nobr><code>0x5D588B656C078965</code></nobr> and an addend of <nobr><code>0x269EC3</code></nobr>. For a 16-bit random number, the multiplier is <nobr><code>0x5D588B65</code></nobr> and the addend is <nobr><code>0x269EC3</code></nobr>. To change these parameters, initialize and then make corrections to the members of the <code><a href="MATHRandContext.html">MATHRandContext*</a></code> structure.</P>
+<h2>See Also</h2>
+<P><a href="MATHRandContext.html"><code>MATHRandContext*</code></a>, <a href="MATH_Rand.html"><code>MATH_Rand*</code></a></P>
+<H2>Revision History</H2>
+<P>12/13/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWCNasLoginState</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWCNasLoginState</H1>
+
+		<H2>Definitions</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+typedef enum {
+	DWC_NASLOGIN_STATE_DIRTY	= 0,
+	DWC_NASLOGIN_STATE_IDLE,
+	DWC_NASLOGIN_STATE_HTTP,
+	DWC_NASLOGIN_STATE_SUCCESS,
+	DWC_NASLOGIN_STATE_ERROR,
+	DWC_NASLOGIN_STATE_CANCELED,
+	DWC_NASLOGIN_STATE_MAX
+} DWCNasLoginState;
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This is an enumeration type that displays the status of the authentication process of Nintendo Authentication Server.
+		</P>
+		<TABLE border="1">
+		<TBODY>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_NASLOGIN_STATE_DIRTY</CODE></STRONG></EM></TD>
+			<TD>The authentication process has not been initialized.<BR></TD>
+          </TR>
+          <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_NASLOGIN_STATE_IDLE</CODE></STRONG></EM></TD>
+			<TD>The authentication process has not started. This is a wait state.</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_NASLOGIN_STATE_HTTP</CODE></STRONG></EM></TD>
+			<TD>The HTTP network communications for the authentication process are running.<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_NASLOGIN_STATE_SUCCESS</CODE></STRONG></EM></TD>
+			<TD>The authentication process was successful.<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_NASLOGIN_STATE_ERROR</CODE></STRONG></EM></TD>
+			<TD>The authentication process failed.<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>DWC_NASLOGIN_STATE_CANCELED</CODE></STRONG></EM></TD>
+			<TD>The authentication process was cancelled.<BR></TD>
+          </TR>
+		</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+		None.
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			03/27/2006 Changed the type name and the constant name<BR>03/23/2006 Initial version<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

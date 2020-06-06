@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GXS_SetVisibleWnd</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GXS_SetVisibleWnd</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx.h&gt;</CODE><BR> <BR> <CODE>void GXS_SetVisibleWnd(int window);</CODE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">window</font></strong></em></td>
+<td width="87%">Specifies a display window using a logical sum from the <CODE>GXWndMask</CODE> form</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function selects a window to display. The function returns the logical sum of <CODE>GXWndMask</CODE> values.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_WNDMASK_NONE</CODE></TD>
+<TD>Indicates that nothing is visible.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_WNDMASK_W0</CODE></TD>
+<TD>Indicates that window 0 is active.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_WNDMASK_W1</CODE></TD>
+<TD>Indicates that window 1 is active.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_WNDMASK_OW</CODE></TD>
+<TD>Indicates that OBJ window feature is active.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The type definition of <CODE>GXWndMask</CODE> type is shown below.</P>
+<PRE>typedef enum
+{
+GX_WNDMASK_NONE = 0x00,
+GX_WNDMASK_W0 = 0x01,
+GX_WNDMASK_W1 = 0x02,
+GX_WNDMASK_OW = 0x04
+}
+GXWndMask;</CODE></PRE>
+<h2>See Also</h2>
+<P><CODE><A href="GXS_SetVisiblePlane.html">GXS_SetVisiblePlane</A>, <A href="GX_GetVisibleWnd.html">GXS_GetVisibleWnd</A></CODE></P>
+<H2>Revision History</H2>
+<P>02/09/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

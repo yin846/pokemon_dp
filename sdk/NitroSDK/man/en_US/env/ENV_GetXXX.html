@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>ENV_GetXXX</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">ENV_Get*</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/env.h&gt;</CODE></PRE>
+<PRE><CODE>BOOL ENV_GetS8( const char* name, s8* retVal );
+BOOL ENV_GetU8( const char* name, u8* retVal );
+BOOL ENV_GetS16( const char* name, s16* retVal );
+BOOL ENV_GetU16( const char* name, u16* retVal );
+BOOL ENV_GetS32( const char* name, s32* retVal );
+BOOL ENV_GetU32( const char* name, u32* retVal );
+BOOL ENV_GetS64( const char* name, s64* retVal );
+BOOL ENV_GetU64( const char* name, u64* retVal );
+BOOL ENV_GetBOOL( const char* name, BOOL* retVal );
+
+BOOL ENV_GetString( const char* name, char** retPtr );
+BOOL ENV_GetStringAndLength( const char* name, char** retPtr, int* length );
+BOOL ENV_GetBinary( const char* name, void** retPtr );
+BOOL ENV_GetBinaryEAndSize( const char* name, void** retPtr, int* size );</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="20%"><EM><STRONG>name</STRONG></EM></TD>
+<TD>The pointer to the resource name. If this character string begins with a &quot;<CODE>.</CODE>&quot; (period), the class name is considered to be omitted and the current class is filled in before that period.</TD>
+    </TR>
+    <TR>
+<TD><EM><B>length</B></EM></TD>
+<TD>This is the pointer used to store the character string length when getting a character string resource.</TD>
+    </TR>
+    <TR>
+<TD><EM><B>retVal</B></EM></TD>
+<TD>This is the pointer used to store the obtained resource.</TD>
+    </TR>
+    <TR>
+<TD><EM><B>retPtr</B></EM></TD>
+<TD>This is the pointer used to store the pointer to the obtained resource.</TD>
+    </TR>
+    <TR>
+<TD><EM><B>size</B></EM></TD>
+<TD>This is the pointer used to store the size when getting a binary resource.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>Returns whether or not the resource was successfully obtained. Returns TRUE if successful. Returns FALSE if the specified resource does not exist.</P>
+<H2>Description</H2>
+<P>Gets the specified resource value.</P>
+<P><CODE><EM><B>name</B></EM></CODE> is the resource name. This function searches for a resource with the same resource name defined. If <CODE><EM><B>name</B></EM></CODE> begins with a period (&quot;<CODE>.</CODE>&quot;), the current class set with <CODE><A href="ENV_SetClass.html">ENV_SetClass()</A></CODE> is filled in before that period.</P>
+<BLOCKQUOTE>Example:<BR>The following two examples return the same values.<BR>//(1)<BR> ENV_GetU32( &quot;MYCLASS.U32VALUE&quot;, &amp;retVal );<BR> <BR> //&nbsp;&nbsp;(2)<BR> ENV_SetClass( &quot;MYCLASS&quot; );<BR> ENV_GetU32( &quot;.U32VALUE&quot;, &amp;retVal );<BR> <BR></CODE></BLOCKQUOTE>
+<P>Searches are performed on all resource arrays registered in the system. If there are resources with identical resource names, the first one found according to the list order within the system is returned.</P>
+<P><CODE>ENV_GetS8()</CODE> gets a value of an s8 type. Be sure to define the resource with <CODE>ENV_S8()</CODE>.<BR><CODE>ENV_GetU8()</CODE> gets a value of a u8 type. Be sure to define the resource with <CODE>ENV_U8()</CODE>.<BR><CODE>ENV_GetS16()</CODE> gets a value of an s16 type. Be sure to define the resource with <CODE>ENV_S16()</CODE>.<BR><CODE>ENV_GetU16()</CODE> gets a value of a u16 type. Be sure to define the resource with <CODE>ENV_U16()</CODE>.<BR><CODE>ENV_GetS32()</CODE> gets a value of an s32 type. Be sure to define the resource with <CODE>ENV_S32()</CODE>.<BR><CODE>ENV_GetU32()</CODE> gets a value of a u32 type. Be sure to define the resource with <CODE>ENV_U32()</CODE>.<BR clear=""><CODE>ENV_GetS64()</CODE> gets a value of an s64 type. Define the resource with <CODE>ENV_S64()</CODE>.<BR clear=""> <CODE>ENV_GetU64()</CODE> gets a value of a u64 type. Define the resource with <CODE>ENV_U64()</CODE>.<BR clear=""><CODE>ENV_GetBOOL()</CODE> gets a value of a BOOL type. Be sure to define the resource with <CODE>ENV_BOOL()</CODE>.<BR>The obtained value is always either TRUE or FALSE. (In other words, the value will be TRUE even when the stored value is a non-zero value that indicates other than TRUE.)</P>
+<P>The obtained value is stored in the place where <CODE><EM><B>retVal</B></EM></CODE> points to. If the value was obtained, the return value is TRUE. If the value was not obtained, the return value is FALSE and a 0 will be assigned in the place where <CODE><EM><B>retVal</B></EM></CODE> points to.</P>
+<P><CODE>ENV_GetString()</CODE> gets the pointer to the character string as a <CODE>char*</CODE> type. Be sure to define the resource with <CODE>ENV_STRING()</CODE>. The obtained pointer is stored in the the place where <EM><B><CODE>retPtr</CODE></B></EM> points to. If the pointer was obtained, TRUE is returned. If not, FALSE is returned. The value that is stored is a NULL value. <CODE>ENV_GetStringAndLength()</CODE> stores the same content as <CODE>ENV_GetString()</CODE> as well as the length of the string in the place where <CODE><EM><B>length</B></EM></CODE> points to.</P>
+<P><CODE>ENV_GetBinary()</CODE> gets the pointer to the binary data as a <CODE>void*</CODE> type. Be sure to define the resource with <CODE>ENV_BINARY()</CODE>. The obtained pointer is stored in the the place where <EM><B><CODE>retPtr</CODE></B></EM> points to. If the pointer was obtained, TRUE is returned. If not, FALSE is returned. The value that is stored is a NULL value. <CODE>ENV_GetBinaryAndSize()</CODE> stores the binary data size in <EM><B><CODE>size</CODE></B></EM> in addition to the content stored with <CODE>ENV_GetBinary()</CODE>.</P>
+
+<H2>See Also</H2>
+<P><CODE><A href="ENV_Init.html">ENV_Init</A>, <A href="ENV_GetSize.html">ENV_GetSize</A>, <A href="ENV_GetType.html">ENV_GetType</A>, <A href="ENV_SetClass.html">ENV_SetClass</A></CODE></P>
+<H2>Revision History</H2>
+<P>08/29/2005 Revised description mistakes in function names.<BR>08/23/2005 Changed the method for obtaining resource values.<BR>08/16/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

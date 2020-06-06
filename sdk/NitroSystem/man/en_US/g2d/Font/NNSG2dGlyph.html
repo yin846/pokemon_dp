@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNSG2dGlyph</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG2dGlyph</H1>
+
+<H2>Definition</H2>
+<DL>
+  <DD>
+  <PRE><CODE>
+#include &lt;nnsys/g2d/g2d_Font.h&gt;
+
+typedef struct NNSG2dGlyph
+{
+	const <a href="../Font/NNSG2dCharWidths.html">NNSG2dCharWidths</a>* pWidths;
+	const u8* image;
+}
+NNSG2dGlyph;
+</CODE></PRE>
+</DL>
+
+<H2>Description</H2>
+<P>
+	Used for obtaining all the character information possessed by the font with <code><a href="NNS_G2dFontGetGlyph.html">NNS_G2dFontGetGlyph</a></code> and <code><a href="NNS_G2dFontGetGlyphFromIndex.html">NNS_G2dFontGetGlyphFromIndex</a></code>. See <code><a href="NNS_G2dFontGetGlyphImage.html">NNS_G2dFontGetGlyphImage</a></code> for the format of the glyph image specified by <EM><STRONG><CODE>image</CODE></STRONG></EM>.
+</P>
+
+	<TABLE border="1" width="100%">
+	  <TBODY>
+	    <TR>
+	      <TD width="13%"><EM><STRONG>pWidths</STRONG></EM></TD>
+	      <TD width="87%"> Pointer to the character width information. </TD>
+	    </TR>
+	    <TR>
+	      <TD width="13%"><EM><STRONG>image</STRONG></EM></TD>
+	      <TD width="87%"> Pointer to glyph image. </TD>
+	    </TR>
+	  </TBODY>
+	</TABLE>
+
+<H2>See Also</H2>
+<P><CODE><a href="NNS_G2dFontGetGlyph.html">NNS_G2dFontGetGlyph</a>, <a href="NNS_G2dFontGetGlyphFromIndex.html">NNS_G2dFontGetGlyphFromIndex</a>, <a href="NNS_G2dFontGetGlyphImage.html">NNS_G2dFontGetGlyphImage</a></CODE></P>
+
+<H2>Revision History</H2>
+<P>05/25/2005 Initial version.</P>
+</BODY>
+
+</HTML>

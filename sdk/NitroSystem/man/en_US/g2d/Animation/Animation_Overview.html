@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>NITRO-System Animation Overview</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+<h1 align="left">Animations Possible on the NITRO-System</h1>
+
+<H2>Description</H2>
+In the NITRO-System 2D development environment, game characters that carry out pattern animation are formed using cells and multicells. These concepts (cells and multicells) are described below. <BR>
+
+<h2>Cell and Cell List</h2>
+<P><span lang=EN-US style='font-size:9.0pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r ‚o–¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"  coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"  filled="f" stroked="f">  <v:stroke joinstyle="miter"/>  <v:formulas>   <v:f eqn="if lineDrawn pixelLineWidth 0"/>   <v:f eqn="sum @0 1 0"/>   <v:f eqn="sum 0 0 @1"/>   <v:f eqn="prod @2 1 2"/>   <v:f eqn="prod @3 21600 pixelWidth"/>   <v:f eqn="prod @3 21600 pixelHeight"/>   <v:f eqn="sum @0 0 1"/>   <v:f eqn="prod @6 1 2"/>   <v:f eqn="prod @7 21600 pixelWidth"/>   <v:f eqn="sum @8 21600 0"/>   <v:f eqn="prod @7 21600 pixelHeight"/>   <v:f eqn="sum @10 21600 0"/>  </v:formulas>  <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>  <o:lock v:ext="edit" aspectratio="t"/> </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:430.2pt;  height:112.8pt' fillcolor="silver">  <v:imagedata src="file:///C:\DOCUME~1\KITANI~1\LOCALS~1\Temp\msohtml1\01\clip_image001.wmz"   o:title="" cropright="-29418f"/> </v:shape><![endif]--><IMG width="574" height="150" src="clip_image001.gif" v:shapes="_x0000_i1025"></span></P>
+<BR> A cell combines and arranges multiple OBJs to form one game character.<BR> By planning the conversion of each piece of image data, the character data can be used more efficiently instead of just displaying the game character as one large OBJ. For example, in a bilaterally symmetrical game character only half of the character data needs to be created. That data can be flipped and used for the other half.<BR> By combining multiple OBJs it is possible to form a game character that exceeds the OBJ size limit.<BR> A cell list is a compilation of multiple cells and is referenced from cell animations, which are described below.<BR>
+
+
+
+
+
+
+
+<h2>Cell Animations</h2>
+Cell animations are rendered by interchanging multiple cells one after the other. The cells registered in the Cell List make up the animations. The display time (number of frames) can be specified for each cell of the animation. The cell is displayed only for the specified number of frames, and interchanges to the next cell. <BR>
+
+
+
+
+<h2>Multicells and Multicell Lists</h2>
+<P><span lang=EN-US style='font-size:9.0pt;mso-bidi-font-size: 12.0pt;font-family:Century;mso-fareast-font-family:"‚l‚r ‚o–¾’©";mso-bidi-font-family: "Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language: JA;mso-bidi-language:AR-SA'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"  coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"  filled="f" stroked="f">  <v:stroke joinstyle="miter"/>  <v:formulas>   <v:f eqn="if lineDrawn pixelLineWidth 0"/>   <v:f eqn="sum @0 1 0"/>   <v:f eqn="sum 0 0 @1"/>   <v:f eqn="prod @2 1 2"/>   <v:f eqn="prod @3 21600 pixelWidth"/>   <v:f eqn="prod @3 21600 pixelHeight"/>   <v:f eqn="sum @0 0 1"/>   <v:f eqn="prod @6 1 2"/>   <v:f eqn="prod @7 21600 pixelWidth"/>   <v:f eqn="sum @8 21600 0"/>   <v:f eqn="prod @7 21600 pixelHeight"/>   <v:f eqn="sum @10 21600 0"/>  </v:formulas>  <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>  <o:lock v:ext="edit" aspectratio="t"/> </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:404.4pt;  height:124.2pt' fillcolor="silver">  <v:imagedata src="file:///C:\DOCUME~1\KITANI~1\LOCALS~1\Temp\msohtml1\01\clip_image001.wmz"   o:title="" croptop="4014f" cropbottom="-683f" cropright="3033f"/> </v:shape><![endif]--><IMG width="539" height="166" src="clip_image002.gif" v:shapes="_x0000_i1025"></span></P>
+<BR> A multicell is an arrangement of multiple cell animations combined together.<BR> Multiple cell animations are composited to create one large game character.<BR> A multicell list is a compilation of several multicells and is referenced from multicell animations, which are described below.<BR>
+
+
+<h2>Multicell Animations</h2>
+Multicell animations are rendered by interchanging multicells one after the other. The multicells registered in the Multicell List make up the animations. The display time (number of frames) for each multicell of the animation can be specified. The multicell is displayed only for the specified number of frames, and changes to the next multicell. The parts that make up a multicell (known as cell animations) carry out animation based on the timing configured in their individual settings. In other words, the individual parts of a game character execute animations with different timing. This method helps create game characters with complex movements.
+
+
+<h2>VRAM Transfer Animations</h2>
+The animations previously described were implemented by changing the reference target for the image (character) data displayed by the cell. However, when colorful animations using many image data types are attempted, the maximum capacity of the image data becomes a problem. VRAM transfer animation consists of animation implemented by the cell image (VRAM) data being appropriately transferred and rewritten. Using VRAM animation allows you to create an animation with a large amount of image data while keeping hardware overhead to a minimum. VRAM transfer animation is used to develop 2D game main characters that have many animation patterns. To use VRAM transfer animation, options (for example, specific data for VRAM transfer animation) must be specified  and a conversion must be performed. The source NITRO-CHARACTER data should have no character compression and should be in 1D mapping mode format.)<BR> More specifically, processing is performed in the G2D Library up to the point that the VRAM transfer task request is made. The actual processing for the VRAM transfer execution and task management is left to an external module. The GFD library provides the standard implementation of the module that performs the VRAM transfer processing. Refer to the GFD Library document.
+
+<h2>See Also</h2>
+<p>
+None.
+</p>
+<H2>Revision History</H2>
+<P>12/06/2004 Initial version.</P>
+</body>
+</html>

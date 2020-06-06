@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndWaveOutStart</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndWaveOutStart</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype">BOOL NNS_SndWaveOutStart(
+NNSSndWaveOutHandle handle,
+NNSSndWaveFormat format,
+const void* dataaddr,
+BOOL loopFlag,
+int loopStartSample,
+int samples,
+int sampleRate,
+int volume,
+int speed,
+int pan );</pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDA0MWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>handle</code></strong></em></td>
+<td>Waveform playback handle.</td>
+</tr>
+<tr>
+<td><em><strong><code>format</code></strong></em></td>
+<td>Waveform data format.</td>
+</tr>
+<tr>
+<td><em><strong><code>dataaddr</code></strong></em></td>
+<td>The starting address of the waveform data.</td>
+</tr>
+<tr>
+<td><em><strong><code>loopFlag</code></strong></em></td>
+<td>The loop flag.</td>
+</tr>
+<tr>
+<td><em><strong><code>loopStartSample</code></strong></em></td>
+<td>Location of  the loop start sample.</td>
+</tr>
+<tr>
+<td><em><strong><code>samples</code></strong></em></td>
+<td>Number of samples of the waveform data.</td>
+</tr>
+<tr>
+<td><em><strong><code>sampleRate</code></strong></em></td>
+<td>Sampling rate of the waveform data. It is expressed in MHz.</td>
+</tr>
+<tr>
+<td><em><strong><code>volume</code></strong></em></td>
+<td>The volume. Takes a value between 0 and 127.</td>
+</tr>
+<tr>
+<td><em><strong><code>speed</code></strong></em></td>
+<td>Playback speed.</td>
+</tr>
+<tr>
+<td><em><strong><code>pan</code></strong></em></td>
+<td>Pan (location). Takes values in the range of 0 (left) to 64 (center) to 127 (right).</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAIPWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns if the playback was successful.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAPPWT"></a>
+<h2>Description</h2>
+      <p>
+Plays back the waveform data.</p>
+      <p>
+For the waveform playback handle, use the return value obtained with the <code><a href="NNS_SndWaveOutAllocChannel.html">NNS_SndWaveOutAllocChannel</a></code> function.
+</p>
+      <p>
+Specify the waveform data format with the values shown below.
+</p>
+<div class="table"><a name="IDAHQWT"></a><p class="title"><b><strong>Table: NNSSndWaveFormat</strong></b></p>
+<table summary="NNSSndWaveFormat" border="1">
+<colgroup><col><col></colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_WAVE_FORMAT_PCM8</td>
+<td>8-bit PCM</td>
+</tr>
+<tr>
+<td>NNS_SND_WAVE_FORMAT_PCM16</td>
+<td>16-bit PCM</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      <p>
+The waveform data start address <code>dataaddr</code> must be 4-byte aligned.
+</p>
+      <p>
+Loop flag <code>loopFlag</code> is a flag used for determining execution of the loop playback. When <code>TRUE</code> is specified, the playback will restart at the location of <code>loopStartSample</code> after the last sample was played back. The <code>loopStartSample</code> must be a multiple of 4 for the 8-bit PCM, and a multiple of 2 for the 16-bit PCM.
+</p>
+      <p>
+The number of <code>samples</code> must be a multiple of 4 for the 8-bit PCM, and a multiple of 2 for the 16-bit PCM.
+</p>
+      <p>
+The playback <code>speed</code> specifies the speed used for playback. Played back at speed divided by 32768. The faster playback speed makes the playback time shorter, and the pitch of the played sound becomes higher.
+</p>
+      
+    </div>
+<h2>See Also</h2>
+<p><a href="NNS_SndWaveOutAllocChannel.html">NNS_SndWaveOutAllocChannel</a></p>
+<h2>Revision History</h2>
+<p>07/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

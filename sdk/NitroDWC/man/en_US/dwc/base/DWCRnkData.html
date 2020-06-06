@@ -1,0 +1,79 @@
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<TITLE>DWCRnkData</TITLE>
+		<LINK rel="stylesheet" href="../../css/function.css">
+		<BASE target="main">
+	</HEAD>
+	<BODY>
+		<H1>DWCRnkData</H1>
+
+		<H2>Definition</H2>
+		<DL>
+			<DD>
+				<PRE><CODE>
+#include &lt;dwc.h&gt;
+
+typedef struct{
+
+u32                 order;
+s32                 pid;
+s32                 score;
+DWCRnkRegion        region;
+
+u32                 size;
+void*               userdata;
+
+} DWCRnkData;
+				</CODE></PRE>
+			</DD>
+		</DL>
+
+		<H2>Description</H2>
+		<P>
+		  This structure stores the ranking information that the <a href="DWC_RnkResGetRow.html">DWC_RnkResGetRow</a> function gets.
+		</P>
+		<TABLE border="1">
+		<TBODY>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>order</CODE></STRONG></EM></TD>
+			<TD>The rank order<BR>0 is stored in rows that are outside of the user's own rank order. However, with the top ranking list acquisition mode (DWC_RNK_GET_MODE_TOPLIST), an <CODE>order</CODE> value of 0 is stored even in rows that contain user's own ranking information.</TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>pid</CODE></STRONG></EM></TD>
+			<TD>The GS Profile ID<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>score</CODE></STRONG></EM></TD>
+			<TD>The score<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>region</CODE></STRONG></EM></TD>
+			<TD>The region code<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>size</CODE></STRONG></EM></TD>
+			<TD>userdata size (in bytes)<BR></TD>
+          </TR>
+		  <TR>
+			<TD width="25%"><EM><STRONG><CODE>userdata</CODE></STRONG></EM></TD>
+			<TD>The buffer for user-defined data<BR></TD>
+          </TR>
+ 		</TBODY>
+		</TABLE>
+
+		<H2>See Also</H2>
+		<P>
+			<a href="DWC_RnkResGetRow.html">DWC_RnkResGetRow</a>
+		</P>
+
+		<H2>Revision History</H2>
+		<P>
+			07/21/2006 Added a supplement about ranking to the order<BR> 04/14/2006 Initial version<BR>
+		</P>
+
+<HR>
+<P>CONFIDENTIAL</P>
+</BODY>
+</HTML>

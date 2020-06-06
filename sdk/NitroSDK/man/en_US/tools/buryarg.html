@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>buryarg</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">buryarg</H1>
+<H2>Description</H2>
+<P>In NITRO-SDK, an area for argument data is set up in the ROM image. By rewriting this section at startup, you can pass the parameters that can be used as <CODE>argc</CODE> and <CODE>argv</CODE> format arguments of the C language. The ROM image file is rewritten at startup, so you can test the program under multiple conditions without having to recompile. </P>
+<P><CODE>buryarg</CODE> is a tool for writing argument data to the argument data area for the specified binary data. </P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<P><CODE>% buryarg [OPTION]... NITROBINFILE [argument]...</CODE></P>
+<P><CODE>NITROBINFILE</CODE> is the original ROM file for rewriting.  srl and sbin files can be specified. If an nlf file is specified, the nlf file is analyzed and the ARM9 static module file is used as the input file. </P>
+<P>If the <CODE><B>-r</B> or <B>--remain</B></CODE> options are specified, the original file will remain. By default, the original file will be modified. So if you don't want to change the original file, specify this option. The alias filename is the original filename plus <CODE>.argAdded</CODE> . When the output file is selected with <CODE>-o</CODE> option, the original file will not be changed, even when this option is not specified. </P>
+<P>The <CODE><B>-o</B> and <B>--output</B> options take arguments. With this option, the output file is specified as in the following: <CODE>-o=dest.srl</CODE> or <CODE>-o dest.srl </CODE>. <FONT color="#ff0000">Do not specify the same file as the original file for the output file. </FONT>Also, if &quot;<CODE>-</CODE>&quot; (minus) is specified as the output file, output goes to standard output. ( Specify as: <CODE>-o-</CODE>. ) See <CODE>--stdout</CODE>, which is explained below. </P>
+<P><CODE><B>--stdout</B></CODE> is the same as specifying <CODE>-o-</CODE>. It outputs to standard output. </P>
+<P>The <CODE><B>-f</B></CODE> and <CODE><B>--file</B></CODE> options take arguments. These options are for specifying a file as the data to replace. <CODE>Specify as: -f=rep.dat</CODE> or <CODE> -f rep.dat</CODE>. </P>
+
+<P>If the <CODE><B>-q</B></CODE> or <CODE><B>--quiet</B></CODE> option is specified, quiet mode is used and messages other than error messages will not be output. </P>
+<P>If the <B><CODE>-v</CODE></B> or <B><CODE>--verbose</CODE></B> options are specified, detailed descriptions of operations are displayed. </P>
+<P>The <CODE><B>-h</B></CODE> or  <CODE><B>--help</B></CODE> options display simple instructions. </P>
+<P>The <CODE><B>-d</B></CODE> or <CODE><B>--debug</B></CODE> options are for debugging.  They dump the data that is to be replace. </P>
+<P>The <CODE><B>--version</B></CODE> option displays the command version. </P>
+<H3>The argument data area</H3>
+<P>A text string that indicates the position of the argument data is contained in the argument data area of the ROM data after compiling. <CODE>buryarg</CODE> searches for this text string in the ROM and then reads the argument data.  As the text string that indicates the position is not rewritten, argument data can be rewritten over and over again to the same ROM data. </P>
+<BLOCKQUOTE><IMG src="buryarg_image1.gif" border="0"></BLOCKQUOTE>
+<P>The argument area's data can be accessed from your program by using <A href="../os/argument/OS_GetArgc.html"><CODE>OS_GetArgc()</CODE></A> and <CODE><A href="../os/argument/OS_GetArgv.html">OS_GetArgv()</A></CODE>. <BR>
+</P>
+<BLOCKQUOTE><IMG src="buryarg_image2.gif" border="0"></BLOCKQUOTE>
+<P><BR> <BR> <BR> <B>Caution</B> Be careful to avoid the following errors. </P>
+<BLOCKQUOTE>EYou specified the same file as the input file with the <CODE>-o</CODE> option. <BR>-&gt; If you want to overwrite it, the operation is done by default. </BLOCKQUOTE>
+<BLOCKQUOTE>· You rewrote the argument data for the srl file. Then started up from the nlf file. <BR>-&gt; If started up from an nlf file, the module written therein will be read. Specify the nlf file with this command. </BLOCKQUOTE>
+<BLOCKQUOTE>- You rewrote the argument data for the nlf file. Then started up the srl file. <BR>-&gt; Please rewrite the argument data for the srl file. </BLOCKQUOTE>
+<BLOCKQUOTE>·You tried to rewrite the argument data on an image that does not have an argument data area. <BR>-&gt; ROM images and modules created with the old SDK do not have an area to store the argument data. When this command is executed for these images, it will display an error that indicates the text string for the argument data area could not be found, and then the command terminates. </BLOCKQUOTE>
+<BLOCKQUOTE>-You tried to rewrite the argument data on a FINALROM build image. <BR>-&gt; The FINALROM build image does not have an area to store the argument data. </BLOCKQUOTE>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/buryarg.exe</CODE></P>
+<H2>See Also</H2>
+<P><CODE><A href="../os/argument/OS_GetArgc.html">OS_GetArgc</A>, <A href="../os/argument/OS_GetArgv.html">OS_GetArgv</A>, <A href="../os/argument/OS_GetOpt.html">OS_GetOpt*</A></CODE></P>
+<H2>Revision History</H2>
+<P>08/30/2005 Added <CODE>OS_GetOpt*</CODE> to &quot;See Also.&quot; Added <CODE>--stdout</CODE>. <BR> 07/22/2005 Support for nlf files. <BR> 07/21/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Top page of Function Reference Manual</TITLE>
+<LINK type="text/css" rel="stylesheet" href="css/titles.css">
+</HEAD>
+<BODY>
+<H1 class="title">VoiceChat Library<BR>
+       Function Reference Manual<BR>
+   </H1>
+<P align="right"><span class="version">For VoiceChat Library 1.0.1</span></P>
+
+<DIV class="confidential">&quot;Confidential&quot;</DIV>
+<P class="note">This document contains confidential and proprietary information of Nintendo
+and is also protected under the copyright laws of the United States and
+foreign countries. No part of this document may be released, distributed,
+transmitted or reproduced in any form or by any electronic or mechanical
+means, including information storage and retrieval systems, without permission
+in writing from Nintendo.</P>
+<P class="caution">[attention! ] This document contains proprietary information. Prudent document handling and management are required.</P>
+<!-- <P class="copyright">&copy;2006 Nintendo Co.,Ltd. All rights reserved.</P> -->
+<P class="recommend">Microsoft Internet Explorer 5.0 / Netscape 6.0 or higher is recommended.</P>
+<HR>
+<A href="changelog.html">[Change Log]</A>
+
+		<h3>Introduction</h3>
+		<p>VoiceChat Library enables voice communication with other Nintendo DS users through the Nintendo DS wireless communication feature (set to infrastructure mode) over the Internet.</p>
+		<P><strong>VoiceChat Library requires the following libraries: </strong></p>
+		<ul>
+		  <li>NITRO-SDK 3.0 or higher
+		  <li>NITRO-WiFi 1.0 or higher
+		  <li>NITRO-DWC 1.0 or higher
+		</ul>
+
+		<p>VoiceChat Library operation has been tested under the following environments:</p>
+		<ul>
+			<li>Metrowerks CodeWarrior ver.1.2 + SP3 + patch2
+			<li>NITRO-SDK Library 3.0 (2006/01/ 25 released) + patch plus 2 (2006/03/07 released)
+			<li>NITRO-System Library (2005/09/01 released) + patch for NITRO-SDK 3.0 (2006/03/ 29 released)
+		</ul>
+		<p>Note: The source files are not attached in the binaries included with the package.</p>
+		<h3>How to use VoiceChat Library</h3>
+
+		<p><code>NITROLIBVCT_ROOT</code> Set PATH to the Library in the environment variable.</p>
+		
+		<h3>Note:</h3>
+		<p>In order to use VoiceChat Library, an Internet connection via NITRO-WiFi is required. In addition, matchmaking must be performed using NITRO-DWC.</p>
+
+		<H3>Use of API</H3>
+		<P>Include the following header files in the source code of the program:</P>
+			<PRE><CODE>
+	#inculude &lt;vct.h&gt;
+			</CODE></PRE>
+		<P>Include the following common building tools in the Makefile to create the application libraries:</P>
+			<PRE><CODE>
+	include $(NITROLIBVCT_ROOT)/build/buildtools/commondefs
+	include $(NITROLIBVCT_ROOT)/build/buildtools/modulerules
+			</CODE></PRE>
+		<P>Once the common building tools are included, additional building tools of NITRO-WiFi and NITRO-DWC are also included.</P>
+
+		<H3>Revision History</H3>
+		<P>
+			2006/07/14 version 1.0.1<BR>
+			2006/06/01 version 1.0.0<BR>
+		</P></BODY>
+</HTML>

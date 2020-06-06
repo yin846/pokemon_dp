@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOCCaInfo</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOCCaInfo</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>typedef struct {
+char *dn;               // distinguished name
+int modulus_len;        // length of modulus
+u8 *modulus;            // modulus
+int exponent_len;       // length of public exponent
+u8 *exponent;           // public exponent
+} SOCCaInfo;</code></pre>
+  </dd>
+</dl>
+
+<h2>Description</h2>
+
+<p>Structure to maintain the certificate from the issuing agency. Used for SSL communication.</p>
+
+<table width="100%" height="77">
+  <tr>
+<th><strong>Member</strong></th>
+<th><strong>Description</strong></th>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code><strong><em>dn</em></strong></code></td>
+<td><font size="-1">Specifies a pointer to the certificate's distinguished name.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code><strong><em>modulus_len</em></strong></code></td>
+<td><font size="-1">Specifies the length of the certificate's modulus.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code><strong><em>modulus</em></strong></code></td>
+<td><font size="-1">Specifies a pointer to the certificate's modulus.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code><strong><em>exponent_len</em></strong></code></td>
+<td><font size="-1">Specifies the length of the certificate's exponent.</td>
+  </tr>
+  <tr>
+<td valign="top"><font size="-1"><code><strong><em>exponent</em></strong></code></td>
+<td><font size="-1">Specifies a pointer to the certificate's exponent.</td>
+  </tr>
+</table>
+
+<p>For more on SSL terminology, please refer to any number of SSL references commercially available.</p>
+
+<p>Furthermore, in contrast to the SSL Tool Kit, the certificate data provided to the SSL library contains only the minimum information required for verification. If the data format of the authentication certificate is understood, it can easily be converted manually from a general authentication certificate format. However, if there is a need to convert to this data structure from DER-format X.509 authentication certificate data, it is possible to perform the conversion using the <A href="../../tools/certconv.html"><code>certconv</code> tool</A>.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOCSslConnection.html">SOCSslConnection</a></code>, <code><a href="SOC_EnableSsl.html">SOC_EnableSsl</a></code>, <code><a href="../../tools/certconv.html">certconv</a></code>
+</p>
+
+<H2>Revision History</H2>
+<P>
+01/30/2006 Added a description about the certconv tool</P>
+12/21/2005 Initial version.</P>
+</body>
+</html>

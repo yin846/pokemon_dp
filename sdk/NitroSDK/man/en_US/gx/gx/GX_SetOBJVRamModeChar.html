@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_SetOBJVRamModeChar</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_SetOBJVRamModeChar</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE>
+<CODE>#include &lt;nitro/gx/gx.h&gt;<BR>
+void GX_SetOBJVRamModeChar(GXOBJVRamModeChar mode);</CODE>
+</PRE></dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  
+    <tr>
+<td width="13%"><em><strong><font face="Courier New">mode</font></strong></em></td>
+<td width="87%">Mapping mode</td>
+  </tr>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets OBJ-VRAM capacity for a character OBJ, and sets mapping mode.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD width="30%"><CODE>GX_OBJVRAMMODE_CHAR_2D</CODE></TD>
+<TD>Selects 2D mapping mode.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_OBJVRAMMODE_CHAR_1D_32K</CODE></TD>
+<TD>Sets 1D mapping mode with the first character name boundary of 32 bytes. The maximum capacity of OBJ-VRAM is 32 Kilobytes.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_OBJVRAMMODE_CHAR_1D_64K</CODE></TD>
+<TD>Sets 1D mapping mode with the first character name boundary of 64 bytes. The maximum capacity of OBJ-VRAM is 64 Kilobytes.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_OBJVRAMMODE_CHAR_1D_128K</CODE></TD>
+<TD>Sets 1D mapping mode with the first character name boundary of 128 bytes. The maximum capacity of OBJ-VRAM is 128 Kilobytes.</TD>
+    </TR>
+    <TR>
+<TD><CODE>GX_OBJVRAMMODE_CHAR_1D_256K</CODE></TD>
+<TD>Sets 1D mapping mode with the first character name boundary of 256 bytes. The maximum capacity of OBJ-VRAM is 256 Kilobytes.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>Mapping mode specifies the first character name boundary and is not related to the bank capacity of VRAM that is actually allocated.</P>
+<P>The following are <CODE>GXOBJVRamModeChar</CODE> matrix format type definitions.</P>
+<PRE><CODE>typedef enum
+{
+GX_OBJVRAMMODE_CHAR_2D = (0 &lt;&lt; REG_GX_DISPCNT_OBJMAP_SHIFT) | (0 &lt;&lt; REG_GX_DISPCNT_EXOBJ_SHIFT),
+GX_OBJVRAMMODE_CHAR_1D_32K = (1 &lt;&lt; REG_GX_DISPCNT_OBJMAP_SHIFT) | (0 &lt;&lt; REG_GX_DISPCNT_EXOBJ_SHIFT),
+GX_OBJVRAMMODE_CHAR_1D_64K = (1 &lt;&lt; REG_GX_DISPCNT_OBJMAP_SHIFT) | (1 &lt;&lt; REG_GX_DISPCNT_EXOBJ_SHIFT),
+GX_OBJVRAMMODE_CHAR_1D_128K = (1 &lt;&lt; REG_GX_DISPCNT_OBJMAP_SHIFT) | (2 &lt;&lt; REG_GX_DISPCNT_EXOBJ_SHIFT),
+GX_OBJVRAMMODE_CHAR_1D_256K = (1 &lt;&lt; REG_GX_DISPCNT_OBJMAP_SHIFT) | (3 &lt;&lt; REG_GX_DISPCNT_EXOBJ_SHIFT)
+}
+GXOBJVRamModeChar;</PRE>
+<h2>See Also</h2>
+<P><CODE><A href="GX_SetOBJVRamModeBmp.html">GX_SetOBJVRamModeBmp</A>, <A href="GX_GetOBJVRamModeChar.html">GX_GetOBJVRamModeChar</A></CODE></P>
+<H2>Revision History</H2>
+<P>08/03/2004</P>
+<UL>
+<LI>Revised the descriptions of 1-dimensional mapping.
+</UL>
+<P>02/09/2004</P>
+<UL>
+<LI>Revised the descriptions of 2-dimensional mapping.
+</UL>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

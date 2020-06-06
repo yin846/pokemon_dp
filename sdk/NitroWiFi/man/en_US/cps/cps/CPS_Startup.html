@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CPS_Startup</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CPS_Startup</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/cps.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>void CPS_Startup(CPSConfig *config);</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>config</strong></em></code></td>
+<td>Configuration information</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+<P>None.</P>
+
+<h2>Description</h2>
+
+<p>Enables the CPS library for use. Two threads are created. When using the SSL library, RTC must be initialized using <CODE>RTC_Init()</CODE>. Does not block.
+</p>
+
+<h2>See Also</h2>
+<P>
+<CODE><A href="CPS_Cleanup.html">CPS_Cleanup</A></CODE>, <CODE><A href="CPSConfig.html">CPSConfig</A></CODE>
+</P>
+<H2>Revision History</H2>
+<P>
+10/21/2005 Initial version.</P>
+</body>
+</html>

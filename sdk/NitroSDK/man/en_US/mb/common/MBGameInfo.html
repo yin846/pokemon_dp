@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MBGameInfo</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MBGameInfo</h1>
+<h2>Definitions</h2>
+
+<dl>
+  <dd>
+<PRE>/* This parent game information does not change */
+typedef struct MBGameInfoFixed
+{<BR>    MBIconInfo icon;                           <BR>    MBUserInfo parent;                         <BR>    u8         maxPlayerNum;                   <BR>    u8         pad[1];<BR>    u16 gameName[ MB_GAME_NAME_LENGTH ];       <BR>    u16 gameIntroduction[ MB_GAME_INTRO_LENGTH ];<BR>} MBGameInfoFixed;<BR>
+<BR>
+<BR>/* This parent information changes dynamically */*/<BR><BR>typedef struct MBGameInfoVolatile<BR>
+{<BR>    u8  nowPlayerNum;<BR>    u8  pad[1];<BR>    u16 nowPlayerFlag;<BR>    u16 changePlayerFlag;<BR>    MBUserInfo member[ MB_MEMBER_MAX_NUM ];
+u8  userVolatData[ MB_USER_VOLAT_DATA_SIZE ];<BR>} MBGameInfoVolatile;<BR>
+<BR>/* Parent game information beacon */<BR>
+typedef struct  MBGameInfo
+{<BR>    MBGameInfoFixed fixed;<BR>    MBGameInfoVolatile volat;<BR>    u16 broadcastedPlayerFlag;<BR>    u8 dataAttr;              <BR>    u8 seqNoFixed;            <BR>    u8 seqNoVolat;            <BR>    u8 fileNo;                <BR>    u8 pad[2];<BR>    u32 ggid;                 <BR>    struct MBGameInfo *nextp;<BR>} MBGameInfo;</PRE>
+  </dd>
+</dl>
+<h2>Elements</h2>
+<P><BR> The members of <b>MBGameInfo</b> are:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>fixed</I></B></TD>
+<TD colspan="2">Parent game information that does not change.</TD>
+    </TR>
+    <TR>
+<TD><B><I>volat</I></B></TD>
+<TD colspan="2">Volatile parent game information that changes dynamically.</TD>
+    </TR>
+    <TR>
+<TD><B><I>broadcastedPlayerFlag</I></B></TD>
+<TD colspan="2">Bit indicating that player information has been broadcast.</TD>
+    </TR>
+    <TR>
+<TD><B><I>dataAttr</I></B></TD>
+<TD colspan="2">Attributes of beacon broadcast by parent:<br><code>MB_BEACON_DATA_ATTR_FIXED_NORMAL<br> MB_BEACON_DATA_ATTR_FIXED_NO_ICON<br> MB_BEACON_DATA_ATTR_VOLAT</code></TD>
+    </TR>
+    <TR>
+<TD><B><I>seqNoFixed</I></B></TD>
+<TD colspan="2">Sequence number of the fixed region. When this number changes, the data in <i>fixed</i> is received again. (But this is normally fixed and not changed.).</TD>
+    </TR>
+    <TR>
+<TD><B><I>seqNoVolat</I></B></TD>
+<TD colspan="2">Sequence number of the volatile region. When this number changes, the data in <i>volat</i> is received again.</TD>
+    </TR>
+    <TR>
+<TD><B><I>fileNo</I></B></TD>
+<TD colspan="2">File number.</TD>
+    </TR>
+    <TR>
+<TD><B><I>ggid</I></B></TD>
+<TD colspan="2">Game group ID.</TD>
+    </TR>
+    <TR>
+<TD><B><I>nextp</I></B></TD>
+<TD colspan="2">Pointer to the next GameInfo (One-directional list).</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The members of <b>MBGameInfoFixed</b> are:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>icon</I></B></TD>
+<TD>Icon data.</TD>
+    </TR>
+    <TR>
+<TD><B><I>parent</I></B></TD>
+<TD>Parent user information.</TD>
+    </TR>
+    <TR>
+<TD><B><I>maxPlayerNum</I></B></TD>
+<TD>Maximum number of players.</TD>
+    </TR>
+    <TR>
+<TD><B><I>gameName</I></B></TD>
+<TD>Game title.</TD>
+    </TR>
+    <TR>
+<TD><B><I>gameIntroduction</I></B></TD>
+<TD>Description of the game.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> The members of <b>MBGameInfoVolatile</b> are:</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><B><I>nowPlayerNum</I></B></TD>
+<TD>Current number of players.</TD>
+    </TR>
+    <TR>
+<TD><B><I>nowPlayerFlag</I></B></TD>
+<TD>express the player numbers of all current players as a bit  xyxyxy</TD>
+    </TR>
+    <TR>
+<TD><B><I>changePlayerFlag</I></B></TD>
+<TD>Flag indicating the number of a player whose information changed with the latest update.</TD>
+    </TR>
+    <TR>
+<TD><B><I>member</I></B></TD>
+<TD>Member information.</TD>
+    </TR>
+    <TR>
+<TD><B><I>userVolatData</I></B></TD>
+<TD>User setting data, which is set by parent using <code>MB_SetUserVolatData</code>.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Description</H2>
+<P>This structure stores the information previously returned by the children that the multiboot parent will broadcast in its next beacon to all children.</p>
+<h2>See Also</h2>
+<p>MB_FakeStartScanParent</P>
+<H2>Revision History</H2>
+<P>11/25/2004 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

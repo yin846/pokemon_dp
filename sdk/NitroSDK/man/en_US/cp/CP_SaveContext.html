@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>CP_SaveContext</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">CP_SaveContext</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/cp.h&gt;</CODE><BR>
+  </dd>
+<dd><CODE>void CP_SaveContext( CPContext* context );</CODE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<p>Pointer to the region where the divider, square root calculator context will be stored.</p>
+
+<h2>Return Values</h2>
+<p>None.</p>
+
+<H2>Description</H2>
+<P>This function stores the status (context) for the current divider and square root calculator in a specified structure.</P>
+<P>
+To restore the saved context, use <CODE><A href="CP_RestoreContext.html">CP_RestoreContext</A></CODE>. When you use a divider or square root calculator inside an interrupt, save the divider and square root calculator contexts prior to their use by these functions.</P>
+<P>
+During thread switch, the context are also automatically switched. Therefore, there is no need for this function to explicitly run a save process.</P>
+
+<h2>See Also</h2>
+<p><CODE><A href="CP_RestoreContext.html">CP_RestoreContext</A>, <A href="div/CP_SetDiv.html">CP_SetDiv*</A>, <A href="sqrt/CP_SetSqrt.html">CP_SetSqrt*</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>05/06/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

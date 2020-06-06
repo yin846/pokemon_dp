@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Sound (SND) API Function List</title>
+<link rel="stylesheet" href="../css/apilist.css">
+</head>
+<body>
+<h1>Sound (SND) API Function List</h1>
+<h2></h2>
+<h3><a name="Init">Initialization</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_Init.html" target="_self">SND_Init</a></th>
+<td>Initializes Sound.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Command">ARM7 Command Processes</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_FlushCommand.html" target="_self">SND_FlushCommand</a></th>
+<td>This function issues reserved commands.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_RecvCommandReply.html" target="_self">SND_RecvCommandReply</a></th>
+<td>Receives the command process reply.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_WaitForCommandProc.html" target="_self">SND_WaitForCommandProc</a></th>
+<td>Waits for command processes to end.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_WaitForFreeCommand.html" target="_self">SND_WaitForFreeCommand</a></th>
+<td>Waits until free commands are available.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetCurrentCommandTag.html" target="_self">SND_GetCurrentCommandTag</a></th>
+<td>Gets the current command tag.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_IsFinishedCommandTag.html" target="_self">SND_IsFinishedCommandTag</a></th>
+<td>Checks whether command process has ended.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_CountFreeCommand.html" target="_self">SND_CountFreeCommand</a></th>
+<td>This function gets the number of free commands.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_CountReservedCommand.html" target="_self">SND_CountReservedCommand</a></th>
+<td>This function gets the number of reserved commands.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_CountWaitingCommand.html" target="_self">SND_CountWaitingCommand</a></th>
+<td>This function gets the  number of commands that wait for processing to end.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Seq_Command">Sequence Commands</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_StartSeq.html" target="_self">SND_StartSeq</a></th>
+<td>Plays sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_PrepareSeq.html" target="_self">SND_PrepareSeq</a></th>
+<td>Prepares the sequence for playback.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_StartPreparedSeq.html" target="_self">SND_StartPreparedSeq</a></th>
+<td>Plays a sequence that has been prepared for playback.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_StopSeq.html" target="_self">SND_StopSeq</a></th>
+<td>Stops sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_PauseSeq.html" target="_self">SND_PauseSeq</a></th>
+<td>Pauses sequence or re-starts sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetPlayerVolume.html" target="_self">SND_SetPlayerVolume</a></th>
+<td>Changes the player volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetPlayerTempoRatio.html" target="_self">SND_SetPlayerTempoRatio</a></th>
+<td>Changes the tempo of the sequence.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetPlayerChannelPriority.html" target="_self">SND_SetPlayerChannelPriority</a></th>
+<td>Changes the sound priority of the Player.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetPlayerLocalVariable.html" target="_self">SND_SetPlayerLocalVariable</a></th>
+<td>Sets the Player local variable.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetPlayerGlobalVariable.html" target="_self">SND_SetPlayerGlobalVariable</a></th>
+<td>Sets the Player global variable.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetTrackMute.html" target="_self">SND_SetTrackMute*</a></th>
+<td>Mutes tracks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetTrackVolume.html" target="_self">SND_SetTrackVolume</a></th>
+<td>Changes the volume of tracks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetTrackPitch.html" target="_self">SND_SetTrackPitch</a></th>
+<td>Changes the pitch of tracks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetTrackPan.html" target="_self">SND_SetTrackPan</a></th>
+<td>Changes the pan of tracks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetTrackPanRange.html" target="_self">SND_SetTrackPanRange</a></th>
+<td>Changes the track pan range.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetTrackModDepth.html" target="_self">SND_SetTrackModDepth</a></th>
+<td>Changes the modulation depth of tracks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetTrackModSpeed.html" target="_self">SND_SetTrackModSpeed</a></th>
+<td>Changes the modulation  speed of tracks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetTrackAllocatableChannel.html" target="_self">SND_SetTrackAllocatableChannel</a></th>
+<td>Changes the channel that can be allocated for the track.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Channel_Command">Channel Commands</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_LockChannel.html" target="_self">SND_LockChannel</a></th>
+<td>This function locks channels so they can be directly controlled.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_UnlockChannel.html" target="_self">SND_UnlockChannel</a></th>
+<td>Unlocks locked channels.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_StopUnlockedChannel.html" target="_self">SND_StopUnlockedChannel</a></th>
+<td>Stops the unlocked channel.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetupChannelPcm.html" target="_self">SND_SetupChannelPcm</a></th>
+<td>This function sets up channels for PCM playback.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetupChannelPsg.html" target="_self">SND_SetupChannelPsg</a></th>
+<td>Sets up channels for PSG rectangular waveform playback.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetupChannelNoise.html" target="_self">SND_SetupChannelNoise</a></th>
+<td>This function sets up a channel for playing white noise.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetChannelVolume.html" target="_self">SND_SetChannelVolume</a></th>
+<td>Changes the channel volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetChannelTimer.html" target="_self">SND_SetChannelTimer</a></th>
+<td>Changes the channel timer.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetChannelPan.html" target="_self">SND_SetChannelPan</a></th>
+<td>Changes the channel pan.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Capture_Command">Capture Commands</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_SetupCapture.html" target="_self">SND_SetupCapture</a></th>
+<td>Sets up captures.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Alarm_Command">Alarm Commands</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_SetupAlarm.html" target="_self">SND_SetupAlarm</a></th>
+<td>This function sets up the Sound alarm.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Timer_Command">Timer Commands</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_StartTimer.html" target="_self">SND_StartTimer</a></th>
+<td>Starts timers.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_StopTimer.html" target="_self">SND_StopTimer</a></th>
+<td>Stops timers.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Global_Command">Global Settings Commands</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_SetMasterVolume.html" target="_self">SND_SetMasterVolume</a></th>
+<td>Changes the master volume.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetMasterPan.html" target="_self">SND_SetMasterPan</a></th>
+<td>Sets the master pan.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_ResetMasterPan.html" target="_self">SND_ResetMasterPan</a></th>
+<td>Disables the master pan.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetOutputSelector.html" target="_self">SND_SetOutputSelector</a></th>
+<td>Changes the output selector.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Invalidate_Command">Data Invalidation Commands</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_InvalidateSeqData.html" target="_self">SND_InvalidateSeqData</a></th>
+<td>Invalidates sequence data.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_InvalidateBankData.html" target="_self">SND_InvalidateBankData</a></th>
+<td>Invalidates bank data.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_InvalidateWaveData.html" target="_self">SND_InvalidateWaveData</a></th>
+<td>Invalidates waveform data.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="DriverInfo_Command">Driver Information Commands</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_ReadDriverInfo.html" target="_self">SND_ReadDriverInfo</a></th>
+<td>Obtains sound driver information.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Bank">Banks</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_AssignWaveArc.html" target="_self">SND_AssignWaveArc</a></th>
+<td>Assigns Waveform Archives to banks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_DestroyBank.html" target="_self">SND_DestroyBank</a></th>
+<td>Destroys banks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_DestroyWaveArc.html" target="_self">SND_DestroyWaveArc</a></th>
+<td>Destroys Waveform Archives.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_ReadInstData.html" target="_self">SND_ReadInstData</a></th>
+<td>Reads instruments from banks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_WriteInstData.html" target="_self">SND_WriteInstData</a></th>
+<td>Updates the instrument data in banks.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetFirstInstDataPos.html" target="_self">SND_GetFirstInstDataPos</a></th>
+<td>Obtains the location information for scanning instrument data.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetNextInstData.html" target="_self">SND_GetNextInstData</a></th>
+<td>Obtains the instrument data in order.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetWaveDataCount.html" target="_self">SND_GetWaveDataCount</a></th>
+<td>Gets the amount of waveform data in the waveform archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetWaveDataAddress.html" target="_self">SND_GetWaveDataAddress</a></th>
+<td>Gets the address of the waveform data in the waveform archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_SetWaveDataAddress.html" target="_self">SND_SetWaveDataAddress</a></th>
+<td>Updates the address of the waveform data in the waveform archive.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SNDInstData.html" target="_self">SNDInstData</a></th>
+<td>The instrument data structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SNDWaveData.html" target="_self">SNDWaveData</a></th>
+<td>Waveform data structure.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="GetInfo">Get Information</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_GetPlayerStatus.html" target="_self">SND_GetPlayerStatus</a></th>
+<td>Gets the status of the Players, showing whether they are active or not.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetChannelStatus.html" target="_self">SND_GetChannelStatus</a></th>
+<td>Gets the status of the channels, showing whether they are active or not.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetCaptureStatus.html" target="_self">SND_GetCaptureStatus</a></th>
+<td>This function uses a return value to determine whether a sound capture is active.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetPlayerLocalVariable.html" target="_self">SND_GetPlayerLocalVariable</a></th>
+<td>Gets the sequence local variable.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetPlayerGlobalVariable.html" target="_self">SND_GetPlayerGlobalVariable</a></th>
+<td>Gets the sequence global variable.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_GetPlayerTickCounter.html" target="_self">SND_GetPlayerTickCounter</a></th>
+<td>Gets the Player tick counter.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_ReadChannelInfo.html" target="_self">SND_ReadChannelInfo</a></th>
+<td>Gets the channel information.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_ReadPlayerInfo.html" target="_self">SND_ReadPlayerInfo</a></th>
+<td>Gets the player information.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_ReadTrackInfo.html" target="_self">SND_ReadTrackInfo</a></th>
+<td>Gets the track information.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SNDChannelInfo.html" target="_self">SNDChannelInfo</a></th>
+<td>This is the channel information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SNDPlayerInfo.html" target="_self">SNDPlayerInfo</a></th>
+<td>This is the player information structure.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SNDTrackInfo.html" target="_self">SNDTrackInfo</a></th>
+<td>This is the track information structure.</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="Utility">Utilities</a></h3>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th width="25%"><a href="SND_CalcDecibel.html" target="_self">SND_CalcDecibel</a></th>
+<td>Calculates the decibel value.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_CalcDecibelSquare.html" target="_self">SND_CalcDecibelSquare</a></th>
+<td>Calculates the decibel value corresponding to square of scale value.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_CalcTimer.html" target="_self">SND_CalcTimer</a></th>
+<td>Calculates the timer value after pitch conversion.</td>
+</tr>
+<tr>
+<th width="25%"><a href="SND_CalcChannelVolume.html" target="_self">SND_CalcChannelVolume</a></th>
+<td>Calculates the value for the channel volume.</td>
+</tr>
+</tbody>
+</table><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

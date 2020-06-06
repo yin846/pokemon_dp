@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="stylesheet" type="text/css" href="../../css/nitro.css">
+<TITLE>CARD Demos</TITLE>
+</HEAD>
+<BODY>
+<H1>CARD Library (CARD) Sample Demo</H1>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/build/demos/card</CODE></P>
+<H2>Compilation</H2>
+<P>Move to the <CODE>$NitroSDK/build/demos/card</CODE> and input</P>
+<BLOCKQUOTE><CODE>% make</CODE></BLOCKQUOTE>
+<P>&nbsp;Executable (<CODE>.nef</CODE>, <CODE>.srl</CODE>) files will be generated in</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/card/<B><I>sample_name</I></B>/bin/<B><I>platform</I></B>/<B><I>target</I></B>/</CODE></BLOCKQUOTE>
+<P>&nbsp;For example:</P>
+<BLOCKQUOTE><CODE>$NitroSDK/build/demos/card/card-1/bin/ARM9-TS/Release/</CODE></BLOCKQUOTE>
+<P>&nbsp;</P>
+
+<H2>Execution</H2>
+<P>Move to the <code>$NitroSDK/build/demos/card/<strong><em>sample_name</em></strong>/bin/<strong><em>platform</em></strong>/<strong><em>target</em></strong>/</code> directory and do one of the following.</P>
+<UL>
+<LI>Execute <code>*.nef</code>, <code>*.srl</code> with ensata.
+<LI>Load and execute a <code>*.nlf</code> file with IS-NITRO-DEBUGGER.
+<LI>Execute a <code>*.srl</code> file with IS-NITRO-DEBUGGER
+</UL>
+
+<H2>Description</H2>
+<TABLE width="720">
+  <TBODY>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>card-1</CODE></STRONG></EM></TD>
+<TD width="525">This is a very simple sample that shows how to use the CARD library to access a backup device.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>card-1trom</CODE></STRONG></EM></TD>
+<TD width="525">This demo uses one-time PROM as the ROM type and outputs the transfer speed to the debugger.</TD>
+    </TR>
+    <TR>
+<TD width="187"><EM><STRONG><CODE>card-mrom</CODE></STRONG></EM></TD>
+<TD width="525">This demo uses mask ROM as the ROM type and outputs the transfer speed to the debugger.</TD>
+    </TR>
+    <TR>
+<TD><em><strong><code>ctrdg/pullout-1</code></strong></em><br /> (included in the cartridge demo)</TD>
+<TD>This sample is included in cartridge demo (<code>$NitroSDK/build/demos/ctrdg</code>). Detects removal of card and cartridge.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Emulator</H2>
+<P><CODE>Works in all execution environments.</CODE></P>
+<H2>See Also</H2>
+<P><A href="../../card/list_card.html"><CODE>CARD Function List</CODE></A></P>
+<H2>Revision History</H2>
+<P>
+04/26/2005  Changed term from &quot;1-time ROM&quot; to &quot;one-time PROM&quot;.<br /> 04/06/2005 Added descriptions of <code>card-1trom</code> and <code>card-mrom</code> demos.<br /> 03/02/2005 Revised descriptions to reflect current support environment conditions.<br /> 10/06/2004 Added description regarding <code>ctrdg/pullout-1</code> demo.<br /> 09/10/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

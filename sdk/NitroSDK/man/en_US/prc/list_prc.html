@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>Pattern Recognition (PRC) API Function List</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>Pattern Recognition (PRC) API Function List</H1>
+<H3><A name="Init">Initialization</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_Init.html" target="_self">PRC_Init</A></TH>
+<TD>Initializes the pattern recognition system.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Stroke">Input Point Processing</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="stroke/PRC_InitStrokes.html" target="_self">PRC_InitStrokes</A></TH>
+<TD>Initializes the <CODE>PRCStrokes</CODE> structure.</TD>
+    </TR>
+
+    <TR>
+<TH width="25%"><A href="stroke/PRC_AppendPoint.html" target="_self">PRC_AppendPoint</A></TH>
+<TD>Adds a new point to the input stroke data.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stroke/PRC_AppendPenUpMarker.html" target="_self">PRC_AppendPenUpMarker</A></TH>
+<TD>Adds a marker to the input stroke data that indicates that the pen has been lifted.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stroke/PRC_Clear.html" target="_self">PRC_Clear</A></TH>
+<TD>Returns to the clear state that immediately follows input stroke data initialization.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stroke/PRC_IsFull.html" target="_self">PRC_IsFull</A></TH>
+<TD>Checks whether input stroke structure is full.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stroke/PRC_IsEmpty.html" target="_self">PRC_IsEmpty</A></TH>
+<TD>Checks whether input stroke structure is empty.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stroke/PRC_IsPenUpMarker.html" target="_self">PRC_IsPenUpMarker</A></TH>
+<TD>Checks for the pen-up marker.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stroke/PRC_CopyStrokes.html" target="_self">PRC_CopyStrokes</A></TH>
+<TD>Deep copies the <CODE>PRCStrokes</CODE> structure.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="PrototypeList">Sample Pattern DB Operations</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_GetPrototypeDBBufferSize.html" target="_self">PRC_GetPrototypeDBBufferSize*</A></TH>
+<TD>Acquires the memory size required by <CODE>PRC_InitPrototypeDB*</CODE>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_InitPrototypeDB.html" target="_self">PRC_InitPrototypeDB*</A></TH>
+<TD>Converts the sample pattern list and converts it into a sample DB to be used in pattern recognition.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Input">Input Pattern Operations</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_GetInputPatternBufferSize.html" target="_self">PRC_GetInputPatternBufferSize*</A></TH>
+<TD>Acquires the memory size required by <CODE>PRC_InitInputPattern*</CODE>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_InitInputPattern.html" target="_self">PRC_InitInputPattern*</A></TH>
+<TD>Shapes raw input stroke data to convert it into input pattern data that is used for pattern recognition.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_GetInputPatternStrokes.html" target="_self">PRC_GetInputPatternStrokes</A></TH>
+<TD>Obtains input stroke data from input pattern data.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_ResampleStrokes.html" target="_self">PRC_ResampleStrokes*</A></TH>
+<TD>Resamples raw stroke input data to reduce the number of points.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Recognize">Pattern Recognition</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_GetRecognitionBufferSize.html" target="_self">PRC_GetRecognitionBufferSize*</A></TH>
+<TD>Acquires the memory size required by <CODE>PRC_GetRecognizedEntry*</CODE>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_GetRecognizedEntry.html" target="_self">PRC_GetRecognizedEntry*</A></TH>
+<TD>Recognizes a pattern by matching an input pattern to a sample DB.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_GetEntryCode.html" target="_self">PRC_GetEntryCode</A></TH>
+<TD>Acquires a pattern code from a sample DB entry.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_GetEntryData.html" target="_self">PRC_GetEntryData</A></TH>
+<TD>Acquires user data that is associated with a sample DB entry.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRC_GetEntryStrokes.html" target="_self">PRC_GetEntryStrokes</A></TH>
+<TD>Obtains stroke data that corresponds to a sample DB entry.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<!-- <H3><A name="const">’è”</A></H3> <TABLE border="1" width="100%">   <TBODY>     <TR>       <TH width="25%"><A href="const.html" target="_self">’è”ˆê——</A></TH>       <TD>}Œ`”FŽ¯API‚Å—p‚¢‚é’è”ˆê——‚Å‚·B</TD>     </TR>   </TBODY> </TABLE> -->
+<H3><A name="type">Types, Structures</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="stroke/PRCPoint.html" target="_self">PRCPoint</A></TH>
+<TD>Structure that expresses input points from the touch panel.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="stroke/PRCStrokes.html" target="_self">PRCStrokes</A></TH>
+<TD>Structure that holds a string of input coordinate values.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRCPrototypeList.html" target="_self">PRCPrototypeList</A></TH>
+<TD>Structure that expresses the list of sample patterns that is used for recognition.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRCPrototypeEntry.html" target="_self">PRCPrototypeEntry</A></TH>
+<TD>Structure that expresses the attributes of each sample DB entry.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRCPrototypeDB.html" target="_self">PRCPrototypeDB</A></TH>
+<TD>Expresses the sample DB that is used by the pattern recognition API.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRCInputPattern.html" target="_self">PRCInputPattern</A></TH>
+<TD>Expresses input pattern data that has been shaped for use by the pattern recognition API.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRCPrototypeDBParam.html" target="_self">PRCPrototypeDBParam</A></TH>
+<TD>Expresses parameters used when decoding the sample DB.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRCInputPatternParam.html" target="_self">PRCInputPatternParam</A></TH>
+<TD>Expresses parameters used when shaping input pattern data.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRCRecognizeParam.html" target="_self">PRCRecognizeParam</A></TH>
+<TD>Structure that expresses parameters used for recognition.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="recognize/PRCResampleMethod.html" target="_self">PRCResampleMethod</A></TH>
+<TD>Enumerated type that specifies the algorithm to use for resampling.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<table border="0" height="100%"><tr><td style="background-color : white;"></td></tr></table>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

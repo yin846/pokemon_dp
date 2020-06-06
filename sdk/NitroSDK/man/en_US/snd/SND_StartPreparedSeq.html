@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SND_StartPreparedSeq</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAFLWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>SND_StartPreparedSeq</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nitro/snd.h&gt;</code></pre></dd>
+<dd><pre class="funcprototype"><code class="funcprototype">void SND_StartPreparedSeq( int <var>playerNo</var> );</code><br></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDARMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>playerNo</code></strong></em></td>
+<td>The Player number. Takes a value between 0 and 15.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+<div class="refsection" lang="ja"><a name="IDAANWT"></a>
+<h2>Return Values</h2>
+
+<p>None.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAHNWT"></a>
+<h2>Description</h2>
+      <p>
+Plays a sequence that has been prepared for playback.
+</p>
+      <p>
+Starts playing the sequence prepared for playback on the player indicated by <em><strong><code>playerNo</code></strong></em> using the <a href="SND_PrepareSeq.html"><code>SND_PrepareSeq</code></a> function.
+</p>
+      <div class="note">
+<h3 class="title">Caution</h3>
+<p>
+This function is an ARM7 reserved function. After this function is called, processing occurs only after the command is issued with the <a href="SND_FlushCommand.html"><code>SND_FlushCommand</code></a> function.
+</p>
+<p>
+When it is necessary to synchronize something with the completion of the process, first use <a href="SND_GetCurrentCommandTag.html"><code>SND_GetCurrentCommandTag</code></a> to obtain the command tag immediately after calling this function. After the command is issued, use the command tag and call either the <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a> or <a href="SND_WaitForCommandProc.html"><code>SND_WaitForCommandProc</code></a> function to confirm that the process has finished or to wait for it to complete.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><a href="SND_PrepareSeq.html"><code>SND_PrepareSeq</code></a>, <a href="SND_FlushCommand.html"><code>SND_FlushCommand</code></a>, <a href="SND_GetCurrentCommandTag.html"><code>SND_GetCurrentCommandTag</code></a>, <a href="SND_IsFinishedCommandTag.html"><code>SND_IsFinishedCommandTag</code></a>, <a href="SND_WaitForCommandProc.html"><code>SND_WaitForCommandProc</code></a></p>
+<h2>Revision History</h2>
+<p>04/14/2005 Initial version</p>
+</div>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

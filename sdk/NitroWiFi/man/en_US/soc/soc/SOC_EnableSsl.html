@@ -1,0 +1,79 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_EnableSsl</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_EnableSsl</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_EnableSsl ( int <em><strong>s</strong></em>, <a href="SOCSslConnection.html">SOCSslConnection</a>* <em><strong>con</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>s</strong></em></code></td>
+<td>Descriptor for SSL-target socket.</td>
+  </tr>
+  <tr>
+<td><code><em><strong>con</strong></em></code></td>
+<td>A pointer to the <a href="SOCSslConnection.html">SOCSslConnection</a> structure that maintains the settings and state of the SSL connection.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+<td>0 or higher</td>
+<td>Successful.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINVAL</code></td>
+<td>Invalid processing. (Socket is not TCP-enabled, etc.)</td>
+  </tr>
+  <tr>
+<td><code>SOC_EMFILE</code></td>
+<td>Cannot create any more socket descriptors.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket library is not initialized. </td>
+  </tr>
+  <tr>
+<td><code>SOC_ENOBUFS</code></td>
+<td>Insufficient resources.</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p>Encrypts communication for the target socket with SSL. Can only be used with a TCP-enable socket prior to binding. In addition, be aware that functional limitations prevent asynchronous reading and writing for SSL-enabled socket descriptors.</p>
+<p>For more information on the SSL communication settings, see the description of the <a href="SOCSslConnection.html">SOCSslConnection</a> structure.</p>
+<p>In addition, to ensure secure SSL communications, it is necessary to call the <code><a href="SOC_AddRandomSeed.html">SOC_AddRandomSeed</a></code> function on a regular basis.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_AddRandomSeed.html">SOC_AddRandomSeed</a></code>
+</p>
+
+<H2>Revision History</H2>
+<P>
+12/21/2005 Initial version.</P>
+</body>
+</html>

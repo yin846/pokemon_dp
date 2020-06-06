@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>NNS_SndArcLoadBank*</title>
+<link rel="stylesheet" href="../css/nitro.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body>
+<div class="refentry" lang="ja"><a name="IDAKKWT"></a><div class="titlepage">
+<div></div>
+<div></div>
+</div>
+<h1>NNS_SndArcLoadBank*</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><pre class="funcsynopsisinfo"><code>#include &lt;nnsys/snd.h&gt;
+
+#define NNS_SND_ARC_LOAD_BANK ( 1 &lt;&lt; 1 )
+#define NNS_SND_ARC_LOAD_WAVE ( 1 &lt;&lt; 2 )
+</code></pre></dd>
+<dd><pre class="funcprototype"><code>BOOL NNS_SndArcLoadBank( int bankNo, NNSSndHeapHandle heap );
+BOOL NNS_SndArcLoadBankEx( int bankNo, u32 loadFlag, NNSSndHeapHandle heap );</code></pre></dd>
+</dl>
+<div class="refsection" lang="ja"><a name="IDANMWT"></a>
+<h2>Arguments</h2>
+      
+      <div class="variablelist">
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><em><strong><code>bankNo</code></strong></em></td>
+<td>Bank number</td>
+</tr>
+<tr>
+<td><em><strong><code>heap</code></strong></em></td>
+<td>The sound heap handle</td>
+</tr>
+<tr>
+<td><em><strong><code>loadFlag</code></strong></em></td>
+<td>The flag that designates which data to load</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+<div class="refsection" lang="ja"><a name="IDAKNWT"></a>
+<h2>Return Values</h2>
+
+<p>Returns a value to indicate whether or not the load was successful.</p>
+    </div>
+<div class="refsection" lang="ja"><a name="IDARNWT"></a>
+<h2>Description</h2>
+      <p>
+Loads the bank data to the heap.
+</p>
+      <p>
+The <code>NNS_SndArcLoadBank</code> function is loaded at the same time as the waveform archive associated with the bank data. The <code>NNS_SndArcLoadBankEx</code> function designates with <code><i><b>loadFlag</b></i></code> which of the two types of data to load. Put the following macros into <code>loadFlag</code> :
+</p>
+<div class="table"><a name="IDACOWT"></a><p class="title"><b><strong>TABLE: Load Flags</strong></b></p>
+<table summary="ƒ[ƒhƒtƒ‰ƒO" border="1">
+<colgroup><col><col><col></colgroup>
+<thead>
+<tr>
+<th>Macros</th>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NNS_SND_ARC_LOAD_BANK</td>
+<td>1 &lt;&lt; 1</td>
+<td>The bank data</td>
+</tr>
+<tr>
+<td>NNS_SND_ARC_LOAD_WAVE</td>
+<td>1 &lt;&lt; 2</td>
+<td>The waveform archive</td>
+</tr>
+</tbody>
+</table>
+</div>
+      <p>
+The memory necessary for loading is automatically allocated from the sound heap heap with the <code><a href="NNS_SndHeapAlloc.html">NNS_SndHeapAlloc</a></code> function. If memory allocation fails, the process is interrupted and a <code>FALSE</code> is returned.
+</p>
+      <p>
+Sound data that is already resident in memory is not loaded. Execution of the function <code><a href="NNS_SndArcGetFileAddress.html">NNS_SndArcGetFileAddress</a></code> will determine whether or not the sound data is resident in memory. Also, the <code><a href="NNS_SndArcSetFileAddress.html">NNS_SndArcSetFileAddress</a></code> function sets the address of the successfully loaded data.
+</p>
+      <div class="note">
+<h3 class="title">Note</h3>
+<p>
+Use this function only for the sound archive initialized with the <code><a href="NNS_SndArcInit.html">NNS_SndArcInit</a></code> function. This function <em>cannot</em> be used with the sound archive initialized with the <code><a href="NNS_SndArcInitOnMemory.html">NNS_SndArcInitOnMemory</a></code> function.
+</p>
+</div>
+    </div>
+<h2>See Also</h2>
+<p><code><a href="NNS_SndHeapAlloc.html">NNS_SndHeapAlloc</a>, <a href="NNS_SndArcGetFileAddress.html">NNS_SndArcGetFileAddress</a>, <a href="NNS_SndArcSetFileAddress.html">NNS_SndArcSetFileAddress</a>, <a href="NNS_SndArcInit.html">NNS_SndArcInit</a>, <a href="NNS_SndArcInitOnMemory.html">NNS_SndArcInitOnMemory</a></code></p>
+<h2>Revision History</h2>
+<p>06/01/2004 Initial version.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>MI_Load*</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">MI_Load*</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/mi.h&gt;</CODE><BR> <BR> <CODE>SDK_INLINE u16 MI_LoadLE16(const void *ptr);<br> SDK_INLINE u32 MI_LoadLE32(const void *ptr);<br> SDK_INLINE u16 MI_LoadBE16(const void *ptr);<br> SDK_INLINE u32 MI_LoadBE32(const void *ptr);<br></CODE><br>
+  </dd>
+</dl>
+<h2>Arguments</h2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+      <TD width="13%"><EM><STRONG><code><EM><STRONG>ptr</STRONG></EM></code></STRONG></EM></TD>
+      <TD width="87%">Represents the address whose value is to be read.<br>Alignment at a 16-bit or 32-bit boundary is not required.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<h2>Return Values</h2>
+<p>Returns the value obtained as the specified endian (<CODE>u16 or u32</CODE>)</p>
+
+<H2>Description</H2>
+<P>Obtains a value from the specified address using the specified endian. LE represents little endian, while BE represents big endian.<br>
+<H2>See Also</H2>
+<P><A href="MI_SwapEndian.html">MI_SwapEndian*</A> <A href="MI_Store.html">MI_Store*</A> <A href="MI_HTo.html">MI_HTo*</A> <A href="MI_ToH.html">MI_*ToH*</A></P>
+<H2>Revision History</H2>
+<P>
+04/05/2006 Initial version.
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<BASE target="main">
+<TITLE>Arithmetic Functions (MATH) API Functions</TITLE>
+<LINK rel="stylesheet" href="../css/apilist.css">
+</HEAD>
+<BODY>
+<H1>Arithmetic Functions (MATH) API Functions</H1>
+<H3><A name="Utility">Utility Functions</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH><A href="utility.html" target="_self">MATH_IAbs</A></TH>
+<TD>Returns an int-type argument's absolute value.<br />(Inline function)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="utility.html" target="_self">MATH_IMin</A></TH>
+<TD>Compares two int-type arguments and returns the smaller.<br />(Inline function)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="utility.html" target="_self">MATH_IMax</A></TH>
+<TD>Compares two int-type arguments and returns the larger.<br />(Inline function)</TD>
+    </TR>
+    <TR>
+<TH><A href="utility.html" target="_self">MATH_ABS</A></TH>
+<TD>Returns an argument's absolute value<br /> ( Function macro - has side effects)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="utility.html" target="_self">MATH_MIN</A></TH>
+<TD>Compares two numbers and returns the smaller.<br />(Function macro - has side effects)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="utility.html" target="_self">MATH_MAX</A></TH>
+<TD>Compares two numbers and returns the larger.<br />(Function macro - has side effects)</TD>
+    </TR>
+    <TR>
+<TH><A href="utility.html" target="_self">MATH_CLAMP</A></TH>
+<TD>Returns the value of the first argument fit into the range of <em>low</em> to <em>high</em>.<br />(Function macro - has side effects)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="utility.html" target="_self">MATH_ROUNDUP</A></TH>
+<TD>Returns the value of 1st argument rounded up to the multiple of 2nd argument.<br />(Function macro)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="utility.html" target="_self">MATH_ROUNDDOWN</A></TH>
+<TD>Returns the value of 1st argument rounded down to the multiple of 2nd argument.<br />(Function macro)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="utility.html" target="_self">MATH_ROUNDUP32</A></TH>
+<TD>Returns value of argument rounded up to a multiple of 32.<br />(Function macro)</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="utility.html" target="_self">MATH_ROUNDDOWN32</A></TH>
+<TD>Returns value of argument rounded down to a multiple of 32.<br />(Function macro)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="IntegerOperation">Integer Operations</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="int/MATH_ILog2.html" target="_self">MATH_ILog2</A></TH>
+<TD>Returns the integer portion of the log base 2 of a <code>u32</code> value.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="BitOperation">Bit Operations</A></H3>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TH width="25%"><A href="bit/MATH_CountLeadingZeros.html" target="_self">MATH_CountLeadingZeros</A></TH>
+<TD>Gets the number of 0s from the start, expressed in a binary 32-bit value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="bit/MATH_CountLeadingZeros.html" target="_self">MATH_CLZ</A></TH>
+<TD>A different name for <code>MATH_CountLeadingZeros</code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="bit/MATH_CountTrailingZeros.html" target="_self">MATH_CountTrailingZeros</A></TH>
+<TD>Gets the number of 0s from the end, expressed in a binary 32-bit value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="bit/MATH_CountTrailingZeros.html" target="_self">MATH_CTZ</A></TH>
+<TD>A different name for <code>MATH_CountTrailingZeros</code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="bit/MATH_GetLeastSignificantBit.html" target="_self">MATH_GetLeastSignificantBit</A></TH>
+<TD>Gets the lowest order bit set to 1, expressed in a binary 32-bit value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="bit/MATH_GetLeastSignificantBit.html" target="_self">MATH_LSB</A></TH>
+<TD>A different name for <code>MATH_GetLeastSignificantBit</code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="bit/MATH_GetMostSignificantBit.html" target="_self">MATH_GetMostSignificantBit</A></TH>
+<TD>Gets the highest order bit set to 1, expressed in a binary 32-bit value.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="bit/MATH_GetMostSignificantBit.html" target="_self">MATH_MSB</A></TH>
+<TD>A different name for <code>MATH_GetMostSignificantBit</code>.</TD>
+    </TR>
+    <TR>
+<TH width="25%"><A href="bit/MATH_CountPopulation.html" target="_self">MATH_CountPopulation</A></TH>
+<TD>Gets the number of <code>1</code> bits, expressed in binary 32bit.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Random">Random Number-Related Features</A></H3>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><A href="rand/MATH_InitRand.html">MATH_InitRand*</A></TD>
+<TD>Initializes random number generated by linear congruential method.</TD>
+    </TR>
+    <TR>
+<TD><A href="rand/MATH_Rand.html">MATH_Rand*</A></TD>
+<TD>Gets random number generated by linear congruential method.</TD>
+    </TR>
+    <TR>
+<TD><A href="rand/MATHRandContext.html">MATHRandContext*</A></TD>
+<TD>The context structure of a random number generated by linear congruential method.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Random">Sort-Related Functions</A></H3>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><A href="sort/MATH_QSort.html">MATH_QSort</A></TD>
+<TD>Performs quicksort.</TD>
+    </TR>
+    <TR>
+<TD><A href="sort/MATH_QSortStackSize.html">MATH_QSortStackSize</A></TD>
+<TD>Gets the buffer size required for a quicksort.</TD>
+    </TR>
+    <TR>
+<TD><A href="sort/MATHCompareFunc.html">MATHCompareFunc</A></TD>
+<TD>Comparison function type that is set when using quicksort.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="FFT">Fast Fourier Transforms</A></H3>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><A href="fft/MATH_MakeFFTSinTable.html">MATH_MakeFFTSinTable</A></TD>
+<TD>This creates the sine value table for the fast Fourier transform.</TD>
+    </TR>
+    <TR>
+<TD><A href="fft/MATH_FFT.html">MATH_FFT</A></TD>
+<TD>This applies the fast Fourier transform on complex number sequences.</TD>
+    </TR>
+    <TR>
+<TD><A href="fft/MATH_IFFT.html">MATH_IFFT</A></TD>
+<TD>This applies the inverse fast Fourier transform on the complex number sequences.</TD>
+    </TR>
+    <TR>
+<TD><A href="fft/MATH_FFTReal.html">MATH_FFTReal</A></TD>
+<TD>This applies the fast Fourier transform on the real number sequences.</TD>
+    </TR>
+    <TR>
+<TD><A href="fft/MATH_IFFTReal.html">MATH_IFFTReal</A></TD>
+<TD>This performs the inverse fast Fourier transform on the real number sequence.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Hash">Hash Value-Related Functions</A></H3>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><A href="hash/MATH_ChecksumInit.html">MATH_Checksum*Init</A></TD>
+<TD>Initializes the context structure for calculation of hash values based on checksums.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATH_ChecksumUpdate.html">MATH_Checksum*Update</A></TD>
+<TD>Updates the hash value based on checksums with the input data.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATH_ChecksumGetHash.html">MATH_Checksum*GetHash</A></TD>
+<TD>Gets the hash value based on checksums from the context structure.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATHChecksumContext.html">MATHChecksum*Context</A></TD>
+<TD>The context structure used for calculating hash based on checksums.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATH_CalcChecksum.html">MATH_CalcChecksum*</A></TD>
+<TD>The function that calculates hash value based on checksums using one function.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATH_CRCInitTable.html">MATH_CRC*InitTable</A></TD>
+<TD>Initializes the table used for calculating hash value based on CRCs.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATH_CRCInit.html">MATH_CRC*Init</A></TD>
+<TD>Initializes the context structure for calculation of hash values based on CRCs.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATH_CRCUpdate.html">MATH_CRC*Update</A></TD>
+<TD>Updates the hash value based on CRCs with the input data.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATH_CRCGetHash.html">MATH_CRC*GetHash</A></TD>
+<TD>Gets the hash value based on CRCs from the context structure.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATHCRCTable.html">MATHCRC*Table</A></TD>
+<TD>The table structure used for calculating hash values based on CRCs.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATHCRCContext.html">MATHCRC*Context</A></TD>
+<TD>The context structure used for calculating hash based on CRCs.</TD>
+    </TR>
+    <TR>
+<TD><A href="hash/MATH_CalcCRC.html">MATH_CalcCRC*</A></TD>
+<TD>The utility function that calculates hash values based on CRCs using one function.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H3><A name="Digest">Message Digest-Related Functions</A></H3>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TD><A href="dgt/MATH_MD5Init.html">MATH_MD5Init</A></TD>
+<TD>Initializes the context structure used for message digest calculation based on MD5.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_MD5Update.html">MATH_MD5Update</A></TD>
+<TD>Updates the MD5-based message digest value using input data.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_MD5GetHash.html">MATH_MD5GetHash</A></TD>
+<TD>Gets the MD5-based message digest value from the context structure.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATHMD5Context.html">MATHMD5Context</A></TD>
+<TD>The context structure used for message digest calculation based on MD5.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_CalcMD5.html">MATH_CalcMD5</A></TD>
+<TD>Utility function that calculates message digest values based on MD5 using one function.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_SHA1Init.html">MATH_SHA1Init</A></TD>
+<TD>Initializes the context structure used for message digest calculation based on SHA1.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_SHA1Update.html">MATH_SHA1Update</A></TD>
+<TD>Updates the SHA1-based message digest value using input data.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_SHA1GetHash.html">MATH_SHA1GetHash</A></TD>
+<TD>Gets the SHA1-based message digest value from the context structure.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATHSHA1Context.html">MATHSHA1Context</A></TD>
+<TD>The context structure used for message digest calculation based on SHA1.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_CalcSHA1.html">MATH_CalcSHA1</A></TD>
+<TD>Utility function that calculates message digest values based on SHA1 using one function.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_CalcHMACMD5.html">MATH_CalcHMACMD5</A></TD>
+<TD>Calculates keyed hash values based on HMAC-MD5.</TD>
+    </TR>
+    <TR>
+<TD><A href="dgt/MATH_CalcHMACSHA1.html">MATH_CalcHMACSHA1</A></TD>
+<TD>Calculates keyed hash values based on HMAC-SHA1.</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<table border="0" height="100%"><tr><td style="background-color : white;"></td></tr></table>
+
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

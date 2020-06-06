@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.2.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>WM_Enable</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">WM_Enable</h1>
+<h2>C Specification</h2>
+<dl>
+<dd><PRE><CODE>#include &lt;nitro/wm.h&gt;
+
+<A href="WMErrCode.html">WMErrCode</A> WM_Enable( <A href="WMCallbackFunc.html">WMCallbackFunc</A> callback );
+</CODE></PRE></dd>
+</dl>
+
+<h2>Arguments</h2>
+<table border="1" width="100%">
+  <tbody>
+    <TR>
+<TD width="200"><EM><STRONG><FONT face="Courier New"><CODE>callback</CODE></FONT></STRONG></EM></TD>
+<TD width="800">Designates the callback function to call when the asynchronous process completes. This callback is called from within the interrupt handler.</TD>
+    </TR>
+  </tbody>
+</table>
+
+<h2>Return Values</h2>
+<p>Returns the results of the <CODE><A href="WMErrCode.html">WMErrCode</A></CODE> enumerated type process.</p>
+
+<H2>Description</H2>
+<P>
+Enables wireless hardware. If this function's return value is <code>WM_ERRCODE_OPERATING</code>, a callback will be called after the wireless hardware enable process completes. This function can only be called when the WM is in the <a href="wm_state_diagram.html"><code>READY</code></a> state. After completion, the WM will move to the <a href="wm_state_diagram.html"><code>STOP</code></a> state. To start communications after this function is called, you must use <a href="WM_PowerOn.html"><code>WM_PowerOn</code></a> to start the power to the wireless hardware.
+</P>
+
+<h2>See Also</h2>
+<p><a href="WM_Init.html"><code>WM_Init</code></a>, <a href="WM_PowerOn.html"><code>WM_PowerOn</code></a>, <a href="WM_PowerOff.html"><code>WM_PowerOff</code></a>, <a href="WM_Disable.html"><code>WM_Disable</code></a>, <a href="WM_Finish.html"><code>WM_Finish</code></a>, <a href="WM_Initialize.html"><code>WM_Initialize</code></a>, <a href="WM_End.html"><code>WM_End</code></a></p>
+
+<H2>Revision History</H2>
+<P>
+06/08/2005 Added statement about callbacks being called from the interrupt handler.<br>10/22/2004 Changed return value type.<br>09/11/2004 Initial version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

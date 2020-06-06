@@ -1,0 +1,73 @@
+<HTML>
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>DWC_CloseAllConnectionsHard</TITLE>
+    <LINK rel="stylesheet" href="../../css/function.css">
+    <BASE target="main">
+  </HEAD>
+  <BODY>
+	<H1>DWC_CloseAllConnectionsHard</H1>
+
+<H2>C Specification</H2>
+    <DL>
+      <DD>
+<PRE><CODE>#include &lt;dwc.h&gt;
+
+int  DWC_CloseAllConnectionsHard(void);</CODE></PRE>
+      </DD>
+    </DL>
+
+<H2>Description</H2>
+    <P>
+Closes all connections with connected hosts. Close process completes within this function. Before exiting from this function, each time a connection is closed, the callback function set with the <a href="DWC_SetConnectionClosedCallback.html"><CODE>DWC_SetConnectionClosedCallback</CODE></a> function is called.
+    </P>
+    <P>
+Remains logged-in to the Nintendo Wi-Fi Connection.
+    </P>
+    <P>
+The other host is also notified of this close, and the close callback <a href="DWCConnectionClosedCallback.html">DWCConnectionClosedCallback</a> is called on the other host. However, because this close notification is only sent once by UDP communications, it is possible, depending on the conditions of the connection, that the notification will not reach its destination.
+	</P>
+	<P>
+	  This function is called even if a DS is not already connected to the server DS running client-server matchmaking. In this case, if there is remaining space in the memory region used for matchmaking, it is released, and the DS returns its own state to online. (For more about &quot;communications status,&quot; see the explanation of the <a href="DWC_GetFriendStatus.html">DWC_GetFriendStatus</a> function.)
+	</P>
+	<P>
+Even if this function is called, the connection with the Nintendo Wi-Fi Connection server is not cut. If a server DS uses server-client matchmaking and no host is connected, no callback is called and only the completion process is performed.
+    </P>
+
+<H2>Arguments</H2>
+    <p>
+None.
+    </p>
+
+
+<H2>Return Values</H2>
+    <TABLE border="1">
+      <TBODY>
+        <TR>
+          <TD width="25%"><EM><STRONG><CODE>0</CODE></STRONG></EM></TD>
+<TD>Close operation complete</TD>
+        </TR>
+        <TR>
+          <TD width="25%"><EM><STRONG><CODE>1</CODE></STRONG></EM></TD>
+<TD>Because there are no connected hosts, the close processing is performed but the callback is not called. Only for a server DS performing server-client matchmaking.</TD>
+        </TR>
+        <TR>
+          <TD width="25%"><EM><STRONG><CODE>-1</CODE></STRONG></EM></TD>
+<TD>No action taken because the connection has not been established or an error occurred.</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+<H2>See Also</H2>
+    <P>
+<code><a href="DWC_CloseConnectionHard.html">DWC_CloseConnectionHard</a>, <a href="DWC_CloseConnectionHardBitmap.html">DWC_CloseConnectionHardBitmap</a>, <a href="DWC_SetConnectionClosedCallback.html">DWC_SetConnectionClosedCallback</a>, <a href="DWC_GetFriendStatus.html">DWC_GetFriendStatus</a>, <a href="DWCConnectionClosedCallback.html">DWCConnectionClosedCallback</a>,</code>
+    </P>
+
+<H2>Revision History</H2>
+    <P>
+	  12/16/2005 Added a detailed function description. <BR> 11/07/2005 Initial version.<BR>
+    </P>
+
+  </BODY>
+</HTML>

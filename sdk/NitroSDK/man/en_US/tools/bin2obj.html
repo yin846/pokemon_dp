@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>bin2obj</TITLE>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+<STYLE type="text/css">
+<!--
+.sample_source{
+  background-color : #e8e8e8;
+}
+H3{
+  color : teal;
+}
+.command_list{
+  margin-bottom : 16pt;
+}
+.command_desc{
+  }
+.command_item{
+  margin-top : 16pt;
+  background-color : #e8e8e8;
+}
+.blockquoted_table {
+  border : 1px;
+  width : 80%;
+}
+TD,TH{
+  border-color	: #c0d8d8;
+  padding       : 1pt 4pt 1pt 4pt;
+  border-width  : 1px;
+  border-style  : solid;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<H1 align="left">bin2obj</H1>
+<H2>Description</H2>
+<P><CODE>bin2obj</CODE> is a tool that converts binary files into object files that can be directly linked by the linkers of C compilers in CodeWarrior.</P>
+<H2>How to Use</H2>
+<H3>Start Command</H3>
+<PRE><CODE>% bin2obj BINARY_FILE OBJECT_FILE
+[-b|--begin SYMBOL_BEGIN] [-e|--end SYMBOL_END]
+[-C|--compatible] [-a|--align ALIGNMENT] [-r|--readonly] [-s|--section SECTION]</CODE></PRE>
+<P>Converts the binary file specified by <CODE>BINARY_FILE</CODE> into a linkable object format and outputs the file with the name <CODE>OBJECT_FILE</CODE>. This tool operates the same way as the the BinToElf tool that comes with the CodeWarrior for NINTENDO DS package.</P>
+<P>The <CODE>-b</CODE> and <CODE>-e</CODE> options specify symbols that enable the data in the binary file to be accessed from programs written in C and other languages. You can use the long names for the options, <CODE>--begin</CODE> and <CODE>--end</CODE> instead of <CODE>-b</CODE> and <CODE>-e</CODE>. </P>
+<P>The name for the symbol at the start of the data region is specified using <CODE>SYMBOL_BEGIN</CODE>. Similarly, the name for the symbol at the end of the data region (more specifically, the next address after the last data) is specified using  <CODE>SYMBOL_END</CODE>. The size of the binary region is calculated by subtracting the value of <CODE>SYMBOL_BEGIN</CODE> from the value of <CODE>SYMBOL_END</CODE>.</P>
+<P>When specifying the symbol name, you can use the special keywords <CODE>%f, %t, %b, and %e</CODE>. These keywords reference a portion of a binary file, as shown below for the file specified by <CODE>BINARY_FILE</CODE>.</P>
+<BLOCKQUOTE>
+<DL>
+<DT><CODE>%f</CODE> or <CODE>%t</CODE>
+<DD>The portion of <CODE>BINARY_FILE</CODE> excluding the directory.
+<DT><CODE>%b&nbsp;</CODE>
+<DD>The portion of <CODE>BINARY_FILE</CODE> excluding the directory and the file extension.
+<DT><CODE>%e</CODE>
+<DD>The file extension of <CODE>BINARY_FILE</CODE> (excluding the dot)
+</DL>
+</BLOCKQUOTE>
+<P>When these options are not specified, the default values are <CODE>%b_begin</CODE> for <CODE>SYMBOL_BEGIN</CODE> and <CODE>%b_end</CODE> for <CODE>SYMBOL_END</CODE>.</P>
+<P>The <CODE>-C </CODE> option generates a symbol that is compatible with the BinToElf tool that is included in CodeWarrior for NINTENDO DS. You can use the long name <CODE>--compatible</CODE> instead of <CODE>-C </CODE>. The <CODE>-C </CODE> option is equivalent to the following option specifications:</P>
+<BLOCKQUOTE>
+<P><CODE>-b _binary_%f -e _binary_%f_end</CODE></P>
+</BLOCKQUOTE>
+<P>The <CODE>-a</CODE> option specifies the alignment value for the data block when the binary file is made into an object. You can use the long name <CODE>--align</CODE> instead of <CODE>-a</CODE>. The default value is 4.</P>
+<P>When the <CODE>-r</CODE> option is specified, the data block is handled as a read-only section (normally a <CODE>.rodata</CODE> section.) You can use the long name <CODE>--readonly</CODE>  instead of  <CODE>-r</CODE>. If this option is not specified, the data block is treated as a readable/writable section (normally a <CODE>.data</CODE> section). </P>
+<P>The <CODE>-s</CODE> option can be used to specify the data block section name. You can use the long name <CODE>--section</CODE>  for  <CODE>-s</CODE>. If this option is not specified, <CODE>.rodata</CODE> is used as the name for a read-only data block and <CODE>.data</CODE> gets used as the name for a readable/writable data block.</P>
+<H2>Location</H2>
+<P><CODE>$NitroSDK/tools/bin/bin2obj.exe</CODE></P>
+<H2>See Also</H2>
+<P>The BinToElf tool in the CodeWarrior for NINTENDO DS package.</P>
+<H2>Revision History</H2>
+<P>06/14/2005 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

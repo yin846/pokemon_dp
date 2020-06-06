@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<TITLE>NNSG2dTagCallbackInfo</TITLE>
+	<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1 align="left">NNSG2dTagCallbackInfo</H1>
+
+<H2>Definition</H2>
+<DL>
+  <DD>
+  <PRE><CODE>#include &lt;nnsys/g2d/g2d_TextCanvas.h&gt;
+
+typedef struct NNSG2dTagCallbackInfo
+{
+NNSG2dTextCanvas  txn;
+const <a  href="NNS_G2D_UNICODE.html">NNSG2dChar</a>* str;
+int x;
+int y;
+int clr;
+void* cbParam;
+}
+NNSG2dTagCallbackInfo;</CODE></PRE>
+</DL>
+
+<H2>Description</H2>
+<P>
+	This is the drawing information of <code><a href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a></code> that gets passed to <code><a href="NNSG2dTagCallback.html">NNSG2dTagCallback</a></code>. You can control the text-character drawing done by <code><a href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a></code> by rewriting this structure.
+</P>
+
+	<TABLE border="1" width="100%">
+	  <TBODY>
+	    <TR>
+	      <TD width="13%"><EM><STRONG>txn</STRONG></EM></TD>
+	      <TD width="87%">
+	      	The TextCanvas being used for drawing. This is simply a shallow copy of the TextCanvas indicated in the first argument of <code><a href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a></code>. Thus, even if you alter TextCanvas here, the TextCanvas that is indicated in the first argument of <CODE>NNS_G2dTextCanvasDrawTaggedText</CODE> will not get changed.
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="13%"><EM><STRONG>str</STRONG></EM></TD>
+	      <TD width="87%">
+	      	The pointer to the text character being processed. This refers to the next character after the character that gets passed as the first agument of <code><a href="NNSG2dTagCallback.html">NNSG2dTagCallback</a></code>.
+	      </TD>
+	    </TR>
+	    <TR>
+	      <TD width="13%"><EM><STRONG>x</STRONG></EM></TD>
+	      <TD width="87%"> The drawing position of the next text character (in the CharCanvas coordinate system). </TD>
+	    </TR>
+	    <TR>
+	      <TD width="13%"><EM><STRONG>y</STRONG></EM></TD>
+	      <TD width="87%"> The drawing position of the next text character (in the CharCanvas coordinate system). </TD>
+	    </TR>
+	    <TR>
+	      <TD width="13%"><EM><STRONG>clr</STRONG></EM></TD>
+	      <TD width="87%"> The color No. being used for drawing. </TD>
+	    </TR>
+	    <TR>
+	      <TD width="13%"><EM><STRONG>cbParam</STRONG></EM></TD>
+	      <TD width="87%">
+	      	User data. This value gets passed to the seventh argument of <code><a href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a></code>.
+	      </TD>
+	    </TR>
+	  </TBODY>
+	</TABLE>
+
+<H2>See Also</H2>
+<P><a href="NNSG2dTagCallback.html">NNSG2dTagCallback</a>, <a  href="NNS_G2dTextCanvasDrawTaggedText.html">NNS_G2dTextCanvasDrawTaggedText</a></code></P>
+
+<H2>Revision History</H2>
+<P>05/25/2005 Initial version.</P>
+</BODY>
+
+</HTML>

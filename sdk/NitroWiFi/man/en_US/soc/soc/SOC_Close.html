@@ -1,0 +1,73 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SOC_Close</title>
+<link rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">SOC_Close</h1>
+
+
+<h2>C Specification</h2>
+
+<dl>
+<dd><pre><code>#include &lt;nitroWiFi/soc.h&gt;</code></pre>
+  </dd>
+<dd><pre><code>int SOC_Close ( int <em><strong>s</strong></em> );</code></pre>
+  </dd>
+</dl>
+
+<h2>Arguments</h2>
+
+<table width="100%">
+  <tr>
+<td><code><em><strong>s</strong></em></code></td>
+<td>Socket descriptor to close.</td>
+  </tr>
+</table>
+
+<h2>Return Values</h2>
+
+<table width="100%">
+  <tr>
+    <td>0</td>
+<td>Successful.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINPROGRESS</code></td>
+<td>The close process is in progress.</td>
+  </tr>
+  <tr>
+<td><code>SOC_EINVAL</code></td>
+<td>Invalid processing.</td>
+  </tr>
+  <tr>
+<td><code>SOC_ENETRESET</code></td>
+<td>Socket library is not initialized. </td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> Additional errors may be generated and returned in future library releases. Treat all negative return values as general errors.</p>
+
+<h2>Description</h2>
+
+<p>This function closes the socket descriptor.</p>
+
+<p>Currently, <code>SOC_Close()</code> performs an asynchronous close process whether the <code>SOC_O_NONBLOCK</code> flag is set or not.</p>
+<p>You will need to call <code>SOC_Close(s)</code> again when you want to determine whether or not the socket has been completely closed and its memory region deallocated. When <code>Soc_Close(s)</code> is called for the first time, it will cause the socket to transition to its close process state. If this transition is a success, a 0 will return. On subsequent <code>SOC_Close(s)</code> calls, the progress of the current close process will return. If <code>SOC_EINPROGRESS</code> returns at this time, it indicates that the socket's close process is currently underway. If a 0 returns, it means that the close process has finished and its memory region has been deallocated.</p>
+<p>It is blocked if there is no space in the command queue.</p>
+<p>With SOC_SOCK_STREAM(TCP), once all the data is sent, the send thread is ended.</p>
+
+<h2>See Also</h2>
+
+<p>
+<code><a href="SOC_Shutdown.html">SOC_Shutdown</a></code>, <code><a href="SOC_Fcntl.html">SOC_Fcntl</a></code>
+</p>
+<H2>Revision History</H2>
+<P>
+05/18/2006 Method for confirming the end of the close process<BR>12/12/2005 Changed the return values<BR>09/13/2005 Initial version</P>
+</body>
+</html>

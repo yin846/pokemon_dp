@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>OS_*SecondsToTicks*</TITLE>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</HEAD>
+<BODY>
+<H1 align="left">OS_*SecondsToTicks*</H1>
+<H2>C Specification</H2>
+<DL>
+  <DD>
+<PRE><CODE>#include &lt;nitro/os.h&gt;</CODE></PRE>
+<PRE><CODE>OS_SecondsToTicks( sec );
+OS_SecondsToTicks32( sec );
+
+OS_MilliSecondsToTicks( milliSec );
+OS_MilliSecondsToTicks32( milliSec );
+
+OS_MicroSecondsToTicks( microSec );
+OS_MicroSecondsToTicks32( microSec );
+
+(These are all macros.)</CODE></PRE>
+</DL>
+<H2>Arguments</H2>
+<TABLE border="1" width="100%">
+  <TBODY>
+    <TR>
+<TD width="13%"><EM><STRONG>sec</STRONG></EM></TD>
+<TD width="87%">Seconds</TD>
+    </TR>
+    <TR>
+<TD width="13%"><EM><STRONG>milliSec</STRONG></EM></TD>
+<TD width="87%">Milliseconds</TD>
+    </TR>
+    <TR>
+<TD><EM><STRONG>microSec</STRONG></EM></TD>
+<TD>Microseconds</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2>Return Values</H2>
+<P>The tick value that corresponds to the time specified by the argument.</P>
+<H2>Description</H2>
+<P>This function obtains the tick value that corresponds to the time specified by the argument. One tick unit is 1/64 of the system clock.</P>
+<P><CODE>OS_MicroSecondsTo Ticks*()</CODE> converts microseconds to tick values.<BR><CODE>OS_MilliSecondsToTicks*()</CODE> converts milliseconds to a tick value.<BR><CODE>OS_SecondsToTicks*()</CODE> converts seconds to a tick value.<BR>These functions are all defined as macros.</P>
+<P>Functions with <CODE>32</CODE> in their names conduct 32-bit internal calculations. Those without <CODE>32</CODE> conduct 64-bit calculations. 32-bit versions handle smaller values than 64-bit versions, so they cannot always return correct results because of overflow. However, when there is no overflow, they have the advantage of keeping the code smaller, making operating speed faster. However, since the degree of difference is not that great, and to prevent bugs, we recommend you use functions that do not include <CODE>32</CODE> in the name. Furthermore, when a constant is made into an argument, it is calculated just before compiling and the resulting value is also a constant.</P>
+
+<P>When operating in 32-bit mode, be careful of overflow. Values that will cause overflow are in the following diagram.
+</P>
+<TABLE border="1">
+  <TBODY>
+    <TR>
+<TH>Function Name</TH>
+<TH>This value or less is OK.</TH>
+<TH>Beyond this value is not allowed.</TH>
+    </TR>
+    <TR>
+<TD><CODE>OS_SecondsToTicks32()</CODE></TD>
+<TD>128 (seconds)</TD>
+<TD>129 (seconds)</TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_MilliSecondsToTicks32()</CODE></TD>
+<TD>128154 (Milliseconds)</TD>
+<TD>128155 (Milliseconds)</TD>
+    </TR>
+    <TR>
+<TD><CODE>OS_MicroSecondsToTicks32()</CODE></TD>
+<TD>128154 (Microseconds)</TD>
+<TD>128155 (Microseconds)</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR> Further, values that overflow in 64 bit operation are: 550419050 microseconds (about 6.4 days) for <CODE>OS_MicroSecondsToTicks*()</CODE>, 550419050955 milliseconds (about 7.4 years) for <CODE>OS_MilliSecondsToTicks*()</CODE>, and 550419050955 seconds (about 17,000 years) for <CODE>OS_SecondsToTicks*()</CODE>.</P>
+<H2>See Also</H2>
+<P><CODE><A href="OS_InitTick.html">OS_InitTick</A>, <A href="OS_GetTick.html">OS_GetTick</A><BR> <A href="../alarm/OS_SetAlarm.html">OS_SetAlarm</A>, <A href="../alarm/OS_SetPeriodicAlarm.html">OS_SetPeriodicAlarm</A><BR> <A href="OS_TicksToSeconds.html">OS_TicksTo*Seconds</A><BR></CODE></P>
+<H2>Revision History</H2>
+<P>10/07/2005 Changed differences between 32 bit and 64 bit operation<BR> 10/06/2005 Considered and changed overflow for 32 bit and 64 bit operation<BR> 02/25/2004 Changed Count to Tick<BR> 02/24/2004 Initial Version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

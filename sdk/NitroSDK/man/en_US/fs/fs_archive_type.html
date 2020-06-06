@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>FSArchive</title>
+<LINK rel="stylesheet" href="../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">FSArchive</h1>
+<h2>Definition</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/fs.h&gt;</CODE><BR> <BR> <CODE>typedef	struct	FSArchive<BR> {<BR> /* private:*/<BR> <BR> union {<BR> char	ptr[FS_ARCHIVE_NAME_LEN_MAX + 1];<BR> u32	pack;<BR> } name;<BR> struct	FSArchive	*next;<BR> struct	FSArchive	*prev;<BR> <BR> OSThreadQueue	sync_q;<BR> OSThreadQueue	stat_q;<BR> u32	flag;<BR> <BR> FSFileLink	list_sync;<BR> FSFileLink	list_async;<BR> <BR> u32	base;<BR> u32	fat;<BR> u32	fat_size;<BR> u32	fnt;<BR> u32	fnt_size;<BR> u32	fat_bak;<BR> u32	fnt_bak;<BR> void	*load_mem;<BR> <BR> FS_ARCHIVE_READ_FUNC	read_func;<BR> FS_ARCHIVE_WRITE_FUNC	write_func;<BR> <BR> FS_ARCHIVE_READ_FUNC	table_func;<BR> <BR> FS_ARCHIVE_PROC_FUNC	proc;<BR> u32	proc_flag;<BR> <BR> } FSArchive;<BR></CODE><br>
+  </dd>
+</dl>
+
+<H2>Description</H2>
+<P>Structure used in archive function. All members are used only in internal processing. Direct operation of these is prohibited. <BR>
+</P>
+<H2>Note</H2>
+<P>This type of internal expression may change in future enhancements. Avoid programming that depends upon sizes and members in the current package. <BR>
+</P>
+<h2>See Also</h2>
+<p><CODE><A href="archive/FS_RegisterArchiveName.html">FS_RegisterArchiveName</A> <A href="archive/FS_SetArchiveProc.html">FS_SetArchiveProc</A></CODE></p>
+
+<H2>Revision History</H2>
+<P>
+07/12/2004 Corrected link error<br /> 06/30/2004 Initial Version
+</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

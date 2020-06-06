@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>G3_LightVector</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">G3*_LightVector</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<PRE><CODE>
+#include &lt;nitro/gx/g3imm.h&gt;
+#include &lt;nitro/gx/g3b.h&gt;
+#include &lt;nitro/gx/g3c.h&gt;
+
+void G3_LightVector(GXLightId lightID, fx16 x, fx16 y, fx16 z);
+
+// Below are APIs for creating the display list (command list)<BR>void G3B_LightVector(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXLightId lightID, fx16 x, fx16 y, fx16 z);<BR>void G3C_LightVector(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXLightId lightID, fx16 x, fx16 y, fx16 z);<BR>void G3BS_LightVector(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXLightId lightID, fx16 x, fx16 y, fx16 z);<BR>void G3CS_LightVector(<A href="../gx/GXDLInfo.html">GXDLInfo</A>* info, GXLightId lightID, fx16 x, fx16 y, fx16 z);</CODE></PRE>
+  </dd>
+</dl><h2>Arguments</h2>
+
+<table border="1" width="100%">
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">info</font></strong></em></td>
+<td width="87%">Command List Information</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">lightID</font></strong></em></td>
+<td width="87%">Light number (0 - 3)</td>
+  </tr>
+  <tr>
+<td width="13%"><em><strong><font face="Courier New">x</font></strong></em></td>
+<td width="87%">x-component of the light directional vector</td>
+  </tr>
+    <TR>
+<TD><em><strong><font face="Courier New">y</font></strong></em></TD>
+<TD>y-component of the light directional vector</TD>
+    </TR>
+    <TR>
+<TD><em><strong><font face="Courier New">z</font></strong></em></TD>
+<TD>z-component of the light directional vector</TD>
+    </TR>
+  </table>
+<h2>Return Values</h2>
+<p>None.</p>
+<H2>Description</H2>
+<P>This function sets the direction vector for light. <em><strong><code>lightID</code></strong></em> selects one of 4 lights, and <em><strong><code>x</code></strong></em>, <em><strong><code>y</code></strong></em>, and <em><strong><code>z</code></strong></em> set the light vector. The arguments can take values of more than -<code>FX16_ONE</code> and less than <code>FX16_ONE</code> - 1. Because the format is changed internally to fixed point decimal (sign + 9-bit decimal), the value is passed to the hardware as more than -1.0 (<code>0xF000</code>) and less than 0.998 (<code>0x0FF9</code>). Set a unit vector because the hardware does not normalize vectors. See <code><A href="G3_LightColor.html" target="_self">G3*_LightColor</A> </code>for details on <code>GXLightId</code> types.<BR> <b>Note</b>:&nbsp; Immediately after the settings, coordinate conversion occurs internally according to the current directional vector matrix. In other words, this function is called for both cases when the light direction changes and when the camera direction changes.</P>
+<h2>See Also</h2>
+<P><A href="G3_LightColor.html" target="_self">G3*_LightColor</A></P>
+<H2>Revision History</H2>
+<P>02/09/2004</P>
+<UL>
+<LI>Added to description
+</UL>
+<P>01/19/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

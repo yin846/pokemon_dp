@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 7.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>The Square Root Coprocessor (Overview)</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">The Square Root Coprocessor (Overview)</h1>
+<P>The DS has accelerators for division and square-root computations. This section describes the square root coprocessor.</P>
+<HR>
+<P><B>Registers for Square-Root Calculations</B></P>
+
+<P>The following data registers are available for the calculation parameters and calculation results.</P>
+<BLOCKQUOTE><IMG src="image_reg_SQRT_PARAM.gif" border="0"></BLOCKQUOTE>
+<BLOCKQUOTE><IMG src="image_reg_SQRT_RESULT.gif" border="0"></BLOCKQUOTE>
+<P>Also, a control register is available to control the square root coprocessor.</P>
+<BLOCKQUOTE><IMG src="image_reg_SQRTCNT.gif" border="0"></BLOCKQUOTE>
+<HR>
+<P><B>Operations of the Square Root Coprocessor</B></P>
+<P>To perform calculations, the square root coprocessor sets the parameters for the square-root calculation in the data register <code>SQRT_PARAM</code>. After the control register <code>SQRTCNT</code> is appropriately set, the results of the calculation are saved in <code>SQRT_RESULT</code>. (The calculation actually begins as soon as a value is set in either <code>SQRT_PARAM</code> or <code>SQRTCNT</code>. If data get written to the registers during the calculation, the calculation restarts from the beginning.)</P>
+<P>There are two modes for square-root calculations:<UL>
+<LI>Input parameters are 32bit
+<LI>Input parameters are 64bit
+</UL>
+<P>You can switch between these two modes by changing the value set in the <code>MODE</code> bit of the <code>SQRTCNT</code> register.</P>
+
+<P>When the square root coprocessor begins a calculation, the <code>SQRTCNT</code> register's <code>BUSY</code> bit becomes <code>1</code>. The bit remains <code>1</code> until the result is computed. When this bit becomes <code>0</code>, the value in the <code>SQRT_RESULT</code> register holds the correct computation result.</P>
+
+<HR>
+<P><B>Calculation Cycles</B></P>
+<P>The number of cycles required by the square root coprocessor to perform a calculation is the same, regardless of the mode.</P>
+
+
+<UL>
+<LI>13 cycles for mode in which input parameters are 32bit
+<LI>13 cycles for mode in which input parameters are 64bit
+</UL>
+<P>To make more efficient use of the square root coprocessor, you can perform another task while waiting for the results after setting the parameters in the registers of the coprocessor.</P>
+<HR>
+<P><B>Setting the Parameters</B></P>
+<P>The parameters for square-root calculations are set using <a href="CP_SetSqrtImm.html"><code>CP_SetSqrtImm*()</code></a> and <code><a href="CP_SetSqrt.html">CP_SetSqrt*()</a></code>. The latter function can also set the <code>SQRTCNT</code> register's calculation mode.</P>
+
+<P>Thus, if you plan to perform a succession of square-root calculations in the same mode, you can use <code><a href="CP_SetSqrt.html">CP_SetSqrt*()</a></code> the first time and then use <code><a href="CP_SetSqrtImm.html">CP_SetSqrtImm*()</a></code> all subsequent times.</P>
+<HR>
+<P><B>Waiting for Calculation to End</B></P>
+<P>To check whether or not the calculation has ended, call <code><a href="CP_IsSqrtBusy.html">CP_IsSqrtBusy()</a></code>.</P>
+<P>To wait for the calculation to end, call <code><a href="CP_WaitSqrt.html">CP_WaitSqrt()</a></code>.</P>
+<HR>
+<P><B>Getting the Calculation Result</B></P>
+<P>To get the result of the square-root calculation, call either <code><a href="CP_GetSqrtResult.html">CP_GetSqrtResult*()</a></code> or <code><a href="CP_GetSqrtResult.html">CP_GetSqrtResultImm*()</a></code>. The former waits until <code>SQRTCNT</code> is no longer in the BUSY state before getting the result. The latter acts immediately.</P>
+
+
+<HR>
+<P><B>Note</B></P>
+<P>If you are using the thread system, the square-root calculations are thread safe by default.</P>
+<HR>
+<P><B>Example</B></P>
+<P>In this example, the square root coprocessor is used to calculate the square root and the result are displayed.</P>
+<BLOCKQUOTE>
+<P><CODE>u32 result;<BR> <BR> //---- set parameter and sqrt-mode<BR> CP_SetSqrt( 0x12345678, CP_SQRT_32BIT_MODE );<BR> <BR> //---- wait for sqrt operation to finish<BR> CP_WaitSqrt();<BR> <BR> //---- display result<BR> result = CP_GetSqrtResultImm32();<BR> OS_Printf( &quot;result=%x\n&quot;, result );<BR></CODE></P>
+</BLOCKQUOTE>
+<H2>Revision History</H2>
+<P>12/27/2004 Initial version.</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>

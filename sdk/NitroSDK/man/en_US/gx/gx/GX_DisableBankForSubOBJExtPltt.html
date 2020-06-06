@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>GX_DisableBankForSubOBJExtPltt</title>
+<LINK rel="stylesheet" href="../../css/nitro.css" type="text/css">
+</head>
+
+<body>
+
+<h1 align="left">GX_DisableBankForSubOBJExtPltt</h1>
+<h2>C Specification</h2>
+
+<dl>
+  <dd>
+<CODE>#include &lt;nitro/gx/gx_vramcnt.h&gt;</CODE><BR> <BR> <CODE>GXVRamSubOBJExtPltt GX_DisableBankForSubOBJExtPltt(void);</CODE></dd>
+</dl><h2>Arguments</h2>
+<P>None.</P>
+<h2>Return Values</h2>
+<p>The VRAM bank that is allocated to the sub 2D Engine's OBJ extended palette.</p>
+<H2>Description</H2>
+<P>This function disables the VRAM bank allocated to the the sub 2D Engine's OBJ Extended palette. If disabled, VRAM cannot be accessed, but the VRAM bank contents are not lost. In addition, the VRAM banks that were allocated to each resource will not be disabled unless disabled with this function. For information on the <CODE>GXVRamSubOBJExtPltt</CODE>, see <CODE><A href="GX_SetBankForSubOBJExtPltt.html">GX_SetBankForSubOBJExtPltt</A></CODE>.</P>
+<h2>See Also</h2>
+<P><A href="GX_SetBankForSubOBJExtPltt.html"><code>GX_SetBankForSubOBJExtPltt</code></A>, <A href="GX_GetBankForSubOBJExtPltt.html"><code>GX_GetBankForSubOBJExtPltt</code></A>, <A href="GX_ResetBankForSubOBJExtPltt.html"><code>GX_ResetBankForSubOBJExtPltt</code></A></P>
+<H2>Revision History</H2>
+<P>02/09/2004 Initial version</P>
+<p align="right"><strong>CONFIDENTIAL</strong></p>
+</body>
+</html>
