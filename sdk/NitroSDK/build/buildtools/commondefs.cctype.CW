@@ -437,9 +437,15 @@ endif
 
 #----------------------------------------------------------------------------
 
+ifneq ($(WINE),)
+# Run through a wrapper to fix paths
+MWCC			:= $(CW_BINDIR)/mwccarm
+MWAS			:= $(CW_BINDIR)/mwasmarm
+else
 MWCC			:= $(CW_BINDIR)/mwccarm.exe
 MWAS			:= $(CW_BINDIR)/mwasmarm.exe
-MWLD			:= $(CW_BINDIR)/mwldarm.exe
+endif
+MWLD			:= $(WINE) $(CW_BINDIR)/mwldarm.exe
 MWAR			:= $(MWLD)
 
 CC			:= $(MWCC)

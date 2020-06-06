@@ -228,11 +228,15 @@ ALIBRARIES		= $(LLIBRARIES)	   $(ELIBRARIES)    $(GLIBRARIES)
 # VPATH does not support the path name included white space like "C:/Program Files"
 #	Please, be careful !!!
 #
+ifneq ($(OS),Windows_NT)
+ALIBVPATH		 = $(subst : ,,$(patsubst %:,/:,$(subst :,: ,$(ALIBRARY_DIRS))))
+else
 ifdef	MSYSTEM
 NITRO_LIBVPATH_		 = $(subst \:,\ ,$(subst $(SPACE),:,$(ALIBRARY_DIRS)))
 else
 CYGDRV			?= $(shell cygpath -u c:)/..
 ALIBVPATH		 = $(subst : ,,$(patsubst %:,$(CYGDRV)/%:,$(subst :,: ,$(ALIBRARY_DIRS))))
+endif
 endif
 
 vpath	%.a		$(ALIBVPATH)
@@ -490,15 +494,13 @@ ifneq	($(findstring $(MAKECMDGOALS),do-build make-verinfo clean-verinfo),)
 .PHONY: make-verinfo
 make-verinfo: $(SDK_VERINFO_CW_CC) $(SDK_VERINFO_CW_LD)
 
-$(SDK_VERINFO_CW_CC): $(MWCC)
+$(SDK_VERINFO_CW_CC):
 	@$(MWCC) -version | \
 	 $(SED) -e $(QUOTE)/^Version /!d;s/^Version \([0-9.]*\).*(build \([0-9]*\)).*/SDK_CW_BUILD_VERSION_CC=\1\nSDK_CW_BUILD_NUMBER_CC=\2/i;$(QUOTE) >$(SDK_VERINFO_CW_CC)
-	@$(TOUCH) -r $(MWCC) $(SDK_VERINFO_CW_CC)
 
-$(SDK_VERINFO_CW_LD): $(MWLD)
+$(SDK_VERINFO_CW_LD):
 	@$(MWLD) -version | \
 	 $(SED) -e $(QUOTE)/^Version /!d;s/^Version \([0-9.]*\).*(build \([0-9]*\)).*/SDK_CW_BUILD_VERSION_LD=\1\nSDK_CW_BUILD_NUMBER_LD=\2/i;$(QUOTE) >$(SDK_VERINFO_CW_LD)
-	@$(TOUCH) -r $(MWLD) $(SDK_VERINFO_CW_LD)
 
 endif
 
