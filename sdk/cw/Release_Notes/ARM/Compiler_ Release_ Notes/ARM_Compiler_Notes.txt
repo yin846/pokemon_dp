@@ -1,0 +1,599 @@
+===========================================================================
+Metrowerks ARM Compiler Release Notes
+===========================================================================
+
+Date   : Sep 28, 2005 
+Author : Andrea Knight, John Russo, Steve Barnett and
+         Stephen Chong
+Version: 2.0 Build 0082
+
+===========================================================================
+Changes in This Version
+===========================================================================
+2.0 Build 0082 (09-28-2005)
+
+- fixed MTWX19431, Compiler is crashed when a Precompiled Header source 
+which used the "Boost C++ Libraries Version 1.33.0 
+
+- fixed MTWX19572, Internal Compiler Error at OPtimization level 1 or above. 
+(IRO related)
+
+- fixed MTWX19573, duplicate of MTWX19572.
+
+- rework MWGD60, Compiler emits error instead of warning for: Compiler 
+does not emit "redefined" error for duplicated #define in precompiled 
+header and command line:
+
+
+2.0 Build 0081 (09-16-2005)
+
+- fixed MTWX19492, Compiler generates wrong instructions for "default" 
+	switch-case statement with a specific condition.
+	
+- fixed MTWX19490 (also fixed in build 80), Switch statement causes 
+	application crash when Thumb
+	
+- fixed MTWX19545, "#pragma big_switch on" causes wrong jump target address 
+	when Thumb mode and Global Optimization level is set to 1 or higher.
+	
+- fixed MTWX19484, Compiler fails when a structure is initialized in the 
+	way that "gcc_extensions" is necessary.
+	
+- fixed MTWX19507, __memcpy() prototype is made same as memcpy().
+
+- fixed MTWX19508, "mwccarm.exe -help" does not explain the default 
+	value of -opt (speed/space)
+
+2.0 Build 0080 (08-31-2005)
+
+- fixed MWGD67, Inline assembler generates wrong code that branches off to the 
+Address:0x00000000 when Global Optimization level is set to 2 or higher.
+
+- fixed MWGD60, Compiler does not emit "redefined" error for duplicated 
+#define in precompiled header and command line:
+
+The compiler now emits a warning if a previously defined macro
+has a different definition in a precompiler header file. 
+The  definition of the macro in the precompiler header replaces 
+the previous defintition.
+
+     --- my.pch++ --
+     #pragma precompile_target "my.mch++"
+
+     #define ERROR 123
+     #define OK 456
+     ---------------
+
+     --- test.cpp ---
+     #define ERROR 1234
+     #define OK 456
+
+     #include "my.mch++"            // warning for ERROR redef, no  
+warning for OK
+
+     #if ERROR!=123
+     #error "ERROR is not 123"    // ERROR is 123, so this is skipped
+     #endif
+     ----------------
+
+         =>
+
+     Warning : macro 'ERROR' redefined
+     test.cpp line 4   #include "my.mch++"
+
+     The warning is not emitted in the GCC or VC++ compatibility  
+modes or if
+     #pragma allow_macro_redefs is on.
+
+
+#undef also also works as expected now, whereas previously, #undef
+would pop the value of the macro to a prior value.
+
+--- test.cpp ---
+#define ERROR 1234
+#define OK 456
+
+#include "my.mch++"
+
+#if ERROR!=123
+#error "ERROR is not 123"
+#endif
+
+#if OK!=456
+#error "OK is not 456"
+#endif
+
+#undef ERROR
+#ifdef ERROR
+#error "ERROR still defined"
+#endif
+
+#undef OK
+#ifdef OK
+#error "OK still defined"
+#endif
+----------------
+
+- fixed MWGD48, address of constant is not properly loaded in Thumb mode.
+Note that Thumb functions are now 4-byte aligned. This may result in larger
+code sections due to alignment padding.
+
+- fixed MWGD68 (rework), Compiler generates wrong instructions for large 
+switch-case statement for Thumb
+
+The compiler will now emit the following error if the total size of a switch
+statement exceeds ~32K bytes:
+
+"Thumb mode switch range is 32K bytes, use '#pragma big_switch on' option for large switches in Thumb mode"
+
+16-bit switch tables are used by default in Thumb mode to conserve space.
+If it is necessary to have a switch statement that exceeds 32K bytes in Thumb mode, use
+'#pragma big_switch on|off|reset' around the required switch statement. This
+will yield larger code size because 32-bit switch tables are used. #pragma big_switch
+has no effect in Arm mode. 
+
+#pragma big_switch on 
+	switch (value)
+	{
+	... very large switch cases ...
+	}
+#pragma big_switch reset
+
+
+2.0 Build 0079 (08-09-2005)
+
+- fixed MWGD68, Compiler generates wrong instructions for large switch-case statement for Thumb
+- fixed MWGD19, ICE when using __memcpy
+- fixed MWGD20, Bad code gen in debug mode
+- fixed MWGD17, CW DS 1.2 Debugger Variable Window Displaying Wrong Types. (appears to be caused by the 2.0 b73 compiler)
+- fixed MTWX14778, Incorrect parameter passing and value returning for a structure of 3 bytes in BE only.
+
+2.0 Build 0078 (07-25-2005)
+
+- fixed MWGD16, extra MUL instruction is generated
+- fixed MTWX12005, inline assembler ldconst mnemonic is not supported in Thumb mode
+
+2.0 Build 0077 (07-14-2005)
+
+- fixed MTWX18973, statement level inline assembly block with .volatile is affected by optimization level
+- fixed MTWX18974, Statement "a = b;" causes warning "expression has no side effect" when a is std::list<int>
+
+2.0 Build 0076 (06-30-2005)
+- fixed MTWX17484, Incorrect Thumb code generation.
+- fixed MTWX18721, .volatile directive does not prevent optimization of
+  inline assembly block at opt 2 or higher.
+- fixed MTWX18939, statement level inline assembly block with .volatile 
+  is affected by optimization level
+
+2.0 Build 75
+- internal build
+
+2.0 Build 0074 (06-13-2005):
+- fixed MTWX18688, help text for "-generic_symbol_names on|off" option is
+  now available in the command-line compiler.
+- fixed MTWX18717, inline assembler crasher at opt 1.
+- fixed MTWX18748, Bad code is being generated at opt 1 and greater.
+- fixed MTWX18580, incorrect parameter passing for Thumb
+- fixed MTWX18732, PIC mode does not work with const data
+- fixed MTWX18494, Compiling code on high opts causes infinite compile...
+- fixed MTWX18796, compiler crasher
+
+
+2.0 Build 0073 (05-24-2005):
+- Implemented feature to generate generic symbol names for static symbols.
+When this feature is enabled, the ARM compiler will replace static symbol 
+names with generic ones. For example:  “my_local” becomes “@1234”.
+This feature can only work when debugging is disabled.
+In the CodeGen panel, there will be a new checkbox named, "Use generic symbol
+name for static symbols". In the command-line compiler a new flag, 
+"-generic_symbol_names on|off" will enable/disable the feature. A per function
+pragma "#pragma generic_symbol_names on|off" enables or disables the feature.
+
+- fixed MTWX17539, mwccarm does not enable all warnings with -w all option
+
+- fixed MTWX17812, function cannot return const array address
+
+- fixed MTWX18187, typedef'ed type expression cannot be used when 
+debugging object generated by CW.
+
+- fixed MTWX17415, ARM compiler doesn't show warning for options align 
+pragma with keyword. #pragma options align=native is still accepted for
+backwards compatibility but has no effect. Other aligned options are
+flagged as warnings if illegal pragmas warnings are enabled.
+
+
+2.0 Build 0072 (05-12-2005):
+- for MTWX18053 and MTWX18534, updated compiler so that inline assembly
+  code is no longer optimized by default. Also added the following
+  directives to control optimization of inline assembly code :
+  .volatile     -- indicates assembly code should not be optimized
+  .nonvolatile  -- indicates assembly code can be optimized
+  
+- fixed MTWX13962, Some C99 designated initializers do not compile.
+
+
+2.0 Build 0071 (03-29-2005):
+- fixed MTWX17659, compiler is generating code that saves a value on the top 
+of the stack, but without first decrementing sp
+
+
+2.0 Build 0070 (03-28-2005):
+- fixed MTWX17829, inline assembler does not generate instructions between two labels
+- fixed MTWX17758, compiler crashes when the optimization level is greater than or equal to 1.
+
+
+2.0 Build 0069 (03-01-2005):
+- fixed MTWX17571, incorrect code generated for pointer access in Thumb mode
+  at Opt4.
+
+
+2.0 Build 0068 (02-04-2005):
+- fixed MTWX17185, corrected long long math optimization errors
+- fixed MTWX17348, corrected operation of #pragma (-pragma) warning off(10186)
+- fixed MTWX17349, corrected operation of #pragma (-pragma) "warning off(10186)"
+- fixed MTWX17358, constant pool growth between b50 and b60
+
+
+2.0 Build 0067 (01-21-2005):
+- fixed MTWX14069, Unnecessary bit shift is generated for some bit field cases
+- fixed MTWX15156, Illegal pragmas checkbox in C/C++ Panel has no effect
+- fixed MTWX16803, switch statements behave unexpectly
+- fixed MTWX16886, internal compiler error in CTemplateFunc.c, line 185
+- fixed MTWX15319, Unhandled exception with unterminated #ifdef in header file.
+- fixed MTWX14762, incorrect debug info for array member.
+
+
+2.0 Build 0066 (01-20-2005):
+- internal build
+
+
+2.0 Build 0065 (01-18-2005):
+- internal build
+
+
+2.0 Build 0064 (01-17-2005):
+- internal build
+
+
+2.0 Build 0063 (01-14-2005):
+- internal build
+
+
+2.0 Build 0062 (12-16-2004):
+- fixed MTWX16830, fixed compiler crash when returning a function pointer 
+- fixed MTWX16832, fixed byte order problem of 4 byte struct passed in a register
+
+
+2.0 Build 0061 (11-30-2004):
+- fixed MTWX16487, fixed problem with variable length array deallocation. 
+
+
+2.0 Build 0060 (11-05-2004):
+- fixed MTWX16411, fixed peephole pattern where CMP instruction elimination was 
+incorrect because carry flag was used between the instruction setting 
+condition codes and the the CMP instruction. 
+
+
+2.0 Build 0059 (10-28-2004):
+- fixed MTWX16289, added null checks for DWARF2 calls with no source info 
+available 
+
+
+2.0 Build 0058 (10-25-2004):
+- fixed MTWX16293, not a bug, but error message removed to achieve identical
+results to build 56.
+
+
+2.0 Build 0057 (09-17-2004):
+- fixed incomplete MTWX15596 issue, now works at Opt 0,1,2,3 and Opt 4.
+
+
+2.0 Build 0056 (09-16-2004):
+- fixed MTWX15628, command line compiler show "application error" dialog, 
+"Unhandled Exception 0xc0000005 at 0x004effe5"
+
+
+2.0 Build 0055 (09-15-2004):
+- fixed MTWX15569, Insufficient handling of volatile loop counter with opt.
+  level 4.
+- fixed MTWX15596, Parameter is passed as incorrect data type under the 
+  influence of the preceding source line.
+
+
+2.0 Build 0054 (09-14-2004):
+- fixed MTWX15545, compiler generates incorrect substitute code for
+  substitution operator against array pointer with opt > 0.
+- fixed MTWX15542, internal compiler error : 'PCodeExpandARM.c' line: 1215.
+
+
+2.0 Build 0053 (09-09-2004):
+- fixed MTWX14334, #pragma "force_active on" has no effect.
+- fixed MTWX14086, Thumb long long shift multiply expression error in
+  C Standard test.
+- fixed MTWX13233, Thumb long long expression errors in C Standard test.
+- fixed MTWX10148, cast code shift does not generate optimized code for
+  all cases.
+- fixed MTWX14439, __irq and interworking causes ICE.
+- fixed MTWX14918, internal compiler error when a function is defined as
+  __irq void and option "support arm/thumb interworking" is enabled.
+- fixed MTWX15360, comparison operation with casted pointer is incorrect.
+- fixed MTWX15425, wrong alignment when returning struct.
+- fixed MTWX15447, compiler generates register save code using r1 before
+  function call.
+- fixed MTWX15450, incorrect function parameter passing at optimization
+  level 4.
+
+
+2.0 Build 0050 (06-15-2004):
+- updated support for predefined marco "__profile__". The value of this
+  macro is now set by the "Generate code for profiling" option in the
+  ARM CodeGen panel.
+- fixed MTWX10148 again, which was broken by the fix for MTWX12892.
+
+
+2.0 Build 0049 (06-07-2004):
+- fixed MTWX13728, wrong code for cast substitution at opt > 0.
+- upgraded compiler projects to Pro9.
+
+
+2.0 Build 0048 (05-31-2004):
+- fixed MTWX13233, Thumb long long expression errors in C Standard test.
+- fixed MTWX13433, problems using #pragma avoid_byte, allow_byte and
+  warn_byte on a per function basis.
+- fixed MTWX13434, incorrect warnings generated for #pragma warn_byte.
+
+
+2.0 Build 0047 (05-07-2004):
+- fixed MTWX11330, debugger crash caused by incorrect DWARF2 generation.
+- fixed MTWX12892, ICE in CodeGenStmts.c, line 402.
+- fixed MTWX13156 by adding predefined marco "__profile__".
+
+
+2.0 Build 0046 (04-29-2004):
+- fixed MTWX12290, wrong code generated for 32bit structure return value.
+
+
+2.0 Build 0045 (04-26-2004):
+- fixed MTWX9265, C Standard test expression98 failure at opt > 0.
+- fixed MTWX10400, Modena Ch27 failure with option constpool.
+- fixed MTWX11237, Modena Ch27 failure at opt > 1 targeting ARM946e.
+- fixed MTWX12671, incorrect code generated for virtual function at opt > 1.
+- fixed MTWX12965, incorrect code generated for function call using
+  function pointer at opt > 1.
+
+
+2.0 Build 0044 (04-09-2004):
+- fixed MTWX9890,  2 Hommel PPTest execution failures in big endian mode.
+- fixed MTWX12155, bug in the GCC inline assembler.
+- fixed MTWX12320, ICE in CodeGenUtils.c line 594 compiling struct without
+  u8 padding.
+- fixed MTWX12321, uninitialized register used in loop code at opt > 0.
+
+
+2.0 Build 0043 (03-24-2004):
+- fixed MTWX11761, error in C++ Standard test with option constpool.
+- fixed MTWX11771, ICE in file CodeGenUtils.c line: 594 compiling C++
+  Standard test.
+- fixed MTWX12002, ICE in ConstantPools.c when using dcd mnemonic in inline
+  assembly code in thumb mode.
+- fixed MTWX12071, error using remainderf with thumb and flush0_v5t library
+- fixed MTWX12126, ICE in Constpools.c line 590 when compiling Modena
+  chapter 27 with the ISO C++ template parser disabled and constpool.
+- fixed MTWX12134, MTWX12136, MTWX12138, avoid byte access related issues.
+- fixed MTWX12225, ICE in PCodeExpandThumb.c line 1161 in Thumb femtest.
+
+
+2.0 Build 0042 (03-15-2004):
+- fixed MTWX10340, and MTWX11705, EEMBC CRC errors.
+- fixed MTWX10148, cast code shift not generating optimized code
+  for all cases.
+
+
+2.0 Build 0041 (03-12-2004):
+- added support for stack based VLA, which addresses MTWX8851. Note that
+  this conflicts with alloca() and cannot be used at the same time.
+- added support for new model of avoid LDRB/STRB generation in both
+  ARM and Thumb mode. This also address MTWX10146 and MTWX10377.
+- improved performance of signed division, which addresses MTWX8264.
+- added support for __attribute__(align(x)), which addresses MTWX10959.
+- fixed MTWX5999, undefined C9x functions scalbln, scalblnf, and scalblnl.
+- fixed MTWX10148, cast code shift does not generate optimized code for
+  all cases.
+- fixed MTWX10246, critical bug in handling volatile variable.
+- fixed MTWX11317, incorrectly optimizing out 'volatile' variables.
+- fixed MTWX10354, test lrintl, lroundl, and llroundl failure in C9x test.
+- fixed MTWX10358, tests nearbyint, lrint, lround, and llround failure in
+  Math interface tests.
+- fixed MTWX11445, fp_init called before static initializers.
+- fixed MTWX11641, incorrect code for unsigned long long compare.
+- fixed MTWX11643, argument removed from function at opt 4.
+- fixed MTWX11764, Modena Ch. 21 Thumb failure at opt > 1 with constpool
+  and don't inline.
+- fixed MTWX11771, ICE in file CodeGenUtils.c line: 594 compiling
+  C++ Standard with auto inline at opt 0 and 1.
+- fixed MTWX11825, ICE in ConstPools.c line 346 in thumb at opt > 1 with a
+  large while loop.
+
+
+2.0 Build 0034 (11-18-2003):
+- fixed WB1-49062/WB1-49066, target multiply and DSP instructions for
+  16-bit and 64-bit cross products.
+- fixed WB1-49071, avoid generating STRB in ARM mode and genreate warning
+  or error when generating STRB in Thumb mode.
+- fixed WB1-50304, execution failure in C standard test suite at
+  optimization level > 0.
+- fixed WB1-50374, slow division routines.
+- fixed WB1-50375, LDRSH not generated to read signed half word data in
+  Thumb mode.
+- fixed WB1-50376, tail call merging.
+- fixed WB1-50740, replacing BL with BLX for v5t.
+- fixed WB1-50472, unhandled exception when compiling inline assembler test
+  at optimization level > 0.
+- fixed WB1-50630, incorrect codegen for long long shift equal.
+- fixed WB1-50822, multiple load/store instruction not used for loading and
+  storing long long temporary data.
+- fixed WB1-51088, "stmia" not generated for store and increment address.
+- fixed WB1-51091, __clear function called for small initialized area.
+- fixed WB1-51024, inline assembler doesn't accept "ldr r1, [r0]".
+
+
+2.0 Build 0033 (09-28-2003):
+- fixed WB1-50095, string and data constants are not placed in .rodata.
+- fixed WB1-50277, ICE in file 'CodeGenUtils.c' line: 531.
+- fixed WB1-50281, mask instruction not generated when converting from
+  signed variable to unsigned variable.
+- fixed WB1-50377, incorrect codegen for multiply of signed variable in
+  Thumb mode.
+- fixed bug in #pragma define_section. It now accepts one of the following
+addressing mode :
+  abs32 ---- absolute 32-bit addressing
+  pcrel32 -- PC-relative 32-bit addressing (PIC)
+  sbrel32 -- SB-relative 32-bit addressing (PID)
+  sbrel12 -- SB-relative 12-bit addressing (.sdata)
+- improved error handling of ARM specific pragmas.
+
+
+1.0 Build 0021 (06-19-2003):
+- fixed WB1-47303 printf issue in Thumb mode
+- fixed WB1-46704 instantiated template show up in debugger with incorrect type
+
+
+1.0 Build 0020 (06-16-2003):
+- inline assembly fix with stack variable
+
+
+1.0 Build 0019 (06-14-2003):
+- fixed some front end header files
+
+
+1.0 Build 0018 (06-09-2003):
+- fixed a couple issues around PIC/PID
+- Updated to front end compiler version 3.2
+
+
+1.0 Build 0017 (05-27-2003):
+- fixed WB1-44506, ICE in SchedulerARM9.c when compiling Thumb code.
+- fixed problem related to accessing 1 and 2 byte stack based objects in
+  Big Endian mode.
+- fixed WB1-46181, incorrect promotion of unsigned char when used with
+  other signed interger type (signed int, long, etc.).
+- fixed WB45584, compiler errors when building C++ validation suites with
+  "use unsigned char" option enabled.
+
+
+1.0 Build 0016 (05-06-2003):
+- fixed long long related problems in Big Endian mode.
+- fixed WB1-45328, which is a bug in the peephole optimizer.
+- fixed ICE in DWARF2.c, reported in WB1-45343.
+
+
+1.0 Build 0015 (04-28-2003):
+- introduce __irq, __attribute__((interrupt("<keyword>"))) where keyword
+is IRQ, FIQ, SWI, ABORT, UNDEF.
+- fixed WB1-43259, ICE in DWARF2.c, line 1297.
+- updated register allocator to avoid reusing register designated for
+  spill store temp in Thumb mode.
+- corrected ordering of register pair for double and long long variables
+  in Big Endian mode.
+- corrected offset of small (size < 4 bytes) stack based arguments in
+  Big Endian mode.
+- introduced inline assembly support for VFP V1 and V2 instructions
+- fix for WB1-45167.
+
+
+1.0 Build 0014 (04-03-2003):
+- fix for WB1-44433.
+- fix for various problems reported by debugger team.
+
+
+1.0 Build 00013 (03-28-2003) :
+- configuration change for internal debug listing setup.
+
+
+1.0 Build 00012 (03-27-2003) :
+- fixes for WB1-43721, WB1-44055, WB1-44055, WB1-44058, WB1-44103, WB1-44104,
+  WB1-44105, WB1-44234, WB1-44240, WB1-44048, WB1-44050.
+- Fix for Dwarf2 C globals (though not C++ stationary problem).  
+
+
+1.0 Build 00011 (03-14-2003) :
+- fixes for WB1-43258, WB1-43761 (Modena crashes and ICEs).
+- All reported Dwarf2 problems addressed.
+
+
+1.0 Build 00010 (03-6-2003) :
+- fix for long long % (mod) 
+- Dwarf2 fixes for AT_location and missing SourceRef's (ticks in debugger).
+
+
+1.0 Build 0009 (02-28-2003) :
+- fixes for many ICEs in Modena and Abrahams.
+- Dwarf2 fixes reported by Simon and Vinit.
+
+
+1.0 Build 0008 (02-24-2003) :
+- fixed ICE associated with ISO C++ template parser.
+- compiler can now generate .debug_frame section when debugging is enabled.
+
+
+1.0 Build 0007 (02-19-2003) :
+- fixed peephole patterns that collapse addressing modes too aggressively.
+  Reported by Palm. 
+- fixed failure to coalesce copies as lsl r1,r2,#0, improving code quality.
+  Reported by Palm.
+- many changes to adapt to FE 3.1 including SourceRefs in PCode and
+  new algortihms for thunk generation and virtual calls.  
+- early GCC inline assembly functionality (not advertised).
+- bug fixes in generation of .debug_line.
+- added support for CPSR and SPSR registers with field mask in inline
+  assembly.
+- fixed incorrect opcode generated for MSR instruction.
+- fixed crasher bug in inline assembler that may show up when immediate
+  operand is used.
+
+
+1.0a Build 0006 (01-20-2003) :
+- fixed stack based load and store codegen bug in Thumb mode.
+ 
+
+1.0a Build 0005 (11-25-2002) :
+- fixed constant pool problems causing ICEs at compile-time.
+- fixed .debug_line problem that sometime made the ARMulator unhappy
+- fixed several code gen. problems that allow exprtest to pass (ARM)
+- ARMlet support is included in this build.
+
+
+1.0a Build 0004 (11-12-2002) :
+- fixed problem generating pre-compiled header.
+- updated switch statement support in Thumb mode.
+- fixed crasher bug when invoking intrinsic function memcpy().
+
+
+1.0a Build 0003 (10-17-2002) :
+- fixed bug in register spill overflow that can lead to internal compiler
+  error.
+
+
+1.0a Build 0002 (10-07-2002) :
+- fixed bug where FP(frame pointer, r11 in ARM mode, r7 in Thumb mode) is
+  used to store local data.
+- fixed incorrect FP relative load and store in Thumb mode when exception
+  handling is involved.
+
+
+1.0a Build 0001 (10-02-2002) :
+- first build of ARM compiler.
+
+
+===========================================================================
+Contacting Metrowerks
+===========================================================================
+
+Use the forms found in the Release Notes folder on the CD to submit tech
+questions, bug reports or suggestions and send to : support@metrowerks.com
+
+See the CodeWarrior_on_the_Nets document in the Release Notes folder for
+more contact information, including a list of Internet newsgroups,
+online services, and factory update sites.
+
+===========================================================================
