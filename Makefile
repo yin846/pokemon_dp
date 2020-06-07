@@ -396,6 +396,7 @@ $(MAKEFILE):	commondefs.GF modulerules.GF make_prog_files make_g3_files main.lsf
 	-$(RM) $(BINDIR)/$(LCFILE_SPEC:.lsf=.*)
 	touch $(MAKEFILE)
 
+main.lsf: overlay_files
 overlay_files: overlaytool.rb
 	ruby overlaytool.rb
 
