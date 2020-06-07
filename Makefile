@@ -226,7 +226,7 @@ include sub_make_files
 #	SRCSとSRCS_OVERLAYFILESの定義を行っている
 #----------------------------------------------------------------------------
 include	make_prog_files
-include overlay_files
+-include overlay_files
 SRCS := $(subst \,/,$(SRCS))
 SRCS_OVERLAY := $(subst \,/,$(SRCS_OVERLAY))
 
@@ -392,10 +392,12 @@ $(MSGDATA_FILEPATH): $(wildcard $(MSG_CONVERTDATA_DIR)*.dat)
 #----------------------------------------------------------------------------
 #	makefileがインクルードするファイルが更新されたらmakelcfが動作するようにした
 #----------------------------------------------------------------------------
-$(MAKEFILE):	commondefs.GF modulerules.GF make_prog_files make_g3_files main.lsf overlay_files overlaytool.rb
+$(MAKEFILE):	commondefs.GF modulerules.GF make_prog_files make_g3_files main.lsf overlay_files
 	-$(RM) $(BINDIR)/$(LCFILE_SPEC:.lsf=.*)
-	ruby overlaytool.rb
 	touch $(MAKEFILE)
+
+overlay_files: overlaytool.rb
+	ruby overlaytool.rb
 
 #----------------------------------------------------------------------------
 #	ソースの類が１個でもbuilddate.cより新しい場合builddate.cをtouch&コンパイル
