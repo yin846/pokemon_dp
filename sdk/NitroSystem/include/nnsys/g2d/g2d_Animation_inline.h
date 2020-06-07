@@ -313,7 +313,7 @@ NNS_G2D_INLINE u16 NNS_G2dGetAnimCtrlCurrentElemIdxVal
   Returns:      Current animation sequence
   
  *---------------------------------------------------------------------------*/
-static const NNSG2dAnimSequence* 
+NNS_G2D_INLINE const NNSG2dAnimSequence* 
 NNS_G2dGetAnimCtrlCurrentAnimSequence
 ( 
     const NNSG2dAnimController*       pAnimCtrl 
