@@ -74,10 +74,15 @@
  *---------------------------------------------------------------------------*/
 #include	<stdio.h>
 #include	<strings.h>
+#include	<stdarg.h>             // va_start(),va_end()
+#ifndef _WIN32
+#define SDK_ARM9
+#include	<nitro/memorymap.h>
+#else
 #include	<io.h>                 // setmode()
 #include	<fcntl.h>              // setmode()
-#include	<stdarg.h>             // va_start(),va_end()
 #include	<nitro_win32.h>
+#endif
 #include	"makelcf.h"
 #include	"defval.h"
 #include	"tlcf.tab.h"
@@ -897,7 +902,9 @@ int CreateLcfFile(const char *filename)
     }
     else
     {
+#ifdef _WIN32
         setmode(1, O_BINARY);
+#endif
         fp_out = stdout;
         PutTokenBufferAll();
     }
