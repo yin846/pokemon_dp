@@ -3332,7 +3332,7 @@ void UgSBRecvLVUPFlagRet(int netID, int size, void* pData, void* pWork)
             MI_CpuClear8(pDeliv,sizeof(pDeliv));
             pDeliv->seq = 0;
             pDeliv->type = pBuff[1];
-            OHNO_SP_PRINT("一緒にいたのでパソコン更新 \n");
+            OHNO_SP_PRINT("一緒にいたのでパ\x83\x5cコン更新 \n");
             _pcChange(pDeliv);
             sys_FreeMemoryEz(pDeliv);
         }

@@ -1658,7 +1658,7 @@ const NNSSndArcBankInfo* Snd_GetBankInfo( int no )
 
 	//無効かチェック
 	if( info == NULL ){
-		OS_Printf( "バンク情報構造体のアドレスを取得出来ませんでした。\n" );
+		OS_Printf( "バンク情報\x8d\x5c造体のアドレスを取得出来ませんでした。\n" );
 	}
 
 	return info;

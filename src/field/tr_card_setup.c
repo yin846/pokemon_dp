@@ -560,7 +560,7 @@ static BOOL SetupTrCardEvent(GMEVENT_CONTROL * event)
 	case 10:
 		// 相手のトレーナーカード閲覧開始
 		FieldTrCard_SetProc( fsys, wk->partner );	
-		OS_Printf("カード表示開始\n");
+		OS_Printf("カード\x95\x5c示開始\n");
 		wk->seq = 11;
 		break;
 	case 11:

@@ -628,7 +628,7 @@ static int MysteryCardRemove(PROC *proc)
   /* カードが残っているので、次のカードを探して表示 */
   wk->disp_card = MysteryCardNextCard(wk, wk->disp_card,  1);
 
-  OS_TPrintf("次に表示するカード %d\n", wk->disp_card);
+  OS_TPrintf("次に\x95\x5c示するカード %d\n", wk->disp_card);
 
   DrawStringWindow(&wk->msgwin, mystery_card_001);
   MysteryCardCreateWindow(wk, &wk->menuwin, MYSTERYCARD_INDEX_MENU+1, wk->menu_index);

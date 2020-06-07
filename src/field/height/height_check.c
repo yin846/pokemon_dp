@@ -158,7 +158,7 @@ static BOOL	BinSearch(const u16 *inDataList,const u16 inDataSize,const fx32 inZ_
 	u32 data_idx;
 	fx32 z_val;
 	if (inDataSize == 0){
-		OS_Printf("Zソートデータがありません\n");
+		OS_Printf("Z\x83\x5cートデータがありません\n");
 		return FALSE;//データなしなので、探索終了
 	}else if (inDataSize == 1){
 		*outIndex = 0;//探索終了
@@ -527,7 +527,7 @@ u8 HC_DebugCheckHeight(const fx32 inX, const fx32 inZ, MHI_CONST_PTR inMap3DInfo
 	VecFx32 vec[3];
 
 	if (inMap3DInfo->DataValid == FALSE){
-		OS_Printf("高さデータ構造体ない\n");
+		OS_Printf("高さデータ\x8d\x5c造体ない\n");
 		return 0;
 	}
 

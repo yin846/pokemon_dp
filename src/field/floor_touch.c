@@ -153,7 +153,7 @@ void FTouch_FreeUnderGroundTP(TP_TO_3D_PTR *ptr)
 {
 	
     if((*ptr)==NULL){
-		OS_Printf("‚Q“xŒÄ‚Î‚ê‚Ä‚¢‚é‰Â”\«‚ ‚è\n");
+		OS_Printf("‚Q“xŒÄ‚Î‚ê‚Ä‚¢‚é‰Â\x94\x5c«‚ ‚è\n");
 		return;
 	}
 	GF_ASSERT((*ptr)!=NULL&&"‚·‚Å‚ÉNULL‚Å‚·");

@@ -1710,7 +1710,7 @@ static void DT_StarEffectSet(DANCE_PROC_WORK *dpw, int breeder_no, int review_ty
 	for(i = 0; i < star_num; i++){
 		ret = DT_StarActorSet(dpw, breeder_no, anm_seq);
 		if(ret == FALSE){
-			OS_TPrintf("これ以上、星は表示出来ません！ブリーダー番号＝%d\n", breeder_no);
+			OS_TPrintf("これ以上、星は\x95\x5c示出来ません！ブリーダー番号＝%d\n", breeder_no);
 			break;
 		}
 	}

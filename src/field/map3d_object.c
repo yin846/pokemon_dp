@@ -213,7 +213,7 @@ void M3DO_LoadArc3DObjData(	ARCHANDLE *ioHandle,
 					&(ptr->objectdata),
 					&(ptr->objectmodel) );
 			if (CheckResourceEntry(inMapResource, ptr->id) == FALSE){
-				OS_Printf("ダミー表示のため、配置モデルIDを書き換えます%d→0\n",ptr->id);
+				OS_Printf("ダミー\x95\x5c示のため、配置モデルIDを書き換えます%d→0\n",ptr->id);
 				ptr->id = 0;
 			}
 			

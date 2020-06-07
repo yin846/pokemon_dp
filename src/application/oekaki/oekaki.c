@@ -2981,7 +2981,7 @@ static int ConnectNumControl( OEKAKI_WORK *wk )
 	// ’ÊMÚ‘±l”‚ª‰æ‘œ‹¤—Ll”‚æ‚è‚à‘½‚­‚È‚Á‚½ê‡‚Í—£’E‹ÖŽ~ƒtƒ‰ƒO‚ð—§‚Ä‚é
 	if(wk->shareNum < CommGetConnectNum()){
 		OS_Printf("ban_flag_on:%d,%d\n",wk->shareNum, CommGetConnectNum());
-		OS_Printf("—“ü—\’è\n");
+		OS_Printf("—“ü\x97\x5c’è\n");
 		wk->banFlag = OEKAKI_BAN_ON;
 		//—“ü‚ðŠú‘Ò‚·‚é
 		wk->bookJoin = 1;

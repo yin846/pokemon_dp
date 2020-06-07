@@ -208,7 +208,7 @@ static	void CommContestRecvNormal(int id_no,int size,void *pData,void *work)
 		CONRES_PROC_WORK *rpw;
 		rpw = consys->class_proc;
 		cow = &rpw->cow;
-		OS_TPrintf("結果発表データ受信。id_no=%d, size=%d\n", id_no, size);
+		OS_TPrintf("結果発\x95\x5cデータ受信。id_no=%d, size=%d\n", id_no, size);
 	}
 	else{
 		GF_ASSERT(0 && "不明なクラスです");

@@ -2364,7 +2364,7 @@ u32 ConScr_AcceNoGet(CONTEST_SYSTEM *consys)
 		}
 	}
 	
-	OS_TPrintf("アクセサリー：Add可能\n");
+	OS_TPrintf("アクセサリー：Add可\x94\x5c\n");
 	return acce_no;
 }
 

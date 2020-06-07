@@ -1616,7 +1616,7 @@ void AT_AppealPointActorMadeOver(ACTIN_SYSTEM_PARAM *sys, int breeder_no,
 //	GF_ASSERT(icon_num <= APPEAL_POINT_ICON_MAX);
 	if(icon_num > APPEAL_POINT_ICON_MAX * APPEAL_POINT_ICON_LOOP){
 		icon_num = APPEAL_POINT_ICON_MAX * APPEAL_POINT_ICON_LOOP;
-		OS_TPrintf("---アピールポイントアイコンの表示数が最大数を超えています！！---\n");
+		OS_TPrintf("---アピールポイントアイコンの\x95\x5c示数が最大数を超えています！！---\n");
 	}
 	
 	//必要なアイコンの数以上のアイコンが出ている場合はそれらを削除する
