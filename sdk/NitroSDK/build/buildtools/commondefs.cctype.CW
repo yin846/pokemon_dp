@@ -384,6 +384,7 @@
 #
 # $NoKeywords: $
 #----------------------------------------------------------------------------
+-include $(NITROSDK_ROOT)/build/buildtools/commondefs.wine
 
 EMPTY	 	?=
 SPACE 		?= $(EMPTY) $(EMPTY)

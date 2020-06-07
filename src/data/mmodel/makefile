@@ -6,6 +6,8 @@
 #	tamada GAME FREAK inc.
 #----------------------------------------------------------------------------
 
+include $(NITROSDK_ROOT)/build/buildtools/commondefs.wine
+
 TARGET 	=	mmodel.narc
 HEADER	=	$(TARGET:.narc=.naix)
 
@@ -37,13 +39,13 @@ FEDATA_ANMITPCV	= $(notdir $(G3D_FE_ANMITPCV:.itp=_itpcv.dat))
 FEDATA_NONCV = $(G3D_FE_NONCV)
 
 #G3Dコンバータへのパス
-G3DCVTR	= $(NITROSYSTEM_ROOT)/tools/win/bin/g3dcvtr.exe
+G3DCVTR	= $(WINE) $(NITROSYSTEM_ROOT)/tools/win/bin/g3dcvtr.exe
 
 #G2Dコンバータへのパス
 G2DCVTR	= $(NITROSYSTEM_ROOT)/tools/win/bin/g2dcvtr.exe
 
 #itpコンバータへのパス
-ITPCVTR = itp_conv.exe
+ITPCVTR = $(WINE) ./itp_conv.exe
 
 #----------------------------------------------------------------------------
 #	拡張子で生成ルールを指定する
