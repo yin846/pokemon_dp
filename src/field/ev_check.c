@@ -386,7 +386,7 @@ int CheckRequest(const EV_REQUEST * req, FIELDSYS_WORK * repw)
 			BOOL flag = EvPoke_Enable2vs2Battle(SaveData_GetTemotiPokemon(repw->savedata));
 			
 			if( SysFlag_PairCheck(SaveData_GetEventWork(repw->savedata)) == 1 ){
-				flag = TRUE;		//連れ歩き中ならダブル可能
+				flag = TRUE;		//連れ歩き中ならダブル可能 
 			}
 			
 			if( EvTrainerEyeCheck(repw,flag) == TRUE ){
@@ -808,7 +808,7 @@ int CheckRequestBTower(const EV_REQUEST * req, FIELDSYS_WORK * repw)
 			BOOL flag = EvPoke_Enable2vs2Battle(SaveData_GetTemotiPokemon(repw->savedata));
 			
 			if( SysFlag_PairCheck(SaveData_GetEventWork(repw->savedata)) == 1 ){
-				flag = TRUE;		//連れ歩き中ならダブル可能
+				flag = TRUE;		//連れ歩き中ならダブル可能 
 			}
 			
 			if( EvTrainerEyeCheck(repw,flag) == TRUE ){

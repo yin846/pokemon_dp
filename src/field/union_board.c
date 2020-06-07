@@ -1161,14 +1161,14 @@ static int TouchContFunc( UNION_BOARD_WORK *ubw )
 static void LR_ButtonFunc( UNION_BOARD_WORK *ubw )
 {
 	if(sys.trg & PAD_BUTTON_L){
-		// 上矢印（下にウインドウを１つスクロール）と同じ機能
+		// 上矢印（下にウインドウを１つスクロール）と同じ機能 
 		CLACT_AnmChg( ubw->clActWork[0], 0+4 );
 		if(ubw->Scroll.now!=0){
 			ubw->Scroll.now--;
 			Snd_SePlay(SEQ_SE_DP_BUTTON3);
 		}
 	}else if(sys.trg & PAD_BUTTON_R){
-		// 下矢印（下にウインドウを１つスクロール）と同じ機能
+		// 下矢印（下にウインドウを１つスクロール）と同じ機能 
 		CLACT_AnmChg( ubw->clActWork[1], 1+4 );
 		if(ubw->Scroll.now<ubw->Scroll.max-3){
 			ubw->Scroll.now++;

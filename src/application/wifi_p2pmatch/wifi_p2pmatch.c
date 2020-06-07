@@ -2906,7 +2906,7 @@ static int WifiP2PMatch_FriendList( WIFIP2PMATCH_WORK *wk, int seq )
     }
 #endif
 #endif
-#ifdef PM_DEBUG  // デバッグ機能
+#ifdef PM_DEBUG  // デバッグ機能 
     if(PAD_BUTTON_L & sys.trg){
         if(mydwc_toggleDelay()){
             WifiP2PMatchMessagePrint(wk, msg_wifilobby_test_002, FALSE);

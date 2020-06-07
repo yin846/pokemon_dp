@@ -621,7 +621,7 @@ static DS_ASCII2_TRANS ds_to_ascii2_trans[TRANS_DS2A2B_CODE_MAX]={
  {SI_,'シ'},
  {SU_,'ス'},
  {SE_,'セ'},
- {SO_,'ソ'},
+ {SO_,'\x83\x5C'},
  {TA_,'タ'},
  {TI_,'チ'},
  {TU_,'ツ'},

@@ -2360,7 +2360,7 @@ u32 ConScr_AcceNoGet(CONTEST_SYSTEM *consys)
 		imc_item = ImcSaveData_GetItemSaveData(imc);	//アイテムセーブデータ取得
 		if(ImcSaveData_CheckAcceAdd(imc_item, acce_no, 1) == FALSE){
 			OS_TPrintf("アクセサリー：これ以上Add出来ないので取得しない\n");
-			return 0xffff;	//追加不可能
+			return 0xffff;	//追加不可能 
 		}
 	}
 	

@@ -42,7 +42,7 @@
 #define	SYS_FLAG_UG_HATA				(SYSFLAG_START+19)		//地下：旗
 #define	SYS_FLAG_GTC_OPEN				(SYSFLAG_START+20)		//施設：GTC
 #define	SYS_FLAG_BTOWER_OPEN			(SYSFLAG_START+21)		//施設：バトルタワー
-#define	SYS_FLAG_SHIP					(SYSFLAG_START+22)		//船使用可能
+#define	SYS_FLAG_SHIP					(SYSFLAG_START+22)		//船使用可能 
 //#define	SYS_FLAG_					(SYSFLAG_START+23)		//
 #define	SYS_FLAG_PST					(SYSFLAG_START+24)		//ポケモンステータス　コンテスト技
 #define	SYS_FLAG_POKEPARK_MODE			(SYSFLAG_START+25)		//ポケパークモードフラグ
