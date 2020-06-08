@@ -438,14 +438,8 @@ endif
 
 #----------------------------------------------------------------------------
 
-ifneq ($(WINE),)
-# Run through a wrapper to fix paths
-MWCC			:= $(CW_BINDIR)/mwccarm
-MWAS			:= $(CW_BINDIR)/mwasmarm
-else
-MWCC			:= $(CW_BINDIR)/mwccarm.exe
-MWAS			:= $(CW_BINDIR)/mwasmarm.exe
-endif
+MWCC			:= $(WINE) $(CW_BINDIR)/mwccarm.exe
+MWAS			:= $(WINE) $(CW_BINDIR)/mwasmarm.exe
 MWLD			:= $(WINE) $(CW_BINDIR)/mwldarm.exe
 MWAR			:= $(MWLD)
 
