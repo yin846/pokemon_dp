@@ -44,7 +44,6 @@ You need to install the following software:
 
 On Debian or Ubuntu you can do this by running:
 ```
-[TODO]
 sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install git gcc make bison flex wine32
