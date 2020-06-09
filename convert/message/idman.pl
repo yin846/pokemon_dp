@@ -7,7 +7,7 @@
 #===============================================================================
 package idman;
 
-require 'tool.pl';
+require './tool.pl';
 
 my @IdList = ();
 my @FileList = ();

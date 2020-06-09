@@ -6,6 +6,7 @@
 # Copyright 2005 GameFreak.inc  All rights reserved.
 #
 #----------------------------------------------------------------------------
+include $(NITROSDK_ROOT)/build/buildtools/commondefs.wine
 DP_ROOT	=	../../..
 
 SUBDIRS		=
@@ -37,7 +38,6 @@ DATAMAPFLST		= mkmapdmy.txt
 
 #ã§í ïœêîíËã`
 include $(DP_ROOT)/commondefs.GF
-include $(NITROSDK_ROOT)/build/buildtools/commondefs.wine
 include	$(NITROSYSTEM_ROOT)/build/buildtools/modulerules
 
 include land_model_list

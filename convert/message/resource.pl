@@ -7,7 +7,7 @@
 #===============================================================================
 package resource;
 
-require 'tool.pl';
+require './tool.pl';
 
 #===================================================
 # Params
@@ -242,7 +242,6 @@ sub output_main {
 
 		close(RES);
 
-		system("msgenc $file\n");
 		print &tool::enc_sjis("-> $file\n");
 
 	}

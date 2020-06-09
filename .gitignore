@@ -32,7 +32,9 @@
 /src/particledata/*.naix
 /src/particledata/*.narc
 /src/msgdata/*.narc
-/include/msgdata/*.naix
+/include/msgdata/
+/convert/message/data/
+/convert/message/*.list
 
 /sdk/NitroSDK/cache/
 /sdk/NitroSDK/build/buildsetup/fx/fx/

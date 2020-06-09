@@ -1,6 +1,7 @@
 ##########################################################
 #	メッセージデータコンバート
 ##########################################################
+include $(NITROSDK_ROOT)/build/buildtools/commondefs.wine
 
 RESOURCE_LIST	= resource.list
 DEPEND_LIST	= depend.list
@@ -20,6 +21,7 @@ VERSION_FILE	= ../../version
 .SUFFIXES: .dat .gmm
 
 no-rule:
+	@mkdir -p $(DATA_DIR) $(HEADER_DIR)
 	$(MAKE)	depend
 	$(MAKE)	datfiles
 
@@ -37,6 +39,7 @@ datfiles: $(TARGETS)
 clean:
 	-rm $(DATA_DIR)/*.dat
 	-rm $(HEADER_DIR)/*.h
+	-rm $(DEPEND_LIST) $(TARGET_LIST)
 
 #=========================================================
 #	depend

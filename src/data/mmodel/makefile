@@ -5,7 +5,6 @@
 #	2006.03.10
 #	tamada GAME FREAK inc.
 #----------------------------------------------------------------------------
-
 include $(NITROSDK_ROOT)/build/buildtools/commondefs.wine
 
 TARGET 	=	mmodel.narc

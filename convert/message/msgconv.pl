@@ -15,7 +15,7 @@
 
 
 use XML::Parser;
-use encode;
+use Encode;
 use utf8;
 
 use open OUT => ":encoding(shiftjis)";
@@ -23,9 +23,9 @@ use open OUT => ":encoding(shiftjis)";
 binmode(STDERR,":encoding(shiftjis)");
 binmode(STDOUT,":encoding(shiftjis)");
 
-require 'letter_order.pl';
-require 'resource.pl';
-require 'idman.pl';
+require './letter_order.pl';
+require './resource.pl';
+require './idman.pl';
 
 #===================================================
 # Params

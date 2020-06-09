@@ -3,7 +3,7 @@
 use XML::Parser;
 use Encode;
 
-require 'tool.pl';
+require './tool.pl';
 
 
 $NULL_STR = "00e0";
