@@ -7,7 +7,7 @@ Install WSL as [explained here](https://docs.microsoft.com/en-us/windows/wsl/ins
 
 If using Debian or Ubuntu, install the packages as follows:
 ```
-sudo apt-get install git gcc make bison flex bzip2
+sudo apt-get install git gcc make bison flex libxml-parser-perl bzip2
 ```
 Or install the equivalent of these packages in the distribution of your choice.
 
@@ -21,7 +21,7 @@ Continue with the [building instructions](#building)
 
 ### Windows (Cygwin)
 
-Get the installer ([64 bit](https://www.cygwin.com/setup-x86_64.exe) or [32 bit](https://www.cygwin.com/setup-x86.exe)). Grab the setup script ([64 bit](tools/cygwin_setup-x86.bat) or [32 bit](tools/cygwin_setup-x86_64.bat)).  
+Get the installer ([64 bit](https://www.cygwin.com/setup-x86_64.exe) or [32 bit](https://www.cygwin.com/setup-x86.exe)). Grab the setup script ([64 bit](tools/cygwin_setup-x86_64.bat) or [32 bit](tools/cygwin_setup-x86.bat)).  
 Place these files next to eachother and run the batch file. Follow through the installation, there's no need to select any additional packages.
 
 Change to a directory accessible from Windows where you'll store the files, for example:
@@ -40,13 +40,14 @@ You need to install the following software:
 * make
 * bison
 * flex
+* perl-XML-Parser
 * wine (with 32-bit support!)
 
 On Debian or Ubuntu you can do this by running:
 ```
 sudo dpkg --add-architecture i386
 sudo apt-get update
-sudo apt-get install git gcc make bison flex wine32
+sudo apt-get install git gcc make bison flex libxml-parser-perl wine32
 ```
 
 Continue with the [building instructions](#building)

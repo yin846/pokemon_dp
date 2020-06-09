@@ -1,1 +1,1 @@
-setup-x86.exe -P git,gcc-core,make,patch,flex,bison
+setup-x86.exe -P git,gcc-core,make,patch,flex,bison,perl-XML-Parser
