@@ -384,7 +384,7 @@ MSG_HEADERFILE_DIR	= include/msgdata/
 msgData: $(MSGDATA_FILEPATH)
 
 $(MSGDATA_FILEPATH): $(wildcard $(MSG_CONVERTDATA_DIR)*.dat)
-	nnsarc -c -l -n -i $(MSGDATA_FILENAME) $(MSG_CONVERTDATA_DIR)*.dat
+	nnsarc -s -c -l -n -i $(MSGDATA_FILENAME) $(MSG_CONVERTDATA_DIR) -E CVS
 	$(MV) $(MSGDATA_FILENAME) $(MSGDATA_FILEPATH)
 	perl $(MSG_NAIX_COPYSCRIPT)  msg.naix $(MSG_HEADERFILE_DIR)msg.naix
 	-$(RM) msg.naix
