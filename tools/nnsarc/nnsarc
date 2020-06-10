@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ "$OS" != 'Windows_NT' -a "${WSLENV-x}" = 'x' ]; then
-    exec wine "$0".exe "$@"
+    exec wine "$NITROSYSTEM_ROOT/tools/win/bin/nnsarc.exe" "$@"
 else
-    exec "$0".exe "$@"
+    exec "$NITROSYSTEM_ROOT/tools/win/bin/nnsarc.exe" "$@"
 fi
