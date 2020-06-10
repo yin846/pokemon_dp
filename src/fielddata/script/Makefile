@@ -38,7 +38,7 @@ common_scr.bin:	../../../include/msgdata/msg_common_scr.h
 	@rm $*.o $*.elf temp_$*.s
 
 elf2bin.exe: ../../battle/skill/elf2bin.c
-	$(CC_X86) -o $@ $<
+	$(CC_X86) -O2 -o $@ $<
 
 do-build: scr_seq.narc
 scr_seq.narc: $(SCRSRCS:.ev=.bin)

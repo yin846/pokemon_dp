@@ -11,6 +11,7 @@ HEADER_DIR	= ../../include/msgdata
 VERSION_FILE	= ../../version
 
 
+include $(NITROSDK_ROOT)/build/buildtools/commondefs
 -include $(TARGET_LIST)
 -include $(VERSION_FILE)
 
@@ -20,7 +21,7 @@ VERSION_FILE	= ../../version
 ##########################################################
 .SUFFIXES: .dat .gmm
 
-no-rule:
+build: msgenc.exe
 	@mkdir -p $(DATA_DIR) $(HEADER_DIR)
 	$(MAKE)	depend
 	$(MAKE)	datfiles
@@ -40,6 +41,7 @@ clean:
 	-rm $(DATA_DIR)/*.dat
 	-rm $(HEADER_DIR)/*.h
 	-rm $(DEPEND_LIST) $(TARGET_LIST)
+	-rm msgenc.exe
 
 #=========================================================
 #	depend
@@ -48,6 +50,10 @@ depend:
 	$(shell find src|grep gmm$$ > $(RESOURCE_LIST)) 
 	perl  makedepend.pl $(RESOURCE_LIST) $(DATA_DIR) $(DEPEND_LIST) $(TARGET_LIST) $(PM_LANG)
 	rm $(RESOURCE_LIST)
+
+
+msgenc.exe: msgenc.c
+	$(CC_X86) -Wno-unused-result -O2 -o $@ $<
 
 
 -include $(DEPEND_LIST)

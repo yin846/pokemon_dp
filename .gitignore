@@ -33,6 +33,7 @@
 /src/particledata/*.narc
 /src/msgdata/*.narc
 /include/msgdata/
+/convert/message/msgenc.exe
 /convert/message/data/
 /convert/message/*.list
 

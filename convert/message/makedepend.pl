@@ -75,7 +75,7 @@ sub print_depends {
 		{
 			print DEPEND_FILE "$$target_ref[$i]:\t$$src_ref[$i]\n";
 			print DEPEND_FILE "\t perl msgconv.pl $$src_ref[$i] $lang\n";
-			print DEPEND_FILE "\t \$(WINE) ./msgenc.exe $$target_ref[$i]\n\n";
+			print DEPEND_FILE "\t ./msgenc.exe $$target_ref[$i]\n\n";
 		}
 		close(DEPEND_FILE);
 	}
